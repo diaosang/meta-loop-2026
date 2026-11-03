@@ -4,13 +4,20 @@
 - 源代码/demo-dialogue-v10.js
 - 试玩_v10.html
 - 对话系统升级_v10.md
+- README.md（已加入 V10 入口）
 
-静态检查：
-- JavaScript 语法检查通过。
-- 试玩入口内联 JavaScript 语法检查通过。
-- 模拟数据测试覆盖具体话题取数、关系阶段分流、核心人物专属对白、无配表兜底、NPC-NPC 对话生成。
-- 未修改行动值、好感度、忠诚度、暧昧度、朝堂流程、选秀条件、事件触发与存档字段。
+静态与模拟检查：
+- V10 JavaScript 语法检查：通过。
+- 试玩入口内联 JavaScript 语法检查：通过。
+- 具体话题取数：通过（近况、家事等按具体 topic 取数）。
+- 关系阶段：通过（formal / familiar / close / intimate / strained 分流）。
+- 六位核心人物专属对白：通过（测试到许知衡的 care/listen 个人台词）。
+- 缺少配表时的兜底对白：通过。
+- 招入流程保护：通过（recruit 仍走原有弹窗，不被普通对白覆盖）。
+- NPC-NPC 场景：通过（争执场景展示双方对白）。
+- 数值保护：模拟前后好感、暧昧、忠诚数值一致。
 
-尚未完成：
-- 当前执行环境未能打开 GitHub Pages 页面进行真实浏览器点击验收。
-- 不声称已完成线上实机测试；请在部署完成后从 V10 入口体验。
+未完成：
+- 当前环境无法对 GitHub Pages 做真实浏览器点击测试，因此线上部署与实机体验尚未验收。
+- 新入口已合并到 main；GitHub Pages 发布后可用下方链接体验：
+  https://diaosang.github.io/meta-loop-2026/fengque-changge/%E8%AF%95%E7%8E%A9_v10.html
