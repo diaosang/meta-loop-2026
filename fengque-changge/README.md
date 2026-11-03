@@ -4,7 +4,10 @@
 
 ## 在线/本地试玩
 
-直接打开 [`网页Demo/index.html`](网页Demo/index.html)。页面为自包含 Demo，无网络依赖。
+- **V9.1 自然对话试玩**：[`试玩_v9.html`](试玩_v9.html) · [在线打开](https://diaosang.github.io/meta-loop-2026/fengque-changge/%E8%AF%95%E7%8E%A9_v9.html)
+- 原版入口：[`网页Demo/index.html`](网页Demo/index.html)。页面为自包含 Demo，无网络依赖。
+
+V9.1 只调整人物会面与八类互动的对白取数和场景呈现，不改原有玩法数值与流程。
 
 ## 本轮规则
 
