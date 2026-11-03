@@ -403,3 +403,66 @@ intimacyQuestion=function(){
   '相处 · 本人意愿');
  save();
 };
+
+
+// V8 · 文案规范：不写心态、神态旁白；用可观察动作承载场景，人物立场由对白表达。
+(function(){
+ const V8_CUE = /(神色|神情|神态|目光|眼神|眼底|眉间|脸色|笑意|耳尖|心境|心态|情绪|心中|心里|心事|思绪|不安|期待|失望|委屈|恼怒|忧虑|吃醋|安心|像是|似乎|仿佛)/;
+ function v8CleanStage(stage,p){
+  const raw=String(stage||'').trim();
+  const parts=raw.split(/(?<=[。！？；])/).map(x=>x.trim()).filter(Boolean);
+  const kept=parts.filter(x=>!V8_CUE.test(x));
+  return kept.join('') || ((p?.name||'人物')+'在'+(p?.location||p?.home||'宫中')+'与你会面。');
+ }
+ function v8CleanReply(reply){
+  const parts=String(reply||'').split(/(“[^”]*”)/g);
+  return parts.map((part,i)=>{
+   if(i%2===1)return part;
+   return V8_CUE.test(part)?'':part;
+  }).join('').replace(/\s{2,}/g,' ').trim();
+ }
+ function v8CleanRow(row,p){
+  if(!row)return row;
+  row.stage=v8CleanStage(row.stage,p);
+  row.reply=v8CleanReply(row.reply);
+  return row;
+ }
+ const v8ComposeBefore=naturalComposeDialogue;
+ naturalComposeDialogue=function(p,cursorKey,category,topic,baseText,playerText,baseResult){
+  return v8CleanRow(v8ComposeBefore(p,cursorKey,category,topic,baseText,playerText,baseResult),p);
+ };
+ const v8ReadBefore=readFiction;
+ readFiction=function(p,category,topic){
+  return v8CleanRow(v8ReadBefore(p,category,topic),p);
+ };
+ const v8RevisionBefore=revisionRow;
+ revisionRow=function(p,category){
+  return v8CleanRow(v8RevisionBefore(p,category),p);
+ };
+ // 每日自主行动只记录具体事务，不用心理活动替代行为。
+ const V8_DAILY={
+  '温柔体贴':['把茶水送到值房，顺路替同僚取回家书。','整理花房的花木名册，并将新开的花枝剪下送去医馆。'],
+  '清冷克制':['核对三份文书的日期与印章，补齐缺漏后交还值房。','在藏书阁查完旧档，将引用页码抄录进案卷。'],
+  '明朗直率':['从演武场带回训练记录，并把多余的热栗子分给同伴。','替同伴把争执经过写成记录，交由值房存档。'],
+  '骄矜自尊':['将新作誊清，附上修改稿送往文馆。','完成一份诗稿校订，并取回前次送审的批注。'],
+  '敏感多思':['给家中回信，逐项交代近况与寄回的银钱。','整理旧信与账目，将需要回复的事项列成清单。'],
+  '圆融世故':['分别拜访两处府邸，核对宴席名单与来往礼单。','从东市带回商号消息，并向相关官员核实来源。'],
+  '严正守礼':['复核名册与章程，退回一份缺少签押的文书。','按时点验值守名册，将缺勤记录送交主管官员。'],
+  '野心进取':['重写请命折，补上人手、时限与粮草清单。','在演武场完成加练，并提交新的训练安排。'],
+  '疏朗洒脱':['去西市买伞和纸，回宫时把沿途物价记在册上。','沿宫道巡看修缮进度，将需要补修的地方逐项记下。'],
+  '务实重利':['盘点库房货物，重新核算本月采买支出。','核对商队运费与仓储账目，列出可节省的开支。'],
+  '寡言重诺':['修好旧砚并归还原主，随后完成当日值守。','按约送回借阅的书册，并完成交办的差事。'],
+  '戒备善谋':['核对来往名册与密报来源，将原件分别封存。','复查门禁记录与出入凭据，整理出一份待核名单。']
+ };
+ if(typeof AGENCY_DAILY==='object')Object.assign(AGENCY_DAILY,V8_DAILY);
+ window.__dialogueStyleAudit=function(){
+  const samples=[];
+  for(const p of PEOPLE.slice(0,Math.min(12,PEOPLE.length))){
+   for(const category of ['chat','care','activity','flirt']){
+    const row=readFiction(p,category,category==='activity'?'walk':category==='flirt'?'miss':category==='care'?'listen':'recent');
+    if(row)samples.push({name:p.name,category,stage:row.stage,reply:row.reply,stageHasCue:V8_CUE.test(row.stage)});
+   }
+  }
+  return {version:'V8',rule:'场景只保留可观察动作；对白保留人物直接表达；不新增心态或神态旁白。',samples};
+ };
+})();
