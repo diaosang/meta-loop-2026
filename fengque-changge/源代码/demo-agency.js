@@ -129,140 +129,133 @@ function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',ho
  auditionInterview=function(id,answer=''){const p=PEOPLE.find(x=>x.id===id);agencyAuditionBefore(id,answer||`${p?.name||'他'}行礼后没有急着低头：“陛下想先问家世，还是先看我所习的本事？”`);};actions.auditionAsk=agencyAuditionAsk;actions.auditionInterview=id=>auditionInterview(id);
  const agencyRenderBefore=render;render=function(){agencyEnsure();agencyRenderBefore();if(state.tab==='home'&&!document.querySelector('.agency-home')){const anchor=document.querySelector('.strife-home')||document.querySelector('.stats')||document.querySelector('#screen .court-entry');if(anchor)anchor.insertAdjacentHTML('afterend',`<div class="agency-home"><div class="card"><div class="section-heading"><h3>今日人物动向</h3><span class="tag">${state.agency.inbox.filter(x=>!x.done).length}封新话</span></div><p>${state.agency.moments.filter(x=>x.key===todayKey()).slice(-3).map(x=>x.text).join(' ')||'大家正各自忙着。去人物页看看，今日的行迹会慢慢显出来。'}</p><button class="btn ghost wide" data-action="agencyPanel">查看今日动向与来信</button></div></div>`);}};save();
  const agencyStyle=document.createElement('style');agencyStyle.textContent=`.agency-home{margin-top:15px}.agency-home .card{background:#fffaf2;border-color:#decfc0}.agency-home p{font-size:13px;line-height:1.9;color:#806d73}.agency-home .tag{font-size:10px}.agency-home+.card{margin-top:15px}`;document.head.appendChild(agencyStyle);
- agencyEnsure();buildDay();
-
-// v6 autonomy pass: NPCs now choose from needs and duties instead of always
-// falling through to a personality sentence. This keeps the visible action,
-// the daily itinerary and the relationship memory in the same causal chain.
-const AGENCY_NEED_DEFAULTS={energy:72,social:42,duty:36,family:28,curiosity:35,freedom:30};
-function agencyNeedEnsure(p){
- const r=state.relations[p.id];r.agency=r.agency||{};const n=r.agency.needs||{};
- for(const [k,v] of Object.entries(AGENCY_NEED_DEFAULTS))n[k]=Number.isFinite(n[k])?clamp(n[k]):v;
- r.agency.needs=n;return n;
-}
-function agencyTargetFor(p,h){
- const edges=socialEdgesOf(p.id).filter(e=>PEOPLE.some(q=>q.id===(e.a===p.id?e.b:e.a)));
- if(!edges.length)return null;const e=edges[h%edges.length],id=e.a===p.id?e.b:e.a;return PEOPLE.find(q=>q.id===id)||null;
-}
-function agencyNeedStep(p,action,key){
- const n=agencyNeedEnsure(p),delta={energy:-6,social:4,duty:3,family:2,curiosity:1,freedom:2};
- if(action.kind==='rest'){delta.energy=28;delta.social=-3;}
- if(action.kind==='work'||action.kind==='petition'){delta.energy=-10;delta.duty=-25;delta.curiosity=-4;}
- if(action.kind==='social'||action.kind==='invite'){delta.energy=-4;delta.social=-28;delta.freedom=-5;}
- if(action.kind==='family'){delta.energy=-4;delta.family=-30;delta.social=-8;}
- if(action.kind==='learn'){delta.energy=-7;delta.curiosity=-28;delta.duty=-5;}
- if(action.kind==='wander'){delta.energy=-5;delta.freedom=-30;delta.social=-4;}
- for(const [k,v] of Object.entries(delta))n[k]=clamp(n[k]+v);
- const day=state.dailyHistory[key]?.entries?.[p.id];if(day){const slot=day[3]||day[4];if(slot){slot.text=action.text;slot.location=p.location||slot.location||'quarters';}}
-}
-const agencyActionNeedsBefore=agencyActionFor;
-agencyActionFor=function(p,key){
- const n=agencyNeedEnsure(p),h=agencyHash(`${key}|needs|${p.id}|${n.energy}|${n.social}|${n.duty}`),target=agencyTargetFor(p,h);
- const legacy=agencyActionNeedsBefore(p,key);
- let action=legacy;
- if(!['withdraw','jealous','letter','petition','invite'].includes(legacy.kind)){
-  if(n.energy<30)action={kind:'rest',target:null,text:`${p.name}把今日的应酬一一推了，只留一盏灯在案头。昨夜没睡足，先把精神养回来。`};
-  else if(p.official&&n.duty>48)action={kind:'work',target:null,text:`${p.name}把该办的公事列成三项，先去处理最容易牵动旁人的那一件。`};
-  else if(n.social>68&&target)action={kind:'social',target,text:`${p.name}没有等人召见，带着一壶新茶去找${target.name}。两人先说近况，后来才谈到各自的难处。`};
-  else if(n.family>62)action={kind:'family',target:null,text:`${p.name}给家中写了信，报平安只写半页，剩下半页留给了真正想说的话。`};
-  else if(n.curiosity>62)action={kind:'learn',target:null,text:`${p.name}在${p.specialty||'案头'}上多留了半日，把一个想弄明白的问题记进了自己的册子。`};
-  else if(n.freedom>64)action={kind:'wander',target:null,text:`${p.name}出了门，绕开最热闹的那条街，只想一个人走到天色暗下来。`};
+ // V7 · 自主行为单一事实源：展示人物心境系统已经执行的行动，不再另造第二套日常。
+function agencyV7Memory(p,key){
+ const m=state.relations[p.id]&&state.relations[p.id].mind;
+ if(!m||!Array.isArray(m.memories))return null;
+ for(let i=m.memories.length-1;i>=0;i--){
+  const x=m.memories[i];
+  if(x.month===state.elapsed&&x.day===(state.day||1)&&['自主日常','往来'].includes(x.kind))return x;
  }
- agencyNeedStep(p,action,key);
- if(!['withdraw','jealous','letter','petition','invite'].includes(action.kind)&&typeof rememberMind==='function')rememberMind(p.id,action.text,'自主日常',false);
- return action;
-};
-agencyEnsure();for(const p of PEOPLE)agencyNeedEnsure(p);buildDay();
-
-// v7 autonomy consolidation: the mind layer is the single source of truth for
-// daily decisions.  The older agency layer used to make a second decision for
-// the same NPC and overwrite the public itinerary, which made motives and
-// memories disagree.  Read the already chosen mind action and expose it as a
-// public agency moment instead.
-const AGENCY_V7=2;
-function agencyActionFromMind(p,key){
- const r=state.relations[p.id],m=r.mind||{},day=state.dailyHistory[key],entry=day?.entries?.[p.id]?.[3]||day?.entries?.[p.id]?.[4];
- const code=String(m.lastAction||'日常');
+ return null;
+}
+function agencyV7Target(p,memory){
+ const text=String(memory&&memory.text||'');
+ return PEOPLE.find(q=>q.id!==p.id&&text.includes(q.name))||null;
+}
+function agencyV7Motive(p,action,memory){
  const map={
-  rest:'rest',retreat:'withdraw',seekcare:'letter',quiet:'withdraw',direct:'jealous',boundary:'boundary',
-  compare:'jealous',invite:'invite',fairness:'petition',duty:'work',walk:'wander',wait:'wait',gift:'gift',
-  learn:'learn',family:'family',work:'work',visit:'social',friendcare:'social',cooperate:'social',help:'social',
-  disagree:'tension',reconcile:'social'
+  rest:'精力需要恢复，先推掉不急的应酬',retreat:'心情还没平复，暂时想独处',
+  seekcare:'有件心事没说开，想找机会讲清楚',quiet:'不想勉强自己应酬',
+  direct:'有话想当面说，不愿一直猜',boundary:'需要一点自己的空间',
+  compare:'在意彼此的关系，想确认自己的位置',fairness:'想把事情按规矩说清楚',
+  duty:'希望手上的差事能做出结果',walk:'想换个地方透透气',wait:'按自己的节奏过日子',
+  gift:'想为在意的人留一份心意',family:'惦记家里人，想问问近况',learn:'想把一门本事练得更扎实',
+  work:'希望自己的本事能派上用场',visit:'想和熟人保持往来',disagree:'与人意见不合，需要时间消化',
+  reconcile:'愿意把先前的误会说开一点',help:'愿意替熟人搭把手',
+  cooperate:'与熟人一起把事情做完',friendcare:'留意到熟人的近况，想陪他说说话'
  };
- let kind=map[code]||'daily';
- let text=entry?.text||r.agency?.plan||`${p.name}按自己的安排过了一日。`;
- // Keep the emotional label visible in the log, but let the authored daily
- // sentence carry the actual scene and location.
+ if(map[action])return map[action];
  const mood=agencyMood(p);
- if(mood==='吃醋'&&kind==='daily')kind='jealous';
- if((mood==='失望'||mood==='委屈')&&kind==='daily')kind='letter';
- return {kind,target:agencyTargetFor(p,agencyHash(`${key}|v7|${p.id}`)),text,code,mood};
+ if(mood==='吃醋')return '在意女帝的安排，也在意自己有没有被记得';
+ if(mood==='失望'||mood==='委屈')return '关系里有未说完的话';
+ if(memory&&memory.kind==='往来')return '今日与熟人有过一段往来';
+ return '按自己的日常安排行动';
 }
-function agencyNeedText(p){
- const n=agencyNeedEnsure(p);
- return `精力${Math.round(n.energy)} · 交际${Math.round(n.social)} · 公务${Math.round(n.duty)} · 家书${Math.round(n.family)} · 求知${Math.round(n.curiosity)} · 出走${Math.round(n.freedom)}`;
+function agencyV7Scene(p,target,memory,key,action){
+ const a=state.agency;
+ const todays=a.scenes.filter(x=>x.dayKey===key&&!x.done);
+ if(todays.length>=2)return;
+ const id='scene-'+(++a.seq),tense=action==='disagree';
+ a.scenes.push({
+  id:id,dayKey:key,source:p.id,target:target.id,kind:action,
+  title:tense?p.name+'与'+target.name+'意见不合':p.name+'与'+target.name+'的一段往来',
+  text:memory.text+'这段往来已经记进他们各自的日常。'+(tense?'两人暂时没有谈拢。':'两人把眼前的事处理完，各自继续忙自己的事。')+'陛下若想过问，可以听听双方的说法；也可以不插手。',
+  done:false
+ });
 }
-function agencyApplyV7Itinerary(p,key,action){
- const day=state.dailyHistory[key],entries=day?.entries?.[p.id];if(!entries)return;
- const loc=p.location||entries[3]?.location||'quarters',where=typeof wloc==='function'?wloc(loc).name:'住处';
- const mood=action.mood, name=p.name;
- const plans={
-  rest:[`${name}清晨没有应下旁人的邀约，只叫人把窗纸换了新的。`,`在${where}补了半日眠，醒来后把未完的茶慢慢喝完。`,'午后仍不急着见人，先把心绪收拢。','傍晚才回了一封必要的信，字迹比往日慢。','夜里早早熄灯，给明日留些精神。','今夜独处。'],
-  work:[`${name}先看完最紧要的那份公文，朱笔停在一处数字上。`,`在${where}把事情分成轻重缓急，叫人去核第一笔账。`,'午膳送到案边，凉了也没有换。',action.text,`散值后仍记着那件事，顺手在袖笼里添了一行批注。`,'夜里才收笔。'],
-  social:[`${name}照常起身，却临时带了一壶自己挑的茶。`,`在${where}寻到${action.target?.name||'旧识'}，先说了两句无关紧要的闲话。`,'午间没有急着散，各自把没说完的半句补上。',action.text,'回去时心情松了些，又替对方留了句话。','夜里记下今日这场相逢。'],
-  letter:[`${name}把案头清出一角，想写信，却先把纸铺了三回。`,`写到“改日”二字时停了笔，没叫人替自己圆场。`,'午膳只用了半碗，剩下的事都压在心里。',action.text,'傍晚终于把信封好，却没有立刻交出去。','夜里把那封信放在灯下，想了很久。'],
-  jealous:[`${name}听见宫门传来的动静，照旧问安，眼神却停了一瞬。`,`在${where}把原要递上的话收回袖中，先看旁人如何安排。`,'午间有人提起女帝，他只淡淡应了一声。',action.text,'散值后仍做完分内事，只是没有再主动邀人。','夜里把今日的失落记进心里。'],
-  learn:[`${name}把手头事收好，带着一册旧书去了${where}。`,`遇到不懂处便做记号，没有叫人替自己查。`,'午后仍在推敲那一页，连茶凉了都没察觉。',action.text,'傍晚把所得写成几行，准备日后再看。','夜里合卷时，心里已经有了下一问。'],
-  wander:[`${name}早早出了门，特意绕开最热闹的街。`,`在${where}慢慢走了一圈，买了一样不贵却合心意的东西。`,'午间坐在檐下，看人来人往而不急着回去。',action.text,'天色将暗才折返，鞋边沾了些尘。','夜里心绪比清晨松快。'],
-  family:[`${name}先问宫人有没有家书送到，随后才坐到案前。`,`给家中报了平安，写到旧人旧事时多停了几笔。`,'午膳时仍想着信里没写完的话。',action.text,'傍晚把信封好，嘱咐走熟路的人亲自送去。','夜里想起家中灯火，久久未眠。']
- };
- const arr=plans[action.kind]||[`${name}按自己的安排起身。`,`在${where}处理手头的事。`,'午间略作歇息。',action.text,'傍晚收拾好明日所需。','夜里回到住处。'];
- entries.forEach((e,i)=>{e.location=e.location||loc;e.text=arr[i]||arr[arr.length-1];});
- entries[3].location=loc;
-}
-const agencyTickV6=agencyTickDay;
 agencyTickDay=function(key){
  agencyEnsure();
- if(state.agency.version!==AGENCY_V7){state.agency.version=AGENCY_V7;state.agency.days={};}
- if(state.agency.days[key]===AGENCY_V7)return;
- // Build the day first so demo-npc-mind has already made its decision.
+ if(state.agency.days[key])return;
+ const day=state.dailyHistory&&state.dailyHistory[key];
+ state.agency.days[key]=true;
+ if(!day){save();return;}
+ const rows=[];
  for(const p of PEOPLE){
-  const r=state.relations[p.id];r.agency=r.agency||{};agencyNeedEnsure(p);
-  const action=agencyActionFromMind(p,key);r.agency.lastAction=action.kind;r.agency.lastSeen=key;r.agency.plan=action.text;
-  agencyNeedStep(p,action,key);
-  agencyApplyV7Itinerary(p,key,action);
-  const moment={id:`moment-${++state.agency.seq}`,key,npc:p.id,name:p.name,kind:action.kind,target:action.target?.id||null,text:action.text,code:action.code,mood:action.mood,month:state.elapsed,day:state.day||1};
-  state.agency.moments.push(moment);if(state.agency.moments.length>260)state.agency.moments.shift();
-  if(action.text&&typeof rememberMind==='function')rememberMind(p.id,action.text,'自主行迹',true);
-  if(['letter','invite','jealous','petition'].includes(action.kind)&&state.agency.inbox.filter(x=>!x.done).length<10){
-   state.agency.inbox.push({id:`mail-${++state.agency.seq}`,source:p.id,target:action.target?.id||null,kind:action.kind,title:action.kind==='petition'?'一封请命折':action.kind==='invite'?'有人递话':'写到一半的信',text:action.text,dayKey:key,done:false});
-  }
+  const r=state.relations[p.id],m=r&&r.mind;
+  if(!r||!m)continue;
+  const memory=agencyV7Memory(p,key);
+  if(!memory)continue;
+  const action=m.lastAction||'daily';
+  const target=memory.kind==='往来'?agencyV7Target(p,memory):null;
+  const location=typeof mindLocation==='function'?mindLocation(day,p.id):(p.location||'宫中');
+  const motive=agencyV7Motive(p,action,memory);
+  r.agency=r.agency||{goal:AGENCY_GOALS[p.type]||'把自己的日子过好',plan:'',lastAction:'',used:[],trust:[],wounds:[],secrets:[],lastSeen:null};
+  r.agency.lastAction=action;r.agency.lastSeen=key;r.agency.plan=memory.text;r.agency.motive=motive;
+  rows.push({
+   id:'moment-'+(++state.agency.seq),key:key,npc:p.id,name:p.name,kind:action,
+   target:target?target.id:null,text:memory.text,motive:motive,location:location,
+   mood:agencyMood(p),month:state.elapsed,day:state.day||1,source:'mind-simulation-v7'
+  });
+  if(target&&['disagree','reconcile'].includes(action))agencyV7Scene(p,target,memory,key,action);
  }
- state.agency.days[key]=AGENCY_V7;
- const old=Object.keys(state.agency.days);for(const k of old.slice(0,-90))delete state.agency.days[k];save();
+ rows.sort((a,b)=>agencyHash(key+':'+a.npc)-agencyHash(key+':'+b.npc));
+ state.agency.moments.push(...rows);
+ if(state.agency.moments.length>420)state.agency.moments.splice(0,state.agency.moments.length-420);
+ state.agency.scenes=state.agency.scenes.filter(x=>!x.done||x.dayKey===key).slice(-40);
+ const old=Object.keys(state.agency.days);
+ for(const k of old.slice(0,-90))delete state.agency.days[k];
+ save();
 };
-agencyActionFor=function(p,key){return agencyActionFromMind(p,key);};
-agencyEnsure();for(const p of PEOPLE)agencyNeedEnsure(p);buildDay();
-
-// Surface the needs that caused an action, so a player can tell whether an NPC
-// is tired, lonely, dutiful, homesick, curious or restless.
-const agencyPanelV6=agencyPanel;
 agencyPanel=function(){
- agencyPanelV6();
- const body=$('modalBody');if(!body)return;
- const rows=PEOPLE.filter(p=>state.agency.moments.some(x=>x.key===todayKey()&&x.npc===p.id)).slice(0,12);
- if(rows.length)body.insertAdjacentHTML('beforeend',`<div class="card agency-needs"><h3>今日心绪</h3>${rows.map(p=>`<div class="record"><b>${p.name}</b><p>${agencyNeedText(p)}</p></div>`).join('')}</div>`);
+ agencyEnsure();
+ const key=todayKey(),all=state.agency.moments.filter(x=>x.key===key);
+ const moments=all.slice().sort((a,b)=>agencyHash(key+':panel:'+a.npc)-agencyHash(key+':panel:'+b.npc)).slice(0,12);
+ const legacyMail=state.agency.inbox.filter(x=>!x.done).slice(-6).reverse();
+ const realMail=(state.ecology&&state.ecology.inbox||[]).filter(x=>!x.done);
+ const scenes=state.agency.scenes.filter(x=>!x.done).slice(-4);
+ openModal('今日人物动向','人物的日常先由自己的需要与心境推动；这里展示已经发生的行迹。',
+  (realMail.length?'<div class="record"><span class="tag">人物来信 · '+realMail.length+' 封待回</span><p>来信来自人物当天的心境与自主行动。回信、改期或亲自见面，都会留下后续记忆。</p><button class="btn primary" data-action="mindLetters">查看人物来信</button></div>':'')+
+  (legacyMail.length?'<h3 class="section-space">此前递来的话</h3>'+legacyMail.map(x=>'<div class="record"><span class="tag">'+strifeName(x.source)+'</span><p>'+x.text+'</p><button class="btn ghost" data-action="agencyOpen" data-id="'+x.id+'">拆开看看</button></div>').join(''):'')+
+  (scenes.length?'<h3 class="section-space">人物之间正在发生</h3>'+scenes.map(x=>'<div class="record"><b>'+x.title+'</b><p>'+x.text+'</p><button class="btn primary" data-action="agencyOpen" data-id="'+x.id+'">听听双方说法</button></div>').join(''):'')+
+  '<h3 class="section-space">今日真实行迹 · '+all.length+' 条</h3>'+
+  (moments.map(x=>'<div class="record"><span class="mini">'+x.name+' · '+(x.location||'宫中')+' · '+(x.mood||'平静')+'</span><p>'+x.text+'</p><small class="mini">行动缘由：'+x.motive+'</small></div>').join('')||'<p class="mini">今日尚无新的自主行动记录。</p>'),
+ '人物自主意识');
 };
-actions.agencyPanel=agencyPanel;
+const agencyOpenV7Before=agencyOpen;
+agencyOpen=function(id){
+ agencyEnsure();
+ const scene=state.agency.scenes.find(x=>x.id===id&&!x.done);
+ if(!scene)return agencyOpenV7Before(id);
+ const p=PEOPLE.find(x=>x.id===scene.source),t=PEOPLE.find(x=>x.id===scene.target);
+ openModal(scene.title,(p?p.name:'一人')+' · '+(t?t.name:'另一人'),
+  '<div class="scene-text">'+scene.text+'</div><div class="opts"><button class="opt" data-action="agencyChoose" data-id="'+id+'|listen"><b>先听双方说法</b><small>不急着判谁对谁错。</small></button><button class="opt" data-action="agencyChoose" data-id="'+id+'|call"><b>把两人都叫来问</b><small>当面说清，可能有人觉得失了面子。</small></button><button class="opt" data-action="agencyChoose" data-id="'+id+'|leave"><b>暂不插手</b><small>让关系自行发展。</small></button></div>','人物往来');
+};
+actions.agencyPanel=agencyPanel;actions.agencyOpen=agencyOpen;
+// 迁移旧存档：清除今天的旧版重复行迹，让其从真实日常记忆重建。
+agencyEnsure();
+if((state.agency.autonomyRevision||0)<2){
+ const today=todayKey();
+ state.agency.moments=state.agency.moments.filter(x=>x.key!==today);
+ delete state.agency.days[today];
+ state.agency.autonomyRevision=2;
+}
+agencyEnsure();buildDay();
 
-// Month-end must go through the same court gate as the visible “结束本月”
-// button.  Several historical wrappers called the base nextMonth directly,
-// which allowed a player to skip petitions and the imperial reply.
+// v7.1 needs telemetry: keep the mind simulation as the decision source and
+// expose the needs that explain its choice.  These values change after each
+// recorded action and are shown beside the public daily movement.
+const AGENCY_NEED_DEFAULTS={energy:72,social:42,duty:36,family:28,curiosity:35,freedom:30};
+function agencyNeedEnsure(p){const r=state.relations[p.id];r.agency=r.agency||{};const n=r.agency.needs||{};for(const[k,v]of Object.entries(AGENCY_NEED_DEFAULTS))n[k]=Number.isFinite(n[k])?clamp(n[k]):v;r.agency.needs=n;return n;}
+function agencyNeedText(p){const n=agencyNeedEnsure(p);return `精力${Math.round(n.energy)} · 交际${Math.round(n.social)} · 公务${Math.round(n.duty)} · 家书${Math.round(n.family)} · 求知${Math.round(n.curiosity)} · 出走${Math.round(n.freedom)}`;}
+function agencyNeedAfter(p,moment){const n=agencyNeedEnsure(p),k=moment.kind||'';for(const key of Object.keys(n))n[key]=clamp(n[key]+({energy:-4,social:2,duty:2,family:1,curiosity:1,freedom:1}[key]||0));if(['rest'].includes(k))n.energy=clamp(n.energy+28);if(['social','visit','friendcare','cooperate','help'].includes(k))n.social=clamp(n.social-26);if(['work','duty','petition'].includes(k))n.duty=clamp(n.duty-24);if(['learn'].includes(k))n.curiosity=clamp(n.curiosity-24);if(['walk'].includes(k))n.freedom=clamp(n.freedom-24);if(['family'].includes(k))n.family=clamp(n.family-26);}
+const agencyTickNeedsBefore=agencyTickDay;
+agencyTickDay=function(key){agencyTickNeedsBefore(key);for(const p of PEOPLE){agencyNeedEnsure(p);const m=state.agency.moments.slice().reverse().find(x=>x.key===key&&x.npc===p.id);if(m)agencyNeedAfter(p,m);}};
+const agencyPanelNeedsBefore=agencyPanel;
+agencyPanel=function(){agencyPanelNeedsBefore();const body=$('modalBody');if(!body)return;const rows=PEOPLE.filter(p=>state.agency.moments.some(x=>x.key===todayKey()&&x.npc===p.id)).slice(0,12);if(rows.length)body.insertAdjacentHTML('beforeend',`<div class="card agency-needs"><h3>今日心绪需求</h3>${rows.map(p=>`<div class="record"><b>${p.name}</b><p>${agencyNeedText(p)}</p></div>`).join('')}</div>`);};
+actions.agencyPanel=agencyPanel;agencyEnsure();for(const p of PEOPLE)agencyNeedEnsure(p);buildDay();
+
+// Month end is a hard gate: no wrapper may advance the month before the
+// petitions, imperial reply and retirement from court are complete.
 const agencyNextMonthBefore=actions.nextMonth;
-actions.nextMonth=function(){
- if(!state.courtDone){toast('本月常朝尚未退朝，须先完成奏折批示与传旨。');state.tab='court';render();return;}
- agencyNextMonthBefore();
-};
-
-
-
+actions.nextMonth=function(){if(!state.courtDone){toast('本月常朝尚未退朝，须先完成奏折批示与传旨。');state.tab='court';render();return;}agencyNextMonthBefore();};
