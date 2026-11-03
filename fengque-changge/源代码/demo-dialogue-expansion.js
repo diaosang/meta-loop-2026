@@ -208,3 +208,160 @@ const expansionStyleCss=document.createElement('style');expansionStyleCss.textCo
 // 启用旧存档兼容：没有新游标的角色从零开始；旧有记忆、心境与关系值均保留。
 ensureMinds();for(const p of PEOPLE){const m=state.relations[p.id].mind;m.dialogueCursor=m.dialogueCursor||{};m.dialogueCycle=m.dialogueCycle||{};}
 save();
+
+// v6：自然对话层。保留原有互动、数值、心境与NPC生活系统，只修正对白组织方式。
+const NATURAL_PLAYER_PROMPTS = {
+ chat:{recent:'最近都在忙些什么？',home:'家乡那边最近可有来信？',interest:'闲下来时，你最喜欢做些什么？'},
+ care:{listen:'最近有没有什么心事，愿意说给我听吗？',comfort:'这几日是不是太累了？先歇一歇吧。',gift:'这份东西合不合你的心意？',promise:'下个月再见一面，好不好？',bag:'这是上次出游买的，留给你。'},
+ persuade:{support:'这件事，你愿意支持我吗？',work:'这件差事，你觉得该怎么安排？',reconcile:'你和他之间的事，能不能先说说你的看法？',recruit:'我想请你入宫，你自己愿意吗？',promote:'晋封之事，你可愿意？'},
+ probe:{opinion:'你觉得我这个人如何？',worry:'最近是不是有件事让你放不下？'},
+ scold:{remind:'我之前说过的规矩，你还记得吗？',stern:'这件事你为何擅作主张？',public:'你当众顶撞，是有何缘故？'},
+ activity:{chess:'陪我下一局棋？',walk:'陪我出去走走吧。',spar:'陪我切磋几招？'},
+ flirt:{compliment:'今日见你，心情都好些了。',miss:'我不召你时，你会不会也想见我？',confess:'我想认真问一句，你愿不愿与我更进一步？'},
+ sleep:{ask:'今夜愿不愿留下？不愿也无妨。'},
+ audition:{'0':'为何想到来应选？','1':'平日里最喜欢做些什么？','2':'你愿意入宫吗？若不愿，也可以直说。'}
+};
+const NATURAL_CORE_DIALOGUE = {
+ xu:{
+  chat:{recent:{stage:'许知衡把两份奏报合在一处，指尖还压着边角。',player:'朝中这阵子可还顺利？',reply:'“顺利谈不上。河工那边又递了两份相反的奏报，我让人把旧账也一并调来了。事情总得查清，不能只听谁说得好听。”'}},
+  care:{listen:{stage:'许知衡合上手边的边报，没急着说无事。',player:'昨夜又没睡好？',reply:'“被你看出来了。边报来得晚，我看完才歇下。不是大事，只是还惦记几处关隘。”'}},
+  activity:{chess:{stage:'许知衡把棋盒推到你面前，自己先拈起一枚黑子。',player:'陪我下一局棋？',reply:'“今日不让子了。上回输得不服，这回我想认真赢一次。”'}},
+  flirt:{miss:{stage:'许知衡正要收起奏折，听见你的话，动作慢了些。',player:'我不召你时，你会不会也想见我？',reply:'“会。本来想等忙完再去寻你，没想到你先来了。”'}}
+ },
+ jiang:{
+  chat:{recent:{stage:'姜太傅刚从国子监回来，手里还夹着一份策论。',player:'国子监最近可有好苗子？',reply:'“有一个，家境寻常，文章却写得扎实。只是性子太直，当堂把考官问住了。”他摇摇头，“倒让我想起陛下当年。”'}},
+  care:{listen:{stage:'姜太傅揉了揉旧伤，见你看过来，便把手放回袖中。',player:'旧伤今天还疼吗？',reply:'“阴雨天会有些酸，太医开了膏药，已经用过了。陛下不必为这点旧毛病耽搁政务。”'}},
+  activity:{walk:{stage:'姜太傅拿起手杖，陪你走到廊下。',player:'今日不谈政事，陪我走一段？',reply:'“好。书斋里坐久了，出去走走也好。只是陛下别走得太快，老臣可追不上。”'}}
+ },
+ ye:{
+  chat:{recent:{stage:'叶承钧把算盘往旁边推了推，给你留出位置。',player:'南市最近生意怎么样？',reply:'“比上月好些，米价却还没降下来。运河那段淤得厉害，商队多绕了两日，运费都摊进米价里了。”'}},
+  care:{listen:{stage:'叶承钧难得没有先讲笑话，只把茶盏放下。',player:'最近有没有什么烦心事？',reply:'“有。粮商压着货不肯出，我手里又没有足够的银子全收下来。”他叹了口气，“这事急不得，急了反倒让人钻空子。”'}},
+  activity:{walk:{stage:'叶承钧把账册合上，顺手拿起外衣。',player:'带我去南市转转？',reply:'“好啊。那边新开了家点心铺，价钱公道，味道也不错。今日不带账房，只带银子。”'}},
+  flirt:{compliment:{stage:'叶承钧原本正笑着，听你夸他，倒停了一瞬。',player:'你笑起来倒挺好看的。',reply:'“这句可不能记到账上，否则臣得天天翻出来看。”他笑意收了些，“陛下是在夸臣，还是有别的意思？”'}}
+ },
+ xie:{
+  chat:{recent:{stage:'谢无咎将一张小笺压在茶盏旁，示意你先坐。',player:'东厂最近可有新消息？',reply:'“有两家外地商号来得蹊跷，掌柜换了三回，货单却是同一批人写的。奴才还在查，不想拿半截消息扰陛下。”'}},
+  care:{listen:{stage:'谢无咎接过茶，嗓音听着有些哑。',player:'你嗓子怎么哑了？',reply:'“昨夜在宫门吹了些风，没什么大碍。太医开的药还在桌上，奴才一会儿便喝。”'}},
+  activity:{walk:{stage:'谢无咎先看了眼宫门方向，确认有人值守才回身。',player:'陪我去宫外走走吧。',reply:'“可以。不过得换条不显眼的路，奴才不想陛下刚出宫门，就被半条街的人认出来。”'}},
+  flirt:{miss:{stage:'谢无咎把笑意收了些，目光没有躲开。',player:'我若不召你，你会不会想见我？',reply:'“会。”他答得很轻，“只是奴才分得清什么时候该来，什么时候该等。”'}}
+ },
+ song:{
+  chat:{recent:{stage:'宋玉衡把琴谱翻到最后一页，指尖停在未写完的地方。',player:'你那支新曲写完了吗？',reply:'“还差最后一段。前几日总觉得收尾太急，昨日改了三遍，终于顺耳一些了。”'}},
+  care:{listen:{stage:'宋玉衡把琴谱合上，今天没有急着去碰琴弦。',player:'今日怎么没弹琴？',reply:'“心里有些乱，弹出来也不好听。不是不想见你，只是不想拿一支没弹好的曲子敷衍你。”'}},
+  activity:{walk:{stage:'宋玉衡将新买的纸收进袖中，等你一道出门。',player:'陪我去挑些新纸和琴弦？',reply:'“好。纸铺老板认得我，琴弦也知道哪家做得稳。今日你替我挑颜色，我替你挑手感。”'}},
+  flirt:{compliment:{stage:'宋玉衡指尖错了一弦，抬眼时耳尖已经微红。',player:'你弹琴时很好看。',reply:'“只夸琴，我还能接得住。”他别开眼，“夸我……下回等曲子弹完再说，免得我乱了拍子。”'}}
+ },
+ lu:{
+  chat:{recent:{stage:'陆景明刚从校场回来，把护腕放在桌上。',player:'今日校场练得怎么样？',reply:'“新兵比昨日好些了，就是换箭慢。我让他们又练了两轮，最后总算跟上了。”'}},
+  care:{listen:{stage:'陆景明把护腕松开，露出肩上的淤青。',player:'肩上的伤好些了吗？',reply:'“好多了，军医让我少拉几天重弓，我照做了。您别担心，没耽误当值。”'}},
+  activity:{spar:{stage:'陆景明把轻弓取下来，先试了试弓弦。',player:'带我去校场试试弓。',reply:'“行，不过先用轻弓。我在旁边教您站姿，别一上来就拉满。”'}},
+  flirt:{miss:{stage:'陆景明听见这话，笑意先从眼睛里冒出来。',player:'若我今天不来，你会不会失望？',reply:'“会有一点。不过您有政务要忙，我知道。等忙完了再见也行。”'}}
+ },
+ shen:{
+  chat:{recent:{stage:'沈既白把礼部新仪注放到案上，旁边还压着几页旧档。',player:'礼部那套新仪注修得如何了？',reply:'“大体理顺了，还有两处旧称谓要再核一遍。原本以为半日能完，没想到牵出前朝的旧档。”'}},
+  care:{listen:{stage:'沈既白把书签夹好，才抬头看你。',player:'家里最近没有为难你吧？',reply:'“父亲来信问了几次宫中情形，倒没有为难。只是他总担心我做事不够周全。”'}},
+  activity:{walk:{stage:'沈既白将书合起，陪你到廊下坐坐。',player:'今日不看书，陪我去廊下坐坐。',reply:'“好。我也正想歇一会儿。今日风不大，坐着说说话正好。”'}},
+  flirt:{miss:{stage:'沈既白理了理袖口，像是在认真斟酌该如何回答。',player:'你不必每次见我都这么拘谨。',reply:'“臣知道。只是每次见陛下，还是会先想着礼数，慢慢才能想起旧日怎么说话。”'}}
+ },
+ gu:{
+  chat:{recent:{stage:'顾长庚把一页算稿摊开，旁边堆着几本借来的旧书。',player:'国子监最近课业多吗？',reply:'“还好，就是漕运那篇策论改了三回。先生说我列了太多数字，没把百姓为什么受影响讲清楚。”'}},
+  care:{listen:{stage:'顾长庚把书合上，像是终于肯从课业里抬起头。',player:'家里的事让你分心了吗？',reply:'“有一点。父亲来信说学塾漏雨，我一直想着该寄多少银子回去。”'}},
+  activity:{walk:{stage:'顾长庚把书签夹好，拿起放在一旁的旧书。',player:'陪我去书肆看看吧。',reply:'“好！我上次看中的那本书还没卖出去。”他说完才意识到自己答得太快，笑了笑，“若陛下不嫌书肆吵，我带路。”'}},
+  flirt:{compliment:{stage:'顾长庚摸了摸脸，像是不太习惯被这样夸。',player:'你说起喜欢的东西时，眼睛会发亮。',reply:'“有吗？大概是因为终于有人肯听我讲这些，不会一听见河道、账册就走开。”'}}
+ },
+ pei:{
+  chat:{recent:{stage:'裴知节把北境抚恤名册放到一旁，先向你行礼。',player:'北境那边最近怎么样？',reply:'“边上还算安稳。旧营抚恤只剩两户没核清，我托人回去问了，应该很快有消息。”'}},
+  care:{listen:{stage:'裴知节活动了一下肩膀，神情倒不像在校场时那么轻松。',player:'你是不是有心事？',reply:'“有两户抚恤的地址一直对不上，怕拖久了家里人又得跑一趟。别的倒没什么。”'}},
+  activity:{spar:{stage:'裴知节取来一张轻弓，先替你试了试弓弦。',player:'带我去校场试试弓。',reply:'“行，不过先用轻弓。我在旁边教您站姿，别一上来就拉满。”'}},
+  flirt:{miss:{stage:'裴知节抬手摸了摸护腕，答得很干脆。',player:'若我想见你，你会不会立刻来？',reply:'“只要不是当值，我会来。当值时我也会先回话，不让陛下等着。”'}}
+ },
+ wen:{
+  chat:{recent:{stage:'温如璧把新到的药材簿翻到一页，指给你看。',player:'太医院最近新进了什么药材？',reply:'“北地送来几味药，性温，适合冬日用。不过其中一味和江南常见的很像，已经单独标了出来，免得抓错。”'}},
+  care:{listen:{stage:'温如璧把医案合上，认真看了看你的神色。',player:'最近有没有哪件事让你为难？',reply:'“有一味药的用量，旧医案和新方子记得不一样。我不敢擅自改，已经请太医院再核。”'}},
+  activity:{walk:{stage:'温如璧收好药材簿，陪你到院里走走。',player:'陪我去院里坐坐，别总待在药房。',reply:'“好。院里的桂花还没谢，我早上经过时闻见了。”'}},
+  flirt:{compliment:{stage:'温如璧怔了一下，随即有些不好意思地笑了。',player:'你对谁都这么细心吗？',reply:'“也不是。只是怕自己漏看了什么。对陛下……会多留意一点。”'}}
+ }
+};
+function naturalPrompt(category,topic,playerText,p){
+ const key=String(topic??'');
+ if(category==='probe'&&key.startsWith('relation:')){
+  const other=PEOPLE.find(x=>x.id===key.slice(9));
+  return '你和'+(other?.name||'那位大人')+'近日相处得如何？';
+ }
+ const mapped=NATURAL_PLAYER_PROMPTS[category]?.[key];
+ if(mapped)return mapped;
+ if(typeof playerText==='string'&&playerText&&!/你问起|你没有|你把|你请|你希望|你先|你试着|你提出|你将/.test(playerText))return playerText;
+ const fallback={
+  chat:['最近可有新鲜事？','这阵子心里最惦记什么？'],
+  care:['今日气色不大好，是不是累了？','有什么事不必一个人扛着。'],
+  persuade:['你觉得怎样办更妥当？','这件事你愿意和我一起承担吗？'],
+  probe:['你心里真正的想法是什么？','这件事还有什么我不知道的？'],
+  scold:['你先说说事情经过。','你可知道这样做会有什么后果？'],
+  activity:['今日想做点什么？','陪我消磨一会儿时辰吧。'],
+  flirt:['我有些想你了。','你可曾也这样想过？'],
+  sleep:['今夜愿意留下吗？不愿也无妨。'],
+  audition:['为何想到来应选？','平日里最喜欢做些什么？']
+ }[category]||['你愿意同我说说吗？'];
+ return fallback[naturalHash(p?.id+'|'+category+'|'+key+'|'+currentMind(p))%fallback.length];
+}
+function naturalHash(s){let h=2166136261;for(const c of String(s)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+function naturalComposeDialogue(p,cursorKey,category,topic,baseText,playerText,baseResult){
+ ensureMinds();
+ const r=state.relations[p.id],m=r.mind;
+ m.dialogueCursor=m.dialogueCursor||{};m.dialogueCycle=m.dialogueCycle||{};
+ const cursor=Number(m.dialogueCursor[cursorKey]||0),cycle=Number(m.dialogueCycle[cursorKey]||0);
+ m.dialogueCursor[cursorKey]=cursor+1;
+ const fallback=baseResult?null:expansionBaseLine(p,category,topic,cursor);
+ const stageText=(baseResult?.stage||fallback?.[4]||'').trim();
+ const style=expansionStyle(p),openerPool=EXPANSION_OPENERS[style]||EXPANSION_OPENERS['温柔体贴'];
+ const stage=stageText&&stageText.length<=88?stageText:openerPool[naturalHash(p.id+'|'+category+'|'+topic+'|'+cursor)%openerPool.length];
+ const reply=(baseResult?.reply||baseText||fallback?.[5]||revisionRow(p,category)?.reply||'他想了想，没有拿场面话敷衍你，只把眼下的实情说了出来。').trim();
+ const prompt=baseResult?.scene?.player||naturalPrompt(category,topic,playerText,p);
+ const location=baseResult?.scene?.location||p.location||p.home||p.birthplace||'宫中';
+ const result={id:baseResult?.id||fallback?.[0]||'NAT-'+p.id+'-'+cursorKey+'-'+cycle+'-'+cursor,stage,reply,scene:{player:prompt,location},mood:currentMind(p),variant:cursor,capacity:EXPANSION_CAPACITY};
+ m.lastGeneratedDialogue=result;
+ return result;
+}
+// The original mind selector already chooses a line by NPC voice, current mood and topic,
+// and records its ID in the save. Keep that source selection instead of adding generic fragments.
+const naturalReadFictionBefore=expansionReadBefore;
+readFiction=function(p,category,topic){
+ if(!p||!state.relations[p.id]||!['chat','care','activity','flirt','persuade','probe','scold','sleep'].includes(category))return naturalReadFictionBefore?naturalReadFictionBefore(p,category,topic):null;
+ const m=state.relations[p.id].mind;m.used=m.used||[];
+ const human=NATURAL_CORE_DIALOGUE[p.id]?.[category]?.[topic];
+ if(human){
+  const id='HUMAN-'+p.id+'-'+category+'-'+topic;
+  if(!m.used.includes(id)){
+   m.used.push(id);m.used=m.used.slice(-40);
+   const entry={id,stage:human.stage,reply:human.reply,scene:{player:human.player,location:p.location||p.home||p.birthplace||'宫中'}};
+   return naturalComposeDialogue(p,category,category,topic,entry.reply,entry.scene.player,entry);
+  }
+ }
+ const original=naturalReadFictionBefore?naturalReadFictionBefore(p,category,topic):null;
+ return naturalComposeDialogue(p,category,category,topic,original?.reply,playerTextForNatural(category,topic,p),original);
+};
+function playerTextForNatural(category,topic,p){return naturalPrompt(category,topic,null,p);}
+composeExpandedDialogue=function(p,cursorKey,category,topic,baseText,playerText){
+ return naturalComposeDialogue(p,cursorKey,category,topic,baseText,playerText,null);
+};
+// Core audition conditions, refusal rules and selection actions remain unchanged; only answer wording is individualized.
+const naturalAuditionBaseBefore=expansionAuditionBase;
+expansionAuditionBase=function(p,index){
+ const candidate={
+  shen:['家里是提过几次。起初我没答应，后来想想，留在馆阁也未必能做出什么，便想来看看。','经义、书法都学过一些。最近在抄一册旧舆图，发现几处地名和新志对不上。'],
+  gu:['先生举荐了我，我自己也想来看看。原本打算回江南帮父亲教书，后来觉得出来走走也好。','算学和策论是我最熟的，最近在查漕运旧账。先生说我算得太细，却忘了写清百姓受了什么影响。'],
+  pei:['家里让我来，我自己也想换个地方做事。北境待久了，总不能一辈子只认得营门。','骑射练过几年，闲时会修弓。北境旧营还有几户抚恤没核清，我一直惦记着。'],
+  wen:['父亲说宫里缺懂药材的人，我便来了。说不紧张是假的，我也想看看宫里的日子是什么样。','药材辨识和医案是我最熟悉的。闲时会弹琴，不过在太医院里，琴声常被煎药的声音盖过去。']
+ }[p.id];
+ if(candidate&&index<2)return candidate[index];
+ return naturalAuditionBaseBefore(p,index);
+};
+// Keep the three-stage audition, its consent calculation, and refusal consequences intact.
+function naturalQuestionRegression(){
+ const ids=['chat','care','persuade','probe','scold','activity','flirt','sleep'];
+ const promptCount=ids.reduce((n,k)=>n+Object.keys(NATURAL_PLAYER_PROMPTS[k]||{}).length,0);
+ const humanCount=Object.values(NATURAL_CORE_DIALOGUE).reduce((n,p)=>n+Object.values(p).reduce((m,c)=>m+Object.keys(c).length,0),0);
+ return {categories:ids.length,concretePlayerPrompts:promptCount,coreHumanReplies:humanCount,gameplayBindings:['interactionTopic','applyInteraction','actions.auditionAsk','actions.auditionSelect','actions.auditionConfirm'].every(k=>typeof (k==='interactionTopic'?interactionTopic:k==='applyInteraction'?applyInteraction:actions[k.split('.').pop()])==='function')};
+}
+window.__naturalDialogueAudit=naturalQuestionRegression;
+ensureMinds();save();
