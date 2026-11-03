@@ -1144,9 +1144,18 @@ function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',ho
  // Keep agency for daily behaviour, but let the authored scene answer the player.
  const agencyRevisionBefore=revisionRow;
  const agencyReadBefore=readFiction;
+ function agencyRichRow(p,category,topic){
+  try{
+   const cat=FICTION_DATA.categoryKeys.indexOf(category),pi=MIND_VOICE[p.type]??0,mi=FICTION_DATA.states.findIndex(s=>s.name===currentMind(p)),t=topic==='stay'?'ask':topic;
+   const candidates=FICTION_INDEX.get(`${cat}|${pi}|${mi}|${t}`)||[];if(!candidates.length)return null;
+   const m=state.relations[p.id].mind;m.used=m.used||[];const available=candidates.filter(x=>!m.used.includes(x[0])),pool=available.length?available:candidates;
+   const ix=agencyHash(`${p.id}|${category}|${t}|${todayKey()}|${m.used.length}`)%pool.length,line=pool[ix];m.used.push(line[0]);m.used=m.used.slice(-80);
+   return {id:line[0],stage:line[4],reply:line[5],scene:FICTION_DATA.scenes[line[1]],player:FICTION_DATA.scenes[line[1]]?.player,location:FICTION_DATA.scenes[line[1]]?.location};
+  }catch(e){return null;}
+ }
  function agencyAuthoredRow(p,category,topic){
   const source=typeof revisionReadBefore==='function'?revisionReadBefore:agencyReadBefore;
-  try{const row=source?source(p,category,topic):null;if(row&&row.scene){row.player=row.player||row.scene.player;row.location=row.location||row.scene.location;}return row;}catch(e){return null;}
+  try{const row=agencyRichRow(p,category,topic)||(source?source(p,category,topic):null);if(row&&row.scene){row.player=row.player||row.scene.player;row.location=row.location||row.scene.location;}return row;}catch(e){return null;}
  }
  revisionRow=function(p,category){
   const topic=agencyTopic(state.agency?.currentTopic||'recent');
