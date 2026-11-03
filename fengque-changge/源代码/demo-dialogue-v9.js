@@ -169,9 +169,24 @@
     }
   };
 
+  // 每次重新拜访都重新取一次“近况”话题，避免上一轮缓存让 NPC 原句复读。
+  var oldVisit = typeof window.visit === 'function' ? window.visit : null;
+  if (oldVisit) {
+    window.visit = function (personId) {
+      cache.clear();
+      activeTopic = 'recent';
+      try {
+        return oldVisit.apply(this, arguments);
+      } finally {
+        activeTopic = null;
+      }
+    };
+  }
+
   try {
     if (typeof actions !== 'undefined' && actions) {
       actions.interactionTopic = window.interactionTopic;
+      if (window.visit) actions.visit = window.visit;
     }
   } catch (_) {}
 
