@@ -35,7 +35,6 @@
       comfort: '今日忙了许久吧？先坐下歇会儿。',
       gift: '这个是特意替你留的，看看合不合心意。',
       bag: '出门时看见这个，想着你或许用得上。',
-      promise: '下个月的日子，我们先约好。',
       promise: '下个月的日子，我们先约好。'
     },
     persuade: {
@@ -450,9 +449,7 @@
     memory.dialogueCursor = memory.dialogueCursor || {};
     var key = 'v10:' + category + ':' + topic;
     var cursor = Number(memory.dialogueCursor[key] || 0);
-    memory.dialogueCursor[key] = cursor + 1;
     var selected = row[cursor % row.length];
-    auditCounts.special++;
     return {
       id: 'V10-' + person.id + '-' + category + '-' + topic + '-' + cursor,
       stage: sceneLine(person, category, topic),
@@ -463,8 +460,18 @@
         player: topicPrompt(category, topic),
         location: person.location || person.home || '宫中'
       },
-      source: 'character-specific'
+      source: 'character-specific',
+      _v10Cursor: { key: key, value: cursor }
     };
+  }
+  function hasAuthored(person, category, topic) {
+    try {
+      if (typeof FICTION_INDEX === 'undefined' || typeof FICTION_DATA === 'undefined') return false;
+      var cat = FICTION_DATA.categoryKeys.indexOf(category);
+      var pi = MIND_VOICE[person.type] == null ? 0 : MIND_VOICE[person.type];
+      var mi = FICTION_DATA.states.findIndex(function (x) { return x.name === activeMood(person); });
+      return cat >= 0 && mi >= 0 && (FICTION_INDEX.get([cat, pi, mi, topic].join('|')) || []).length > 0;
+    } catch (_) { return false; }
   }
   function dailyDetail(person) {
     var relation = state.relations[person.id] || {};
@@ -567,13 +574,25 @@
     if (topicCache.has(key)) return topicCache.get(key);
 
     var special = chooseSpecial(person, category, normalized);
-    var authored = chooseAuthored(person, category, normalized);
+    var hasExact = hasAuthored(person, category, normalized);
+    var useSpecial = !!special && (!hasExact || hash(key + '|special') % 3 === 0);
+    var authored = useSpecial ? null : chooseAuthored(person, category, normalized);
     var row = null;
-    // 核心人物的个人生活细节每轮最多出现一次；其余轮次优先用具体话题配表。
-    if (special && (!authored || hash(key + '|special') % 3 === 0)) row = special;
-    else if (authored) row = authored;
-    else if (special) row = special;
-    else row = voiceFallback(person, category, normalized);
+    // 核心人物的个人生活细节间隔出现；其余轮次优先用具体话题配表。
+    if (useSpecial) {
+      row = special;
+      var specialMemory = mindOf(person);
+      specialMemory.dialogueCursor = specialMemory.dialogueCursor || {};
+      specialMemory.dialogueCursor[special._v10Cursor.key] = special._v10Cursor.value + 1;
+      auditCounts.special++;
+    } else if (authored) row = authored;
+    else if (special) {
+      row = special;
+      var fallbackMemory = mindOf(person);
+      fallbackMemory.dialogueCursor = fallbackMemory.dialogueCursor || {};
+      fallbackMemory.dialogueCursor[special._v10Cursor.key] = special._v10Cursor.value + 1;
+      auditCounts.special++;
+    } else row = voiceFallback(person, category, normalized);
 
     row.reply = cleanAuthoredReply(row.reply);
     row.player = topicPrompt(category, normalized, row.scene);
@@ -609,6 +628,10 @@
   window.revisionRow = function (person, category) {
     var topic = person ? getCurrentTopic(person, category) : null;
     if (topic) {
+      // 招入/晋封仍由原有专属弹窗与条件逻辑处理，避免普通对白覆盖选项说明。
+      if (category === 'persuade' && (topic === 'recruit' || topic === 'promote')) {
+        return oldRevisionRow.apply(this, arguments);
+      }
       var row = makeRow(person, category, topic);
       if (row) return row;
     }
@@ -616,9 +639,9 @@
   };
 
   window.readFiction = function (person, category, topic) {
-    var target = normalizeTopic(topic || (person ? getCurrentTopic(person, category) : null));
-    if (person && category && target) {
-      var row = makeRow(person, category, target);
+    var requested = topic || (person ? getCurrentTopic(person, category) : null);
+    if (person && category && requested) {
+      var row = makeRow(person, category, normalizeTopic(requested));
       if (row) return row;
     }
     return oldReadFiction.apply(this, arguments);
