@@ -382,7 +382,6 @@
     var text = safeText(reply).replace(/\s+/g, ' ');
     // 删除“今日没有大事”这类与后一句重复的空开场，不裁掉人物真正说的内容。
     text = text.replace(/^今日(?:没有大事|没什么大事|无事)[。！？]\s*(?=[“"「])/, '');
-    text = text.replace(/^[“"「]([^”"」]+)[”"」]\s*[“"「]/, '“$1”');
     return text;
   }
   function chooseAuthored(person, category, topic) {
@@ -679,7 +678,7 @@
     var seed = hash(scene.id || source.id + target.id);
     if (kind === 'reconcile') {
       return [
-        { name: source.name, text: '上回那句话，是我说重了。今日来，不是要你立刻揭过，只想把事情说清。' },
+        { name: source.name, text: '上回那件事，我想过了。今日来，是想把各自的意思说清，不必再让旁人传话。' },
         { name: target.name, text: b[seed % b.length] },
         { name: source.name, text: '好。那就从当时的经过说起，不让旁人再替我们传话。' }
       ];
