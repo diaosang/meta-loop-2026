@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>凤阙长歌 · V10 人物群像与自然对白试玩</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#211a20;color:#f8eee5;font-family:"Noto Serif SC","Songti SC",serif}
+header{height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:#382833;border-bottom:1px solid #84645a}
+header b{letter-spacing:3px;font-size:14px}
+header span{font-size:11px;color:#d8c0a6}
+#status{font-size:11px;color:#f1dfc5}
+main{height:calc(100% - 52px)}
+iframe{display:block;border:0;width:100%;height:100%;background:#f7f0e8}
+@media(max-width:600px){header{height:46px;padding:0 11px}header b{font-size:12px}header span{font-size:10px}main{height:calc(100% - 46px)}}
+</style>
+</head>
+<body>
+<header><b>凤阙长歌</b><span id="status">正在载入宫廷世界……</span></header>
+<main><iframe id="game" title="凤阙长歌 V10 可玩 Demo" src="./index.html"></iframe></main>
+<script>
+(function(){
+  var frame=document.getElementById('game');
+  var status=document.getElementById('status');
+  var loaded=false;
+  frame.addEventListener('load',function(){
+    if(loaded)return;
+    loaded=true;
+    try{
+      var doc=frame.contentDocument;
+      if(!doc)throw new Error('无法访问游戏页面');
+      var script=doc.createElement('script');
+      script.src='./源代码/demo-dialogue-v10.js?v=10.0';
+      script.onload=function(){
+        var win=frame.contentWindow;
+        if(!win.__FENGQUE_V10_PATCHED__||typeof win.__fengqueV10Audit!=='function'){
+          status.textContent='游戏已载入，但 V10 对话层未启用';
+          return;
+        }
+        status.textContent='V10 群像对白已启用 · 可以开始游玩';
+      };
+      script.onerror=function(){
+        status.textContent='游戏已载入，但 V10 脚本未能下载；请刷新重试';
+      };
+      doc.head.appendChild(script);
+    }catch(error){
+      status.textContent='页面载入失败，请刷新重试';
+      console.error(error);
+    }
+  });
+})();
+</script>
+</body>
+</html>
