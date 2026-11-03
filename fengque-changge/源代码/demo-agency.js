@@ -59,16 +59,43 @@ function agencyPick(p,category,topic){
  a.used.push(base);a.used=a.used.slice(-30);const row={id:`A${agencyHash(key)}`,personality:p.type,mood,category,topic,stage:`${p.name}先看了看门外，才把声音放低。`,player:agencyPlayer(category,topic),reply,location:p.location||'quarters',key};state.agency.currentRow={key,row};return row;
 }
 function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',home:'想同我说说你的故乡么？',interest:'若有半日闲，你最想做什么？',listen:'别急，我听你慢慢说。',comfort:'你看着有些累，先陪我坐一会儿。',gift:'这件东西我想着你，便留给你。',promise:'下月的日子，我们先约好。',support:'这件事，我想听你愿不愿意替我担一程。',work:'我有一桩差事，想先听听你的主意。',reconcile:'你与他之间的结，我想知道能不能松一松。',opinion:'你如何看待如今的自己？',worry:'若有一件事压在心里，你愿意告诉我么？',remind:'这件事我想提醒你一句。',stern:'今日这件事，你得给我一个说法。',public:'当着众人的面，我要把规矩说清。',chess:'陪我下一局，输赢都算作今日的闲话。',walk:'陪我走一段，不谈折子。',spar:'教我一招，别只说我学不会。',compliment:'我今日想认真夸你一句。',miss:'你有没有在某个时候想起过我？',confess:'有句话我不想再绕了。',ask:'今夜愿不愿意留下？'};return m[topic]||m[category]||'我想听你亲口说。';}
+ // The earlier dialogue layers contain the authored scene, player prompt and
+ // mood-specific reply. The old agency layer used to replace all of that with
+ // “opening + quote + mood + hook”, which made every interaction sound assembled.
+ // Keep agency for daily behaviour, but let the authored scene answer the player.
  const agencyRevisionBefore=revisionRow;
- revisionRow=function(p,category){const topic=state.agency?.currentTopic||'visit';return agencyPick(p,category,agencyTopic(topic));};
  const agencyReadBefore=readFiction;
- readFiction=function(p,category,topic){const row=agencyPick(p,category,agencyTopic(topic||state.agency?.currentTopic||'visit'));return {id:row.id,stage:row.stage,reply:row.reply,scene:{player:row.player,location:row.location}};};
+ function agencyAuthoredRow(p,category,topic){
+  const source=typeof revisionReadBefore==='function'?revisionReadBefore:agencyReadBefore;
+  try{const row=source?source(p,category,topic):null;if(row&&row.scene){row.player=row.player||row.scene.player;row.location=row.location||row.scene.location;}return row;}catch(e){return null;}
+ }
+ revisionRow=function(p,category){
+  const topic=agencyTopic(state.agency?.currentTopic||'recent');
+  return agencyAuthoredRow(p,category,topic)||agencyRevisionBefore(p,category);
+ };
+ readFiction=function(p,category,topic){
+  return agencyAuthoredRow(p,category,agencyTopic(topic||state.agency?.currentTopic||'recent'))||agencyReadBefore(p,category,topic);
+ };
  const agencyInteractionBefore=interactionTopic;
  interactionTopic=function(id){agencyEnsure();state.agency.currentTopic=id;state.agency.currentRow=null;const out=agencyInteractionBefore(id);state.agency.currentTopic=null;state.agency.currentRow=null;return out;};
  actions.interactionTopic=interactionTopic;
  const agencyVisitBefore=visit;
  visit=function(id){agencyEnsure();state.agency.currentTopic='recent';state.agency.currentRow=null;agencyVisitBefore(id);state.agency.currentTopic=null;state.agency.currentRow=null;};
  actions.visit=visit;
+ const AGENCY_DAILY={
+  '温柔体贴':['把手边的茶换成温的，又替熟人回了一封家信。','在花房里照看新芽，听见宫门响了两回，仍没有催人来。'],
+  '清冷克制':['把三份折子按轻重重新排过，最后一笔亲自落款。','在藏书阁查了半日旧档，连午膳也只叫人送到门口。'],
+  '明朗直率':['从演武场回来，顺手给同伴带了两串热栗子。','把一桩小争执说开了，临走还笑着叫人下回当面来问。'],
+  '骄矜自尊':['把新做的文章压在案下，等一个真正懂得看的人。','听见旁人议论自己，只淡淡一笑，转身把该做的事做完。'],
+  '敏感多思':['写了又撕一张信，最后只留下“近日可好”四字。','在廊下站了许久，听见脚步声靠近，又先一步退回灯影里。'],
+  '圆融世故':['替两边各留了半步台阶，自己却把最难的那句收在心里。','从东市带回一桩新消息，先问清谁愿意听，再慢慢开口。'],
+  '严正守礼':['按时点完名册，连一处错字也不肯留到明日。','有人求情，他只回了一句“把章程拿来”，便不再多说。'],
+  '野心进取':['把一份请命折改了三遍，直到每个数字都能落到实处。','在演武场多留了一刻，像是要让所有旁观的人记住这一箭。'],
+  '疏朗洒脱':['绕去西市买了新伞，回来时鞋上沾泥，也不许人替他擦。','在水榭坐到日影偏西，忽然起身去找一个许久未见的旧友。'],
+  '务实重利':['把本月用度重新算过，省下的钱另立一笔以备急用。','亲自去看了库房，回来只说“账对得上，心才安”。'],
+  '寡言重诺':['把答应别人的事一件件做完，晚膳时才想起自己还没吃东西。','修好一方旧砚，放回原处，没有特意告诉任何人。'],
+  '戒备善谋':['把来往名册收进暗格，明面上只留一张无关紧要的抄本。','听完旁人的话没有立刻表态，回房后才把疑点逐条记下。']
+ };
  function agencyActionFor(p,key){const r=state.relations[p.id],m=r.mind||{},mood=agencyMood(p),h=agencyHash(`${key}:${p.id}:${r.agency.lastAction}`),edges=socialEdgesOf(p.id).filter(e=>{const id=e.a===p.id?e.b:e.a;return PEOPLE.some(q=>q.id===id);});const target=edges.length?PEOPLE.find(q=>q.id===(edges[h%edges.length].a===p.id?edges[h%edges.length].b:edges[h%edges.length].a)):null;
   if(['恼怒','疏离'].includes(mood))return {kind:'withdraw',target,text:`${p.name}照常做完该做的事，之后把门掩上，暂不接待访客。`};
   if(mood==='吃醋'&&r.rank)return {kind:'jealous',target,text:`${p.name}听见女帝今日召见${target?.name||'旁人'}，把原想递上的话收回袖中，改托人送来一盏冷茶。`};
@@ -77,7 +104,7 @@ function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',ho
   if(p.official&&((p.skills?.admin||0)>55||p.id==='xu'))return {kind:'work',target,text:`${p.name}把手头的折子重新分了三摞，先处理最容易牵动民心的一件。`};
   if(target&&h%3===0)return {kind:'social',target,text:`${p.name}在${p.location?'旧日常去的地方':'廊下'}遇见${target.name}，两人先谈公事，后来声音渐低，旁人听不见了。`};
   if(p.romance&&r.aff>=35&&h%4===0)return {kind:'invite',target,text:`${p.name}让宫人递话，说想请女帝得空时来坐坐；末尾又添了一句：“若忙，回我一字也好。”`};
-  const goal=r.agency.goal||'把自己的日子过好';return {kind:'goal',target,text:`${p.name}照着自己的打算过了一日：${goal}。没有等人召见，也没有把时间全交给宫门。`};
+  const daily=(AGENCY_DAILY[p.type]||AGENCY_DAILY['温柔体贴'])[h%2];return {kind:'goal',target,text:`${p.name}${daily}`};
  }
  function agencyCreateScene(p,action,key){const t=action.target;if(!t||!state.relations[t.id])return;const pm=state.relations[p.id].mind||{},tm=state.relations[t.id].mind||{};if(!(action.kind==='jealous'||action.kind==='social'||pm.jealousy>=28||tm.jealousy>=28))return;const a=state.agency;if(a.scenes.some(x=>!x.done&&x.dayKey===key))return;const id=`scene-${++a.seq}`;a.scenes.push({id,dayKey:key,source:p.id,target:t.id,title:`${p.name}与${t.name}的廊下话`,text:`宫人说，${p.name}与${t.name}在廊下相遇。一个说“只是路过”，一个却把手里的请帖攥得发皱。您若现在过去，还来得及听见原话。`,done:false});}
  function agencyTickDay(key){agencyEnsure();if(state.agency.days[key])return;state.agency.days[key]=true;let sceneMade=false;for(const p of PEOPLE){const r=state.relations[p.id];const action=agencyActionFor(p,key),m=r.mind||{};r.agency.lastAction=action.kind;r.agency.lastSeen=key;r.agency.plan=action.text;const moment={id:`moment-${++state.agency.seq}`,key,npc:p.id,name:p.name,kind:action.kind,target:action.target?.id||null,text:action.text,month:state.elapsed,day:state.day||1};state.agency.moments.push(moment);if(state.agency.moments.length>220)state.agency.moments.shift();if(['jealous','letter','petition','invite','social'].includes(action.kind)){r.notes.push({month:state.elapsed,text:`${state.day||1}日 · ${action.text}`});if(typeof rememberMind==='function')rememberMind(p.id,action.text,'自主行动',true);}if(action.kind==='social'&&action.target){const e=socialEdgesOf(p.id).find(x=>x.a===action.target.id||x.b===action.target.id);if(e){const own=e.a===p.id?'affAB':'affBA';e[own]=clamp((e[own]||40)+(agencyHash(`${key}:${p.id}:edge`)%3)-1);e.recent=action.text;}}if(!sceneMade&&action.target&&(action.kind==='jealous'||action.kind==='social')){agencyCreateScene(p,action,key);sceneMade=true;}if(['letter','petition','invite'].includes(action.kind)&&state.agency.inbox.filter(x=>!x.done).length<8){state.agency.inbox.push({id:`mail-${++state.agency.seq}`,source:p.id,target:action.target?.id||null,kind:action.kind,title:action.kind==='petition'?'一封请命折':action.kind==='invite'?'有人递话':'写到一半的信',text:action.text,dayKey:key,done:false});}}

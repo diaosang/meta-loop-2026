@@ -54,7 +54,9 @@ function applyInteraction(p,category,id,line,effects={},options={}){
   const before=r[k];r[k]=clamp(r[k]+v);actual[k]=r[k]-before;
  }
  session.left--;r.counts[key]=count+1;
- if(count>=2&&!options.noRepeatLine)line='这话刚才说过了。换个话题吧，陛下。';
+ // The content layer already selects an unused scene for this NPC and topic. Do not
+ // replace a lived-in response with the old canned repetition warning.
+ if(count>=2&&!options.noRepeatLine&&(!line||line.length<8))line='这件事我方才已经说过一遍。若陛下还想听，我换个角度再说。';
  session.response=`“${line}”`;const labels={aff:'好感度',loyalty:'忠诚度',love:'暧昧度',politics:'政略',force:'武力'};
  const changes=Object.entries(actual).filter(([,v])=>v).map(([k,v])=>`${labels[k]}${v>0?'+':''}${v}`).join(' / ');
  session.history.push(`${INTERACTION_CATEGORIES.find(x=>x[0]===category)[1]} · ${changes||'没有数值变化'}${options.extra?' · '+options.extra:''}`);
