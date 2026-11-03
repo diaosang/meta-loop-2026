@@ -70,6 +70,7 @@ ext += '\nconst REVISION_DATA='+json.dumps(revision,ensure_ascii=False,separator
 ext += '\n' + (ROOT/'work/demo-npc-mind.js').read_text(encoding='utf-8-sig')
 ext += '\n' + (ROOT/'work/demo-cast-life.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-cast-life.js').exists() else ''
 ext += '\n' + (ROOT/'work/demo-revision.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-revision.js').exists() else ''
+ext += '\n' + (ROOT/'work/demo-strife.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-strife.js').exists() else ''
 boot=js.replace("render();if(!state.introSeen)intro();", ext+'\nrender();if(!state.introSeen)intro();')
 world_payload=json.dumps(world,ensure_ascii=False,separators=(',',':'))
 out.write_text(style+extra+body+'<script>\nconst CONTENT='+payload+';\nconst WORLD_DATA='+world_payload+';\n'+boot+'\n</script></body></html>',encoding='utf-8')
