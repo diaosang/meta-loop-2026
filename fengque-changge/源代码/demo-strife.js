@@ -101,3 +101,71 @@ Object.assign(actions,{strifePanel,strifeOpen,strifeChoose});
 const strifeStyle=document.createElement('style');strifeStyle.textContent=`.strife-card{margin-top:14px;background:#fff9f1;border-color:#dec9bd}.strife-meters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.strife-meters>div{padding:9px 5px;text-align:center;background:#f7ebe5;border-radius:9px}.strife-meters small{display:block;color:#927681;font-size:10px}.strife-meters b{font-family:Georgia,serif;color:#7d4d5b;font-size:17px}.strife-home,.strife-court{margin-top:16px}.strife-event{padding:15px 13px;border:1px solid #e6d3c7;border-radius:12px;margin:10px 0;background:#fffaf4}.strife-event h3{margin:6px 0;font-size:16px}.strife-event p{line-height:1.8;font-size:13px}.strife-summary>.strife-card{margin-top:0}@media(max-width:400px){.strife-meters{gap:4px}.strife-meters>div{padding:7px 2px}.strife-meters b{font-size:15px}}`;
 document.head.appendChild(strifeStyle);
 ensureStrife();
+
+// V7 · 朝臣野心与忠诚：让朝臣的个人立场参与事件选择，并修正忠诚属性的写入位置。
+const ensureStrifeV7Before=ensureStrife;
+ensureStrife=function(){
+ const s=ensureStrifeV7Before();
+ const base={
+  温柔体贴:42,清冷克制:48,明朗直率:50,骄矜自尊:58,
+  敏感多思:53,圆融世故:61,严正守礼:34,野心进取:76,
+  疏朗洒脱:45,务实重利:63,寡言重诺:31,戒备善谋:69
+ };
+ for(const p of strifeOfficial()){
+  const r=state.relations[p.id];
+  if(!Number.isFinite(Number(r.loyalty)))r.loyalty=50;
+  if(!Number.isFinite(Number(r.ambition))){
+   const skill=Number(p.skills&&p.skills.admin||r.politics||40);
+   r.ambition=strifeClamp((base[p.type]||50)+Math.round((skill-45)*0.18));
+  }
+ }
+ return s;
+};
+const strifeActorV7Before=strifeActor;
+strifeActor=function(kind){
+ if(kind==='domestic'){
+  const candidates=strifeOfficial().filter(p=>{
+   const r=state.relations[p.id];
+   return Number(r.ambition||0)>=Number(r.loyalty||0)+12;
+  }).sort((a,b)=>{
+   const ra=state.relations[a.id],rb=state.relations[b.id];
+   return (Number(rb.ambition||0)-Number(rb.loyalty||0))-(Number(ra.ambition||0)-Number(ra.loyalty||0));
+  });
+  if(candidates.length){
+   const idx=strifeHash(String(state.elapsed)+':restive:'+candidates.map(p=>p.id).join('|'))%Math.min(3,candidates.length);
+   return candidates[idx];
+  }
+ }
+ return strifeActorV7Before(kind);
+};
+strifeApplyMood=function(id,patch,text,kind){
+ const r=state.relations[id];
+ if(!r)return;
+ const mindPatch={};
+ for(const [key,value] of Object.entries(patch||{})){
+  if(key==='loyalty'||key==='ambition')r[key]=strifeClamp(Number(r[key]||0)+Number(value||0));
+  else mindPatch[key]=value;
+ }
+ if(Object.keys(mindPatch).length&&typeof shiftMind==='function')shiftMind(id,mindPatch);
+ if(text&&typeof rememberMind==='function')rememberMind(id,text,kind||'国势',true);
+ // 当众敲打或长期留中会增加个人不满；听取解释与妥善安抚会降低对立。
+ if(kind==='敲打')r.ambition=strifeClamp(Number(r.ambition||0)+3);
+ if(kind==='留中')r.ambition=strifeClamp(Number(r.ambition||0)+2);
+ if(kind==='安抚')r.ambition=strifeClamp(Number(r.ambition||0)-2);
+ if(kind==='质询')r.ambition=strifeClamp(Number(r.ambition||0)-1);
+};
+const strifeSummaryV7Before=strifeSummary;
+strifeSummary=function(){
+ const base=strifeSummaryV7Before();
+ const risk=strifeOfficial().map(p=>{
+  const r=state.relations[p.id];
+  return {p:p,loyalty:Number(r.loyalty||0),ambition:Number(r.ambition||0),gap:Number(r.ambition||0)-Number(r.loyalty||0)};
+ }).sort((a,b)=>b.gap-a.gap).slice(0,3);
+ return base+'<div class="strife-risk"><b>朝臣心思 · 野心与忠诚</b>'+
+  risk.map(x=>'<span>'+x.p.name+'　忠诚 '+x.loyalty+' · 野心 '+x.ambition+'　'+(x.gap>=20?'已有异心':x.gap>=8?'有所求':'立场尚稳')+'</span>').join('')+
+  '<small>野心高于忠诚者，更可能卷入朝堂争执；这只是风险信号，不等于已经谋反。</small></div>';
+};
+ensureStrife();
+const strifeRiskStyle=document.createElement('style');
+strifeRiskStyle.textContent='.strife-risk{margin-top:12px;padding:11px 12px;border:1px solid #e6d7c9;border-radius:10px;background:#fffaf4}.strife-risk>b,.strife-risk>span,.strife-risk>small{display:block}.strife-risk>b{margin-bottom:6px;color:#865866;font-size:12px}.strife-risk>span{padding:4px 0;font-size:11px;color:#79656e}.strife-risk>small{margin-top:6px;color:#9a858b;font-size:10px;line-height:1.6}';
+document.head.appendChild(strifeRiskStyle);
