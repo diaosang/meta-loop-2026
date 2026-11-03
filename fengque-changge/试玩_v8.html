@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>凤阙长歌 · V8 自然对话试玩</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#211a20;color:#f8eee5;font-family:"Noto Serif SC","Songti SC",serif}
+header{height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:#382833;border-bottom:1px solid #84645a}
+header b{letter-spacing:3px;font-size:14px}
+header span{font-size:11px;color:#d8c0a6}
+#status{font-size:11px;color:#f1dfc5}
+main{height:calc(100% - 52px)}
+iframe{display:block;border:0;width:100%;height:100%;background:#f7f0e8}
+@media(max-width:600px){header{height:46px;padding:0 11px}header b{font-size:12px}header span{font-size:10px}main{height:calc(100% - 46px)}}
+</style>
+</head>
+<body>
+<header><b>凤阙长歌</b><span id="status">正在载入宫廷世界……</span></header>
+<main><iframe id="game" title="凤阙长歌 V8 可玩 Demo" src="./index.html"></iframe></main>
+<script>
+(function(){
+const frame=document.getElementById('game');
+const status=document.getElementById('status');
+const patch = `(function(){
+ if(window.__FENGQUE_V8_PATCHED__)return;
+ const CUE=/(神色|神情|神态|目光|眼神|眼底|眉间|脸色|笑意|耳尖|心境|心态|情绪|心中|心里|心事|思绪|不安|期待|失望|委屈|恼怒|忧虑|吃醋|安心|像是|似乎|仿佛)/;
+ function cleanStage(stage,p){
+  const parts=String(stage||'').trim().split(/(?<=[。！？；])/).map(x=>x.trim()).filter(Boolean);
+  const kept=parts.filter(x=>!CUE.test(x));
+  return kept.join('')||((p&&p.name||'人物')+'在'+(p&&(p.location||p.home)||'宫中')+'与你会面。');
+ }
+ function cleanReply(reply){
+  return String(reply||'').split(/(“[^”]*”)/g).map((part,i)=>i%2?part:(CUE.test(part)?'':part)).join('').replace(/\\s{2,}/g,' ').trim();
+ }
+ function cleanRow(row,p){
+  if(!row)return row;
+  row.stage=cleanStage(row.stage,p);
+  row.reply=cleanReply(row.reply);
+  return row;
+ }
+ if(typeof naturalComposeDialogue==='function'){
+  const old=naturalComposeDialogue;
+  naturalComposeDialogue=function(p,cursorKey,category,topic,baseText,playerText,baseResult){
+   return cleanRow(old(p,cursorKey,category,topic,baseText,playerText,baseResult),p);
+  };
+ }
+ if(typeof readFiction==='function'){
+  const old=readFiction;
+  readFiction=function(p,category,topic){return cleanRow(old(p,category,topic),p);};
+ }
+ if(typeof revisionRow==='function'){
+  const old=revisionRow;
+  revisionRow=function(p,category){return cleanRow(old(p,category),p);};
+ }
+ const DAILY={
+  '温柔体贴':['把茶水送到值房，顺路替同僚取回家书。','整理花房的花木名册，并将新开的花枝剪下送去医馆。'],
+  '清冷克制':['核对三份文书的日期与印章，补齐缺漏后交还值房。','在藏书阁查完旧档，将引用页码抄录进案卷。'],
+  '明朗直率':['从演武场带回训练记录，并把多余的热栗子分给同伴。','替同伴把争执经过写成记录，交由值房存档。'],
+  '骄矜自尊':['将新作誊清，附上修改稿送往文馆。','完成一份诗稿校订，并取回前次送审的批注。'],
+  '敏感多思':['给家中回信，逐项交代近况与寄回的银钱。','整理旧信与账目，将需要回复的事项列成清单。'],
+  '圆融世故':['分别拜访两处府邸，核对宴席名单与来往礼单。','从东市带回商号消息，并向相关官员核实来源。'],
+  '严正守礼':['复核名册与章程，退回一份缺少签押的文书。','按时点验值守名册，将缺勤记录送交主管官员。'],
+  '野心进取':['重写请命折，补上人手、时限与粮草清单。','在演武场完成加练，并提交新的训练安排。'],
+  '疏朗洒脱':['去西市买伞和纸，回宫时把沿途物价记在册上。','沿宫道巡看修缮进度，将需要补修的地方逐项记下。'],
+  '务实重利':['盘点库房货物，重新核算本月采买支出。','核对商队运费与仓储账目，列出可节省的开支。'],
+  '寡言重诺':['修好旧砚并归还原主，随后完成当日值守。','按约送回借阅的书册，并完成交办的差事。'],
+  '戒备善谋':['核对来往名册与密报来源，将原件分别封存。','复查门禁记录与出入凭据，整理出一份待核名单。']
+ };
+ if(typeof AGENCY_DAILY!=='undefined')Object.assign(AGENCY_DAILY,DAILY);
+ window.__dialogueStyleAudit=function(){
+  const samples=[];
+  (PEOPLE||[]).slice(0,12).forEach(p=>['chat','care','activity','flirt'].forEach(c=>{
+   const t=c==='activity'?'walk':c==='flirt'?'miss':c==='care'?'listen':'recent';
+   const row=readFiction(p,c,t);
+   if(row)samples.push({name:p.name,category:c,stage:row.stage,reply:row.reply,stageHasCue:CUE.test(row.stage)});
+  }));
+  return {version:'V8',samples};
+ };
+ window.__FENGQUE_V8_PATCHED__=true;
+ if(typeof render==='function')render();
+})();`;
+frame.addEventListener('load',function(){
+ try{
+  const target=frame.contentWindow;
+  if(!target||!target.document)throw new Error('无法访问试玩页面');
+  target.eval(patch);
+  status.textContent='V8 对话规则已启用 · 可开始游玩';
+ }catch(error){
+  status.textContent='页面已载入，但 V8 补丁未能启用；请刷新重试';
+  console.error(error);
+ }
+});
+})();
+</script>
+</body>
+</html>
