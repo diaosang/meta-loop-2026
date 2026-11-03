@@ -129,7 +129,115 @@ function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',ho
  auditionInterview=function(id,answer=''){const p=PEOPLE.find(x=>x.id===id);agencyAuditionBefore(id,answer||`${p?.name||'他'}行礼后没有急着低头：“陛下想先问家世，还是先看我所习的本事？”`);};actions.auditionAsk=agencyAuditionAsk;actions.auditionInterview=id=>auditionInterview(id);
  const agencyRenderBefore=render;render=function(){agencyEnsure();agencyRenderBefore();if(state.tab==='home'&&!document.querySelector('.agency-home')){const anchor=document.querySelector('.strife-home')||document.querySelector('.stats')||document.querySelector('#screen .court-entry');if(anchor)anchor.insertAdjacentHTML('afterend',`<div class="agency-home"><div class="card"><div class="section-heading"><h3>今日人物动向</h3><span class="tag">${state.agency.inbox.filter(x=>!x.done).length}封新话</span></div><p>${state.agency.moments.filter(x=>x.key===todayKey()).slice(-3).map(x=>x.text).join(' ')||'大家正各自忙着。去人物页看看，今日的行迹会慢慢显出来。'}</p><button class="btn ghost wide" data-action="agencyPanel">查看今日动向与来信</button></div></div>`);}};save();
  const agencyStyle=document.createElement('style');agencyStyle.textContent=`.agency-home{margin-top:15px}.agency-home .card{background:#fffaf2;border-color:#decfc0}.agency-home p{font-size:13px;line-height:1.9;color:#806d73}.agency-home .tag{font-size:10px}.agency-home+.card{margin-top:15px}`;document.head.appendChild(agencyStyle);
- agencyEnsure();buildDay();
-
-
-
+ // V7 · 自主行为单一事实源：展示人物心境系统已经执行的行动，不再另造第二套日常。
+function agencyV7Memory(p,key){
+ const m=state.relations[p.id]&&state.relations[p.id].mind;
+ if(!m||!Array.isArray(m.memories))return null;
+ for(let i=m.memories.length-1;i>=0;i--){
+  const x=m.memories[i];
+  if(x.month===state.elapsed&&x.day===(state.day||1)&&['自主日常','往来'].includes(x.kind))return x;
+ }
+ return null;
+}
+function agencyV7Target(p,memory){
+ const text=String(memory&&memory.text||'');
+ return PEOPLE.find(q=>q.id!==p.id&&text.includes(q.name))||null;
+}
+function agencyV7Motive(p,action,memory){
+ const map={
+  rest:'精力需要恢复，先推掉不急的应酬',retreat:'心情还没平复，暂时想独处',
+  seekcare:'有件心事没说开，想找机会讲清楚',quiet:'不想勉强自己应酬',
+  direct:'有话想当面说，不愿一直猜',boundary:'需要一点自己的空间',
+  compare:'在意彼此的关系，想确认自己的位置',fairness:'想把事情按规矩说清楚',
+  duty:'希望手上的差事能做出结果',walk:'想换个地方透透气',wait:'按自己的节奏过日子',
+  gift:'想为在意的人留一份心意',family:'惦记家里人，想问问近况',learn:'想把一门本事练得更扎实',
+  work:'希望自己的本事能派上用场',visit:'想和熟人保持往来',disagree:'与人意见不合，需要时间消化',
+  reconcile:'愿意把先前的误会说开一点',help:'愿意替熟人搭把手',
+  cooperate:'与熟人一起把事情做完',friendcare:'留意到熟人的近况，想陪他说说话'
+ };
+ if(map[action])return map[action];
+ const mood=agencyMood(p);
+ if(mood==='吃醋')return '在意女帝的安排，也在意自己有没有被记得';
+ if(mood==='失望'||mood==='委屈')return '关系里有未说完的话';
+ if(memory&&memory.kind==='往来')return '今日与熟人有过一段往来';
+ return '按自己的日常安排行动';
+}
+function agencyV7Scene(p,target,memory,key,action){
+ const a=state.agency;
+ const todays=a.scenes.filter(x=>x.dayKey===key&&!x.done);
+ if(todays.length>=2)return;
+ const id='scene-'+(++a.seq),tense=action==='disagree';
+ a.scenes.push({
+  id:id,dayKey:key,source:p.id,target:target.id,kind:action,
+  title:tense?p.name+'与'+target.name+'意见不合':p.name+'与'+target.name+'的一段往来',
+  text:memory.text+'这段往来已经记进他们各自的日常。'+(tense?'两人暂时没有谈拢。':'两人把眼前的事处理完，各自继续忙自己的事。')+'陛下若想过问，可以听听双方的说法；也可以不插手。',
+  done:false
+ });
+}
+agencyTickDay=function(key){
+ agencyEnsure();
+ if(state.agency.days[key])return;
+ const day=state.dailyHistory&&state.dailyHistory[key];
+ state.agency.days[key]=true;
+ if(!day){save();return;}
+ const rows=[];
+ for(const p of PEOPLE){
+  const r=state.relations[p.id],m=r&&r.mind;
+  if(!r||!m)continue;
+  const memory=agencyV7Memory(p,key);
+  if(!memory)continue;
+  const action=m.lastAction||'daily';
+  const target=memory.kind==='往来'?agencyV7Target(p,memory):null;
+  const location=typeof mindLocation==='function'?mindLocation(day,p.id):(p.location||'宫中');
+  const motive=agencyV7Motive(p,action,memory);
+  r.agency=r.agency||{goal:AGENCY_GOALS[p.type]||'把自己的日子过好',plan:'',lastAction:'',used:[],trust:[],wounds:[],secrets:[],lastSeen:null};
+  r.agency.lastAction=action;r.agency.lastSeen=key;r.agency.plan=memory.text;r.agency.motive=motive;
+  rows.push({
+   id:'moment-'+(++state.agency.seq),key:key,npc:p.id,name:p.name,kind:action,
+   target:target?target.id:null,text:memory.text,motive:motive,location:location,
+   mood:agencyMood(p),month:state.elapsed,day:state.day||1,source:'mind-simulation-v7'
+  });
+  if(target&&['disagree','reconcile'].includes(action))agencyV7Scene(p,target,memory,key,action);
+ }
+ rows.sort((a,b)=>agencyHash(key+':'+a.npc)-agencyHash(key+':'+b.npc));
+ state.agency.moments.push(...rows);
+ if(state.agency.moments.length>420)state.agency.moments.splice(0,state.agency.moments.length-420);
+ state.agency.scenes=state.agency.scenes.filter(x=>!x.done||x.dayKey===key).slice(-40);
+ const old=Object.keys(state.agency.days);
+ for(const k of old.slice(0,-90))delete state.agency.days[k];
+ save();
+};
+agencyPanel=function(){
+ agencyEnsure();
+ const key=todayKey(),all=state.agency.moments.filter(x=>x.key===key);
+ const moments=all.slice().sort((a,b)=>agencyHash(key+':panel:'+a.npc)-agencyHash(key+':panel:'+b.npc)).slice(0,12);
+ const legacyMail=state.agency.inbox.filter(x=>!x.done).slice(-6).reverse();
+ const realMail=(state.ecology&&state.ecology.inbox||[]).filter(x=>!x.done);
+ const scenes=state.agency.scenes.filter(x=>!x.done).slice(-4);
+ openModal('今日人物动向','人物的日常先由自己的需要与心境推动；这里展示已经发生的行迹。',
+  (realMail.length?'<div class="record"><span class="tag">人物来信 · '+realMail.length+' 封待回</span><p>来信来自人物当天的心境与自主行动。回信、改期或亲自见面，都会留下后续记忆。</p><button class="btn primary" data-action="mindLetters">查看人物来信</button></div>':'')+
+  (legacyMail.length?'<h3 class="section-space">此前递来的话</h3>'+legacyMail.map(x=>'<div class="record"><span class="tag">'+strifeName(x.source)+'</span><p>'+x.text+'</p><button class="btn ghost" data-action="agencyOpen" data-id="'+x.id+'">拆开看看</button></div>').join(''):'')+
+  (scenes.length?'<h3 class="section-space">人物之间正在发生</h3>'+scenes.map(x=>'<div class="record"><b>'+x.title+'</b><p>'+x.text+'</p><button class="btn primary" data-action="agencyOpen" data-id="'+x.id+'">听听双方说法</button></div>').join(''):'')+
+  '<h3 class="section-space">今日真实行迹 · '+all.length+' 条</h3>'+
+  (moments.map(x=>'<div class="record"><span class="mini">'+x.name+' · '+(x.location||'宫中')+' · '+(x.mood||'平静')+'</span><p>'+x.text+'</p><small class="mini">行动缘由：'+x.motive+'</small></div>').join('')||'<p class="mini">今日尚无新的自主行动记录。</p>'),
+ '人物自主意识');
+};
+const agencyOpenV7Before=agencyOpen;
+agencyOpen=function(id){
+ agencyEnsure();
+ const scene=state.agency.scenes.find(x=>x.id===id&&!x.done);
+ if(!scene)return agencyOpenV7Before(id);
+ const p=PEOPLE.find(x=>x.id===scene.source),t=PEOPLE.find(x=>x.id===scene.target);
+ openModal(scene.title,(p?p.name:'一人')+' · '+(t?t.name:'另一人'),
+  '<div class="scene-text">'+scene.text+'</div><div class="opts"><button class="opt" data-action="agencyChoose" data-id="'+id+'|listen"><b>先听双方说法</b><small>不急着判谁对谁错。</small></button><button class="opt" data-action="agencyChoose" data-id="'+id+'|call"><b>把两人都叫来问</b><small>当面说清，可能有人觉得失了面子。</small></button><button class="opt" data-action="agencyChoose" data-id="'+id+'|leave"><b>暂不插手</b><small>让关系自行发展。</small></button></div>','人物往来');
+};
+actions.agencyPanel=agencyPanel;actions.agencyOpen=agencyOpen;
+// 迁移旧存档：清除今天的旧版重复行迹，让其从真实日常记忆重建。
+agencyEnsure();
+if((state.agency.autonomyRevision||0)<2){
+ const today=todayKey();
+ state.agency.moments=state.agency.moments.filter(x=>x.key!==today);
+ delete state.agency.days[today];
+ state.agency.autonomyRevision=2;
+}
+agencyEnsure();buildDay();
