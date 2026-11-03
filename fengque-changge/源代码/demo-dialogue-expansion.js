@@ -365,3 +365,41 @@ function naturalQuestionRegression(){
 }
 window.__naturalDialogueAudit=naturalQuestionRegression;
 ensureMinds();save();
+
+// V7 · 对话语义与亲密互动单问一答。
+const naturalComposeV7Before=naturalComposeDialogue;
+naturalComposeDialogue=function(p,cursorKey,category,topic,baseText,playerText,baseResult){
+ const result=naturalComposeV7Before(p,cursorKey,category,topic,baseText,playerText,baseResult);
+ // 旧语料里的 scene.player 有时是叙事说明，不是女帝说出口的话；统一使用真实问句。
+ result.scene=result.scene||{};
+ result.scene.player=naturalPrompt(category,topic,playerText,p);
+ return result;
+};
+intimacyQuestion=function(){
+ if(!session||session.left<=0)return;
+ const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],reason=sleepReason(p,r);
+ if(reason){toast(reason);return;}
+ const line=readFiction(p,'sleep','ask'),mood=currentMind(p);
+ const willing=['热恋','安心','期待','平静'].includes(mood);
+ const prompt='今夜愿不愿留下？若不愿，我们改日再约。';
+ const refusal={
+  吃醋:'“今夜先不留宿。我有些话想问清楚，免得又自己乱想。”',
+  委屈:'“我还想把之前那件事说完。等心里舒服些，再陪陛下坐一会儿。”',
+  失望:'“今夜不留了。不是不想见，只是想先看看说好的事能不能做到。”',
+  戒备:'“今夜先不了。我们还没熟到那一步，陛下别急。”',
+  恼怒:'“我现在还不想这样相处。等气消了，再谈吧。”',
+  疏离:'“今夜不留。公事我会照办，私下的事改日再说。”'
+ };
+ const answer=willing
+  ?(line&&line.reply?line.reply:'“我愿意留下。不过今日不必说场面话，陪我坐一会儿就好。”')
+  :(refusal[mood]||'“今夜先改日吧。我想按自己的心意来，不想勉强答应。”');
+ session.intimacyConsent=willing?p.id:null;
+ openModal(p.name+' · 今夜',r.rank,
+  '<div class="scene-text">'+(line&&line.stage?'<span class="mind-stage">'+mindEscape(line.stage)+'</span><br><br>':'')+
+  '你问：“'+mindEscape(prompt)+'”<br><br>“'+mindEscape(answer.replace(/^“|”$/g,''))+'”</div>'+
+  '<div class="opts">'+
+  (willing?'<button class="opt" data-action="intimacyConfirm"><b>留他过夜</b><small>另耗1行动、本次1次互动；今夜只安排一次。</small></button>':'<p class="mini">对方已经表达了今晚的意愿。尊重这次答复，不扣行动和互动次数。</p>')+
+  '<button class="opt" data-action="intimacyCancel"><b>今日先到这里</b><small>不扣行动和互动次数。</small></button></div>',
+  '相处 · 本人意愿');
+ save();
+};
