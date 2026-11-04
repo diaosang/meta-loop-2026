@@ -1,0 +1,2116 @@
+{
+  "version": 11,
+  "rows": [
+    {
+      "id": "chat:recent:any:bookmark",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "bookmark",
+      "reply": "方才翻书，翻到一页旧批注。那时不懂的地方，如今读来，倒另有些意思。"
+    },
+    {
+      "id": "chat:recent:any:copy",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "copy",
+      "reply": "在誊一份手稿。改来改去，末了还是觉得头一遍写得好，白费了半日纸。"
+    },
+    {
+      "id": "chat:recent:any:lamp",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "lamp",
+      "reply": "昨夜灯花落了，烧坏半页字。今日正补写，往后再不敢把纸堆在灯旁。"
+    },
+    {
+      "id": "chat:recent:any:brush",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "brush",
+      "reply": "洗笔时才发现笔锋散了。用了许久，舍不得扔，留下写几行小字还使得。"
+    },
+    {
+      "id": "chat:recent:any:ink",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "ink",
+      "reply": "新换的墨太浓，写着滞笔。方才兑了些水，总算顺手。"
+    },
+    {
+      "id": "chat:recent:any:binding",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "binding",
+      "reply": "把几册散了线的书重新订过。先前夹在书里的纸条，倒找回不少。"
+    },
+    {
+      "id": "chat:recent:any:window",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "window",
+      "reply": "才把窗下的桌子挪开。日头一偏，落笔的地方便看不清，坐着也费眼。"
+    },
+    {
+      "id": "chat:recent:any:rain",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "rain",
+      "reply": "在收檐下晾的纸。天色变得快，方才还晴着，转眼便起风了。"
+    },
+    {
+      "id": "chat:recent:any:clothes",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "clothes",
+      "reply": "袖口磨破了一处，正想着补好。若非抬手时挂住，还真没留意。"
+    },
+    {
+      "id": "chat:recent:any:letters",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "letters",
+      "reply": "将旧信依年月收了一回。有几封忘了落款，认字迹认了半日。"
+    },
+    {
+      "id": "chat:recent:any:reply",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "reply",
+      "reply": "有一封回信写了一半。寻常问候，本没几句话，越斟酌反倒越写不下去。"
+    },
+    {
+      "id": "chat:recent:any:desk",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "desk",
+      "reply": "在理案头。东西一多，越怕找不着便越往手边放，末了倒把自己挤到一旁。"
+    },
+    {
+      "id": "chat:recent:any:tea",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "tea",
+      "reply": "刚沏了茶，尚未入口。陛下来得正好，若不嫌弃，容{self}再添一盏。"
+    },
+    {
+      "id": "chat:recent:any:medicinebook",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "medicinebook",
+      "reply": "翻了几页养生的书，才知用眼久了也须歇息。道理早听过，做起来却总忘。"
+    },
+    {
+      "id": "chat:recent:any:sleep",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "sleep",
+      "reply": "昨夜醒得早，索性起来读了几页书。今日倒有些困，待会儿便早些歇。"
+    },
+    {
+      "id": "chat:recent:any:meal",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "meal",
+      "reply": "午间忙着，饭放凉了才吃。方才还不觉得，这会儿倒惦记起热汤来。"
+    },
+    {
+      "id": "chat:recent:any:exercise",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "exercise",
+      "reply": "坐久了肩背酸，方才在廊下走了一圈。人松快些，手头的事也理得清了。"
+    },
+    {
+      "id": "chat:recent:any:calendar",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "calendar",
+      "reply": "在对日子。有两件事记在同一日，若不是重看一遍，到时便要失信于人。"
+    },
+    {
+      "id": "chat:recent:any:borrow",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "borrow",
+      "reply": "查一册借来的书。借时说好几日归还，总得先把要看的地方看完。"
+    },
+    {
+      "id": "chat:recent:any:missingpage",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "missingpage",
+      "reply": "读到半处，才见缺了一页。最怕这样的事，明知后头还有话，偏偏接不上。"
+    },
+    {
+      "id": "chat:recent:any:calligraphy",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "calligraphy",
+      "reply": "今日练字总写不好一个字，越改越僵。索性先搁着，待手松了再写。"
+    },
+    {
+      "id": "chat:recent:any:seal",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "seal",
+      "reply": "整理匣中的旧物。寻到一方旧印，边角已有些磕损，字倒还认得。"
+    },
+    {
+      "id": "chat:recent:any:shoes",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "shoes",
+      "reply": "鞋底沾了泥，回来才看见。走时只顾眼前，倒不知在哪处踩上的。"
+    },
+    {
+      "id": "chat:recent:any:knots",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "knots",
+      "reply": "在解一根缠住的带子。急着扯反倒越紧，放缓些，才看得出结在哪儿。"
+    },
+    {
+      "id": "chat:recent:any:candle",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "candle",
+      "reply": "收了些蜡泪。灯下看字费神，今日打算趁天亮先把该写的写完。"
+    },
+    {
+      "id": "chat:recent:any:memorize",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "memorize",
+      "reply": "背一段旧文章。自以为记得，真要落笔，才知漏了好几句。"
+    },
+    {
+      "id": "chat:recent:any:drawer",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "drawer",
+      "reply": "匣子有些潮，正将里头的纸取出来透气。幸而发现得早，字还没有洇。"
+    },
+    {
+      "id": "chat:recent:any:musiclisten",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "musiclisten",
+      "reply": "方才听见远处有人试弦，曲子到了末尾却停了。等了片刻，也没等到下一声。"
+    },
+    {
+      "id": "chat:recent:any:weather",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "weather",
+      "reply": "晨起比昨日凉些，出门时多添了一件。到了午间又热，衣裳便一直搭在臂上。"
+    },
+    {
+      "id": "chat:recent:any:quiet",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "quiet",
+      "reply": "方才难得清静，想将手头的事收个尾。陛下既来了，便先搁下，不差这一刻。"
+    },
+    {
+      "id": "chat:recent:any:order",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "order",
+      "reply": "把待办的事列了一遍。写下来才知，有些只是一直惦记着，其实片刻便能办。"
+    },
+    {
+      "id": "chat:recent:any:rest",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "rest",
+      "reply": "刚歇下。原想着再撑一会儿，提笔才知手已乏了，写下去也是白费纸。"
+    },
+    {
+      "id": "chat:recent:revenue:accounts",
+      "category": "chat",
+      "topic": "recent",
+      "role": "revenue",
+      "semantic": "accounts",
+      "reply": "在核账。两栏数字单看都对，合在一处却差一笔，臣须将来处逐一对清。"
+    },
+    {
+      "id": "chat:recent:revenue:taxdates",
+      "category": "chat",
+      "topic": "recent",
+      "role": "revenue",
+      "semantic": "taxdates",
+      "reply": "在比各处册报的日期。同一笔钱，入账与起运往往不在一日，不能混作一处算。"
+    },
+    {
+      "id": "chat:recent:revenue:estimates",
+      "category": "chat",
+      "topic": "recent",
+      "role": "revenue",
+      "semantic": "estimates",
+      "reply": "在重算用度。支出既列了名目，便须问明实数，不能只凭一个约数请拨。"
+    },
+    {
+      "id": "chat:recent:revenue:receipts",
+      "category": "chat",
+      "topic": "recent",
+      "role": "revenue",
+      "semantic": "receipts",
+      "reply": "在验收据。数目相符还不够，经手与签押也须一一查过。"
+    },
+    {
+      "id": "chat:recent:revenue:reserve",
+      "category": "chat",
+      "topic": "recent",
+      "role": "revenue",
+      "semantic": "reserve",
+      "reply": "在拟备用的章程。平日省下多少不算本事，急时拿得出、用得明白才要紧。"
+    },
+    {
+      "id": "chat:recent:military:arrows",
+      "category": "chat",
+      "topic": "recent",
+      "role": "military",
+      "semantic": "arrows",
+      "reply": "今日练弓，前几箭稳，后几箭便散。臣打算先练臂力，不急着加远。"
+    },
+    {
+      "id": "chat:recent:military:roster",
+      "category": "chat",
+      "topic": "recent",
+      "role": "military",
+      "semantic": "roster",
+      "reply": "在对点名册。实到与册上人数须相符，不能把空名也算作能用的人手。"
+    },
+    {
+      "id": "chat:recent:military:horse",
+      "category": "chat",
+      "topic": "recent",
+      "role": "military",
+      "semantic": "horse",
+      "reply": "在看马具。皮带松了一处，若等上马才发现，便不是补一针的事了。"
+    },
+    {
+      "id": "chat:recent:military:map",
+      "category": "chat",
+      "topic": "recent",
+      "role": "military",
+      "semantic": "map",
+      "reply": "在辨舆图。纸上看着相近的两处，真走起来或隔山水，不可只量远近。"
+    },
+    {
+      "id": "chat:recent:military:drill",
+      "category": "chat",
+      "topic": "recent",
+      "role": "military",
+      "semantic": "drill",
+      "reply": "在斟酌操练的次序。人人会做还不够，换班接应也得跟得上。"
+    },
+    {
+      "id": "chat:recent:justice:testimony",
+      "category": "chat",
+      "topic": "recent",
+      "role": "justice",
+      "semantic": "testimony",
+      "reply": "在比供词。两人所言看似相同，先后次序却不同，臣还不能据此定论。"
+    },
+    {
+      "id": "chat:recent:justice:dates",
+      "category": "chat",
+      "topic": "recent",
+      "role": "justice",
+      "semantic": "dates",
+      "reply": "在核案卷上的时日。人能记错话，出入与签押却总该留下凭据。"
+    },
+    {
+      "id": "chat:recent:justice:appeal",
+      "category": "chat",
+      "topic": "recent",
+      "role": "justice",
+      "semantic": "appeal",
+      "reply": "在重读申诉。陈情写得凄切，也须验事实；不能因不善言辞，便少听一方。"
+    },
+    {
+      "id": "chat:recent:justice:evidence",
+      "category": "chat",
+      "topic": "recent",
+      "role": "justice",
+      "semantic": "evidence",
+      "reply": "在分证物与传闻。听来可信，终究不同于亲眼所见，入卷时须写明白。"
+    },
+    {
+      "id": "chat:recent:justice:law",
+      "category": "chat",
+      "topic": "recent",
+      "role": "justice",
+      "semantic": "law",
+      "reply": "在查旧例。旧案可以参照，却不能省了核对今案的工夫。"
+    },
+    {
+      "id": "chat:recent:works:measure",
+      "category": "chat",
+      "topic": "recent",
+      "role": "works",
+      "semantic": "measure",
+      "reply": "在核尺寸。图上差一线，落到用料上便差许多，先算明白，免得返工。"
+    },
+    {
+      "id": "chat:recent:works:drain",
+      "category": "chat",
+      "topic": "recent",
+      "role": "works",
+      "semantic": "drain",
+      "reply": "在看旧河图。只顾一段排得快，水便可能积到下一段，须前后合看。"
+    },
+    {
+      "id": "chat:recent:works:materials",
+      "category": "chat",
+      "topic": "recent",
+      "role": "works",
+      "semantic": "materials",
+      "reply": "在比用料。价钱低未必省，若不耐用，修第二回反倒更费。"
+    },
+    {
+      "id": "chat:recent:works:schedule",
+      "category": "chat",
+      "topic": "recent",
+      "role": "works",
+      "semantic": "schedule",
+      "reply": "在排工期。雨前做哪一段、哪些可以缓办，须先列清，不能一齐催。"
+    },
+    {
+      "id": "chat:recent:works:inspection",
+      "category": "chat",
+      "topic": "recent",
+      "role": "works",
+      "semantic": "inspection",
+      "reply": "在拟验收条目。做成什么样须先讲明，不能到交工时才各执一词。"
+    },
+    {
+      "id": "chat:recent:ritual:names",
+      "category": "chat",
+      "topic": "recent",
+      "role": "ritual",
+      "semantic": "names",
+      "reply": "在校名册。姓名、籍贯差一字，传下去便要叫人来回奔走，臣不敢草率。"
+    },
+    {
+      "id": "chat:recent:ritual:ceremony",
+      "category": "chat",
+      "topic": "recent",
+      "role": "ritual",
+      "semantic": "ceremony",
+      "reply": "在核礼仪次序。到时人多，先后须预先说清，不能临场只靠传话。"
+    },
+    {
+      "id": "chat:recent:ritual:exam",
+      "category": "chat",
+      "topic": "recent",
+      "role": "ritual",
+      "semantic": "exam",
+      "reply": "在看程文。文辞可取，也须看立意与实学，不能只挑写得漂亮的。"
+    },
+    {
+      "id": "chat:recent:ritual:guest",
+      "category": "chat",
+      "topic": "recent",
+      "role": "ritual",
+      "semantic": "guest",
+      "reply": "在理接待的章程。礼数要周全，用度也须有节，免得以铺张充体面。"
+    },
+    {
+      "id": "chat:recent:ritual:register",
+      "category": "chat",
+      "topic": "recent",
+      "role": "ritual",
+      "semantic": "register",
+      "reply": "在校一份旧册。前人留下的略笔，今日重看，倒成了最费猜的一处。"
+    },
+    {
+      "id": "chat:recent:personnel:appointment",
+      "category": "chat",
+      "topic": "recent",
+      "role": "personnel",
+      "semantic": "appointment",
+      "reply": "在比履历。荐书写得好听，仍得看他从前究竟做成过什么。"
+    },
+    {
+      "id": "chat:recent:personnel:vacancy",
+      "category": "chat",
+      "topic": "recent",
+      "role": "personnel",
+      "semantic": "vacancy",
+      "reply": "在核缺额。不能只知一处缺人，不问何事最急、所需何才。"
+    },
+    {
+      "id": "chat:recent:personnel:assessment",
+      "category": "chat",
+      "topic": "recent",
+      "role": "personnel",
+      "semantic": "assessment",
+      "reply": "在看考语。人人写个勤谨，便等于人人都没写，臣想将实绩另列。"
+    },
+    {
+      "id": "chat:recent:personnel:handover",
+      "category": "chat",
+      "topic": "recent",
+      "role": "personnel",
+      "semantic": "handover",
+      "reply": "在拟交接条目。换一个人，不该便断一桩事，前后经手须说得清楚。"
+    },
+    {
+      "id": "chat:recent:personnel:recommendation",
+      "category": "chat",
+      "topic": "recent",
+      "role": "personnel",
+      "semantic": "recommendation",
+      "reply": "在复核荐举的名目。同乡同门不等于不可用，却不能因此免了查验。"
+    },
+    {
+      "id": "chat:recent:palace:duty",
+      "category": "chat",
+      "topic": "recent",
+      "role": "palace",
+      "semantic": "duty",
+      "reply": "在核今日值次。两处差遣撞了时辰，先调开，免得到时彼此等着。"
+    },
+    {
+      "id": "chat:recent:palace:inventory",
+      "category": "chat",
+      "topic": "recent",
+      "role": "palace",
+      "semantic": "inventory",
+      "reply": "在点用物。领出与归还都须记上，若到月末才问，便谁也说不清。"
+    },
+    {
+      "id": "chat:recent:palace:pass",
+      "category": "chat",
+      "topic": "recent",
+      "role": "palace",
+      "semantic": "pass",
+      "reply": "在对出入的牌记。该往何处、几时归来，须与当值处记的一致。"
+    },
+    {
+      "id": "chat:recent:palace:household",
+      "category": "chat",
+      "topic": "recent",
+      "role": "palace",
+      "semantic": "household",
+      "reply": "在理内廷用度。日常开销虽小，积起来也不少，不能因零碎便不记。"
+    },
+    {
+      "id": "chat:recent:palace:instructions",
+      "category": "chat",
+      "topic": "recent",
+      "role": "palace",
+      "semantic": "instructions",
+      "reply": "在誊今日交办的事。口信传得多，容易添减，落了字才有凭据。"
+    },
+    {
+      "id": "chat:recent:medicine:herbs",
+      "category": "chat",
+      "topic": "recent",
+      "role": "medicine",
+      "semantic": "herbs",
+      "reply": "在辨药材。外形相近，药性却未必相同，入匣前还须再验一遍。"
+    },
+    {
+      "id": "chat:recent:medicine:formula",
+      "category": "chat",
+      "topic": "recent",
+      "role": "medicine",
+      "semantic": "formula",
+      "reply": "在校方书。剂量旁边一处墨迹含混，臣不敢凭猜，须另寻版本核对。"
+    },
+    {
+      "id": "chat:recent:medicine:records",
+      "category": "chat",
+      "topic": "recent",
+      "role": "medicine",
+      "semantic": "records",
+      "reply": "在理诊籍。症候相似，起病先后却不同，不能只抄一个方子了事。"
+    },
+    {
+      "id": "chat:recent:medicine:storage",
+      "category": "chat",
+      "topic": "recent",
+      "role": "medicine",
+      "semantic": "storage",
+      "reply": "在查药匣。天暖易潮，若只看账上有药，不验实物，也会误事。"
+    },
+    {
+      "id": "chat:recent:medicine:notes",
+      "category": "chat",
+      "topic": "recent",
+      "role": "medicine",
+      "semantic": "notes",
+      "reply": "在抄医案。药后如何，总须接着记，不能开过方子便算诊治已毕。"
+    },
+    {
+      "id": "chat:recent:merchant:cost",
+      "category": "chat",
+      "topic": "recent",
+      "role": "merchant",
+      "semantic": "cost",
+      "reply": "在算进货的本钱。纸上赚了几成，还须扣去脚钱损耗，才知实得多少。"
+    },
+    {
+      "id": "chat:recent:merchant:credit",
+      "category": "chat",
+      "topic": "recent",
+      "role": "merchant",
+      "semantic": "credit",
+      "reply": "在核赊账。熟人更不好含糊，先把数目对清，往后来往才不伤情面。"
+    },
+    {
+      "id": "chat:recent:merchant:stock",
+      "category": "chat",
+      "topic": "recent",
+      "role": "merchant",
+      "semantic": "stock",
+      "reply": "在盘货。压得太多占本钱，备得太少又误客人，须看近来销得如何。"
+    },
+    {
+      "id": "chat:recent:merchant:quality",
+      "category": "chat",
+      "topic": "recent",
+      "role": "merchant",
+      "semantic": "quality",
+      "reply": "在验新到的货。外头包得齐整，里头也须逐件看过，不能只信封签。"
+    },
+    {
+      "id": "chat:recent:merchant:delivery",
+      "category": "chat",
+      "topic": "recent",
+      "role": "merchant",
+      "semantic": "delivery",
+      "reply": "在排送货的次序。答应了时辰，便该留够路上的工夫，不能只顾接单。"
+    },
+    {
+      "id": "chat:recent:artist:practice",
+      "category": "chat",
+      "topic": "recent",
+      "role": "artist",
+      "semantic": "practice",
+      "reply": "在练{specialty}。熟处总容易顺手带过，今日偏要拆开，慢慢重来。"
+    },
+    {
+      "id": "chat:recent:artist:draft",
+      "category": "chat",
+      "topic": "recent",
+      "role": "artist",
+      "semantic": "draft",
+      "reply": "在改昨日的稿。初看顺当，隔了一夜再看，才见有一处用力太过。"
+    },
+    {
+      "id": "chat:recent:artist:technique",
+      "category": "chat",
+      "topic": "recent",
+      "role": "artist",
+      "semantic": "technique",
+      "reply": "在试一个新法子。还不纯熟，暂不敢献丑，待练稳些再请陛下看。"
+    },
+    {
+      "id": "chat:recent:artist:oldwork",
+      "category": "chat",
+      "topic": "recent",
+      "role": "artist",
+      "semantic": "oldwork",
+      "reply": "在重看旧作。那时费尽心思的地方，如今倒想删去，留白或许更好。"
+    },
+    {
+      "id": "chat:recent:artist:performance",
+      "category": "chat",
+      "topic": "recent",
+      "role": "artist",
+      "semantic": "performance",
+      "reply": "在练收尾。头一段尚可，末尾总有些急，若只赶着演完，便白费前头的工夫。"
+    },
+    {
+      "id": "chat:home:any:familyletter",
+      "category": "chat",
+      "topic": "home",
+      "role": "any",
+      "semantic": "familyletter",
+      "reply": "家中的近况，{self}还未问全，不敢只说一声都好。待回信到了，再禀陛下。"
+    },
+    {
+      "id": "chat:home:any:familyseparation",
+      "category": "chat",
+      "topic": "home",
+      "role": "any",
+      "semantic": "familyseparation",
+      "reply": "离家以后，才知许多从前不留意的小事也会记着。陛下是想听家中近况，还是故乡风物？"
+    },
+    {
+      "id": "chat:home:any:familywish",
+      "category": "chat",
+      "topic": "home",
+      "role": "any",
+      "semantic": "familywish",
+      "reply": "家中盼的，总比{self}眼下能做的多些。来信倒不催，只问几时得闲。"
+    },
+    {
+      "id": "chat:home:any:familyreply",
+      "category": "chat",
+      "topic": "home",
+      "role": "any",
+      "semantic": "familyreply",
+      "reply": "有些话写在家书里，怕他们挂心，不免少写两句。到了陛下面前，也不好拿这一套搪塞。"
+    },
+    {
+      "id": "chat:home:any:familyprivacy",
+      "category": "chat",
+      "topic": "home",
+      "role": "any",
+      "semantic": "familyprivacy",
+      "reply": "家事零碎，容{self}择一件说。若一气从头讲起，倒怕占了陛下半日。"
+    },
+    {
+      "id": "chat:home:any:familyroots",
+      "category": "chat",
+      "topic": "home",
+      "role": "any",
+      "semantic": "familyroots",
+      "reply": "说起家里，总绕不开旧日的人。只讲宅院山水，反倒像在说旁人的地方。"
+    },
+    {
+      "id": "chat:interest:any:skillpractice",
+      "category": "chat",
+      "topic": "interest",
+      "role": "any",
+      "semantic": "skillpractice",
+      "reply": "闲时最常练{specialty}。不必赶着交差，才敢在不熟的地方多停一会儿。"
+    },
+    {
+      "id": "chat:interest:any:skilldifficulty",
+      "category": "chat",
+      "topic": "interest",
+      "role": "any",
+      "semantic": "skilldifficulty",
+      "reply": "{specialty}最磨性子。旁人看着不过片刻，练的时候，一处错了便得重来。"
+    },
+    {
+      "id": "chat:interest:any:skillshow",
+      "category": "chat",
+      "topic": "interest",
+      "role": "any",
+      "semantic": "skillshow",
+      "reply": "若陛下想看{specialty}，容{self}备好再呈。现下说得再好，也不如当面试一回。"
+    },
+    {
+      "id": "chat:interest:any:skillorigin",
+      "category": "chat",
+      "topic": "interest",
+      "role": "any",
+      "semantic": "skillorigin",
+      "reply": "起初学{specialty}，只想着学会便好。真会了一点，才知道后头还有许多工夫。"
+    },
+    {
+      "id": "chat:interest:any:skillquiet",
+      "category": "chat",
+      "topic": "interest",
+      "role": "any",
+      "semantic": "skillquiet",
+      "reply": "练{specialty}时不喜人多。有人在旁边等着，反倒总想快些做完，容易失了准头。"
+    },
+    {
+      "id": "chat:interest:any:skilltaste",
+      "category": "chat",
+      "topic": "interest",
+      "role": "any",
+      "semantic": "skilltaste",
+      "reply": "比起样样都沾，{self}宁肯把{specialty}学深些。总该有一件事，自己做来心里有底。"
+    },
+    {
+      "id": "care:listen:any:listenopen",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "listenopen",
+      "reply": "陛下既肯听，容{self}从头说。只是眼下还没有想妥，未必句句都说得明白。"
+    },
+    {
+      "id": "care:listen:any:listensmall",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "listensmall",
+      "reply": "是有一件，只怕说来琐碎。陛下若不嫌，{self}便不藏着了。"
+    },
+    {
+      "id": "care:listen:any:listenpause",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "listenpause",
+      "reply": "方才还想着如何开口，陛下一问，倒不必再寻由头。容{self}想想，先从哪处说。"
+    },
+    {
+      "id": "care:listen:any:listenreserved",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "listenreserved",
+      "reply": "有些话，{self}还未拿定主意。今日先说已经想明白的，可好？"
+    },
+    {
+      "id": "care:comfort:any:restaccept",
+      "category": "care",
+      "topic": "comfort",
+      "role": "any",
+      "semantic": "restaccept",
+      "reply": "是有些乏了。原想做完这一点便歇，添着添着，又搁不下。既蒙陛下吩咐，便先收笔。"
+    },
+    {
+      "id": "care:comfort:any:resttea",
+      "category": "care",
+      "topic": "comfort",
+      "role": "any",
+      "semantic": "resttea",
+      "reply": "多谢陛下。茶尚温着，容{self}用完这一盏，再将余下的事留到明日。"
+    },
+    {
+      "id": "care:comfort:any:restshort",
+      "category": "care",
+      "topic": "comfort",
+      "role": "any",
+      "semantic": "restshort",
+      "reply": "不敢说不累，只是怕耽搁。陛下既准缓一缓，{self}也能安心歇了。"
+    },
+    {
+      "id": "care:comfort:any:restcompany",
+      "category": "care",
+      "topic": "comfort",
+      "role": "any",
+      "semantic": "restcompany",
+      "reply": "陛下若肯稍坐，{self}便不忙了。这些事早一刻、迟一刻，原也不差什么。"
+    },
+    {
+      "id": "care:gift:any:giftreceive",
+      "category": "care",
+      "topic": "gift",
+      "role": "any",
+      "semantic": "giftreceive",
+      "reply": "谢陛下赏。方才还只顾看东西，竟忘了先谢恩，失礼了。"
+    },
+    {
+      "id": "care:gift:any:giftkeep",
+      "category": "care",
+      "topic": "gift",
+      "role": "any",
+      "semantic": "giftkeep",
+      "reply": "这件东西，{self}会好好收着。陛下日后若问起，定不会教人找不着。"
+    },
+    {
+      "id": "care:gift:any:giftuse",
+      "category": "care",
+      "topic": "gift",
+      "role": "any",
+      "semantic": "giftuse",
+      "reply": "多谢陛下。不敢只供着舍不得用，倒辜负了这番赏赐。"
+    },
+    {
+      "id": "care:gift:any:giftunexpected",
+      "category": "care",
+      "topic": "gift",
+      "role": "any",
+      "semantic": "giftunexpected",
+      "reply": "未想到陛下还特意留了一份。容{self}收好，莫叫旁人搬弄时磕碰了。"
+    },
+    {
+      "id": "care:bag:any:travelgift",
+      "category": "care",
+      "topic": "bag",
+      "role": "any",
+      "semantic": "travelgift",
+      "reply": "陛下出行，还留了东西给{self}。谢陛下记挂，容{self}亲自收着。"
+    },
+    {
+      "id": "care:bag:any:traveltale",
+      "category": "care",
+      "topic": "bag",
+      "role": "any",
+      "semantic": "traveltale",
+      "reply": "谢陛下。比起这件东西，{self}倒还想听听，陛下是在哪处见着它的。"
+    },
+    {
+      "id": "care:promise:any:dateaccept",
+      "category": "care",
+      "topic": "promise",
+      "role": "any",
+      "semantic": "dateaccept",
+      "reply": "{self}记下了。到了下月，再遣人请问陛下哪日得闲。"
+    },
+    {
+      "id": "care:promise:any:datewaiting",
+      "category": "care",
+      "topic": "promise",
+      "role": "any",
+      "semantic": "datewaiting",
+      "reply": "好。{self}先将日子记着，临近时再请示，不敢叫陛下为难。"
+    },
+    {
+      "id": "probe:opinion:any:opinionobserve",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "opinionobserve",
+      "reply": "{self}在御前的时日尚短，不敢凭几回召见便论陛下。只是陛下肯问，也愿听人把话说完。"
+    },
+    {
+      "id": "probe:opinion:any:opiniontruth",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "opiniontruth",
+      "reply": "陛下处事自有决断。{self}若有不同的想法，盼仍能得一句准说，而非只准称好。"
+    },
+    {
+      "id": "probe:opinion:any:opinionconduct",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "opinionconduct",
+      "reply": "看人，总要看他如何待不顺意的事。陛下既问，{self}往后便据所见直言。"
+    },
+    {
+      "id": "probe:opinion:any:opinionrespect",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "opinionrespect",
+      "reply": "{self}敬的是陛下肯担事，不只是这身御服。只望有朝一日说了不中听的话，也能听完。"
+    },
+    {
+      "id": "probe:worry:any:worryreserve",
+      "category": "probe",
+      "topic": "worry",
+      "role": "any",
+      "semantic": "worryreserve",
+      "reply": "是有些牵挂，尚未想妥如何处置。容{self}再理一理，不敢拿半截话扰陛下。"
+    },
+    {
+      "id": "probe:worry:any:worryask",
+      "category": "probe",
+      "topic": "worry",
+      "role": "any",
+      "semantic": "worryask",
+      "reply": "陛下是看见什么了，还是听人提过？{self}想先问明，免得答岔了。"
+    },
+    {
+      "id": "probe:worry:any:worryplain",
+      "category": "probe",
+      "topic": "worry",
+      "role": "any",
+      "semantic": "worryplain",
+      "reply": "眼下最放不下的，仍是手头未完的事。倒没有旁人说的那许多曲折。"
+    },
+    {
+      "id": "probe:worry:any:worryconfide",
+      "category": "probe",
+      "topic": "worry",
+      "role": "any",
+      "semantic": "worryconfide",
+      "reply": "有。先前怕说来像在求陛下开恩，便一直没提。陛下既问，{self}愿如实说。"
+    },
+    {
+      "id": "scold:remind:any:ruleask",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "ruleask",
+      "reply": "{self}谨记。只是不知陛下所指，是今日哪一处失了分寸？容{self}问明，才好改过。"
+    },
+    {
+      "id": "scold:remind:any:rulelisten",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "rulelisten",
+      "reply": "请陛下明示。该守的规矩，{self}不敢忘，也不敢含糊应一声便算听过。"
+    },
+    {
+      "id": "scold:stern:any:sternaccount",
+      "category": "scold",
+      "topic": "stern",
+      "role": "any",
+      "semantic": "sternaccount",
+      "reply": "容{self}先陈经过。若有失职，甘领责罚；不是{self}所为的，也须分说明白。"
+    },
+    {
+      "id": "scold:stern:any:sternwrong",
+      "category": "scold",
+      "topic": "stern",
+      "role": "any",
+      "semantic": "sternwrong",
+      "reply": "陛下责问，{self}不敢避。但请准许核清来龙去脉，再定该领何罪。"
+    },
+    {
+      "id": "scold:public:any:publicanswer",
+      "category": "scold",
+      "topic": "public",
+      "role": "any",
+      "semantic": "publicanswer",
+      "reply": "{self}在此听训。此事既已当众提起，也请将原委一并问明，免得只留半句传言。"
+    },
+    {
+      "id": "scold:public:any:publicbow",
+      "category": "scold",
+      "topic": "public",
+      "role": "any",
+      "semantic": "publicbow",
+      "reply": "{self}不敢争辩。只求陛下准将经手的事据实呈明，不使旁人因{self}受累。"
+    },
+    {
+      "id": "flirt:compliment:any:praiseblush",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "praiseblush",
+      "reply": "陛下这样看着，{self}反倒不知该将手放在哪里了。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:compliment:any:praisereceive",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "praisereceive",
+      "reply": "这句夸奖，{self}收下了。只是陛下再说，怕便要得意忘形。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:compliment:any:praiseprivate",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "praiseprivate",
+      "reply": "此处还有人，陛下……待他们退下，再说可好？",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:compliment:any:praisehappy",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "praisehappy",
+      "reply": "方才还不知陛下因何而笑。原来竟是为{self}。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:miss:any:missadmit",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "missadmit",
+      "reply": "想过。听见外头传话，总要先问一句，可是陛下遣人来了。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:miss:any:misshesitate",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "misshesitate",
+      "reply": "原不想说的。陛下一问，{self}再否认，便成欺君了。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:miss:any:misslamp",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "misslamp",
+      "reply": "有时灯下坐久了，会想陛下此刻可也未歇。想归想，又怕贸然递话扰了清静。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:miss:any:missdoor",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "missdoor",
+      "reply": "听见脚步便看一眼门口，这样算不算？陛下莫再笑了。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:confess:any:confessaccept",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "confessaccept",
+      "reply": "{self}愿意。只是这一声答应，往后便不能再当作寻常召见了。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:confess:any:confesswait",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "confesswait",
+      "reply": "原以为还要等很久，才听得到这句话。陛下既说了，{self}便当真记着。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:confess:any:confesshand",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "confesshand",
+      "reply": "陛下若不嫌，容{self}近前些。有些话隔着这一段路，说着总不真切。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:confess:any:confessonly",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "confessonly",
+      "reply": "这一回，{self}不想再拿谢恩的话遮过去。陛下的心意，{self}也是一样。",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "flirt:compliment:any:reserved",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "reserved",
+      "reply": "陛下厚爱，{self}领情。只是眼下尚不敢应，免得一句轻许，往后两相耽误。",
+      "positive": false
+    },
+    {
+      "id": "flirt:compliment:any:unsettled",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "unsettled",
+      "reply": "前头的话尚未说开，今日若只当无事，{self}做不到。请陛下容缓一缓。",
+      "positive": false
+    },
+    {
+      "id": "flirt:compliment:any:distance",
+      "category": "flirt",
+      "topic": "compliment",
+      "role": "any",
+      "semantic": "distance",
+      "reply": "这话太近了。{self}还未能如此相答，请陛下恕罪。",
+      "positive": false
+    },
+    {
+      "id": "flirt:miss:any:reserved",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "reserved",
+      "reply": "陛下厚爱，{self}领情。只是眼下尚不敢应，免得一句轻许，往后两相耽误。",
+      "positive": false
+    },
+    {
+      "id": "flirt:miss:any:unsettled",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "unsettled",
+      "reply": "前头的话尚未说开，今日若只当无事，{self}做不到。请陛下容缓一缓。",
+      "positive": false
+    },
+    {
+      "id": "flirt:miss:any:distance",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "distance",
+      "reply": "这话太近了。{self}还未能如此相答，请陛下恕罪。",
+      "positive": false
+    },
+    {
+      "id": "flirt:confess:any:reserved",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "reserved",
+      "reply": "陛下厚爱，{self}领情。只是眼下尚不敢应，免得一句轻许，往后两相耽误。",
+      "positive": false
+    },
+    {
+      "id": "flirt:confess:any:unsettled",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "unsettled",
+      "reply": "前头的话尚未说开，今日若只当无事，{self}做不到。请陛下容缓一缓。",
+      "positive": false
+    },
+    {
+      "id": "flirt:confess:any:distance",
+      "category": "flirt",
+      "topic": "confess",
+      "role": "any",
+      "semantic": "distance",
+      "reply": "这话太近了。{self}还未能如此相答，请陛下恕罪。",
+      "positive": false
+    },
+    {
+      "id": "sleep:ask:any:nightaccept",
+      "category": "sleep",
+      "topic": "ask",
+      "role": "any",
+      "semantic": "nightaccept",
+      "reply": "{self}愿留下。容{self}遣人回去说一声，免得住处还留着灯等。",
+      "positive": true
+    },
+    {
+      "id": "sleep:ask:any:nightquiet",
+      "category": "sleep",
+      "topic": "ask",
+      "role": "any",
+      "semantic": "nightquiet",
+      "reply": "{self}愿意。夜已深了，陛下也该歇息，余下的话明日再说。",
+      "positive": true
+    },
+    {
+      "id": "sleep:ask:any:nightwarm",
+      "category": "sleep",
+      "topic": "ask",
+      "role": "any",
+      "semantic": "nightwarm",
+      "reply": "{self}愿意。只是此刻近前，倒比方才回话还紧张些。",
+      "positive": true
+    },
+    {
+      "id": "sleep:ask:any:nightdecline",
+      "category": "sleep",
+      "topic": "ask",
+      "role": "any",
+      "semantic": "nightdecline",
+      "reply": "请陛下恕罪，今夜{self}想先回去。有些事未曾说开，{self}还不能当作无事。",
+      "positive": false
+    },
+    {
+      "id": "sleep:ask:any:nightlater",
+      "category": "sleep",
+      "topic": "ask",
+      "role": "any",
+      "semantic": "nightlater",
+      "reply": "今夜怕要辜负圣意。容{self}理清心绪，再来请安。",
+      "positive": false
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "陛下，家书虽是问安，字里仍有几分催促。{self}不愿让家中忧心，也不想仓促应下。",
+      "personality": "温柔体贴",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "家中所盼，{self}明白。只是此事须自己想定，回信晚些，总好过轻许。",
+      "personality": "清冷克制",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "家里又催了。{self}不愿装作没看见，可也不能为回一封信，便把往后的日子都应出去。",
+      "personality": "明朗直率",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "他们以为{self}不提，便是不争。陛下，{self}只是不愿拿家书到御前讨一个名分。",
+      "personality": "骄矜自尊",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "这封信看了几遍，总怕回得重了伤他们，回得轻了，又让他们生出旁的指望。",
+      "personality": "敏感多思",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "好听的回话，{self}写得出。只是这回若仍含糊过去，下封信怕要催得更紧。",
+      "personality": "圆融世故",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "家中有家中的盼头，宫中也有宫中的章程。{self}会据实回信，不敢借圣意宽慰私家。",
+      "personality": "严正守礼",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "他们盼{self}得陛下青眼。{self}也想，只是不愿靠这一封家书求来。",
+      "personality": "野心进取",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "陛下，家中问得细，{self}倒想得少。只盼回信时，能有一句是自己真愿意的。",
+      "personality": "疏朗洒脱",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "家中问得最实在，往后如何安身、用度可有着落。{self}不敢不问明，便给他们许准话。",
+      "personality": "务实重利",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "家里催了。{self}尚未应。没想定的事，不能先许。",
+      "personality": "寡言重诺",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "role": "any",
+      "semantic": "familypressure",
+      "reply": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "personality": "戒备善谋",
+      "requiresFamilyLetter": true
+    },
+    {
+      "id": "chat:recent:any:voice-温柔体贴",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-温柔体贴",
+      "reply": "刚收好案头。陛下若要坐，容{self}把这边的东西挪一挪，别碰着衣袖。",
+      "personality": "温柔体贴"
+    },
+    {
+      "id": "care:listen:any:voice-温柔体贴",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-温柔体贴",
+      "reply": "原想自己理顺再说，免得陛下也跟着挂心。只是越放着，倒越不知从何讲起。",
+      "personality": "温柔体贴"
+    },
+    {
+      "id": "probe:opinion:any:voice-温柔体贴",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-温柔体贴",
+      "reply": "陛下肯听人把难处说完，{self}便愿多说几句。只是心软处，也怕被旁人借去了。",
+      "personality": "温柔体贴"
+    },
+    {
+      "id": "flirt:miss:any:voice-温柔体贴",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-温柔体贴",
+      "reply": "想的。只是每回遣人去问，又怕恰逢陛下忙，末了总说成一句请安。",
+      "personality": "温柔体贴",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-温柔体贴",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-温柔体贴",
+      "reply": "请陛下明示。若是{self}无意伤了谁，自该赔不是，却不能连伤在何处也不知。",
+      "personality": "温柔体贴",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-清冷克制",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-清冷克制",
+      "reply": "看书。案上那几页翻了两回，仍有一处不通，打算另查旧注。",
+      "personality": "清冷克制"
+    },
+    {
+      "id": "care:listen:any:voice-清冷克制",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-清冷克制",
+      "reply": "陛下既问，{self}便不说无事。但此刻只能陈明经过，尚不能给一个妥当的结果。",
+      "personality": "清冷克制"
+    },
+    {
+      "id": "probe:opinion:any:voice-清冷克制",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-清冷克制",
+      "reply": "陛下有决断，{self}敬服。只是决断快时，未必人人来得及将话说尽。",
+      "personality": "清冷克制"
+    },
+    {
+      "id": "flirt:miss:any:voice-清冷克制",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-清冷克制",
+      "reply": "有。只是想见，与该不该求见，终究是两回事。",
+      "personality": "清冷克制",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-清冷克制",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-清冷克制",
+      "reply": "请指明是哪一处。{self}不会因一句责备便强辩，也不敢不明所以地认下。",
+      "personality": "清冷克制",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-明朗直率",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-明朗直率",
+      "reply": "在练字。先前总嫌这事磨人，今日真坐下来，倒比想的难，手都僵了。",
+      "personality": "明朗直率"
+    },
+    {
+      "id": "care:listen:any:voice-明朗直率",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-明朗直率",
+      "reply": "有话想说，只是不知道陛下听了会不会生气。若准{self}直说，便不绕弯了。",
+      "personality": "明朗直率"
+    },
+    {
+      "id": "probe:opinion:any:voice-明朗直率",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-明朗直率",
+      "reply": "陛下肯担事，{self}愿跟着做。只是有时太能忍，旁人倒以为您不在意。",
+      "personality": "明朗直率"
+    },
+    {
+      "id": "flirt:miss:any:voice-明朗直率",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-明朗直率",
+      "reply": "想啊。方才还盘算，若来请安，该寻个什么由头，才不显得太勤。",
+      "personality": "明朗直率",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-明朗直率",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-明朗直率",
+      "reply": "若真错了，{self}认。只是陛下总得先让{self}知道，错在何处。",
+      "personality": "明朗直率",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-骄矜自尊",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-骄矜自尊",
+      "reply": "改一份旧稿。不算什么得意之作，倒是当初夸得最响的几句，如今看着最不顺眼。",
+      "personality": "骄矜自尊"
+    },
+    {
+      "id": "care:listen:any:voice-骄矜自尊",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-骄矜自尊",
+      "reply": "陛下肯问，{self}领情。只是这件事，还不愿借您的手替自己争个输赢。",
+      "personality": "骄矜自尊"
+    },
+    {
+      "id": "probe:opinion:any:voice-骄矜自尊",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-骄矜自尊",
+      "reply": "陛下若只想听好话，{self}便不答了。若肯听实话，倒有一件想请您改。",
+      "personality": "骄矜自尊"
+    },
+    {
+      "id": "flirt:miss:any:voice-骄矜自尊",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-骄矜自尊",
+      "reply": "想过。可每回都由{self}求见，陛下怕要以为，{self}只会守着宫门等。",
+      "personality": "骄矜自尊",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-骄矜自尊",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-骄矜自尊",
+      "reply": "请陛下说得明白些。责罚可以领，含糊的一句过错，{self}却不能往身上揽。",
+      "personality": "骄矜自尊",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-敏感多思",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-敏感多思",
+      "reply": "回一封信。写到末了又觉得前头不妥，改了几回，竟比重写还费工夫。",
+      "personality": "敏感多思"
+    },
+    {
+      "id": "care:listen:any:voice-敏感多思",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-敏感多思",
+      "reply": "是有一件。先前总怕自己多想，越不肯问，便越在意，竟拖到了今日。",
+      "personality": "敏感多思"
+    },
+    {
+      "id": "probe:opinion:any:voice-敏感多思",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-敏感多思",
+      "reply": "陛下待人宽厚，{self}知道。只是有时一句随口的话，旁人会当真等很久。",
+      "personality": "敏感多思"
+    },
+    {
+      "id": "flirt:miss:any:voice-敏感多思",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-敏感多思",
+      "reply": "想。听见宫人说陛下往这边来，明知未必是寻{self}，也总要先候着。",
+      "personality": "敏感多思",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-敏感多思",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-敏感多思",
+      "reply": "陛下这一句，{self}会记着。只是若不说清，回去怕又要猜错缘由。",
+      "personality": "敏感多思",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-圆融世故",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-圆融世故",
+      "reply": "在理几封往来信。寻常问候里夹着几句托付，若只当问候回了，又怕人家会错意。",
+      "personality": "圆融世故"
+    },
+    {
+      "id": "care:listen:any:voice-圆融世故",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-圆融世故",
+      "reply": "惯常劝旁人时，话倒说得周全。轮到自己，才知道并非一句想开些便能过去。",
+      "personality": "圆融世故"
+    },
+    {
+      "id": "probe:opinion:any:voice-圆融世故",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-圆融世故",
+      "reply": "陛下不难亲近，却也因此，总有人想借这份亲近走捷径。{self}不敢说自己从无此心。",
+      "personality": "圆融世故"
+    },
+    {
+      "id": "flirt:miss:any:voice-圆融世故",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-圆融世故",
+      "reply": "想，只是旁的事都好寻由头，独这一桩，说得越圆，倒越不像真话。",
+      "personality": "圆融世故",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-圆融世故",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-圆融世故",
+      "reply": "请陛下息怒。此事若该{self}担，自会担，只请容将旁人的经过也说全。",
+      "personality": "圆融世故",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-严正守礼",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-严正守礼",
+      "reply": "校一份旧册。前后两处记法不同，尚须查原本，不敢只凭习惯改定。",
+      "personality": "严正守礼"
+    },
+    {
+      "id": "care:listen:any:voice-严正守礼",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-严正守礼",
+      "reply": "有一桩尚未处置妥当。若涉及旁人，{self}只能陈已知之事，未查明的不敢妄言。",
+      "personality": "严正守礼"
+    },
+    {
+      "id": "probe:opinion:any:voice-严正守礼",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-严正守礼",
+      "reply": "陛下肯纳言，是好事。只望言之不合时，也能先问所据，不因逆耳而弃之。",
+      "personality": "严正守礼"
+    },
+    {
+      "id": "flirt:miss:any:voice-严正守礼",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-严正守礼",
+      "reply": "有过。只是无事求见，怕失分寸，便一直未曾递话。",
+      "personality": "严正守礼",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-严正守礼",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-严正守礼",
+      "reply": "{self}谨听。若所指有违章程，请陛下明示哪一条，往后自不敢再犯。",
+      "personality": "严正守礼",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-野心进取",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-野心进取",
+      "reply": "在重列手头的事。件件都想争先，反倒容易顾此失彼，今日先把最难的一桩理出来。",
+      "personality": "野心进取"
+    },
+    {
+      "id": "care:listen:any:voice-野心进取",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-野心进取",
+      "reply": "最难受的倒不是忙，是费了许多工夫，却还看不出一分长进。陛下可也有过这样的时候？",
+      "personality": "野心进取"
+    },
+    {
+      "id": "probe:opinion:any:voice-野心进取",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-野心进取",
+      "reply": "陛下肯给人机会，{self}想争。若有一日争得急了，也盼您指出实错，不只劝一句安分。",
+      "personality": "野心进取"
+    },
+    {
+      "id": "flirt:miss:any:voice-野心进取",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-野心进取",
+      "reply": "想。旁的差事可以争着领，独见陛下这一桩，争得太明，又怕惹您厌。",
+      "personality": "野心进取",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-野心进取",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-野心进取",
+      "reply": "请陛下指出疏漏。若只叫{self}退开，便不知下一回该如何做得更好。",
+      "personality": "野心进取",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-疏朗洒脱",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-疏朗洒脱",
+      "reply": "在翻一本游记。写的人将路途说得太轻巧，单看那几处地名，便知未必走得那样容易。",
+      "personality": "疏朗洒脱"
+    },
+    {
+      "id": "care:listen:any:voice-疏朗洒脱",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-疏朗洒脱",
+      "reply": "本想出去走走，散了便算。陛下既问，倒不如说出来，也省得一人绕圈。",
+      "personality": "疏朗洒脱"
+    },
+    {
+      "id": "probe:opinion:any:voice-疏朗洒脱",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-疏朗洒脱",
+      "reply": "陛下肯笑，也肯听闲话，这是{self}喜欢的。只是到了外头，您总要比旁人多留一分心。",
+      "personality": "疏朗洒脱"
+    },
+    {
+      "id": "flirt:miss:any:voice-疏朗洒脱",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-疏朗洒脱",
+      "reply": "有时见着一件有趣的东西，便想拿来给陛下看。走到半途，又怕扰了清静。",
+      "personality": "疏朗洒脱",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-疏朗洒脱",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-疏朗洒脱",
+      "reply": "这回{self}收敛些。只是陛下若说的是旁人的传闻，还请容{self}先问一句从何听来。",
+      "personality": "疏朗洒脱",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-务实重利",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-务实重利",
+      "reply": "算些零碎用度。单笔看着不多，合在一处才知，比原先预想的多了不少。",
+      "personality": "务实重利"
+    },
+    {
+      "id": "care:listen:any:voice-务实重利",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-务实重利",
+      "reply": "是有难处。能自己补的，{self}会补；补不了的，也不敢只为体面便瞒着。",
+      "personality": "务实重利"
+    },
+    {
+      "id": "probe:opinion:any:voice-务实重利",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-务实重利",
+      "reply": "陛下有心做事。只是用钱用人，都不能只看眼前够不够，还须留出下一步的余地。",
+      "personality": "务实重利"
+    },
+    {
+      "id": "flirt:miss:any:voice-务实重利",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-务实重利",
+      "reply": "想。若陛下肯定个日子，{self}也好早些备下，不必每日猜今日来不来。",
+      "personality": "务实重利",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-务实重利",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-务实重利",
+      "reply": "请陛下明言。若有损失，先核数目，再论该由谁担，不能只凭谁声气大。",
+      "personality": "务实重利",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-寡言重诺",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-寡言重诺",
+      "reply": "收尾。答应了今日做完，还差一点，不能留到明日。",
+      "personality": "寡言重诺"
+    },
+    {
+      "id": "care:listen:any:voice-寡言重诺",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-寡言重诺",
+      "reply": "有。尚未想妥。陛下若肯等，{self}会说。",
+      "personality": "寡言重诺"
+    },
+    {
+      "id": "probe:opinion:any:voice-寡言重诺",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-寡言重诺",
+      "reply": "陛下说过的事，{self}记得。做到了，便信；未做到，也会记着。",
+      "personality": "寡言重诺"
+    },
+    {
+      "id": "flirt:miss:any:voice-寡言重诺",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-寡言重诺",
+      "reply": "想。没遣人说，是怕您忙。",
+      "personality": "寡言重诺",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-寡言重诺",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-寡言重诺",
+      "reply": "请说清。有错会改，未做的不认。",
+      "personality": "寡言重诺",
+      "minAff": 55
+    },
+    {
+      "id": "chat:recent:any:voice-戒备善谋",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "voice-戒备善谋",
+      "reply": "在核几封来信的日期。话对得上，时日却接不上，暂且不急着回。",
+      "personality": "戒备善谋"
+    },
+    {
+      "id": "care:listen:any:voice-戒备善谋",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "voice-戒备善谋",
+      "reply": "此事牵着旁人，{self}得先问明白：陛下是要听经过，还是已经有人先说了什么？",
+      "personality": "戒备善谋"
+    },
+    {
+      "id": "probe:opinion:any:voice-戒备善谋",
+      "category": "probe",
+      "topic": "opinion",
+      "role": "any",
+      "semantic": "voice-戒备善谋",
+      "reply": "陛下肯亲自问，是信人，也可能是在验人。{self}不敢只拣好听的话答。",
+      "personality": "戒备善谋"
+    },
+    {
+      "id": "flirt:miss:any:voice-戒备善谋",
+      "category": "flirt",
+      "topic": "miss",
+      "role": "any",
+      "semantic": "voice-戒备善谋",
+      "reply": "有。只是怕一次次求见，叫人先看出了{self}不愿让人知道的心思。",
+      "personality": "戒备善谋",
+      "minAff": 35,
+      "positive": true
+    },
+    {
+      "id": "scold:remind:any:voice-戒备善谋",
+      "category": "scold",
+      "topic": "remind",
+      "role": "any",
+      "semantic": "voice-戒备善谋",
+      "reply": "容{self}先问一句，陛下所据何人所言？不是推责，只怕有人借您的口定{self}的错。",
+      "personality": "戒备善谋",
+      "minAff": 55
+    },
+    {
+      "id": "care:listen:any:mood-恼怒",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "mood-恼怒",
+      "reply": "方才的事，{self}尚未想通。陛下若肯听，便容把原委说完，今日不愿只答一声无事。",
+      "moods": [
+        "恼怒"
+      ],
+      "priority": 40
+    },
+    {
+      "id": "care:listen:any:mood-疏离",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "mood-疏离",
+      "reply": "劳陛下垂问。该办的差事，{self}会照办；私下的事，今日便先不提了。",
+      "moods": [
+        "疏离"
+      ],
+      "priority": 40
+    },
+    {
+      "id": "care:listen:any:mood-失望",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "mood-失望",
+      "reply": "倒没有新添的难处。只是先前盼着的事，迟迟没有回音，{self}也不知还该不该问。",
+      "moods": [
+        "失望"
+      ],
+      "priority": 40
+    },
+    {
+      "id": "care:listen:any:mood-委屈",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "mood-委屈",
+      "reply": "原不愿再提，怕显得{self}斤斤计较。可若一直不说，这件事便像只有{self}还记得。",
+      "moods": [
+        "委屈"
+      ],
+      "priority": 40
+    },
+    {
+      "id": "care:listen:any:mood-戒备",
+      "category": "care",
+      "topic": "listen",
+      "role": "any",
+      "semantic": "mood-戒备",
+      "reply": "陛下容禀。所知的，{self}自当据实说；牵着旁人的隐情，却不敢凭一面之词开口。",
+      "moods": [
+        "戒备"
+      ],
+      "priority": 40
+    },
+    {
+      "id": "chat:recent:any:festival-元日",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-元日",
+      "reply": "今日元日，先祝陛下岁岁康宁。旧年的烦恼，若能少带一些到今年，便更好了。",
+      "festival": "元日",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:festival-上元",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-上元",
+      "reply": "今日上元。灯会年年都有，难得的是有人肯一道慢慢看，不急着催归。",
+      "festival": "上元",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:festival-端午",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-端午",
+      "reply": "今日端午，闻见艾草气味，便想起家中从前过节的光景。陛下今日可曾得闲用饭？",
+      "festival": "端午",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:festival-七夕",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-七夕",
+      "reply": "今日七夕，巧意倒成其次。若有所盼，{self}仍愿亲口问，不将一切都托给天意。",
+      "festival": "七夕",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:festival-中秋",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-中秋",
+      "reply": "今日中秋，到了夜间又该有人望月。只怕人坐在一处，心里惦记的却各不相同。",
+      "festival": "中秋",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:festival-重阳",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-重阳",
+      "reply": "今日重阳。若登高不便，临窗看一看远处，也算不负此日。",
+      "festival": "重阳",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:festival-腊八",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "festival-腊八",
+      "reply": "今日腊八，年关已近。想来这一年忙着忙着，倒忘了许多原想慢慢做的事。",
+      "festival": "腊八",
+      "priority": 35
+    },
+    {
+      "id": "chat:recent:any:season-春",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "season-春",
+      "reply": "春日易困，午后读书，总不如清晨记得牢。{self}正想着将费神的事挪到早些时候。",
+      "season": "春",
+      "priority": 12
+    },
+    {
+      "id": "chat:recent:any:season-夏",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "season-夏",
+      "reply": "夏日坐久了，人便容易烦躁。{self}将手头的事分开做，倒比一气赶完更稳些。",
+      "season": "夏",
+      "priority": 12
+    },
+    {
+      "id": "chat:recent:any:season-秋",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "season-秋",
+      "reply": "到了秋日，便想将积着的事逐一收尾。真列出来才知，比原先以为的还多。",
+      "season": "秋",
+      "priority": 12
+    },
+    {
+      "id": "chat:recent:any:season-冬",
+      "category": "chat",
+      "topic": "recent",
+      "role": "any",
+      "semantic": "season-冬",
+      "reply": "冬日提笔，手总要暖一暖才稳。方才写歪了两字，待会儿还得重誊。",
+      "season": "冬",
+      "priority": 12
+    }
+  ],
+  "rules": {
+    "recentWindow": 30,
+    "repeatSimilarity": 0.78,
+    "identityBeforeVoice": true,
+    "completeTurns": true,
+    "retainOldSaves": true
+  }
+}

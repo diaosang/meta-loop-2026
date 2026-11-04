@@ -4,6 +4,7 @@
 
 ## 在线/本地试玩
 
+- **V11 御前对白与奏报修订**：[在线试玩](https://diaosang.github.io/meta-loop-2026/fengque-changge/?v=11) · [逐项更新与验证说明](对话与奏报升级_v11.md)。默认入口也已更新；旧存档沿用。
 - **V10 人物群像与自然对白试玩**：[`试玩_v10.html`](试玩_v10.html) · [在线打开](https://diaosang.github.io/meta-loop-2026/fengque-changge/%E8%AF%95%E7%8E%A9_v10.html)
 - **V9.1 自然对话试玩**：[`试玩_v9.html`](试玩_v9.html) · [在线打开](https://diaosang.github.io/meta-loop-2026/fengque-changge/%E8%AF%95%E7%8E%A9_v9.html)
 - 原版入口：[`网页Demo/index.html`](网页Demo/index.html)。页面为自包含 Demo，无网络依赖。

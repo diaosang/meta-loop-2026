@@ -13,13 +13,6 @@ function revisionLine(p,category,topic){
  if(category==='sleep')return row.reply;
  return row.reply;
 }
-const revisionReadBefore=typeof readFiction==='function'?readFiction:null;
-if(revisionReadBefore){
- readFiction=function(p,category,topic){
-  const row=revisionRow(p,category);if(!row)return revisionReadBefore(p,category,topic);
-  return {id:row.id,stage:row.stage,reply:row.reply,scene:{player:row.player,location:row.location}};
- };
-}
 // 八类互动的按钮说明也采用古风语气；调情明确写出本次至少±5暧昧度。
 const revisionTopicsBefore=topicsFor;
 topicsFor=function(category,p,r){
@@ -34,32 +27,10 @@ topicsFor=function(category,p,r){
  if(category==='sleep')for(const x of a)if(x[0]==='ask')x[2]='先问本人愿不愿意；入宫与否都可私下相约，另耗1行动。';
  return a;
 };
-const revisionTopicBefore=interactionTopic;
-interactionTopic=function(id){
- const sec=session?.section,p=session?PEOPLE.find(x=>x.id===session.id):null;
- revisionTopicBefore(id);
- if(session&&p&&sec&&REVISION_INDEX.size&& !String(id).startsWith('relation:')&&!String(id).startsWith('exclusive:')&&sec!=='sleep'){
-  const row=revisionRow(p,sec);if(row){session.response=`“${row.reply}”`;renderSession();}
- }
-};
-actions.interactionTopic=interactionTopic;
-const revisionVisitBefore=visit;
-visit=function(id){
- revisionVisitBefore(id);
- const p=session&&PEOPLE.find(x=>x.id===session.id);
- if(session&&p){const row=revisionRow(p,'chat');if(row){session.message=`${row.stage}\n${row.player}\n“${row.reply}”`;session.response='';renderSession();save();}}
-};
-actions.visit=visit;
-const revisionRecruitDialogBefore=openRecruit;
-openRecruit=function(p){
- revisionRecruitDialogBefore(p);
- const row=revisionRow(p,'persuade'),box=$('modalBody')?.querySelector('.scene-text');
- if(row&&box)box.textContent=`${row.stage}\n\n“${row.reply}”`;
-};
 // 调情是一次明确的情感落点，不再被旧的每月成长上限压成1、2点。
 const revisionApplyBefore=applyInteraction;
 applyInteraction=function(p,category,id,line,effects={},options={}){
- const mood=revisionMood(p),row=revisionRow(p,category),chosen=row?.reply||line;
+ const mood=revisionMood(p),chosen=line;
  const next={...effects};
  const loveBefore=Number(state.relations[p.id]?.love||0);
  if(category==='flirt'){

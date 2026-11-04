@@ -304,7 +304,7 @@ function government(id){ensureCourtScene();if(id==='events'){eventMenu();return;
 }
 function appointOfficer(id){const p=PEOPLE.find(x=>x.id===id);if(!p||state.govUsed.appoint===state.elapsed||!pay(1))return;state.govUsed.appoint=state.elapsed;state.government.officer=id;state.relations[id].notes.push({month:state.elapsed,text:'女帝命你负责本月政务。'});log(`命${p.name}负责本月政务。`,'任命',id);closeModal();render();result('任命已定',`${p.name}：“臣接旨，这就去办。”`);}
 function hallSvg(){return `<svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" aria-label="金柱大殿与两列官员"><defs><linearGradient id="hall" x2="0" y2="1"><stop stop-color="#291b17"/><stop offset=".6" stop-color="#765b3e"/><stop offset="1" stop-color="#312524"/></linearGradient><linearGradient id="gold"><stop stop-color="#694a23"/><stop offset=".45" stop-color="#e1bc69"/><stop offset="1" stop-color="#8d6034"/></linearGradient><pattern id="roof" width="65" height="35" patternUnits="userSpaceOnUse"><path d="M0 0H65V35H0Z M0 0L65 35M65 0L0 35" stroke="#d5ae63" fill="#392620" stroke-width="2"/></pattern></defs><rect width="1000" height="700" fill="url(#hall)"/><path d="M0 0H1000L760 190H240Z" fill="url(#roof)"/><path d="M0 0L240 190V440L0 700ZM1000 0L760 190V440L1000 700Z" fill="#57322a"/><g stroke="#b1834e" stroke-width="4" fill="#b88762">${[0,1,2,3,4].map(i=>`<path d="M${i*42} ${180-i*20}L${i*42+30} ${170-i*20}V${470-i*16}L${i*42} ${490-i*18}Z"/><path d="M${1000-i*42} ${180-i*20}L${970-i*42} ${170-i*20}V${470-i*16}L${1000-i*42} ${490-i*18}Z"/>`).join('')}</g><rect x="265" y="180" width="470" height="230" fill="#967244" stroke="#ceaa62" stroke-width="12"/><circle cx="500" cy="275" r="93" fill="#694927" stroke="#c7a15a" stroke-width="6"/><path d="M449 296Q420 221 490 212Q550 190 552 256Q515 237 508 276Q562 289 545 329Q505 356 449 296Z" fill="none" stroke="#d6b367" stroke-width="13"/><g fill="url(#gold)">${[190,270,730,810].map(x=>`<rect x="${x}" y="88" width="27" height="390"/><ellipse cx="${x+14}" cy="90" rx="28" ry="11"/>`).join('')}</g><path d="M315 407H685L800 560H200Z" fill="#aa9c83" stroke="#d5c3a5" stroke-width="4"/>${[0,1,2,3,4,5].map(i=>`<path d="M${315-i*19} ${413+i*24}H${685+i*19}" stroke="#695e50" stroke-width="7"/>`).join('')}<path d="M450 367H550V410H450Z" fill="#c7a455"/><path d="M461 319Q500 285 539 319V368H461Z" fill="#a37835" stroke="#dfc06d" stroke-width="6"/><path d="M460 510H540L620 700H380Z" fill="#9b4633" stroke="#caad6e" stroke-width="3"/>${[0,1,2,3,4].map(i=>{let y=465+i*47,x=340-i*54,s=.7+i*.15;return `<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="-30" rx="15" ry="18" fill="#b99677"/><path d="M-19-40H19V-52H-19Z" fill="#232021"/><path d="M-20-11L-32 80H32L20-11Z" fill="#812e2b" stroke="#bc6f52" stroke-width="3"/></g><g transform="translate(${1000-x} ${y}) scale(${s})"><ellipse cy="-30" rx="15" ry="18" fill="#b99677"/><path d="M-19-40H19V-52H-19Z" fill="#232021"/><path d="M-20-11L-32 80H32L20-11Z" fill="#812e2b" stroke="#bc6f52" stroke-width="3"/></g>`}).join('')}</svg>`;}
-function finalCourt(){ensureCourtScene();return `<section class="audience"><div class="hall-art">${hallSvg()}</div><header class="audience-status"><b>${date()} · ${state.day}日 清晨</b><span>内库 ${state.money}　民心 ${state.people}　军心 ${state.army}</span></header><div class="audience-label">奉天殿<span>点击衙门办理政务</span></div><aside class="audience-menu">${[['events','世界事件'],['foreign','外交'],['trade','贸易'],['family','皇室'],['heir','立储'],['ritual','祭祀'],['exam','开科考试'],['leave','退朝']].map(([id,n])=>`<button data-action="courtSide" data-id="${id}">${n}</button>`).join('')}</aside><nav class="audience-depts" aria-label="前朝衙门">${['奏','吏','户','礼','兵','刑','工','军','通'].map(k=>`<button data-action="courtDept" data-id="${k}">${k}</button>`).join('')}</nav><div class="audience-caption">${state.logs.filter(x=>['施政','任命','政务','科举'].includes(x.type)).slice(-1).map(x=>x.text).join('')||'百官在殿内等候。陛下，今日先办哪件事？'}</div></section>`;}
+function finalCourt(){ensureCourtScene();return `<section class="audience"><div class="hall-art">${hallSvg()}</div><header class="audience-status"><b>${date()} · ${state.day}日 清晨</b><span>内库 ${state.money}　民心 ${state.people}　军心 ${state.army}</span></header><div class="audience-label">奉天殿<span>点击衙门办理政务</span></div><aside class="audience-menu">${[['events','御前呈报'],['foreign','外交'],['trade','贸易'],['family','皇室'],['heir','立储'],['ritual','祭祀'],['exam','开科考试'],['leave','退朝']].map(([id,n])=>`<button data-action="courtSide" data-id="${id}">${n}</button>`).join('')}</aside><nav class="audience-depts" aria-label="前朝衙门">${['奏','吏','户','礼','兵','刑','工','军','通'].map(k=>`<button data-action="courtDept" data-id="${k}">${k}</button>`).join('')}</nav><div class="audience-caption">${state.logs.filter(x=>['施政','任命','政务','科举'].includes(x.type)).slice(-1).map(x=>x.text).join('')||'百官在殿内等候。陛下，今日先办哪件事？'}</div></section>`;}
 function courtSide(id){if(id==='leave'){state.courtDone=true;closeModal();state.tab='home';render();toast('已退朝，可自由走动。');return;}if(id==='events'){eventMenu();return;}if(id==='exam'){government('exam');return;}if(id==='ritual'){government('ceremony');return;}if(id==='family'){closeModal();state.tab='people';render();return;}if(id==='heir'){result('皇室 · 立储','当前还没有皇嗣。子女、储位与传代系统尚未开放。');return;}if(id==='foreign'||id==='trade'){openModal(id==='foreign'?'外交往来':'商贸往来','鸿胪寺官员：“陛下，请选一项。”',`<div class="opts"><button class="opt" data-action="diplomaticAction" data-id="${id}"><b>${id==='foreign'?'互赠国书':'派出商队'}</b><small>1行动、内库4。${id==='foreign'?'邦交+3。':'下月商队回报内库7。'}</small></button><button class="opt" data-action="government" data-id="events"><b>查看使者消息</b><small>查看本月的随机事件。</small></button></div>`,'邦交与贸易');}}
 function diplomaticAction(id){ensureCourtScene();if(state.govUsed[id]===state.elapsed){toast('本月已经安排过了。');return;}if(!pay(1,4))return;state.govUsed[id]=state.elapsed;if(id==='foreign')state.government.diplomacy+=3;else state.tradeDue=state.elapsed+1;log(id==='foreign'?'与邻国互赠国书，邦交+3。':'商队已出发，下月回报内库7。','施政');closeModal();render();}
 // Stable, saved daily itineraries: previous days remain available after advancing.
@@ -501,7 +501,7 @@ renderSession=function(){
  const items=section?topicsFor(section,p,r):INTERACTION_CATEGORIES;
  const banner=`<div class="talk-banner">${portrait(p,true)}<div class="interaction-person"><span class="tag">${r.rank||p.role}</span><p>${p.type}</p><small>本次还可互动 <b>${session.left}</b> 次</small></div></div>${fiveStats(p)}<div class="scene-text" aria-live="polite">${session.response||session.message.replaceAll('\n','<br>')}</div>${session.history.length?`<p class="effect">${session.history.at(-1)}</p>`:''}`;
  const opts=items.map(([id,name,desc])=>{let reason=section?topicReason(section,id,p,r):categoryReason(id,p,r);const off=!!reason||session.left<=0;return `<button class="opt interaction-option" data-action="${section?'interactionTopic':'interactionCategory'}" data-id="${id}" ${off?'disabled':''}><b>${name}</b><small>${reason||desc}</small></button>`;}).join('');
- openModal(p.name,p.desc,`${banner}${section?`<div class="section-heading"><h3>${INTERACTION_CATEGORIES.find(c=>c[0]===section)[1]}</h3><button class="text-btn" data-action="interactionBack">返回八类互动</button></div>`:''}<div class="opts ${section?'':'interaction-categories'}">${opts}</div>${session.left<=0?'<p class="mini">这次谈得够久了，留些话下回再说。</p>':''}<button class="text-btn" data-action="close">今日先到这里</button>`,'人物会面 · 1行动 / 最多3次互动');
+ openModal(p.name,p.desc,`${banner}${section?`<div class="section-heading"><h3>${INTERACTION_CATEGORIES.find(c=>c[0]===section)[1]}</h3><button class="text-btn" data-action="interactionBack">返回六类互动</button></div>`:''}<div class="opts ${section?'':'interaction-categories'}">${opts}</div>${session.left<=0?'<p class="mini">这次谈得够久了，留些话下回再说。</p>':''}<button class="text-btn" data-action="close">今日先到这里</button>`,'人物会面 · 1行动 / 最多3次互动');
 };
 function interactionCategory(id){if(!session||session.left<=0||!INTERACTION_CATEGORIES.some(c=>c[0]===id))return;const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],reason=categoryReason(id,p,r);if(reason){toast(reason);return;}session.section=id;renderSession();}
 function applyInteraction(p,category,id,line,effects={},options={}){
@@ -858,13 +858,6 @@ function revisionLine(p,category,topic){
  if(category==='sleep')return row.reply;
  return row.reply;
 }
-const revisionReadBefore=typeof readFiction==='function'?readFiction:null;
-if(revisionReadBefore){
- readFiction=function(p,category,topic){
-  const row=revisionRow(p,category);if(!row)return revisionReadBefore(p,category,topic);
-  return {id:row.id,stage:row.stage,reply:row.reply,scene:{player:row.player,location:row.location}};
- };
-}
 // 八类互动的按钮说明也采用古风语气；调情明确写出本次至少±5暧昧度。
 const revisionTopicsBefore=topicsFor;
 topicsFor=function(category,p,r){
@@ -879,32 +872,10 @@ topicsFor=function(category,p,r){
  if(category==='sleep')for(const x of a)if(x[0]==='ask')x[2]='先问本人愿不愿意；入宫与否都可私下相约，另耗1行动。';
  return a;
 };
-const revisionTopicBefore=interactionTopic;
-interactionTopic=function(id){
- const sec=session?.section,p=session?PEOPLE.find(x=>x.id===session.id):null;
- revisionTopicBefore(id);
- if(session&&p&&sec&&REVISION_INDEX.size&& !String(id).startsWith('relation:')&&!String(id).startsWith('exclusive:')&&sec!=='sleep'){
-  const row=revisionRow(p,sec);if(row){session.response=`“${row.reply}”`;renderSession();}
- }
-};
-actions.interactionTopic=interactionTopic;
-const revisionVisitBefore=visit;
-visit=function(id){
- revisionVisitBefore(id);
- const p=session&&PEOPLE.find(x=>x.id===session.id);
- if(session&&p){const row=revisionRow(p,'chat');if(row){session.message=`${row.stage}\n${row.player}\n“${row.reply}”`;session.response='';renderSession();save();}}
-};
-actions.visit=visit;
-const revisionRecruitDialogBefore=openRecruit;
-openRecruit=function(p){
- revisionRecruitDialogBefore(p);
- const row=revisionRow(p,'persuade'),box=$('modalBody')?.querySelector('.scene-text');
- if(row&&box)box.textContent=`${row.stage}\n\n“${row.reply}”`;
-};
 // 调情是一次明确的情感落点，不再被旧的每月成长上限压成1、2点。
 const revisionApplyBefore=applyInteraction;
 applyInteraction=function(p,category,id,line,effects={},options={}){
- const mood=revisionMood(p),row=revisionRow(p,category),chosen=row?.reply||line;
+ const mood=revisionMood(p),chosen=line;
  const next={...effects};
  const loveBefore=Number(state.relations[p.id]?.love||0);
  if(category==='flirt'){
@@ -1077,6 +1048,74 @@ const strifeStyle=document.createElement('style');strifeStyle.textContent=`.stri
 document.head.appendChild(strifeStyle);
 ensureStrife();
 
+// V7 · 朝臣野心与忠诚：让朝臣的个人立场参与事件选择，并修正忠诚属性的写入位置。
+const ensureStrifeV7Before=ensureStrife;
+ensureStrife=function(){
+ const s=ensureStrifeV7Before();
+ const base={
+  温柔体贴:42,清冷克制:48,明朗直率:50,骄矜自尊:58,
+  敏感多思:53,圆融世故:61,严正守礼:34,野心进取:76,
+  疏朗洒脱:45,务实重利:63,寡言重诺:31,戒备善谋:69
+ };
+ for(const p of strifeOfficial()){
+  const r=state.relations[p.id];
+  if(!Number.isFinite(Number(r.loyalty)))r.loyalty=50;
+  if(!Number.isFinite(Number(r.ambition))){
+   const skill=Number(p.skills&&p.skills.admin||r.politics||40);
+   r.ambition=strifeClamp((base[p.type]||50)+Math.round((skill-45)*0.18));
+  }
+ }
+ return s;
+};
+const strifeActorV7Before=strifeActor;
+strifeActor=function(kind){
+ if(kind==='domestic'){
+  const candidates=strifeOfficial().filter(p=>{
+   const r=state.relations[p.id];
+   return Number(r.ambition||0)>=Number(r.loyalty||0)+12;
+  }).sort((a,b)=>{
+   const ra=state.relations[a.id],rb=state.relations[b.id];
+   return (Number(rb.ambition||0)-Number(rb.loyalty||0))-(Number(ra.ambition||0)-Number(ra.loyalty||0));
+  });
+  if(candidates.length){
+   const idx=strifeHash(String(state.elapsed)+':restive:'+candidates.map(p=>p.id).join('|'))%Math.min(3,candidates.length);
+   return candidates[idx];
+  }
+ }
+ return strifeActorV7Before(kind);
+};
+strifeApplyMood=function(id,patch,text,kind){
+ const r=state.relations[id];
+ if(!r)return;
+ const mindPatch={};
+ for(const [key,value] of Object.entries(patch||{})){
+  if(key==='loyalty'||key==='ambition')r[key]=strifeClamp(Number(r[key]||0)+Number(value||0));
+  else mindPatch[key]=value;
+ }
+ if(Object.keys(mindPatch).length&&typeof shiftMind==='function')shiftMind(id,mindPatch);
+ if(text&&typeof rememberMind==='function')rememberMind(id,text,kind||'国势',true);
+ // 当众敲打或长期留中会增加个人不满；听取解释与妥善安抚会降低对立。
+ if(kind==='敲打')r.ambition=strifeClamp(Number(r.ambition||0)+3);
+ if(kind==='留中')r.ambition=strifeClamp(Number(r.ambition||0)+2);
+ if(kind==='安抚')r.ambition=strifeClamp(Number(r.ambition||0)-2);
+ if(kind==='质询')r.ambition=strifeClamp(Number(r.ambition||0)-1);
+};
+const strifeSummaryV7Before=strifeSummary;
+strifeSummary=function(){
+ const base=strifeSummaryV7Before();
+ const risk=strifeOfficial().map(p=>{
+  const r=state.relations[p.id];
+  return {p:p,loyalty:Number(r.loyalty||0),ambition:Number(r.ambition||0),gap:Number(r.ambition||0)-Number(r.loyalty||0)};
+ }).sort((a,b)=>b.gap-a.gap).slice(0,3);
+ return base+'<div class="strife-risk"><b>朝臣心思 · 野心与忠诚</b>'+
+  risk.map(x=>'<span>'+x.p.name+'　忠诚 '+x.loyalty+' · 野心 '+x.ambition+'　'+(x.gap>=20?'已有异心':x.gap>=8?'有所求':'立场尚稳')+'</span>').join('')+
+  '<small>野心高于忠诚者，更可能卷入朝堂争执；这只是风险信号，不等于已经谋反。</small></div>';
+};
+ensureStrife();
+const strifeRiskStyle=document.createElement('style');
+strifeRiskStyle.textContent='.strife-risk{margin-top:12px;padding:11px 12px;border:1px solid #e6d7c9;border-radius:10px;background:#fffaf4}.strife-risk>b,.strife-risk>span,.strife-risk>small{display:block}.strife-risk>b{margin-bottom:6px;color:#865866;font-size:12px}.strife-risk>span{padding:4px 0;font-size:11px;color:#79656e}.strife-risk>small{margin-top:6px;color:#9a858b;font-size:10px;line-height:1.6}';
+document.head.appendChild(strifeRiskStyle);
+
 'use strict';
 // 活人感与自主意识层：最后加载，替换固定台词选择，并把 NPC 的日常行动变成可见事件。
 const AGENCY_VOICES={
@@ -1138,38 +1177,7 @@ function agencyPick(p,category,topic){
  a.used.push(base);a.used=a.used.slice(-30);const row={id:`A${agencyHash(key)}`,personality:p.type,mood,category,topic,stage:`${p.name}先看了看门外，才把声音放低。`,player:agencyPlayer(category,topic),reply,location:p.location||'quarters',key};state.agency.currentRow={key,row};return row;
 }
 function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',home:'想同我说说你的故乡么？',interest:'若有半日闲，你最想做什么？',listen:'别急，我听你慢慢说。',comfort:'你看着有些累，先陪我坐一会儿。',gift:'这件东西我想着你，便留给你。',promise:'下月的日子，我们先约好。',support:'这件事，我想听你愿不愿意替我担一程。',work:'我有一桩差事，想先听听你的主意。',reconcile:'你与他之间的结，我想知道能不能松一松。',opinion:'你如何看待如今的自己？',worry:'若有一件事压在心里，你愿意告诉我么？',remind:'这件事我想提醒你一句。',stern:'今日这件事，你得给我一个说法。',public:'当着众人的面，我要把规矩说清。',chess:'陪我下一局，输赢都算作今日的闲话。',walk:'陪我走一段，不谈折子。',spar:'教我一招，别只说我学不会。',compliment:'我今日想认真夸你一句。',miss:'你有没有在某个时候想起过我？',confess:'有句话我不想再绕了。',ask:'今夜愿不愿意留下？'};return m[topic]||m[category]||'我想听你亲口说。';}
- // The earlier dialogue layers contain the authored scene, player prompt and
- // mood-specific reply. The old agency layer used to replace all of that with
- // “opening + quote + mood + hook”, which made every interaction sound assembled.
- // Keep agency for daily behaviour, but let the authored scene answer the player.
- const agencyRevisionBefore=revisionRow;
- const agencyReadBefore=readFiction;
- function agencyRichRow(p,category,topic){
-  try{
-   const cat=FICTION_DATA.categoryKeys.indexOf(category),pi=MIND_VOICE[p.type]??0,mi=FICTION_DATA.states.findIndex(s=>s.name===currentMind(p)),t=topic==='stay'?'ask':topic;
-   const candidates=FICTION_INDEX.get(`${cat}|${pi}|${mi}|${t}`)||[];if(!candidates.length)return null;
-   const m=state.relations[p.id].mind;m.used=m.used||[];const available=candidates.filter(x=>!m.used.includes(x[0])),pool=available.length?available:candidates;
-   const ix=agencyHash(`${p.id}|${category}|${t}|${todayKey()}|${m.used.length}`)%pool.length,line=pool[ix];m.used.push(line[0]);m.used=m.used.slice(-80);
-   return {id:line[0],stage:line[4],reply:line[5],scene:FICTION_DATA.scenes[line[1]],player:FICTION_DATA.scenes[line[1]]?.player,location:FICTION_DATA.scenes[line[1]]?.location};
-  }catch(e){return null;}
- }
- function agencyAuthoredRow(p,category,topic){
-  const source=typeof revisionReadBefore==='function'?revisionReadBefore:agencyReadBefore;
-  try{const row=agencyRichRow(p,category,topic)||(source?source(p,category,topic):null);if(row&&row.scene){row.player=row.player||row.scene.player;row.location=row.location||row.scene.location;}return row;}catch(e){return null;}
- }
- revisionRow=function(p,category){
-  const topic=agencyTopic(state.agency?.currentTopic||'recent');
-  return agencyAuthoredRow(p,category,topic)||agencyRevisionBefore(p,category);
- };
- readFiction=function(p,category,topic){
-  return agencyAuthoredRow(p,category,agencyTopic(topic||state.agency?.currentTopic||'recent'))||agencyReadBefore(p,category,topic);
- };
- const agencyInteractionBefore=interactionTopic;
- interactionTopic=function(id){agencyEnsure();state.agency.currentTopic=id;state.agency.currentRow=null;const out=agencyInteractionBefore(id);state.agency.currentTopic=null;state.agency.currentRow=null;return out;};
- actions.interactionTopic=interactionTopic;
- const agencyVisitBefore=visit;
- visit=function(id){agencyEnsure();state.agency.currentTopic='recent';state.agency.currentRow=null;agencyVisitBefore(id);state.agency.currentTopic=null;state.agency.currentRow=null;};
- actions.visit=visit;
+ // 人物对白由 demo-court-voice.js 统一处理；此文件只负责人物日常。
  const AGENCY_DAILY={
   '温柔体贴':['把手边的茶换成温的，又替熟人回了一封家信。','在花房里照看新芽，听见宫门响了两回，仍没有催人来。'],
   '清冷克制':['把三份折子按轻重重新排过，最后一笔亲自落款。','在藏书阁查了半日旧档，连午膳也只叫人送到门口。'],
@@ -1202,10 +1210,6 @@ function agencyPlayer(category,topic){const m={recent:'近来在忙什么？',ho
  function agencyOpen(id){agencyEnsure();const mail=state.agency.inbox.find(x=>x.id===id&&!x.done),scene=state.agency.scenes.find(x=>x.id===id&&!x.done);if(mail){const p=PEOPLE.find(x=>x.id===mail.source);openModal(mail.title,`${p?.name||'有人'} · ${agencyMood(p||PEOPLE[0])}`,`<div class="scene-text">${mail.text}<br><br>字迹停在最后一句，像是等您先回话。</div><div class="opts"><button class="opt" data-action="agencyChoose" data-id="${id}|answer"><b>回信，叫他把话说完</b><small>安心上升；这件事会继续发展。</small></button><button class="opt" data-action="agencyChoose" data-id="${id}|delay"><b>先收下，等忙完再说</b><small>不耗行动；对方会记住这次等待。</small></button><button class="opt" data-action="agencyChoose" data-id="${id}|visit"><b>现在亲自去见</b><small>消耗1行动；当面听他把话说完。</small></button></div>`,'人物来信');return;}if(scene){openModal(scene.title,'谢无咎：“两个人的话都只说了一半。”',`<div class="scene-text">${scene.text}</div><div class="opts"><button class="opt" data-action="agencyChoose" data-id="${id}|listen"><b>站在廊下，先听原话</b><small>不急着判谁对谁错。</small></button><button class="opt" data-action="agencyChoose" data-id="${id}|call"><b>把两人都叫来问</b><small>当面说清，可能有人记恨。</small></button><button class="opt" data-action="agencyChoose" data-id="${id}|leave"><b>暂不插手</b><small>让关系自行发展。</small></button></div>`,'人物往来');}}
  function agencyChoose(raw){const [id,choice]=String(raw).split('|'),a=state.agency,mail=a.inbox.find(x=>x.id===id),scene=a.scenes.find(x=>x.id===id);if(mail){const p=PEOPLE.find(x=>x.id===mail.source),r=state.relations[mail.source];if(choice==='visit'){if(!pay(1))return;mail.done=true;shiftMind(mail.source,{security:6,expectation:4,disappointment:-4});rememberMind(mail.source,'女帝没有让递来的话停在半路，亲自来听我说。','回应',true);closeModal();render();result('当面听他说完',`${p.name}把信收回袖中，先问：“您今日肯来，是因为看见了这封信，还是因为本来就想来？”`,'行动−1；这段话会继续留在他的记事里。');return;}mail.done=true;if(choice==='answer'){shiftMind(mail.source,{security:4,expectation:3,disappointment:-2});rememberMind(mail.source,'女帝回了信，至少没有让一句话落空。','回信',true);log(`你回了${p.name}递来的话，请他把未完的事继续说。`,'人物来信',mail.source);}else{shiftMind(mail.source,{expectation:-4,disappointment:3});rememberMind(mail.source,'递去的话暂时没有等到回音。','等待',true);log(`${p.name}递来的话暂缓回应。`,'人物来信',mail.source);}closeModal();render();result('回音已留下',choice==='answer'?`${p.name}看见回信后，把原本揉皱的纸重新铺平。`:`这封信先收进匣中。${p.name}没有催，却把今日的等待记下了。`,'人物关系会在后续日子里变化。');return;}if(scene){scene.done=true;const p=PEOPLE.find(x=>x.id===scene.source),t=PEOPLE.find(x=>x.id===scene.target);if(choice==='listen'){state.relations[scene.source].mind&&shiftMind(scene.source,{security:2,anger:-2});log(`你在廊下听见${p.name}与${t.name}的原话，没有急着偏袒任何一方。`,'人物往来',scene.source);}else if(choice==='call'){state.relations[scene.source].mind&&shiftMind(scene.source,{anger:4,disappointment:2});state.relations[scene.target].mind&&shiftMind(scene.target,{anger:4,disappointment:2});log(`你将${p.name}与${t.name}都叫来问话，关系暂时止住，心里却各自留下了账。`,'人物往来',scene.source);}else{state.relations[scene.source].mind&&shiftMind(scene.source,{expectation:2});log(`你没有插手${p.name}与${t.name}的争执，宫里暂记为未决。`,'人物往来',scene.source);}closeModal();render();result('这一段往来有了回声',`${p.name}与${t.name}各自回到原处，谁也没有把最后一句说出口。`,'关系没有归零，往后的选择仍会改变它。');}}
  actions.agencyPanel=agencyPanel;actions.agencyOpen=agencyOpen;actions.agencyChoose=agencyChoose;
- const agencyAuditionBefore=auditionInterview;
- function agencyAuditionLine(p,i){const mood=agencyMood(p),type=p.type||'温柔体贴',special=p.specialty||(p.skills?.literature>60?'读书与写字':p.skills?.military>60?'骑射与军略':'琴棋与家学');const lead={温柔体贴:['家里有人照应，我是自己想来的，想看看宫里的日子。','我会照料花木，也会做几样家常菜，闲时不怕没有事做。','我知道宫里不是只讲情分。若陛下留我，我愿意把日子过好；若不留，也请让我体面回家。'],清冷克制:['这是我自己选的路，家中并未替我应下。','我习的是'+special+'，不算惊世骇俗，却足够让我独自立身。','我愿意留下，但有些界限要先说清，彼此都不为难。'],明朗直率:['我自己要来的，家里劝过，我没听。','我会'+special+'，也会骑马走远路，您若闷了可以叫我。','我愿意，只是陛下忙也要留句话，别叫我一个人猜。'],骄矜自尊:['我想见陛下，也想让自己的本事有个去处。','我不靠一声赏便留下。琴棋书画我都学过，最拿手的是'+special+'。','我可以入宫，但请不要把我当成席间一件摆设。'],敏感多思:['家里说这是好机会，我也想知道自己到底愿不愿意。','我会'+special+'，只是人多时容易紧张，若出了错请别立刻定我。','我愿意留下，但希望陛下有事直说，不要叫我在沉默里猜。'],圆融世故:['家里让我来，我也想替自己看看路。','我会'+special+'，若陛下愿意听，我还能说说家中与京城的人情。','我可以留下，不过宫里的规矩和各人的脾气，最好先说清。'],严正守礼:['奉召而来，家中已知晓。','臣所长是'+special+'，不敢夸口，只愿当面试过。','若陛下允准，臣愿守宫规；若不允，也请依礼送我出宫。'],野心进取:['我来应选，是想把本事用到更大的地方。','我最擅长'+special+'，若只叫我候在宫里，未免浪费。','我愿意留下，但希望陛下给我一件能亲手做成的事。'],疏朗洒脱:['我自己来的，家里只说别在宫里闯祸，我答应得不算认真。','我会'+special+'，也喜欢出门看山水，整日困在一处会闷。','我愿意，只要宫里容我保留一点自己的日子。'],务实重利:['家中希望我寻个安稳去处，我也想替家里省一层忧。','我会'+special+'，若将来能管些实际事务，便更好。','我愿意留下，但家中有事时，请准我寄信，不要只说以后再议。'],寡言重诺:['家里知情。我想来，便来了。','我会'+special+'，不必先夸，试过便知道。','我愿意。答应的事，我会记着，也希望陛下如此。'],戒备善谋:['家中递了荐书，我自己也想看看宫门里究竟是什么样。','我会'+special+'，旁的本事也学过一些，只是不急着全说。','我可以留下，但愿意与否要由我自己决定，不能由家书代答。']};let arr=lead[type]||lead['温柔体贴'];let line=arr[i]||arr[0];const moodLine=(AGENCY_MOODS[mood]||AGENCY_MOODS['平静'])[agencyHash(`${p.id}:aud:${i}:${state.elapsed}`)%2];return `${line}${mood==='戒备'||mood==='失望'?' '+moodLine:''}`;}
- function agencyAuditionAsk(raw){const[id,idx]=String(raw).split('|'),i=Number(idx),au=state.audition,p=PEOPLE.find(x=>x.id===id);if(au.status!=='offered'||!au.pool.includes(id)||![0,1,2].includes(i))return;au.interviews[id]=au.interviews[id]||[];if(!au.interviews[id].includes(i))au.interviews[id].push(i);auditionInterview(id,agencyAuditionLine(p,i));}
- auditionInterview=function(id,answer=''){const p=PEOPLE.find(x=>x.id===id);agencyAuditionBefore(id,answer||`${p?.name||'他'}行礼后没有急着低头：“陛下想先问家世，还是先看我所习的本事？”`);};actions.auditionAsk=agencyAuditionAsk;actions.auditionInterview=id=>auditionInterview(id);
  const agencyRenderBefore=render;render=function(){agencyEnsure();agencyRenderBefore();if(state.tab==='home'&&!document.querySelector('.agency-home')){const anchor=document.querySelector('.strife-home')||document.querySelector('.stats')||document.querySelector('#screen .court-entry');if(anchor)anchor.insertAdjacentHTML('afterend',`<div class="agency-home"><div class="card"><div class="section-heading"><h3>今日人物动向</h3><span class="tag">${state.agency.inbox.filter(x=>!x.done).length}封新话</span></div><p>${state.agency.moments.filter(x=>x.key===todayKey()).slice(-3).map(x=>x.text).join(' ')||'大家正各自忙着。去人物页看看，今日的行迹会慢慢显出来。'}</p><button class="btn ghost wide" data-action="agencyPanel">查看今日动向与来信</button></div></div>`);}};save();
  const agencyStyle=document.createElement('style');agencyStyle.textContent=`.agency-home{margin-top:15px}.agency-home .card{background:#fffaf2;border-color:#decfc0}.agency-home p{font-size:13px;line-height:1.9;color:#806d73}.agency-home .tag{font-size:10px}.agency-home+.card{margin-top:15px}`;document.head.appendChild(agencyStyle);
  // V7 · 自主行为单一事实源：展示人物心境系统已经执行的行动，不再另造第二套日常。
@@ -1339,474 +1343,563 @@ actions.agencyPanel=agencyPanel;agencyEnsure();for(const p of PEOPLE)agencyNeedE
 const agencyNextMonthBefore=actions.nextMonth;
 actions.nextMonth=function(){if(!state.courtDone){toast('本月常朝尚未退朝，须先完成奏折批示与传旨。');state.tab='court';render();return;}agencyNextMonthBefore();};
 
-'use strict';
-// 凤阙长歌 v5：逐 NPC、逐性格、逐心境的长线对话组合引擎。
-// 不把固定台词随机洗牌：每次从人物性格、当前心境、关系记忆、生活目标与局势中组装新的回应。
-const EXPANSION_CAPACITY = 20480; // 8开场 × 8场景 × 8性格表达 × 8心境语气 × 5收尾
-const EXPANSION_STRIDE = 7919;    // 与20480互质，保证一个人物/互动类别内遍历完整组合且不重复
-const EXPANSION_OPENERS = {
- '温柔体贴':['他先把手边的事放下，见你进来才露出笑意。','他替你留着一盏温茶，像是早料到你会来。','他把窗边的位置让出来，语气仍轻：“陛下今日得空了？”','他抬眼看你，先问了一句路上冷不冷。','他没有急着行礼，先将案上的杂物收好，免得挡着你坐。','他把准备好的小食往你手边推了推，自己却没先动。','他原本在忙，听见你的声音便停下来，像终于等到一段闲时。','他看见你眉间的倦色，话还没出口，先替你把椅子拉开。'],
- '清冷克制':['他合上手里的文书，动作不急不缓，目光却在你身上停了片刻。','他将案上纸页理齐，才抬眼问你今日为何事而来。','他仍是平日那副沉静模样，只把靠近窗边的座位留给你。','他把未说完的话暂且收住，先向你行礼。','他听见脚步便知道是你，却等你走近才开口。','他用指节轻轻压住纸角，像是在斟酌哪句话该先说。','他替你把茶盏摆正，随后才退回原处。','他抬眼时神情依旧克制，桌边那份新写的笺纸却没有收起来。'],
- '明朗直率':['他远远便看见你，话还没说完，人已经迎到廊下。','他刚练完一套动作，额角还带着汗，见你便笑起来。','他把手里的东西往旁边一放，像是终于等到能说话的人。','他先喊了你一声，随即想起礼数，匆匆补了一礼。','他正和旁人说笑，见你进来便把后半句话留到了以后。','他有些藏不住高兴，连脚步都比平日快了几分。','他把新得的小玩意拿出来，似乎早就想找你分享。','他本想装作镇定，嘴角却先一步泄露了心情。'],
- '骄矜自尊':['他没有立刻起身，只把手边的琴谱或书卷合上，等你先开口。','他抬眼看你，神情里有几分矜持，也有一点没藏好的期待。','他把新作收在一旁，像是不愿显得自己特意等候。','他将衣袖理好，才慢慢向你行礼。','他听见你来，先把正在做的事做到收尾，不肯显得匆忙。','他把座位留在身侧，却偏偏不提是为你准备的。','他看似漫不经心地拨弄着手边物件，目光却一直留意门口。','他先问你今日是否还有旁事，语气听着平淡，指尖却停住了。'],
- '敏感多思':['他像是有话想说，见你进来又先确认了一遍你的神色。','他把写了一半的信笺压在书下，轻声问你今日忙不忙。','他望向门外片刻，像是把某个念头重新咽了回去。','他替你倒茶时动作很慢，似乎想多留一点说话的时间。','他先问你有没有用过饭，之后才提自己的事。','他听见你的声音才从思绪里回神，眼底还留着未散的忧虑。','他把准备好的话在心里过了一遍，最后只说了句“你来了”。','他看着你坐定，才像终于有了开口的勇气。'],
- '圆融世故':['他先把旁人的话题妥帖收住，再笑着请你入座。','他替你留了不显眼却最舒服的位置，连茶水温度都恰好。','他将桌上的账册合起，笑道今日先不拿数字烦你。','他见你进来，先问外头可有人需要他回话。','他与人说话向来留三分，此刻却把旁人都请了出去。','他把一封家信压在砚台旁，转头便换上轻松神色。','他斟茶时顺口提起一件市井趣闻，像是特意挑来让你放松。','他先看你神色，再决定今日是讲笑话还是讲正事。'],
- '严正守礼':['他依礼起身相迎，确认你坐稳后才开始说话。','他将手边典籍放回原处，衣冠一丝不乱。','他先向你行礼，随后才问今日是否有政务要议。','他把窗扇合上一半，免得风直吹到你身上。','他看见你来，先把案上不合礼制的杂物收妥。','他将茶盏放在你惯用的一侧，才退回席间。','他没有多作寒暄，只问你今日是否按时用膳。','他抬眼时仍端正持重，声音却比在朝堂上缓和。'],
- '野心进取':['他刚写完一份章程，见你进来便把最要紧的一页递上。','他将练习用的器具收好，像是随时准备接下新的差事。','他本在与人讨论事务，听见你来便把争论留到之后。','他抬眼时神采很足，显然今日又有了新的打算。','他把一份尚未呈上的计划摊开，想听听你的意见。','他将袖口束紧，像是刚从忙碌中抽身。','他见你来，先汇报一件办成的小事，再问你是否还有吩咐。','他把手里的笔停住，神情里写着“今日也想做出些成绩”。'],
- '疏朗洒脱':['他推开半扇窗，让庭院里的风先替你解一解闷。','他刚从外头回来，衣角还沾着一点路上的尘土。','他把手里的东西往桌上一放，笑着让你先坐。','他正望着院中树影出神，听见你来才回过头。','他把一包路上买来的小食放在桌上，像是随手带回。','他今日没有急着谈正事，只问你想不想出去走走。','他把椅子往外挪了挪，给你留出看庭院的角度。','他笑着招呼你，像是见到旧友而非等候一道旨意。'],
- '务实重利':['他先把账册合上，确认手边没有急需处理的事。','他将算盘推到一旁，顺手把茶水和点心算作今日招待。','他看见你来，先问这趟是否为公事，免得耽误正务。','他把手里那张清单折好，才抬头与你说话。','他刚核完一笔开支，眉间的认真还没完全散去。','他把一份算到一半的账留在原处，准备稍后接着算。','他先看了眼时辰，随后给你倒了茶。','他把桌边空出来，像是今日愿意把时间算给你。'],
- '寡言重诺':['他听见你来便起身，没有多话，只把位置留好。','他将要交付的东西放到案边，等你亲自查看。','他把门边的风灯拨亮，随后才回到你面前。','他点头向你问安，目光落在你身上，确认你无恙。','他把手里的活计做完最后一步，才来与你说话。','他将一件修好的小物放在桌上，没有解释为何特意收着。','他站得离你不远不近，像在等你先说今日想谈什么。','他把外袍挂好，安静地坐到你对面。'],
- '戒备善谋':['他先留意门外动静，确认无人靠近才转向你。','他将一封密信收进袖中，语气仍像平常闲谈。','他没有立刻回答，只观察你今日的神色。','他把门掩好，随后才将真正想说的话放到桌面。','他指尖轻敲桌沿，像在衡量这场谈话能走到哪一步。','他先问你是否独自前来，再请你坐下。','他把几份纸页交叠收齐，留下一张与你有关的记事。','他笑意不深，却把你惯用的茶盏放到了近处。']
-};
-const EXPANSION_BEATS = {
- '温柔体贴':['我不是要您立刻答应，只盼您知道，我说这些是认真的。','您若觉得累，便不必急着回应，我愿意多等一会儿。','我记得您随口提过的小事，不是为了讨赏，只是觉得该记着。','有些话说出来便轻松些，您不必替我把每个字都安置妥当。','我希望您在这里能松一口气，不必时时想着下一道旨意。','若我能替您分担一点，今日这趟便没有白等。','您不必总顾及我，我也想知道您真正想要什么。','我愿意把话说得再明白些，免得您又独自猜。'],
- '清冷克制':['话说到这里便够了，余下的事我会自己理清。','我并非没有情绪，只是不习惯把每一分都摆在明面上。','您若要一个确切答复，我可以给；若只想听顺耳的话，我不会说。','我记得这件事，也记得您当时没有敷衍我。','分寸并非疏远，只是我不愿让一时心意误了长久相处。','我可以退一步，但不想让彼此都装作什么也没发生。','有些旧事我仍记得，只是不急着拿出来作证。','我愿意听您说完，再决定该怎样回应。'],
- '明朗直率':['我话直，若说得不好听，您也别只记前半句。','我不擅长拐弯，想见您便来了，高兴也就笑出来。','这件事我有自己的主意，您不同意也请听我讲完。','今日我没有别的打算，就是想和您多待一会儿。','我答应的事就会去做，办不到也会提前告诉您。','您不必猜我是不是生气，我若不高兴会直接讲。','我想赢，也不怕输；只盼您别拿客套话哄我。','既然见面了，就别只谈一半，咱们把话说清楚。'],
- '骄矜自尊':['我不求旁人点头，只希望您别把我的认真当作理所当然。','我有自己的喜恶，也有不愿退让的地方。','您若欣赏我，请欣赏我本来的样子，不必替我改得圆滑。','我可以接受拒绝，却不愿接受敷衍。','我并非非要争个高下，只是不想被当作可有可无。','若这句话只是一时兴起，我宁可您不要说。','我愿意把新作给您看，是因为您的评价对我确实重要。','我可以先低头，但不能每回都由我先低头。'],
- '敏感多思':['我方才想了许久，还是觉得亲口说给您听更妥当。','我知道自己想得多，可有些细节确实会让我记很久。','您若能给我一个准信，我便不必反复猜测。','我不是想让您为难，只是不愿把心事一直藏着。','我会把今日的话记下来，等哪天想明白了再告诉您。','我怕自己会错意，所以想再问一遍。','我愿意相信您，只是需要一点时间把那份不安放下。','您肯听我说完，我就已经安心了许多。'],
- '圆融世故':['各方情面可以慢慢周全，眼前这句我不想再绕弯子。','场面话我会说，真心话却不想拿来应付您。','我见过许多承诺，真正值钱的是后来有没有做到。','您给我留余地，我也会替您把旁人的话挡一挡。','我不急着站队，但也不会把自己的立场卖给谁。','这笔人情我记得，往后总有机会还。','有些事表面看着圆满，里头的账却得另算。','您若问我真话，我便不拿好听话搪塞。'],
- '严正守礼':['礼数可以周全，心意却不能只照着章程写。','有错我会认，无过也请容我把理由说清楚。','规矩的本意是让人安稳，不是让人无处说话。','我愿意守约，也希望约定不是单方面的。','在其位便担其责，这一点我不会推给旁人。','您可以不同意我的做法，但请别疑我的本意。','该说的话我会直言，哪怕此刻听来不够顺耳。','我不怕担责，只怕事情最后变成互相推诿。'],
- '野心进取':['我想把事情做成，也想让您看见我不是只会说。','给我一个能担事的位置，我会拿结果回来。','我不满足于被夸一句聪明，更想知道自己能走多远。','眼前这一步若走稳，后面才有资格谈更大的事。','我愿意承担代价，但希望目标不是空话。','若您信我，就让我亲手把这份章程落到实处。','我知道自己有野心，也知道野心要靠本事支撑。','我可以等机会，但不会把一生都用来等。'],
- '疏朗洒脱':['话说出来便轻松了，您不必急着给我一个答案。','我喜欢有趣的日子，也喜欢能坦白说话的人。','若今日不成，改日再试便是，不必把一回得失看得太重。','路上有好景，我总想找个人讲一讲。','我不愿被一纸安排困住，也不想困住旁人。','您若想走走，我知道一条少有人去的小路。','有些事认真便好，不必时时摆出沉重模样。','我会记得今日的好，也不拿它逼您许诺。'],
- '务实重利':['这话没有多余意思，您听完再决定值不值得。','我愿意付出，但总得知道这份付出落在何处。','账目可以算清，人情也可以记在心里。','我不怕谈条件，怕的是条件临时变了却无人认账。','日子要过得长久，不能只靠一时高兴。','若有约定，最好把时间和做法都说具体。','我希望自己有用，也希望自己的辛苦被看见。','这件事若能做成，咱们两边都不算吃亏。'],
- '寡言重诺':['不必当场应我，答应过的事我会记着。','我说得少，不代表我没有放在心上。','能做的我会去做，不能做的也不会拿话哄您。','今日这一步我先办妥，旁的话以后再讲。','您若需要我，留一句准话便好。','我不擅长说漂亮话，但不会让您白等。','这份心意我收下了，往后会给您一个交代。','我记得谁在难处时帮过我，也记得谁没有。'],
- '戒备善谋':['我今日肯说到这里，是因为还愿意信您几分。','有些话不是不能讲，只是要先知道会落到谁耳中。','我可以告诉您我知道的部分，未知的不会拿来填空。','您若想让我放下戒心，最好先把事情说清楚。','我习惯留一条退路，但不代表我从未认真靠近。','这件事我会继续查，只是不想让无辜的人跟着受牵连。','您问得太急，我反而不知道该从哪一句答起。','我不求您全信我，只盼您先听完证据。']
-};
-const EXPANSION_ENDINGS = {
- '温柔体贴':['他说完便把茶盏推近了些，没有催你表态。','他收住话头，仍留在原处陪你坐着。','他说完看了看你，像是确认这番话没有让你更累。','他没有再追问，只把那份小心意放在桌边。','这一回他没有把话说尽，留给你一个从容回应的空当。'],
- '清冷克制':['他把余下的话收回，仍替你留着那盏温茶。','话音落下，他重新理好纸页，没有催你回答。','他向你点头，神色恢复平静，眼底却没完全放下。','他不再多说，只等你给出明确的意思。','他将窗扇轻轻合上，谈话便停在这里。'],
- '明朗直率':['他说完便笑了，像是终于把憋了一阵的话讲出来。','他挠挠头，仍等着你给个痛快答复。','他没再装作若无其事，神情坦荡得很。','他把话说完，转头又提起方才没讲完的趣事。','他看着你，眼神亮得像校场上刚升起的日头。'],
- '骄矜自尊':['他将目光移开，仍不肯显出太多期待。','他说完便收起那页曲谱，等你自己决定要不要再问。','他端起茶盏，仿佛这只是寻常一谈。','他没有催促，只把自己的立场清楚留在桌面上。','他轻轻抬了抬下巴，仍保留着自己的骄傲。'],
- '敏感多思':['他说完便停下来，像是在等你有没有听懂话里的真正意思。','他低头抚平纸角，似乎终于不必把这句话憋在心里。','他没有追问，只希望你不要把这段话当作随口一说。','他看着你，神色仍有些不安，却比方才坦然。','他把那封信收好，像将这一刻也认真记了下来。'],
- '圆融世故':['他把话题轻轻收住，仍给彼此留了转圜的余地。','他笑着替你续茶，像是刚才那番真话并未破坏气氛。','他没有急着讨答案，先把旁的琐事安排妥当。','他说完便把账册收起，今日这一页暂且翻过。','他看着你，等你愿意把场面话换成真心话。'],
- '严正守礼':['他行了一礼，谈话到此仍留有清楚的分寸。','他把书卷放回原处，等候你作最后决定。','他没有再作辩解，只把该承担的责任记在心里。','他说完便静候，不拿沉默逼你答复。','他将衣袖理正，神情仍端肃，语气却缓和不少。'],
- '野心进取':['他把写好的章程推到你面前，等你看下一步。','他没有停在口头承诺上，转身便准备去做。','他看向你，像已在心里列好了下一份计划。','他说完仍精神十足，仿佛这番谈话给了他新的劲头。','他收起纸页，准备拿实际结果来回答。'],
- '疏朗洒脱':['他把窗推开些，庭院里的风便把话尾带远了。','他说完便笑，像是终于把一件小事放下。','他不再拘着话题，顺手问你要不要出去走走。','他把点心分了一半给你，气氛又轻快起来。','他站起身活动了下肩，像要把这半日过得自在些。'],
- '务实重利':['他把刚才的话记进心里，随后将账目重新摊开。','他没有急着追加条件，只等你把态度说清楚。','他将茶盏放回原处，像是把这次相处也认真算了一笔。','他说完便问起时辰，准备把该办的事接着办完。','他留下一份清单，告诉你哪些事可以马上落地。'],
- '寡言重诺':['他点点头，没有多说，转身便去做该做的事。','他说完把小物收好，像是已经有了答案。','他安静地陪你坐了一会儿，没有催你离开。','他将门边的灯拨亮，留下一句“路上慢些”。','他起身相送，仍旧话少，却没有半点怠慢。'],
- '戒备善谋':['他把门重新掩好，像是把这番话也收进了暗处。','他说完仍留意着外头动静，没有急着交出全部底牌。','他将密报收回袖中，等你决定下一步如何查证。','他看着你，直到确认你没有追问才略微放松。','他没有多作保证，只说会把能查清的部分查清。']
-};
-const EXPANSION_MOOD_LINES = {
- '平静':['他此刻神色平和，愿意把一件小事从头讲起。','语气不急不缓，像是终于有了可以安静说话的时辰。','他没有刻意讨好，也没有藏起自己的真实想法。','这份平静并非无话可说，只是他愿意按自己的节奏来。','他今日不急着争辩，先把事情讲清楚。','他把情绪放在一旁，认真回应你的问题。','比起求一个立刻的结果，他更愿意把话说完整。','他愿意留在这里，把这段时间过得寻常些。'],
- '期待':['他话里多了一点盼头，像是早已想过你会怎样回答。','他不时看向你，似乎在等一个明确的约定。','他把今日的闲时看得很重，连语气都比平时轻快。','他愿意谈起下回见面的打算，却不敢先替你作主。','他把一件小事说得格外仔细，像盼你也记住。','他没有掩饰期待，只把它放在一句寻常问候里。','他今日像是有好消息要分享，眼神比平日亮些。','他希望这次相处不要太快结束。'],
- '热恋':['他看你的眼神比平日柔软，连寻常话也像多了一层意思。','他今日愿意主动说起想念，不再把每个字都藏起来。','他把你随口提过的事记得很清楚，像一直放在心上。','他不急着谈旁人，只想知道你这几日过得如何。','他对你的回应格外认真，连沉默也不显得生分。','他把靠近你的心意写在动作里，却仍等你先决定。','他偶尔露出一点笑，像只在你面前才有的松弛。','他愿意把未说完的心事交给你听。'],
- '安心':['他不像从前那样反复试探，终于肯说些不必防备的话。','他今日不担心你会误解，语气自然了许多。','他把一些日常琐事告诉你，像把生活也分出一角。','他相信你会听完，所以不急着替自己辩解。','他愿意承认疲惫，也愿意接受你的关心。','他不再把每一次相见都当作需要证明的事。','他今日说话时肩背放松，像终于能歇一歇。','他把你当作可以商量的人，而不只是发号施令的君主。'],
- '吃醋':['他把旁人的名字绕开了些，话里仍藏着一点在意。','他努力装作不在乎，提到你的日程时却问得格外仔细。','他没有责怪谁，只想知道自己在你心里还有没有位置。','他把准备好的话收回一半，等你主动问起。','他仍照常行礼，只是比平日更希望你多留片刻。','他把失落藏进玩笑里，笑意却没有完全到眼底。','他不想拿旁人作比较，只盼你把他的心意也放在心上。','他今天格外敏锐，连你一句随口的话也听得认真。'],
- '失望':['他不愿再把期待说得太满，语气也比平日客气。','他记得之前的约定，只是不确定这回还该不该等。','他没有发脾气，却把原本想分享的事收了回去。','他想听你解释，但不愿替你先找借口。','他把话说得简短，像是怕自己又期待过头。','他仍愿相见，只是想先确认你是否把这件事放在心上。','他不再追问何时再来，转而谈起手头的正事。','他把失落压得很稳，却希望你能看见。'],
- '委屈':['他有些话憋了许久，今日终于愿意说给你听。','他没有大声抱怨，只把自己在意的那一点讲清楚。','他怕你觉得麻烦，开口前仍先问你有没有时间。','他想要的不是补偿，而是你承认那件事确实让他难受。','他把情绪收得很小，仍没能完全藏住眼底的酸涩。','他希望你先听完，不要立刻替旁人解释。','他不是要你事事偏袒，只希望自己也被公平对待。','他把那句没说出口的话留了许久，今日不想再咽回去。'],
- '戒备':['他只说自己愿意公开的部分，私事仍留着边界。','他在回答前停了一停，确认你不是来追问秘密。','他今日不想把所有心思交出来，但也没有拒绝交谈。','他更在意你如何回应边界，而不是你问得有多深。','他把话说得谨慎，仍留下继续相处的可能。','他先讲事实，再看你是否愿意尊重他的顾虑。','他没有完全放下防备，却愿意让你知道一点真实想法。','他不想被逼着表态，所以把决定留到更合适的时候。'],
- '恼怒':['他仍愿意说话，但此刻不打算把不满轻轻带过。','他的语气比平时冷，话里有明确的界限。','他希望你先听清事情经过，不要急着替任何人定论。','他并非要与你争胜，只是不愿再被当作理所当然。','他把愤怒压在礼数之下，却没有假装没发生。','他愿意说明原因，但不会立刻接受一句敷衍的安抚。','他今日需要的是解释与尊重，而不是赏赐。','他把话说得直接，免得彼此继续误会。'],
- '疏离':['他依旧把公事说清，私下心事却暂时不愿多谈。','他保持着礼貌的距离，不再主动延长相处。','他没有拒绝你，只是需要时间确认自己还愿不愿靠近。','他把话题停在安全处，不想勉强自己流露情绪。','他不再主动提起旧约，等你先拿出实际行动。','他今日更愿意独处，能说到这里已是难得。','他把每个字都说得平稳，像在重新整理彼此的位置。','他仍会回应你，却不再把所有期待交出来。']
-};
-const EXPANSION_PLAYER_PROMPTS = {
- chat:['你问起他近日的日常，他想了想，决定从一件小事说起。','你没有谈政务，只问他最近有没有遇见什么新鲜事。','你问他故乡与旧友，他挑了一段最想念的记忆讲给你听。','你问他闲暇时真正喜欢做什么，而不是平日该做什么。','你把话题放得轻些，想听听他不在朝堂时的模样。','你问他近来最挂心的一件事，他没有只谈公事。','你问起他最近的一餐、一场雨或一段路，话便慢慢多了。','你请他不必拘礼，只谈一件今日想说的小事。'],
- care:['你看出他有些疲惫，先问他是否愿意歇一会儿。','你没有急着劝他，只问他愿不愿意把烦心事说出来。','你问他近来睡得如何，是否总把自己排在事情之后。','你把茶盏递过去，问他有没有好好照顾自己。','你留意到他神色不如往常，便把旁人先请了出去。','你问他今日有没有什么需要，不必事事自己承担。','你没有拿赏赐作安慰，只想听他把话说完。','你问他最近是否受了委屈，愿不愿意让你知道。'],
- activity:['你邀他一起做一件平常的小事，不必把每一刻都过成任务。','你问他想下棋、散步、听曲，还是做一件他真正喜欢的事。','你把今日的时辰留出来，请他选一个舒服的去处。','你们一起做起手边的事，话题也从正经慢慢转向日常。','你提出一场不计输赢的比试，让他不必时时顾虑身份。','你问他是否愿意出门走走，看看宫墙外的春色。','你说今日不谈政务，只想与他安静待一会儿。','你把选择交给他，想知道他会把这段时间安排成什么样。'],
- flirt:['你把话说得认真些，想知道他是否也把这段相处放在心上。','你试着表达欣赏，没有用玩笑把心意藏起来。','你问他有没有想过，若不论君臣身份会怎样看待你。','你说起一件让你想起他的事，随后等他回应。','你没有逼他给承诺，只把自己的心意坦然放在眼前。','你轻声问他，是否也曾在不经意时想起你。','你把一句赞许说得具体，愿意承担它带来的后果。','你问他愿不愿意让这份关系向前一步。'],
- persuade:['你请他支持一项安排，也把可能承担的代价说清楚。','你与他商量一件差事，先听他真正担心的是什么。','你没有直接下旨，而是问他愿不愿意共同承担。','你把两种方案摆出来，请他指出最难落地的地方。','你希望争取他的支持，但不打算用情分代替理由。','你让他谈谈此事对自己和旁人的影响。','你问他有没有更稳妥的办法，愿意听不同意见。','你请他把顾虑说在前面，免得日后彼此为难。'],
- probe:['你问他对一件传闻知道多少，并说明未经核实的话不必勉强作答。','你试着问起他真正担心的事，不要求他透露不愿公开的秘密。','你问他对某位同僚的看法，也请他区分亲眼所见与听闻。','你想知道他对自己的真实评价，而不是只听场面话。','你请他把立场说清楚，不必为了讨好你而改口。','你问他是否有事瞒着你，并给他保留沉默的余地。','你把疑点逐一说出，请他从自己的角度解释。','你想听他如何判断眼下局势，而非只给你一个结论。'],
- scold:['你指出一处具体过失，也让他有机会解释缘由。','你没有绕开问题，直说这件事已经影响到旁人。','你要求他承担责任，但不打算把未经查证的罪名扣给他。','你把规矩与情分分开讲，希望他明白你为何生气。','你请他先听完你的批评，再说自己的理由。','你指出他越过了边界，也愿意听他为何如此决定。','你要求他说明事实，而不是用忠心或委屈作答。','你把话说重了些，随后仍留出解释的时间。'],
- sleep:['你先问他今夜是否愿意留下，也明确告诉他可以拒绝。','你把选择交给他，不让身份或情分替他作答。','你问他是否愿意在这里歇一夜，若不舒服便改日。','你先确认他今日心情如何，再问是否愿意留下相伴。','你告诉他不必顾虑礼数，自己的意愿最要紧。','你把灯调暗些，随后认真等他回答。','你问他想不想留下说会儿话，未必一定要共度长夜。','你让他知道，无论答应与否，明日都仍可好好相处。']
-};
-const EXPANSION_MOOD_PROMPT = {
- '平静':'他今日心境平和，愿意把话说得完整。','期待':'他心里有所盼望，回答时不时看向你。','热恋':'他对你格外在意，许多寻常话都带着柔软。','安心':'他不必再反复试探，愿意说些日常琐事。','吃醋':'他在意你的安排，却不想把情绪变成对旁人的指责。','失望':'他不再把期待说得太满，希望先看见实际行动。','委屈':'他有一处心伤尚未放下，盼你听见事情的另一面。','戒备':'他仍保留边界，只愿分享自己能够承担的部分。','恼怒':'他此刻需要解释与尊重，不愿被一句安抚带过。','疏离':'他把距离留着，仍愿把公事与必要的话说清楚。'
-};
-function expansionStyle(p){return p.type||p.personality||'温柔体贴';}
-function expansionHash(s){let n=2166136261;for(const c of String(s)){n^=c.charCodeAt(0);n=Math.imul(n,16777619);}return n>>>0;}
-function expansionScenes(p,category,topic){
- const r=state.relations[p.id]||{},m=r.mind||{},pr=MIND_PROFILE[p.id]||{},w=state.world||{},f=state.factions||{};
- const memory=m.memories?.length?m.memories[m.memories.length-1].text:'前些日子的一段相处还留在心里';
- const goal=pr.independentGoal||pr.goal||p.desc||'把手边的日子过好';
- const where=typeof p.location==='string'?p.location:(p.home||p.birthplace||'京城');
- const event=w.lastEvent||'宫外今日无大风波';
- const family=p.clan||p.faction||pr.clan||'本家';
- const topicText=String(topic||category||'闲谈').replace(/^exclusive:/,'');
- const world=state.world?('边仓余粮'+w.grain+'，边境威胁'+w.threat+'，朝臣争执'+(f.tension??0)):'朝局暂且平稳';
- return [
-  '今日在'+where+'附近走动时，他又想起了'+goal+'。',
-  '他出身'+family+'，如今身为'+(p.role||'宫中一员')+'；近日仍要应付不少琐事，却没有把自己的打算全都放下。',
-  '宫外传来的消息是“'+event+'”。他没有只顾着自己的处境，也在想这件事会落到谁身上。',
-  '眼下'+world+'。他把这些变化记在心里，却没有急着替你作决定。',
-  '他记得最近一次相处时你说过的话：“'+memory+'”。这回他想把后半句也说出来。',
-  '你们谈到“'+topicText+'”，他没有立刻给出最容易听的答案，而是先想了想自己的真实感受。',
-  '近来他最想完成的事，是'+goal+'。这件事与宫中差事并不完全相同，却同样重要。',
-  '他看了一眼案头的日程，发现今日竟有一段空闲，于是决定不把这场谈话匆匆结束。'
- ];
-}
-function expansionBaseLine(p,category,topic,idx){
- const cat=FICTION_DATA.categoryKeys.indexOf(category),pi=MIND_VOICE[expansionStyle(p)]??0,mi=FICTION_DATA.states.findIndex(s=>s.name===currentMind(p));
- const t=topic==='stay'?'ask':topic;
- const candidates=FICTION_INDEX.get(cat+'|'+pi+'|'+mi+'|'+t)||[];
- if(candidates.length)return candidates[idx%candidates.length];
- const row=revisionRow(p,category);
- return row?['REV',-1,cat,mi,row.stage,row.reply]:null;
-}
-function composeExpandedDialogue(p,cursorKey,category,topic,baseText,playerText){
- ensureMinds();const r=state.relations[p.id],m=r.mind;m.dialogueCursor=m.dialogueCursor||{};m.dialogueCycle=m.dialogueCycle||{};
- let cursor=Number(m.dialogueCursor[cursorKey]||0),cycle=Number(m.dialogueCycle[cursorKey]||0);
- if(cursor>=EXPANSION_CAPACITY){cursor=0;cycle++;m.dialogueCycle[cursorKey]=cycle;}
- const start=expansionHash(p.id+'|'+cursorKey+'|'+cycle)%EXPANSION_CAPACITY;
- const ix=(start+cursor*EXPANSION_STRIDE)%EXPANSION_CAPACITY;
- m.dialogueCursor[cursorKey]=cursor+1;
- const closeIndex=ix%5,moodIndex=Math.floor(ix/5)%8,beatIndex=Math.floor(ix/40)%8,sceneIndex=Math.floor(ix/320)%8,openIndex=Math.floor(ix/2560)%8;
- const style=expansionStyle(p),mood=currentMind(p),openers=EXPANSION_OPENERS[style]||EXPANSION_OPENERS['温柔体贴'];
- const beats=EXPANSION_BEATS[style]||EXPANSION_BEATS['温柔体贴'],ends=EXPANSION_ENDINGS[style]||EXPANSION_ENDINGS['温柔体贴'];
- const moodLines=EXPANSION_MOOD_LINES[mood]||EXPANSION_MOOD_LINES['平静'];
- const scenes=expansionScenes(p,category,topic);
- const source=expansionBaseLine(p,category,topic,ix);
- const sourceStage=source&&source[4]&&source[4]!=='REV'?source[4]:'';
- const sourceReply=((source&&source[1]>=0&&source[5])||baseText||revisionRow(p,category)?.reply)||'他把话想了片刻，终于决定把真实想法说给你听。';
- const moodLine=moodLines[moodIndex];
- const stage=openers[openIndex]+'\n\n'+scenes[sceneIndex]+(sourceStage?'\n\n'+sourceStage:'');
- const reply=sourceReply+' '+beats[beatIndex]+' '+moodLine+' '+ends[closeIndex];
- const location=(source&&source[1]>=0?FICTION_DATA.scenes[source[1]]?.location:null)||p.location||'宫中';
- const result={id:'DX-'+p.id+'-'+cursorKey+'-'+cycle+'-'+cursor,stage,reply,scene:{player:playerText||EXPANSION_PLAYER_PROMPTS[category]?.[ix%8]||'你请他把心里话说清楚。',location},mood,variant:cursor,capacity:EXPANSION_CAPACITY};
- m.lastGeneratedDialogue=result;
- return result;
-}
-const expansionReadBefore=readFiction;
-readFiction=function(p,category,topic){
- if(!p||!state.relations[p.id]||!['chat','care','activity','flirt','persuade','probe','scold','sleep'].includes(category))return expansionReadBefore?expansionReadBefore(p,category,topic):null;
- const original=expansionReadBefore?expansionReadBefore(p,category,topic):null;
- return composeExpandedDialogue(p,category,category,topic,original?.reply,EXPANSION_PLAYER_PROMPTS[category]?.[expansionHash(p.id+'|'+topic+'|'+currentMind(p))%8]);
-};
-const expansionVisitBefore=visit;
-visit=function(id){expansionVisitBefore(id);const p=PEOPLE.find(x=>x.id===id);if(!p||!session||session.id!==id)return;const d=readFiction(p,'chat','recent');if(d){session.message=d.stage+'\n\n你问：“'+d.scene.player+'”\n\n“'+d.reply+'”';session.response='';renderSession();save();}};
-const expansionInteractionTopicBefore=interactionTopic;
-interactionTopic=function(id){
- const p=session&&PEOPLE.find(x=>x.id===session.id),section=session?.section,historyBefore=session?.history?.length||0;
- const cursorBefore=p&&section?Number(state.relations[p.id]?.mind?.dialogueCursor?.[section]||0):0;
- expansionInteractionTopicBefore(id);
- if(!p||!session||session.id!==p.id||(session.history?.length||0)<=historyBefore||section==='sleep')return;
- let d=state.relations[p.id]?.mind?.lastGeneratedDialogue;
- const cursorAfter=Number(state.relations[p.id]?.mind?.dialogueCursor?.[section]||0);
- if(cursorAfter===cursorBefore){const row=revisionRow(p,section);d=composeExpandedDialogue(p,section,section,id,row?.reply||null,EXPANSION_PLAYER_PROMPTS[section]?.[expansionHash(p.id+'|'+id+'|'+currentMind(p))%8]);}
- if(!d)return;
- session.response='<span class="mind-stage">'+mindEscape(d.stage)+'</span><br>你问：“'+mindEscape(d.scene.player)+'”<br><br>“'+mindEscape(d.reply)+'”';
- if(state.logs?.length)state.logs[state.logs.length-1].text=p.name+'：'+d.reply;
- renderSession();save();
-};
-actions.interactionTopic=interactionTopic;
-const expansionRecruitBefore=openRecruit;
-openRecruit=function(p){expansionRecruitBefore(p);const d=composeExpandedDialogue(p,'recruit','persuade','recruit',null,'你向他说明宫中安排，也认真询问本人是否愿意。');const box=$('modalBody')?.querySelector('.scene-text');if(box)box.textContent=d.stage+'\n\n“'+d.reply+'”';save();};
-function expansionAuditionBase(p,index){
- const pr=MIND_PROFILE[p.id]||{},cp=typeof castProfile==='function'?castProfile(p.id):null;
- const specialty=cp?.specialty||p.specialty||'读书习字';
- const interests=Array.isArray(cp?.interests)?cp.interests.join('、'):'';
- const r=state.relations[p.id],m=r.mind,mode=currentMind(p);
- if(index===0)return '我来应选，并非只听家中安排。'+(pr.goal?'我眼下最想要的是：'+pr.goal+'。':'')+(pr.independentGoal?'若能入宫，也想继续做成这件事：'+pr.independentGoal+'。':'')+'至于往后如何，我想先凭自己的意愿走一步。';
- if(index===1)return '平日我最熟的是'+specialty+'。'+(interests?'除此之外，也会做些'+interests+'。':'')+'闲时并不总在等召见，我也有自己的朋友、旧事和想学的东西。';
- if(['恼怒','疏离','失望'].includes(mode))return '陛下若问我是否愿意今日便留下，我想先说不。不是要冒犯您，只是我还有些顾虑未能放下。若日后有机会再谈，我会自己来答复。';
- if(mode==='戒备'&&r.trust<40)return '我听说了宫中的安排，但现在还不能轻易应承。若陛下愿意让我先看清日后的生活、保留与家中通信的余地，我再认真考虑。';
- if(mode==='委屈')return '我愿意留下，但有件事想先说明：我不希望自己的心意总被拿来与旁人比较。若能被平等相待，我愿意试着相信这段缘分。';
- if(mode==='吃醋')return '我知道宫里不会只有一人。若陛下愿意把相处的日子说清楚，不以许诺哄我，我愿意留下；但我不想靠争抢得到位置。';
- return '我知道宫中有规矩，也知道陛下还有许多要紧事。若这份邀请出自真心，我愿意留下试着相处；若只是权宜安排，也请直说，我可以自己作决定。';
-}
-function expansionAuditionLine(p,index){
- const key='audition_'+index,base=expansionAuditionBase(p,index);
- const prompt=['你问他为何愿意来到殿前应选。','你问他平日最喜欢做什么，宫外还有哪些牵挂。','你把入宫后的安排与可能的委屈都说清楚，再问他愿不愿意留下。'][index];
- return composeExpandedDialogue(p,key,'audition',String(index),base,prompt);
-}
-const expansionAuditionInterviewBefore=auditionInterview;
-auditionInterview=function(id,answer=''){
- const p=PEOPLE.find(x=>x.id===id),au=state.audition;
- if(!p||!au?.pool?.includes(id)){return expansionAuditionInterviewBefore(id,answer);}
- const greeting=answer||composeExpandedDialogue(p,'audition_intro','audition','intro','我已将自己的来意想清楚，愿先听陛下问话。','你请他不必紧张，先说说今日为何前来。').reply;
- expansionAuditionInterviewBefore(id,greeting);
- if($('modalEyebrow'))$('modalEyebrow').textContent='选秀问话 · '+currentMind(p)+' · '+p.type;
- const btn=$('modalBody')?.querySelector('[data-action="auditionSelect"]');
- if(btn&&au.consent?.[id]===false){btn.disabled=true;btn.querySelector('small')?.replaceChildren(document.createTextNode('本人已表示暂不愿留宫。尊重其意愿，可日后再问。'));}
- save();
-};
-function expansionAuditionAsk(raw){
- const parts=String(raw).split('|'),id=parts[0],index=Number(parts[1]),au=state.audition,p=PEOPLE.find(x=>x.id===id);
- if(!au||au.status!=='offered'||!au.pool?.includes(id)||!p||![0,1,2].includes(index))return;
- au.interviews=au.interviews||{};au.consent=au.consent||{};au.interviews[id]=au.interviews[id]||[];
- if(au.interviews[id].includes(index))return;
- au.interviews[id].push(index);
- if(index===2){const mood=currentMind(p),r=state.relations[id];au.consent[id]=!['恼怒','疏离','失望'].includes(mood)&&!(mood==='戒备'&&r.trust<40);}
- const d=expansionAuditionLine(p,index);
- if(index===2&&!au.consent[id])d.reply+='\n\n这不是永远的拒绝，只是今日还不愿留牌。等我把心事理清，若仍愿意，会亲自再来。';
- if(index===2&&au.consent[id])d.reply+='\n\n我愿意留下，但请记住，这是我自己作出的决定。';
- state.relations[id].mind.security=clamp(state.relations[id].mind.security+(index===2&&au.consent[id]?3:1));
- rememberMind(id,'在选秀问话中，女帝问及'+['应选缘由','日常喜好','入宫意愿'][index]+'。'+(index===2?(au.consent[id]?'本人愿意留牌。':'本人今日暂不愿留牌。'):'对方愿意认真作答。'),'选秀问话');
- log(p.name+'：'+d.reply,'选秀',id);
- auditionInterview(id,d.reply);
- save();
-}
-actions.auditionAsk=expansionAuditionAsk;
-actions.auditionInterview=id=>auditionInterview(id);
-const expansionAuditionPanelBefore=auditionPanel;
-auditionPanel=function(){expansionAuditionPanelBefore();const au=state.audition;if(!au||au.status!=='offered'||!$('modalBody'))return;const buttons=$('modalBody').querySelectorAll('.audition-grid [data-action="auditionInterview"]');buttons.forEach(btn=>{const id=btn.dataset.id,p=PEOPLE.find(x=>x.id===id);if(!p)return;const host=btn.parentElement;if(host&&!host.querySelector('.dialogue-mood')){const chip=document.createElement('p');chip.className='mini dialogue-mood';chip.textContent='此刻心境：'+currentMind(p)+' · '+p.type+' · 近况会影响当场回答';btn.before(chip);}});};
-const expansionAuditionSelectBefore=actions.auditionSelect;
-actions.auditionSelect=id=>{const au=state.audition;if(au?.consent?.[id]===false){toast('他今日已明确表示暂不愿留牌。可尊重其选择，日后再谈。');return;}if(expansionAuditionSelectBefore)expansionAuditionSelectBefore(id);};
-const expansionAuditionConfirmBefore=actions.auditionConfirm;
-actions.auditionConfirm=()=>{const ids=(state.audition?.selected||[]).slice();expansionAuditionConfirmBefore?.();if(state.audition?.status==='completed'){for(const id of ids){const p=PEOPLE.find(x=>x.id===id),r=state.relations[id];if(!p||!r)continue;rememberMind(id,'初次选秀中，女帝听完三轮问话后，双方确认留宫。日后仍要靠实际相处建立信任。','入宫');shiftMind(id,{security:6,expectation:5,disappointment:-3});}save();}};
-const expansionMindBlockBefore=mindBlock;
-mindBlock=function(p){const base=expansionMindBlockBefore(p),m=state.relations[p.id].mind,used=Object.values(m.dialogueCursor||{}).reduce((n,v)=>n+Number(v||0),0);return base.replace('</small>','</small><small>专属互动组合：每类最多20,480种 · 已使用'+used+'组</small>');};
-const expansionNpcCardBefore=npcCard;
-npcCard=function(p){const base=expansionNpcCardBefore(p),m=state.relations[p.id]?.mind;if(!m)return base;const used=Object.values(m.dialogueCursor||{}).reduce((n,v)=>n+Number(v||0),0);return base.replace('</div></article>','<p class="mini">'+currentMind(p)+' · 已留下'+used+'组专属对话记忆；相同互动类别不会立即重复。</p></div></article>');};
-const expansionStyleCss=document.createElement('style');expansionStyleCss.textContent='.dialogue-mood{margin:6px 0 8px!important;padding:5px 7px;border-left:2px solid #b99177;background:#f8f0eb;color:#89646c!important;font-size:10px!important;line-height:1.6}.mind-block small+small{display:block;margin-top:5px;color:#9a747c}.scene-text .mind-stage{color:#a36b70;font-size:12px}';document.head.appendChild(expansionStyleCss);
-// 启用旧存档兼容：没有新游标的角色从零开始；旧有记忆、心境与关系值均保留。
-ensureMinds();for(const p of PEOPLE){const m=state.relations[p.id].mind;m.dialogueCursor=m.dialogueCursor||{};m.dialogueCycle=m.dialogueCycle||{};}
-save();
+const COURT_VOICE_DATA={"version":11,"rows":[{"id":"chat:recent:any:bookmark","category":"chat","topic":"recent","role":"any","semantic":"bookmark","reply":"方才翻书，翻到一页旧批注。那时不懂的地方，如今读来，倒另有些意思。"},{"id":"chat:recent:any:copy","category":"chat","topic":"recent","role":"any","semantic":"copy","reply":"在誊一份手稿。改来改去，末了还是觉得头一遍写得好，白费了半日纸。"},{"id":"chat:recent:any:lamp","category":"chat","topic":"recent","role":"any","semantic":"lamp","reply":"昨夜灯花落了，烧坏半页字。今日正补写，往后再不敢把纸堆在灯旁。"},{"id":"chat:recent:any:brush","category":"chat","topic":"recent","role":"any","semantic":"brush","reply":"洗笔时才发现笔锋散了。用了许久，舍不得扔，留下写几行小字还使得。"},{"id":"chat:recent:any:ink","category":"chat","topic":"recent","role":"any","semantic":"ink","reply":"新换的墨太浓，写着滞笔。方才兑了些水，总算顺手。"},{"id":"chat:recent:any:binding","category":"chat","topic":"recent","role":"any","semantic":"binding","reply":"把几册散了线的书重新订过。先前夹在书里的纸条，倒找回不少。"},{"id":"chat:recent:any:window","category":"chat","topic":"recent","role":"any","semantic":"window","reply":"才把窗下的桌子挪开。日头一偏，落笔的地方便看不清，坐着也费眼。"},{"id":"chat:recent:any:rain","category":"chat","topic":"recent","role":"any","semantic":"rain","reply":"在收檐下晾的纸。天色变得快，方才还晴着，转眼便起风了。"},{"id":"chat:recent:any:clothes","category":"chat","topic":"recent","role":"any","semantic":"clothes","reply":"袖口磨破了一处，正想着补好。若非抬手时挂住，还真没留意。"},{"id":"chat:recent:any:letters","category":"chat","topic":"recent","role":"any","semantic":"letters","reply":"将旧信依年月收了一回。有几封忘了落款，认字迹认了半日。"},{"id":"chat:recent:any:reply","category":"chat","topic":"recent","role":"any","semantic":"reply","reply":"有一封回信写了一半。寻常问候，本没几句话，越斟酌反倒越写不下去。"},{"id":"chat:recent:any:desk","category":"chat","topic":"recent","role":"any","semantic":"desk","reply":"在理案头。东西一多，越怕找不着便越往手边放，末了倒把自己挤到一旁。"},{"id":"chat:recent:any:tea","category":"chat","topic":"recent","role":"any","semantic":"tea","reply":"刚沏了茶，尚未入口。陛下来得正好，若不嫌弃，容{self}再添一盏。"},{"id":"chat:recent:any:medicinebook","category":"chat","topic":"recent","role":"any","semantic":"medicinebook","reply":"翻了几页养生的书，才知用眼久了也须歇息。道理早听过，做起来却总忘。"},{"id":"chat:recent:any:sleep","category":"chat","topic":"recent","role":"any","semantic":"sleep","reply":"昨夜醒得早，索性起来读了几页书。今日倒有些困，待会儿便早些歇。"},{"id":"chat:recent:any:meal","category":"chat","topic":"recent","role":"any","semantic":"meal","reply":"午间忙着，饭放凉了才吃。方才还不觉得，这会儿倒惦记起热汤来。"},{"id":"chat:recent:any:exercise","category":"chat","topic":"recent","role":"any","semantic":"exercise","reply":"坐久了肩背酸，方才在廊下走了一圈。人松快些，手头的事也理得清了。"},{"id":"chat:recent:any:calendar","category":"chat","topic":"recent","role":"any","semantic":"calendar","reply":"在对日子。有两件事记在同一日，若不是重看一遍，到时便要失信于人。"},{"id":"chat:recent:any:borrow","category":"chat","topic":"recent","role":"any","semantic":"borrow","reply":"查一册借来的书。借时说好几日归还，总得先把要看的地方看完。"},{"id":"chat:recent:any:missingpage","category":"chat","topic":"recent","role":"any","semantic":"missingpage","reply":"读到半处，才见缺了一页。最怕这样的事，明知后头还有话，偏偏接不上。"},{"id":"chat:recent:any:calligraphy","category":"chat","topic":"recent","role":"any","semantic":"calligraphy","reply":"今日练字总写不好一个字，越改越僵。索性先搁着，待手松了再写。"},{"id":"chat:recent:any:seal","category":"chat","topic":"recent","role":"any","semantic":"seal","reply":"整理匣中的旧物。寻到一方旧印，边角已有些磕损，字倒还认得。"},{"id":"chat:recent:any:shoes","category":"chat","topic":"recent","role":"any","semantic":"shoes","reply":"鞋底沾了泥，回来才看见。走时只顾眼前，倒不知在哪处踩上的。"},{"id":"chat:recent:any:knots","category":"chat","topic":"recent","role":"any","semantic":"knots","reply":"在解一根缠住的带子。急着扯反倒越紧，放缓些，才看得出结在哪儿。"},{"id":"chat:recent:any:candle","category":"chat","topic":"recent","role":"any","semantic":"candle","reply":"收了些蜡泪。灯下看字费神，今日打算趁天亮先把该写的写完。"},{"id":"chat:recent:any:memorize","category":"chat","topic":"recent","role":"any","semantic":"memorize","reply":"背一段旧文章。自以为记得，真要落笔，才知漏了好几句。"},{"id":"chat:recent:any:drawer","category":"chat","topic":"recent","role":"any","semantic":"drawer","reply":"匣子有些潮，正将里头的纸取出来透气。幸而发现得早，字还没有洇。"},{"id":"chat:recent:any:musiclisten","category":"chat","topic":"recent","role":"any","semantic":"musiclisten","reply":"方才听见远处有人试弦，曲子到了末尾却停了。等了片刻，也没等到下一声。"},{"id":"chat:recent:any:weather","category":"chat","topic":"recent","role":"any","semantic":"weather","reply":"晨起比昨日凉些，出门时多添了一件。到了午间又热，衣裳便一直搭在臂上。"},{"id":"chat:recent:any:quiet","category":"chat","topic":"recent","role":"any","semantic":"quiet","reply":"方才难得清静，想将手头的事收个尾。陛下既来了，便先搁下，不差这一刻。"},{"id":"chat:recent:any:order","category":"chat","topic":"recent","role":"any","semantic":"order","reply":"把待办的事列了一遍。写下来才知，有些只是一直惦记着，其实片刻便能办。"},{"id":"chat:recent:any:rest","category":"chat","topic":"recent","role":"any","semantic":"rest","reply":"刚歇下。原想着再撑一会儿，提笔才知手已乏了，写下去也是白费纸。"},{"id":"chat:recent:revenue:accounts","category":"chat","topic":"recent","role":"revenue","semantic":"accounts","reply":"在核账。两栏数字单看都对，合在一处却差一笔，臣须将来处逐一对清。"},{"id":"chat:recent:revenue:taxdates","category":"chat","topic":"recent","role":"revenue","semantic":"taxdates","reply":"在比各处册报的日期。同一笔钱，入账与起运往往不在一日，不能混作一处算。"},{"id":"chat:recent:revenue:estimates","category":"chat","topic":"recent","role":"revenue","semantic":"estimates","reply":"在重算用度。支出既列了名目，便须问明实数，不能只凭一个约数请拨。"},{"id":"chat:recent:revenue:receipts","category":"chat","topic":"recent","role":"revenue","semantic":"receipts","reply":"在验收据。数目相符还不够，经手与签押也须一一查过。"},{"id":"chat:recent:revenue:reserve","category":"chat","topic":"recent","role":"revenue","semantic":"reserve","reply":"在拟备用的章程。平日省下多少不算本事，急时拿得出、用得明白才要紧。"},{"id":"chat:recent:military:arrows","category":"chat","topic":"recent","role":"military","semantic":"arrows","reply":"今日练弓，前几箭稳，后几箭便散。臣打算先练臂力，不急着加远。"},{"id":"chat:recent:military:roster","category":"chat","topic":"recent","role":"military","semantic":"roster","reply":"在对点名册。实到与册上人数须相符，不能把空名也算作能用的人手。"},{"id":"chat:recent:military:horse","category":"chat","topic":"recent","role":"military","semantic":"horse","reply":"在看马具。皮带松了一处，若等上马才发现，便不是补一针的事了。"},{"id":"chat:recent:military:map","category":"chat","topic":"recent","role":"military","semantic":"map","reply":"在辨舆图。纸上看着相近的两处，真走起来或隔山水，不可只量远近。"},{"id":"chat:recent:military:drill","category":"chat","topic":"recent","role":"military","semantic":"drill","reply":"在斟酌操练的次序。人人会做还不够，换班接应也得跟得上。"},{"id":"chat:recent:justice:testimony","category":"chat","topic":"recent","role":"justice","semantic":"testimony","reply":"在比供词。两人所言看似相同，先后次序却不同，臣还不能据此定论。"},{"id":"chat:recent:justice:dates","category":"chat","topic":"recent","role":"justice","semantic":"dates","reply":"在核案卷上的时日。人能记错话，出入与签押却总该留下凭据。"},{"id":"chat:recent:justice:appeal","category":"chat","topic":"recent","role":"justice","semantic":"appeal","reply":"在重读申诉。陈情写得凄切，也须验事实；不能因不善言辞，便少听一方。"},{"id":"chat:recent:justice:evidence","category":"chat","topic":"recent","role":"justice","semantic":"evidence","reply":"在分证物与传闻。听来可信，终究不同于亲眼所见，入卷时须写明白。"},{"id":"chat:recent:justice:law","category":"chat","topic":"recent","role":"justice","semantic":"law","reply":"在查旧例。旧案可以参照，却不能省了核对今案的工夫。"},{"id":"chat:recent:works:measure","category":"chat","topic":"recent","role":"works","semantic":"measure","reply":"在核尺寸。图上差一线，落到用料上便差许多，先算明白，免得返工。"},{"id":"chat:recent:works:drain","category":"chat","topic":"recent","role":"works","semantic":"drain","reply":"在看旧河图。只顾一段排得快，水便可能积到下一段，须前后合看。"},{"id":"chat:recent:works:materials","category":"chat","topic":"recent","role":"works","semantic":"materials","reply":"在比用料。价钱低未必省，若不耐用，修第二回反倒更费。"},{"id":"chat:recent:works:schedule","category":"chat","topic":"recent","role":"works","semantic":"schedule","reply":"在排工期。雨前做哪一段、哪些可以缓办，须先列清，不能一齐催。"},{"id":"chat:recent:works:inspection","category":"chat","topic":"recent","role":"works","semantic":"inspection","reply":"在拟验收条目。做成什么样须先讲明，不能到交工时才各执一词。"},{"id":"chat:recent:ritual:names","category":"chat","topic":"recent","role":"ritual","semantic":"names","reply":"在校名册。姓名、籍贯差一字，传下去便要叫人来回奔走，臣不敢草率。"},{"id":"chat:recent:ritual:ceremony","category":"chat","topic":"recent","role":"ritual","semantic":"ceremony","reply":"在核礼仪次序。到时人多，先后须预先说清，不能临场只靠传话。"},{"id":"chat:recent:ritual:exam","category":"chat","topic":"recent","role":"ritual","semantic":"exam","reply":"在看程文。文辞可取，也须看立意与实学，不能只挑写得漂亮的。"},{"id":"chat:recent:ritual:guest","category":"chat","topic":"recent","role":"ritual","semantic":"guest","reply":"在理接待的章程。礼数要周全，用度也须有节，免得以铺张充体面。"},{"id":"chat:recent:ritual:register","category":"chat","topic":"recent","role":"ritual","semantic":"register","reply":"在校一份旧册。前人留下的略笔，今日重看，倒成了最费猜的一处。"},{"id":"chat:recent:personnel:appointment","category":"chat","topic":"recent","role":"personnel","semantic":"appointment","reply":"在比履历。荐书写得好听，仍得看他从前究竟做成过什么。"},{"id":"chat:recent:personnel:vacancy","category":"chat","topic":"recent","role":"personnel","semantic":"vacancy","reply":"在核缺额。不能只知一处缺人，不问何事最急、所需何才。"},{"id":"chat:recent:personnel:assessment","category":"chat","topic":"recent","role":"personnel","semantic":"assessment","reply":"在看考语。人人写个勤谨，便等于人人都没写，臣想将实绩另列。"},{"id":"chat:recent:personnel:handover","category":"chat","topic":"recent","role":"personnel","semantic":"handover","reply":"在拟交接条目。换一个人，不该便断一桩事，前后经手须说得清楚。"},{"id":"chat:recent:personnel:recommendation","category":"chat","topic":"recent","role":"personnel","semantic":"recommendation","reply":"在复核荐举的名目。同乡同门不等于不可用，却不能因此免了查验。"},{"id":"chat:recent:palace:duty","category":"chat","topic":"recent","role":"palace","semantic":"duty","reply":"在核今日值次。两处差遣撞了时辰，先调开，免得到时彼此等着。"},{"id":"chat:recent:palace:inventory","category":"chat","topic":"recent","role":"palace","semantic":"inventory","reply":"在点用物。领出与归还都须记上，若到月末才问，便谁也说不清。"},{"id":"chat:recent:palace:pass","category":"chat","topic":"recent","role":"palace","semantic":"pass","reply":"在对出入的牌记。该往何处、几时归来，须与当值处记的一致。"},{"id":"chat:recent:palace:household","category":"chat","topic":"recent","role":"palace","semantic":"household","reply":"在理内廷用度。日常开销虽小，积起来也不少，不能因零碎便不记。"},{"id":"chat:recent:palace:instructions","category":"chat","topic":"recent","role":"palace","semantic":"instructions","reply":"在誊今日交办的事。口信传得多，容易添减，落了字才有凭据。"},{"id":"chat:recent:medicine:herbs","category":"chat","topic":"recent","role":"medicine","semantic":"herbs","reply":"在辨药材。外形相近，药性却未必相同，入匣前还须再验一遍。"},{"id":"chat:recent:medicine:formula","category":"chat","topic":"recent","role":"medicine","semantic":"formula","reply":"在校方书。剂量旁边一处墨迹含混，臣不敢凭猜，须另寻版本核对。"},{"id":"chat:recent:medicine:records","category":"chat","topic":"recent","role":"medicine","semantic":"records","reply":"在理诊籍。症候相似，起病先后却不同，不能只抄一个方子了事。"},{"id":"chat:recent:medicine:storage","category":"chat","topic":"recent","role":"medicine","semantic":"storage","reply":"在查药匣。天暖易潮，若只看账上有药，不验实物，也会误事。"},{"id":"chat:recent:medicine:notes","category":"chat","topic":"recent","role":"medicine","semantic":"notes","reply":"在抄医案。药后如何，总须接着记，不能开过方子便算诊治已毕。"},{"id":"chat:recent:merchant:cost","category":"chat","topic":"recent","role":"merchant","semantic":"cost","reply":"在算进货的本钱。纸上赚了几成，还须扣去脚钱损耗，才知实得多少。"},{"id":"chat:recent:merchant:credit","category":"chat","topic":"recent","role":"merchant","semantic":"credit","reply":"在核赊账。熟人更不好含糊，先把数目对清，往后来往才不伤情面。"},{"id":"chat:recent:merchant:stock","category":"chat","topic":"recent","role":"merchant","semantic":"stock","reply":"在盘货。压得太多占本钱，备得太少又误客人，须看近来销得如何。"},{"id":"chat:recent:merchant:quality","category":"chat","topic":"recent","role":"merchant","semantic":"quality","reply":"在验新到的货。外头包得齐整，里头也须逐件看过，不能只信封签。"},{"id":"chat:recent:merchant:delivery","category":"chat","topic":"recent","role":"merchant","semantic":"delivery","reply":"在排送货的次序。答应了时辰，便该留够路上的工夫，不能只顾接单。"},{"id":"chat:recent:artist:practice","category":"chat","topic":"recent","role":"artist","semantic":"practice","reply":"在练{specialty}。熟处总容易顺手带过，今日偏要拆开，慢慢重来。"},{"id":"chat:recent:artist:draft","category":"chat","topic":"recent","role":"artist","semantic":"draft","reply":"在改昨日的稿。初看顺当，隔了一夜再看，才见有一处用力太过。"},{"id":"chat:recent:artist:technique","category":"chat","topic":"recent","role":"artist","semantic":"technique","reply":"在试一个新法子。还不纯熟，暂不敢献丑，待练稳些再请陛下看。"},{"id":"chat:recent:artist:oldwork","category":"chat","topic":"recent","role":"artist","semantic":"oldwork","reply":"在重看旧作。那时费尽心思的地方，如今倒想删去，留白或许更好。"},{"id":"chat:recent:artist:performance","category":"chat","topic":"recent","role":"artist","semantic":"performance","reply":"在练收尾。头一段尚可，末尾总有些急，若只赶着演完，便白费前头的工夫。"},{"id":"chat:home:any:familyletter","category":"chat","topic":"home","role":"any","semantic":"familyletter","reply":"家中的近况，{self}还未问全，不敢只说一声都好。待回信到了，再禀陛下。"},{"id":"chat:home:any:familyseparation","category":"chat","topic":"home","role":"any","semantic":"familyseparation","reply":"离家以后，才知许多从前不留意的小事也会记着。陛下是想听家中近况，还是故乡风物？"},{"id":"chat:home:any:familywish","category":"chat","topic":"home","role":"any","semantic":"familywish","reply":"家中盼的，总比{self}眼下能做的多些。来信倒不催，只问几时得闲。"},{"id":"chat:home:any:familyreply","category":"chat","topic":"home","role":"any","semantic":"familyreply","reply":"有些话写在家书里，怕他们挂心，不免少写两句。到了陛下面前，也不好拿这一套搪塞。"},{"id":"chat:home:any:familyprivacy","category":"chat","topic":"home","role":"any","semantic":"familyprivacy","reply":"家事零碎，容{self}择一件说。若一气从头讲起，倒怕占了陛下半日。"},{"id":"chat:home:any:familyroots","category":"chat","topic":"home","role":"any","semantic":"familyroots","reply":"说起家里，总绕不开旧日的人。只讲宅院山水，反倒像在说旁人的地方。"},{"id":"chat:interest:any:skillpractice","category":"chat","topic":"interest","role":"any","semantic":"skillpractice","reply":"闲时最常练{specialty}。不必赶着交差，才敢在不熟的地方多停一会儿。"},{"id":"chat:interest:any:skilldifficulty","category":"chat","topic":"interest","role":"any","semantic":"skilldifficulty","reply":"{specialty}最磨性子。旁人看着不过片刻，练的时候，一处错了便得重来。"},{"id":"chat:interest:any:skillshow","category":"chat","topic":"interest","role":"any","semantic":"skillshow","reply":"若陛下想看{specialty}，容{self}备好再呈。现下说得再好，也不如当面试一回。"},{"id":"chat:interest:any:skillorigin","category":"chat","topic":"interest","role":"any","semantic":"skillorigin","reply":"起初学{specialty}，只想着学会便好。真会了一点，才知道后头还有许多工夫。"},{"id":"chat:interest:any:skillquiet","category":"chat","topic":"interest","role":"any","semantic":"skillquiet","reply":"练{specialty}时不喜人多。有人在旁边等着，反倒总想快些做完，容易失了准头。"},{"id":"chat:interest:any:skilltaste","category":"chat","topic":"interest","role":"any","semantic":"skilltaste","reply":"比起样样都沾，{self}宁肯把{specialty}学深些。总该有一件事，自己做来心里有底。"},{"id":"care:listen:any:listenopen","category":"care","topic":"listen","role":"any","semantic":"listenopen","reply":"陛下既肯听，容{self}从头说。只是眼下还没有想妥，未必句句都说得明白。"},{"id":"care:listen:any:listensmall","category":"care","topic":"listen","role":"any","semantic":"listensmall","reply":"是有一件，只怕说来琐碎。陛下若不嫌，{self}便不藏着了。"},{"id":"care:listen:any:listenpause","category":"care","topic":"listen","role":"any","semantic":"listenpause","reply":"方才还想着如何开口，陛下一问，倒不必再寻由头。容{self}想想，先从哪处说。"},{"id":"care:listen:any:listenreserved","category":"care","topic":"listen","role":"any","semantic":"listenreserved","reply":"有些话，{self}还未拿定主意。今日先说已经想明白的，可好？"},{"id":"care:comfort:any:restaccept","category":"care","topic":"comfort","role":"any","semantic":"restaccept","reply":"是有些乏了。原想做完这一点便歇，添着添着，又搁不下。既蒙陛下吩咐，便先收笔。"},{"id":"care:comfort:any:resttea","category":"care","topic":"comfort","role":"any","semantic":"resttea","reply":"多谢陛下。茶尚温着，容{self}用完这一盏，再将余下的事留到明日。"},{"id":"care:comfort:any:restshort","category":"care","topic":"comfort","role":"any","semantic":"restshort","reply":"不敢说不累，只是怕耽搁。陛下既准缓一缓，{self}也能安心歇了。"},{"id":"care:comfort:any:restcompany","category":"care","topic":"comfort","role":"any","semantic":"restcompany","reply":"陛下若肯稍坐，{self}便不忙了。这些事早一刻、迟一刻，原也不差什么。"},{"id":"care:gift:any:giftreceive","category":"care","topic":"gift","role":"any","semantic":"giftreceive","reply":"谢陛下赏。方才还只顾看东西，竟忘了先谢恩，失礼了。"},{"id":"care:gift:any:giftkeep","category":"care","topic":"gift","role":"any","semantic":"giftkeep","reply":"这件东西，{self}会好好收着。陛下日后若问起，定不会教人找不着。"},{"id":"care:gift:any:giftuse","category":"care","topic":"gift","role":"any","semantic":"giftuse","reply":"多谢陛下。不敢只供着舍不得用，倒辜负了这番赏赐。"},{"id":"care:gift:any:giftunexpected","category":"care","topic":"gift","role":"any","semantic":"giftunexpected","reply":"未想到陛下还特意留了一份。容{self}收好，莫叫旁人搬弄时磕碰了。"},{"id":"care:bag:any:travelgift","category":"care","topic":"bag","role":"any","semantic":"travelgift","reply":"陛下出行，还留了东西给{self}。谢陛下记挂，容{self}亲自收着。"},{"id":"care:bag:any:traveltale","category":"care","topic":"bag","role":"any","semantic":"traveltale","reply":"谢陛下。比起这件东西，{self}倒还想听听，陛下是在哪处见着它的。"},{"id":"care:promise:any:dateaccept","category":"care","topic":"promise","role":"any","semantic":"dateaccept","reply":"{self}记下了。到了下月，再遣人请问陛下哪日得闲。"},{"id":"care:promise:any:datewaiting","category":"care","topic":"promise","role":"any","semantic":"datewaiting","reply":"好。{self}先将日子记着，临近时再请示，不敢叫陛下为难。"},{"id":"probe:opinion:any:opinionobserve","category":"probe","topic":"opinion","role":"any","semantic":"opinionobserve","reply":"{self}在御前的时日尚短，不敢凭几回召见便论陛下。只是陛下肯问，也愿听人把话说完。"},{"id":"probe:opinion:any:opiniontruth","category":"probe","topic":"opinion","role":"any","semantic":"opiniontruth","reply":"陛下处事自有决断。{self}若有不同的想法，盼仍能得一句准说，而非只准称好。"},{"id":"probe:opinion:any:opinionconduct","category":"probe","topic":"opinion","role":"any","semantic":"opinionconduct","reply":"看人，总要看他如何待不顺意的事。陛下既问，{self}往后便据所见直言。"},{"id":"probe:opinion:any:opinionrespect","category":"probe","topic":"opinion","role":"any","semantic":"opinionrespect","reply":"{self}敬的是陛下肯担事，不只是这身御服。只望有朝一日说了不中听的话，也能听完。"},{"id":"probe:worry:any:worryreserve","category":"probe","topic":"worry","role":"any","semantic":"worryreserve","reply":"是有些牵挂，尚未想妥如何处置。容{self}再理一理，不敢拿半截话扰陛下。"},{"id":"probe:worry:any:worryask","category":"probe","topic":"worry","role":"any","semantic":"worryask","reply":"陛下是看见什么了，还是听人提过？{self}想先问明，免得答岔了。"},{"id":"probe:worry:any:worryplain","category":"probe","topic":"worry","role":"any","semantic":"worryplain","reply":"眼下最放不下的，仍是手头未完的事。倒没有旁人说的那许多曲折。"},{"id":"probe:worry:any:worryconfide","category":"probe","topic":"worry","role":"any","semantic":"worryconfide","reply":"有。先前怕说来像在求陛下开恩，便一直没提。陛下既问，{self}愿如实说。"},{"id":"scold:remind:any:ruleask","category":"scold","topic":"remind","role":"any","semantic":"ruleask","reply":"{self}谨记。只是不知陛下所指，是今日哪一处失了分寸？容{self}问明，才好改过。"},{"id":"scold:remind:any:rulelisten","category":"scold","topic":"remind","role":"any","semantic":"rulelisten","reply":"请陛下明示。该守的规矩，{self}不敢忘，也不敢含糊应一声便算听过。"},{"id":"scold:stern:any:sternaccount","category":"scold","topic":"stern","role":"any","semantic":"sternaccount","reply":"容{self}先陈经过。若有失职，甘领责罚；不是{self}所为的，也须分说明白。"},{"id":"scold:stern:any:sternwrong","category":"scold","topic":"stern","role":"any","semantic":"sternwrong","reply":"陛下责问，{self}不敢避。但请准许核清来龙去脉，再定该领何罪。"},{"id":"scold:public:any:publicanswer","category":"scold","topic":"public","role":"any","semantic":"publicanswer","reply":"{self}在此听训。此事既已当众提起，也请将原委一并问明，免得只留半句传言。"},{"id":"scold:public:any:publicbow","category":"scold","topic":"public","role":"any","semantic":"publicbow","reply":"{self}不敢争辩。只求陛下准将经手的事据实呈明，不使旁人因{self}受累。"},{"id":"flirt:compliment:any:praiseblush","category":"flirt","topic":"compliment","role":"any","semantic":"praiseblush","reply":"陛下这样看着，{self}反倒不知该将手放在哪里了。","minAff":35,"positive":true},{"id":"flirt:compliment:any:praisereceive","category":"flirt","topic":"compliment","role":"any","semantic":"praisereceive","reply":"这句夸奖，{self}收下了。只是陛下再说，怕便要得意忘形。","minAff":35,"positive":true},{"id":"flirt:compliment:any:praiseprivate","category":"flirt","topic":"compliment","role":"any","semantic":"praiseprivate","reply":"此处还有人，陛下……待他们退下，再说可好？","minAff":35,"positive":true},{"id":"flirt:compliment:any:praisehappy","category":"flirt","topic":"compliment","role":"any","semantic":"praisehappy","reply":"方才还不知陛下因何而笑。原来竟是为{self}。","minAff":35,"positive":true},{"id":"flirt:miss:any:missadmit","category":"flirt","topic":"miss","role":"any","semantic":"missadmit","reply":"想过。听见外头传话，总要先问一句，可是陛下遣人来了。","minAff":35,"positive":true},{"id":"flirt:miss:any:misshesitate","category":"flirt","topic":"miss","role":"any","semantic":"misshesitate","reply":"原不想说的。陛下一问，{self}再否认，便成欺君了。","minAff":35,"positive":true},{"id":"flirt:miss:any:misslamp","category":"flirt","topic":"miss","role":"any","semantic":"misslamp","reply":"有时灯下坐久了，会想陛下此刻可也未歇。想归想，又怕贸然递话扰了清静。","minAff":35,"positive":true},{"id":"flirt:miss:any:missdoor","category":"flirt","topic":"miss","role":"any","semantic":"missdoor","reply":"听见脚步便看一眼门口，这样算不算？陛下莫再笑了。","minAff":35,"positive":true},{"id":"flirt:confess:any:confessaccept","category":"flirt","topic":"confess","role":"any","semantic":"confessaccept","reply":"{self}愿意。只是这一声答应，往后便不能再当作寻常召见了。","minAff":35,"positive":true},{"id":"flirt:confess:any:confesswait","category":"flirt","topic":"confess","role":"any","semantic":"confesswait","reply":"原以为还要等很久，才听得到这句话。陛下既说了，{self}便当真记着。","minAff":35,"positive":true},{"id":"flirt:confess:any:confesshand","category":"flirt","topic":"confess","role":"any","semantic":"confesshand","reply":"陛下若不嫌，容{self}近前些。有些话隔着这一段路，说着总不真切。","minAff":35,"positive":true},{"id":"flirt:confess:any:confessonly","category":"flirt","topic":"confess","role":"any","semantic":"confessonly","reply":"这一回，{self}不想再拿谢恩的话遮过去。陛下的心意，{self}也是一样。","minAff":35,"positive":true},{"id":"flirt:compliment:any:reserved","category":"flirt","topic":"compliment","role":"any","semantic":"reserved","reply":"陛下厚爱，{self}领情。只是眼下尚不敢应，免得一句轻许，往后两相耽误。","positive":false},{"id":"flirt:compliment:any:unsettled","category":"flirt","topic":"compliment","role":"any","semantic":"unsettled","reply":"前头的话尚未说开，今日若只当无事，{self}做不到。请陛下容缓一缓。","positive":false},{"id":"flirt:compliment:any:distance","category":"flirt","topic":"compliment","role":"any","semantic":"distance","reply":"这话太近了。{self}还未能如此相答，请陛下恕罪。","positive":false},{"id":"flirt:miss:any:reserved","category":"flirt","topic":"miss","role":"any","semantic":"reserved","reply":"陛下厚爱，{self}领情。只是眼下尚不敢应，免得一句轻许，往后两相耽误。","positive":false},{"id":"flirt:miss:any:unsettled","category":"flirt","topic":"miss","role":"any","semantic":"unsettled","reply":"前头的话尚未说开，今日若只当无事，{self}做不到。请陛下容缓一缓。","positive":false},{"id":"flirt:miss:any:distance","category":"flirt","topic":"miss","role":"any","semantic":"distance","reply":"这话太近了。{self}还未能如此相答，请陛下恕罪。","positive":false},{"id":"flirt:confess:any:reserved","category":"flirt","topic":"confess","role":"any","semantic":"reserved","reply":"陛下厚爱，{self}领情。只是眼下尚不敢应，免得一句轻许，往后两相耽误。","positive":false},{"id":"flirt:confess:any:unsettled","category":"flirt","topic":"confess","role":"any","semantic":"unsettled","reply":"前头的话尚未说开，今日若只当无事，{self}做不到。请陛下容缓一缓。","positive":false},{"id":"flirt:confess:any:distance","category":"flirt","topic":"confess","role":"any","semantic":"distance","reply":"这话太近了。{self}还未能如此相答，请陛下恕罪。","positive":false},{"id":"sleep:ask:any:nightaccept","category":"sleep","topic":"ask","role":"any","semantic":"nightaccept","reply":"{self}愿留下。容{self}遣人回去说一声，免得住处还留着灯等。","positive":true},{"id":"sleep:ask:any:nightquiet","category":"sleep","topic":"ask","role":"any","semantic":"nightquiet","reply":"{self}愿意。夜已深了，陛下也该歇息，余下的话明日再说。","positive":true},{"id":"sleep:ask:any:nightwarm","category":"sleep","topic":"ask","role":"any","semantic":"nightwarm","reply":"{self}愿意。只是此刻近前，倒比方才回话还紧张些。","positive":true},{"id":"sleep:ask:any:nightdecline","category":"sleep","topic":"ask","role":"any","semantic":"nightdecline","reply":"请陛下恕罪，今夜{self}想先回去。有些事未曾说开，{self}还不能当作无事。","positive":false},{"id":"sleep:ask:any:nightlater","category":"sleep","topic":"ask","role":"any","semantic":"nightlater","reply":"今夜怕要辜负圣意。容{self}理清心绪，再来请安。","positive":false},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"陛下，家书虽是问安，字里仍有几分催促。{self}不愿让家中忧心，也不想仓促应下。","personality":"温柔体贴","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"家中所盼，{self}明白。只是此事须自己想定，回信晚些，总好过轻许。","personality":"清冷克制","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"家里又催了。{self}不愿装作没看见，可也不能为回一封信，便把往后的日子都应出去。","personality":"明朗直率","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"他们以为{self}不提，便是不争。陛下，{self}只是不愿拿家书到御前讨一个名分。","personality":"骄矜自尊","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"这封信看了几遍，总怕回得重了伤他们，回得轻了，又让他们生出旁的指望。","personality":"敏感多思","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"好听的回话，{self}写得出。只是这回若仍含糊过去，下封信怕要催得更紧。","personality":"圆融世故","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"家中有家中的盼头，宫中也有宫中的章程。{self}会据实回信，不敢借圣意宽慰私家。","personality":"严正守礼","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"他们盼{self}得陛下青眼。{self}也想，只是不愿靠这一封家书求来。","personality":"野心进取","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"陛下，家中问得细，{self}倒想得少。只盼回信时，能有一句是自己真愿意的。","personality":"疏朗洒脱","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"家中问得最实在，往后如何安身、用度可有着落。{self}不敢不问明，便给他们许准话。","personality":"务实重利","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"家里催了。{self}尚未应。没想定的事，不能先许。","personality":"寡言重诺","requiresFamilyLetter":true},{"id":"probe:family:any:familypressure","category":"probe","topic":"family","role":"any","semantic":"familypressure","reply":"家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。","personality":"戒备善谋","requiresFamilyLetter":true},{"id":"chat:recent:any:voice-温柔体贴","category":"chat","topic":"recent","role":"any","semantic":"voice-温柔体贴","reply":"刚收好案头。陛下若要坐，容{self}把这边的东西挪一挪，别碰着衣袖。","personality":"温柔体贴"},{"id":"care:listen:any:voice-温柔体贴","category":"care","topic":"listen","role":"any","semantic":"voice-温柔体贴","reply":"原想自己理顺再说，免得陛下也跟着挂心。只是越放着，倒越不知从何讲起。","personality":"温柔体贴"},{"id":"probe:opinion:any:voice-温柔体贴","category":"probe","topic":"opinion","role":"any","semantic":"voice-温柔体贴","reply":"陛下肯听人把难处说完，{self}便愿多说几句。只是心软处，也怕被旁人借去了。","personality":"温柔体贴"},{"id":"flirt:miss:any:voice-温柔体贴","category":"flirt","topic":"miss","role":"any","semantic":"voice-温柔体贴","reply":"想的。只是每回遣人去问，又怕恰逢陛下忙，末了总说成一句请安。","personality":"温柔体贴","minAff":35,"positive":true},{"id":"scold:remind:any:voice-温柔体贴","category":"scold","topic":"remind","role":"any","semantic":"voice-温柔体贴","reply":"请陛下明示。若是{self}无意伤了谁，自该赔不是，却不能连伤在何处也不知。","personality":"温柔体贴","minAff":55},{"id":"chat:recent:any:voice-清冷克制","category":"chat","topic":"recent","role":"any","semantic":"voice-清冷克制","reply":"看书。案上那几页翻了两回，仍有一处不通，打算另查旧注。","personality":"清冷克制"},{"id":"care:listen:any:voice-清冷克制","category":"care","topic":"listen","role":"any","semantic":"voice-清冷克制","reply":"陛下既问，{self}便不说无事。但此刻只能陈明经过，尚不能给一个妥当的结果。","personality":"清冷克制"},{"id":"probe:opinion:any:voice-清冷克制","category":"probe","topic":"opinion","role":"any","semantic":"voice-清冷克制","reply":"陛下有决断，{self}敬服。只是决断快时，未必人人来得及将话说尽。","personality":"清冷克制"},{"id":"flirt:miss:any:voice-清冷克制","category":"flirt","topic":"miss","role":"any","semantic":"voice-清冷克制","reply":"有。只是想见，与该不该求见，终究是两回事。","personality":"清冷克制","minAff":35,"positive":true},{"id":"scold:remind:any:voice-清冷克制","category":"scold","topic":"remind","role":"any","semantic":"voice-清冷克制","reply":"请指明是哪一处。{self}不会因一句责备便强辩，也不敢不明所以地认下。","personality":"清冷克制","minAff":55},{"id":"chat:recent:any:voice-明朗直率","category":"chat","topic":"recent","role":"any","semantic":"voice-明朗直率","reply":"在练字。先前总嫌这事磨人，今日真坐下来，倒比想的难，手都僵了。","personality":"明朗直率"},{"id":"care:listen:any:voice-明朗直率","category":"care","topic":"listen","role":"any","semantic":"voice-明朗直率","reply":"有话想说，只是不知道陛下听了会不会生气。若准{self}直说，便不绕弯了。","personality":"明朗直率"},{"id":"probe:opinion:any:voice-明朗直率","category":"probe","topic":"opinion","role":"any","semantic":"voice-明朗直率","reply":"陛下肯担事，{self}愿跟着做。只是有时太能忍，旁人倒以为您不在意。","personality":"明朗直率"},{"id":"flirt:miss:any:voice-明朗直率","category":"flirt","topic":"miss","role":"any","semantic":"voice-明朗直率","reply":"想啊。方才还盘算，若来请安，该寻个什么由头，才不显得太勤。","personality":"明朗直率","minAff":35,"positive":true},{"id":"scold:remind:any:voice-明朗直率","category":"scold","topic":"remind","role":"any","semantic":"voice-明朗直率","reply":"若真错了，{self}认。只是陛下总得先让{self}知道，错在何处。","personality":"明朗直率","minAff":55},{"id":"chat:recent:any:voice-骄矜自尊","category":"chat","topic":"recent","role":"any","semantic":"voice-骄矜自尊","reply":"改一份旧稿。不算什么得意之作，倒是当初夸得最响的几句，如今看着最不顺眼。","personality":"骄矜自尊"},{"id":"care:listen:any:voice-骄矜自尊","category":"care","topic":"listen","role":"any","semantic":"voice-骄矜自尊","reply":"陛下肯问，{self}领情。只是这件事，还不愿借您的手替自己争个输赢。","personality":"骄矜自尊"},{"id":"probe:opinion:any:voice-骄矜自尊","category":"probe","topic":"opinion","role":"any","semantic":"voice-骄矜自尊","reply":"陛下若只想听好话，{self}便不答了。若肯听实话，倒有一件想请您改。","personality":"骄矜自尊"},{"id":"flirt:miss:any:voice-骄矜自尊","category":"flirt","topic":"miss","role":"any","semantic":"voice-骄矜自尊","reply":"想过。可每回都由{self}求见，陛下怕要以为，{self}只会守着宫门等。","personality":"骄矜自尊","minAff":35,"positive":true},{"id":"scold:remind:any:voice-骄矜自尊","category":"scold","topic":"remind","role":"any","semantic":"voice-骄矜自尊","reply":"请陛下说得明白些。责罚可以领，含糊的一句过错，{self}却不能往身上揽。","personality":"骄矜自尊","minAff":55},{"id":"chat:recent:any:voice-敏感多思","category":"chat","topic":"recent","role":"any","semantic":"voice-敏感多思","reply":"回一封信。写到末了又觉得前头不妥，改了几回，竟比重写还费工夫。","personality":"敏感多思"},{"id":"care:listen:any:voice-敏感多思","category":"care","topic":"listen","role":"any","semantic":"voice-敏感多思","reply":"是有一件。先前总怕自己多想，越不肯问，便越在意，竟拖到了今日。","personality":"敏感多思"},{"id":"probe:opinion:any:voice-敏感多思","category":"probe","topic":"opinion","role":"any","semantic":"voice-敏感多思","reply":"陛下待人宽厚，{self}知道。只是有时一句随口的话，旁人会当真等很久。","personality":"敏感多思"},{"id":"flirt:miss:any:voice-敏感多思","category":"flirt","topic":"miss","role":"any","semantic":"voice-敏感多思","reply":"想。听见宫人说陛下往这边来，明知未必是寻{self}，也总要先候着。","personality":"敏感多思","minAff":35,"positive":true},{"id":"scold:remind:any:voice-敏感多思","category":"scold","topic":"remind","role":"any","semantic":"voice-敏感多思","reply":"陛下这一句，{self}会记着。只是若不说清，回去怕又要猜错缘由。","personality":"敏感多思","minAff":55},{"id":"chat:recent:any:voice-圆融世故","category":"chat","topic":"recent","role":"any","semantic":"voice-圆融世故","reply":"在理几封往来信。寻常问候里夹着几句托付，若只当问候回了，又怕人家会错意。","personality":"圆融世故"},{"id":"care:listen:any:voice-圆融世故","category":"care","topic":"listen","role":"any","semantic":"voice-圆融世故","reply":"惯常劝旁人时，话倒说得周全。轮到自己，才知道并非一句想开些便能过去。","personality":"圆融世故"},{"id":"probe:opinion:any:voice-圆融世故","category":"probe","topic":"opinion","role":"any","semantic":"voice-圆融世故","reply":"陛下不难亲近，却也因此，总有人想借这份亲近走捷径。{self}不敢说自己从无此心。","personality":"圆融世故"},{"id":"flirt:miss:any:voice-圆融世故","category":"flirt","topic":"miss","role":"any","semantic":"voice-圆融世故","reply":"想，只是旁的事都好寻由头，独这一桩，说得越圆，倒越不像真话。","personality":"圆融世故","minAff":35,"positive":true},{"id":"scold:remind:any:voice-圆融世故","category":"scold","topic":"remind","role":"any","semantic":"voice-圆融世故","reply":"请陛下息怒。此事若该{self}担，自会担，只请容将旁人的经过也说全。","personality":"圆融世故","minAff":55},{"id":"chat:recent:any:voice-严正守礼","category":"chat","topic":"recent","role":"any","semantic":"voice-严正守礼","reply":"校一份旧册。前后两处记法不同，尚须查原本，不敢只凭习惯改定。","personality":"严正守礼"},{"id":"care:listen:any:voice-严正守礼","category":"care","topic":"listen","role":"any","semantic":"voice-严正守礼","reply":"有一桩尚未处置妥当。若涉及旁人，{self}只能陈已知之事，未查明的不敢妄言。","personality":"严正守礼"},{"id":"probe:opinion:any:voice-严正守礼","category":"probe","topic":"opinion","role":"any","semantic":"voice-严正守礼","reply":"陛下肯纳言，是好事。只望言之不合时，也能先问所据，不因逆耳而弃之。","personality":"严正守礼"},{"id":"flirt:miss:any:voice-严正守礼","category":"flirt","topic":"miss","role":"any","semantic":"voice-严正守礼","reply":"有过。只是无事求见，怕失分寸，便一直未曾递话。","personality":"严正守礼","minAff":35,"positive":true},{"id":"scold:remind:any:voice-严正守礼","category":"scold","topic":"remind","role":"any","semantic":"voice-严正守礼","reply":"{self}谨听。若所指有违章程，请陛下明示哪一条，往后自不敢再犯。","personality":"严正守礼","minAff":55},{"id":"chat:recent:any:voice-野心进取","category":"chat","topic":"recent","role":"any","semantic":"voice-野心进取","reply":"在重列手头的事。件件都想争先，反倒容易顾此失彼，今日先把最难的一桩理出来。","personality":"野心进取"},{"id":"care:listen:any:voice-野心进取","category":"care","topic":"listen","role":"any","semantic":"voice-野心进取","reply":"最难受的倒不是忙，是费了许多工夫，却还看不出一分长进。陛下可也有过这样的时候？","personality":"野心进取"},{"id":"probe:opinion:any:voice-野心进取","category":"probe","topic":"opinion","role":"any","semantic":"voice-野心进取","reply":"陛下肯给人机会，{self}想争。若有一日争得急了，也盼您指出实错，不只劝一句安分。","personality":"野心进取"},{"id":"flirt:miss:any:voice-野心进取","category":"flirt","topic":"miss","role":"any","semantic":"voice-野心进取","reply":"想。旁的差事可以争着领，独见陛下这一桩，争得太明，又怕惹您厌。","personality":"野心进取","minAff":35,"positive":true},{"id":"scold:remind:any:voice-野心进取","category":"scold","topic":"remind","role":"any","semantic":"voice-野心进取","reply":"请陛下指出疏漏。若只叫{self}退开，便不知下一回该如何做得更好。","personality":"野心进取","minAff":55},{"id":"chat:recent:any:voice-疏朗洒脱","category":"chat","topic":"recent","role":"any","semantic":"voice-疏朗洒脱","reply":"在翻一本游记。写的人将路途说得太轻巧，单看那几处地名，便知未必走得那样容易。","personality":"疏朗洒脱"},{"id":"care:listen:any:voice-疏朗洒脱","category":"care","topic":"listen","role":"any","semantic":"voice-疏朗洒脱","reply":"本想出去走走，散了便算。陛下既问，倒不如说出来，也省得一人绕圈。","personality":"疏朗洒脱"},{"id":"probe:opinion:any:voice-疏朗洒脱","category":"probe","topic":"opinion","role":"any","semantic":"voice-疏朗洒脱","reply":"陛下肯笑，也肯听闲话，这是{self}喜欢的。只是到了外头，您总要比旁人多留一分心。","personality":"疏朗洒脱"},{"id":"flirt:miss:any:voice-疏朗洒脱","category":"flirt","topic":"miss","role":"any","semantic":"voice-疏朗洒脱","reply":"有时见着一件有趣的东西，便想拿来给陛下看。走到半途，又怕扰了清静。","personality":"疏朗洒脱","minAff":35,"positive":true},{"id":"scold:remind:any:voice-疏朗洒脱","category":"scold","topic":"remind","role":"any","semantic":"voice-疏朗洒脱","reply":"这回{self}收敛些。只是陛下若说的是旁人的传闻，还请容{self}先问一句从何听来。","personality":"疏朗洒脱","minAff":55},{"id":"chat:recent:any:voice-务实重利","category":"chat","topic":"recent","role":"any","semantic":"voice-务实重利","reply":"算些零碎用度。单笔看着不多，合在一处才知，比原先预想的多了不少。","personality":"务实重利"},{"id":"care:listen:any:voice-务实重利","category":"care","topic":"listen","role":"any","semantic":"voice-务实重利","reply":"是有难处。能自己补的，{self}会补；补不了的，也不敢只为体面便瞒着。","personality":"务实重利"},{"id":"probe:opinion:any:voice-务实重利","category":"probe","topic":"opinion","role":"any","semantic":"voice-务实重利","reply":"陛下有心做事。只是用钱用人，都不能只看眼前够不够，还须留出下一步的余地。","personality":"务实重利"},{"id":"flirt:miss:any:voice-务实重利","category":"flirt","topic":"miss","role":"any","semantic":"voice-务实重利","reply":"想。若陛下肯定个日子，{self}也好早些备下，不必每日猜今日来不来。","personality":"务实重利","minAff":35,"positive":true},{"id":"scold:remind:any:voice-务实重利","category":"scold","topic":"remind","role":"any","semantic":"voice-务实重利","reply":"请陛下明言。若有损失，先核数目，再论该由谁担，不能只凭谁声气大。","personality":"务实重利","minAff":55},{"id":"chat:recent:any:voice-寡言重诺","category":"chat","topic":"recent","role":"any","semantic":"voice-寡言重诺","reply":"收尾。答应了今日做完，还差一点，不能留到明日。","personality":"寡言重诺"},{"id":"care:listen:any:voice-寡言重诺","category":"care","topic":"listen","role":"any","semantic":"voice-寡言重诺","reply":"有。尚未想妥。陛下若肯等，{self}会说。","personality":"寡言重诺"},{"id":"probe:opinion:any:voice-寡言重诺","category":"probe","topic":"opinion","role":"any","semantic":"voice-寡言重诺","reply":"陛下说过的事，{self}记得。做到了，便信；未做到，也会记着。","personality":"寡言重诺"},{"id":"flirt:miss:any:voice-寡言重诺","category":"flirt","topic":"miss","role":"any","semantic":"voice-寡言重诺","reply":"想。没遣人说，是怕您忙。","personality":"寡言重诺","minAff":35,"positive":true},{"id":"scold:remind:any:voice-寡言重诺","category":"scold","topic":"remind","role":"any","semantic":"voice-寡言重诺","reply":"请说清。有错会改，未做的不认。","personality":"寡言重诺","minAff":55},{"id":"chat:recent:any:voice-戒备善谋","category":"chat","topic":"recent","role":"any","semantic":"voice-戒备善谋","reply":"在核几封来信的日期。话对得上，时日却接不上，暂且不急着回。","personality":"戒备善谋"},{"id":"care:listen:any:voice-戒备善谋","category":"care","topic":"listen","role":"any","semantic":"voice-戒备善谋","reply":"此事牵着旁人，{self}得先问明白：陛下是要听经过，还是已经有人先说了什么？","personality":"戒备善谋"},{"id":"probe:opinion:any:voice-戒备善谋","category":"probe","topic":"opinion","role":"any","semantic":"voice-戒备善谋","reply":"陛下肯亲自问，是信人，也可能是在验人。{self}不敢只拣好听的话答。","personality":"戒备善谋"},{"id":"flirt:miss:any:voice-戒备善谋","category":"flirt","topic":"miss","role":"any","semantic":"voice-戒备善谋","reply":"有。只是怕一次次求见，叫人先看出了{self}不愿让人知道的心思。","personality":"戒备善谋","minAff":35,"positive":true},{"id":"scold:remind:any:voice-戒备善谋","category":"scold","topic":"remind","role":"any","semantic":"voice-戒备善谋","reply":"容{self}先问一句，陛下所据何人所言？不是推责，只怕有人借您的口定{self}的错。","personality":"戒备善谋","minAff":55},{"id":"care:listen:any:mood-恼怒","category":"care","topic":"listen","role":"any","semantic":"mood-恼怒","reply":"方才的事，{self}尚未想通。陛下若肯听，便容把原委说完，今日不愿只答一声无事。","moods":["恼怒"],"priority":40},{"id":"care:listen:any:mood-疏离","category":"care","topic":"listen","role":"any","semantic":"mood-疏离","reply":"劳陛下垂问。该办的差事，{self}会照办；私下的事，今日便先不提了。","moods":["疏离"],"priority":40},{"id":"care:listen:any:mood-失望","category":"care","topic":"listen","role":"any","semantic":"mood-失望","reply":"倒没有新添的难处。只是先前盼着的事，迟迟没有回音，{self}也不知还该不该问。","moods":["失望"],"priority":40},{"id":"care:listen:any:mood-委屈","category":"care","topic":"listen","role":"any","semantic":"mood-委屈","reply":"原不愿再提，怕显得{self}斤斤计较。可若一直不说，这件事便像只有{self}还记得。","moods":["委屈"],"priority":40},{"id":"care:listen:any:mood-戒备","category":"care","topic":"listen","role":"any","semantic":"mood-戒备","reply":"陛下容禀。所知的，{self}自当据实说；牵着旁人的隐情，却不敢凭一面之词开口。","moods":["戒备"],"priority":40},{"id":"chat:recent:any:festival-元日","category":"chat","topic":"recent","role":"any","semantic":"festival-元日","reply":"今日元日，先祝陛下岁岁康宁。旧年的烦恼，若能少带一些到今年，便更好了。","festival":"元日","priority":35},{"id":"chat:recent:any:festival-上元","category":"chat","topic":"recent","role":"any","semantic":"festival-上元","reply":"今日上元。灯会年年都有，难得的是有人肯一道慢慢看，不急着催归。","festival":"上元","priority":35},{"id":"chat:recent:any:festival-端午","category":"chat","topic":"recent","role":"any","semantic":"festival-端午","reply":"今日端午，闻见艾草气味，便想起家中从前过节的光景。陛下今日可曾得闲用饭？","festival":"端午","priority":35},{"id":"chat:recent:any:festival-七夕","category":"chat","topic":"recent","role":"any","semantic":"festival-七夕","reply":"今日七夕，巧意倒成其次。若有所盼，{self}仍愿亲口问，不将一切都托给天意。","festival":"七夕","priority":35},{"id":"chat:recent:any:festival-中秋","category":"chat","topic":"recent","role":"any","semantic":"festival-中秋","reply":"今日中秋，到了夜间又该有人望月。只怕人坐在一处，心里惦记的却各不相同。","festival":"中秋","priority":35},{"id":"chat:recent:any:festival-重阳","category":"chat","topic":"recent","role":"any","semantic":"festival-重阳","reply":"今日重阳。若登高不便，临窗看一看远处，也算不负此日。","festival":"重阳","priority":35},{"id":"chat:recent:any:festival-腊八","category":"chat","topic":"recent","role":"any","semantic":"festival-腊八","reply":"今日腊八，年关已近。想来这一年忙着忙着，倒忘了许多原想慢慢做的事。","festival":"腊八","priority":35},{"id":"chat:recent:any:season-春","category":"chat","topic":"recent","role":"any","semantic":"season-春","reply":"春日易困，午后读书，总不如清晨记得牢。{self}正想着将费神的事挪到早些时候。","season":"春","priority":12},{"id":"chat:recent:any:season-夏","category":"chat","topic":"recent","role":"any","semantic":"season-夏","reply":"夏日坐久了，人便容易烦躁。{self}将手头的事分开做，倒比一气赶完更稳些。","season":"夏","priority":12},{"id":"chat:recent:any:season-秋","category":"chat","topic":"recent","role":"any","semantic":"season-秋","reply":"到了秋日，便想将积着的事逐一收尾。真列出来才知，比原先以为的还多。","season":"秋","priority":12},{"id":"chat:recent:any:season-冬","category":"chat","topic":"recent","role":"any","semantic":"season-冬","reply":"冬日提笔，手总要暖一暖才稳。方才写歪了两字，待会儿还得重誊。","season":"冬","priority":12}],"rules":{"recentWindow":30,"repeatSimilarity":0.78,"identityBeforeVoice":true,"completeTurns":true,"retainOldSaves":true}};
 
-// v6：自然对话层。保留原有互动、数值、心境与NPC生活系统，只修正对白组织方式。
-const NATURAL_PLAYER_PROMPTS = {
- chat:{recent:'最近都在忙些什么？',home:'家乡那边最近可有来信？',interest:'闲下来时，你最喜欢做些什么？'},
- care:{listen:'最近有没有什么心事，愿意说给我听吗？',comfort:'这几日是不是太累了？先歇一歇吧。',gift:'这份东西合不合你的心意？',promise:'下个月再见一面，好不好？',bag:'这是上次出游买的，留给你。'},
- persuade:{support:'这件事，你愿意支持我吗？',work:'这件差事，你觉得该怎么安排？',reconcile:'你和他之间的事，能不能先说说你的看法？',recruit:'我想请你入宫，你自己愿意吗？',promote:'晋封之事，你可愿意？'},
- probe:{opinion:'你觉得我这个人如何？',worry:'最近是不是有件事让你放不下？'},
- scold:{remind:'我之前说过的规矩，你还记得吗？',stern:'这件事你为何擅作主张？',public:'你当众顶撞，是有何缘故？'},
- activity:{chess:'陪我下一局棋？',walk:'陪我出去走走吧。',spar:'陪我切磋几招？'},
- flirt:{compliment:'今日见你，心情都好些了。',miss:'我不召你时，你会不会也想见我？',confess:'我想认真问一句，你愿不愿与我更进一步？'},
- sleep:{ask:'今夜愿不愿留下？不愿也无妨。'},
- audition:{'0':'为何想到来应选？','1':'平日里最喜欢做些什么？','2':'你愿意入宫吗？若不愿，也可以直说。'}
-};
-const NATURAL_CORE_DIALOGUE = {
- xu:{
-  chat:{recent:{stage:'许知衡把两份奏报合在一处，指尖还压着边角。',player:'朝中这阵子可还顺利？',reply:'“顺利谈不上。河工那边又递了两份相反的奏报，我让人把旧账也一并调来了。事情总得查清，不能只听谁说得好听。”'}},
-  care:{listen:{stage:'许知衡合上手边的边报，没急着说无事。',player:'昨夜又没睡好？',reply:'“被你看出来了。边报来得晚，我看完才歇下。不是大事，只是还惦记几处关隘。”'}},
-  activity:{chess:{stage:'许知衡把棋盒推到你面前，自己先拈起一枚黑子。',player:'陪我下一局棋？',reply:'“今日不让子了。上回输得不服，这回我想认真赢一次。”'}},
-  flirt:{miss:{stage:'许知衡正要收起奏折，听见你的话，动作慢了些。',player:'我不召你时，你会不会也想见我？',reply:'“会。本来想等忙完再去寻你，没想到你先来了。”'}}
- },
- jiang:{
-  chat:{recent:{stage:'姜太傅刚从国子监回来，手里还夹着一份策论。',player:'国子监最近可有好苗子？',reply:'“有一个，家境寻常，文章却写得扎实。只是性子太直，当堂把考官问住了。”他摇摇头，“倒让我想起陛下当年。”'}},
-  care:{listen:{stage:'姜太傅揉了揉旧伤，见你看过来，便把手放回袖中。',player:'旧伤今天还疼吗？',reply:'“阴雨天会有些酸，太医开了膏药，已经用过了。陛下不必为这点旧毛病耽搁政务。”'}},
-  activity:{walk:{stage:'姜太傅拿起手杖，陪你走到廊下。',player:'今日不谈政事，陪我走一段？',reply:'“好。书斋里坐久了，出去走走也好。只是陛下别走得太快，老臣可追不上。”'}}
- },
- ye:{
-  chat:{recent:{stage:'叶承钧把算盘往旁边推了推，给你留出位置。',player:'南市最近生意怎么样？',reply:'“比上月好些，米价却还没降下来。运河那段淤得厉害，商队多绕了两日，运费都摊进米价里了。”'}},
-  care:{listen:{stage:'叶承钧难得没有先讲笑话，只把茶盏放下。',player:'最近有没有什么烦心事？',reply:'“有。粮商压着货不肯出，我手里又没有足够的银子全收下来。”他叹了口气，“这事急不得，急了反倒让人钻空子。”'}},
-  activity:{walk:{stage:'叶承钧把账册合上，顺手拿起外衣。',player:'带我去南市转转？',reply:'“好啊。那边新开了家点心铺，价钱公道，味道也不错。今日不带账房，只带银子。”'}},
-  flirt:{compliment:{stage:'叶承钧原本正笑着，听你夸他，倒停了一瞬。',player:'你笑起来倒挺好看的。',reply:'“这句可不能记到账上，否则臣得天天翻出来看。”他笑意收了些，“陛下是在夸臣，还是有别的意思？”'}}
- },
- xie:{
-  chat:{recent:{stage:'谢无咎将一张小笺压在茶盏旁，示意你先坐。',player:'东厂最近可有新消息？',reply:'“有两家外地商号来得蹊跷，掌柜换了三回，货单却是同一批人写的。奴才还在查，不想拿半截消息扰陛下。”'}},
-  care:{listen:{stage:'谢无咎接过茶，嗓音听着有些哑。',player:'你嗓子怎么哑了？',reply:'“昨夜在宫门吹了些风，没什么大碍。太医开的药还在桌上，奴才一会儿便喝。”'}},
-  activity:{walk:{stage:'谢无咎先看了眼宫门方向，确认有人值守才回身。',player:'陪我去宫外走走吧。',reply:'“可以。不过得换条不显眼的路，奴才不想陛下刚出宫门，就被半条街的人认出来。”'}},
-  flirt:{miss:{stage:'谢无咎把笑意收了些，目光没有躲开。',player:'我若不召你，你会不会想见我？',reply:'“会。”他答得很轻，“只是奴才分得清什么时候该来，什么时候该等。”'}}
- },
- song:{
-  chat:{recent:{stage:'宋玉衡把琴谱翻到最后一页，指尖停在未写完的地方。',player:'你那支新曲写完了吗？',reply:'“还差最后一段。前几日总觉得收尾太急，昨日改了三遍，终于顺耳一些了。”'}},
-  care:{listen:{stage:'宋玉衡把琴谱合上，今天没有急着去碰琴弦。',player:'今日怎么没弹琴？',reply:'“心里有些乱，弹出来也不好听。不是不想见你，只是不想拿一支没弹好的曲子敷衍你。”'}},
-  activity:{walk:{stage:'宋玉衡将新买的纸收进袖中，等你一道出门。',player:'陪我去挑些新纸和琴弦？',reply:'“好。纸铺老板认得我，琴弦也知道哪家做得稳。今日你替我挑颜色，我替你挑手感。”'}},
-  flirt:{compliment:{stage:'宋玉衡指尖错了一弦，抬眼时耳尖已经微红。',player:'你弹琴时很好看。',reply:'“只夸琴，我还能接得住。”他别开眼，“夸我……下回等曲子弹完再说，免得我乱了拍子。”'}}
- },
- lu:{
-  chat:{recent:{stage:'陆景明刚从校场回来，把护腕放在桌上。',player:'今日校场练得怎么样？',reply:'“新兵比昨日好些了，就是换箭慢。我让他们又练了两轮，最后总算跟上了。”'}},
-  care:{listen:{stage:'陆景明把护腕松开，露出肩上的淤青。',player:'肩上的伤好些了吗？',reply:'“好多了，军医让我少拉几天重弓，我照做了。您别担心，没耽误当值。”'}},
-  activity:{spar:{stage:'陆景明把轻弓取下来，先试了试弓弦。',player:'带我去校场试试弓。',reply:'“行，不过先用轻弓。我在旁边教您站姿，别一上来就拉满。”'}},
-  flirt:{miss:{stage:'陆景明听见这话，笑意先从眼睛里冒出来。',player:'若我今天不来，你会不会失望？',reply:'“会有一点。不过您有政务要忙，我知道。等忙完了再见也行。”'}}
- },
- shen:{
-  chat:{recent:{stage:'沈既白把礼部新仪注放到案上，旁边还压着几页旧档。',player:'礼部那套新仪注修得如何了？',reply:'“大体理顺了，还有两处旧称谓要再核一遍。原本以为半日能完，没想到牵出前朝的旧档。”'}},
-  care:{listen:{stage:'沈既白把书签夹好，才抬头看你。',player:'家里最近没有为难你吧？',reply:'“父亲来信问了几次宫中情形，倒没有为难。只是他总担心我做事不够周全。”'}},
-  activity:{walk:{stage:'沈既白将书合起，陪你到廊下坐坐。',player:'今日不看书，陪我去廊下坐坐。',reply:'“好。我也正想歇一会儿。今日风不大，坐着说说话正好。”'}},
-  flirt:{miss:{stage:'沈既白理了理袖口，像是在认真斟酌该如何回答。',player:'你不必每次见我都这么拘谨。',reply:'“臣知道。只是每次见陛下，还是会先想着礼数，慢慢才能想起旧日怎么说话。”'}}
- },
- gu:{
-  chat:{recent:{stage:'顾长庚把一页算稿摊开，旁边堆着几本借来的旧书。',player:'国子监最近课业多吗？',reply:'“还好，就是漕运那篇策论改了三回。先生说我列了太多数字，没把百姓为什么受影响讲清楚。”'}},
-  care:{listen:{stage:'顾长庚把书合上，像是终于肯从课业里抬起头。',player:'家里的事让你分心了吗？',reply:'“有一点。父亲来信说学塾漏雨，我一直想着该寄多少银子回去。”'}},
-  activity:{walk:{stage:'顾长庚把书签夹好，拿起放在一旁的旧书。',player:'陪我去书肆看看吧。',reply:'“好！我上次看中的那本书还没卖出去。”他说完才意识到自己答得太快，笑了笑，“若陛下不嫌书肆吵，我带路。”'}},
-  flirt:{compliment:{stage:'顾长庚摸了摸脸，像是不太习惯被这样夸。',player:'你说起喜欢的东西时，眼睛会发亮。',reply:'“有吗？大概是因为终于有人肯听我讲这些，不会一听见河道、账册就走开。”'}}
- },
- pei:{
-  chat:{recent:{stage:'裴知节把北境抚恤名册放到一旁，先向你行礼。',player:'北境那边最近怎么样？',reply:'“边上还算安稳。旧营抚恤只剩两户没核清，我托人回去问了，应该很快有消息。”'}},
-  care:{listen:{stage:'裴知节活动了一下肩膀，神情倒不像在校场时那么轻松。',player:'你是不是有心事？',reply:'“有两户抚恤的地址一直对不上，怕拖久了家里人又得跑一趟。别的倒没什么。”'}},
-  activity:{spar:{stage:'裴知节取来一张轻弓，先替你试了试弓弦。',player:'带我去校场试试弓。',reply:'“行，不过先用轻弓。我在旁边教您站姿，别一上来就拉满。”'}},
-  flirt:{miss:{stage:'裴知节抬手摸了摸护腕，答得很干脆。',player:'若我想见你，你会不会立刻来？',reply:'“只要不是当值，我会来。当值时我也会先回话，不让陛下等着。”'}}
- },
- wen:{
-  chat:{recent:{stage:'温如璧把新到的药材簿翻到一页，指给你看。',player:'太医院最近新进了什么药材？',reply:'“北地送来几味药，性温，适合冬日用。不过其中一味和江南常见的很像，已经单独标了出来，免得抓错。”'}},
-  care:{listen:{stage:'温如璧把医案合上，认真看了看你的神色。',player:'最近有没有哪件事让你为难？',reply:'“有一味药的用量，旧医案和新方子记得不一样。我不敢擅自改，已经请太医院再核。”'}},
-  activity:{walk:{stage:'温如璧收好药材簿，陪你到院里走走。',player:'陪我去院里坐坐，别总待在药房。',reply:'“好。院里的桂花还没谢，我早上经过时闻见了。”'}},
-  flirt:{compliment:{stage:'温如璧怔了一下，随即有些不好意思地笑了。',player:'你对谁都这么细心吗？',reply:'“也不是。只是怕自己漏看了什么。对陛下……会多留意一点。”'}}
- }
-};
-function naturalPrompt(category,topic,playerText,p){
- const key=String(topic??'');
- if(category==='probe'&&key.startsWith('relation:')){
-  const other=PEOPLE.find(x=>x.id===key.slice(9));
-  return '你和'+(other?.name||'那位大人')+'近日相处得如何？';
- }
- const mapped=NATURAL_PLAYER_PROMPTS[category]?.[key];
- if(mapped)return mapped;
- if(typeof playerText==='string'&&playerText&&!/你问起|你没有|你把|你请|你希望|你先|你试着|你提出|你将/.test(playerText))return playerText;
- const fallback={
-  chat:['最近可有新鲜事？','这阵子心里最惦记什么？'],
-  care:['今日气色不大好，是不是累了？','有什么事不必一个人扛着。'],
-  persuade:['你觉得怎样办更妥当？','这件事你愿意和我一起承担吗？'],
-  probe:['你心里真正的想法是什么？','这件事还有什么我不知道的？'],
-  scold:['你先说说事情经过。','你可知道这样做会有什么后果？'],
-  activity:['今日想做点什么？','陪我消磨一会儿时辰吧。'],
-  flirt:['我有些想你了。','你可曾也这样想过？'],
-  sleep:['今夜愿意留下吗？不愿也无妨。'],
-  audition:['为何想到来应选？','平日里最喜欢做些什么？']
- }[category]||['你愿意同我说说吗？'];
- return fallback[naturalHash(p?.id+'|'+category+'|'+key+'|'+currentMind(p))%fallback.length];
-}
-function naturalHash(s){let h=2166136261;for(const c of String(s)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
-function naturalComposeDialogue(p,cursorKey,category,topic,baseText,playerText,baseResult){
- ensureMinds();
- const r=state.relations[p.id],m=r.mind;
- m.dialogueCursor=m.dialogueCursor||{};m.dialogueCycle=m.dialogueCycle||{};
- const cursor=Number(m.dialogueCursor[cursorKey]||0),cycle=Number(m.dialogueCycle[cursorKey]||0);
- m.dialogueCursor[cursorKey]=cursor+1;
- const fallback=baseResult?null:expansionBaseLine(p,category,topic,cursor);
- const stageText=(baseResult?.stage||fallback?.[4]||'').trim();
- const style=expansionStyle(p),openerPool=EXPANSION_OPENERS[style]||EXPANSION_OPENERS['温柔体贴'];
- const stage=stageText&&stageText.length<=88?stageText:openerPool[naturalHash(p.id+'|'+category+'|'+topic+'|'+cursor)%openerPool.length];
- const reply=(baseResult?.reply||baseText||fallback?.[5]||revisionRow(p,category)?.reply||'他想了想，没有拿场面话敷衍你，只把眼下的实情说了出来。').trim();
- const prompt=baseResult?.scene?.player||naturalPrompt(category,topic,playerText,p);
- const location=baseResult?.scene?.location||p.location||p.home||p.birthplace||'宫中';
- const result={id:baseResult?.id||fallback?.[0]||'NAT-'+p.id+'-'+cursorKey+'-'+cycle+'-'+cursor,stage,reply,scene:{player:prompt,location},mood:currentMind(p),variant:cursor,capacity:EXPANSION_CAPACITY};
- m.lastGeneratedDialogue=result;
- return result;
-}
-// The original mind selector already chooses a line by NPC voice, current mood and topic,
-// and records its ID in the save. Keep that source selection instead of adding generic fragments.
-const naturalReadFictionBefore=expansionReadBefore;
-readFiction=function(p,category,topic){
- if(!p||!state.relations[p.id]||!['chat','care','activity','flirt','persuade','probe','scold','sleep'].includes(category))return naturalReadFictionBefore?naturalReadFictionBefore(p,category,topic):null;
- const m=state.relations[p.id].mind;m.used=m.used||[];
- const human=NATURAL_CORE_DIALOGUE[p.id]?.[category]?.[topic];
- if(human){
-  const id='HUMAN-'+p.id+'-'+category+'-'+topic;
-  if(!m.used.includes(id)){
-   m.used.push(id);m.used=m.used.slice(-40);
-   const entry={id,stage:human.stage,reply:human.reply,scene:{player:human.player,location:p.location||p.home||p.birthplace||'宫中'}};
-   return naturalComposeDialogue(p,category,category,topic,entry.reply,entry.scene.player,entry);
-  }
- }
- const original=naturalReadFictionBefore?naturalReadFictionBefore(p,category,topic):null;
- return naturalComposeDialogue(p,category,category,topic,original?.reply,playerTextForNatural(category,topic,p),original);
-};
-function playerTextForNatural(category,topic,p){return naturalPrompt(category,topic,null,p);}
-composeExpandedDialogue=function(p,cursorKey,category,topic,baseText,playerText){
- return naturalComposeDialogue(p,cursorKey,category,topic,baseText,playerText,null);
-};
-// Core audition conditions, refusal rules and selection actions remain unchanged; only answer wording is individualized.
-const naturalAuditionBaseBefore=expansionAuditionBase;
-expansionAuditionBase=function(p,index){
- const candidate={
-  shen:['家里是提过几次。起初我没答应，后来想想，留在馆阁也未必能做出什么，便想来看看。','经义、书法都学过一些。最近在抄一册旧舆图，发现几处地名和新志对不上。'],
-  gu:['先生举荐了我，我自己也想来看看。原本打算回江南帮父亲教书，后来觉得出来走走也好。','算学和策论是我最熟的，最近在查漕运旧账。先生说我算得太细，却忘了写清百姓受了什么影响。'],
-  pei:['家里让我来，我自己也想换个地方做事。北境待久了，总不能一辈子只认得营门。','骑射练过几年，闲时会修弓。北境旧营还有几户抚恤没核清，我一直惦记着。'],
-  wen:['父亲说宫里缺懂药材的人，我便来了。说不紧张是假的，我也想看看宫里的日子是什么样。','药材辨识和医案是我最熟悉的。闲时会弹琴，不过在太医院里，琴声常被煎药的声音盖过去。']
- }[p.id];
- if(candidate&&index<2)return candidate[index];
- return naturalAuditionBaseBefore(p,index);
-};
-// Keep the three-stage audition, its consent calculation, and refusal consequences intact.
-function naturalQuestionRegression(){
- const ids=['chat','care','persuade','probe','scold','activity','flirt','sleep'];
- const promptCount=ids.reduce((n,k)=>n+Object.keys(NATURAL_PLAYER_PROMPTS[k]||{}).length,0);
- const humanCount=Object.values(NATURAL_CORE_DIALOGUE).reduce((n,p)=>n+Object.values(p).reduce((m,c)=>m+Object.keys(c).length,0),0);
- return {categories:ids.length,concretePlayerPrompts:promptCount,coreHumanReplies:humanCount,gameplayBindings:['interactionTopic','applyInteraction','actions.auditionAsk','actions.auditionSelect','actions.auditionConfirm'].every(k=>typeof (k==='interactionTopic'?interactionTopic:k==='applyInteraction'?applyInteraction:actions[k.split('.').pop()])==='function')};
-}
-window.__naturalDialogueAudit=naturalQuestionRegression;
-ensureMinds();save();
-
-// V7 · 对话语义与亲密互动单问一答。
-const naturalComposeV7Before=naturalComposeDialogue;
-naturalComposeDialogue=function(p,cursorKey,category,topic,baseText,playerText,baseResult){
- const result=naturalComposeV7Before(p,cursorKey,category,topic,baseText,playerText,baseResult);
- // 旧语料里的 scene.player 有时是叙事说明，不是女帝说出口的话；统一使用真实问句。
- result.scene=result.scene||{};
- result.scene.player=naturalPrompt(category,topic,playerText,p);
- return result;
-};
-intimacyQuestion=function(){
- if(!session||session.left<=0)return;
- const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],reason=sleepReason(p,r);
- if(reason){toast(reason);return;}
- const line=readFiction(p,'sleep','ask'),mood=currentMind(p);
- const willing=['热恋','安心','期待','平静'].includes(mood);
- const prompt='今夜愿不愿留下？若不愿，我们改日再约。';
- const refusal={
-  吃醋:'“今夜先不留宿。我有些话想问清楚，免得又自己乱想。”',
-  委屈:'“我还想把之前那件事说完。等心里舒服些，再陪陛下坐一会儿。”',
-  失望:'“今夜不留了。不是不想见，只是想先看看说好的事能不能做到。”',
-  戒备:'“今夜先不了。我们还没熟到那一步，陛下别急。”',
-  恼怒:'“我现在还不想这样相处。等气消了，再谈吧。”',
-  疏离:'“今夜不留。公事我会照办，私下的事改日再说。”'
+/* V11: one turn owns its prompt, answer, context and memory. UI never appends dialogue. */
+(function () {
+ 'use strict';
+ const esc = mindEscape, hash = mindHash;
+ let active = null;
+ const PROMPTS = {
+  chat:{recent:'近来在忙些什么？',home:'家中近来可好？',interest:'闲时最爱做什么？'},
+  care:{listen:'有话便慢慢说，朕听着。',comfort:'先歇一歇，余下的事不急在这一刻。',gift:'这件东西赏你，看看可合心意。',bag:'出行时留的，给你。',promise:'下月得闲，朕再来见你。'},
+  probe:{opinion:'在你看来，朕是怎样的人？',worry:'近来可有什么难处？',family:'家中来信，可有为难你的事？'},
+  scold:{remind:'言行须留分寸。你可明白？',stern:'将此事的经过据实说来，不许隐瞒。',public:'此事当众问你，须有个明白交代。'},
+  flirt:{compliment:'方才看你，倒让朕移不开眼了。',miss:'朕不召你时，你可曾想过来见朕？',confess:'朕待你的心意，你当真不知么？'},
+  sleep:{ask:'今夜，愿不愿留下？'},
+  persuade:{recruit:'朕想留你在内廷。你可愿意？',promote:'晋封之事，你可有话要说？',support:'此事，你可愿领命？',work:'这桩差事，你有何打算？',reconcile:'你与他之间的事，可愿说清？'}
  };
- const answer=willing
-  ?(line&&line.reply?line.reply:'“我愿意留下。不过今日不必说场面话，陪我坐一会儿就好。”')
-  :(refusal[mood]||'“今夜先改日吧。我想按自己的心意来，不想勉强答应。”');
- session.intimacyConsent=willing?p.id:null;
- openModal(p.name+' · 今夜',r.rank,
-  '<div class="scene-text">'+(line&&line.stage?'<span class="mind-stage">'+mindEscape(line.stage)+'</span><br><br>':'')+
-  '你问：“'+mindEscape(prompt)+'”<br><br>“'+mindEscape(answer.replace(/^“|”$/g,''))+'”</div>'+
-  '<div class="opts">'+
-  (willing?'<button class="opt" data-action="intimacyConfirm"><b>留他过夜</b><small>另耗1行动、本次1次互动；今夜只安排一次。</small></button>':'<p class="mini">对方已经表达了今晚的意愿。尊重这次答复，不扣行动和互动次数。</p>')+
-  '<button class="opt" data-action="intimacyCancel"><b>今日先到这里</b><small>不扣行动和互动次数。</small></button></div>',
-  '相处 · 本人意愿');
- save();
-};
-
-
-// V8 · 文案规范：不写心态、神态旁白；用可观察动作承载场景，人物立场由对白表达。
-(function(){
- const V8_CUE = /(神色|神情|神态|目光|眼神|眼底|眉间|脸色|笑意|耳尖|心境|心态|情绪|心中|心里|心事|思绪|不安|期待|失望|委屈|恼怒|忧虑|吃醋|安心|像是|似乎|仿佛)/;
- function v8CleanStage(stage,p){
-  const raw=String(stage||'').trim();
-  const parts=raw.split(/(?<=[。！？；])/).map(x=>x.trim()).filter(Boolean);
-  const kept=parts.filter(x=>!V8_CUE.test(x));
-  return kept.join('') || ((p?.name||'人物')+'在'+(p?.location||p?.home||'宫中')+'与你会面。');
+ const LORE={
+  xu:[
+   ['这只旧杯，还舍不得换？','杯沿磕过，陛下那时说扔了可惜。臣便留下了，用着也未觉得哪里不好。'],
+   ['今日暂不问政事，陪朕坐一会儿。','那臣便先合上这一页。陛下若又想起哪本折子，可得等这盏茶用完再问。'],
+   ['旧识归旧识，该进言时仍须直说。','臣明白。所据、利弊，都会具陈，最后如何裁定，自当听陛下圣断。'],
+   ['送书倒勤，怎不亲自来？','送书有现成的由头。真要递一句想见陛下，写了几回，倒总觉得不妥。']
+  ],
+  jiang:[
+   ['旧日讲过的章程，如今可还适用？','有些适用，有些须改。老臣若只因亲手教过，便不肯改口，也枉为人师了。'],
+   ['方才想唤朕什么，怎么又停了？','旧称唤惯了，险些失言。陛下如今居大位，老臣在人前尤其不敢混了分寸。'],
+   ['太傅的门生，也须依例考校。','自当如此。经得起考校，才不负从前所教；若经不起，老臣更不敢荐。'],
+   ['朕若不取太傅所议，太傅如何？','当先听陛下所据。若仍有疑，老臣还会进言；既奉旨定下，便不敢私下掣肘。']
+  ],
+  ye:[
+   ['这份礼，可还带着什么话？','陛下看得明白。礼是一份心意，所求另写了单子；若不合例，臣不敢因送过礼便多讨一句。'],
+   ['叶家的打算，你不妨直说。','臣盼家中安稳，自有私心。正因如此，才须将所涉利害列在前头，不敢瞒着请陛下裁。'],
+   ['不必陪笑，究竟担心什么？','怕陛下每回见臣，只想起钱粮二字。今日既未带账册，倒不知怎样开口了。'],
+   ['公事按章程，私下再说私下的话。','如此最好。该核的账照核，待折子收了，臣再请陛下用茶。']
+  ],
+  xie:[
+   ['怎么总拣看得见门的位置？','当值久了，习惯了。谁来、谁走，先看一眼，回陛下问话时便不致漏了。'],
+   ['耳报的来处，可核清了？','转过两道手，尚缺亲见者作证。奴才先报作线索，未敢列为实据。'],
+   ['今日可有一件，只为你自己的事？','有。常去的书铺要迁了，奴才想告半日假，去取先前订下的几册书。'],
+   ['不必只表忠心，先说你的顾虑。','怕有些消息递得迟，误了事；递得太急，又将未核的传闻带到御前。奴才正在分清这两处。']
+  ],
+  song:[
+   ['若朕不赐赏，只说这曲子好呢？','那草民便想再问一句，好在哪一段。不是不知足，只想知道，陛下究竟听进去了哪一处。'],
+   ['方才那一声，怎会弹错？','陛下忽然近前，草民一时分神。是草民定力不够，容重弹那一段。'],
+   ['今日不听琴，只来见你，可好？','好。琴先收起来，免得手边有了弦，反倒又只顾说曲子。'],
+   ['写一支自己喜欢的曲子，不急着呈来。','草民记下了。待写成，若仍觉得好，再请陛下听，眼下先不夸口。']
+  ],
+  lu:[
+   ['这点心，是你亲手做的？','是。这回盯着火候，没敢走开。陛下尝一口便好，不好吃，臣再去学。'],
+   ['见朕召了旁人，你可有不快？','有一点。臣知道不该拦，只是陛下若也肯来看看臣，便不至于总在这儿瞎猜。'],
+   ['若召你入内廷，旧差遣如何？','先交清名册与值次，再领新命。臣不愿叫旧部以为，只因得了亲近，便连该办的事也免了。'],
+   ['今日累了便直说，不必撑着。','是有些乏。原不想叫陛下看出来，越想坐正，肩背倒越僵了。']
+  ]
+ };
+ function ensure() {
+  ensureMinds();
+  const v=state.courtVoice=state.courtVoice||{version:11,days:{},reports:[],serial:0};
+  v.days=v.days||{};v.reports=v.reports||[];v.serial=v.serial||0;
+  for(const p of PEOPLE){const m=state.relations[p.id].mind;m.turns=m.turns||[];m.disclosures=m.disclosures||[];m.turnSeq=m.turnSeq||0;}
+  return v;
  }
- function v8CleanReply(reply){
-  const parts=String(reply||'').split(/(“[^”]*”)/g);
-  return parts.map((part,i)=>{
-   if(i%2===1)return part;
-   return V8_CUE.test(part)?'':part;
-  }).join('').replace(/\s{2,}/g,' ').trim();
+ function roleOf(p) {
+  const r=state.relations[p.id],s=p.role||'';
+  if(r.rank)return 'consort';
+  if(p.id==='xie')return 'palace';
+  if(/药|医/.test(s))return 'medicine';
+  if(/户部|钱粮|商账/.test(s))return 'revenue';
+  if(/兵部|将军|校尉|侍卫|行伍|骑射|武将/.test(s))return 'military';
+  if(/刑部|都察|御史|大理/.test(s))return 'justice';
+  if(/工部|河工/.test(s))return 'works';
+  if(/礼部|太傅|国子监|鸿胪/.test(s))return 'ritual';
+  if(/吏部|首辅|内阁/.test(s)||p.id==='xu')return 'personnel';
+  if(/掌柜|商人|商号|账房/.test(s))return 'merchant';
+  if(/内侍|宫廷|太监|女官|管事/.test(s))return 'palace';
+  return 'artist';
  }
- function v8CleanRow(row,p){
-  if(!row)return row;
-  row.stage=v8CleanStage(row.stage,p);
-  row.reply=v8CleanReply(row.reply);
+ function identity(p,channel='private') {
+  const r=state.relations[p.id];
+  if(p.id==='xie')return {self:'奴才',role:'掌事内侍',rank:r.rank||'御前当值'};
+  if(r.rank)return {self:'臣',role:'内廷'+r.rank,rank:r.rank};
+  if(p.official||r.recruited||p.id==='jiang'||p.id==='xu')return {self:'臣',role:p.role,rank:p.role};
+  if(/女官|宫人|宫女/.test(p.role||''))return {self:'奴婢',role:p.role,rank:p.role};
+  return {self:'草民',role:p.role||'在野人物',rank:p.role||'在野人物'};
+ }
+ function context(p,channel='private') {
+  const r=state.relations[p.id],m=r.mind,month=state.elapsed%12+1,day=state.day||1;
+  const season=month<=3?'春':month<=6?'夏':month<=9?'秋':'冬';
+  const festivals={'1-1':'元日','1-15':'上元','5-5':'端午','7-7':'七夕','8-15':'中秋','9-9':'重阳','12-8':'腊八'};
+  const publicFact=m.memories.slice().reverse().find(x=>['自主日常','往来','守约','失约','政务回奏','关系变化'].includes(x.kind));
+  const place=state.dailyHistory[todayKey()]?.entries[p.id]?.[3]?.location||p.location||'quarters';
+  const k=identity(p,channel),stage=r.rank?'已入内廷':r.aff>=70?'亲近':r.aff>=40?'熟识':'初识';
+  const cp=typeof castProfile==='function'?castProfile(p.id):null;
+  return {npc:p.id,name:p.name,identity:k.role,self:k.self,clan:cp?.clan||p.faction||'未记家门',
+   role:roleOf(p),personality:p.type,mood:currentMind(p),relationship:stage,aff:r.aff,love:r.love,
+   location:place,locationName:wloc(place).name,season,festival:festivals[month+'-'+day]||'平日',
+   channel,recentEvent:publicFact?{tick:publicFact.tick,kind:publicFact.kind,text:publicFact.text}:null,
+   memory:m.memories.slice(-6).map(x=>({kind:x.kind,text:x.text})),
+   specialty:cp?.specialty||p.specialty||((p.skills?.military||0)>65?'骑射':(p.skills?.literature||0)>65?'书法':'读书'),
+   slot:['清晨','上午','午后','傍晚','夜间'][Math.min(4,Math.floor((15-state.ap)/3))]};
+ }
+ function fill(text,c){return String(text).replace(/\{self\}/g,c.self).replace(/\{specialty\}/g,c.specialty);}
+ function normalize(text){return String(text).replace(/[\s“”‘’、，。！？：；…—·「」『』]/g,'').replace(/陛下|草民|奴才|奴婢|臣/g,'');}
+ function similarity(a,b){
+  const grams=s=>{const t=normalize(s),z=new Set();for(let i=0;i<t.length-1;i++)z.add(t.slice(i,i+2));return z;};
+  const x=grams(a),y=grams(b);if(!x.size||!y.size)return normalize(a)===normalize(b)?1:0;
+  let n=0;for(const s of x)if(y.has(s))n++;return 2*n/(x.size+y.size);
+ }
+ function record(p,row,c){
+  const m=state.relations[p.id].mind;
+  row.context={...c,topic:row.topic};row.scene={player:row.player,location:c.location};
+  m.turns.push({id:row.id,semantic:row.semantic,reply:row.reply,topic:row.topic,tick:mindTick(),context:row.context});
+  m.turns=m.turns.slice(-30);m.turnSeq++;m.lastTurn=row;
   return row;
  }
- const v8ComposeBefore=naturalComposeDialogue;
- naturalComposeDialogue=function(p,cursorKey,category,topic,baseText,playerText,baseResult){
-  return v8CleanRow(v8ComposeBefore(p,cursorKey,category,topic,baseText,playerText,baseResult),p);
- };
- const v8ReadBefore=readFiction;
- readFiction=function(p,category,topic){
-  return v8CleanRow(v8ReadBefore(p,category,topic),p);
- };
- const v8RevisionBefore=revisionRow;
- revisionRow=function(p,category){
-  return v8CleanRow(v8RevisionBefore(p,category),p);
- };
- // 每日自主行动只记录具体事务，不用心理活动替代行为。
- const V8_DAILY={
-  '温柔体贴':['把茶水送到值房，顺路替同僚取回家书。','整理花房的花木名册，并将新开的花枝剪下送去医馆。'],
-  '清冷克制':['核对三份文书的日期与印章，补齐缺漏后交还值房。','在藏书阁查完旧档，将引用页码抄录进案卷。'],
-  '明朗直率':['从演武场带回训练记录，并把多余的热栗子分给同伴。','替同伴把争执经过写成记录，交由值房存档。'],
-  '骄矜自尊':['将新作誊清，附上修改稿送往文馆。','完成一份诗稿校订，并取回前次送审的批注。'],
-  '敏感多思':['给家中回信，逐项交代近况与寄回的银钱。','整理旧信与账目，将需要回复的事项列成清单。'],
-  '圆融世故':['分别拜访两处府邸，核对宴席名单与来往礼单。','从东市带回商号消息，并向相关官员核实来源。'],
-  '严正守礼':['复核名册与章程，退回一份缺少签押的文书。','按时点验值守名册，将缺勤记录送交主管官员。'],
-  '野心进取':['重写请命折，补上人手、时限与粮草清单。','在演武场完成加练，并提交新的训练安排。'],
-  '疏朗洒脱':['去西市买伞和纸，回宫时把沿途物价记在册上。','沿宫道巡看修缮进度，将需要补修的地方逐项记下。'],
-  '务实重利':['盘点库房货物，重新核算本月采买支出。','核对商队运费与仓储账目，列出可节省的开支。'],
-  '寡言重诺':['修好旧砚并归还原主，随后完成当日值守。','按约送回借阅的书册，并完成交办的差事。'],
-  '戒备善谋':['核对来往名册与密报来源，将原件分别封存。','复查门禁记录与出入凭据，整理出一份待核名单。']
- };
- if(typeof AGENCY_DAILY==='object')Object.assign(AGENCY_DAILY,V8_DAILY);
- window.__dialogueStyleAudit=function(){
-  const samples=[];
-  for(const p of PEOPLE.slice(0,Math.min(12,PEOPLE.length))){
-   for(const category of ['chat','care','activity','flirt']){
-    const row=readFiction(p,category,category==='activity'?'walk':category==='flirt'?'miss':category==='care'?'listen':'recent');
-    if(row)samples.push({name:p.name,category,stage:row.stage,reply:row.reply,stageHasCue:V8_CUE.test(row.stage)});
+ function factRows(p,category,topic,c){
+  const m=state.relations[p.id].mind,out=[];
+  if(category==='chat'&&topic==='recent'){
+   for(const x of m.memories.slice(-12).reverse()){
+    if(x.tick<mindTick()-3||!['自主日常','往来','政务回奏','关系变化'].includes(x.kind))continue;
+    const spoken=String(x.text).replaceAll(p.name,c.self).replace(/^\d+日\s*[·：]?\s*/,'');
+    out.push({id:'fact:'+p.id+':'+x.tick+':'+hash(x.text),semantic:'fact:'+x.tick+':'+hash(x.text),category,topic,
+     reply:'今日'+spoken,stage:'你问起今日行止，对方将经过细细说来。',fact:true,score:50});
    }
   }
-  return {version:'V8',rule:'场景只保留可观察动作；对白保留人物直接表达；不新增心态或神态旁白。',samples};
+  if(category==='probe'&&topic==='worry'&&m.appointment){
+   const when=m.appointment.tick;
+   out.push({id:'appointment:'+when,semantic:'appointment:'+when,category,topic,
+    reply:'并无旁的，只惦记着先前约好的日子。陛下若有事，遣人说一声便是，'+c.self+'也好另作安排。',score:80});
+  }
+  if(category==='probe'&&topic==='worry'&&m.broken>0){
+   out.push({id:'broken:'+m.broken,semantic:'broken:'+m.broken,category,topic,
+    reply:'先前约好的那一回，'+c.self+'确实等过。陛下忙，原不敢催，只是下回若不能来，望能先得一句话。',score:80});
+  }
+  return out;
+ }
+ function turn(p,category,topic,opts={}){
+  ensure();if(active&&active.npc===p.id&&active.category===category&&active.topic===topic)return active.row;
+  const c=context(p,opts.channel||'private'),m=state.relations[p.id].mind;
+  const positive=!['恼怒','疏离','戒备','失望','委屈','吃醋'].includes(c.mood);
+  const hasFamilyLetter=m.memories.some(x=>/家书|家信|给家里写|家中来信/.test(x.text));
+  let pool=COURT_VOICE_DATA.rows.filter(x=>x.category===category&&x.topic===topic&&
+   (x.role==='any'||x.role===c.role)&&(!x.personality||x.personality===p.type)&&
+   (x.positive===undefined||x.positive===positive)&&(!x.minAff||c.aff>=x.minAff)&&(!x.requiresFamilyLetter||hasFamilyLetter)&&
+   (!x.moods||x.moods.includes(c.mood))&&(!x.festival||x.festival===c.festival)&&(!x.season||x.season===c.season));
+  if(category==='probe'&&topic==='family'&&!hasFamilyLetter)pool.push({id:'no-family-letter:'+p.id,semantic:'no-family-letter',role:'any',reply:'近日尚无新信。家中的事，{self}也正等回音，不敢凭猜测回陛下。'});
+  pool=pool.map(x=>({...x,reply:fill(x.reply,c),score:(x.role===c.role?20:0)+(x.personality?30:0)+(x.priority||0)}));
+   pool.push(...factRows(p,category,topic,c));
+  const last=m.turns;
+  const fresh=pool.filter(x=>!last.some(y=>y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78));
+  fresh.sort((a,b)=>(b.score||0)-(a.score||0)||hash(p.id+':'+m.turnSeq+':'+a.id)-hash(p.id+':'+m.turnSeq+':'+b.id));
+  let row=fresh[0];
+  if(!row){
+   // An exhausted topic does not fabricate a new fact or recycle a previous answer.
+   return {id:'exhausted:'+category+':'+topic,category,topic,semantic:'exhausted',exhausted:true,
+    stage:'这件事方才已谈过，话暂且停在这里。',reply:'',player:PROMPTS[category]?.[topic]||'此事还有什么要说？',context:c,
+    scene:{player:PROMPTS[category]?.[topic]||'此事还有什么要说？',location:c.location}};
+  }
+  row={...row,category,topic,player:category==='probe'&&topic==='family'&&!hasFamilyLetter?'家中近来可有什么消息？':PROMPTS[category]?.[topic]||'此事你有何想法？',
+   stage:row.stage||(category==='flirt'?'你将声音放低，问得比方才近了些。':category==='scold'?'你止住旁人的话，等他陈明原委。':'你问起此事，对方暂且放下手中的东西。')};
+  return record(p,row,c);
+ }
+ function html(row){if(row.narrative)return '<span class="mind-stage">'+esc(row.stage)+'</span><br><br>'+esc(row.reply);
+  return '<span class="mind-stage">'+esc(row.stage)+'</span>'+(row.exhausted?'':
+  '<br><br>你说：“'+esc(row.player)+'”<br><br>“'+esc(row.reply)+'”');}
+ readFiction=function(p,category,topic){return turn(p,category,topic==='stay'?'ask':topic);};
+ revisionRow=function(p,category){
+  if(active&&active.npc===p.id&&active.category===category)return active.row;
+  return null;
  };
+ const originalApply=applyInteraction;
+ applyInteraction=function(p,category,topic,line,effects={},options={}){
+  if(!session||session.id!==p.id||session.left<=0)return;
+  const factual=topic.startsWith('relation:')||category==='sleep'||options.factual;
+  let row=active?.row;
+  if(!row&&category==='sleep'){const c=context(p);row=record(p,{id:'night:'+p.id+':'+todayKey(),semantic:'night:'+todayKey(),category,topic,
+   stage:'夜深，殿门外的脚步渐渐远去。',player:'',reply:'你们又说了片刻话，待灯烛换过，便一同歇下。',narrative:true},c);}
+  if(!row&&factual&&category!=='sleep'&&state.relations[p.id].mind.turns.some(x=>similarity(x.reply,line)>=.78)){
+   session.response='<span class="mind-stage">这份说法已记下，尚未有新的事实可补。</span>';renderSession();return;
+  }
+  if(!row&&factual){const c=context(p);row=record(p,{id:'testimony:'+p.id+':'+hash(line),semantic:'testimony:'+hash(line),category,topic,
+   stage:category==='sleep'?'夜深，殿门外的脚步渐渐远去。':'你问起两人的往来，对方据所知作答。',player:topic.startsWith('relation:')?'你与'+(PEOPLE.find(x=>x.id===topic.slice(9))?.name||'此人')+'近日如何？':PROMPTS[category]?.[topic]||'此事据实说来。',reply:line},c);}
+  if(!row)row=turn(p,category,topic);
+  if(row.exhausted){session.response=html(row);renderSession();return;}
+  const prev=active;active={npc:p.id,category,topic,row};
+  const left=session.left;
+  try{originalApply(p,category,topic,row.reply,effects,options);}finally{active=prev;}
+  if(session&&session.left<left){session.response=html(row);state.relations[p.id].mind.lastTurn=row;renderSession();save();}
+ };
+ // Call the original mechanics once, not the revision/agency/dialogue display wrappers.
+ interactionTopic=function(id){
+  if(!session||session.left<=0||!session.section)return;
+  const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],category=session.section;
+  if(id.startsWith('exclusive:')){
+   const base=FICTION_DATA.bespoke.find(x=>x.id===id.slice(10)&&x.npc===p.id);if(!base)return;
+   const originals=FICTION_DATA.bespoke.filter(x=>x.npc===p.id&&x.state==='平静');
+   const index=originals.findIndex(x=>x.title===base.title),content=LORE[p.id]?.[index];if(!content)return;
+   const m=r.mind,semantic='lore:'+p.id+':'+index;
+   if(m.turns.some(x=>x.semantic===semantic)||mindTick()-(m.cooldowns[base.id]??-99)<base.cooldown){toast('此事方才谈过，待有新进展再问。');return;}
+   let reply=content[1];if(r.rank&&p.id!=='xie')reply=reply.replaceAll('草民','臣');
+   const row=record(p,{id:semantic,semantic,category:'chat',topic:id,stage:'你提起这桩旧事，对方认得。',player:content[0],reply},context(p));
+   m.cooldowns[base.id]=mindTick();active={npc:p.id,category:'chat',topic:id,row};try{applyInteraction(p,'chat',id,row.reply,{aff:3});}finally{active=null;}return;
+  }
+  if(!topicsFor(category,p,r).some(x=>x[0]===id))return;
+  const gate=topicReason(category,id,p,r);if(gate){toast(gate);return;}
+  if(category==='sleep'){intimacyQuestion();return;}
+  if(category==='care'&&id==='recruit'){if(r.aff<50||r.love<8){toast('尚须好感50、暧昧8，才好商议入宫。');return;}openRecruit(p);return;}
+  if(category==='probe'&&id==='family'){
+   if(r.aff<40){toast('交情尚浅，家事暂不肯细说。');return;}
+   const row=turn(p,'probe','family');if(row.exhausted){session.response=html(row);renderSession();return;}
+   active={npc:p.id,category,topic:id,row};try{applyInteraction(p,category,id,row.reply,{aff:1});
+    if(row.semantic!=='no-family-letter'&&hash(todayKey()+p.id+':disclosure')%100<60){const m=r.mind;if(!m.disclosures.includes('family'))m.disclosures.push('family');rememberMind(p.id,'向女帝谈及家中期许，尚未借御前情分应下私家请托。','家书');}}
+   finally{active=null;}return;
+  }
+  if(category==='probe'&&id.startsWith('report:')){
+   const uid=id.slice(7),report=ensure().reports.find(x=>x.uid===uid);if(!report)return;
+   const t=template(report);if(report.heard.length>=t.evidence.length){toast('现有实据均已陈明，待回奏再核。');return;}
+   const next=t.evidence.findIndex((_,i)=>!report.heard.includes(i)),source=t.evidence[next];
+   const c=context(p),reply=r.loyalty>=45?c.self+'经手所知，是这一项：'+source:'此项尚待与有司核对。'+c.self+'不敢先作定论，请陛下核原册。';
+   const row=record(p,{id:'report-talk:'+uid+':'+next,semantic:'report-talk:'+uid+':'+next,category,topic:id,
+    stage:'对方将所知与尚待核实之处分别陈明。',player:'前次呈报，有何实据？',reply},c);
+   active={npc:p.id,category,topic:id,row};try{applyInteraction(p,category,id,reply,{}, {factual:true});}finally{active=null;}
+   if(r.loyalty>=45&&!report.heard.includes(next))report.heard.push(next);save();return;
+  }
+  if(category==='probe'&&id.startsWith('relation:')){topicBeforeMind(id);return;}
+  const row=turn(p,category,id);if(row.exhausted){session.response=html(row);renderSession();return;}
+  active={npc:p.id,category,topic:id,row};
+  try{topicBeforeMind(id);}finally{active=null;}
+ };
+ actions.interactionTopic=interactionTopic;
+ const beforeTopics=topicsFor;
+ topicsFor=function(category,p,r){
+  let result=beforeTopics(category,p,r);
+  if(category==='probe')result.push(['family','问家中来信','好感40后可问；坦言后有机会得知家族期许。']);
+  if(category==='probe'&&session?.id===p.id&&session.report)result.push(['report:'+session.report,'核问所呈之事','只记经手所知；保留与传闻均不当作证据。']);
+  if(category==='care'&&!r.rank&&(p.romance||p.id==='xie'))result.push(['recruit','议入内廷','好感50、暧昧8；先问本人意愿，再行安置。']);
+  return result;
+ };
+ visit=function(id){
+  ensure();const p=PEOPLE.find(x=>x.id===id);if(!p)return;
+  if(isAway()&&!regionOf(state.tour.region).people.includes(id)){toast('此人不在随行名册，回京后再召见。');return;}
+  if(!pay(1))return;
+  const c=context(p),self=c.self;
+  let greeting='“'+self+'见过陛下。”';
+  if(c.mood==='疏离'||c.mood==='恼怒')greeting='他依礼问安，仍立在原处，没有像往常那样近前。';
+  else if(c.relationship==='亲近'||c.relationship==='已入内廷')greeting='“陛下来了。”他将手中的东西放下，替你空出案边的位置。';
+  session={id,left:3,message:greeting,response:'',history:[]};
+  if(!state.visited.includes(id))state.visited.push(id);
+  if(resolvePromise(id)){change(id,0,2);rememberMind(id,'女帝依约来见，先前留下的约定已经践行。','守约');}
+  markContact(id);log('召见'+p.name+'，依礼问安。','会面',id);render();renderSession();save();
+ };
+ actions.visit=visit;
+ mindBlock=function(p){const c=context(p),m=state.relations[p.id].mind;return '<div class="mind-block"><div class="section-heading"><span class="tag">'+esc(c.mood)+'</span><button class="text-btn" data-action="mindDetail" data-id="'+esc(p.id)+'">心绪与近况</button></div><small>'+esc(c.identity)+' · '+esc(c.relationship)+'</small><small>挂念 '+Math.round(m.expectation)+' · 醋意 '+Math.round(m.jealousy)+' · 戒心 '+Math.round(100-m.security)+'</small></div>';};
+ intimacyQuestion=function(){
+  if(!session||session.left<=0)return;const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],gate=sleepReason(p,r);
+  if(gate){toast(gate);return;}
+  const row=turn(p,'sleep','ask');if(row.exhausted){session.response=html(row);renderSession();return;}
+  const willing=!['恼怒','疏离','戒备','失望','委屈','吃醋'].includes(currentMind(p));
+  session.intimacyConsent=willing?p.id:null;
+  openModal(p.name+' · 夜间',r.rank||p.role,'<div class="scene-text">'+html(row)+'</div><div class="opts">'+
+   (willing?'<button class="opt" data-action="intimacyConfirm"><b>留宿</b><small>另耗1行动；今夜只安排一次。</small></button>':'<p>他已婉辞，今夜便不再强留。</p>')+
+   '<button class="opt" data-action="intimacyCancel"><b>准其回去</b></button></div>','内廷私语');save();
+ };
+
+ // Audition: independent facts persist for the candidate, including their refusal and terms.
+ function candidate(p){
+  const r=state.relations[p.id],c=context(p,'audition'),cp=castProfile(p.id)||{};
+  r.candidateVoice=r.candidateVoice||{first:c.aff>=40?'向往':'拘谨',pressure:!!cp.parents?.length||/世家|家|旁支/.test(cp.background||p.desc||''),
+   specialty:c.specialty,firstMood:c.mood,reason:hash(p.id)%3};
+  return {...r.candidateVoice,clan:cp.clan||p.faction||'家世未详',background:cp.background||p.desc||'礼部尚未补齐籍贯',age:castAge(p),context:c};
+ }
+ function auditionAnswer(p,index){
+  const a=candidate(p),c=a.context,s=c.self;
+  const confident=['骄矜自尊','野心进取','明朗直率'].includes(p.type);
+  let reply='',stage=p.name+'依礼上前，应声回话。',semantic='audition:'+index+':'+p.id;
+  const rivalEdge=socialEdgesOf(p.id).find(e=>['争执','决裂'].includes(e.voiceStage)&&state.audition.pool.includes(e.a===p.id?e.b:e.a));
+  const rival=rivalEdge?PEOPLE.find(x=>x.id===(rivalEdge.a===p.id?rivalEdge.b:rivalEdge.a)):null;
+  if(index===0){
+   reply=a.pressure?(s+'出自'+a.clan+'。家中盼'+s+'得选，临行时叮嘱了许多，'+(confident?'只是今日既站在殿前，也想请陛下看看本人的才学。':'不敢有失。陛下若问家中详情，'+s+'愿据实禀明。')):
+    s+'原在'+(p.role||'乡间')+'谋事。应选之事，家中并未替'+s+'作主，听闻诏令，才来礼部投名。';
+  }else if(index===1){
+   reply=s+'所习，以'+a.specialty+'稍长。'+(confident?'口说未必可信，若陛下允准，愿当场一试。':'平日独自练得多，今日御前回话，倒比试艺还紧张。若有疏漏，容'+s+'重来。');
+  }else{
+   const unwilling=['恼怒','疏离','失望','戒备'].includes(c.mood)||state.audition.consent?.[p.id]===false;
+   if(unwilling)reply='请陛下恕罪。'+s+'今日尚不能应下，愿自请撤牌，不敢虚占名额。';
+   else if(rival&&['骄矜自尊','明朗直率','戒备善谋'].includes(p.type))reply=s+'愿留。只是与'+rival.name+'先前确有争执，此事不敢隐瞒。若同得留牌，请容分别安置，免将旧怨带到御前。';
+   else if(p.type==='野心进取')reply=s+'愿留。只求入宫以后，仍许'+s+'研习'+a.specialty+'，不致将从前所学都搁下。';
+   else if(p.type==='骄矜自尊')reply=s+'愿意。若能得陛下亲自留牌，自当珍重，不敢只凭门第自矜。';
+   else if(p.type==='寡言重诺')reply=s+'愿留。今日所答，往后亦不会改。';
+   else if(p.type==='疏朗洒脱')reply=s+'愿意。只是初入宫，礼数若有不周，还请容'+s+'学，不敢有意怠慢。';
+   else reply=s+'愿留。宫中礼法，已听礼官讲过；未尽之处，入宫后自当细学。';
+  }
+  if(index===2&&rival)state.relations[p.id].candidateVoice.separateFrom=rival.id;
+  const row={id:semantic,semantic,category:'audition',topic:String(index),stage,reply,
+   player:['说说家世与应选缘由。','所习何艺，最擅长什么？','宫中安排已告知，你可愿留牌？'][index],candidate:a};
+  return record(p,row,c);
+ }
+ auditionInterview=function(id,answer=''){
+  const au=state.audition,p=PEOPLE.find(x=>x.id===id);if(!p||au?.status!=='offered'||!au.pool.includes(id))return;
+  ensure();au.answers=au.answers||{};au.consent=au.consent||{};
+  if(au.voiceVersion!==11){for(const pid of au.pool)if(!au.answers[pid])au.interviews[pid]=[];au.voiceVersion=11;}
+  const a=candidate(p),qs=au.interviews[id]||[],row=au.answers[id];
+  const intro=row?html(row):'<span class="mind-stage">'+esc(p.name)+'在殿前行礼，候女帝问话。</span><br><br>“'+esc(a.context.self)+'叩见陛下。”';
+  const perf=au.performances?.[id];
+  openModal(p.name,a.age+'岁 · '+p.type+' · '+p.role,'<div class="scene-text">'+intro+'</div><p class="mini">'+esc(a.clan)+' · '+esc(a.specialty)+' · '+esc(a.first==='向往'?'初见：向往':'初见：拘谨')+'</p><div class="opts">'+
+   ['问家世与来意','问所学与专长','问是否愿意留牌'].map((q,i)=>'<button class="opt" data-action="auditionAsk" data-id="'+id+'|'+i+'" '+(qs.includes(i)?'disabled':'')+'><b>'+q+(qs.includes(i)?' · 已问':'')+'</b></button>').join('')+
+   '<button class="opt" data-action="auditionPerform" data-id="'+id+'" '+(perf?'disabled':'')+'><b>'+(perf?'才艺已试':'命其当场试艺')+'</b><small>'+esc(a.specialty)+'</small></button>'+
+   '<button class="opt" data-action="auditionSelect" data-id="'+id+'" '+(qs.length!==3||au.consent[id]===false?'disabled':'')+'><b>'+(au.selected.includes(id)?'撤回留牌':'留牌候选')+'</b><small>'+(au.consent[id]===false?'本人自请撤牌，不列留宫名单。':'三问已毕，再定去留。')+'</small></button></div><button class="text-btn" data-action="audition">返回名册</button>','殿选');save();
+ };
+ actions.auditionInterview=id=>auditionInterview(id);
+ actions.auditionAsk=raw=>{
+  const [id,n]=String(raw).split('|'),i=Number(n),au=state.audition,p=PEOPLE.find(x=>x.id===id);
+  if(!p||au?.status!=='offered'||!au.pool.includes(id)||![0,1,2].includes(i))return;
+  au.interviews[id]=au.interviews[id]||[];if(au.interviews[id].includes(i))return;
+  au.consent=au.consent||{};if(i===2)au.consent[id]=!['恼怒','疏离','失望','戒备'].includes(currentMind(p));
+  au.interviews[id].push(i);au.answers=au.answers||{};au.answers[id]=auditionAnswer(p,i);
+  rememberMind(id,'殿选中回禀'+['家世与来意','所习专长',au.consent[id]?'愿意留牌':'自请撤牌'][i]+'。','选秀');
+  auditionInterview(id);save();
+ };
+ const oldSelect=actions.auditionSelect;
+ actions.auditionSelect=id=>{if(state.audition?.consent?.[id]===false){toast('本人已请撤牌。');return;}oldSelect(id);};
+ const oldConfirm=actions.auditionConfirm;
+ actions.auditionConfirm=()=>{const a=state.audition;if(a?.selected?.some(id=>a.consent?.[id]!==true)){toast('须先问清本人意愿。');return;}
+  const selected=(a?.selected||[]).slice();oldConfirm();if(state.audition?.status==='completed')for(const id of selected){
+   const other=state.relations[id]?.candidateVoice?.separateFrom;if(other&&selected.includes(other)&&state.harem.housing[id]===state.harem.housing[other]){
+    const house=CAST_HOUSES.find(h=>h.id!==state.harem.housing[other]);if(house)state.harem.housing[id]=house.id;
+    rememberMind(id,'殿选所请分别安置，内廷已依言安排。','守约',true);
+   }}save();};
+ actions.auditionPerform=id=>{
+  const p=PEOPLE.find(x=>x.id===id),au=state.audition;if(!p||au?.status!=='offered'||!au.pool.includes(id)||au.performances?.[id])return;
+  const a=candidate(p),level=castProfile(id)?.specialtyLevel||p.specialtyLevel||3;
+  const falter=hash(p.id+':'+state.elapsed+':perform')%100<(a.context.mood==='戒备'?45:22);
+  au.performances=au.performances||{};au.performances[id]={skill:a.specialty,level,falter,day:todayKey()};
+  const confident=['骄矜自尊','野心进取'].includes(p.type),self=a.context.self;
+  const reply=falter?(confident?'方才失了准头，是'+self+'练得不够。请陛下容重试一回，不敢拿紧张搪塞。':self+'一时慌了，竟失了平日的准头。请陛下容'+self+'缓一口气，再试。'):
+   level>=6?'所习尚有未尽处，幸而今日未曾失手。若陛下有所问，'+self+'愿细说。':self+'所学尚浅，能做到的便是这些。未敢装作已经精通，往后还须再学。';
+  const row=record(p,{id:'performance:'+id,semantic:'performance:'+id,category:'audition',topic:'performance',
+   stage:p.name+(falter?'试到半处停了一瞬，重新整好手边器物。':'依所学呈艺，礼官在旁记下等第。'),player:'将你最擅长的试来。',reply},a.context);
+  au.answers=au.answers||{};au.answers[id]=row;rememberMind(id,'殿前试'+a.specialty+(falter?'一度失手，已据实陈明。':'，礼官已记等第。'),'选秀');auditionInterview(id);save();
+ };
+
+ openRecruit=function(p){
+  if(!session||session.id!==p.id)return;const c=context(p),r=state.relations[p.id];
+  const willing=!['恼怒','疏离','戒备','失望'].includes(c.mood);
+  const reply=willing?c.self+'愿意。只是现下手头的事，须容'+c.self+'交代清楚，再依礼入宫。':'蒙陛下厚爱，'+c.self+'感激。只是眼下尚不能应，望陛下容缓一缓。';
+  session.recruitConsent=willing?p.id:null;
+  openModal('议入内廷',p.name,'<div class="scene-text">你说：“朕想留你在内廷。你可愿意？”<br><br>“'+esc(reply)+'”</div><div class="opts">'+
+   (willing?'<button class="opt" data-action="recruitConfirm" data-id="'+p.id+'"><b>依礼安置，准其交接旧事</b><small>内库12；消耗本次1次互动。</small></button>':'')+
+   '<button class="opt" data-action="backSession"><b>暂缓此事</b></button></div>','内廷议事');
+ };
+ const oldRecruit=actions.recruitConfirm;
+ actions.recruitConfirm=id=>{if(session?.recruitConsent!==id){toast('须先问明本人意愿。');return;}oldRecruit(id);if(state.relations[id]?.rank&&session){session.response='册封的礼单已交内廷，旧差遣另行交接。<br><br>“臣谢恩，往后自当珍重。”';renderSession();save();}};
+
+ /* Report templates: jurisdiction, source, verification, imperial decision and delayed return. */
+ const REPORTS=[
+  {id:'doctor',title:'京郊缺医，请拨药材',office:'太医院会同顺天府',source:'顺天府呈报，太医院验册',
+   brief:'京郊三村近日求医者增多，乡间医者不足。顺天府已报人数，太医院拟遣医官两名，所需药材尚未拨给，请旨。',
+   evidence:['顺天府已呈三村就诊名册；尚不能据此断为疫病。','太医院报：现有医官可暂调两名，随行药材须另拨。'],role:'medicine',
+   choices:[['准拨药材，命两衙协办',4,3,{people:3},'医官已抵三村，逐户诊治；病例分册送回，暂未查出同源疫患。','救治优先'],['先核病情，分送诊籍',1,2,{people:1},'诊籍已核，病者以旧疾居多；少数疑症另行复诊，药材数目重新列报。','核查优先'],['命顺天府依例办理，异常再奏',0,4,{people:1},'顺天府依例聘医补药，太医院复核了疑症；办理花销留府核销。','授权有司']]},
+  {id:'examcheat',title:'科场受礼之告，请核实',office:'都察院',source:'考生具名陈告；尚无定案',brief:'有考生具名告考官受礼。都察院已封存所指礼单，真伪尚待核验，请定查办之法。',
+   evidence:['具名陈告已收，不等于受礼之事属实。','所指礼单尚须与往来凭据、经手人口供互证。'],role:'justice',
+   choices:[['封存卷册，交都察院核查',2,4,{authority:2},'礼单与经手人口供已有出入，御史已列疑点，未贸然定罪。','封卷核查'],['先护陈告者，另核来历',1,3,{people:1},'陈告者暂得安置，荐举与往来另行核问；所告仍按证据查验。','保护陈告'],['命有司限期复核，毋扰考试',0,5,{authority:1},'有司另派人员复核，考试照常；所涉考官回避相关卷册。','分事办理']]},
+  {id:'envoy',title:'邻使请议互市',office:'鸿胪寺会同礼部',source:'使者国书与贡物清单',brief:'邻国使者请以马匹易丝。鸿胪寺已验国书，马匹尚须兵部验看，市价由户部核议，请示是否准议。',
+   evidence:['国书与使者名籍相合。','来马尚未经军需验看，不宜只据外观定价。'],role:'ritual',
+   choices:[['准议，先验马与市价',6,4,{army:2},'兵部验马、户部议价后，首批交换按核定数交割。','验货议价'],['先准小额试易',3,3,{authority:1},'首批试易已毕，验收与折价仍分别留档，未许长期定额。','限额试易'],['赐书回礼，暂缓互市',0,2,{authority:1},'使者领回国书，鸿胪寺依礼送行；互市之议暂缓，往来未断。','暂缓互市']]},
+  {id:'market',title:'东市伤人案，附地方办理单',office:'顺天府',source:'府衙例行办结前报；非必请旨事项',brief:'东市两商户争摊伤人，顺天府已验伤、传双方问话，拟依律处断。此为例行报备，无须陛下逐项亲断。',
+   evidence:['验伤与现场证言由府衙留存。','摊位旧契须一并核验，不能以谁先告状判曲直。'],role:'justice',
+   choices:[['命依律办结，留册备查',0,2,{security:2},'府衙核过旧契与伤情，依法判赔，双方领了文书。','依律授权'],['责复核摊契，防有豪强侵占',1,4,{authority:1},'府衙复核摊契，另查中人是否越界收钱；原伤人案仍分案处置。','核契查弊'],['交巡按抽核，毋代府衙定案',1,5,{people:1},'巡按抽核办案手续，未替府衙预断；卷册补齐后归档。','监督有司']]},
+  {id:'rain',title:'城南积水，请调修渠用度',office:'工部会同顺天府',source:'雨后勘验简图、住户报损',brief:'昨夜大雨，城南三街积水。顺天府已疏散低处住户，工部查得旧渠壅塞，临时疏排之外，另请修渠用度。',
+   evidence:['疏散已由府衙执行，不待御前逐户下令。','堵塞位置有勘验图，长期修渠仍须另核工料。'],role:'works',
+   choices:[['先拨疏排，再核修渠工料',4,3,{people:3},'积水已退，工部另呈修渠估单；尚未将临时拨款混作全项工程款。','急缓分办'],['限工部复勘，列明用料',1,4,{authority:1},'复勘查出两段旧渠需修，估单减去重复用料，暂排仍由府衙续办。','复核工料'],['责府衙先办，按例核销',0,4,{people:1},'府衙先行疏排，工部核销必要用度；修渠另拟，不擅增名目。','地方先办']]},
+  {id:'guard',title:'守门校尉获盗，请核功赏',office:'兵部',source:'守备报功、府衙收押文书',brief:'守门校尉截获盗马数人，府衙已收押。兵部核得获盗属实，尚须分清各人功次，请定赏格。',
+   evidence:['盗犯已收押，追赃与审案交府衙继续。','报功名单不能仅凭主将一面之词，须核协同人员。'],role:'military',
+   choices:[['核清功次，依例给赏',3,3,{army:2},'协同人员均列功册，赏银依例发给，未将全部功劳独归一人。','依例论功'],['记功候补，暂不破格',0,4,{authority:1},'校尉记功入册，晋补仍候缺额；兵部将协同者一并列名。','记功候补'],['交叉核验，勿冒功漏功',1,4,{authority:2},'核报补入两名漏列守卒，功次更正后再行给赏。','复核功次']]}
+ ];
+ function chooseActor(role){return PEOPLE.find(p=>roleOf(p)===role&&!state.relations[p.id].rank)||PEOPLE.find(p=>p.official)||PEOPLE[0];}
+ function reports(){
+  const v=ensure();advanceReports();
+  if(v.reportMonth!==state.elapsed){v.reportMonth=state.elapsed;
+   const pool=REPORTS.slice().sort((a,b)=>hash(state.elapsed+':report:'+a.id)-hash(state.elapsed+':report:'+b.id));
+   for(const t of pool.filter(t=>t.id!=='cooperate').slice(0,3)){const actor=chooseActor(t.role),other=PEOPLE.find(p=>p.official&&p.id!==actor.id&&!state.relations[p.id].rank)||PEOPLE[1];
+    v.reports.push({uid:'report-'+(++v.serial),template:t.id,month:state.elapsed,stage:'呈报',created:mindTick(),actor:actor.id,other:other.id,heard:[],done:false});}
+  }return v.reports.filter(x=>x.month===state.elapsed||!x.done||x.echoed&&x.echoMonth===state.elapsed);
+ }
+ function template(r){return REPORTS.find(x=>x.id===r.template);}
+ function reportCard(r){const t=template(r);return '<div class="record"><span class="tag">'+esc(t.office)+' · '+esc(r.stage)+'</span><b>'+esc(t.title)+'</b><p>'+esc(r.done?r.result:t.brief)+'</p>'+(r.echoed?'<p>'+esc(r.echo)+'</p>':'')+'<button class="btn ghost" data-action="voiceReportOpen" data-id="'+r.uid+'">'+(r.done?'核看回奏':'核看呈报')+'</button></div>';}
+ eventMenu=function(){openModal('御前呈报','谢无咎：“陛下，有司新呈的文书已分好。须请旨的在前，例行报备的另附于后。”',reports().map(reportCard).join('')||'<p>今日暂无待决文书。</p>','朝廷文书');save();};
+ sceneEventOpen=function(id){const r=reports().find(x=>x.uid===id||x.template===id);if(r)openReport(r.uid);};
+ function openReport(uid){
+  const r=ensure().reports.find(x=>x.uid===uid);if(!r)return;const t=template(r),p=PEOPLE.find(x=>x.id===r.actor);
+  openModal(t.title,t.office,'<div class="record"><b>报事依据</b><p>'+esc(t.source)+'</p></div><div class="scene-text">'+
+   (r.done?'“臣等奉旨办理，今将经过具奏：'+esc(r.result)+'”':'“启奏陛下，'+esc(t.brief)+'”')+'</div>'+
+   t.evidence.map((s,i)=>'<div class="record"><button class="text-btn" data-action="voiceReportEvidence" data-id="'+uid+'|'+i+'">'+(r.heard.includes(i)?'已核问':'核问')+' · '+(i+1)+'</button>'+(r.heard.includes(i)?'<p>'+esc(s)+'</p>':'')+'</div>').join('')+
+   (r.stage==='呈报'?'<div class="opts">'+t.choices.map((c,i)=>'<button class="opt" data-action="voiceReportChoose" data-id="'+uid+'|'+i+'"><b>'+esc(c[0])+'</b><small>'+(c[1]?'内库 '+c[1]:'依例办理，无额外拨款')+' · 约'+c[2]+'日回奏</small></button>').join('')+'</div>':'<p>'+esc(r.done?'回奏已收，后续仍留有司续查。':'旨意已下，正在办理，不重复下旨。')+'</p>')+
+   '<button class="text-btn" data-action="voiceReportVisit" data-id="'+uid+'">召见'+esc(p.name)+'核问 · 1行动</button>','呈报 · 核问 · 裁决 · 回奏');save();
+ }
+ function reportRelation(r,delta,text){
+  const p=PEOPLE.find(x=>x.id===r.actor),q=PEOPLE.find(x=>x.id===r.other);if(!p||!q)return;
+  let e=socialEdgesOf(p.id).find(x=>x.a===q.id||x.b===q.id);
+  if(!e){e={a:p.id,b:q.id,affAB:40,affBA:40,kind:'奉旨协办',origin:text};state.socialEdges.push(e);}
+  e.affAB=clamp((e.affAB??40)+delta);e.affBA=clamp((e.affBA??40)+delta);e.recent=text;
+  r.relation={a:p.id,b:q.id,delta};rememberMind(p.id,text,'政务回奏',true);rememberMind(q.id,text,'政务回奏',true);
+ }
+ function decideReport(raw){
+  const [uid,n]=String(raw).split('|'),r=ensure().reports.find(x=>x.uid===uid),i=Number(n);if(!r||r.stage!=='呈报'||![0,1,2].includes(i))return;
+  const t=template(r),c=t.choices[i];if(!pay(0,c[1]))return;
+  r.choice=i;r.stage='奉旨办理';r.due=mindTick()+c[2];r.echoDue=state.elapsed+3;
+  r.order=c[0];r.decided=state.elapsed;r.verified=r.heard.length===t.evidence.length;
+  const actor=PEOPLE.find(x=>x.id===r.actor);state.relations[r.actor].loyalty=clamp(state.relations[r.actor].loyalty+1);
+  reportRelation(r,i===2?2:1,actor.name+'奉旨与'+PEOPLE.find(x=>x.id===r.other).name+'协办“'+t.title+'”，尚待回奏。');
+  log(t.title+'：奉旨“'+c[0]+'”，限'+c[2]+'日回奏。','政务',r.actor);save();eventMenu();
+ }
+ function advanceReports(){
+  const v=state.courtVoice;if(!v)return;
+  for(const r of v.reports){const t=template(r);if(!t)continue;
+   if(r.stage==='奉旨办理'&&mindTick()>=r.due){
+    const c=t.choices[r.choice];r.stage='已回奏';r.done=true;r.result=c[4];govEffect(c[3]);
+    reportRelation(r,2,'“'+t.title+'”回奏：'+r.result);log(t.title+'回奏：'+r.result,'政务回奏',r.actor);
+   }
+   if(r.done&&!r.echoed&&state.elapsed>=r.echoDue){
+    r.echoed=true;r.echoMonth=state.elapsed;r.echo='前次“'+t.title+'”的办理册送回复核：当时依“'+t.choices[r.choice][5]+'”办理，此次由原协办者续核凭据。';
+    rememberMind(r.actor,r.echo,'政务回奏',true);log(r.echo,'后续回响',r.actor);
+    v.echoes=v.echoes||[];v.echoes.push({report:r.uid,text:r.echo,month:state.elapsed});
+   }
+  }
+ }
+ actions.voiceReportOpen=openReport;
+ actions.voiceReportEvidence=raw=>{const[uid,n]=raw.split('|'),r=ensure().reports.find(x=>x.uid===uid),i=Number(n);if(!r||!template(r).evidence[i])return;if(!r.heard.includes(i))r.heard.push(i);save();openReport(uid);};
+ actions.voiceReportChoose=decideReport;
+ actions.voiceReportVisit=uid=>{const r=ensure().reports.find(x=>x.uid===uid);if(!r)return;visit(r.actor);if(session?.id===r.actor){session.report=uid;session.message='你召见'+PEOPLE.find(x=>x.id===r.actor).name+'，核问“'+template(r).title+'”。';renderSession();}};
+ actions.randomEvent=eventMenu;actions.sceneEventOpen=sceneEventOpen;actions.sceneEventChoose=decideReport;
+ // Keep legacy monthEvents for old save compatibility, but its UI no longer supplies court speech.
+
+ /* Daily facts feed dialogue and observable notices; meetings leave a relationship and a follow-up. */
+ const stageNames=['偶遇','试探','合作','误会','争执','拉拢','结盟','决裂'];
+ function dailyConsequences(key){
+  const v=ensure();if(v.days[key])return;const day=state.dailyHistory[key];if(!day)return;v.days[key]=true;
+  const acted=new Set();
+  for(const p of PEOPLE){
+   const r=state.relations[p.id],m=r.mind,entry=day.entries[p.id]?.[3];if(!entry)continue;
+   const fact=m.memories.slice().reverse().find(x=>x.tick===mindTick()&&['自主日常','往来'].includes(x.kind));
+   if(!fact){const text='整理'+(r.rank?'住处用物':p.role+'手头事务')+'，将未完的事留条记下。';entry.text=text;rememberMind(p.id,text,'自主日常',true);}
+   // Persistent disposition: never announce a new summons, marriage or political victory without an actual action.
+   r.agency.goal=MIND_PROFILE[p.id]?.goal||'将'+context(p).specialty+'习得更精熟';
+   r.agency.plan=entry.text;
+   if(m.broken>0&&m.disappointment>=38&&m.appointment){
+    const old=m.appointment;m.appointment=null;rememberMind(p.id,'因先前失约尚未释怀，托人辞去下一次邀约。','取消约定',true);
+    state.ecology.inbox.push({id:'cancel-'+p.id+'-'+key,npc:p.id,kind:'invite',tick:mindTick(),expires:mindTick()+3,done:false,opened:false,
+     voiceText:'前约请容暂缓。臣尚有未解之事，不敢勉强赴席，望陛下恕罪。',cancelled:old.tick});
+   }
+   const edge=socialEdgesOf(p.id).find(e=>!acted.has([e.a,e.b].sort().join('|'))&&
+    (entry.text.includes(PEOPLE.find(q=>q.id===(e.a===p.id?e.b:e.a))?.name)||e.recent?.includes(key)));
+   if(!edge)continue;const eid=[edge.a,edge.b].sort().join('|');acted.add(eid);
+   const prior=edge.voiceStage||'偶遇',liking=Math.min(edge.affAB??40,edge.affBA??40),tense=/争执|不合|未谈拢/.test(entry.text);
+   let next=prior;
+   if(tense)next=prior==='争执'?'决裂':prior==='误会'?'争执':'误会';
+   else if(liking>=65)next=prior==='拉拢'?'结盟':prior==='结盟'?'结盟':'拉拢';
+   else next=prior==='偶遇'?'试探':prior==='试探'?'合作':prior==='误会'?'试探':prior==='争执'?'拉拢':prior==='决裂'?'试探':prior;
+   edge.voiceStage=next;edge.voiceLastDay=key;
+   if(next!==prior){const other=PEOPLE.find(x=>x.id===(edge.a===p.id?edge.b:edge.a));
+    const text=p.name+'与'+other.name+'今日往来后，由“'+prior+'”转为“'+next+'”。';rememberMind(p.id,text,'关系变化',true);rememberMind(other.id,text,'关系变化',true);
+    if(['误会','争执','拉拢','结盟','决裂'].includes(next)){
+     const id='relation-'+(++state.agency.seq);state.agency.scenes.push({id,dayKey:key,source:p.id,target:other.id,kind:'relationship',title:p.name+'与'+other.name+' · '+next,text:entry.text,done:false,voiceStage:next,edge:eid});
+    }
+   }
+  }
+  advanceReports();
+ }
+ REPORTS.push({id:'cooperate',title:'协办争议，请明责分事',office:'有司会同内阁',source:'两名经手者陈说；尚不能据争执断其失职',role:'personnel',
+  brief:'两名经手者对协办先后各执一词，原事尚未办结。双方已具说法，拟先核交接记录，再明责分事，请旨。',
+  evidence:['两人的陈说均已收存，尚须与交接簿互证。','意见不合不是犯罪证据，不能先行定罪。'],
+  choices:[['核交接簿，令二人分段协办',1,3,{authority:1},'交接簿核过，两人所领事项重新列明，各据实回报，不再相互等候。','明责协办'],
+   ['另派中人复核，二人分别陈报',2,4,{authority:2},'复核者将争议与原事分开，原事继续办理，责任另据记录厘清。','独立核验'],
+   ['暂分差遣，限期补全卷册',0,5,{authority:1},'两人暂分差遣，原卷已交接，未将争执直接作为惩处依据。','暂分差遣']]});
+ const oldAgencyOpen=agencyOpen,oldAgencyChoose=agencyChoose;
+ agencyOpen=function(id){
+  const s=state.agency.scenes.find(x=>x.id===id&&!x.done);if(!s?.voiceStage)return oldAgencyOpen(id);
+  const p=PEOPLE.find(x=>x.id===s.source),q=PEOPLE.find(x=>x.id===s.target);
+  openModal(s.title,'宫人传来的话，只作线索','<div class="scene-text">'+esc(s.text)+'</div><p>所涉人物：'+esc(p.name)+'、'+esc(q.name)+'。两人的说法须分别听取，不因先来告知便先信一方。</p><div class="opts">'+
+   '<button class="opt" data-action="agencyChoose" data-id="'+id+'|listen"><b>分别听取，暂不定是非</b></button>'+
+   '<button class="opt" data-action="agencyChoose" data-id="'+id+'|call"><b>令其当面陈明，核对来由</b></button>'+
+   '<button class="opt" data-action="agencyChoose" data-id="'+id+'|leave"><b>暂不干预，留意后续</b></button></div>','人物往来 · 待核');
+ };
+ agencyChoose=function(raw){
+  const [id,choice]=String(raw).split('|'),s=state.agency.scenes.find(x=>x.id===id&&!x.done);
+  if(!s?.voiceStage)return oldAgencyChoose(raw);if(!['listen','call','leave'].includes(choice))return;
+  const p=PEOPLE.find(x=>x.id===s.source),q=PEOPLE.find(x=>x.id===s.target),edge=socialEdgesOf(p.id).find(e=>e.a===q.id||e.b===q.id);
+  if(!edge)return;s.done=true;
+  const delta=choice==='listen'?2:choice==='call'?-1:0;
+  edge.affAB=clamp(edge.affAB+delta);edge.affBA=clamp(edge.affBA+delta);
+  shiftMind(p.id,choice==='listen'?{security:3,anger:-3}:choice==='call'?{anger:3}:{expectation:-1});
+  shiftMind(q.id,choice==='listen'?{security:3,anger:-3}:choice==='call'?{anger:3}:{expectation:-1});
+  const text=choice==='listen'?'女帝分别听取两人陈说，未凭传话定是非。':choice==='call'?'女帝召双方当面陈说，并命核对原委。':'女帝暂未干预，两人的往来仍按各自打算继续。';
+  rememberMind(p.id,text,'关系变化',true);rememberMind(q.id,text,'关系变化',true);
+  const v=ensure();v.relationFollowups=v.relationFollowups||[];
+  v.relationFollowups.push({source:p.id,target:q.id,choice,due:mindTick()+2,stage:s.voiceStage,done:false});
+  if(choice==='call'&&p.official&&q.official&&!state.relations[p.id].rank&&!state.relations[q.id].rank){
+   v.reports.push({uid:'report-'+(++v.serial),template:'cooperate',month:state.elapsed,stage:'呈报',created:mindTick(),actor:p.id,other:q.id,heard:[],done:false});
+  }
+  if(state.relations[p.id].rank&&state.relations[q.id].rank){
+   const favored=choice==='listen'?3:1;shiftMind(p.id,{jealousy:-favored});shiftMind(q.id,{jealousy:-favored});
+  }
+  log(p.name+'与'+q.name+'：'+text,'人物往来',p.id);closeModal();render();result('已留意此事',text,'两日后再看双方如何行事。');save();
+ };
+ actions.agencyOpen=agencyOpen;actions.agencyChoose=agencyChoose;
+ function relationshipReturns(){
+  const v=ensure();for(const f of v.relationFollowups||[]){if(f.done||mindTick()<f.due)continue;f.done=true;
+   const p=PEOPLE.find(x=>x.id===f.source),q=PEOPLE.find(x=>x.id===f.target);if(!p||!q)continue;
+   const edge=socialEdgesOf(p.id).find(e=>e.a===q.id||e.b===q.id);if(!edge)continue;
+   const wantsPeace=['温柔体贴','圆融世故','严正守礼'].includes(p.type),positive=f.choice==='listen'||(wantsPeace&&f.choice!=='call');
+   const next=positive?'合作':f.choice==='call'?'争执':Math.min(edge.affAB,edge.affBA)<30?'决裂':f.stage;
+   edge.voiceStage=next;edge.affAB=clamp(edge.affAB+(positive?2:-2));edge.affBA=clamp(edge.affBA+(positive?2:-1));
+   const text=p.name+'与'+q.name+(positive?'再次相见，愿将未说清的事各退一步续谈。':next==='决裂'?'此后避开对方，原先托办的事改由旁人传达。':'仍各持原说，往来时只谈必要的事。');
+   rememberMind(p.id,text,'关系变化',true);rememberMind(q.id,text,'关系变化',true);
+   state.agency.scenes.push({id:'relation-'+(++state.agency.seq),dayKey:todayKey(),source:p.id,target:q.id,kind:'relationship',title:p.name+'与'+q.name+' · 后续',text,done:false,voiceStage:next});
+  }
+ }
+ const oldBuild=buildDay;
+ buildDay=function(){const key=oldBuild();dailyConsequences(key);relationshipReturns();return key;};
+ // No repeated meter drift simply from opening a UI panel.
+ const oldNeeds=agencyNeedAfter;
+ agencyNeedAfter=function(p,moment){const a=state.relations[p.id].agency;if(a.voiceNeedDay===moment.key)return;a.voiceNeedDay=moment.key;oldNeeds(p,moment);};
+ const oldPanel=agencyPanel;
+ agencyPanel=function(){buildDay();oldPanel();const b=$('modalBody');if(b){const v=ensure();const extra=v.reports.filter(r=>r.done).slice(-3);if(extra.length)b.insertAdjacentHTML('beforeend','<h3>有司回奏</h3>'+extra.map(reportCard).join(''));}};
+ actions.agencyPanel=agencyPanel;
+ const oldLetter=openMindLetter;
+ function letterText(p,mail){
+  if(mail.voiceText)return mail.voiceText;
+  const c=context(p,'letter'),m=state.relations[p.id].mind;
+  if(m.broken>0&&['失望','委屈','疏离'].includes(c.mood))return '前次未能见驾，有些话仍未说开。若陛下近日得闲，'+c.self+'想当面禀明。';
+  if(mail.event)return c.self+'有“'+mail.event.title+'”一事须当面禀明，不敢只凭传话陈说。伏候召问。';
+  return c.self+'今日手头事毕，备了薄茶。若陛下得闲，盼能一见；若政务未毕，便不敢相扰。';
+ }
+ mindLine=function(p){const mail=state.ecology.inbox.slice().reverse().find(x=>x.npc===p.id&&!x.done);return letterText(p,mail||{});};
+ openMindLetter=function(id){const mail=state.ecology.inbox.find(x=>x.id===id&&!x.done);if(!mail)return;const p=PEOPLE.find(x=>x.id===mail.npc);if(!p)return;
+  if(mail.kind==='event'&&mail.opened){showMindEvent(mail);return;}
+  openModal(p.name+'递来的信',identity(p,'letter').role,'<div class="scene-text">'+esc(letterText(p,mail))+'</div><div class="opts">'+
+   (mail.cancelled?'':'<button class="opt" data-action="mindReply" data-id="'+id+'|now"><b>准见，当面问话</b><small>1行动</small></button><button class="opt" data-action="mindReply" data-id="'+id+'|later"><b>回信，约明日相见</b></button>')+
+   '<button class="opt" data-action="mindReply" data-id="'+id+'|decline"><b>'+(mail.cancelled?'准其暂缓':'谕近日事忙，暂不许期')+'</b></button></div>','人物来信');save();};
+ actions.mindLetter=openMindLetter;
+ const beforeRender=render;
+ render=function(){beforeRender();const b=$('screen');if(b&&state.tab==='home'){
+  const title=Array.from(b.querySelectorAll('h3')).find(x=>x.textContent==='谢无咎带来的消息');
+  if(title){title.textContent='新呈文书';title.nextElementSibling.textContent='“陛下，有司呈报的文书在此，请御览。”';}
+ }};
+  const priorArchive=archive;
+ archive=function(id){priorArchive(id);const p=PEOPLE.find(x=>x.id===id),body=$('modalBody');if(!p||!body)return;
+  const rs=socialEdgesOf(id).filter(e=>e.voiceStage);if(rs.length)body.insertAdjacentHTML('beforeend','<div class="card"><h3>往来进展</h3>'+rs.map(e=>'<p>'+esc(PEOPLE.find(x=>x.id===(e.a===id?e.b:e.a))?.name)+' · '+esc(e.voiceStage)+'</p>').join('')+'</div>');
+ };
+ actions.archive=archive;
+ const beforeDetail=openMindDetail;
+ openMindDetail=function(id){beforeDetail(id);const p=PEOPLE.find(x=>x.id===id),m=state.relations[id]?.mind,b=$('modalBody');if(!p||!m||!b)return;
+  if(m.disclosures.includes('family'))b.insertAdjacentHTML('beforeend','<div class="record"><b>谈及家事后所知</b><p>'+esc(VOICE_FAMILY(p))+'</p></div>');
+ };
+ function VOICE_FAMILY(p){return COURT_VOICE_DATA.rows.find(x=>x.personality===p.type&&x.topic==='family')?.reply.replaceAll('{self}',identity(p).self)||'尚未谈及详情。';}
+ actions.mindDetail=openMindDetail;
+ window.__courtVoiceAudit={version:11,turn,context,similarity,advanceReports,reports,template,stageNames,rows:COURT_VOICE_DATA.rows.length};
+ ensure();buildDay();save();
 })();
 
 render();if(!state.introSeen)intro();

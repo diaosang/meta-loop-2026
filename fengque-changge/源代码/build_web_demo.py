@@ -1,11 +1,12 @@
 from pathlib import Path
 from zipfile import ZipFile
-from lxml import etree
+from xml.etree import ElementTree as etree
 import json,hashlib
 
 ROOT=Path(__file__).resolve().parent.parent
-out=ROOT/'outputs/fengque-demo/index.html'
-book=ROOT/'outputs/人物内容库/凤阙长歌_性格对话与事件库.xlsx'
+SOURCE=Path(__file__).resolve().parent
+out=ROOT/'网页Demo/index.html'
+book=ROOT/'人物内容库_新编/凤阙长歌_万条对话事件与NPC自主行为.xlsx'
 ns={'m':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 with ZipFile(book) as z:
  shared=[]
@@ -58,29 +59,32 @@ body='''<body><main class="app">
 </main><footer class="bottom-bar"><p><strong>一月十五点，各有取舍</strong><br><span id="saveStatus" role="status">本地自动存档</span></p><button id="monthButton" class="btn primary" data-action="month">结束本月</button></footer>
 <div id="modal" class="modal" aria-hidden="true"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="sheet-head"><div><div class="eyebrow" id="modalEyebrow"></div><h2 id="modalTitle" style="margin-bottom:5px"></h2><p id="modalIntro" class="lead" style="margin:0"></p></div><button id="closeModal" class="close" data-action="close" aria-label="关闭对话">×</button></div><div id="modalBody"></div></div></div><div id="toast" class="toast" role="status"></div>
 '''
-js=(ROOT/'work/demo-game.js').read_text(encoding='utf-8')
-world=json.loads((ROOT/'work/world-data.json').read_text(encoding='utf-8'))
-ext=(ROOT/'work/demo-world.js').read_text(encoding='utf-8')
+js=(SOURCE/'demo-game.js').read_text(encoding='utf-8')
+world=json.loads((SOURCE/'world-data.json').read_text(encoding='utf-8'))
+ext=(SOURCE/'demo-world.js').read_text(encoding='utf-8')
 payload=json.dumps({'dialogue':dialogue},ensure_ascii=False,separators=(',',':')).replace('</','<\\\\/')
-ext= (ROOT/'work/demo-world.js').read_text(encoding='utf-8')
-ext += '\n' + (ROOT/'work/demo-court-scene.js').read_text(encoding='utf-8-sig')
-ext += '\n' + (ROOT/'work/demo-exploration.js').read_text(encoding='utf-8-sig')
-ext += '\n' + (ROOT/'work/demo-interactions.js').read_text(encoding='utf-8-sig')
-fiction=json.loads((ROOT/'work/fiction-data.json').read_text(encoding='utf-8'))
+ext= (SOURCE/'demo-world.js').read_text(encoding='utf-8')
+ext += '\n' + (SOURCE/'demo-court-scene.js').read_text(encoding='utf-8-sig')
+ext += '\n' + (SOURCE/'demo-exploration.js').read_text(encoding='utf-8-sig')
+ext += '\n' + (SOURCE/'demo-interactions.js').read_text(encoding='utf-8-sig')
+fiction=json.loads((ROOT/'人物内容库_新编/凤阙长歌_原创对话事件与自主行为.json').read_text(encoding='utf-8'))
 ext += '\nconst FICTION_DATA='+json.dumps(fiction,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+';\n'
-cast=json.loads((ROOT/'work/cast-data.json').read_text(encoding='utf-8'))
+cast=json.loads((SOURCE/'cast-data.json').read_text(encoding='utf-8'))
 ext += '\nconst CAST_DATA='+json.dumps(cast,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+';\n'
-revision=json.loads((ROOT/'work/revision-dialogue.json').read_text(encoding='utf-8'))
+revision=json.loads((SOURCE/'revision-dialogue.json').read_text(encoding='utf-8'))
 ext += '\nconst REVISION_DATA='+json.dumps(revision,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+';\n'
-ext += '\n' + (ROOT/'work/demo-npc-mind.js').read_text(encoding='utf-8-sig')
-ext += '\n' + (ROOT/'work/demo-cast-life.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-cast-life.js').exists() else ''
-ext += '\n' + (ROOT/'work/demo-revision.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-revision.js').exists() else ''
-ext += '\n' + (ROOT/'work/demo-strife.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-strife.js').exists() else ''
-ext += '\n' + (ROOT/'work/demo-agency.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-agency.js').exists() else ''
-ext += '\n' + (ROOT/'work/demo-dialogue-expansion.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-dialogue-expansion.js').exists() else ''
+ext += '\n' + (SOURCE/'demo-npc-mind.js').read_text(encoding='utf-8-sig')
+ext += '\n' + (SOURCE/'demo-cast-life.js').read_text(encoding='utf-8-sig') if (SOURCE/'demo-cast-life.js').exists() else ''
+ext += '\n' + (SOURCE/'demo-revision.js').read_text(encoding='utf-8-sig') if (SOURCE/'demo-revision.js').exists() else ''
+ext += '\n' + (SOURCE/'demo-strife.js').read_text(encoding='utf-8-sig') if (SOURCE/'demo-strife.js').exists() else ''
+ext += '\n' + (SOURCE/'demo-agency.js').read_text(encoding='utf-8-sig') if (SOURCE/'demo-agency.js').exists() else ''
+ext += '\nconst COURT_VOICE_DATA='+json.dumps(json.loads((SOURCE/'court-voice-data.json').read_text(encoding='utf-8')),ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+';\n'
+ext += '\n' + (SOURCE/'demo-court-voice.js').read_text(encoding='utf-8-sig')
 boot=js.replace("render();if(!state.introSeen)intro();", ext+'\nrender();if(!state.introSeen)intro();')
 world_payload=json.dumps(world,ensure_ascii=False,separators=(',',':'))
 out.write_text(style+extra+body+'<script>\nconst CONTENT='+payload+';\nconst WORLD_DATA='+world_payload+';\n'+boot+'\n</script></body></html>',encoding='utf-8')
+for entry in (ROOT/'index.html', ROOT/'试玩_v11.html'):
+    entry.write_bytes(out.read_bytes())
 print(json.dumps({'output':str(out),'bytes':out.stat().st_size,'workbook_dialogue_rows':len(dialogue),'world_npcs':len(world['people'])+6},ensure_ascii=True))
 
 
