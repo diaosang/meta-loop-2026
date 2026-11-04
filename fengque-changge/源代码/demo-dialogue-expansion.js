@@ -78,11 +78,12 @@ function expansionScenes(p,category,topic){
  const goal=pr.independentGoal||pr.goal||p.desc||'把手边的日子过好';
  const where=typeof p.location==='string'?p.location:(p.home||p.birthplace||'京城');
  const event=w.lastEvent||'宫外今日无大风波';
+ const family=p.clan||p.faction||pr.clan||'本家';
  const topicText=String(topic||category||'闲谈').replace(/^exclusive:/,'');
  const world=state.world?('边仓余粮'+w.grain+'，边境威胁'+w.threat+'，朝臣争执'+(f.tension??0)):'朝局暂且平稳';
  return [
   '今日在'+where+'附近走动时，他又想起了'+goal+'。',
-  '作为'+(p.role||'宫中一员')+'，他近日仍要应付不少琐事，却没有把自己的打算全都放下。',
+  '他出身'+family+'，如今身为'+(p.role||'宫中一员')+'；近日仍要应付不少琐事，却没有把自己的打算全都放下。',
   '宫外传来的消息是“'+event+'”。他没有只顾着自己的处境，也在想这件事会落到谁身上。',
   '眼下'+world+'。他把这些变化记在心里，却没有急着替你作决定。',
   '他记得最近一次相处时你说过的话：“'+memory+'”。这回他想把后半句也说出来。',

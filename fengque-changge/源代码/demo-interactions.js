@@ -5,11 +5,11 @@ function ensureInteractionStats(){
 }
 ensureInteractionStats();
 const INTERACTION_CATEGORIES=[
- ['chat','闲谈','问近况、聊故乡、聊兴趣'],['care','关心与陪伴','听心事、送礼物、约下次见面'],['persuade','说服','商量差事、劝和、争取支持'],['probe','试探','问态度、问交际，听话里的保留'],['scold','训斥','提醒规矩、批评、敲打'],['activity','共同活动','下棋、散步、切磋'],['flirt','调情','夸赞、表达想念、表明心意'],['sleep','侍寝','已入宫后，先问本人意愿']
+ ['chat','闲谈','问近况、聊故乡、聊兴趣'],['probe','打探','问态度、问交际，听话里的保留'],['care','关心','听心事、送礼物、约下次见面'],['scold','训斥','提醒规矩、批评、敲打'],['flirt','暧昧','夸赞、表达想念、表明心意'],['sleep','侍寝','好感达到门槛后，先问本人意愿']
 ];
 function fiveStats(p,compact=false){const r=state.relations[p.id];return `<div class="five-stats ${compact?'compact':''}">${[['政略',r.politics],['武力',r.force],['好感度',r.aff],['忠诚度',r.loyalty],['暧昧度',r.love]].map(([k,v])=>`<span><small>${k}</small><b>${v}</b></span>`).join('')}</div>`;}
 function romanticReason(p,r){if(p.age<18)return '尚未成年';if(!p.romance)return '对方目前只以公事、朋友相处';if(r.aff<35)return '好感度达到35后可调情';return '';}
-function sleepReason(p,r){const romantic=romanticReason(p,r);if(romantic)return romantic;if(!r.rank)return '需先取得同意并入宫';if(r.aff<60||r.love<10)return '需好感度60、暧昧度10';if(r.upsetDay===todayKey())return '对方今天想独处，改日再约';if(state.bedchamber?.day===todayKey())return '今夜已有安排，明日再约';if(state.ap<1)return '侍寝另需1行动';return '';}
+function sleepReason(p,r){if(!p||p.age<16)return '对方尚未及龄';if(r.aff<55)return '好感度达到55后，才有资格问这一句';if(r.upsetDay===todayKey())return '对方今天想独处，改日再约';if(state.bedchamber?.day===todayKey())return '今夜已有安排，明日再约';if(state.ap<1)return '侍寝另需1行动';return '';}
 function categoryReason(id,p,r){return id==='flirt'?romanticReason(p,r):id==='sleep'?sleepReason(p,r):'';}
 const MOODS={
  '温柔体贴':{chat:'今天倒不忙，正好坐下来陪陛下说说话。',care:'本来想说没事。您肯听，我就慢慢说。',yes:'您把话说到这里，我明白了。这件事我去办。',no:'这回我有些顾虑，能不能再商量？',scold:'我听见了。只是陛下这样说，我心里也会难受。',activity:'和您一起，倒不觉得时间过得快。',flirt:'您这样认真，我也舍不得只当玩笑。'},

@@ -30,7 +30,7 @@ function castAge(p){return (p.age||20)+Math.max(0,Math.floor((state.elapsed-2)/1
 function castProfile(id){return CAST_DATA.profiles.find(x=>x.id===id)||state.cast?.generatedProfiles?.[id]||null;}
 function castSpouse(id){const m=CAST_DATA.marriages.find(x=>x.a===id||x.b===id);if(!m)return null;const other=m.a===id?m.b:m.a;const node=CAST_DATA.familyNodes.find(x=>x.id===other);const p=PEOPLE.find(x=>x.id===other);return {id:other,name:node?.name||p?.name||'不详',alive:m.status==='married'&&(node?.alive!==false),status:m.status};}
 function castEligibleRomance(p){const r=state.relations[p.id]||{};if(castAge(p)<18)return false;if(['xu','jiang','ye'].includes(p.id))return false;if(p.id==='xie')return true;return !!p.romance;}
-function castMarriageLabel(p){const s=castSpouse(p.id);if(!s)return '未婚';return s.alive?'已婚 · '+s.name:'丧偶 · '+s.name;}
+function castMarriageLabel(p){const s=castSpouse(p.id),r=state.relations[p.id];if(r?.rank)return p.id==='xie'?'秘君 · 女帝知情':'已婚 · 女帝';if(!s)return '未婚';return s.alive?'已婚 · '+s.name:'丧偶 · '+s.name;}
 function ensureCastState(){
  state.cast=state.cast||{version:2,affectionDays:{},crushes:{},lastSelection:null,nextSelection:2,generated:[],generatedProfiles:{},secretFavorCount:0};
  const c=state.cast;c.affectionDays=c.affectionDays||{};c.crushes=c.crushes||{};c.generated=c.generated||[];c.generatedProfiles=c.generatedProfiles||{};c.nextSelection=Number.isFinite(c.nextSelection)?c.nextSelection:2;
@@ -70,7 +70,7 @@ function castAffectionDay(key){
 }
 // 在世配偶禁止调情；丧偶后恢复原有恋爱路线。谢无咎为女帝知晓的假太监，单独开放。
 const castRomanticBefore=romanticReason;romanticReason=function(p,r){if(castAge(p)<18)return '尚未成年';const s=castSpouse(p.id);if(s?.alive)return `已有配偶${s.name}，不宜调情`;if(p.id==='xie')return r.aff<35?'好感度达到35后可调情':'';return castRomanticBefore(p,r);};
-const castSleepBefore=sleepReason;sleepReason=function(p,r){const reason=romanticReason(p,r);if(reason)return reason;const legacy=castSleepBefore(p,r);if(legacy&&legacy!=='需先取得同意并入宫'&&!legacy.startsWith('需好感度60'))return legacy;if(!castEligibleRomance(p))return '对方目前只以公事、朋友相处';if(r.aff<55||r.love<6)return '需好感度55、暧昧度6';if(r.upsetDay===todayKey())return '对方今天想独处，改日再约';if(state.bedchamber?.day===todayKey())return '今夜已有安排，明日再约';if(state.ap<1)return '侍寝另需1行动';return '';};
+const castSleepBefore=sleepReason;sleepReason=function(p,r){if(!p||castAge(p)<16)return '对方尚未及龄';if(r.aff<55)return '好感度达到55后，才有资格问这一句';if(r.upsetDay===todayKey())return '对方今天想独处，改日再约';if(state.bedchamber?.day===todayKey())return '今夜已有安排，明日再约';if(state.ap<1)return '侍寝另需1行动';return '';};
 const castTopicsBefore=topicsFor;topicsFor=function(category,p,r){const a=castTopicsBefore(category,p,r)||[];if((p.id==='xie'||p.romance)&&category==='persuade'&&!r.rank&&!a.some(x=>x[0]==='recruit'))a.push(['recruit','商议入宫','需先说明宫中安排；谢无咎入宫后仍以暗线当值。']);if(category==='flirt'&&castSpouse(p.id)?.alive)return a.filter(x=>!['compliment','miss','confess'].includes(x[0]));return a;};
 INTERACTION_CATEGORIES.find(x=>x[0]==='sleep')[2]='入宫前后皆可私下相约，先问本人意愿';
 // 不入宫也可侍寝；谢无咎首次获宠后记为隐名内廷人物，其他人无从得知。
