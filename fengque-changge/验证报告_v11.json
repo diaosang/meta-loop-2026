@@ -15,6 +15,10 @@
     "reports: three choices, no instant resolution, stable evidence, deferred return and echo",
     "selection answers preserve background and willingness, refusal cannot be selected",
     "100 NPCs leave a visible action when player skips a day",
+    "passive affection is no longer invented by the calendar",
+    "NPC plans persist with a reason, duration, and visible result",
+    "daily interaction growth is bounded but meaningful",
+    "composite mood signals remain visible alongside the dominant mood",
     "relationship decision changes memory, an edge, a report and a later scene",
     "save/reload keeps dialogue window, refusal and pending reports",
     "legacy save without new fields migrates without wiping affinity"

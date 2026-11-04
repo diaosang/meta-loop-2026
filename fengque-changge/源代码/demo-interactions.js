@@ -1,7 +1,7 @@
 'use strict';
 // Existing affinity/love values remain canonical so older saves retain progress.
 function ensureInteractionStats(){
- for(const p of PEOPLE){const r=state.relations[p.id];if(!Number.isFinite(r.politics))r.politics=clamp(p.skills?.admin??r.skills?.admin??30);if(!Number.isFinite(r.force))r.force=clamp(p.skills?.military??r.skills?.military??30);if(!Number.isFinite(r.loyalty))r.loyalty=clamp(p.loyalty??50);if(!Number.isFinite(r.love))r.love=0;if(!r.interactionGrowth||r.interactionGrowth.month!==state.elapsed)r.interactionGrowth={month:state.elapsed,loyalty:0,love:0,ability:0};}
+ for(const p of PEOPLE){const r=state.relations[p.id];if(!Number.isFinite(r.politics))r.politics=clamp(p.skills?.admin??r.skills?.admin??30);if(!Number.isFinite(r.force))r.force=clamp(p.skills?.military??r.skills?.military??30);if(!Number.isFinite(r.loyalty))r.loyalty=clamp(p.loyalty??50);if(!Number.isFinite(r.love))r.love=0;if(!r.interactionGrowth||r.interactionGrowth.month!==state.elapsed)r.interactionGrowth={month:state.elapsed,loyalty:0,love:0,ability:0};if(!r.dailyCounts||r.dailyCounts.day!==state.day||r.dailyCounts.month!==state.elapsed)r.dailyCounts={month:state.elapsed,day:state.day,aff:0,love:0,keys:{}};}
 }
 ensureInteractionStats();
 const INTERACTION_CATEGORIES=[
@@ -47,13 +47,13 @@ renderSession=function(){
 };
 function interactionCategory(id){if(!session||session.left<=0||!INTERACTION_CATEGORIES.some(c=>c[0]===id))return;const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],reason=categoryReason(id,p,r);if(reason){toast(reason);return;}session.section=id;renderSession();}
 function applyInteraction(p,category,id,line,effects={},options={}){
- const r=state.relations[p.id],key=`interaction:${category}:${id}`,count=r.counts[key]||0;let scale=count===0?1:count===1?.5:0;
+ const r=state.relations[p.id],key=`interaction:${category}:${id}`;ensureInteractionStats();const daily=r.dailyCounts;const count=daily.keys[key]||0;let scale=count===0?1:count===1?.55:0;
  if(!session||session.id!==p.id||session.left<=0)return;
  const actual={};for(let[k,v]of Object.entries(effects)){
-  if(v>0){v=Math.round(v*scale);if(k==='aff'){v=Math.min(v,Math.max(0,12-r.gain));r.gain+=v;}if(k==='loyalty'||k==='love'){let remain=(k==='love'?8:8)-r.interactionGrowth[k];v=Math.min(v,Math.max(0,remain));r.interactionGrowth[k]+=v;}if(k==='politics'||k==='force'){v=Math.min(v,Math.max(0,2-r.interactionGrowth.ability));r.interactionGrowth.ability+=v;}}
+  if(v>0){v=Math.round(v*scale);if(k==='aff'){v=Math.min(v,Math.max(0,10-daily.aff));daily.aff+=v;}if(k==='loyalty'||k==='love'){let remain=(k==='love'?8:8)-daily.love;v=Math.min(v,Math.max(0,remain));daily.love+=v;}if(k==='politics'||k==='force'){v=Math.min(v,Math.max(0,2-r.interactionGrowth.ability));r.interactionGrowth.ability+=v;}}
   const before=r[k];r[k]=clamp(r[k]+v);actual[k]=r[k]-before;
  }
- session.left--;r.counts[key]=count+1;
+ session.left--;daily.keys[key]=count+1;r.counts[key]=(r.counts[key]||0)+1;
  // The content layer already selects an unused scene for this NPC and topic. Do not
  // replace a lived-in response with the old canned repetition warning.
  if(count>=2&&!options.noRepeatLine&&(!line||line.length<8))line='这件事我方才已经说过一遍。若陛下还想听，我换个角度再说。';

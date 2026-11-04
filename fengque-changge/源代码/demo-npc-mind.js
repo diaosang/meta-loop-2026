@@ -11,13 +11,14 @@ function ensureMinds(){
  ensureInteractionStats();
  if(!state.ecology)state.ecology={version:1,days:{},inbox:[],attention:[],serial:0};
  const e=state.ecology;e.days=e.days||{};e.inbox=e.inbox||[];e.attention=e.attention||[];e.serial=e.serial||0;
- for(const p of PEOPLE){const r=state.relations[p.id];if(!r.mind){const h=mindHash(p.id);r.mind={born:mindTick(),lastContact:mindTick(),expectation:16+(h%12),jealousy:0,disappointment:0,hurt:0,security:48+(h%18),anger:0,distance:0,needs:{rest:h%50,company:20+h%40,recognition:20+h%30,freedom:20+h%40},memories:[],used:[],cooldowns:{},broken:0,lastAction:'',appointment:null};}const m=r.mind;m.memories=m.memories||[];m.used=m.used||[];m.cooldowns=m.cooldowns||{};}
+ for(const p of PEOPLE){const r=state.relations[p.id];if(!r.mind){const h=mindHash(p.id);r.mind={born:mindTick(),lastContact:mindTick(),expectation:16+(h%12),jealousy:0,disappointment:0,hurt:0,security:48+(h%18),anger:0,distance:0,needs:{rest:h%50,company:20+h%40,recognition:20+h%30,freedom:20+h%40},memories:[],used:[],cooldowns:{},broken:0,lastAction:'',appointment:null,plan:null};}const m=r.mind;m.memories=m.memories||[];m.used=m.used||[];m.cooldowns=m.cooldowns||{};if(!Object.prototype.hasOwnProperty.call(m,'plan'))m.plan=null;}
 }
 function shiftMind(id,patch){const m=state.relations[id]?.mind;if(!m)return;for(const [k,v]of Object.entries(patch))m[k]=clamp((m[k]||0)+v);}
 function rememberMind(id,text,kind='心事',publicRecord=false){const m=state.relations[id].mind;m.memories.push({tick:mindTick(),day:state.day,month:state.elapsed,text,kind,public:publicRecord});if(m.memories.length>30)m.memories.shift();if(publicRecord){const notes=state.relations[id].notes;notes.push({month:state.elapsed,text:`${state.day}日 · ${text}`});if(notes.length>100)notes.splice(0,notes.length-100);}}
 function currentMind(p){
  const r=state.relations[p.id],m=r.mind;if(m.anger>=48)return '恼怒';if(m.distance>=55)return '疏离';if(m.hurt>=38)return '委屈';if(m.disappointment>=38)return '失望';if(r.rank&&m.jealousy>=24)return '吃醋';if(r.aff<20||m.security<25)return '戒备';if(p.romance&&r.aff>=65&&r.love>=25&&mindTick()-m.lastContact<=5)return '热恋';if(m.security>=72)return '安心';if(m.expectation>=28)return '期待';return '平静';
 }
+function mindSignals(p){const r=state.relations[p.id],m=r.mind,out=[];if(m.expectation>=28)out.push('惦念');if(r.rank&&m.jealousy>=18)out.push('醋意');if(m.security<40)out.push('戒心');if(m.disappointment>=24)out.push('失望');if(m.hurt>=20)out.push('委屈');if(m.needs.recognition>=60)out.push('求成');if(m.needs.freedom>=65)out.push('想独处');return out.slice(0,4);}
 const JEALOUS_STRATEGY={
  '温柔体贴':['备了茶，想请你坐一会儿。','我也想让您多惦记一点。不是来告谁的状。'],
  '清冷克制':['照旧问安，却不再主动多留。','不是不想见。只是总让我等，我也会不知道该不该等。'],
@@ -32,11 +33,11 @@ const JEALOUS_STRATEGY={
  '寡言重诺':['送来一件小东西，话却没多说。','想您了。您有空，就来。'],
  '戒备善谋':['托熟人问了问，却不肯直说缘由。','若我不让人递这句话，您是不是就不来了？']};
 function mindLine(p){const m=state.relations[p.id].mind,st=currentMind(p);if(st==='吃醋')return JEALOUS_STRATEGY[p.type]?.[1]||'我也想同您好好说会儿话。';return ({期待:'原想等您忙完再问。下回见面，能不能先给我个准信？',热恋:'今天没什么大事，就是见着您，便觉得这一天很好。',失望:'我不是要您时时来。只是说好的事，也请放在心上。',委屈:'那句话我一直记着。我想说清，不想就这么算了。',安心:'您说了会来，我便知道不必一整日守着门等。',戒备:'这件事，我还不太想说。等熟一些，再慢慢讲吧。',恼怒:'我现在还生着气。您肯听我说完，我们再谈旁的。',疏离:'公事我会照办。私下的事，暂且不谈了。',平静:'手头的事刚收好。您想坐会儿，还是出去走走？'})[st];}
-function mindBlock(p){const r=state.relations[p.id],m=r.mind,st=currentMind(p);return `<div class="mind-block"><div class="section-heading"><span class="tag">${st}</span><button class="text-btn" data-action="mindDetail" data-id="${p.id}">心态与近况</button></div><p>“${mindEscape(mindLine(p))}”</p><small>${p.type} · ${mindEscape(MIND_PROFILE[p.id]?.goal||'把自己的日子过好')}</small></div>`;}
+function mindBlock(p){const r=state.relations[p.id],m=r.mind,st=currentMind(p),signals=mindSignals(p);return `<div class="mind-block"><div class="section-heading"><span class="tag">${st}</span><button class="text-btn" data-action="mindDetail" data-id="${p.id}">心态与近况</button></div><p>“${mindEscape(mindLine(p))}”</p><small>${signals.length?`心里还压着：${signals.join('、')} · `:''}${p.type} · ${mindEscape(MIND_PROFILE[p.id]?.goal||'把自己的日子过好')}</small></div>`;}
 function readFiction(p,category,topic){const cat=FICTION_DATA.categoryKeys.indexOf(category),pi=MIND_VOICE[p.type]??0,mi=FICTION_DATA.states.findIndex(s=>s.name===currentMind(p));let t=topic==='stay'?'ask':topic;const candidates=FICTION_INDEX.get(`${cat}|${pi}|${mi}|${t}`)||[];if(!candidates.length)return null;const m=state.relations[p.id].mind;const available=candidates.filter(x=>!m.used.includes(x[0]));const pool=available.length?available:candidates;const line=pool[mindHash(`${p.id}-${todayKey()}-${m.used.length}-${topic}`)%pool.length];m.used.push(line[0]);m.used=m.used.slice(-40);return {id:line[0],stage:line[4],reply:line[5],scene:FICTION_DATA.scenes[line[1]]};}
 function markContact(id,kind='会面'){
  const r=state.relations[id],m=r.mind,gap=mindTick()-m.lastContact;m.lastContact=mindTick();m.needs.company=clamp(m.needs.company-18);shiftMind(id,{expectation:5,security:2});
- if(m.appointment&&m.appointment.tick>=mindTick()){shiftMind(id,{security:6,disappointment:-8});rememberMind(id,'约好的相处终于见着了，没有让人空等。','守约');m.appointment=null;}
+ if(m.appointment&&m.appointment.tick===mindTick()){shiftMind(id,{security:6,disappointment:-8});rememberMind(id,'约好的相处终于见着了，没有让人空等。','守约');m.appointment=null;}
  if(gap>=7)rememberMind(id,'隔了些日子，又同女帝见了面。心事还需慢慢说。','相处');
 }
 function publicFavor(id,occasion){
@@ -83,6 +84,24 @@ function addMindMessage(p,kind='invite'){
  }
  const msg={id:`letter-${++e.serial}`,npc:p.id,kind,tick:mindTick(),expires:mindTick()+3,done:false,opened:false,event:data?clone(data):null};e.inbox.push(msg);m.lastMessage=mindTick();rememberMind(p.id,kind==='event'?`有一件“${data.title}”的事，想当面说。`:'想请女帝得空时来坐坐，已经托人递话。','递话');return true;
 }
+function mindPlan(p,r,m,tick,h){
+ const old=m.plan;if(old&&tick<=old.until)return old;
+ if(old&&tick>old.until){rememberMind(p.id,`${old.title}已经告一段落，留下${old.progress||0}日的结果。`,'计划结果',true);m.plan=null;}
+ const ranked=PEOPLE.filter(q=>q.id!==p.id&&state.relations[q.id]?.rank);
+ const edge=ranked.map(q=>({q,e:(state.socialEdges||[]).find(x=>(x.a===p.id&&x.b===q.id)||(x.b===p.id&&x.a===q.id))})).filter(x=>x.e).sort((a,b)=>{const ea=a.e.a===p.id?a.e.affAB:a.e.affBA,eb=b.e.a===p.id?b.e.affAB:b.e.affBA;return ea-eb;})[0];
+ let kind,target,title,reason;
+ if(['恼怒','疏离'].includes(currentMind(p))){kind='retreat';title='收拢心绪';reason='不愿在气头上把话说绝';}
+ else if(m.appointment){kind='prepare';target=p.id;title='赴约前把话想清';reason='已经答应明日见面';}
+ else if(r.rank&&m.needs.company>58){kind=edge?'visit':'seekcare';target=edge?.q.id;title=edge?`去见${edge.q.name}`:'递话求见';reason='心里有话，不想只等宫人传话';}
+ else if(m.needs.recognition>55&&p.official&&r.officer){kind='work';title='把手头差事办出结果';reason=MIND_PROFILE[p.id]?.independentGoal||'不愿只做旁观者';}
+ else if(m.needs.freedom>66){kind='walk';title='给自己半日清静';reason='近日应酬太多，想把心放回来';}
+ else {kind='learn';title='把一门本事再练一遍';reason='不想让自己的长处荒废';}
+ const span=2+(h%3);m.plan={kind,target,title,reason,started:tick,until:tick+span-1,progress:0};rememberMind(p.id,`定下了${title}的打算：${reason}。`,'自主计划',true);return m.plan;
+}
+function mindPlanText(p,plan,day){
+ const target=plan.target&&PEOPLE.find(q=>q.id===plan.target);
+ const map={retreat:'把该办的事办完，余下时辰闭门静一静，暂不应旁人的邀约。',prepare:'把要说的话在心里过了一遍，也把可能听见的难处想好。',seekcare:'托人递了话，想问女帝何时得空；若等不到，便先把自己的事做完。',visit:target?`去${target.name}处坐了片刻，先问近况，再把未说完的半句话接上。`:'寻了相熟的人说几句近况。',work:'把手头一件差事往前推了一步，留下可核对的文书与结果。',walk:'沿着宫墙走了一圈，买了点小吃，回来时心绪松了些。',learn:'把专长练了半日，记下一个仍不稳的地方，明日还要再试。'};return map[plan.kind]||'照自己的安排过了一日。';
+}
 function processMindDay(key,makeMessages=true){
  ensureMinds();const e=state.ecology,day=state.dailyHistory[key];if(e.days[key]||!day)return;e.days[key]=true;const tick=mindTick(),busy=new Set();let messages=0;
  for(const p of PEOPLE)if(state.relations[p.id].rank&&day.entries[p.id]){const places=['rest','library','rest','garden','music','rest'];day.entries[p.id].forEach((s,i)=>{if(s.location.startsWith('province-'))return;s.location=places[(i+state.day)%places.length];s.text=['在住处梳洗，留意今日安排。','读书、习字，把自己的事慢慢做完。','用饭歇息。','做完手头的小事，准备出门。','听曲或散步，不必一直等着召见。','回到住处休息。'][i];});}
@@ -92,13 +111,14 @@ function processMindDay(key,makeMessages=true){
   if(r.rank&&gap>=7)shiftMind(p.id,{disappointment:gap>=15?2:1,expectation:-.4,security:-.4});if(m.disappointment>=38&&m.security<45)shiftMind(p.id,{distance:2});else shiftMind(p.id,{distance:-.4});
   if(m.appointment&&m.appointment.tick<tick){shiftMind(p.id,{disappointment:12,security:-6});m.broken++;rememberMind(p.id,'约好的日子过去了，女帝没有来，也没有另说。','失约');m.appointment=null;}
   for(const k of Object.keys(m.needs))m.needs[k]=clamp(m.needs[k]+({rest:7,company:5,recognition:3,freedom:3}[k]));
-  const mood=currentMind(p),strategy=JEALOUS_STRATEGY[p.type]||JEALOUS_STRATEGY['温柔体贴'];let action,text;
-  if(busy.has(p.id)){m.lastAction='访友';continue;}
-  if(m.needs.rest>75){action='rest';text='推掉了不急的应酬，关门歇了半日。';m.needs.rest-=40;}
-  else if(['恼怒','疏离'].includes(mood)){action='retreat';text='照常做完该做的事，之后独自待着，暂不赴约。';m.needs.freedom-=15;}
-  else if(r.rank&&mood==='吃醋'){const by={'温柔体贴':'seekcare','清冷克制':'quiet','明朗直率':'direct','骄矜自尊':'boundary','敏感多思':'compare','圆融世故':'invite','严正守礼':'fairness','野心进取':'duty','疏朗洒脱':'walk','务实重利':'wait','寡言重诺':'gift','戒备善谋':'withhold'};action=by[p.type];text=strategy[0];}
-  else if(mood==='委屈'||mood==='失望'){action='seekcare';text='想把之前的不快说清，写了半封信，又收回袖里。';}
-  else if(m.needs.company>50&&h%3!==0){
+  const mood=currentMind(p),strategy=JEALOUS_STRATEGY[p.type]||JEALOUS_STRATEGY['温柔体贴'];const plan=mindPlan(p,r,m,tick,h);let action,text;
+  if(plan){action=plan.kind;text=mindPlanText(p,plan,day);plan.progress=(plan.progress||0)+1;if(plan.kind==='visit'&&plan.target){const q=PEOPLE.find(x=>x.id===plan.target),edge=(state.socialEdges||[]).find(ed=>(ed.a===p.id&&ed.b===plan.target)||(ed.b===p.id&&ed.a===plan.target));if(q&&edge){const own=edge.a===p.id?'affAB':'affBA',back=own==='affAB'?'affBA':'affAB';edge[own]=clamp((edge[own]||40)+1);edge[back]=clamp((edge[back]||40)+1);edge.recent=`${date()}${state.day}日，${p.name}依自己的打算去见${q.name}，两人把一件小事说开。`;rememberMind(q.id,`${p.name}主动来见，话虽不多，却把一件小事办妥了。`,'往来',true);state.relations[q.id].mind.needs.company=clamp(state.relations[q.id].mind.needs.company-18);}}
+  }else if(busy.has(p.id)){m.lastAction='访友';continue;}
+  if(!plan&&m.needs.rest>75){action='rest';text='推掉了不急的应酬，关门歇了半日。';m.needs.rest-=40;}
+  else if(!plan&&['恼怒','疏离'].includes(mood)){action='retreat';text='照常做完该做的事，之后独自待着，暂不赴约。';m.needs.freedom-=15;}
+  else if(!plan&&r.rank&&mood==='吃醋'){const by={'温柔体贴':'seekcare','清冷克制':'quiet','明朗直率':'direct','骄矜自尊':'boundary','敏感多思':'compare','圆融世故':'invite','严正守礼':'fairness','野心进取':'duty','疏朗洒脱':'walk','务实重利':'wait','寡言重诺':'gift','戒备善谋':'withhold'};action=by[p.type];text=strategy[0];}
+  else if(!plan&&(mood==='委屈'||mood==='失望')){action='seekcare';text='想把之前的不快说清，写了半封信，又收回袖里。';}
+  else if(!plan&&m.needs.company>50&&h%3!==0){
    const edges=socialEdgesOf(p.id).filter(ed=>{const oid=ed.a===p.id?ed.b:ed.a;return !busy.has(oid)&&mindLocation(day,oid)===loc;});const edge=edges[h%Math.max(1,edges.length)];
    if(edge){const oid=edge.a===p.id?edge.b:edge.a,q=PEOPLE.find(x=>x.id===oid),own=edge.a===p.id?'affAB':'affBA',back=own==='affAB'?'affBA':'affAB',liking=edge[own];action=liking<30?(h%2?'disagree':'reconcile'):h%5===0?'help':h%5===1?'cooperate':h%5===2?'friendcare':'visit';
     const verb={disagree:'说起旧事，意见不合，各自先停了话',reconcile:'把先前的误会说开了一点',help:'帮着把一件小事办妥',cooperate:'一起做完手头的事',friendcare:'问了问近日累不累，陪着坐了一会儿',visit:'碰面说了些近况'}[action];text=`与${q.name}${verb}。`;
@@ -122,7 +142,7 @@ actions.nextMonth=()=>{
  if(state.elapsed!==elapsed){if(day!==1&&!state.ecology.days[`${state.elapsed}-${day}`])delete state.dailyHistory[`${state.elapsed}-${day}`];for(const id of broken){shiftMind(id,{disappointment:15,security:-8});state.relations[id].mind.broken++;rememberMind(id,'下月再见的约定没有等到。想知道这一回是不是又被忘了。','失约');}buildDay();render();}
 };
 
-function openMindDetail(id){ensureMinds();const p=PEOPLE.find(p=>p.id===id);if(!p)return;const r=state.relations[id],m=r.mind,profile=MIND_PROFILE[id];openModal(`${p.name} · 心态与近况`,`${p.type} · ${currentMind(p)}`,`${mindBlock(p)}<div class="mind-meters">${[['吃醋',m.jealousy],['失望',m.disappointment],['安心',m.security],['期待',m.expectation]].map(([k,v])=>`<div><small>${k}</small><div class="meter"><i style="width:${Math.round(v)}%"></i></div><b>${Math.round(v)}</b></div>`).join('')}</div><div class="record"><b>自己的打算</b><p>${mindEscape(profile?.goal)}。${mindEscape(profile?.independentGoal)}</p><p class="mini">最近一次主动行动：${mindEscape(FICTION_DATA.autonomy.find(x=>x[0]===m.lastAction)?.[1]||'整理日常')}</p>${m.appointment?`<p>已约：${date(Math.floor((m.appointment.tick-1)/30))}${(m.appointment.tick-1)%30+1}日见面。</p>`:''}</div><h3>最近留下的心事</h3>${m.memories.slice(-8).reverse().map(x=>`<div class="record"><span class="mini">${date(x.month)}${x.day}日 · ${x.kind}</span><p>${mindEscape(x.text)}</p></div>`).join('')}<div class="actions"><button class="btn primary" data-action="visit" data-id="${id}">去见一面 · 1行动</button>${r.rank?`<button class="btn ghost" data-action="publicMeal" data-id="${id}">一起用晚膳 · 1行动</button>`:''}<button class="btn ghost" data-action="mindLetters">查看人物来信</button></div>`,'人物心事');}
+function openMindDetail(id){ensureMinds();const p=PEOPLE.find(p=>p.id===id);if(!p)return;const r=state.relations[id],m=r.mind,profile=MIND_PROFILE[id],plan=m.plan;openModal(`${p.name} · 心态与近况`,`${p.type} · ${currentMind(p)}`,`${mindBlock(p)}<div class="mind-meters">${[['吃醋',m.jealousy],['失望',m.disappointment],['安心',m.security],['期待',m.expectation]].map(([k,v])=>`<div><small>${k}</small><div class="meter"><i style="width:${Math.round(v)}%"></i></div><b>${Math.round(v)}</b></div>`).join('')}</div><div class="record"><b>自己的打算</b><p>${mindEscape(profile?.goal)}。${mindEscape(profile?.independentGoal)}</p>${plan?`<p><b>眼下正在做：</b>${mindEscape(plan.title)}。${mindEscape(plan.reason)}（已走${plan.progress||0}日，预计再至${date(Math.floor((plan.until-1)/30))}${(plan.until-1)%30+1}日。）</p>`:''}<p class="mini">最近一次主动行动：${mindEscape(FICTION_DATA.autonomy.find(x=>x[0]===m.lastAction)?.[1]||m.lastAction||'整理日常')}</p>${m.appointment?`<p>已约：${date(Math.floor((m.appointment.tick-1)/30))}${(m.appointment.tick-1)%30+1}日见面。</p>`:''}</div><h3>最近留下的心事</h3>${m.memories.slice(-8).reverse().map(x=>`<div class="record"><span class="mini">${date(x.month)}${x.day}日 · ${x.kind}</span><p>${mindEscape(x.text)}</p></div>`).join('')}<div class="actions"><button class="btn primary" data-action="visit" data-id="${id}">去见一面 · 1行动</button>${r.rank?`<button class="btn ghost" data-action="publicMeal" data-id="${id}">一起用晚膳 · 1行动</button>`:''}<button class="btn ghost" data-action="mindLetters">查看人物来信</button></div>`,'人物心事');}
 function inboxPanel(){ensureMinds();const pending=state.ecology.inbox.filter(x=>!x.done),old=state.ecology.inbox.filter(x=>x.done).slice(-5).reverse();openModal('人物来信','有人想见你，也有人想把一句话说清。',`<p class="mini">普通邀请可以婉拒或另约。答应了的日子请记着；若有事，也可以提前说明。</p>${pending.map(x=>{const p=PEOPLE.find(p=>p.id===x.npc);return `<div class="letter-card"><span class="tag">${p.name} · ${currentMind(p)}</span><h3>${x.event?.title||'想请你来坐一会儿'}</h3><p>“${mindEscape(mindLine(p))}”</p><div class="actions"><button class="btn primary" data-action="mindLetter" data-id="${x.id}">${x.opened?'继续谈这件事':'看看这封信'}</button><button class="text-btn" data-action="mindDetail" data-id="${p.id}">看看近况</button></div></div>`;}).join('')||'<div class="empty"><p>暂时没有新信。大家正过着各自的日子。</p></div>'}${old.length?'<h3>收进匣里的旧笺</h3>':''}${old.map(x=>`<div class="record"><b>${PEOPLE.find(p=>p.id===x.npc).name}</b><p>${mindEscape(x.resolution)}</p></div>`).join('')}`,'人情往来');save();}
 function openMindLetter(id){const mail=state.ecology.inbox.find(x=>x.id===id&&!x.done);if(!mail)return;const p=PEOPLE.find(p=>p.id===mail.npc);if(mail.kind==='event'&&mail.opened){showMindEvent(mail);return;}openModal(`${p.name}递来的话`,currentMind(p),`<div class="scene-text">“${mindEscape(mindLine(p))}”${mail.event?`<p>还有件“${mindEscape(mail.event.title)}”的小事，想当面与你说。</p>`:''}</div><div class="opts"><button class="opt" data-action="mindReply" data-id="${id}|now"><b>现在去，当面听他说</b><small>1行动；${mail.event?'进入三项事件选择':'见面后仍可选八类互动'}</small></button><button class="opt" data-action="mindReply" data-id="${id}|later"><b>回信，约好明日见面</b><small>不扣行动；可以先改期，也请记得赴约。</small></button><button class="opt" data-action="mindReply" data-id="${id}|decline"><b>说明近日忙，先不许下日子</b><small>婉拒这次邀约，关系不受罚。</small></button></div>`,'人物来信');}
 function replyMindLetter(raw){const [id,kind]=raw.split('|'),mail=state.ecology.inbox.find(x=>x.id===id&&!x.done);if(!mail)return;const p=PEOPLE.find(p=>p.id===mail.npc),m=state.relations[p.id].mind;

@@ -117,6 +117,32 @@ check('100 NPCs leave a visible action when player skips a day',()=>{
  const n=run(`PEOPLE.filter(p=>state.dailyHistory[todayKey()]?.entries[p.id]?.[3]?.text).length`);
  assert.equal(n,100);
 });
+check('passive affection is no longer invented by the calendar',()=>{
+ const before=run(`({aff:state.relations.xu.aff,love:state.relations.xu.love,memory:state.relations.xu.mind.memories.length})`);
+ run(`state.day=3;buildDay();`);
+ const after=run(`({aff:state.relations.xu.aff,love:state.relations.xu.love,memory:state.relations.xu.mind.memories.length})`);
+ assert.equal(after.aff,before.aff);assert.equal(after.love,before.love);
+ assert.ok(!run(`state.relations.xu.mind.memories.slice(-3).some(x=>x.kind==='自然心事')`));
+});
+check('NPC plans persist with a reason, duration, and visible result',()=>{
+ const p=run(`PEOPLE.find(x=>x.id==='xu')`);
+ const plan=run(`state.relations.xu.mind.plan`);
+ assert.ok(plan&&plan.title&&plan.reason&&plan.until>=plan.started);
+ assert.ok(run(`state.dailyHistory[todayKey()].entries.xu[3].text.length>8`));
+ assert.ok(run(`state.relations.xu.mind.memories.some(x=>x.kind==='自主计划')`));
+});
+check('daily interaction growth is bounded but meaningful',()=>{
+ run(`state.ap=15;state.relations.xu.aff=30;state.relations.xu.dailyCounts={month:state.elapsed,day:state.day,aff:0,love:0,keys:{}};visit('xu');session.section='chat';interactionTopic('recent');`);
+ const one=run('state.relations.xu.aff');
+ run(`interactionTopic('home');`);
+ const two=run('state.relations.xu.aff');
+ assert.ok(one>30&&two>one&&two-30<=10);
+});
+check('composite mood signals remain visible alongside the dominant mood',()=>{
+ run(`state.relations.xu.rank='侍君';Object.assign(state.relations.xu.mind,{expectation:40,jealousy:30,security:30,disappointment:28});`);
+ const signals=run(`mindSignals(PEOPLE.find(x=>x.id==='xu'))`);
+ assert.ok(signals.includes('惦念')&&signals.includes('醋意')&&signals.includes('戒心'));
+});
 check('relationship decision changes memory, an edge, a report and a later scene',()=>{
  run(`state.ap=15;const ps=PEOPLE.filter(p=>p.official&&!state.relations[p.id].rank).slice(0,2);
  const a=ps[0],b=ps[1];state.socialEdges.push({a:a.id,b:b.id,affAB:40,affBA:40,voiceStage:'争执'});
@@ -146,4 +172,6 @@ check('legacy save without new fields migrates without wiping affinity',()=>{
 });
 fs.writeFileSync(path.join(root,'验证报告_v11.json'),JSON.stringify({version:11,type:'runtime-with-DOM-stub',checks,
  browserVisualVerification:false,authoredRows:run('COURT_VOICE_DATA.rows.length'),npcCount:run('PEOPLE.length')},null,2));
+fs.writeFileSync(path.join(root,'验证报告_v12.json'),JSON.stringify({version:12,type:'runtime-with-DOM-stub',checks,
+ browserVisualVerification:false,changes:['关系数值改为有依据的每日增长','NPC持续计划与可见行动','复合心绪信号'],authoredRows:run('COURT_VOICE_DATA.rows.length'),npcCount:run('PEOPLE.length')},null,2));
 console.log('ALL '+checks.length+' CHECKS PASSED');
