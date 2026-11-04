@@ -77,9 +77,12 @@ ext += '\n' + (ROOT/'work/demo-cast-life.js').read_text(encoding='utf-8-sig') if
 ext += '\n' + (ROOT/'work/demo-revision.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-revision.js').exists() else ''
 ext += '\n' + (ROOT/'work/demo-strife.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-strife.js').exists() else ''
 ext += '\n' + (ROOT/'work/demo-agency.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-agency.js').exists() else ''
+ext += '\n' + (ROOT/'work/demo-dialogue-expansion.js').read_text(encoding='utf-8-sig') if (ROOT/'work/demo-dialogue-expansion.js').exists() else ''
 boot=js.replace("render();if(!state.introSeen)intro();", ext+'\nrender();if(!state.introSeen)intro();')
 world_payload=json.dumps(world,ensure_ascii=False,separators=(',',':'))
 out.write_text(style+extra+body+'<script>\nconst CONTENT='+payload+';\nconst WORLD_DATA='+world_payload+';\n'+boot+'\n</script></body></html>',encoding='utf-8')
 print(json.dumps({'output':str(out),'bytes':out.stat().st_size,'workbook_dialogue_rows':len(dialogue),'world_npcs':len(world['people'])+6},ensure_ascii=True))
+
+
 
 
