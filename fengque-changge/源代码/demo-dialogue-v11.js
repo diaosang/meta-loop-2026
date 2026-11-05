@@ -298,6 +298,7 @@
   }
 
   function candidateMerit(person) {
+    if (!person) return -1;
     var p = profileOf(person), skills = person.skills || {};
     var charm = Number(skills.charm || 0);
     var best = Math.max(Number(skills.admin || 0), Number(skills.literature || 0), Number(skills.military || 0));
