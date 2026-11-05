@@ -1,0 +1,125 @@
+{
+  "version": "13.6",
+  "date": "2026-11-05",
+  "base": "用户提供的V12整合包，沿用V13.5.2大殿与批阅修复，新增衰败国家与权臣开局",
+  "checksPassed": {
+    "原功能回归": 20,
+    "逻辑": 23,
+    "人设与选秀": 14,
+    "亲疏日常": 24,
+    "身世与消息": 22,
+    "浏览器": 17,
+    "身世浏览器": 12,
+    "前朝逻辑": 35,
+    "前朝浏览器": 19,
+    "批阅恢复": 14,
+    "批阅浏览器": 11,
+    "破局逻辑": 30,
+    "破局浏览器": 17
+  },
+  "totalChecksPassed": 258,
+  "newOpening": {
+    "treasury": 0,
+    "grain": 0,
+    "arrears": 96,
+    "innerPurse": 8,
+    "control": 18,
+    "finiteRoutes": 3,
+    "monthlyCollectionCap": 12,
+    "reserveCap": 6,
+    "pressureChoices": 3,
+    "oldSavesPreserved": true
+  },
+  "freshStartChecks": 47,
+  "compatibilityChecks": 211,
+  "approvalFix": [
+    "宫门待办不因浏览消失",
+    "同折入朝复阅",
+    "退朝后翌日入朝",
+    "不足行动正常月结确认",
+    "巡游回京入口",
+    "资源不足具体原因"
+  ],
+  "layout": "恢复原大殿、右侧八项事务与底部九枚衙门牌；新增玩法经殿内入口及通政簿册进入",
+  "departments": 6,
+  "managementTasks": 12,
+  "regions": 8,
+  "majorAffairs": 8,
+  "decreeChoices": 24,
+  "courtArguments": 88,
+  "bespokePeople": 4,
+  "loop": [
+    "局势与呈报",
+    "廷议与御批",
+    "六部领办",
+    "延迟验收与一次补办",
+    "不同臣子忠诚好感反应",
+    "地方反馈与税粮月结"
+  ],
+  "budget": [
+    "国库与内库分账",
+    "实收与待清解分列",
+    "清解按实数转入现银",
+    "补欠扣实银",
+    "裁支只减未来常费",
+    "旧欠结转"
+  ],
+  "ordinaryAdministration": "地方按额救急，不将街巷积水等逐事御批；重大调拨、蠲免、跨镇援饷与大案才呈报",
+  "saveMigration": "新增frontCourt状态，不覆盖原人物、亲疏、后宫与已有子女记录；换文件路径不保证浏览器自动共享本地存档",
+  "defaultEntry": "试玩_v13_6.html",
+  "mobileViewport": "390×844",
+  "desktopViewport": "1280×900",
+  "pageErrors": [],
+  "workbookSheets": 36,
+  "originalWorkbookCellsPreserved": 223482,
+  "originalWorkbookFormulasPreserved": 6,
+  "prior27WorkbookSheetsComparedAndPreserved": true,
+  "originalPackageInputSHA256": "9f404a32fee6e95788df72e21d2e69e4695ccfbbb93765a2832d593381d33df8",
+  "reports": [
+    "验证报告_v13_6_原功能回归.json",
+    "验证报告_v13_6_逻辑.json",
+    "验证报告_v13_6_人设与选秀.json",
+    "验证报告_v13_6_亲疏日常.json",
+    "验证报告_v13_6_身世与消息.json",
+    "验证报告_v13_6_浏览器.json",
+    "验证报告_v13_6_身世浏览器.json",
+    "验证报告_v13_6_前朝逻辑.json",
+    "验证报告_v13_6_前朝浏览器.json",
+    "验证报告_v13_6_批阅恢复.json",
+    "验证报告_v13_6_批阅浏览器.json",
+    "验证报告_v13_6_破局逻辑.json",
+    "验证报告_v13_6_破局浏览器.json",
+    "验证报告_v13_6_配表.json",
+    "验证报告_v13_6_保留审计.json"
+  ],
+  "visualInspection": "已实际查看390px新档空库大殿、筹措、权臣索权与1280px大殿；真实新档验证筹措到赈贷、留签与核验，零页面错误。",
+  "sources": [
+    {
+      "id": "game",
+      "title": "《皇帝成长计划2》开发者App Store介绍",
+      "url": "https://apps.apple.com/cn/app/id1440553367",
+      "used": "名臣任用、策略治理、发展国家的经营方向。六部数值与本版流程为原创实现，不声称复刻原作规则。"
+    },
+    {
+      "id": "ming72",
+      "title": "《明史》卷七十二·职官一",
+      "url": "https://zh.wikisource.org/wiki/明史/卷72",
+      "used": "六部分职、官员选授考课、国用赋役、军政、刑名与营造分工。"
+    },
+    {
+      "id": "ming78",
+      "title": "《明史》卷七十八·食货二",
+      "url": "https://zh.wikisource.org/wiki/明史/卷78",
+      "used": "灾蠲、仓粮赈贷、先赈后闻，以及加派与地方负担的矛盾。"
+    }
+  ],
+  "sourceScope": "以开发者原始介绍及《明史》原文为参考；数值、情节与流程为原创架空设计。",
+  "limitations": [
+    "战争为边患与军需决策，未新增战场推演",
+    "未新增完整官阶品秩或传位流程",
+    "离线规则与原创配表，未接入在线大模型自由聊天",
+    "原Excel公式保留，未在Excel计算引擎重算"
+  ],
+  "testScope": "30项逻辑和17项浏览器专测真实空白新档；其余211项用隔离旧档验证兼容，夹具不参与生产开局。",
+  "historicalReports": "非v13_6的试玩、说明与报告作为历史对照保留。"
+}

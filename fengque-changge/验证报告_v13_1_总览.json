@@ -1,0 +1,31 @@
+{
+  "version": "13.1",
+  "date": "2026-11-05",
+  "base": "用户提供的V12整合包→V13→V13.1",
+  "regressionPassed": 20,
+  "dialogueAndMechanicsPassed": 23,
+  "actualBrowserPassed": 7,
+  "pageErrors": [],
+  "ordinaryRepliesRevised": 101,
+  "palaceResponsesRewrittenOrAdded": 339,
+  "listenContinuationPairs": 42,
+  "npcCount": 100,
+  "defaultEntry": "试玩_v13_1.html",
+  "offlineAndMobileVerified": true,
+  "originalWorkbookCellsPreserved": 223482,
+  "originalWorkbookFormulasPreserved": 6,
+  "dialogueSamples": {
+    "listen": "你说：“有话便慢慢说，朕听着。”\n\n“昨夜没睡好。躺下还想着事，真起来看书，又一个字也看不进去。”",
+    "listenFollowup": "你说：“别看了，朕陪你坐一会儿。”\n\n“那便不看。您也别偷偷拿折子出来，我看得见。”",
+    "snack": "你说：“朕吃这块，你吃那块。”\n\n他替你剥好一颗，又去剥第二颗。“……不是一人一半么？怎么都到您手里去了。”",
+    "together": "你说：“叫他也来，一起喝杯茶。”\n\n“那便添个座。陛下，别叫我往旁边让，我先坐的。”\n陆景明\n\n“给我腾点地方！我坐这边，胳膊长，够得着茶壶。”"
+  },
+  "verificationReports": [
+    "验证报告_v13_1_原功能回归.json",
+    "验证报告_v13_1_逻辑.json",
+    "验证报告_v13_1_浏览器.json",
+    "验证报告_v13_1_配表.json",
+    "验证报告_v13_1_保留审计.json"
+  ],
+  "legacyReports": "文件名不含v13_1的旧报告保留为历史记录。"
+}

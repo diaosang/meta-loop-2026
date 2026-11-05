@@ -1,0 +1,3636 @@
+{
+  "version": "13.3",
+  "rules": {
+    "familiarTurns": 3,
+    "familiarDays": 2,
+    "familiarAff": 25,
+    "familiarTrust": 25,
+    "trustedTurns": 9,
+    "trustedDays": 4,
+    "trustedAff": 55,
+    "trustedTrust": 50,
+    "maxProgressPerDay": 3
+  },
+  "rows": [
+    {
+      "id": "social:温柔体贴:stranger:recent",
+      "semantic": "social:温柔体贴:stranger:recent",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "手头的事已收得差不多，正想把这盏凉茶换了。陛下可要用茶？"
+    },
+    {
+      "id": "social:温柔体贴:stranger:home",
+      "semantic": "social:温柔体贴:stranger:home",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中旧事琐碎，怕说得陛下烦闷。若想听，{self}慢慢讲。"
+    },
+    {
+      "id": "social:温柔体贴:stranger:interest",
+      "semantic": "social:温柔体贴:stranger:interest",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "喜欢{specialty}。独自做这些，半日也不觉得长。"
+    },
+    {
+      "id": "social:温柔体贴:stranger:listen",
+      "semantic": "social:温柔体贴:stranger:listen",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他把茶盏放稳，才开口。",
+      "reply": "只是茶放凉了也没觉察，方才抿了一口，才知道该换了。陛下不必挂心。"
+    },
+    {
+      "id": "social:温柔体贴:stranger:comfort",
+      "semantic": "social:温柔体贴:stranger:comfort",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是，{self}将手边这点收好便歇。谢陛下惦念。"
+    },
+    {
+      "id": "social:温柔体贴:familiar:recent",
+      "semantic": "social:温柔体贴:familiar:recent",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "又忘了喝茶。方才拿起来，都凉透了。陛下来了，正好一起换壶热的。"
+    },
+    {
+      "id": "social:温柔体贴:familiar:home",
+      "semantic": "social:温柔体贴:familiar:home",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里人问起吃穿，总恨不得从早问到晚。听着琐碎，许久听不见又会想。"
+    },
+    {
+      "id": "social:温柔体贴:familiar:interest",
+      "semantic": "social:温柔体贴:familiar:interest",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "还是{specialty}。陛下若不嫌闷，下回做的时候，给您留个位置。"
+    },
+    {
+      "id": "social:温柔体贴:familiar:listen",
+      "semantic": "social:温柔体贴:familiar:listen",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他捧着茶盏，笑得有点不好意思。",
+      "reply": "今日顾着给旁人添茶，自己的这盏一口没喝。等想起来，连茶香也淡了。"
+    },
+    {
+      "id": "social:温柔体贴:familiar:comfort",
+      "semantic": "social:温柔体贴:familiar:comfort",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，听陛下的。您也坐一坐，总站在这儿劝我，岂不更累？"
+    },
+    {
+      "id": "social:温柔体贴:trusted:recent",
+      "semantic": "social:温柔体贴:trusted:recent",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "这回先给自己倒了一盏，省得又忙忘。陛下看，是热的。"
+    },
+    {
+      "id": "social:温柔体贴:trusted:home",
+      "semantic": "social:温柔体贴:trusted:home",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有时也想回去住两日。可还没动身，又先惦记起这边的事，真是两头放不下。"
+    },
+    {
+      "id": "social:温柔体贴:trusted:interest",
+      "semantic": "social:温柔体贴:trusted:interest",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}做得久了，哪处顺手，哪处费心，想讲给您听的倒越来越多。"
+    },
+    {
+      "id": "social:温柔体贴:trusted:listen",
+      "semantic": "social:温柔体贴:trusted:listen",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将杯沿转了半圈。",
+      "reply": "人人都说我会照顾人。可我偶尔也想什么都不管，等旁人来问一句，怎么还没喝茶。"
+    },
+    {
+      "id": "social:温柔体贴:trusted:comfort",
+      "semantic": "social:温柔体贴:trusted:comfort",
+      "npc": null,
+      "personality": "温柔体贴",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那今日不逞强了。我歇一刻，您若要走，记得叫我一声。"
+    },
+    {
+      "id": "social:清冷克制:stranger:recent",
+      "semantic": "social:清冷克制:stranger:recent",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在收手边的东西。陛下有何吩咐？"
+    },
+    {
+      "id": "social:清冷克制:stranger:home",
+      "semantic": "social:清冷克制:stranger:home",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "{self}出自{clan}。家事寻常，一时不知从何说起。"
+    },
+    {
+      "id": "social:清冷克制:stranger:interest",
+      "semantic": "social:清冷克制:stranger:interest",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}。闲时多做这个，旁的少些。"
+    },
+    {
+      "id": "social:清冷克制:stranger:listen",
+      "semantic": "social:清冷克制:stranger:listen",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他垂下眼，将袖边理齐。",
+      "reply": "方才坐久了，有些乏。歇一刻便好，劳陛下垂问。"
+    },
+    {
+      "id": "social:清冷克制:stranger:comfort",
+      "semantic": "social:清冷克制:stranger:comfort",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "{self}记下了。待这一处收妥，便不再续。"
+    },
+    {
+      "id": "social:清冷克制:familiar:recent",
+      "semantic": "social:清冷克制:familiar:recent",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "刚收好。原想清静一会儿，陛下若无急事，坐坐也无妨。"
+    },
+    {
+      "id": "social:清冷克制:familiar:home",
+      "semantic": "social:清冷克制:familiar:home",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中的旧物留了几件，不值什么钱，搬到哪里，便带到哪里。"
+    },
+    {
+      "id": "social:清冷克制:familiar:interest",
+      "semantic": "social:清冷克制:familiar:interest",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}。先前只答了两个字，陛下莫怪，我确实不大擅长讲这些。"
+    },
+    {
+      "id": "social:清冷克制:familiar:listen",
+      "semantic": "social:清冷克制:familiar:listen",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他朝窗下看了一眼。",
+      "reply": "想把桌子挪过去，光亮些。一直没动，是觉得为这点小事叫人，未免麻烦。"
+    },
+    {
+      "id": "social:清冷克制:familiar:comfort",
+      "semantic": "social:清冷克制:familiar:comfort",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好。这一处先不做了。陛下不必站着等。"
+    },
+    {
+      "id": "social:清冷克制:trusted:recent",
+      "semantic": "social:清冷克制:trusted:recent",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "并无急事。倒是这会儿安静，若不赶时间，留一盏茶再走？"
+    },
+    {
+      "id": "social:清冷克制:trusted:home",
+      "semantic": "social:清冷克制:trusted:home",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有些东西早用旧了，仍没舍得换。也说不清为何，只是换了便觉得不对。"
+    },
+    {
+      "id": "social:清冷克制:trusted:interest",
+      "semantic": "social:清冷克制:trusted:interest",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "往日做{specialty}，不喜欢旁人出声。如今您坐着，偶尔问一句，我竟也习惯了。"
+    },
+    {
+      "id": "social:清冷克制:trusted:listen",
+      "semantic": "social:清冷克制:trusted:listen",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他指尖停在杯沿上。",
+      "reply": "从前觉得独处省心。近来有时抬头，见旁边空着，倒会愣一会儿。"
+    },
+    {
+      "id": "social:清冷克制:trusted:comfort",
+      "semantic": "social:清冷克制:trusted:comfort",
+      "npc": null,
+      "personality": "清冷克制",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好。余下的明日再做，今日就陪您坐着。"
+    },
+    {
+      "id": "social:明朗直率:stranger:recent",
+      "semantic": "social:明朗直率:stranger:recent",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "才腾出手。陛下来了，{self}险些没听见，失礼了。"
+    },
+    {
+      "id": "social:明朗直率:stranger:home",
+      "semantic": "social:明朗直率:stranger:home",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "陛下想问哪一件？{self}怕一开口讲远了，耽误您正事。"
+    },
+    {
+      "id": "social:明朗直率:stranger:interest",
+      "semantic": "social:明朗直率:stranger:interest",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "喜欢{specialty}。不过当着陛下，还不敢说自己学得多好。"
+    },
+    {
+      "id": "social:明朗直率:stranger:listen",
+      "semantic": "social:明朗直率:stranger:listen",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他本要开口，见你望过来，又站直了些。",
+      "reply": "没什么大事。方才忙得急，连水都没顾上喝。"
+    },
+    {
+      "id": "social:明朗直率:stranger:comfort",
+      "semantic": "social:明朗直率:stranger:comfort",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是！{self}这就歇。陛下既亲口吩咐，便不硬撑了。"
+    },
+    {
+      "id": "social:明朗直率:familiar:recent",
+      "semantic": "social:明朗直率:familiar:recent",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "刚忙完，正想找点事解闷。您来得巧，要不要听我说？"
+    },
+    {
+      "id": "social:明朗直率:familiar:home",
+      "semantic": "social:明朗直率:familiar:home",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "要讲小时候的事，先说好，您可别听完了笑我。"
+    },
+    {
+      "id": "social:明朗直率:familiar:interest",
+      "semantic": "social:明朗直率:familiar:interest",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}自然喜欢。上回说得拘谨，其实真讲起来，怕您嫌我话多。"
+    },
+    {
+      "id": "social:明朗直率:familiar:listen",
+      "semantic": "social:明朗直率:familiar:listen",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他把空杯倒给你看，又赶紧放正。",
+      "reply": "真不是装可怜，今日就是忘了喝水。现在看这杯子，倒觉得口渴得厉害。"
+    },
+    {
+      "id": "social:明朗直率:familiar:comfort",
+      "semantic": "social:明朗直率:familiar:comfort",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好好好，这就坐下。您都来劝了，我再站着，显得多不听话。"
+    },
+    {
+      "id": "social:明朗直率:trusted:recent",
+      "semantic": "social:明朗直率:trusted:recent",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "您来啦！先别问，我今日可没闯祸，手里的事也做完了。"
+    },
+    {
+      "id": "social:明朗直率:trusted:home",
+      "semantic": "social:明朗直率:trusted:home",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "那些丢人的旧事，您听过也不许到外头讲。我还要脸呢。"
+    },
+    {
+      "id": "social:明朗直率:trusted:interest",
+      "semantic": "social:明朗直率:trusted:interest",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "做{specialty}时最痛快。不过您在旁边看，做得好了，还想再多显一回本事。"
+    },
+    {
+      "id": "social:明朗直率:trusted:listen",
+      "semantic": "social:明朗直率:trusted:listen",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他挠了挠脸，声音低下来。",
+      "reply": "有时我也怕做不好。就是话先说满了，再认怯，总觉得丢人。您可别笑。"
+    },
+    {
+      "id": "social:明朗直率:trusted:comfort",
+      "semantic": "social:明朗直率:trusted:comfort",
+      "npc": null,
+      "personality": "明朗直率",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "歇就歇。不过先说好，待会儿我睡着了，您别悄悄走。"
+    },
+    {
+      "id": "social:骄矜自尊:stranger:recent",
+      "semantic": "social:骄矜自尊:stranger:recent",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正在收拾用物。尚未收妥，请陛下容{self}片刻。"
+    },
+    {
+      "id": "social:骄矜自尊:stranger:home",
+      "semantic": "social:骄矜自尊:stranger:home",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "{clan}家中的规矩，{self}记着。余下不过些琐事，不敢拿来扰驾。"
+    },
+    {
+      "id": "social:骄矜自尊:stranger:interest",
+      "semantic": "social:骄矜自尊:stranger:interest",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "所习以{specialty}为多。好坏如何，尚不敢自己评定。"
+    },
+    {
+      "id": "social:骄矜自尊:stranger:listen",
+      "semantic": "social:骄矜自尊:stranger:listen",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他拂平袖口，行礼仍一丝不乱。",
+      "reply": "不过袖角沾了一点墨，正待换下。并无旁的难处。"
+    },
+    {
+      "id": "social:骄矜自尊:stranger:comfort",
+      "semantic": "social:骄矜自尊:stranger:comfort",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下体恤。{self}自会料理，不劳再费心。"
+    },
+    {
+      "id": "social:骄矜自尊:familiar:recent",
+      "semantic": "social:骄矜自尊:familiar:recent",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "这点没收好，偏叫陛下瞧见。先别看，等我摆正了再说。"
+    },
+    {
+      "id": "social:骄矜自尊:familiar:home",
+      "semantic": "social:骄矜自尊:familiar:home",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中讲规矩是讲规矩，也不是日日都板着脸。您莫把他们想得那样无趣。"
+    },
+    {
+      "id": "social:骄矜自尊:familiar:interest",
+      "semantic": "social:骄矜自尊:familiar:interest",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}总要做好才肯拿给人看。陛下若等得，我便不拿半成的敷衍。"
+    },
+    {
+      "id": "social:骄矜自尊:familiar:listen",
+      "semantic": "social:骄矜自尊:familiar:listen",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他瞥了一眼袖角，语气有些懊恼。",
+      "reply": "墨沾上去才看见，洗也未必洗得掉。偏偏这一件最合身。"
+    },
+    {
+      "id": "social:骄矜自尊:familiar:comfort",
+      "semantic": "social:骄矜自尊:familiar:comfort",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "知道了。这回便算陛下劝得有理，先歇一刻。"
+    },
+    {
+      "id": "social:骄矜自尊:trusted:recent",
+      "semantic": "social:骄矜自尊:trusted:recent",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "先说好了，今日只闲谈，不许忽然出题考我。"
+    },
+    {
+      "id": "social:骄矜自尊:trusted:home",
+      "semantic": "social:骄矜自尊:trusted:home",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有些规矩小时候嫌得很，离家以后，自己倒照做起来。可别拿这个打趣我。"
+    },
+    {
+      "id": "social:骄矜自尊:trusted:interest",
+      "semantic": "social:骄矜自尊:trusted:interest",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "做{specialty}也不是回回都顺。有不满意的，给您看可以，您得认真说。"
+    },
+    {
+      "id": "social:骄矜自尊:trusted:listen",
+      "semantic": "social:骄矜自尊:trusted:listen",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他没有立即抬头。",
+      "reply": "有时明知没做好，也拉不下脸承认。等旁人都走了，又自己改到很晚。很可笑么？"
+    },
+    {
+      "id": "social:骄矜自尊:trusted:comfort",
+      "semantic": "social:骄矜自尊:trusted:comfort",
+      "npc": null,
+      "personality": "骄矜自尊",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那就歇。陛下都陪到这儿了，我再逞强，倒真不识好歹。"
+    },
+    {
+      "id": "social:敏感多思:stranger:recent",
+      "semantic": "social:敏感多思:stranger:recent",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "方才在理东西，听见脚步才停下。是不是叫陛下久等了？"
+    },
+    {
+      "id": "social:敏感多思:stranger:home",
+      "semantic": "social:敏感多思:stranger:home",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中的旧事……陛下想听哪一件？{self}怕答偏了。"
+    },
+    {
+      "id": "social:敏感多思:stranger:interest",
+      "semantic": "social:敏感多思:stranger:interest",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}做得多些。旁人说不上有趣，{self}却能坐住。"
+    },
+    {
+      "id": "social:敏感多思:stranger:listen",
+      "semantic": "social:敏感多思:stranger:listen",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他迟疑了一下，才将手里的纸放平。",
+      "reply": "只是把同一句话改了两遍，越看越拿不准。并非什么急事。"
+    },
+    {
+      "id": "social:敏感多思:stranger:comfort",
+      "semantic": "social:敏感多思:stranger:comfort",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，{self}先收起来。陛下莫为这点小事烦心。"
+    },
+    {
+      "id": "social:敏感多思:familiar:recent",
+      "semantic": "social:敏感多思:familiar:recent",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "东西越理越乱，索性先放着了。陛下可别嫌这儿乱。"
+    },
+    {
+      "id": "social:敏感多思:familiar:home",
+      "semantic": "social:敏感多思:familiar:home",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有时候听见一句家中旧称，便会想到许多小事，真讲起来，又零零碎碎的。"
+    },
+    {
+      "id": "social:敏感多思:familiar:interest",
+      "semantic": "social:敏感多思:familiar:interest",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "还是{specialty}。独自做时安心，若知道有人等着看，便总想再改一点。"
+    },
+    {
+      "id": "social:敏感多思:familiar:listen",
+      "semantic": "social:敏感多思:familiar:listen",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他指着纸上的涂改，自己先叹了口气。",
+      "reply": "本来第一遍还顺，改了两回，连最初想说什么都忘了。"
+    },
+    {
+      "id": "social:敏感多思:familiar:comfort",
+      "semantic": "social:敏感多思:familiar:comfort",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，听您的。只是搁下以后，又怕自己惦记，今晚得把纸收远些。"
+    },
+    {
+      "id": "social:敏感多思:trusted:recent",
+      "semantic": "social:敏感多思:trusted:recent",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日没再改第三遍。想了想，再改下去，您来了也只看得见我的后脑勺。"
+    },
+    {
+      "id": "social:敏感多思:trusted:home",
+      "semantic": "social:敏感多思:trusted:home",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有些话只在家里才有人懂。如今同您说着，偶尔也不必多解释了。"
+    },
+    {
+      "id": "social:敏感多思:trusted:interest",
+      "semantic": "social:敏感多思:trusted:interest",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}自然还喜欢。只是您问喜欢什么时，我终于不用先想，这样答合不合宜了。"
+    },
+    {
+      "id": "social:敏感多思:trusted:listen",
+      "semantic": "social:敏感多思:trusted:listen",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将那页纸翻过来，掌心压着空白的一面。",
+      "reply": "有时您只说一句“好”，我会想很久，究竟是真好，还是怕我难堪。"
+    },
+    {
+      "id": "social:敏感多思:trusted:comfort",
+      "semantic": "social:敏感多思:trusted:comfort",
+      "npc": null,
+      "personality": "敏感多思",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那我今日便不回头看了。您若见我又去翻那页纸，拦我一下。"
+    },
+    {
+      "id": "social:圆融世故:stranger:recent",
+      "semantic": "social:圆融世故:stranger:recent",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正好将东西收完。陛下来得突然，茶还未备，请恕怠慢。"
+    },
+    {
+      "id": "social:圆融世故:stranger:home",
+      "semantic": "social:圆融世故:stranger:home",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中多是寻常往来，真要说得有趣，还得容{self}想想。"
+    },
+    {
+      "id": "social:圆融世故:stranger:interest",
+      "semantic": "social:圆融世故:stranger:interest",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}消磨时日倒好。到了陛下面前，便不敢自夸了。"
+    },
+    {
+      "id": "social:圆融世故:stranger:listen",
+      "semantic": "social:圆融世故:stranger:listen",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他原已含笑，见你仍等着，才慢了半拍。",
+      "reply": "方才来往的人多，茶换了几回，自己倒没顾上饮。"
+    },
+    {
+      "id": "social:圆融世故:stranger:comfort",
+      "semantic": "social:圆融世故:stranger:comfort",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下体恤。{self}先把这盏茶喝完，不忙着起身了。"
+    },
+    {
+      "id": "social:圆融世故:familiar:recent",
+      "semantic": "social:圆融世故:familiar:recent",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "方才应酬了几句，这会儿总算能坐。陛下若也不忙，喝口茶再说。"
+    },
+    {
+      "id": "social:圆融世故:familiar:home",
+      "semantic": "social:圆融世故:familiar:home",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里逢事总爱凑在一处商量，商量着商量着，便不知谁是主意最大的人了。"
+    },
+    {
+      "id": "social:圆融世故:familiar:interest",
+      "semantic": "social:圆融世故:familiar:interest",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}是自己喜欢的，没旁的用处也做。陛下可别笑我无事找事。"
+    },
+    {
+      "id": "social:圆融世故:familiar:listen",
+      "semantic": "social:圆融世故:familiar:listen",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将笑意收淡了些。",
+      "reply": "今日说的话太多，现在连一句客套都不想续。陛下容我安静喝口茶。"
+    },
+    {
+      "id": "social:圆融世故:familiar:comfort",
+      "semantic": "social:圆融世故:familiar:comfort",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日便少应一桩酬，多歇一刻。陛下可替我作证。"
+    },
+    {
+      "id": "social:圆融世故:trusted:recent",
+      "semantic": "social:圆融世故:trusted:recent",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "您来了，我倒省了找话的工夫。不想听场面话，咱们就不说。"
+    },
+    {
+      "id": "social:圆融世故:trusted:home",
+      "semantic": "social:圆融世故:trusted:home",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中的人情账，真比银钱难算。跟您说一句，倒能少在心里翻来覆去想。"
+    },
+    {
+      "id": "social:圆融世故:trusted:interest",
+      "semantic": "social:圆融世故:trusted:interest",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "做{specialty}时不用留意谁先开口、谁该接话，喜欢的就是这点清静。"
+    },
+    {
+      "id": "social:圆融世故:trusted:listen",
+      "semantic": "social:圆融世故:trusted:listen",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他端着茶，却没饮。",
+      "reply": "有时笑着应下，回头才后悔。今日同您说这些，是想试试，不陪笑也能坐在这儿。"
+    },
+    {
+      "id": "social:圆融世故:trusted:comfort",
+      "semantic": "social:圆融世故:trusted:comfort",
+      "npc": null,
+      "personality": "圆融世故",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那今日便偷这个懒。若有人来寻，容我晚些再回。"
+    },
+    {
+      "id": "social:严正守礼:stranger:recent",
+      "semantic": "social:严正守礼:stranger:recent",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正将手边的东西归位，陛下有事垂询，{self}听候。"
+    },
+    {
+      "id": "social:严正守礼:stranger:home",
+      "semantic": "social:严正守礼:stranger:home",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "{self}出自{clan}，家训不敢忘。家中琐事，原不敢带到御前。"
+    },
+    {
+      "id": "social:严正守礼:stranger:interest",
+      "semantic": "social:严正守礼:stranger:interest",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "闲时习{specialty}，也算收束心神，不使光阴虚掷。"
+    },
+    {
+      "id": "social:严正守礼:stranger:listen",
+      "semantic": "social:严正守礼:stranger:listen",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他先拱手，答得郑重。",
+      "reply": "并无隐情。只是东西尚未收齐，方才失于问安，请陛下恕罪。"
+    },
+    {
+      "id": "social:严正守礼:stranger:comfort",
+      "semantic": "social:严正守礼:stranger:comfort",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是。{self}收好这一件便歇，不敢敷衍圣意。"
+    },
+    {
+      "id": "social:严正守礼:familiar:recent",
+      "semantic": "social:严正守礼:familiar:recent",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "已经收好了。陛下今日若只闲谈，{self}便不再翻旁的东西。"
+    },
+    {
+      "id": "social:严正守礼:familiar:home",
+      "semantic": "social:严正守礼:familiar:home",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家规记得太牢，有时旁人只随口一句，我倒答得像在过堂。"
+    },
+    {
+      "id": "social:严正守礼:familiar:interest",
+      "semantic": "social:严正守礼:familiar:interest",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}是闲时所好，并非回回都要分出个高下。今日才觉自己先前说得太板了。"
+    },
+    {
+      "id": "social:严正守礼:familiar:listen",
+      "semantic": "social:严正守礼:familiar:listen",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他看了眼整齐的案头，自己停了一下。",
+      "reply": "东西已摆妥三回，总觉得还差一点。回头看看，倒也未必真差什么。"
+    },
+    {
+      "id": "social:严正守礼:familiar:comfort",
+      "semantic": "social:严正守礼:familiar:comfort",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，余下留待明日。陛下别再看，臣这次是真的放下了。"
+    },
+    {
+      "id": "social:严正守礼:trusted:recent",
+      "semantic": "social:严正守礼:trusted:recent",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日可以只用茶。待这盏饮尽，再问旁的也不迟。"
+    },
+    {
+      "id": "social:严正守礼:trusted:home",
+      "semantic": "social:严正守礼:trusted:home",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "规矩该守，话也该好好说。若哪日我又说得太硬，您提醒一句便是。"
+    },
+    {
+      "id": "social:严正守礼:trusted:interest",
+      "semantic": "social:严正守礼:trusted:interest",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}是我的闲事。如今肯让您看不满意的那一处，也算没再端着了。"
+    },
+    {
+      "id": "social:严正守礼:trusted:listen",
+      "semantic": "social:严正守礼:trusted:listen",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他低头看了看自己的手。",
+      "reply": "有时话已到了嘴边，还要先想该不该说。等想妥了，您又该走了。今日想少想一回。"
+    },
+    {
+      "id": "social:严正守礼:trusted:comfort",
+      "semantic": "social:严正守礼:trusted:comfort",
+      "npc": null,
+      "personality": "严正守礼",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是，听您的。这一刻先不讲道理，安静坐着。"
+    },
+    {
+      "id": "social:野心进取:stranger:recent",
+      "semantic": "social:野心进取:stranger:recent",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正在理手边的事。尚有一处想再推敲，未敢说已妥当。"
+    },
+    {
+      "id": "social:野心进取:stranger:home",
+      "semantic": "social:野心进取:stranger:home",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中所盼，{self}记在心里。眼下先将自己的本分做好。"
+    },
+    {
+      "id": "social:野心进取:stranger:interest",
+      "semantic": "social:野心进取:stranger:interest",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "喜欢{specialty}。学到哪里算哪里，尚不敢自满。"
+    },
+    {
+      "id": "social:野心进取:stranger:listen",
+      "semantic": "social:野心进取:stranger:listen",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他把手边的东西往内收了收。",
+      "reply": "还有一处没想好，倒不是难言之事。{self}想自己再试试。"
+    },
+    {
+      "id": "social:野心进取:stranger:comfort",
+      "semantic": "social:野心进取:stranger:comfort",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下。只差这一处，记下了便歇，免得明日忘了。"
+    },
+    {
+      "id": "social:野心进取:familiar:recent",
+      "semantic": "social:野心进取:familiar:recent",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "又想多做一点，抬头天色便变了。陛下若不来，我怕还没留意。"
+    },
+    {
+      "id": "social:野心进取:familiar:home",
+      "semantic": "social:野心进取:familiar:home",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中总盼我走得远些，我也想。只是远到哪一步才够，谁也没说准。"
+    },
+    {
+      "id": "social:野心进取:familiar:interest",
+      "semantic": "social:野心进取:familiar:interest",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}做出一点起色，便想试下一步。偶尔也得有人提醒，先把这一步站稳。"
+    },
+    {
+      "id": "social:野心进取:familiar:listen",
+      "semantic": "social:野心进取:familiar:listen",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他没有避开你的目光。",
+      "reply": "明明昨日比今日容易些，偏是今日想不通。越想早些做好，越坐不住。"
+    },
+    {
+      "id": "social:野心进取:familiar:comfort",
+      "semantic": "social:野心进取:familiar:comfort",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日停在这里。再硬做下去，未必比明日清醒时好。"
+    },
+    {
+      "id": "social:野心进取:trusted:recent",
+      "semantic": "social:野心进取:trusted:recent",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日难得肯先停手。不是不想做，是想等您来了，问问这一步怎么看。"
+    },
+    {
+      "id": "social:野心进取:trusted:home",
+      "semantic": "social:野心进取:trusted:home",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有时分不清是家中盼的，还是我自己要的。走到这里，倒比起初更要想明白。"
+    },
+    {
+      "id": "social:野心进取:trusted:interest",
+      "semantic": "social:野心进取:trusted:interest",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}还想做得更好。不过今日不拿它证明什么，单给您看看。"
+    },
+    {
+      "id": "social:野心进取:trusted:listen",
+      "semantic": "social:野心进取:trusted:listen",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他呼出一口气。",
+      "reply": "我也怕落在人后。平日不肯认，今日只同您说一句，明日还是会去争。"
+    },
+    {
+      "id": "social:野心进取:trusted:comfort",
+      "semantic": "social:野心进取:trusted:comfort",
+      "npc": null,
+      "personality": "野心进取",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那便歇。歇过了再做，也不是认输，您说是不是？"
+    },
+    {
+      "id": "social:疏朗洒脱:stranger:recent",
+      "semantic": "social:疏朗洒脱:stranger:recent",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正待收拾停当，出去走走。陛下到此，{self}先候吩咐。"
+    },
+    {
+      "id": "social:疏朗洒脱:stranger:home",
+      "semantic": "social:疏朗洒脱:stranger:home",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "旧日人事不少，一时讲不齐。陛下若不嫌琐碎，{self}拣一件说。"
+    },
+    {
+      "id": "social:疏朗洒脱:stranger:interest",
+      "semantic": "social:疏朗洒脱:stranger:interest",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "闲时做些{specialty}。也不拘做多少，兴尽便停。"
+    },
+    {
+      "id": "social:疏朗洒脱:stranger:listen",
+      "semantic": "social:疏朗洒脱:stranger:listen",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他收住正要迈出的步子。",
+      "reply": "是坐久了有些闷，想出门透透气。并无旁的事。"
+    },
+    {
+      "id": "social:疏朗洒脱:stranger:comfort",
+      "semantic": "social:疏朗洒脱:stranger:comfort",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，{self}先停下。劳陛下惦记了。"
+    },
+    {
+      "id": "social:疏朗洒脱:familiar:recent",
+      "semantic": "social:疏朗洒脱:familiar:recent",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正想出门，倒遇上您。若只是闲谈，咱们坐着说也成。"
+    },
+    {
+      "id": "social:疏朗洒脱:familiar:home",
+      "semantic": "social:疏朗洒脱:familiar:home",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "离家久了，倒记得些不起眼的事。真问大事，反不如小事记得牢。"
+    },
+    {
+      "id": "social:疏朗洒脱:familiar:interest",
+      "semantic": "social:疏朗洒脱:familiar:interest",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}做得高兴便多做一会儿。若哪日没兴致，也不硬逼着自己。"
+    },
+    {
+      "id": "social:疏朗洒脱:familiar:listen",
+      "semantic": "social:疏朗洒脱:familiar:listen",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他朝门外扬了扬下巴，笑意轻了些。",
+      "reply": "只是想独自走一段路，没想到还得先替自己找个由头。"
+    },
+    {
+      "id": "social:疏朗洒脱:familiar:comfort",
+      "semantic": "social:疏朗洒脱:familiar:comfort",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那就歇。今日不赶什么，坐到茶凉也使得。"
+    },
+    {
+      "id": "social:疏朗洒脱:trusted:recent",
+      "semantic": "social:疏朗洒脱:trusted:recent",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "您肯来，我便晚些再出门。先坐，今日不用赶着谈出个结果。"
+    },
+    {
+      "id": "social:疏朗洒脱:trusted:home",
+      "semantic": "social:疏朗洒脱:trusted:home",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "从前总说走到哪儿都一样。真走远了才知道，有些声音还只认旧处的。"
+    },
+    {
+      "id": "social:疏朗洒脱:trusted:interest",
+      "semantic": "social:疏朗洒脱:trusted:interest",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}也好，散步也好，有时候想自己做，有时候想叫上您。今日是后者。"
+    },
+    {
+      "id": "social:疏朗洒脱:trusted:listen",
+      "semantic": "social:疏朗洒脱:trusted:listen",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他靠着椅背，半晌才笑。",
+      "reply": "人人都当我不在乎。我也乐得省解释，可真有一件放不下的，倒不知该怎样开口了。"
+    },
+    {
+      "id": "social:疏朗洒脱:trusted:comfort",
+      "semantic": "social:疏朗洒脱:trusted:comfort",
+      "npc": null,
+      "personality": "疏朗洒脱",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好。今日不装精神了，借您这会儿清静歇一歇。"
+    },
+    {
+      "id": "social:务实重利:stranger:recent",
+      "semantic": "social:务实重利:stranger:recent",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正在点手边的用物，缺什么先记下，免得临用时找不着。"
+    },
+    {
+      "id": "social:务实重利:stranger:home",
+      "semantic": "social:务实重利:stranger:home",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中日子各有安排，{self}在外，先求不添烦扰。"
+    },
+    {
+      "id": "social:务实重利:stranger:interest",
+      "semantic": "social:务实重利:stranger:interest",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}。费些工夫，终归能看见自己做成了什么。"
+    },
+    {
+      "id": "social:务实重利:stranger:listen",
+      "semantic": "social:务实重利:stranger:listen",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他在纸上添了一笔，才收起笔。",
+      "reply": "正记用物的缺项。小事一多，临时去找，反倒更费工夫。"
+    },
+    {
+      "id": "social:务实重利:stranger:comfort",
+      "semantic": "social:务实重利:stranger:comfort",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是，{self}将缺项记全便歇，不再另起一件。"
+    },
+    {
+      "id": "social:务实重利:familiar:recent",
+      "semantic": "social:务实重利:familiar:recent",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "手头这点算清了。陛下来得正好，再早一刻，我怕还得分神。"
+    },
+    {
+      "id": "social:务实重利:familiar:home",
+      "semantic": "social:务实重利:familiar:home",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里常说，能省的省，该花的别舍不得。这话容易记，真做却得慢慢掂量。"
+    },
+    {
+      "id": "social:务实重利:familiar:interest",
+      "semantic": "social:务实重利:familiar:interest",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "做{specialty}看得见进展，心里有底。不为给人看，自己知道便成。"
+    },
+    {
+      "id": "social:务实重利:familiar:listen",
+      "semantic": "social:务实重利:familiar:listen",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将记事纸推到一旁。",
+      "reply": "并不是忙不过来，是琐事一件挨一件，刚坐下，又想起少记了一项。"
+    },
+    {
+      "id": "social:务实重利:familiar:comfort",
+      "semantic": "social:务实重利:familiar:comfort",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，歇一刻。记都记下了，晚些做，也丢不了。"
+    },
+    {
+      "id": "social:务实重利:trusted:recent",
+      "semantic": "social:务实重利:trusted:recent",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日先不算得失。您肯在这儿坐片刻，便已不亏。"
+    },
+    {
+      "id": "social:务实重利:trusted:home",
+      "semantic": "social:务实重利:trusted:home",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有时嘴上嫌家里管得细，真轮到自己，也会把同样的话再说一遍。"
+    },
+    {
+      "id": "social:务实重利:trusted:interest",
+      "semantic": "social:务实重利:trusted:interest",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}原是图个实在，如今还多一样好处，做完了能留您多看一会儿。"
+    },
+    {
+      "id": "social:务实重利:trusted:listen",
+      "semantic": "social:务实重利:trusted:listen",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他合上记事纸。",
+      "reply": "我总替自己算条退路，算久了，连想留下也要找个合算的说法。今日懒得找了。"
+    },
+    {
+      "id": "social:务实重利:trusted:comfort",
+      "semantic": "social:务实重利:trusted:comfort",
+      "npc": null,
+      "personality": "务实重利",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "成，那便歇。您都开口了，我再算这点工夫，倒显得不会过日子。"
+    },
+    {
+      "id": "social:寡言重诺:stranger:recent",
+      "semantic": "social:寡言重诺:stranger:recent",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在收东西。陛下有事，请吩咐。"
+    },
+    {
+      "id": "social:寡言重诺:stranger:home",
+      "semantic": "social:寡言重诺:stranger:home",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "{self}出自{clan}。旧事不擅讲，请陛下见谅。"
+    },
+    {
+      "id": "social:寡言重诺:stranger:interest",
+      "semantic": "social:寡言重诺:stranger:interest",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}。做得久些。"
+    },
+    {
+      "id": "social:寡言重诺:stranger:listen",
+      "semantic": "social:寡言重诺:stranger:listen",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他停下手，认真想了想。",
+      "reply": "手上有一点酸。歇过便好。"
+    },
+    {
+      "id": "social:寡言重诺:stranger:comfort",
+      "semantic": "social:寡言重诺:stranger:comfort",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是。收完就歇。"
+    },
+    {
+      "id": "social:寡言重诺:familiar:recent",
+      "semantic": "social:寡言重诺:familiar:recent",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "刚收好。您坐，我去添水。"
+    },
+    {
+      "id": "social:寡言重诺:familiar:home",
+      "semantic": "social:寡言重诺:familiar:home",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里旧物还留着。不是值钱，用惯了。"
+    },
+    {
+      "id": "social:寡言重诺:familiar:interest",
+      "semantic": "social:寡言重诺:familiar:interest",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "还是{specialty}。您若想看，下回叫您。"
+    },
+    {
+      "id": "social:寡言重诺:familiar:listen",
+      "semantic": "social:寡言重诺:familiar:listen",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他动了动手腕。",
+      "reply": "有些酸，不碍事。不是不肯说，是觉得能好。"
+    },
+    {
+      "id": "social:寡言重诺:familiar:comfort",
+      "semantic": "social:寡言重诺:familiar:comfort",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好。今日先到这里。"
+    },
+    {
+      "id": "social:寡言重诺:trusted:recent",
+      "semantic": "social:寡言重诺:trusted:recent",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在等您。不是急事，就是想坐坐。"
+    },
+    {
+      "id": "social:寡言重诺:trusted:home",
+      "semantic": "social:寡言重诺:trusted:home",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "旧事记得，只是不知怎么讲。您慢慢问，我慢慢说。"
+    },
+    {
+      "id": "social:寡言重诺:trusted:interest",
+      "semantic": "social:寡言重诺:trusted:interest",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}也喜欢。您在旁边，更好。"
+    },
+    {
+      "id": "social:寡言重诺:trusted:listen",
+      "semantic": "social:寡言重诺:trusted:listen",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他把手搭在膝上，停了一会儿。",
+      "reply": "想让您多坐片刻。就这件事，想了半日。"
+    },
+    {
+      "id": "social:寡言重诺:trusted:comfort",
+      "semantic": "social:寡言重诺:trusted:comfort",
+      "npc": null,
+      "personality": "寡言重诺",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，陪您歇。东西明日再收。"
+    },
+    {
+      "id": "social:戒备善谋:stranger:recent",
+      "semantic": "social:戒备善谋:stranger:recent",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "方才在整理用物。陛下忽然到此，可有要事？"
+    },
+    {
+      "id": "social:戒备善谋:stranger:home",
+      "semantic": "social:戒备善谋:stranger:home",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "{self}出自{clan}。家中之事知道得未必周全，不敢随意作答。"
+    },
+    {
+      "id": "social:戒备善谋:stranger:interest",
+      "semantic": "social:戒备善谋:stranger:interest",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "闲时做些{specialty}。算不上什么雅趣。"
+    },
+    {
+      "id": "social:戒备善谋:stranger:listen",
+      "semantic": "social:戒备善谋:stranger:listen",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他看了一眼案边，才将手收回袖中。",
+      "reply": "只是东西摆乱了，正在收拾。并无急事。"
+    },
+    {
+      "id": "social:戒备善谋:stranger:comfort",
+      "semantic": "social:戒备善谋:stranger:comfort",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下。{self}记下了，稍后便歇。"
+    },
+    {
+      "id": "social:戒备善谋:familiar:recent",
+      "semantic": "social:戒备善谋:familiar:recent",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "没什么急事。东西越藏越找不着，今日索性都拿出来理一遍。"
+    },
+    {
+      "id": "social:戒备善谋:familiar:home",
+      "semantic": "social:戒备善谋:familiar:home",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里的事，不是句句都愿往外说。陛下肯容我想想，我再慢慢讲。"
+    },
+    {
+      "id": "social:戒备善谋:familiar:interest",
+      "semantic": "social:戒备善谋:familiar:interest",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "{specialty}是喜欢的。先前说算不上雅趣，是怕陛下接着要考。"
+    },
+    {
+      "id": "social:戒备善谋:familiar:listen",
+      "semantic": "social:戒备善谋:familiar:listen",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将空匣推开，难得笑了一下。",
+      "reply": "东西收得太隐秘，连自己也忘了放在哪儿。今日翻了半日，算是自讨苦吃。"
+    },
+    {
+      "id": "social:戒备善谋:familiar:comfort",
+      "semantic": "social:戒备善谋:familiar:comfort",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日便先不翻了。若明日仍找不着，再认这一回倒霉。"
+    },
+    {
+      "id": "social:戒备善谋:trusted:recent",
+      "semantic": "social:戒备善谋:trusted:recent",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日没藏什么。陛下坐近些，也不妨事。"
+    },
+    {
+      "id": "social:戒备善谋:trusted:home",
+      "semantic": "social:戒备善谋:trusted:home",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "有些旧事并非怕您知道，只是说出口，就得承认自己还记着。"
+    },
+    {
+      "id": "social:戒备善谋:trusted:interest",
+      "semantic": "social:戒备善谋:trusted:interest",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "做{specialty}时不必揣摩谁的话。如今同您坐着，也渐渐不用了。"
+    },
+    {
+      "id": "social:戒备善谋:trusted:listen",
+      "semantic": "social:戒备善谋:trusted:listen",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他望着你，过了片刻才开口。",
+      "reply": "有时候明知您没别的意思，我还是先想，后头是不是还有一句。想完了，自己也累。"
+    },
+    {
+      "id": "social:戒备善谋:trusted:comfort",
+      "semantic": "social:戒备善谋:trusted:comfort",
+      "npc": null,
+      "personality": "戒备善谋",
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，信您一回。这一刻不再想别的，先歇。"
+    },
+    {
+      "id": "social:xu:stranger:recent",
+      "semantic": "social:xu:stranger:recent",
+      "npc": "xu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在重看用人的章程。旧处与新议放在一页，免得翻来翻去。"
+    },
+    {
+      "id": "social:xu:stranger:home",
+      "semantic": "social:xu:stranger:home",
+      "npc": "xu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "臣家中是许氏。陛下幼时也曾听长辈说过，今日若问近况，臣只拣知道的答。"
+    },
+    {
+      "id": "social:xu:stranger:interest",
+      "semantic": "social:xu:stranger:interest",
+      "npc": "xu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "闲时也翻旧书。碰到从前的批注，常想那时怎么敢写得那样笃定。"
+    },
+    {
+      "id": "social:xu:stranger:listen",
+      "semantic": "social:xu:stranger:listen",
+      "npc": "xu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将笔放下，答得很郑重。",
+      "reply": "方才墨里兑水多了，落纸有些洇。臣正想重磨一回，倒让陛下瞧见这点小事。"
+    },
+    {
+      "id": "social:xu:stranger:comfort",
+      "semantic": "social:xu:stranger:comfort",
+      "npc": "xu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是，臣将这一条记在签上，便不再往下翻。"
+    },
+    {
+      "id": "social:xu:familiar:recent",
+      "semantic": "social:xu:familiar:recent",
+      "npc": "xu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "还在看那份章程。今日先放一旁，省得陛下又笑臣，见面只认得折子。"
+    },
+    {
+      "id": "social:xu:familiar:home",
+      "semantic": "social:xu:familiar:home",
+      "npc": "xu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "幼时同读，臣有一回答不上，偏还站得笔直。如今想起，自己也觉得好笑。"
+    },
+    {
+      "id": "social:xu:familiar:interest",
+      "semantic": "social:xu:familiar:interest",
+      "npc": "xu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "旧书有趣，旧批注更有趣。尤其是臣从前批得太满的几处，实在不宜再叫人看。"
+    },
+    {
+      "id": "social:xu:familiar:listen",
+      "semantic": "social:xu:familiar:listen",
+      "npc": "xu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他合上书，指尖仍压着书角。",
+      "reply": "昨夜没睡好。躺下还记着一条没写完的话，今晨醒来，倒忘了原要写什么。"
+    },
+    {
+      "id": "social:xu:familiar:comfort",
+      "semantic": "social:xu:familiar:comfort",
+      "npc": "xu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好。陛下既来了，臣便借这一盏茶的工夫歇歇。"
+    },
+    {
+      "id": "social:xu:trusted:recent",
+      "semantic": "social:xu:trusted:recent",
+      "npc": "xu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日先不谈用人。若陛下问臣在忙什么，臣在等这壶茶开。"
+    },
+    {
+      "id": "social:xu:trusted:home",
+      "semantic": "social:xu:trusted:home",
+      "npc": "xu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "从前同读，总盼早些下课。真长大了，倒想再有一日，只为一道题争半晌。"
+    },
+    {
+      "id": "social:xu:trusted:interest",
+      "semantic": "social:xu:trusted:interest",
+      "npc": "xu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "那几处旧批注，改日可给陛下看。看完便收回，臣也不是全不要面子的。"
+    },
+    {
+      "id": "social:xu:trusted:listen",
+      "semantic": "social:xu:trusted:listen",
+      "npc": "xu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他看着书页，片刻后将书彻底合上。",
+      "reply": "臣有时想请陛下来坐坐，话到嘴边，又先问起折子。问完便后悔，像是除了公事，再没有旁的由头。"
+    },
+    {
+      "id": "social:xu:trusted:comfort",
+      "semantic": "social:xu:trusted:comfort",
+      "npc": "xu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "今日真不续了。陛下也别偷偷拿折子，臣看得见。"
+    },
+    {
+      "id": "social:jiang:stranger:recent",
+      "semantic": "social:jiang:stranger:recent",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在改讲义。几处说得太满，今日重新斟酌。"
+    },
+    {
+      "id": "social:jiang:stranger:home",
+      "semantic": "social:jiang:stranger:home",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "姜氏旧事多，不必一一拿到御前。陛下若问从前授课，老臣倒还记得。"
+    },
+    {
+      "id": "social:jiang:stranger:interest",
+      "semantic": "social:jiang:stranger:interest",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "习字。心里有不平处，先将字写稳，再想话该怎么说。"
+    },
+    {
+      "id": "social:jiang:stranger:listen",
+      "semantic": "social:jiang:stranger:listen",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将讲义合拢，仍端正坐着。",
+      "reply": "方才删了两行，留下的接得不顺。老臣再想想，未必非得今日改妥。"
+    },
+    {
+      "id": "social:jiang:stranger:comfort",
+      "semantic": "social:jiang:stranger:comfort",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是，老臣稍歇。陛下也勿因一时精神好，便连着熬夜。"
+    },
+    {
+      "id": "social:jiang:familiar:recent",
+      "semantic": "social:jiang:familiar:recent",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "讲义删得比添得多。年纪长了，才知道少讲几句，有时比多讲容易听。"
+    },
+    {
+      "id": "social:jiang:familiar:home",
+      "semantic": "social:jiang:familiar:home",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "陛下从前交课业，纸角总难齐。老臣如今收自己的稿子，倒也没齐整到哪里去。"
+    },
+    {
+      "id": "social:jiang:familiar:interest",
+      "semantic": "social:jiang:familiar:interest",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "还是习字。陛下若愿写一页，老臣这回先不落朱圈。"
+    },
+    {
+      "id": "social:jiang:familiar:listen",
+      "semantic": "social:jiang:familiar:listen",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将笔搁稳，笑了一下。",
+      "reply": "想删一句“当依师言”，写惯了，竟几次都顺手写回去。"
+    },
+    {
+      "id": "social:jiang:familiar:comfort",
+      "semantic": "social:jiang:familiar:comfort",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日便依陛下的劝。旧日总劝您，如今轮到自己，也该肯听。"
+    },
+    {
+      "id": "social:jiang:trusted:recent",
+      "semantic": "social:jiang:trusted:recent",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日不改讲义了。来，陪老臣坐坐，您肯自己拿主意，老臣反倒有时闲不住。"
+    },
+    {
+      "id": "social:jiang:trusted:home",
+      "semantic": "social:jiang:trusted:home",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "旧课业还留着，并非等着翻旧账。有些字迹，看着便记得那年怎么教过。"
+    },
+    {
+      "id": "social:jiang:trusted:interest",
+      "semantic": "social:jiang:trusted:interest",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "习字也好，闲谈也好，今日不拿它做功课。您肯坐着，便很好。"
+    },
+    {
+      "id": "social:jiang:trusted:listen",
+      "semantic": "social:jiang:trusted:listen",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他抚了抚讲义边缘。",
+      "reply": "明知您早能独断，老臣仍怕一句没提醒到。可提醒得多了，又怕叫您觉得，老师始终不信您。"
+    },
+    {
+      "id": "social:jiang:trusted:comfort",
+      "semantic": "social:jiang:trusted:comfort",
+      "npc": "jiang",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，老臣先歇。陛下若也累了，今日谁都不提功课。"
+    },
+    {
+      "id": "social:ye:stranger:recent",
+      "semantic": "social:ye:stranger:recent",
+      "npc": "ye",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正在核账。零碎数目先另列，不与整项混在一处。"
+    },
+    {
+      "id": "social:ye:stranger:home",
+      "semantic": "social:ye:stranger:home",
+      "npc": "ye",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "叶氏家中往来不少，臣经手的钱粮与私家用度，向来分开记。"
+    },
+    {
+      "id": "social:ye:stranger:interest",
+      "semantic": "social:ye:stranger:interest",
+      "npc": "ye",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "闲时也看旧账。不是离不得银钱，是常能看见当时未想到的一笔。"
+    },
+    {
+      "id": "social:ye:stranger:listen",
+      "semantic": "social:ye:stranger:listen",
+      "npc": "ye",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将算盘移开些，笑意仍恰到好处。",
+      "reply": "方才一笔数拨快了，重算才觉出来。好在尚未誊清，并不碍事。"
+    },
+    {
+      "id": "social:ye:stranger:comfort",
+      "semantic": "social:ye:stranger:comfort",
+      "npc": "ye",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下。臣核完这一行便停，不再另翻一册。"
+    },
+    {
+      "id": "social:ye:familiar:recent",
+      "semantic": "social:ye:familiar:recent",
+      "npc": "ye",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日暂不算了。臣怕一开口，陛下又以为是来讨拨款的。"
+    },
+    {
+      "id": "social:ye:familiar:home",
+      "semantic": "social:ye:familiar:home",
+      "npc": "ye",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中难算的是人情，不是银钱。有时一句“顺便”，比整本账还难回。"
+    },
+    {
+      "id": "social:ye:familiar:interest",
+      "semantic": "social:ye:familiar:interest",
+      "npc": "ye",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "旧账看多了，也想看点不用心算的东西。喝茶便好，不必问值几钱。"
+    },
+    {
+      "id": "social:ye:familiar:listen",
+      "semantic": "social:ye:familiar:listen",
+      "npc": "ye",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他低头看了眼袖中旧帕，没急着取出来。",
+      "reply": "旧帕子用了太久，今日想换，拿起新的，又觉得不顺手。"
+    },
+    {
+      "id": "social:ye:familiar:comfort",
+      "semantic": "social:ye:familiar:comfort",
+      "npc": "ye",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，算盘也收了。陛下看，今日真歇。"
+    },
+    {
+      "id": "social:ye:trusted:recent",
+      "semantic": "social:ye:trusted:recent",
+      "npc": "ye",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "没带账册。陛下先别笑，臣真是空手来的。"
+    },
+    {
+      "id": "social:ye:trusted:home",
+      "semantic": "social:ye:trusted:home",
+      "npc": "ye",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里有些旧人情，臣不催还，也不愿拿来讨个好名声。搁在心里便是。"
+    },
+    {
+      "id": "social:ye:trusted:interest",
+      "semantic": "social:ye:trusted:interest",
+      "npc": "ye",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "喝茶，闲坐，听人讲点与钱粮无关的事。臣也不是生来就抱着算盘的。"
+    },
+    {
+      "id": "social:ye:trusted:listen",
+      "semantic": "social:ye:trusted:listen",
+      "npc": "ye",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将笑意收起来一点。",
+      "reply": "有时没带账来，反不知见面先说什么。臣怕陛下等了半日，才发现臣今日什么也没呈。"
+    },
+    {
+      "id": "social:ye:trusted:comfort",
+      "semantic": "social:ye:trusted:comfort",
+      "npc": "ye",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日听您的。少算一刻，内库倒也不会因此空了。"
+    },
+    {
+      "id": "social:xie:stranger:recent",
+      "semantic": "social:xie:stranger:recent",
+      "npc": "xie",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "正理当值时的记事。要核的另放一边，免得与已核过的混了。"
+    },
+    {
+      "id": "social:xie:stranger:home",
+      "semantic": "social:xie:stranger:home",
+      "npc": "xie",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "奴才出自谢氏旁支。旧事隔得久，一时不知该从哪句说起。"
+    },
+    {
+      "id": "social:xie:stranger:interest",
+      "semantic": "social:xie:stranger:interest",
+      "npc": "xie",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "看几页闲书。字不多时，值后也能翻一会儿。"
+    },
+    {
+      "id": "social:xie:stranger:listen",
+      "semantic": "social:xie:stranger:listen",
+      "npc": "xie",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他垂手站着，话说得很轻。",
+      "reply": "只是方才记事用的小签夹错了一页，奴才已经取出来了。"
+    },
+    {
+      "id": "social:xie:stranger:comfort",
+      "semantic": "social:xie:stranger:comfort",
+      "npc": "xie",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下。待交清值次，奴才便去歇，不会误事。"
+    },
+    {
+      "id": "social:xie:familiar:recent",
+      "semantic": "social:xie:familiar:recent",
+      "npc": "xie",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "当值的事已交清。袖里有几页闲书，方才正想看看。"
+    },
+    {
+      "id": "social:xie:familiar:home",
+      "semantic": "social:xie:familiar:home",
+      "npc": "xie",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家中旧事，奴才讲得慢。陛下容我一句句想，别嫌等得久。"
+    },
+    {
+      "id": "social:xie:familiar:interest",
+      "semantic": "social:xie:familiar:interest",
+      "npc": "xie",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "闲书。正经事看得多了，偶尔也想知道，故事里的人后来去了哪里。"
+    },
+    {
+      "id": "social:xie:familiar:listen",
+      "semantic": "social:xie:familiar:listen",
+      "npc": "xie",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他指腹压着书角，这回没藏进袖里。",
+      "reply": "想把这几页看完，又怕过了歇息的时辰。其实一页翻了几回，也未看进去。"
+    },
+    {
+      "id": "social:xie:familiar:comfort",
+      "semantic": "social:xie:familiar:comfort",
+      "npc": "xie",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日便收书。陛下也莫再添一件急事，奴才可当真听了。"
+    },
+    {
+      "id": "social:xie:trusted:recent",
+      "semantic": "social:xie:trusted:recent",
+      "npc": "xie",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日的事都交过了。这一会儿，奴才只想坐着翻两页书。"
+    },
+    {
+      "id": "social:xie:trusted:home",
+      "semantic": "social:xie:trusted:home",
+      "npc": "xie",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "从前少提，并非一句都不愿说。陛下还想听哪一段，我试着讲。"
+    },
+    {
+      "id": "social:xie:trusted:interest",
+      "semantic": "social:xie:trusted:interest",
+      "npc": "xie",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "书里的事可以翻回去重看，倒省得猜人有没有漏下半句话。"
+    },
+    {
+      "id": "social:xie:trusted:listen",
+      "semantic": "social:xie:trusted:listen",
+      "npc": "xie",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他抬起眼，手仍按着那页书。",
+      "reply": "有时没在当值，听见脚步也先站起来。等站稳了，才想起原可以坐着。"
+    },
+    {
+      "id": "social:xie:trusted:comfort",
+      "semantic": "social:xie:trusted:comfort",
+      "npc": "xie",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是。今日不等人叫了再歇，奴才自己先坐下。"
+    },
+    {
+      "id": "social:song:stranger:recent",
+      "semantic": "social:song:stranger:recent",
+      "npc": "song",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在理琴谱。方才一处转音未顺，先记着，不急于强弹。"
+    },
+    {
+      "id": "social:song:stranger:home",
+      "semantic": "social:song:stranger:home",
+      "npc": "song",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "草民出自习琴人家，少时离家学艺。余下都是寻常旧事，怕讲得无趣。"
+    },
+    {
+      "id": "social:song:stranger:interest",
+      "semantic": "social:song:stranger:interest",
+      "npc": "song",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "琴。不是只有在人前才弹，独自也会拨几声。"
+    },
+    {
+      "id": "social:song:stranger:listen",
+      "semantic": "social:song:stranger:listen",
+      "npc": "song",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将手从琴弦上收回，坐姿仍很端正。",
+      "reply": "方才有一转音没接好。草民想再听听，不敢说是琴弦的错。"
+    },
+    {
+      "id": "social:song:stranger:comfort",
+      "semantic": "social:song:stranger:comfort",
+      "npc": "song",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "谢陛下。琴先收了，草民歇过再练。"
+    },
+    {
+      "id": "social:song:familiar:recent",
+      "semantic": "social:song:familiar:recent",
+      "npc": "song",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "还在试那一转。今日比昨日顺些，不过先不请陛下夸，等弹完再说。"
+    },
+    {
+      "id": "social:song:familiar:home",
+      "semantic": "social:song:familiar:home",
+      "npc": "song",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "离家学琴时，总嫌练得太慢。如今自己坐下来，也还是会这样着急。"
+    },
+    {
+      "id": "social:song:familiar:interest",
+      "semantic": "social:song:familiar:interest",
+      "npc": "song",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "自然是琴。不过陛下若只想坐坐，今日不弹也成。"
+    },
+    {
+      "id": "social:song:familiar:listen",
+      "semantic": "social:song:familiar:listen",
+      "npc": "song",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他拨了一下弦，听尽余音才开口。",
+      "reply": "这处改了几回，越改越直白。明知该停，手放上去又想试。"
+    },
+    {
+      "id": "social:song:familiar:comfort",
+      "semantic": "social:song:familiar:comfort",
+      "npc": "song",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日先不弹。陛下若听见我又碰弦，提醒一句便是。"
+    },
+    {
+      "id": "social:song:trusted:recent",
+      "semantic": "social:song:trusted:recent",
+      "npc": "song",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "琴先不碰了。想同陛下说几句话，不想回回都拿曲子开头。"
+    },
+    {
+      "id": "social:song:trusted:home",
+      "semantic": "social:song:trusted:home",
+      "npc": "song",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "少时离家，只想着要把琴学好。真学会了，又有些话不肯随便弹给人听。"
+    },
+    {
+      "id": "social:song:trusted:interest",
+      "semantic": "social:song:trusted:interest",
+      "npc": "song",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "琴还是喜欢的。只是如今有人肯听我说话，倒不必句句都托在弦上。"
+    },
+    {
+      "id": "social:song:trusted:listen",
+      "semantic": "social:song:trusted:listen",
+      "npc": "song",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他把琴谱反扣在案上。",
+      "reply": "有时别人夸一句好，我还要追问，究竟哪里好。明知这样不讨喜，可敷衍听得多了，便总想分清。"
+    },
+    {
+      "id": "social:song:trusted:comfort",
+      "semantic": "social:song:trusted:comfort",
+      "npc": "song",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "今日便陪陛下坐着。琴不会跑，不必急这一刻。"
+    },
+    {
+      "id": "social:lu:stranger:recent",
+      "semantic": "social:lu:stranger:recent",
+      "npc": "lu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "护腕刚收好。方才练过几回弓，正待歇一歇。"
+    },
+    {
+      "id": "social:lu:stranger:home",
+      "semantic": "social:lu:stranger:home",
+      "npc": "lu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "臣出自行伍人家，家中不大讲细话，行事倒总要教得明白。"
+    },
+    {
+      "id": "social:lu:stranger:interest",
+      "semantic": "social:lu:stranger:interest",
+      "npc": "lu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "骑射。旁的也学，只是这两样做得久些，手熟。"
+    },
+    {
+      "id": "social:lu:stranger:listen",
+      "semantic": "social:lu:stranger:listen",
+      "npc": "lu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他将护腕往身后收了一点，站得更直。",
+      "reply": "护腕的扣子有些紧，方才勒出了一道印。臣松开便好，并不伤着。"
+    },
+    {
+      "id": "social:lu:stranger:comfort",
+      "semantic": "social:lu:stranger:comfort",
+      "npc": "lu",
+      "personality": null,
+      "tier": "stranger",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "是，臣这便坐下。陛下放心，今日不再多练。"
+    },
+    {
+      "id": "social:lu:familiar:recent",
+      "semantic": "social:lu:familiar:recent",
+      "npc": "lu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "今日没多练。您先别看护腕，扣子我已经松过了。"
+    },
+    {
+      "id": "social:lu:familiar:home",
+      "semantic": "social:lu:familiar:home",
+      "npc": "lu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里说话直，我有时也跟着急。真不是句句都想顶嘴，陛下莫全记在心里。"
+    },
+    {
+      "id": "social:lu:familiar:interest",
+      "semantic": "social:lu:familiar:interest",
+      "npc": "lu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "骑射之外，还想学做点心。先别笑，等我学会了再笑也不迟。"
+    },
+    {
+      "id": "social:lu:familiar:listen",
+      "semantic": "social:lu:familiar:listen",
+      "npc": "lu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他看了一眼自己的手，有些不好意思。",
+      "reply": "做点心比练弓难多了。弦上用多少力我知道，和面却总拿不准。"
+    },
+    {
+      "id": "social:lu:familiar:comfort",
+      "semantic": "social:lu:familiar:comfort",
+      "npc": "lu",
+      "personality": null,
+      "tier": "familiar",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "好，今日先歇。您若也坐下，我便不惦记再出去练了。"
+    },
+    {
+      "id": "social:lu:trusted:recent",
+      "semantic": "social:lu:trusted:recent",
+      "npc": "lu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "recent",
+      "stage": "",
+      "reply": "在想点心的火候。您别看我，弓能练，锅也总能学会吧。"
+    },
+    {
+      "id": "social:lu:trusted:home",
+      "semantic": "social:lu:trusted:home",
+      "npc": "lu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "home",
+      "stage": "",
+      "reply": "家里教我，有事先上前。可有时候就是想坐您旁边，不挡什么，也不用逞能。"
+    },
+    {
+      "id": "social:lu:trusted:interest",
+      "semantic": "social:lu:trusted:interest",
+      "npc": "lu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "chat",
+      "topic": "interest",
+      "stage": "",
+      "reply": "骑射、点心都喜欢。一样早会了，一样还没会，您可不许只认我会的那样。"
+    },
+    {
+      "id": "social:lu:trusted:listen",
+      "semantic": "social:lu:trusted:listen",
+      "npc": "lu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "listen",
+      "stage": "他原想笑着带过去，见你没催，才低下声。",
+      "reply": "有时想叫您多留一会儿，先去摆弓架，摆完了还没想好怎么问。明明就一句话。"
+    },
+    {
+      "id": "social:lu:trusted:comfort",
+      "semantic": "social:lu:trusted:comfort",
+      "npc": "lu",
+      "personality": null,
+      "tier": "trusted",
+      "category": "care",
+      "topic": "comfort",
+      "stage": "",
+      "reply": "那今日不撑着了。您坐近些，我保证不再念叨练弓。"
+    }
+  ],
+  "followups": {
+    "social:温柔体贴:stranger:listen": [
+      {
+        "say": "换一盏热的，朕也坐坐。",
+        "reply": "他忙去添水，回来时将自己的杯子也一并端上。",
+        "narrative": true
+      },
+      {
+        "say": "下回先照顾好自己这盏。",
+        "reply": "他低头看看杯子，轻声应了，这回没有再把自己的那盏推到最后。",
+        "narrative": true
+      }
+    ],
+    "social:温柔体贴:familiar:listen": [
+      {
+        "say": "先给自己添满，旁人自会开口。",
+        "reply": "他给自己续满了茶，端在手里暖着，笑说今日先不忙了。",
+        "narrative": true
+      },
+      {
+        "say": "朕替你添这一回。",
+        "reply": "他下意识要起身，见你接过茶壶，才重新坐稳，道了一声谢。",
+        "narrative": true
+      }
+    ],
+    "social:温柔体贴:trusted:listen": [
+      {
+        "say": "那今日什么都别管，茶也由朕来倒。",
+        "reply": "他望着你添茶，过了一会儿才接过来：“好，今日就偷这一回懒。”",
+        "narrative": true
+      },
+      {
+        "say": "想歇着的时候，就直说。",
+        "reply": "他点了点头：“那我先说，今日这壶茶，想等喝完了再起身。”",
+        "narrative": true
+      }
+    ],
+    "social:清冷克制:stranger:listen": [
+      {
+        "say": "先坐，不急着回话。",
+        "reply": "他依言坐下，肩背松了一点，低声谢了恩。",
+        "narrative": true
+      },
+      {
+        "say": "待歇过再做，朕稍坐便走。",
+        "reply": "他将手边的东西放稳，给你留出落杯的地方，没有再急着起身。",
+        "narrative": true
+      }
+    ],
+    "social:清冷克制:familiar:listen": [
+      {
+        "say": "桌子不轻，叫人一同挪。",
+        "reply": "他看了看桌脚，终于点头：“也是。一个人挪，碰坏了反添事。”",
+        "narrative": true
+      },
+      {
+        "say": "先看看光照到哪里，再挪。",
+        "reply": "他顺着你的目光看过去：“再往里半尺便好。原不必挪得太远。”",
+        "narrative": true
+      }
+    ],
+    "social:清冷克制:trusted:listen": [
+      {
+        "say": "今日这里有人坐着。",
+        "reply": "他抬眼看你，片刻后轻轻应了一声，将另一只茶盏推近。",
+        "narrative": true
+      },
+      {
+        "say": "下回想有人陪，就捎句话。",
+        "reply": "他指尖离开杯沿：“好。只是您若忙，也不必赶着来。”",
+        "narrative": true
+      }
+    ],
+    "social:明朗直率:stranger:listen": [
+      {
+        "say": "先喝水，朕等着。",
+        "reply": "他赶紧端起杯子，喝了两口才停，脸上有些窘：“失仪了。”",
+        "narrative": true
+      },
+      {
+        "say": "坐下慢慢喝，别又喝急了。",
+        "reply": "他本已仰头，闻言把杯子放低，认真应了声是。",
+        "narrative": true
+      }
+    ],
+    "social:明朗直率:familiar:listen": [
+      {
+        "say": "这会儿记得了，便先喝。",
+        "reply": "他续满水，自己喝了大半杯：“好了，这回总算不空了。”",
+        "narrative": true
+      },
+      {
+        "say": "要不要给你案上放个大杯？",
+        "reply": "他先笑了一声，又想了想：“成啊。够显眼，总不至于又忘。”",
+        "narrative": true
+      }
+    ],
+    "social:明朗直率:trusted:listen": [
+      {
+        "say": "不笑。先说哪一处怕做不好。",
+        "reply": "他松了口气：“那我得从头讲，您可别嫌我讲得慢。”",
+        "narrative": true
+      },
+      {
+        "say": "先别把话说满，留点余地给自己。",
+        "reply": "他摸摸鼻子：“道理我懂。下回开口前，先想想今日这句。”",
+        "narrative": true
+      }
+    ],
+    "social:骄矜自尊:stranger:listen": [
+      {
+        "say": "先换了吧，朕等片刻。",
+        "reply": "他垂眼谢恩，临转身又看了一眼墨痕，才将袖口收拢。",
+        "narrative": true
+      },
+      {
+        "say": "不妨事，先把笔放稳。",
+        "reply": "他依言搁笔，重新理好袖边，神色仍有一点不自在。",
+        "narrative": true
+      }
+    ],
+    "social:骄矜自尊:familiar:listen": [
+      {
+        "say": "先试着洗，未必洗不掉。",
+        "reply": "他又看了看那一点墨：“也好。总不能因这一点，整件都不要了。”",
+        "narrative": true
+      },
+      {
+        "say": "若真洗不掉，留作练字时穿。",
+        "reply": "他微微一顿，才笑：“陛下倒会替它寻差事。”",
+        "narrative": true
+      }
+    ],
+    "social:骄矜自尊:trusted:listen": [
+      {
+        "say": "肯重改便很好，有什么可笑。",
+        "reply": "他抬起头，停了一瞬：“那下回，容我先说一句没做好。”",
+        "narrative": true
+      },
+      {
+        "say": "夜里看字伤眼，留到明日再改。",
+        "reply": "他低低应下：“明日再改。今日既说出口，倒不必独自撑着了。”",
+        "narrative": true
+      }
+    ],
+    "social:敏感多思:stranger:listen": [
+      {
+        "say": "先留第一遍，过些时候再看。",
+        "reply": "他将涂改过的纸另放一边，终于没再去碰那支笔。",
+        "narrative": true
+      },
+      {
+        "say": "改不准的先圈着，别急着誊。",
+        "reply": "他在字旁画了一个小圈，轻声说，这样也好，至少不必立刻定下来。",
+        "narrative": true
+      }
+    ],
+    "social:敏感多思:familiar:listen": [
+      {
+        "say": "今日先不改，把原稿留住。",
+        "reply": "他将原稿仔细夹好：“好，明日若还想不起来，便从头读一遍。”",
+        "narrative": true
+      },
+      {
+        "say": "念一遍原句给朕听。",
+        "reply": "他迟疑片刻，挑出涂改最少的一行念来，念到末了，自己也觉得顺了些。",
+        "narrative": true
+      }
+    ],
+    "social:敏感多思:trusted:listen": [
+      {
+        "say": "若有不好，朕会说清是哪一处。",
+        "reply": "他看着你：“那我也试着少猜一句，先听您把话说完。”",
+        "narrative": true
+      },
+      {
+        "say": "拿不准就问，别自己想一夜。",
+        "reply": "他轻轻笑了：“那我下回真的会问。您可别嫌我问得细。”",
+        "narrative": true
+      }
+    ],
+    "social:圆融世故:stranger:listen": [
+      {
+        "say": "先喝茶，客套稍后再说。",
+        "reply": "他端起茶盏，难得没有先接一句漂亮话，只低声谢了恩。",
+        "narrative": true
+      },
+      {
+        "say": "茶凉了便换，不必将就。",
+        "reply": "他试过水温，笑着认了凉，起身时也将自己的杯子带上了。",
+        "narrative": true
+      }
+    ],
+    "social:圆融世故:familiar:listen": [
+      {
+        "say": "那就不说，朕也歇歇。",
+        "reply": "他往后坐稳些：“好。这一盏茶，总算不用先想说什么。”",
+        "narrative": true
+      },
+      {
+        "say": "旁人来寻，让他稍候。",
+        "reply": "他看了眼门外，点头：“今日便容我慢这一刻。”",
+        "narrative": true
+      }
+    ],
+    "social:圆融世故:trusted:listen": [
+      {
+        "say": "坐着便是，没人催你笑。",
+        "reply": "他眼角松下来：“这话听着，比夸我善谈还受用。”",
+        "narrative": true
+      },
+      {
+        "say": "不想应的，下次先别急着答。",
+        "reply": "他想了想：“好。先留一句“容我想想”，总比回头懊悔强。”",
+        "narrative": true
+      }
+    ],
+    "social:严正守礼:stranger:listen": [
+      {
+        "say": "不必请罪，收好便坐。",
+        "reply": "他行礼应下，待收好东西，才依言在侧座坐定。",
+        "narrative": true
+      },
+      {
+        "say": "今日只闲谈，你也放松些。",
+        "reply": "他答了一声是，顿了一下，又将原要补的敬语咽回去了。",
+        "narrative": true
+      }
+    ],
+    "social:严正守礼:familiar:listen": [
+      {
+        "say": "已经很齐整了，来喝茶。",
+        "reply": "他看了最后一眼，终于移开目光：“是，再看也看不出什么花来。”",
+        "narrative": true
+      },
+      {
+        "say": "第三回便作准，不许再摆了。",
+        "reply": "他失笑，手也收了回来：“好，陛下作准，臣不再挑。”",
+        "narrative": true
+      }
+    ],
+    "social:严正守礼:trusted:listen": [
+      {
+        "say": "今日有工夫，你慢慢说。",
+        "reply": "他抬起眼：“那臣便不先铺陈了，想到哪句，先说哪句。”",
+        "narrative": true
+      },
+      {
+        "say": "不必句句想妥，朕听得明白。",
+        "reply": "他沉默片刻，终于笑了一下：“好。今日先信陛下这句话。”",
+        "narrative": true
+      }
+    ],
+    "social:野心进取:stranger:listen": [
+      {
+        "say": "再试也先歇一刻。",
+        "reply": "他将未妥的地方圈起，认真应下，没有把它草草抹平。",
+        "narrative": true
+      },
+      {
+        "say": "可愿说是哪一处？",
+        "reply": "他想了想，将卡住的地方说来，仍先说明，自己尚未想全。",
+        "narrative": true
+      }
+    ],
+    "social:野心进取:familiar:listen": [
+      {
+        "say": "离开案头一会儿，未必就落下了。",
+        "reply": "他站起身，回头望了一眼：“也是。坐在这里，也没多想通半分。”",
+        "narrative": true
+      },
+      {
+        "say": "先说昨日顺在哪里。",
+        "reply": "他将昨日的思路重新讲过，讲到一半停下来：“原是这一步绕远了。”",
+        "narrative": true
+      }
+    ],
+    "social:野心进取:trusted:listen": [
+      {
+        "say": "怕也无妨，明日照样一步步做。",
+        "reply": "他点头：“好。认这一句怕，倒不妨碍往前走。”",
+        "narrative": true
+      },
+      {
+        "say": "今日不问输赢，先把茶喝了。",
+        "reply": "他接过杯子，笑意松下来：“这一回，便算陛下替我歇了口气。”",
+        "narrative": true
+      }
+    ],
+    "social:疏朗洒脱:stranger:listen": [
+      {
+        "say": "那便去透气，不必拘在这里。",
+        "reply": "他谢过恩，出门前仍等你先行，没敢抢在前头。",
+        "narrative": true
+      },
+      {
+        "say": "朕坐片刻，你也先歇歇。",
+        "reply": "他将门留了一道缝，让风进来，自己也在侧边坐下。",
+        "narrative": true
+      }
+    ],
+    "social:疏朗洒脱:familiar:listen": [
+      {
+        "say": "想独处便去，今日不拦你。",
+        "reply": "他舒了口气：“好。走回来，再同您说路上瞧见什么。”",
+        "narrative": true
+      },
+      {
+        "say": "不用找由头，下回直说。",
+        "reply": "他一笑：“那我记住了。省得绕了半晌，还没走出门。”",
+        "narrative": true
+      }
+    ],
+    "social:疏朗洒脱:trusted:listen": [
+      {
+        "say": "先说第一句，余下慢慢来。",
+        "reply": "他看着杯中水，轻轻笑了：“那第一句是，我没自己说得那样洒脱。”",
+        "narrative": true
+      },
+      {
+        "say": "放不下便先放着，不急着劝你。",
+        "reply": "他肩背松下来：“这倒好。今日最怕听一句，何必在意。”",
+        "narrative": true
+      }
+    ],
+    "social:务实重利:stranger:listen": [
+      {
+        "say": "记好了便收起来，免得再翻。",
+        "reply": "他将记事纸折好，放在固定的位置，这才收笔。",
+        "narrative": true
+      },
+      {
+        "say": "先记最要紧的，余下明日再补。",
+        "reply": "他依言将急用的另圈出来，没再一口气往下添。",
+        "narrative": true
+      }
+    ],
+    "social:务实重利:familiar:listen": [
+      {
+        "say": "记事纸放在明早一眼看见的地方。",
+        "reply": "他将纸压在杯边：“成。明日取茶便看得见。”",
+        "narrative": true
+      },
+      {
+        "say": "漏了一项也不要紧，先歇。",
+        "reply": "他笑了：“也是，又不是这会儿不补，明日便添一倍。”",
+        "narrative": true
+      }
+    ],
+    "social:务实重利:trusted:listen": [
+      {
+        "say": "想留下就留下，今日不收你的账。",
+        "reply": "他笑出声：“那我可真坐着了。待会儿别说我赖着不走。”",
+        "narrative": true
+      },
+      {
+        "say": "这回先照自己的意思。",
+        "reply": "他将纸放远了些：“好。自己的意思，是这壶茶还不急着喝完。”",
+        "narrative": true
+      }
+    ],
+    "social:寡言重诺:stranger:listen": [
+      {
+        "say": "手先放下，别再使力。",
+        "reply": "他松开手，低声应了是。",
+        "narrative": true
+      },
+      {
+        "say": "坐一会儿，朕不急。",
+        "reply": "他依言坐下，手平放在膝上。",
+        "narrative": true
+      }
+    ],
+    "social:寡言重诺:familiar:listen": [
+      {
+        "say": "能好也要歇，今日先别做了。",
+        "reply": "他看了看手腕：“好，今日不做。”",
+        "narrative": true
+      },
+      {
+        "say": "下回早些说，别等朕问。",
+        "reply": "他点头：“记着了。不是怕您嫌烦。”",
+        "narrative": true
+      }
+    ],
+    "social:寡言重诺:trusted:listen": [
+      {
+        "say": "好，朕再坐一会儿。",
+        "reply": "他眼里亮了一点，伸手替你将茶盏移近：“还热。”",
+        "narrative": true
+      },
+      {
+        "say": "下回直说这一句便好。",
+        "reply": "他点头，停了停又道：“那我再说一回，多坐片刻。”",
+        "narrative": true
+      }
+    ],
+    "social:戒备善谋:stranger:listen": [
+      {
+        "say": "慢慢收，朕稍坐便是。",
+        "reply": "他移开案边的空匣，给你留出放杯的地方，神色稍缓。",
+        "narrative": true
+      },
+      {
+        "say": "无急事就好，不必事事请罪。",
+        "reply": "他低声应是，手从袖中取出，也不再攥着袖缘。",
+        "narrative": true
+      }
+    ],
+    "social:戒备善谋:familiar:listen": [
+      {
+        "say": "常用的另放，别再藏那么深。",
+        "reply": "他将空匣扣好：“有理。防旁人之前，得先防自己忘。”",
+        "narrative": true
+      },
+      {
+        "say": "今日先歇，明日从最常放处找。",
+        "reply": "他看了看翻乱的东西，终于笑着认了：“是该换个时候再找。”",
+        "narrative": true
+      }
+    ],
+    "social:戒备善谋:trusted:listen": [
+      {
+        "say": "今日就这一句，没有后话。",
+        "reply": "他看着你，片刻后笑了：“那我也只听这一句。”",
+        "narrative": true
+      },
+      {
+        "say": "拿不准就问朕，不必自己绕。",
+        "reply": "他慢慢点头：“好。问出来，也比在心里猜三回省事。”",
+        "narrative": true
+      }
+    ],
+    "social:xu:stranger:listen": [
+      {
+        "say": "那便重磨，朕等你。",
+        "reply": "他取来清水，重新理好砚池：“这回少兑些，免得又叫陛下等。”",
+        "narrative": true
+      },
+      {
+        "say": "不急着落笔，先歇一歇。",
+        "reply": "他依言搁笔，将纸挪开：“是。待墨妥当了，再写也不迟。”",
+        "narrative": true
+      }
+    ],
+    "social:xu:familiar:listen": [
+      {
+        "say": "今日早些歇，折子朕会分给旁人。",
+        "reply": "那臣今日便早些收笔。只是陛下也别偷偷拿折子回去，省了臣一个，又多累着一个。",
+        "narrative": false
+      },
+      {
+        "say": "只记一句便收，别又读下去了。",
+        "reply": "好，只看两页便合上……不看了。陛下这眼神，臣知道是什么意思。",
+        "narrative": false
+      }
+    ],
+    "social:xu:trusted:listen": [
+      {
+        "say": "没有公事，也能叫朕来喝茶。",
+        "reply": "他望着你，唇边慢慢有了笑：“好。下回只写茶已沏好，不往后添半句公事。”",
+        "narrative": true
+      },
+      {
+        "say": "那今日不谈折子，先把这盏喝完。",
+        "reply": "他将书推远，替你续茶：“今日便只谈这盏茶。凉了再换一壶，臣不急。”",
+        "narrative": true
+      }
+    ],
+    "social:jiang:stranger:listen": [
+      {
+        "say": "先留着原稿，明日再看。",
+        "reply": "他将删下的两行也收进稿中，点头道，确不必今日定死。",
+        "narrative": true
+      },
+      {
+        "say": "念给朕听，看看断在何处。",
+        "reply": "他依言读来，读到断处自己停了一下，笑说，原是上一句说得太满。",
+        "narrative": true
+      }
+    ],
+    "social:jiang:familiar:listen": [
+      {
+        "say": "不如改成“请陛下自断”。",
+        "reply": "他提笔写下，读过一遍才笑：“这句该早些改。”",
+        "narrative": true
+      },
+      {
+        "say": "写惯了慢慢改，朕知道老师的意思。",
+        "reply": "他将那几个字轻轻划去：“您肯这样说，老臣便不急着替自己辩了。”",
+        "narrative": true
+      }
+    ],
+    "social:jiang:trusted:listen": [
+      {
+        "say": "老师提醒，朕听着；如何做，朕自会想。",
+        "reply": "他点头，眉间松下来：“这样便好。老臣也得学着，将最后一笔留给您。”",
+        "narrative": true
+      },
+      {
+        "say": "今日先只当闲谈，不急着替朕筹谋。",
+        "reply": "他合上讲义，笑着应下：“今日便让学生，陪老师喝一盏茶。”",
+        "narrative": true
+      }
+    ],
+    "social:ye:stranger:listen": [
+      {
+        "say": "核清便好，不必为这点小错难为自己。",
+        "reply": "他将重算的数写定，才笑：“是，错处先改，比急着遮掩省事。”",
+        "narrative": true
+      },
+      {
+        "say": "先别誊，另核一遍再说。",
+        "reply": "他将算盘拨回原位：“臣也正是这个意思，谢陛下肯等。”",
+        "narrative": true
+      }
+    ],
+    "social:ye:familiar:listen": [
+      {
+        "say": "用惯了便留着，也不必样样换新。",
+        "reply": "他将旧帕重新折好：“这话好，倒省得臣再替它寻个有用的由头。”",
+        "narrative": true
+      },
+      {
+        "say": "新旧分着用，何必立刻舍一件。",
+        "reply": "他看了看手里两方帕子，笑道：“怎么到了自己这里，反倒不会算这笔账。”",
+        "narrative": true
+      }
+    ],
+    "social:ye:trusted:listen": [
+      {
+        "say": "今日没带什么，也照样坐下。",
+        "reply": "他像要接句玩笑，最后只笑着说：“好。今日臣也不急着找话填满了。”",
+        "narrative": true
+      },
+      {
+        "say": "先说茶，喜欢浓些还是淡些？",
+        "reply": "他认真想了想：“淡些。能慢慢续，省得一盏饮尽，便又找由头告辞。”",
+        "narrative": true
+      }
+    ],
+    "social:xie:stranger:listen": [
+      {
+        "say": "归回原处便好，别再来回核了。",
+        "reply": "他将小签放定，又看了一眼，才收手应下。",
+        "narrative": true
+      },
+      {
+        "say": "收好这页，坐下歇口气。",
+        "reply": "他低声谢恩，坐下时仍只占了小半张椅子。",
+        "narrative": true
+      }
+    ],
+    "social:xie:familiar:listen": [
+      {
+        "say": "看完这一页便收，明日接着。",
+        "reply": "他在页边夹上书签：“好，今日便到这里，明日也不怕寻不着。”",
+        "narrative": true
+      },
+      {
+        "say": "既没看进去，便先别看了。",
+        "reply": "他将书合上：“是。眼睛望着字，心思走远了，倒不如先歇。”",
+        "narrative": true
+      }
+    ],
+    "social:xie:trusted:listen": [
+      {
+        "say": "这会儿没差事，坐稳些。",
+        "reply": "他看了你片刻，慢慢往椅里坐了些：“是，奴才记着。”",
+        "narrative": true
+      },
+      {
+        "say": "下回先看清是谁，再起身也来得及。",
+        "reply": "他低头笑了一下：“别人许来得及。见陛下，怕是还得慢慢改。”",
+        "narrative": true
+      }
+    ],
+    "social:song:stranger:listen": [
+      {
+        "say": "先放这处，别一遍遍磨手。",
+        "reply": "他在谱上留了记号，将琴收稳：“是，今日先不强求。”",
+        "narrative": true
+      },
+      {
+        "say": "是接得太急，还是余音未尽？",
+        "reply": "他想了想，轻拨前一音给你听：“是前音收得急，后面便接不稳。”",
+        "narrative": true
+      }
+    ],
+    "social:song:familiar:listen": [
+      {
+        "say": "明日再听，耳朵也该歇一歇。",
+        "reply": "他将琴弦轻轻按住：“好。听得太多，确实连原来的意思都听不清了。”",
+        "narrative": true
+      },
+      {
+        "say": "把最初那版留着，别都改没了。",
+        "reply": "他从谱下抽出旧稿，放到一旁：“还在。方才正想揉掉，幸而没来得及。”",
+        "narrative": true
+      }
+    ],
+    "social:song:trusted:listen": [
+      {
+        "say": "喜欢哪一处，朕会说清楚。",
+        "reply": "他望着你，半晌才笑：“那我便少追问一句，先听陛下说完。”",
+        "narrative": true
+      },
+      {
+        "say": "不满意也可说，朕不只想听谢恩。",
+        "reply": "他指尖松开琴谱：“好。今日这句，比赏一锭银子还难得。”",
+        "narrative": true
+      }
+    ],
+    "social:lu:stranger:listen": [
+      {
+        "say": "先松开给朕看看，不必站那样直。",
+        "reply": "他慢慢解开扣子，耳根有些热：“真的只是勒红了一点，臣没逞强。”",
+        "narrative": true
+      },
+      {
+        "say": "下回别扣得这样紧，坐着歇歇。",
+        "reply": "他应了一声，低头松扣，坐下后才悄悄转了转手腕。",
+        "narrative": true
+      }
+    ],
+    "social:lu:familiar:listen": [
+      {
+        "say": "让膳房的人教，别拿练弓的劲儿揉面。",
+        "reply": "他先愣了一下，自己也笑：“怪不得。用力倒是会了，偏用错地方。”",
+        "narrative": true
+      },
+      {
+        "say": "先学一样，别一口气做满一盘。",
+        "reply": "他认真点头：“那先做一个。做好了再添，不叫您替我吃一盘失败的。”",
+        "narrative": true
+      }
+    ],
+    "social:lu:trusted:listen": [
+      {
+        "say": "想留朕，直接问便是。",
+        "reply": "他望着你，脸上慢慢热起来：“那您今日，还走么？”",
+        "narrative": true
+      },
+      {
+        "say": "先坐过来，弓架不必再摆。",
+        "reply": "他终于放开手，坐过来时还回头看了一眼：“好。今日让它歪着，我不管了。”",
+        "narrative": true
+      }
+    ]
+  }
+}

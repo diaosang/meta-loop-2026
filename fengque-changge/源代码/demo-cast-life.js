@@ -26,7 +26,7 @@ const CAST_AFFECTION_TEXT={
  '戒备善谋':{up:'他发现你今日没有追问密事，反倒把一盏茶喝完，心里便少设了一道门。',down:'他把话说得更谨慎，连递到你手边的纸也多折了一道，怕自己又猜错。'}
 };
 function castHash(s){let n=2166136261;for(const c of String(s)){n^=c.charCodeAt(0);n=Math.imul(n,16777619);}return n>>>0;}
-function castAge(p){return (p.age||20)+Math.max(0,Math.floor((state.elapsed-2)/12));}
+function castAge(p){return (Number.isFinite(p.age)?p.age:20)+Math.max(0,Math.floor((state.elapsed-2)/12));}
 function castProfile(id){return CAST_DATA.profiles.find(x=>x.id===id)||state.cast?.generatedProfiles?.[id]||null;}
 function castSpouse(id){const m=CAST_DATA.marriages.find(x=>x.a===id||x.b===id);if(!m)return null;const other=m.a===id?m.b:m.a;const node=CAST_DATA.familyNodes.find(x=>x.id===other);const p=PEOPLE.find(x=>x.id===other);return {id:other,name:node?.name||p?.name||'不详',alive:m.status==='married'&&(node?.alive!==false),status:m.status};}
 function castEligibleRomance(p){const r=state.relations[p.id]||{};if(castAge(p)<18)return false;if(['xu','jiang','ye'].includes(p.id))return false;if(p.id==='xie')return true;return !!p.romance;}
@@ -34,6 +34,13 @@ function castMarriageLabel(p){const s=castSpouse(p.id),r=state.relations[p.id];i
 function ensureCastState(){
  state.cast=state.cast||{version:2,affectionDays:{},crushes:{},lastSelection:null,nextSelection:2,generated:[],generatedProfiles:{},secretFavorCount:0};
  const c=state.cast;c.affectionDays=c.affectionDays||{};c.crushes=c.crushes||{};c.generated=c.generated||[];c.generatedProfiles=c.generatedProfiles||{};c.nextSelection=Number.isFinite(c.nextSelection)?c.nextSelection:2;
+ // Restore generated people before any later initialization or UI reads them.
+ for(const id of c.generated){if(PEOPLE.some(p=>p.id===id)||!state.relations[id])continue;const pr=c.generatedProfiles[id];if(!pr)continue;
+  const restored={...clone(pr),id,name:pr.name,age:pr.age??20,gender:pr.gender||'男',role:pr.role||'礼部荐选 · '+(pr.specialty||'才艺'),
+   type:pr.type||'清冷克制',group:pr.group||'audition',location:pr.location||'quarters',schedule:pr.schedule||['quarters','garden','library'],
+   skills:clone(pr.skills||state.relations[id].skills||{admin:50,literature:65,military:40,charm:70}),color:pr.color||'#9c7c83',romance:pr.romance!==false,official:!!pr.official};
+  delete restored.castProfile;PEOPLE.push(restored);
+ }
  if(!state.audition||state.audition.castVersion!==2){const old=state.audition;state.audition={status:old?.status==='completed'||old?.status==='declined'?'completed':'offered',pool:[],interviews:{},selected:[],performances:{},event:null,month:state.elapsed,castVersion:2};if(old?.status==='declined')state.audition.status='declined';if(old?.status==='completed'){c.nextSelection=Math.max(c.nextSelection,state.elapsed+36);}}
  state.harem=state.harem||{housing:{},visited:{},secretOccupants:{}};state.harem.housing=state.harem.housing||{};state.harem.visited=state.harem.visited||{};state.harem.secretOccupants=state.harem.secretOccupants||{};
  for(const p of PEOPLE){
@@ -56,7 +63,7 @@ function haremPage(){
 }
 function haremHouse(id){
  ensureCastState();if(id==='garden'){const people=PEOPLE.filter(p=>state.relations[p.id]?.rank&&p.location==='garden');openModal('御花园','共用园苑 · 看见什么，便由谁先开口',`<div class="scene-text">花影压着石径，宫人远远退开。${people.length?`今日有${people.map(p=>p.name).join('、')}在园中走动。`:'今日尚无人来，只有风把花枝吹得轻轻作响。'}</div>${people.map(p=>`<div class="place-person"><b>${haremLabel(p)}</b><small>${p.role} · ${currentMind(p)}</small><button class="btn ghost" data-action="visit" data-id="${p.id}">过去说话 · 1行动</button></div>`).join('')||''}`,'后宫地图');return;}
- const h=CAST_HOUSES.find(x=>x.id===id);if(!h)return;const os=haremOccupants(h);state.harem.visited[id]=todayKey();openModal(h.name,h.desc,`${os.length?os.map(p=>{const r=state.relations[p.id],pr=castProfile(p.id);return `<div class="place-person"><div>${portrait(p,true)}</div><div><b>${haremLabel(p)}</b><small>${r.rank} · ${castMarriageLabel(p)}<br>${pr?.inner||p.desc||'今日暂无新话。'}<br>今日心态：${currentMind(p)}</small><div class="actions"><button class="btn primary" data-action="visit" data-id="${p.id}">入内探望 · 1行动</button><button class="btn ghost" data-action="dailySchedule" data-id="${p.id}">看今日行迹</button><button class="btn ghost" data-action="archive" data-id="${p.id}">看交际与记事</button></div></div></div>`;}).join(''):'<div class="empty small"><span>静</span><h3>此宫暂空</h3><p>院门未落锁，偶有掌事宫人洒扫。后宫人物入宫后，会依位分安置于此。</p></div>'}`,'宫室探看');
+ const h=CAST_HOUSES.find(x=>x.id===id);if(!h)return;const os=haremOccupants(h);state.harem.visited[id]=todayKey();openModal(h.name,h.desc,`${os.length?os.map(p=>{const r=state.relations[p.id],pr=castProfile(p.id);return `<div class="place-person"><div>${portrait(p,true)}</div><div><b>${haremLabel(p)}</b><small>${r.rank} · ${castMarriageLabel(p)}<br>${typeof storySummary==='function'?mindEscape(storySummary(p)):mindEscape(pr?.bio||p.desc||'今日暂无新话。')}<br>今日心态：${currentMind(p)}</small><div class="actions"><button class="btn primary" data-action="visit" data-id="${p.id}">入内探望 · 1行动</button><button class="btn ghost" data-action="dailySchedule" data-id="${p.id}">看今日行迹</button><button class="btn ghost" data-action="archive" data-id="${p.id}">看交际与记事</button></div></div></div>`;}).join(''):'<div class="empty small"><span>静</span><h3>此宫暂空</h3><p>院门未落锁，偶有掌事宫人洒扫。后宫人物入宫后，会依位分安置于此。</p></div>'}`,'宫室探看');
 }
 function haremPerson(id){const p=PEOPLE.find(x=>x.id===id);if(!p)return;const h=CAST_HOUSES.find(x=>x.id===state.harem.housing[id]);openModal(`${haremLabel(p)} · 后宫档案`,`${h?.name||'内廷'} · ${castMarriageLabel(p)}`,`<div class="talk-banner">${portrait(p,true)}<div><span class="tag">${state.relations[id].rank}</span><p>好感 ${state.relations[id].aff} · 忠诚 ${state.relations[id].loyalty} · 暧昧 ${state.relations[id].love}</p><small>${p.specialty||'专长未定'} · ${p.specialtyLevel?CAST_DATA.skillRanks[p.specialtyLevel-1]:''}</small></div></div><div class="scene-text">${castProfile(id)?.inner||p.desc||'他今日没有留下多余的话。'}</div><div class="actions"><button class="btn primary" data-action="visit" data-id="${id}">见一面 · 1行动</button><button class="btn ghost" data-action="dailySchedule" data-id="${id}">看今日行迹</button><button class="btn ghost" data-action="archive" data-id="${id}">看交际与记事</button></div>`,'后宫人物');}
 function familyTree(id){

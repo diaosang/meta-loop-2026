@@ -1,0 +1,20 @@
+{
+  "version": "13.6",
+  "checks": [
+    "opening a report from the home courier explains the missing audience with a real entry",
+    "available audience resumes the same report today with one entry AP and no appropriation",
+    "decree after re-entry consumes only its own AP and resources once",
+    "retired audience explicitly advances one day, enters and restores the report",
+    "replaying the entry command cannot spend a second AP or another day",
+    "active audience keeps immediate decree buttons and has no forced extra entry",
+    "insufficient AP offers a review plan and does not advance time or spend the last point",
+    "month plan needs explicit confirmation and reopens the same overdue report after settlement",
+    "month-end retirement offers a normal settlement instead of a dead day-30 button",
+    "tour route returns home without granting a decree or free AP",
+    "money and grain shortages have separate exact reasons after the audience opens",
+    "stale or unknown report actions do not navigate, spend or open a new month",
+    "blocked old saves restore unresolved reports to the home to-do queue",
+    "pending supplement can use the same audience recovery flow"
+  ],
+  "passed": 14
+}

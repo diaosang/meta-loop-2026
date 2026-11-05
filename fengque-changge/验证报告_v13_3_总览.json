@@ -1,0 +1,49 @@
+{
+  "version": "13.3",
+  "date": "2026-11-05",
+  "base": "用户提供的V12整合包，沿用V13.2继续修改",
+  "originalRegressionPassed": 20,
+  "previousDialogueAndMechanicsPassed": 23,
+  "courtshipAndSelectionPassed": 14,
+  "socialProgressPassed": 24,
+  "actualBrowserPassed": 16,
+  "pageErrors": [],
+  "totalChecksPassed": 97,
+  "socialResponses": 270,
+  "pairedSocialFollowups": 108,
+  "threeSocialStages": [
+    "初识守礼",
+    "渐熟琐事",
+    "相知心事"
+  ],
+  "defaultEntry": "试玩_v13_3.html",
+  "mobileViewport": "390×844",
+  "playerTranscriptVisible": false,
+  "originalWorkbookNonemptyCellsPreserved": 223482,
+  "originalWorkbookFormulasPreserved": 6,
+  "samples": {
+    "listen": "他将笔放下，答得很郑重。\n\n“方才墨里兑水多了，落纸有些洇。臣正想重磨一回，倒让陛下瞧见这点小事。”",
+    "listenFollowup": "他取来清水，重新理好砚池：“这回少兑些，免得又叫陛下等。”",
+    "firstFlirt": "许知衡执笔的手一顿。耳根渐渐红了，他却将衣袖拢得更齐，垂眸候在案前。\n\n“陛下谬赞。臣……不敢当。”",
+    "snack": "他替你剥好一颗，又去剥第二颗。“……不是一人一半么？怎么都到您手里去了。”",
+    "daily": "沈观澜：重读手边的条目，将先后顺序重新理过。\n顾长宁：收过香灰，检看香篆断处，留待下回再试。\n温叙白：重核一页小账，将容易漏下的零项另记。",
+    "firstAudience": "他在候场时仍有世家公子的矜贵，进了殿，却只敛目伏首，不敢擅自平视。\n\n“草民叩见陛下。”",
+    "familiarCare": "他合上书，指尖仍压着书角。\n\n“昨夜没睡好。躺下还记着一条没写完的话，今晨醒来，倒忘了原要写什么。”",
+    "trustedCare": "他看着书页，片刻后将书彻底合上。\n\n“臣有时想请陛下来坐坐，话到嘴边，又先问起折子。问完便后悔，像是除了公事，再没有旁的由头。”",
+    "establishedFlirt": "他望着你，终于没有再躲开目光。\n\n“臣今日更衣时，确曾想过，陛下会不会多看一眼。”",
+    "together": "“那便添个座。陛下，别叫我往旁边让，我先坐的。”\n陆景明\n\n“给我腾点地方！我坐这边，胳膊长，够得着茶壶。”"
+  },
+  "reports": [
+    "验证报告_v13_3_原功能回归.json",
+    "验证报告_v13_3_逻辑.json",
+    "验证报告_v13_3_人设与选秀.json",
+    "验证报告_v13_3_亲疏日常.json",
+    "验证报告_v13_3_浏览器.json",
+    "验证报告_v13_3_配表.json",
+    "验证报告_v13_3_保留审计.json"
+  ],
+  "testRevision": "旧20次连续近况测试改为100名人物多条相关回应与话题耗尽校验；历史窗口另以跨日对话验证。",
+  "visualInspection": "已查看390px首页与渐熟倾听截图，确认人物动向分行署名、正文与接话可读。",
+  "implementation": "离线原创对白与情境选择，未接入在线大模型。",
+  "historicalReports": "文件名不含v13_3的旧试玩、旧说明及旧报告均为历史对照。"
+}

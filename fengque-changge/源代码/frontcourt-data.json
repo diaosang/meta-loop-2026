@@ -1,0 +1,968 @@
+{
+  "version": "13.5",
+  "departments": [
+    {
+      "id": "personnel",
+      "name": "吏部",
+      "scope": "选任、考课与官员履职",
+      "skill": "admin",
+      "principle": "merit"
+    },
+    {
+      "id": "revenue",
+      "name": "户部",
+      "scope": "国库、田赋、仓粮与赈济",
+      "skill": "admin",
+      "principle": "thrift"
+    },
+    {
+      "id": "rites",
+      "name": "礼部",
+      "scope": "贡举、学校与邦交礼仪",
+      "skill": "literature",
+      "principle": "merit"
+    },
+    {
+      "id": "war",
+      "name": "兵部",
+      "scope": "边防、军饷与兵员整训",
+      "skill": "military",
+      "principle": "security"
+    },
+    {
+      "id": "justice",
+      "name": "刑部",
+      "scope": "刑名复核与依法审理",
+      "skill": "admin",
+      "principle": "law"
+    },
+    {
+      "id": "works",
+      "name": "工部",
+      "scope": "水利、道路与工程估验",
+      "skill": "admin",
+      "principle": "care"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "audit",
+      "dept": "personnel",
+      "name": "考课核绩",
+      "description": "核对经手事务和原始回册；看实绩，不按亲疏评等。",
+      "ap": 1,
+      "money": 10,
+      "grain": 0,
+      "days": 3,
+      "effects": {
+        "authority": 2,
+        "corruption": -4
+      },
+      "tags": [
+        "merit",
+        "law"
+      ]
+    },
+    {
+      "id": "inspect",
+      "dept": "personnel",
+      "name": "选派清查",
+      "description": "派员复核地方请托、积案与隐匿丁田，按实记功过。",
+      "ap": 1,
+      "money": 12,
+      "grain": 0,
+      "days": 4,
+      "effects": {
+        "security": 3,
+        "corruption": -6
+      },
+      "tags": [
+        "law",
+        "merit"
+      ]
+    },
+    {
+      "id": "granary",
+      "dept": "revenue",
+      "name": "整储仓粮",
+      "description": "支银采买、核对收储；所购实际入仓后才增粮。",
+      "ap": 1,
+      "money": 16,
+      "grain": 0,
+      "days": 3,
+      "effects": {
+        "grain": 38
+      },
+      "tags": [
+        "thrift",
+        "care"
+      ]
+    },
+    {
+      "id": "farming",
+      "dept": "revenue",
+      "name": "劝课农桑",
+      "description": "安排农时、修整田间水路，月底再见收成变化。",
+      "ap": 1,
+      "money": 14,
+      "grain": 0,
+      "days": 4,
+      "effects": {
+        "prosperity": 5,
+        "waterRisk": -3
+      },
+      "tags": [
+        "care",
+        "growth"
+      ]
+    },
+    {
+      "id": "school",
+      "dept": "rites",
+      "name": "修学置书",
+      "description": "向地方书院与学校供书，先验原有学舍再列支。",
+      "ap": 1,
+      "money": 16,
+      "grain": 0,
+      "days": 4,
+      "effects": {
+        "literacy": 7,
+        "public": 2
+      },
+      "tags": [
+        "merit",
+        "care"
+      ]
+    },
+    {
+      "id": "exam",
+      "dept": "rites",
+      "name": "开科取士",
+      "description": "本年度一次；独立考校后才列入可授差遣名册。",
+      "ap": 2,
+      "money": 22,
+      "grain": 6,
+      "days": 5,
+      "effects": {
+        "talent": 1,
+        "authority": 1
+      },
+      "tags": [
+        "merit",
+        "law"
+      ]
+    },
+    {
+      "id": "training",
+      "dept": "war",
+      "name": "整训边军",
+      "description": "补齐轮训、验点兵额，避免单纯添报纸面兵数。",
+      "ap": 1,
+      "money": 18,
+      "grain": 12,
+      "days": 3,
+      "effects": {
+        "training": 6,
+        "army": 3,
+        "threat": -4
+      },
+      "tags": [
+        "security",
+        "merit"
+      ]
+    },
+    {
+      "id": "garrison",
+      "dept": "war",
+      "name": "检点屯戍",
+      "description": "检点守备与军粮出入，不因报功漂亮便略过实数。",
+      "ap": 1,
+      "money": 15,
+      "grain": 8,
+      "days": 4,
+      "effects": {
+        "security": 5,
+        "corruption": -3,
+        "threat": -3
+      },
+      "tags": [
+        "security",
+        "law"
+      ]
+    },
+    {
+      "id": "review",
+      "dept": "justice",
+      "name": "复核疑狱",
+      "description": "调齐原卷、验伤与供词；有疑处补查，不先定无罪或有罪。",
+      "ap": 1,
+      "money": 10,
+      "grain": 0,
+      "days": 3,
+      "effects": {
+        "public": 3,
+        "security": 3
+      },
+      "tags": [
+        "law",
+        "care"
+      ]
+    },
+    {
+      "id": "prison",
+      "dept": "justice",
+      "name": "清理淹狱",
+      "description": "复核久押案由与办理期限，须补证者另列清单。",
+      "ap": 1,
+      "money": 12,
+      "grain": 0,
+      "days": 4,
+      "effects": {
+        "public": 4,
+        "corruption": -3
+      },
+      "tags": [
+        "law",
+        "care"
+      ]
+    },
+    {
+      "id": "water",
+      "dept": "works",
+      "name": "修堤疏渠",
+      "description": "先勘堤段、核工料与役期，再按工段验收。",
+      "ap": 1,
+      "money": 22,
+      "grain": 10,
+      "days": 5,
+      "effects": {
+        "waterRisk": -14,
+        "prosperity": 3
+      },
+      "tags": [
+        "care",
+        "growth"
+      ]
+    },
+    {
+      "id": "roads",
+      "dept": "works",
+      "name": "修桥通驿",
+      "description": "修治损坏桥段与驿道；通行后便利军运与地方交易。",
+      "ap": 1,
+      "money": 18,
+      "grain": 6,
+      "days": 4,
+      "effects": {
+        "prosperity": 6,
+        "security": 2
+      },
+      "tags": [
+        "growth",
+        "security"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "flood",
+      "title": "两府大水，请开仓并议蠲免",
+      "dept": "revenue",
+      "rank": "灾荒请旨",
+      "brief": "{region}及邻府多处堤段受损，地方已先发预备仓、安置低洼住户。现报仓粮不足，需跨府调粮，并议受灾田赋蠲缓；两项均超出地方原有额度，请旨。",
+      "reason": "跨府调粮与税赋蠲免须定中央额度。一般街巷积水已交府县处置，不送御前。",
+      "evidence": [
+        "受灾乡册与堤段勘验已送；受灾户数仍须巡抚与部院复核，不能照报全收。",
+        "地方已经先赈，不能让灾民等御批才领第一口粮；续赈与蠲缓另议。"
+      ],
+      "choices": [
+        {
+          "id": "relief",
+          "label": "续赈并蠲缓，另遣员核册",
+          "description": "先续粮，减缓灾田征收；户部须另核损册，工部勘堤。",
+          "money": 26,
+          "grain": 50,
+          "days": 3,
+          "tags": [
+            "care",
+            "relief",
+            "taxRelief"
+          ],
+          "effects": {
+            "public": 8,
+            "waterRisk": -12,
+            "prosperity": 2,
+            "authority": 1
+          }
+        },
+        {
+          "id": "audit",
+          "label": "先续最低口粮，核册后增拨",
+          "description": "不中断急赈，但首批规模较小；按核定灾等续议减免。",
+          "money": 14,
+          "grain": 28,
+          "days": 4,
+          "tags": [
+            "care",
+            "law",
+            "thrift"
+          ],
+          "effects": {
+            "public": 4,
+            "waterRisk": -6,
+            "corruption": -3
+          }
+        },
+        {
+          "id": "delegate",
+          "label": "令邻府调济，定额限期回报",
+          "description": "先由地方相互调济，中央仅补转运；地方压力较大。",
+          "money": 8,
+          "grain": 16,
+          "days": 5,
+          "tags": [
+            "thrift",
+            "delegate"
+          ],
+          "effects": {
+            "public": 1,
+            "waterRisk": -3,
+            "prosperity": -2
+          }
+        }
+      ],
+      "source": "ming78"
+    },
+    {
+      "id": "famine",
+      "title": "连岁歉收，请赈贷种粮",
+      "dept": "revenue",
+      "rank": "粮荒请旨",
+      "brief": "{region}连季歉收，存粮已难兼顾口粮与来年种子。地方已开仓赈贷，仍请中央续给仓粮、缓征本季田赋，以免春耕再误。",
+      "reason": "地方仓粮不足且涉及缓征与跨区调拨；寻常粮价波动由府县报部核办。",
+      "evidence": [
+        "先赈名单、仓存与地亩册已分别列出，是否冒领仍须复核。",
+        "口粮和种粮不可混作一项，只发口粮可能保住今冬却误了来年。"
+      ],
+      "choices": [
+        {
+          "id": "relief",
+          "label": "赈口粮兼贷种，缓征灾田",
+          "description": "救急与春耕一并顾及，短期少收赋税。",
+          "money": 20,
+          "grain": 48,
+          "days": 3,
+          "tags": [
+            "care",
+            "taxRelief",
+            "growth"
+          ],
+          "effects": {
+            "public": 7,
+            "prosperity": 6,
+            "grainLocal": 15
+          }
+        },
+        {
+          "id": "loan",
+          "label": "赈贷种粮，限额抚恤",
+          "description": "优先保住农时，口粮按核册限额接济。",
+          "money": 12,
+          "grain": 30,
+          "days": 4,
+          "tags": [
+            "growth",
+            "thrift"
+          ],
+          "effects": {
+            "public": 3,
+            "prosperity": 5,
+            "grainLocal": 8
+          }
+        },
+        {
+          "id": "market",
+          "label": "准平粜转运，官仓限补",
+          "description": "由官仓与商运稳价，不许抑买；运到前仍有缺口。",
+          "money": 8,
+          "grain": 18,
+          "days": 5,
+          "tags": [
+            "thrift",
+            "growth"
+          ],
+          "effects": {
+            "public": 1,
+            "prosperity": 2,
+            "grainLocal": 4
+          }
+        }
+      ],
+      "source": "ming78"
+    },
+    {
+      "id": "transport",
+      "title": "漕粮亏额，涉跨省经手",
+      "dept": "justice",
+      "rank": "跨省粮案",
+      "brief": "漕运交收比原册少一批粮，船户、仓场与经手衙门各持一册，数字不合。军需已暂调补，但亏额及相关责任须跨省勘核，请定查办之法。",
+      "reason": "军需受影响、跨省经手且涉及官吏责任；一般仓耗先由仓场与户部核销。",
+      "evidence": [
+        "已封存三方原册，差额不等于已查明侵吞，不可先按姓氏或荐引关系定罪。",
+        "军需临补已列账；追责与续运分别办理，避免封仓后军中断粮。"
+      ],
+      "choices": [
+        {
+          "id": "joint",
+          "label": "分调原册，交部院会勘",
+          "description": "保护经手证人，分别核账；属实再分责，未证者不先下狱。",
+          "money": 16,
+          "grain": 10,
+          "days": 4,
+          "tags": [
+            "law",
+            "merit",
+            "audit"
+          ],
+          "effects": {
+            "corruption": -9,
+            "security": 3,
+            "authority": 2
+          }
+        },
+        {
+          "id": "recover",
+          "label": "先补运缺粮，限仓场自核",
+          "description": "续运较快，复核独立性稍弱；仍须交出原册。",
+          "money": 10,
+          "grain": 24,
+          "days": 3,
+          "tags": [
+            "security",
+            "delegate"
+          ],
+          "effects": {
+            "corruption": -3,
+            "army": 3,
+            "authority": 1
+          }
+        },
+        {
+          "id": "suspend",
+          "label": "停涉事者经手，另员督运",
+          "description": "先撤其经手权，不预断有罪；转交会有短期迟滞。",
+          "money": 20,
+          "grain": 16,
+          "days": 5,
+          "tags": [
+            "law",
+            "security"
+          ],
+          "effects": {
+            "corruption": -6,
+            "authority": 1,
+            "prosperity": -2
+          }
+        }
+      ],
+      "source": "ming72"
+    },
+    {
+      "id": "border",
+      "title": "边镇急报，请定援饷与守备",
+      "dept": "war",
+      "rank": "边情急报",
+      "brief": "北境数处驿路遭袭，守军已就地固守并报损。兵部请调邻镇兵、补军饷与粮运；跨镇调兵不可由一镇擅定，请旨。",
+      "reason": "跨镇调兵与军需增拨需要中央统筹；零星巡骑与日常验点由边镇自行执行。",
+      "evidence": [
+        "报损与斥候所见分列，尚未据一封急报夸大敌军人数。",
+        "邻镇可调兵额与本镇留守数均已呈列，不能抽空原有守备。"
+      ],
+      "choices": [
+        {
+          "id": "reinforce",
+          "label": "补援饷，邻镇协防而不轻进",
+          "description": "兼顾粮运与防守，不许各军争功冒进。",
+          "money": 30,
+          "grain": 42,
+          "days": 3,
+          "tags": [
+            "security",
+            "care"
+          ],
+          "effects": {
+            "threat": -14,
+            "army": 7,
+            "security": 5
+          }
+        },
+        {
+          "id": "fortify",
+          "label": "先修守备，核明敌势再议调兵",
+          "description": "较省军需，眼前依赖边镇固守。",
+          "money": 18,
+          "grain": 26,
+          "days": 4,
+          "tags": [
+            "security",
+            "thrift",
+            "law"
+          ],
+          "effects": {
+            "threat": -7,
+            "army": 3,
+            "security": 3
+          }
+        },
+        {
+          "id": "envoy",
+          "label": "备守并遣使探议",
+          "description": "留下守备与最低军需，能否缓和还看邦交。",
+          "money": 14,
+          "grain": 18,
+          "days": 5,
+          "tags": [
+            "thrift",
+            "diplomacy"
+          ],
+          "effects": {
+            "threat": -4,
+            "diplomacy": 5,
+            "army": 1
+          }
+        }
+      ],
+      "source": "ming72"
+    },
+    {
+      "id": "examleak",
+      "title": "科场具告受礼，请封卷覆核",
+      "dept": "justice",
+      "rank": "科场大案",
+      "brief": "数名士子具名告发主考收礼，所指礼单已由都察院封存，涉及贡举公信与在职考官。礼部请考试照常、涉者回避，另定覆核之法。",
+      "reason": "牵涉贡举公信、考官回避与部院会查；普通场务争执由礼部处理。",
+      "evidence": [
+        "具名告发并不等于收礼属实，礼单、送礼记录与口供须互证。",
+        "原卷封存，考试不因传闻停废；涉者先回避，不先定罪。"
+      ],
+      "choices": [
+        {
+          "id": "protect",
+          "label": "护告者，命考官回避并交叉复核",
+          "description": "明责补证，既护公信也不凭一面之词拿人。",
+          "money": 14,
+          "grain": 0,
+          "days": 4,
+          "tags": [
+            "law",
+            "merit",
+            "audit"
+          ],
+          "effects": {
+            "corruption": -7,
+            "literacy": 4,
+            "authority": 3
+          }
+        },
+        {
+          "id": "ministry",
+          "label": "交礼部自核，限期具报",
+          "description": "手续较快，但原衙门自核，须留都察院抽验。",
+          "money": 8,
+          "grain": 0,
+          "days": 3,
+          "tags": [
+            "delegate",
+            "thrift"
+          ],
+          "effects": {
+            "corruption": -2,
+            "literacy": 2
+          }
+        },
+        {
+          "id": "retest",
+          "label": "封涉卷另行覆试，先保其他场次",
+          "description": "开支较大，公平重核；不把全场士子当嫌疑人。",
+          "money": 22,
+          "grain": 4,
+          "days": 5,
+          "tags": [
+            "merit",
+            "law"
+          ],
+          "effects": {
+            "corruption": -5,
+            "literacy": 6,
+            "authority": 2
+          }
+        }
+      ],
+      "source": "ming72"
+    },
+    {
+      "id": "trade",
+      "title": "邻使请开互市，请定议约范围",
+      "dept": "rites",
+      "rank": "邦交请旨",
+      "brief": "邻使带国书请以马匹易丝，涉及边地关防、验马与市税。鸿胪寺已验身份，礼部请定可议范围，不敢擅许常额与长期税例。",
+      "reason": "国书往来、长期互市与边防条款须御批；使馆日常供给由有司按例办理。",
+      "evidence": [
+        "国书与名籍可核，马匹仍待验，不能只听使者自报良马。",
+        "互市试额与长期常额分列，准议不等于已经签订成约。"
+      ],
+      "choices": [
+        {
+          "id": "trial",
+          "label": "准小额试易，验货后议常额",
+          "description": "先试后定，边防与价税由三部会核。",
+          "money": 16,
+          "grain": 6,
+          "days": 4,
+          "tags": [
+            "growth",
+            "diplomacy",
+            "law"
+          ],
+          "effects": {
+            "prosperity": 5,
+            "diplomacy": 7,
+            "army": 2
+          }
+        },
+        {
+          "id": "limited",
+          "label": "只许边市旧额，不增常例",
+          "description": "稳妥守旧，收益较小。",
+          "money": 8,
+          "grain": 0,
+          "days": 3,
+          "tags": [
+            "thrift",
+            "security"
+          ],
+          "effects": {
+            "prosperity": 2,
+            "diplomacy": 2
+          }
+        },
+        {
+          "id": "delay",
+          "label": "回书暂缓，先补关防凭据",
+          "description": "不许仓促立约，仍保持来往。",
+          "money": 4,
+          "grain": 0,
+          "days": 3,
+          "tags": [
+            "security",
+            "law"
+          ],
+          "effects": {
+            "diplomacy": -1,
+            "security": 3
+          }
+        }
+      ],
+      "source": "ming72"
+    },
+    {
+      "id": "deficit",
+      "title": "岁计不足，请裁非急用度",
+      "dept": "revenue",
+      "rank": "国用请旨",
+      "brief": "户部核得仓库与本季应付数不足，旧欠已另列；军饷、俸给和在办工程不能同时足额支给，请定先后与暂缓范围。",
+      "reason": "跨部门预算取舍与既定经费调整须统筹；日常零项报销不逐笔御批。",
+      "evidence": [
+        "现银、应收与旧欠分别列账，未到手收入不算已入库。",
+        "内帑与国库分列，不以宫中有银就假定百姓税赋已足。"
+      ],
+      "choices": [
+        {
+          "id": "austerity",
+          "label": "裁缓非急常费，旧欠留账补给",
+          "description": "缩减两月非急常费，不收回已用拨款；旧欠仍须用实银支付。",
+          "money": 0,
+          "grain": 0,
+          "days": 3,
+          "tags": [
+            "thrift",
+            "care",
+            "law"
+          ],
+          "effects": {
+            "austerity": 2,
+            "authority": 1
+          }
+        },
+        {
+          "id": "levy",
+          "label": "临时加派，明定期限",
+          "description": "一次征解银30，先以实银补欠最多8；地方负担加重。",
+          "money": 0,
+          "grain": 0,
+          "days": 3,
+          "tags": [
+            "security",
+            "revenue"
+          ],
+          "effects": {
+            "treasury": 30,
+            "repay": 8,
+            "public": -6,
+            "prosperity": -3
+          }
+        },
+        {
+          "id": "audit",
+          "label": "清解积欠，分期缓支",
+          "description": "从待清解税银中收回最多18，实付旧欠最多10；未收到的不算现银。",
+          "money": 0,
+          "grain": 0,
+          "days": 5,
+          "tags": [
+            "law",
+            "thrift",
+            "audit"
+          ],
+          "effects": {
+            "recover": 18,
+            "repay": 10,
+            "corruption": -4,
+            "army": -2
+          }
+        }
+      ],
+      "source": "ming78"
+    },
+    {
+      "id": "epidemic",
+      "title": "两地时疫，请调医药与赈粮",
+      "dept": "rites",
+      "rank": "民生急报",
+      "brief": "{region}与邻地同报病者增多，医官已先行诊治并分列疑症，地方药材不足；请太医院与户部合调医药、免除灾户急征，需中央续给。",
+      "reason": "跨区医药调拨、赈粮与征收宽缓需要统筹；寻常零星就医不送御前。",
+      "evidence": [
+        "诊籍按村分列，尚不将所有旧疾都算作同一疫源。",
+        "先治病再核销，派医、调药与续粮各记额度。"
+      ],
+      "choices": [
+        {
+          "id": "full",
+          "label": "调医药并续口粮，另验病源",
+          "description": "救治与民生并重，短期支出较多。",
+          "money": 24,
+          "grain": 30,
+          "days": 3,
+          "tags": [
+            "care",
+            "law"
+          ],
+          "effects": {
+            "public": 7,
+            "healthLocal": 14,
+            "prosperity": 2
+          }
+        },
+        {
+          "id": "target",
+          "label": "按诊籍限拨，重点补疑症药",
+          "description": "守住最急缺口，仍须补诊。",
+          "money": 14,
+          "grain": 14,
+          "days": 4,
+          "tags": [
+            "care",
+            "thrift"
+          ],
+          "effects": {
+            "public": 4,
+            "healthLocal": 8
+          }
+        },
+        {
+          "id": "local",
+          "label": "令邻府协医，中央只补药费",
+          "description": "地方先办，中央开支较少，恢复较慢。",
+          "money": 8,
+          "grain": 8,
+          "days": 5,
+          "tags": [
+            "delegate",
+            "thrift"
+          ],
+          "effects": {
+            "public": 1,
+            "healthLocal": 4
+          }
+        }
+      ],
+      "source": "ming78"
+    }
+  ],
+  "taxes": {
+    "light": {
+      "name": "轻徭薄赋",
+      "income": 0.82,
+      "public": 2,
+      "prosperity": 2
+    },
+    "normal": {
+      "name": "依额征收",
+      "income": 1,
+      "public": 0,
+      "prosperity": 1
+    },
+    "heavy": {
+      "name": "临时加派",
+      "income": 1.23,
+      "public": -3,
+      "prosperity": -2
+    }
+  },
+  "principles": {
+    "care": "恤民",
+    "thrift": "节用",
+    "merit": "任贤",
+    "security": "固边",
+    "law": "守法",
+    "growth": "通商务农",
+    "clan": "护持门第"
+  },
+  "sources": [
+    {
+      "id": "game",
+      "title": "《皇帝成长计划2》开发者App Store介绍",
+      "url": "https://apps.apple.com/cn/app/id1440553367",
+      "used": "名臣任用、策略治理、发展国家的经营方向。六部数值与本版流程为原创实现，不声称复刻原作规则。"
+    },
+    {
+      "id": "ming72",
+      "title": "《明史》卷七十二·职官一",
+      "url": "https://zh.wikisource.org/wiki/明史/卷72",
+      "used": "六部分职、官员选授考课、国用赋役、军政、刑名与营造分工。"
+    },
+    {
+      "id": "ming78",
+      "title": "《明史》卷七十八·食货二",
+      "url": "https://zh.wikisource.org/wiki/明史/卷78",
+      "used": "灾蠲、仓粮赈贷、先赈后闻，以及加派与地方负担的矛盾。"
+    }
+  ],
+  "note": "晟朝为架空王朝，奏案、人名和数值均为原创虚构。参考明代制度，不把少量资料抽象成跨朝代普遍定律。",
+  "advice": {
+    "flood": {
+      "care": "臣请先续灾户口粮。核册可以另遣人去，不能一边核，一边叫已经收容的人再饿着。",
+      "thrift": "续赈请列明首批与后续两笔。臣愿先调转运所需的银，只是下月俸饷须另留数。",
+      "merit": "请让勘堤者与核灾户者分别具册。谁救人、谁误事，都有凭据可查。",
+      "law": "请先封存原仓簿，再查灾册。灾户有漏报便补，有冒领便核，不宜因一处有疑停了两府的粮。",
+      "security": "邻府运粮时须留护运人手，北路军需也请别全挪空。臣请兵部另核可调数。",
+      "growth": "水退之后便是农时。若种粮也全作口粮发尽，来季仍难接续，请另留种子。",
+      "clan": "地方旧员熟悉水路，请暂留其协办；若另派核册之人，也请将两边所掌交代清楚。"
+    },
+    "famine": {
+      "care": "请把无粮之家先列出来。家中还有一口存粮的人，也未必留得下春播的种子。",
+      "thrift": "口粮与种粮须各立一册。臣怕今日混着发了，来春又须重拨，却无人说得清。",
+      "merit": "赈贷由谁经手、何时送达，请列人名。地方报了数，不等于粮已经到户。",
+      "law": "贫户名籍须有复核，也须留补报的门路。只认旧册，逃荒新回的人恐怕领不到。",
+      "security": "臣愿查粮路所需护送。若让沿途设卡抽分，起运再多，灾民到手也少。",
+      "growth": "臣请把种贷留下。保住春耕，明年才有粮入仓；只撑过眼前，仍是接着荒下去。",
+      "clan": "可请本地有余粮之家平价出粮，但须写清价与数，不可把垫粮变成日后加倍索还的借口。"
+    },
+    "transport": {
+      "care": "军中已经临补，臣请先保后续不断运。查账也别把船户一概扣住，他们家中同样要用饭。",
+      "thrift": "临补的粮与查亏的粮请各记一笔。追回多少便核多少，不可到头来两头都报作开支。",
+      "merit": "三方原册各自封存，另遣未曾经手者核对。谁写下哪个数字，应能逐一问到人。",
+      "law": "册数不合，只能说明须查。侵吞、漂没还是改报，须有互证，再分别定责。",
+      "security": "臣请续运另设一路。账可以慢慢核，营中今日要发的粮，却不能跟着一并封住。",
+      "growth": "封仓查验请留正常交收的口子。若连未涉案的商船都停着，两岸粮价还会再涨。",
+      "clan": "既要查经手，就请只按经手查。荐引之人是否知情，另取证据，不宜牵着一姓尽问。"
+    },
+    "border": {
+      "care": "边户也在急报之内。撤往城中的人须有安置，莫只报回守兵人数，忘了他们。",
+      "thrift": "援饷须有到营回执。臣宁肯把护粮的钱列足，也不愿再拨一笔不知停在哪处的军费。",
+      "merit": "请先核能守之兵与可援之将。临阵举荐，仍须说明此人能领哪一段，不只列旧功。",
+      "law": "报损与所见敌情请分别核实。虚报须究，但不宜在战况未明时先责守将败绩。",
+      "security": "臣请先护驿路与粮道，邻镇留足本镇守兵后再调援。眼下不宜为争一个出战名头冒进。",
+      "growth": "边市若须暂闭，请另给平民留出通行路。军粮也要靠转运，不宜把道路一并封死。",
+      "clan": "旧将熟悉边地，可令其守原段；增援另记统属，免得两边到了营中才争谁听谁。"
+    },
+    "examleak": {
+      "care": "请先护住具告士子。他们肯署名，若未查便泄出去，后来有实情的人也不敢说了。",
+      "thrift": "另行覆试请只列涉卷，不必把全场重办。该花的查证费用，臣另核列。",
+      "merit": "臣请使涉者回避，另员覆核。若榜次有误便改，未涉的士子不该一同失去这回机会。",
+      "law": "礼单是线索，仍须对送受之人与原卷。受了礼、改了卷，各有其证，不能混作一句。",
+      "security": "考场内外请照常守卫，只换涉事经手。不宜因传闻惊动全场，叫人趁乱毁卷。",
+      "growth": "科场的公信还在以后。请把如何覆核说明白，莫使来年读书人只知有变，不知何以定榜。",
+      "clan": "同乡荐引与场中送礼须分开查。士子家世可核，不宜只因谁与谁相识便一并黜落。"
+    },
+    "trade": {
+      "care": "若议互市，请定官买之价，不许向边户抑价摊派丝帛。不能市约未成，先把货压到百姓身上。",
+      "thrift": "试易先定上限，验马后再交丝。使者所说的良马，还须看得见、验得过。",
+      "merit": "请遣懂马与懂市税的人同议。只善应酬而不识货价，去了也难守住条款。",
+      "law": "国书可回，常额暂不许。关防、市税与越界处置都应写清，再议是否立为常例。",
+      "security": "互市地点请避开营防要道。可以通商，守军不得因此撤哨，马匹也须另验。",
+      "growth": "臣赞成先试小额。货价与来往能验出实数，再议常额，既不空许，也不闭门。",
+      "clan": "沿边旧商可供问价，但不可让一家包揽。若借熟路独占额数，后来反难核价。"
+    },
+    "deficit": {
+      "care": "请先保赈务与基本支给。再添征派看似账上有了银，地方若失了农时，下季仍收不上来。",
+      "thrift": "请将已承诺、已支出、尚可缓办三项分开。银已经用了，不能在册上划去便说省下了。",
+      "merit": "裁支请先看差事轻重与成效。既有亲近的人领办，也不能因此独留他的工程。",
+      "law": "旧欠须逐项留账。缓付不是免付，原定何时补给，也请写在旨意里。",
+      "security": "军粮与守备若有缺口，请先列实数。臣愿缓非急操演，常备口粮不能再挪。",
+      "growth": "臣请保农桑与要道修治。若把来季能生财的事项全停了，往后还是靠添派填缺。",
+      "clan": "既要裁非急用度，请先公开同一尺度。只裁不相熟的衙门，余者恐怕也不能服。"
+    },
+    "epidemic": {
+      "care": "病户缺的不只药。若病中还须出门找粮，再好的方子也难养好，请留口粮接济。",
+      "thrift": "药材请按诊籍分批调送。先补最缺的一项，腐坏与未用之药也须如实记，不能一概核销。",
+      "merit": "请遣有疫病诊治经验的医官，不按资序凑数。另留人核药材，免得看诊者两头奔忙。",
+      "law": "疑症与确诊请分开记，也请留民户求诊的门路。不能为使报数好看，拒收新来的病人。",
+      "security": "运药的路须护住，军中若有病者也应另诊。封路之时，药与口粮不可一起隔断。",
+      "growth": "救治之外，请缓病户急征，让能下地的人守住农时。病过之后，总还要有生计。",
+      "clan": "本地医家熟悉病户，可先协诊；调来医官与他们所记诊籍须互认，不宜只许一边报数。"
+    }
+  },
+  "bespokeAdvice": {
+    "xu": {
+      "flood": "灾册未齐，续赈却不宜等。臣请核灾与发粮分由两路经手，回册时再相互勘验。",
+      "famine": "臣请口粮与种贷分册。眼下救了人，来春也须有种可下，不能只在今日的赈册上求一个齐数。",
+      "transport": "臣请三方各封一份原册，由未曾经手者复核。若涉及臣所荐之人，也照此办理。",
+      "border": "请先核可援之兵，再定领援之将。臣愿把所荐人选的长短一并列出，供陛下比较。",
+      "examleak": "臣请涉者回避、另员覆卷。既要护住具告者，也须护住未涉士子的名次，不能一封告状便全数推翻。",
+      "trade": "臣请先定试易额度，不许使者以一次入贡换得日后常例。验马与核价各由懂此事的人经手。",
+      "deficit": "臣领办的事项也请列入裁支之册。该留该缓，只论轻重，不必为臣另留一笔。",
+      "epidemic": "请将调医、拨药与续粮各定一人经手。医官看诊，核册之人核册，不宜让救治也停在公文往返上。"
+    },
+    "ye": {
+      "flood": "陛下，救命的钱，臣不敢省。只是请把头一批与后续分开列，臣得替下月俸饷也留一个实数。",
+      "famine": "口粮吃下去，种粮播下去，都是要紧的。臣只请两样别混成一本账，明春再来问时，没人说得清。",
+      "transport": "少了多少，便查多少。临补的粮另列，追回的粮也另列，别最后账面都齐了，仓里仍是空的。",
+      "border": "臣可以再挤出一笔援饷。可这回请把到营回执送回来，别只让户部看见“已起运”三个字。",
+      "examleak": "查证的费用臣不拦。若要覆试，请先圈清涉卷，不能一句“慎重”，便把全场再花一次的钱都送来。",
+      "trade": "马还没验，丝便先许出去，这生意做不得。臣请先试一额，货对得上，再谈往后的数。",
+      "deficit": "陛下，已花出去的银，划掉账也回不来。臣请先裁尚未动工的，旧欠另留补给期限。",
+      "epidemic": "药先送，账随后核，臣没有异议。只求诊籍与领药数各留底，别等药用完了，再来猜原来缺了多少。"
+    },
+    "jiang": {
+      "flood": "陛下，地方肯先开仓，是救急之举。朝廷的续赈若接不上，最先受苦的，仍是已离了家的人。",
+      "famine": "臣请陛下留意种贷。荒年保住一季收成，往往比事后再救一个冬天更难，也更要紧。",
+      "transport": "查官吏的责任，臣赞成。船户与仓役却各有经手，只按证据问，不可因案大便一概收押。",
+      "border": "边城百姓也在等这道旨意。请兵部报守备时，另附迁入城中民户的安置之数。",
+      "examleak": "敢具名来告的人，先须有处安身。陛下护住他，再依法核实，才不是只教天下人记得告状的代价。",
+      "trade": "互市若成，边民能得便利，自是好事。只请丝帛从库中按价调取，不向民户临时摊派。",
+      "deficit": "臣的俸银可以缓一缓，地方赈粮却不能照此缓。请陛下先分清，哪些只是体面，哪些关着性命。",
+      "epidemic": "医官既已先往，药与粮也应跟上。病户无力出工，还追着催征，是让他病好之后也难以活下去。"
+    },
+    "lu": {
+      "flood": "臣可领人护运。只是先请户部把粮到哪一处写明，别队伍走到了，仓门却还等另一道文书。",
+      "famine": "粮路臣去查。沿途谁敢另设卡取粮，请给臣一份可查可报的权限，不叫灾民替他们填肚子。",
+      "transport": "查账照查，臣请续粮另走一路。军中那一顿，不能等三本册子先争出个输赢。",
+      "border": "陛下，臣请先护粮道，不急着出城争功。邻镇能借多少，也得先给人家留够守兵。",
+      "examleak": "考场臣可增派守卫。只换涉事之人，别乱了其余场次，叫真正想毁卷的人得了空子。",
+      "trade": "马请先验。能跑一段，与能入营轮用不是一回事，臣愿叫懂马的人逐匹过目。",
+      "deficit": "非急操演可以缓，军粮请别断。若须少办哪一项，臣把轻重列清，不拿一个“军需”全压在陛下面前。",
+      "epidemic": "臣可护送医药。封路若是为防病，药车与送粮的人总得留条路，不能守着关口两边都等。"
+    }
+  }
+}

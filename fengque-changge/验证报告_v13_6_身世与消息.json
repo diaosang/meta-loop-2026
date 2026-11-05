@@ -1,0 +1,31 @@
+{
+  "version": "13.6",
+  "checks": [
+    "100 people receive stable family-conditioned stories",
+    "surname and faction do not rewrite genealogical parent links",
+    "canonical core identities and Song musical household remain coherent",
+    "public dossiers do not reveal handler orders or unrevealed wounds",
+    "secret handlers are actual different officials",
+    "reading and reloading never reroll a stored life",
+    "another save seed can change secondary stories without changing genealogy",
+    "a high-affinity stranger cannot skip directly to a secret",
+    "home chat and familiar care share the same background and two matching follow-ups",
+    "blocked musician seeks recognition without automatically receiving office",
+    "settled choices cannot farm trust, turns or a second result",
+    "fair assessment can fail despite high affection",
+    "agent confession names a real handler and waits for corroboration",
+    "checking volunteered objects costs one action and two days, once only",
+    "listening alone makes no empty career promise",
+    "generated candidates retain their exact identity, age and story on reload",
+    "low-affinity people and high-affinity strangers cannot invite",
+    "eligible invitations have success and failure days, with no render rerolls",
+    "shared daily limit and seven-day per-person cooldown apply",
+    "Xie reports actual important cases, never generic chatter",
+    "notebook presents movements without advancing days or NPC simulation",
+    "legacy unearned invites archive harmlessly while accepted appointments survive"
+  ],
+  "passed": 22,
+  "familyOrigins": 7,
+  "storyArcs": 8,
+  "protectedCoreBiographies": 4
+}

@@ -36,7 +36,7 @@ const EVENTS={
  ['先吃饭，晚些再解释','你没有当众接话。散席时，他走得很快，没有像往常一样回头。','你避开了一场争执；若总不解释，心结仍会留下。',{allPalace:-1}]]}
 };
 const clone=x=>JSON.parse(JSON.stringify(x));
-const initial=()=>({version:3,elapsed:2,ap:15,apMax:15,money:120,army:62,authority:51,people:58,tab:'court',chapter:'early',relations:Object.fromEntries(PEOPLE.map(p=>[p.id,{aff:p.initial,trust:p.trust,love:0,rank:null,officer:true,notes:[],counts:{},gain:0}])),case:{evidence:[],heardXu:false,heardYe:false,secret:false,judgment:null,late:false},event:null,eventDone:[],promises:[],logs:[{month:2,type:'朝会',text:'景和元年三月，北营报缺粮三百石。你命人留下奏报，准备亲自过问。'}],worldEdges:[],visited:[],introSeen:false});
+const initial=()=>({version:3,openingScenario:'ruined-realm',elapsed:2,ap:15,apMax:15,money:120,army:62,authority:51,people:58,tab:'court',chapter:'early',relations:Object.fromEntries(PEOPLE.map(p=>[p.id,{aff:p.initial,trust:p.trust,love:0,rank:null,officer:true,notes:[],counts:{},gain:0}])),case:{evidence:[],heardXu:false,heardYe:false,secret:false,judgment:null,late:false},event:null,eventDone:[],promises:[],logs:[{month:2,type:'朝会',text:'景和元年三月，北营报缺粮三百石。你命人留下奏报，准备亲自过问。'}],worldEdges:[],visited:[],introSeen:false});
 let state=initial(),session=null,modalAfter=null,toastTimer;
 try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved?.version===3&&saved.relations&&saved.case&&Array.isArray(saved.logs))state=saved;}catch{}
 function clamp(n){return Math.max(0,Math.min(100,n));}

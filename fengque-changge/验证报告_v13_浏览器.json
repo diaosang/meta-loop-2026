@@ -1,0 +1,19 @@
+{
+  "version": 13,
+  "browser": "Microsoft Edge / Playwright isolated headless profile",
+  "checks": [
+    "真实浏览器载入原包100名NPC与V13宫门入口",
+    "真实点击两回合可爱对白、分支回应、偏好披露与纪念笺",
+    "390px手机宫门布局无横向溢出",
+    "真实点击有来源的醋意、四个回应、双NPC同席与两次行动扣费",
+    "390px手机醋意对话与接话按钮布局",
+    "file://直接打开自包含V13试玩文件，无服务器即可载入"
+  ],
+  "passed": 6,
+  "pageErrors": [],
+  "viewportWidths": [
+    1280,
+    390
+  ],
+  "fixtureOnly": "争宠场景使用独立合成测试存档，实际对白与选择均由真实点击执行。"
+}

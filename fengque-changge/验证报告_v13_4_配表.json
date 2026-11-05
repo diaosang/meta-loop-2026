@@ -1,0 +1,18 @@
+{
+  "version": "13.4",
+  "priorSheetsComparedAndPreserved": 23,
+  "newSheets": [
+    "V13.4家世来源",
+    "V13.4身世主线",
+    "V13.4身世接话选择",
+    "V13.4消息规则"
+  ],
+  "originRows": 7,
+  "storyRows": 12,
+  "choiceAndFollowupRows": 48,
+  "rules": 16,
+  "reopenedAndCompared": true,
+  "original12NonemptyCells": 223482,
+  "original12Formulas": 6,
+  "formulaCalculation": "保留公式，未在Excel计算引擎中重算。"
+}

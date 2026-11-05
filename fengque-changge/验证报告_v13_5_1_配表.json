@@ -1,0 +1,25 @@
+{
+  "version": "13.5.1",
+  "priorSheetsComparedAndPreserved": 27,
+  "newSheets": [
+    "V13.5六部职掌",
+    "V13.5施政差事",
+    "V13.5重大奏案",
+    "V13.5御批方案",
+    "V13.5廷议对白",
+    "V13.5前朝规则"
+  ],
+  "totalSheets": 33,
+  "tasks": 12,
+  "majorAffairs": 8,
+  "decisions": 24,
+  "courtArguments": 88,
+  "rules": 32,
+  "reopenedAndCompared": true,
+  "original12NonemptyCells": 223482,
+  "original12Formulas": 6,
+  "formulaCalculation": "原公式保留，未在Excel计算引擎中重算。",
+  "workbookUnchangedFrom13_5": true,
+  "workbookSHA256": "5e0a8238fe41f95ee4220dc179790df4a53cb70299d6801b8b338a18c1fa99c2",
+  "note": "本次仅恢复上朝布局；33张配表完整沿用V13.5，文件字节完全相同。"
+}

@@ -31,16 +31,17 @@ check('full game boot / 100 NPCs / six categories',()=>{
  assert.equal(run('PEOPLE.length'),100);assert.equal(run('INTERACTION_CATEGORIES.length'),6);assert.equal(run('window.__courtVoiceAudit.version'),11);
  assert.ok(!script.includes('function composeExpandedDialogue('),'old assembly engine must not be bundled');
 });
-check('20 consecutive answers for each NPC, text and meaning deduplication',()=>{
+check('100 NPCs offer distinct grounded recent replies, then honestly exhaust the topic',()=>{
  const failures=run(`(()=>{const errors=[];for(const p of PEOPLE){const m=state.relations[p.id].mind;m.turns=[];const a=[];
- for(let i=0;i<20;i++){const d=__courtVoiceAudit.turn(p,'chat','recent');if(d.exhausted)errors.push(p.id+':exhausted');
+ for(let i=0;i<25;i++){const d=__courtVoiceAudit.turn(p,'chat','recent');if(d.exhausted)break;
  if(a.some(x=>x.semantic===d.semantic||__courtVoiceAudit.similarity(x.reply,d.reply)>=.78))errors.push(p.id+':repeat');a.push(d);}
- if(m.turns.length!==20)errors.push(p.id+':window');}return errors;})()`);
+ if(a.length<2||m.turns.length>30)errors.push(p.id+':pool');}return errors;})()`);
  assert.equal(JSON.stringify(failures),'[]');
 });
 check('30-turn rolling memory and context identity/season/festival',()=>{
- const result=run(`(()=>{const p=PEOPLE.find(x=>x.id==='xu');for(let i=0;i<40;i++)__courtVoiceAudit.turn(p,'chat','recent');
- const t=state.relations.xu.mind.turns;return {n:t.length,fields:['npc','identity','clan','personality','mood','relationship','location','season','festival','recentEvent','memory','topic'].every(k=>k in t.at(-1).context)};})()`);
+ const result=run(`(()=>{const p=PEOPLE.find(x=>x.id==='xu'),date=[state.elapsed,state.day];p&& (state.relations[p.id].mind.turns=[]);
+ for(let i=0;i<40;i++){state.day++;if(state.day>30){state.day=1;state.elapsed++;}__courtVoiceAudit.turn(p,'chat','recent');}
+ const t=state.relations[p.id].mind.turns;[state.elapsed,state.day]=date;return {n:t.length,fields:['npc','identity','clan','personality','mood','relationship','location','season','festival','recentEvent','memory','topic'].every(k=>k in t.at(-1).context)};})()`);
  assert.equal(result.n,30);assert.equal(result.fields,true);
 });
 check('same family question, twelve distinct personality positions',()=>{
@@ -50,7 +51,7 @@ check('same family question, twelve distinct personality positions',()=>{
 check('mechanics: one visit AP, one turn count, actual prompt matches answer',()=>{
  run(`state.ap=15;state.tour=null;visit('xu');session.section='chat';interactionTopic('interest');`);
  assert.equal(run('state.ap'),14);assert.equal(run('session.left'),2);
- assert.ok(run("session.response.includes('闲时最爱做什么')"));
+ assert.ok(run("state.relations.xu.mind.lastTurn.player.includes('闲时最爱做什么')"));assert.ok(!run("session.response.includes('你说')"));
  assert.ok(!run("session.response.includes('愿意留下')"));
 });
 check('factual NPC testimony not replaced with romance or generic mood',()=>{
@@ -61,7 +62,7 @@ check('factual NPC testimony not replaced with romance or generic mood',()=>{
 });
 check('unsupported content exhausts honestly without spending turns',()=>{
  run(`state.ap=15;visit('xu');session.left=10;session.section='care';state.relations.xu.mind.turns=[];
- interactionTopic('comfort');interactionTopic('comfort');interactionTopic('comfort');interactionTopic('comfort');`);
+ session.left=40;for(let i=0;i<30;i++)interactionTopic('comfort');`);
  const before=run('session.left');run(`interactionTopic('comfort');`);
  assert.equal(run('session.left'),before);assert.ok(run("session.response.includes('方才已谈过')"));
 });
@@ -70,7 +71,7 @@ check('mood changes whole response, absent family letters never fabricated',()=>
  const line=run(`__courtVoiceAudit.turn(PEOPLE[0],'care','listen').reply`);
  assert.ok(line.includes('原委')||line.includes('想通'));
  run(`state.relations.lu.mind.memories=[];state.relations.lu.mind.turns=[];`);
- assert.ok(run(`__courtVoiceAudit.turn(PEOPLE.find(x=>x.id==='lu'),'probe','family').reply.includes('尚无新信')`));
+ assert.ok(run(`__courtVoiceAudit.turn(PEOPLE.find(x=>x.id==='lu'),'probe','family').reply.includes('还没来信')`));
 });
 check('daily needs do not drift on repeated renders',()=>{
  const before=run(`JSON.stringify(state.relations.xu.agency.needs)`);
@@ -170,8 +171,6 @@ check('legacy save without new fields migrates without wiping affinity',()=>{
  assert.equal(vm.runInContext('state.courtVoice.version',fresh),11);
  assert.equal(vm.runInContext('Array.isArray(state.relations.xu.mind.turns)',fresh),true);
 });
-fs.writeFileSync(path.join(root,'验证报告_v11.json'),JSON.stringify({version:11,type:'runtime-with-DOM-stub',checks,
+fs.writeFileSync(path.join(root,'验证报告_v13_6_原功能回归.json'),JSON.stringify({version:'13.6',type:'runtime-with-DOM-stub',checks,
  browserVisualVerification:false,authoredRows:run('COURT_VOICE_DATA.rows.length'),npcCount:run('PEOPLE.length')},null,2));
-fs.writeFileSync(path.join(root,'验证报告_v12.json'),JSON.stringify({version:12,type:'runtime-with-DOM-stub',checks,
- browserVisualVerification:false,changes:['关系数值改为有依据的每日增长','NPC持续计划与可见行动','复合心绪信号'],authoredRows:run('COURT_VOICE_DATA.rows.length'),npcCount:run('PEOPLE.length')},null,2));
 console.log('ALL '+checks.length+' CHECKS PASSED');

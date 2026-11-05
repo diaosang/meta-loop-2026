@@ -4,7 +4,7 @@
  const esc = mindEscape, hash = mindHash;
  let active = null;
  const PROMPTS = {
-  chat:{recent:'近来在忙些什么？',home:'家中近来可好？',interest:'闲时最爱做什么？'},
+  chat:{recent:'近来在忙些什么？',home:'说说家里的旧事，可好？',interest:'闲时最爱做什么？'},
   care:{listen:'有话便慢慢说，朕听着。',comfort:'先歇一歇，余下的事不急在这一刻。',gift:'这件东西赏你，看看可合心意。',bag:'出行时留的，给你。',promise:'下月得闲，朕再来见你。'},
   probe:{opinion:'在你看来，朕是怎样的人？',worry:'近来可有什么难处？',family:'家中来信，可有为难你的事？'},
   scold:{remind:'言行须留分寸。你可明白？',stern:'将此事的经过据实说来，不许隐瞒。',public:'此事当众问你，须有个明白交代。'},
@@ -86,10 +86,10 @@
   const festivals={'1-1':'元日','1-15':'上元','5-5':'端午','7-7':'七夕','8-15':'中秋','9-9':'重阳','12-8':'腊八'};
   const publicFact=m.memories.slice().reverse().find(x=>['自主日常','往来','守约','失约','政务回奏','关系变化'].includes(x.kind));
   const place=state.dailyHistory[todayKey()]?.entries[p.id]?.[3]?.location||p.location||'quarters';
-  const k=identity(p,channel),stage=r.rank?'已入内廷':r.aff>=70?'亲近':r.aff>=40?'熟识':'初识';
+  const k=identity(p,channel),stage=socialLabel(p);
   const cp=typeof castProfile==='function'?castProfile(p.id):null;
   return {npc:p.id,name:p.name,identity:k.role,self:k.self,clan:cp?.clan||p.faction||'未记家门',
-   role:roleOf(p),personality:p.type,mood:currentMind(p),relationship:stage,aff:r.aff,love:r.love,
+   role:roleOf(p),personality:p.type,mood:currentMind(p),relationship:stage,socialTier:socialTier(p),aff:r.aff,love:r.love,
    location:place,locationName:wloc(place).name,season,festival:festivals[month+'-'+day]||'平日',
    channel,recentEvent:publicFact?{tick:publicFact.tick,kind:publicFact.kind,text:publicFact.text}:null,
    memory:m.memories.slice(-6).map(x=>({kind:x.kind,text:x.text})),
@@ -105,20 +105,20 @@
  }
  function record(p,row,c){
   const m=state.relations[p.id].mind;
-  row.context={...c,topic:row.topic};row.scene={player:row.player,location:c.location};
+  row.context={...c,topic:row.topic,courtshipTier:row.courtshipTier||null};row.scene={player:row.player,location:c.location};
   m.turns.push({id:row.id,semantic:row.semantic,reply:row.reply,topic:row.topic,tick:mindTick(),context:row.context});
   m.turns=m.turns.slice(-30);m.turnSeq++;m.lastTurn=row;
   return row;
  }
  function factRows(p,category,topic,c){
   const m=state.relations[p.id].mind,out=[];
-  if(category==='chat'&&topic==='recent'){
-   for(const x of m.memories.slice(-12).reverse()){
-    if(x.tick<mindTick()-3||!['自主日常','往来','政务回奏','关系变化'].includes(x.kind))continue;
-    const spoken=String(x.text).replaceAll(p.name,c.self).replace(/^\d+日\s*[·：]?\s*/,'');
-    out.push({id:'fact:'+p.id+':'+x.tick+':'+hash(x.text),semantic:'fact:'+x.tick+':'+hash(x.text),category,topic,
-     reply:'今日'+spoken,stage:'你问起今日行止，对方将经过细细说来。',fact:true,score:50});
-   }
+  if(category==='chat'&&topic==='recent'&&m.plan){
+   const plan=m.plan,target=PEOPLE.find(q=>q.id===plan.target),met=target&&(state.dailyHistory[todayKey()]?.entries[p.id]?.[3]?.text||'').includes(target.name);
+   const plans={learn:(SOCIAL_SKILLS[c.specialty]?.[0]||'这几日都在习'+c.specialty+'。手边留了一处没想妥的，打算再试。'),walk:'想出去走走。坐得太久，腰背都有些发僵了。',
+    prepare:'正收拾一件小东西，还没弄好。您先别瞧，等我收拾完。',seekcare:'正想着要不要请您来。您倒先过来了。',
+    boundary:'今日想自己待一会儿。也没别的事，就是懒得出门。',visit:target?(met?'今日去见了'+target.name+'。来回一趟，倒花了不少工夫。':'正想去见'+target.name+'。还没来得及出门，您便来了。'):null};
+   if(plans[plan.kind])out.push({id:'plan-talk:'+p.id+':'+plan.id,semantic:'plan-talk:'+plan.id,
+    category,topic,reply:plans[plan.kind],fact:true,planKind:plan.kind,score:110});
   }
   if(category==='probe'&&topic==='worry'&&m.appointment){
    const when=m.appointment.tick;
@@ -140,11 +140,16 @@
    (x.role==='any'||x.role===c.role)&&(!x.personality||x.personality===p.type)&&
    (x.positive===undefined||x.positive===positive)&&(!x.minAff||c.aff>=x.minAff)&&(!x.requiresFamilyLetter||hasFamilyLetter)&&
    (!x.moods||x.moods.includes(c.mood))&&(!x.festival||x.festival===c.festival)&&(!x.season||x.season===c.season));
-  if(category==='probe'&&topic==='family'&&!hasFamilyLetter)pool.push({id:'no-family-letter:'+p.id,semantic:'no-family-letter',role:'any',reply:'近日尚无新信。家中的事，{self}也正等回音，不敢凭猜测回陛下。'});
+  if(category==='probe'&&topic==='family'&&!hasFamilyLetter)pool.push({id:'no-family-letter:'+p.id,semantic:'no-family-letter',role:'any',reply:'家里这几日还没来信。我也正等着呢。'});
   pool=pool.map(x=>({...x,reply:fill(x.reply,c),score:(x.role===c.role?20:0)+(x.personality?30:0)+(x.priority||0)}));
-   pool.push(...factRows(p,category,topic,c));
+  const everyday=!['恼怒','疏离','失望','委屈','吃醋'].includes(c.mood)&&(category==='chat'&&['recent','home','interest'].includes(topic)||category==='care'&&['listen','comfort','gift','bag','promise'].includes(topic));
+  if(everyday)pool=socialRows(p,c,category,topic);
+  pool.push(...(everyday?socialFactRows(p,factRows(p,category,topic,c)):factRows(p,category,topic,c)));
+  if(category==='flirt'&&positive&&p.romance)pool=courtshipRows(p,c,topic);
   const last=m.turns;
-  const fresh=pool.filter(x=>!last.some(y=>y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78));
+  // The same ongoing topic may be revisited on another day; prefer an unheard variant.
+  if(everyday)pool=pool.map(x=>({...x,score:(x.score||0)-(last.some(y=>y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78)?65:0)}));
+  const fresh=pool.filter(x=>!last.some(y=>(!everyday||y.tick===mindTick())&&(y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78)));
   fresh.sort((a,b)=>(b.score||0)-(a.score||0)||hash(p.id+':'+m.turnSeq+':'+a.id)-hash(p.id+':'+m.turnSeq+':'+b.id));
   let row=fresh[0];
   if(!row){
@@ -154,12 +159,13 @@
     scene:{player:PROMPTS[category]?.[topic]||'此事还有什么要说？',location:c.location}};
   }
   row={...row,category,topic,player:category==='probe'&&topic==='family'&&!hasFamilyLetter?'家中近来可有什么消息？':PROMPTS[category]?.[topic]||'此事你有何想法？',
-   stage:row.stage||(category==='flirt'?'你将声音放低，问得比方才近了些。':category==='scold'?'你止住旁人的话，等他陈明原委。':'你问起此事，对方暂且放下手中的东西。')};
+   stage:row.stage||(category==='scold'?'你止住旁人的话，等他回应。':'')};
   return record(p,row,c);
  }
- function html(row){if(row.narrative)return '<span class="mind-stage">'+esc(row.stage)+'</span><br><br>'+esc(row.reply);
-  return '<span class="mind-stage">'+esc(row.stage)+'</span>'+(row.exhausted?'':
-  '<br><br>你说：“'+esc(row.player)+'”<br><br>“'+esc(row.reply)+'”');}
+ function html(row){const stage=row.stage?'<span class="mind-stage">'+esc(row.stage)+'</span>':'';
+  if(row.narrative)return stage+(stage?'<br><br>':'')+esc(row.reply);
+  if(row.exhausted)return stage;
+  return stage+(stage?'<br><br>':'')+'“'+esc(row.reply)+'”';}
  readFiction=function(p,category,topic){return turn(p,category,topic==='stay'?'ask':topic);};
  revisionRow=function(p,category){
   if(active&&active.npc===p.id&&active.category===category)return active.row;
@@ -182,13 +188,14 @@
   const prev=active;active={npc:p.id,category,topic,row};
   const left=session.left;
   try{originalApply(p,category,topic,row.reply,effects,options);}finally{active=prev;}
-  if(session&&session.left<left){session.response=html(row);state.relations[p.id].mind.lastTurn=row;renderSession();save();}
+  if(session&&session.left<left){commitCourtship(p,row);commitSocial(p,row);commitStoryTurn(p,row);session.response=html(row);state.relations[p.id].mind.lastTurn=row;renderSession();save();}
  };
  // Call the original mechanics once, not the revision/agency/dialogue display wrappers.
  interactionTopic=function(id){
   if(!session||session.left<=0||!session.section)return;
   const p=PEOPLE.find(x=>x.id===session.id),r=state.relations[p.id],category=session.section;
   if(id.startsWith('exclusive:')){
+   const reason=topicReason(category,id,p,r);if(reason){toast(reason);return;}
    const base=FICTION_DATA.bespoke.find(x=>x.id===id.slice(10)&&x.npc===p.id);if(!base)return;
    const originals=FICTION_DATA.bespoke.filter(x=>x.npc===p.id&&x.state==='平静');
    const index=originals.findIndex(x=>x.title===base.title),content=LORE[p.id]?.[index];if(!content)return;
@@ -240,7 +247,8 @@
   const c=context(p),self=c.self;
   let greeting='“'+self+'见过陛下。”';
   if(c.mood==='疏离'||c.mood==='恼怒')greeting='他依礼问安，仍立在原处，没有像往常那样近前。';
-  else if(c.relationship==='亲近'||c.relationship==='已入内廷')greeting='“陛下来了。”他将手中的东西放下，替你空出案边的位置。';
+  else if(c.socialTier==='trusted')greeting='“陛下来了。”他将手中的东西放下，替你空出案边的位置。';
+  else if(c.socialTier==='familiar')greeting='他行过礼，手上已不似先前拘紧。“陛下请坐。”';
   session={id,left:3,message:greeting,response:'',history:[]};
   if(!state.visited.includes(id))state.visited.push(id);
   if(resolvePromise(id)){change(id,0,2);rememberMind(id,'女帝依约来见，先前留下的约定已经践行。','守约');}
@@ -261,45 +269,35 @@
 
  // Audition: independent facts persist for the candidate, including their refusal and terms.
  function candidate(p){
-  const r=state.relations[p.id],c=context(p,'audition'),cp=castProfile(p.id)||{};
-  r.candidateVoice=r.candidateVoice||{first:c.aff>=40?'向往':'拘谨',pressure:!!cp.parents?.length||/世家|家|旁支/.test(cp.background||p.desc||''),
-   specialty:c.specialty,firstMood:c.mood,reason:hash(p.id)%3};
-  return {...r.candidateVoice,clan:cp.clan||p.faction||'家世未详',background:cp.background||p.desc||'礼部尚未补齐籍贯',age:castAge(p),context:c};
+  const r=state.relations[p.id],c=context(p,'audition'),cp=castProfile(p.id)||{},d=state.audition?.dossiers?.[p.id]||eliteDossier(p);
+  r.candidateVoice=r.candidateVoice||{};Object.assign(r.candidateVoice,{first:'敬畏',specialty:d.specialty,firstMood:c.mood});
+  return {...r.candidateVoice,clan:d.clan,background:d.background,appearance:d.appearance,reasons:d.reasons,age:castAge(p),context:c,dossier:d};
  }
- function auditionAnswer(p,index){
-  const a=candidate(p),c=a.context,s=c.self;
-  const confident=['骄矜自尊','野心进取','明朗直率'].includes(p.type);
-  let reply='',stage=p.name+'依礼上前，应声回话。',semantic='audition:'+index+':'+p.id;
+ function auditionAnswer(p,index,remember=true){
+  const a=candidate(p),c=a.context,lines=AUDITION_ELITE_DATA.answers[p.type]||AUDITION_ELITE_DATA.answers['严正守礼'];
+  let reply=lines[index].replaceAll('{clan}',a.clan).replaceAll('{skill}',a.specialty);
   const rivalEdge=socialEdgesOf(p.id).find(e=>['争执','决裂'].includes(e.voiceStage)&&state.audition.pool.includes(e.a===p.id?e.b:e.a));
   const rival=rivalEdge?PEOPLE.find(x=>x.id===(rivalEdge.a===p.id?rivalEdge.b:rivalEdge.a)):null;
-  if(index===0){
-   reply=a.pressure?(s+'出自'+a.clan+'。家中盼'+s+'得选，临行时叮嘱了许多，'+(confident?'只是今日既站在殿前，也想请陛下看看本人的才学。':'不敢有失。陛下若问家中详情，'+s+'愿据实禀明。')):
-    s+'原在'+(p.role||'乡间')+'谋事。应选之事，家中并未替'+s+'作主，听闻诏令，才来礼部投名。';
-  }else if(index===1){
-   reply=s+'所习，以'+a.specialty+'稍长。'+(confident?'口说未必可信，若陛下允准，愿当场一试。':'平日独自练得多，今日御前回话，倒比试艺还紧张。若有疏漏，容'+s+'重来。');
-  }else{
-   const unwilling=['恼怒','疏离','失望','戒备'].includes(c.mood)||state.audition.consent?.[p.id]===false;
-   if(unwilling)reply='请陛下恕罪。'+s+'今日尚不能应下，愿自请撤牌，不敢虚占名额。';
-   else if(rival&&['骄矜自尊','明朗直率','戒备善谋'].includes(p.type))reply=s+'愿留。只是与'+rival.name+'先前确有争执，此事不敢隐瞒。若同得留牌，请容分别安置，免将旧怨带到御前。';
-   else if(p.type==='野心进取')reply=s+'愿留。只求入宫以后，仍许'+s+'研习'+a.specialty+'，不致将从前所学都搁下。';
-   else if(p.type==='骄矜自尊')reply=s+'愿意。若能得陛下亲自留牌，自当珍重，不敢只凭门第自矜。';
-   else if(p.type==='寡言重诺')reply=s+'愿留。今日所答，往后亦不会改。';
-   else if(p.type==='疏朗洒脱')reply=s+'愿意。只是初入宫，礼数若有不周，还请容'+s+'学，不敢有意怠慢。';
-   else reply=s+'愿留。宫中礼法，已听礼官讲过；未尽之处，入宫后自当细学。';
-  }
-  if(index===2&&rival)state.relations[p.id].candidateVoice.separateFrom=rival.id;
-  const row={id:semantic,semantic,category:'audition',topic:String(index),stage,reply,
-   player:['说说家世与应选缘由。','所习何艺，最擅长什么？','宫中安排已告知，你可愿留牌？'][index],candidate:a};
-  return record(p,row,c);
+  const unwilling=['恼怒','疏离','失望','戒备'].includes(c.mood)||state.audition.consent?.[p.id]===false;
+  if(index===2&&unwilling)reply='草民惶恐，恐不能胜任宫中侍奉，斗胆恳请陛下准予撤牌。';
+  else if(index===2&&rival){reply+='另有一事不敢欺瞒：草民与'+rival.name+'先前有过争执。若蒙留牌，恳请分处安置。';state.relations[p.id].candidateVoice.separateFrom=rival.id;}
+  const stage=index===0?(AUDITION_ELITE_DATA.fear[p.type]||AUDITION_ELITE_DATA.fear['严正守礼']):index===1?'他低头理顺衣袖，稍稍缓过气息，才敢应声回话。':'他将双手叠在身前，伏首候旨，开口时声音仍有些紧。';
+  const row={id:'audition:'+index+':'+p.id,semantic:'audition:'+index+':'+p.id,category:'audition',topic:String(index),
+   stage,reply,player:['说说家世与应选缘由。','所习何艺，最擅长什么？','宫中安排已告知，你可愿留牌？'][index],candidate:a};
+  return remember?record(p,row,c):row;
  }
  auditionInterview=function(id,answer=''){
   const au=state.audition,p=PEOPLE.find(x=>x.id===id);if(!p||au?.status!=='offered'||!au.pool.includes(id))return;
   ensure();au.answers=au.answers||{};au.consent=au.consent||{};
-  if(au.voiceVersion!==11){for(const pid of au.pool)if(!au.answers[pid])au.interviews[pid]=[];au.voiceVersion=11;}
+  if(au.voiceVersion!=='13.2'){
+   for(const pid of au.pool){const old=au.answers[pid],person=PEOPLE.find(x=>x.id===pid);if(!old){au.interviews[pid]=[];continue;}
+    const index=Number(old.topic);if(person&&[0,1,2].includes(index))au.answers[pid]=auditionAnswer(person,index,false);
+   }au.voiceVersion='13.2';
+  }
   const a=candidate(p),qs=au.interviews[id]||[],row=au.answers[id];
-  const intro=row?html(row):'<span class="mind-stage">'+esc(p.name)+'在殿前行礼，候女帝问话。</span><br><br>“'+esc(a.context.self)+'叩见陛下。”';
+  const intro=row?html(row):'<span class="mind-stage">'+esc(AUDITION_ELITE_DATA.fear[p.type]||AUDITION_ELITE_DATA.fear['严正守礼'])+'</span><br><br>“草民叩见陛下。”';
   const perf=au.performances?.[id];
-  openModal(p.name,a.age+'岁 · '+p.type+' · '+p.role,'<div class="scene-text">'+intro+'</div><p class="mini">'+esc(a.clan)+' · '+esc(a.specialty)+' · '+esc(a.first==='向往'?'初见：向往':'初见：拘谨')+'</p><div class="opts">'+
+  openModal(p.name,a.age+'岁 · '+p.type+' · '+p.role,'<div class="scene-text">'+intro+'</div><p class="mini">'+esc(a.clan)+' · '+esc(a.specialty)+' · 初次面圣</p><p class="mini">'+esc(a.background)+'</p><p class="mini">仪容：'+esc(a.appearance)+'</p><p class="mini">礼部初选：'+esc(a.reasons.join('、'))+'</p><div class="opts">'+
    ['问家世与来意','问所学与专长','问是否愿意留牌'].map((q,i)=>'<button class="opt" data-action="auditionAsk" data-id="'+id+'|'+i+'" '+(qs.includes(i)?'disabled':'')+'><b>'+q+(qs.includes(i)?' · 已问':'')+'</b></button>').join('')+
    '<button class="opt" data-action="auditionPerform" data-id="'+id+'" '+(perf?'disabled':'')+'><b>'+(perf?'才艺已试':'命其当场试艺')+'</b><small>'+esc(a.specialty)+'</small></button>'+
    '<button class="opt" data-action="auditionSelect" data-id="'+id+'" '+(qs.length!==3||au.consent[id]===false?'disabled':'')+'><b>'+(au.selected.includes(id)?'撤回留牌':'留牌候选')+'</b><small>'+(au.consent[id]===false?'本人自请撤牌，不列留宫名单。':'三问已毕，再定去留。')+'</small></button></div><button class="text-btn" data-action="audition">返回名册</button>','殿选');save();
@@ -329,10 +327,9 @@
   const falter=hash(p.id+':'+state.elapsed+':perform')%100<(a.context.mood==='戒备'?45:22);
   au.performances=au.performances||{};au.performances[id]={skill:a.specialty,level,falter,day:todayKey()};
   const confident=['骄矜自尊','野心进取'].includes(p.type),self=a.context.self;
-  const reply=falter?(confident?'方才失了准头，是'+self+'练得不够。请陛下容重试一回，不敢拿紧张搪塞。':self+'一时慌了，竟失了平日的准头。请陛下容'+self+'缓一口气，再试。'):
-   level>=6?'所习尚有未尽处，幸而今日未曾失手。若陛下有所问，'+self+'愿细说。':self+'所学尚浅，能做到的便是这些。未敢装作已经精通，往后还须再学。';
+  const reply=falter?'草民一时手颤，失了平日的准头，求陛下恕罪。':'草民献丑，恭请陛下指教。';
   const row=record(p,{id:'performance:'+id,semantic:'performance:'+id,category:'audition',topic:'performance',
-   stage:p.name+(falter?'试到半处停了一瞬，重新整好手边器物。':'依所学呈艺，礼官在旁记下等第。'),player:'将你最擅长的试来。',reply},a.context);
+   stage:p.name+(falter?'试到半处手指一颤，慌忙收势，俯首请罪。':'依所学呈艺，收势后仍敛目俯身，不敢先抬头看你。'),player:'将你最擅长的试来。',reply},a.context);
   au.answers=au.answers||{};au.answers[id]=row;rememberMind(id,'殿前试'+a.specialty+(falter?'一度失手，已据实陈明。':'，礼官已记等第。'),'选秀');auditionInterview(id);save();
  };
 
@@ -341,7 +338,7 @@
   const willing=!['恼怒','疏离','戒备','失望'].includes(c.mood);
   const reply=willing?c.self+'愿意。只是现下手头的事，须容'+c.self+'交代清楚，再依礼入宫。':'蒙陛下厚爱，'+c.self+'感激。只是眼下尚不能应，望陛下容缓一缓。';
   session.recruitConsent=willing?p.id:null;
-  openModal('议入内廷',p.name,'<div class="scene-text">你说：“朕想留你在内廷。你可愿意？”<br><br>“'+esc(reply)+'”</div><div class="opts">'+
+  openModal('议入内廷',p.name,'<div class="scene-text">“'+esc(reply)+'”</div><div class="opts">'+
    (willing?'<button class="opt" data-action="recruitConfirm" data-id="'+p.id+'"><b>依礼安置，准其交接旧事</b><small>内库12；消耗本次1次互动。</small></button>':'')+
    '<button class="opt" data-action="backSession"><b>暂缓此事</b></button></div>','内廷议事');
  };
@@ -552,5 +549,20 @@
  function VOICE_FAMILY(p){return COURT_VOICE_DATA.rows.find(x=>x.personality===p.type&&x.topic==='family')?.reply.replaceAll('{self}',identity(p).self)||'尚未谈及详情。';}
  actions.mindDetail=openMindDetail;
  window.__courtVoiceAudit={version:11,turn,context,similarity,advanceReports,reports,template,stageNames,rows:COURT_VOICE_DATA.rows.length};
+ window.__courtVoiceAudit.renderTurn=html;
+ // V13 integration point: exactly one recorded turn owns one reply and one mechanics application.
+ window.__courtVoiceAudit.perform=function(p,scene,effects={}){
+  ensure();if(!session||session.id!==p.id||session.left<1||!scene||!scene.reply)return false;
+  const m=state.relations[p.id].mind;
+  if(m.turns.some(t=>t.semantic===scene.semantic)){
+   session.response='<span class="mind-stage">这一回的心意已经记下，先换件新事聊聊吧。</span>';renderSession();return false;
+  }
+  const c={...context(p),cause:scene.lifeFact||null,thread:scene.id};
+  const row=record(p,{...scene,reply:fill(scene.reply,c)},c),prev=active,before=session.left;
+  active={npc:p.id,category:row.category,topic:row.topic,row};
+  try{applyInteraction(p,row.category,row.topic,row.reply,effects,{factual:true,noRepeatLine:true,extra:'宫墙小事'});}finally{active=prev;}
+  return !!session&&session.left===before-1;
+ };
+
  ensure();buildDay();save();
 })();

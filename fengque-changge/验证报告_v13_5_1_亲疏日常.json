@@ -1,0 +1,32 @@
+{
+  "version": "13.5.1",
+  "passed": 24,
+  "checks": [
+    "270 complete responses cover three stages, twelve voices and six biographies",
+    "first private care remains reserved even when familiar from official biography",
+    "first care has two answers tied to that exact ink concern",
+    "review and second half do not farm familiarity or affinity",
+    "high affection and rank do not fabricate acquaintance or a familiar greeting",
+    "all 100 NPCs have a biography/skill grounded interest instead of a random hobby",
+    "stranger cannot turn plans for companionship into an immediate intimate invitation",
+    "three successful topics on one day are insufficient for familiarity",
+    "two days of real contact unlock familiar everyday dialogue",
+    "familiar follow-up responds to the actual Xu family pressure after asking his origin",
+    "four days and repeated conversations unlock a concrete private concern",
+    "familiarity is per NPC and nonromantic characters can also grow familiar",
+    "previewing, rendering and skipping time grant no social progress",
+    "daily trust gain stays bounded and repeated topics do not add more progress",
+    "pending care is restored on entering the category after revisiting",
+    "completed care also restores its own final response without another charge",
+    "zero remaining turns still allows a free replay and cannot buy another reply",
+    "care replay expires correctly, rather than carrying an old concern forever",
+    "serious anger continues to receive its actual grievance instead of cosy new chat",
+    "a new grievance pauses a pending cosy conversation and blocks its old reply",
+    "summary deduplicates repeated facts and labels three actual people",
+    "learning actions name the actual specialty instead of repeating generic practice",
+    "new progress survives reload and old save state remains intact",
+    "old successful transcript migrates, but uncommitted previews do not"
+  ],
+  "authoredDailyResponses": 270,
+  "pairedFollowups": 108
+}

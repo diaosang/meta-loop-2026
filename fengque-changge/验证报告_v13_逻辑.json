@@ -1,0 +1,28 @@
+{
+  "version": 13,
+  "testType": "runtime-with-DOM-stub",
+  "checks": [
+    "actual V12 package boots with 100 NPCs and V13 additive migration",
+    "327 complete authored replies, twelve voices and six bespoke people",
+    "a cute scene costs one visit, one turn per reply and remembers a preference",
+    "double-clicking a settled answer cannot farm affinity or keepsakes",
+    "preference-based gift needs disclosure, costs three once, and leaves a real turn",
+    "a private audience does not magically become public knowledge",
+    "a public walk affects a real witness, not a person in another room",
+    "rerendering or replaying the same public fact cannot stack jealousy",
+    "public meal knowledge names a legitimate household notice",
+    "a jealous reply is contextual, voiced, bounded and followed up",
+    "serious hurt is not replaced by forced cute banter",
+    "three-person mediation uses one extra AP and changes an actual relationship edge",
+    "tomorrow appointment survives an early audience, fulfills only on its date",
+    "an honest refusal does not punish affinity or leave a hidden appointment",
+    "unfinished conversations survive save/reload without a second opening reward",
+    "V12 save migrates without overwriting existing NPC feelings, case or heirs",
+    "daily affinity remains capped across repeated new scenes and gifts"
+  ],
+  "passed": 17,
+  "npcCount": 100,
+  "completeAuthoredReplies": 327,
+  "existingWorkbookRows": 11520,
+  "browserVisualVerification": false
+}

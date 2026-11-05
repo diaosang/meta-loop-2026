@@ -1,0 +1,93 @@
+{
+  "version": 13,
+  "basePackage": "凤阙长歌_网页Demo与配表_20261104_v12.zip",
+  "sourceZipUnchanged": true,
+  "originalFiles": 36,
+  "unchangedOriginalFiles": [
+    "源代码/build_court_voice_data.py",
+    "源代码/build_revision_content.py",
+    "源代码/cast-data.json",
+    "源代码/court-voice-data.json",
+    "源代码/demo-agency.js",
+    "源代码/demo-cast-life.js",
+    "源代码/demo-court-scene.js",
+    "源代码/demo-dialogue-expansion.js",
+    "源代码/demo-dialogue-v10.js",
+    "源代码/demo-dialogue-v9.js",
+    "源代码/demo-exploration.js",
+    "源代码/demo-game.js",
+    "源代码/demo-interactions.js",
+    "源代码/demo-npc-mind.js",
+    "源代码/demo-revision.js",
+    "源代码/demo-strife.js",
+    "源代码/demo-world.js",
+    "源代码/revision-dialogue.json",
+    "源代码/world-data.json",
+    "人物内容库_新编/凤阙长歌_古风乙女对白重编.json",
+    "人物内容库_新编/凤阙长歌_家世专长与选秀配置.json",
+    "人物内容库_新编/凤阙长歌_原创对话事件与自主行为.json",
+    "策划案/凤阙长歌_精简玩法增强版.docx",
+    "策划案/凤阙长歌_日常群像深化版.docx",
+    "策划案/女帝_凤阙长歌_完整策划案.pptx",
+    "策划案/女帝_凤阙长歌_Word策划案.docx",
+    "试玩_v12.html",
+    "活人感与NPC自主意识升级_v12.md",
+    "验证报告_v12.json"
+  ],
+  "changedOriginalFiles": [
+    {
+      "file": "源代码/build_web_demo.py",
+      "original_sha256": "aed34d7959434637fd9e673be57c5b9954d37e5a4ea04119873933377554c7c4",
+      "v13_sha256": "0fd8bb65e2889d1d4b9868c0d0e4a931eff3cd769585596aad980160b03ef05f"
+    },
+    {
+      "file": "源代码/demo-court-voice.js",
+      "original_sha256": "cd923df1ddb23203ff7c4e0ec6c4d67f094785cb840c84e30fef22c1612eeaa7",
+      "v13_sha256": "9acc1ae4b18e8e0dc9180010d3cd713f367c003ed38005fd61c80b50522b3ae7"
+    },
+    {
+      "file": "源代码/test_court_voice.cjs",
+      "original_sha256": "fda1d610957174c2c1d9586f79761ba6d9995a505b3805b7122b82ba6ac20b2a",
+      "v13_sha256": "af3b0689985753d57a86bb0cd46f065416e246faf10ac2c720adcd907bb87515"
+    },
+    {
+      "file": "网页Demo/index.html",
+      "original_sha256": "b96ffbaa30932d684d1452a0d1aebc3a0224c5391500b79e8a01059306b27f6c",
+      "v13_sha256": "9c097e2fa1d1f94db95c64eaa5c6a8bc54e4f92c0ea86cbc196d3edf7610b3ef"
+    },
+    {
+      "file": "人物内容库_新编/凤阙长歌_万条对话事件与NPC自主行为.xlsx",
+      "original_sha256": "52a36d06e400a6157956ca8d2e541c20260a8d899fa29acc4e504ce4f572ac7a",
+      "v13_sha256": "2df41a314204e21e74c34239008f2c14836345e5f47d2dcbfa306d114eb70abc"
+    },
+    {
+      "file": "index.html",
+      "original_sha256": "b96ffbaa30932d684d1452a0d1aebc3a0224c5391500b79e8a01059306b27f6c",
+      "v13_sha256": "9c097e2fa1d1f94db95c64eaa5c6a8bc54e4f92c0ea86cbc196d3edf7610b3ef"
+    },
+    {
+      "file": "README.md",
+      "original_sha256": "760fd814f6fc0ccafeae3c41b01f3eb831751212267618dc7397014eabb6cc54",
+      "v13_sha256": "def92d76a676ed8e5be61fe0cccc50f524444132a68f5b0706564a2aca587b7c"
+    }
+  ],
+  "addedFiles": [
+    "人物内容库_新编/凤阙长歌_V13宫墙小事配表.json",
+    "基底核对_36caaae.json",
+    "活人感_可爱对白与争宠升级_v13.md",
+    "源代码/build_palace_life_data.py",
+    "源代码/build_palace_life_workbook.py",
+    "源代码/demo-palace-life-v13.js",
+    "源代码/palace-life-data.json",
+    "源代码/test_palace_life_v13.cjs",
+    "试玩_v13.html",
+    "验证报告_v13_保留审计.json",
+    "验证报告_v13_原功能回归.json",
+    "验证报告_v13_总览.json",
+    "验证报告_v13_浏览器.json",
+    "验证报告_v13_逻辑.json",
+    "验证报告_v13_配表.json"
+  ],
+  "workbookOriginalSheetsAndCellsComparedDirectlyToInputZip": true,
+  "originalV12EntryAndDesignFilesPreserved": true
+}

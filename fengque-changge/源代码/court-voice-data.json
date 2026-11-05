@@ -663,7 +663,7 @@
       "topic": "home",
       "role": "any",
       "semantic": "familyletter",
-      "reply": "家中的近况，{self}还未问全，不敢只说一声都好。待回信到了，再禀陛下。"
+      "reply": "我还等着家里的信呢。隔得远，送来总要慢上几日。"
     },
     {
       "id": "chat:home:any:familyseparation",
@@ -671,7 +671,7 @@
       "topic": "home",
       "role": "any",
       "semantic": "familyseparation",
-      "reply": "离家以后，才知许多从前不留意的小事也会记着。陛下是想听家中近况，还是故乡风物？"
+      "reply": "想听哪一处？我家门前那条巷子，讲起来也够讲半日。"
     },
     {
       "id": "chat:home:any:familywish",
@@ -679,7 +679,7 @@
       "topic": "home",
       "role": "any",
       "semantic": "familywish",
-      "reply": "家中盼的，总比{self}眼下能做的多些。来信倒不催，只问几时得闲。"
+      "reply": "家里倒不催别的，只问我吃得好不好。信来一封，就要问一回。"
     },
     {
       "id": "chat:home:any:familyreply",
@@ -687,7 +687,7 @@
       "topic": "home",
       "role": "any",
       "semantic": "familyreply",
-      "reply": "有些话写在家书里，怕他们挂心，不免少写两句。到了陛下面前，也不好拿这一套搪塞。"
+      "reply": "在外头什么都能凑合，唯独那口家里的汤，怎么也找不着一样的。"
     },
     {
       "id": "chat:home:any:familyprivacy",
@@ -695,7 +695,7 @@
       "topic": "home",
       "role": "any",
       "semantic": "familyprivacy",
-      "reply": "家事零碎，容{self}择一件说。若一气从头讲起，倒怕占了陛下半日。"
+      "reply": "从前嫌家里吵。出来久了，倒总想起隔壁院子的鸡叫。"
     },
     {
       "id": "chat:home:any:familyroots",
@@ -703,7 +703,7 @@
       "topic": "home",
       "role": "any",
       "semantic": "familyroots",
-      "reply": "说起家里，总绕不开旧日的人。只讲宅院山水，反倒像在说旁人的地方。"
+      "reply": "家里人嫌我回信短。可真要写，吃了什么、见了谁，又怕他们嫌琐碎。"
     },
     {
       "id": "chat:interest:any:skillpractice",
@@ -711,7 +711,7 @@
       "topic": "interest",
       "role": "any",
       "semantic": "skillpractice",
-      "reply": "闲时最常练{specialty}。不必赶着交差，才敢在不熟的地方多停一会儿。"
+      "reply": "常练{specialty}。有时练入了神，饭端来都没看见。"
     },
     {
       "id": "chat:interest:any:skilldifficulty",
@@ -719,7 +719,7 @@
       "topic": "interest",
       "role": "any",
       "semantic": "skilldifficulty",
-      "reply": "{specialty}最磨性子。旁人看着不过片刻，练的时候，一处错了便得重来。"
+      "reply": "{specialty}吧。偏有一处练不好，越不好，越想试。"
     },
     {
       "id": "chat:interest:any:skillshow",
@@ -727,7 +727,7 @@
       "topic": "interest",
       "role": "any",
       "semantic": "skillshow",
-      "reply": "若陛下想看{specialty}，容{self}备好再呈。现下说得再好，也不如当面试一回。"
+      "reply": "您要看我练{specialty}？那得先说好，出错了不许笑。"
     },
     {
       "id": "chat:interest:any:skillorigin",
@@ -735,7 +735,7 @@
       "topic": "interest",
       "role": "any",
       "semantic": "skillorigin",
-      "reply": "起初学{specialty}，只想着学会便好。真会了一点，才知道后头还有许多工夫。"
+      "reply": "起初学{specialty}只是觉得有趣。如今倒好，一日不碰，心里便惦记。"
     },
     {
       "id": "chat:interest:any:skillquiet",
@@ -743,7 +743,7 @@
       "topic": "interest",
       "role": "any",
       "semantic": "skillquiet",
-      "reply": "练{specialty}时不喜人多。有人在旁边等着，反倒总想快些做完，容易失了准头。"
+      "reply": "喜欢一个人练{specialty}。有人在边上看着，手都不知怎么放了。"
     },
     {
       "id": "chat:interest:any:skilltaste",
@@ -751,7 +751,7 @@
       "topic": "interest",
       "role": "any",
       "semantic": "skilltaste",
-      "reply": "比起样样都沾，{self}宁肯把{specialty}学深些。总该有一件事，自己做来心里有底。"
+      "reply": "{specialty}。旁的也试过，还是这个做着顺手。"
     },
     {
       "id": "care:listen:any:listenopen",
@@ -759,7 +759,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "listenopen",
-      "reply": "陛下既肯听，容{self}从头说。只是眼下还没有想妥，未必句句都说得明白。"
+      "reply": "昨夜总是醒。明明困得很，一闭眼，又什么都想起来了。"
     },
     {
       "id": "care:listen:any:listensmall",
@@ -767,7 +767,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "listensmall",
-      "reply": "是有一件，只怕说来琐碎。陛下若不嫌，{self}便不藏着了。"
+      "reply": "方才收着一封旧信，才发现有些字已经认不清了。想再看看，又怕一碰便碎。"
     },
     {
       "id": "care:listen:any:listenpause",
@@ -775,7 +775,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "listenpause",
-      "reply": "方才还想着如何开口，陛下一问，倒不必再寻由头。容{self}想想，先从哪处说。"
+      "reply": "也没有什么大事。就是一个人坐久了，连句话都没人接。您来了便好。"
     },
     {
       "id": "care:listen:any:listenreserved",
@@ -783,7 +783,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "listenreserved",
-      "reply": "有些话，{self}还未拿定主意。今日先说已经想明白的，可好？"
+      "reply": "这些日子有些心烦。书翻了好几页，一句也没记住。越是这样，越坐不住。"
     },
     {
       "id": "care:comfort:any:restaccept",
@@ -791,7 +791,7 @@
       "topic": "comfort",
       "role": "any",
       "semantic": "restaccept",
-      "reply": "是有些乏了。原想做完这一点便歇，添着添着，又搁不下。既蒙陛下吩咐，便先收笔。"
+      "reply": "被您瞧出来了。手都酸了，还以为再写两行也不碍事。"
     },
     {
       "id": "care:comfort:any:resttea",
@@ -799,7 +799,7 @@
       "topic": "comfort",
       "role": "any",
       "semantic": "resttea",
-      "reply": "多谢陛下。茶尚温着，容{self}用完这一盏，再将余下的事留到明日。"
+      "reply": "好。您也把手里的东西搁下吧，别只劝我。"
     },
     {
       "id": "care:comfort:any:restshort",
@@ -807,7 +807,7 @@
       "topic": "comfort",
       "role": "any",
       "semantic": "restshort",
-      "reply": "不敢说不累，只是怕耽搁。陛下既准缓一缓，{self}也能安心歇了。"
+      "reply": "是得歇一歇了。您再晚点来，我怕要把墨当茶喝。"
     },
     {
       "id": "care:comfort:any:restcompany",
@@ -815,7 +815,7 @@
       "topic": "comfort",
       "role": "any",
       "semantic": "restcompany",
-      "reply": "陛下若肯稍坐，{self}便不忙了。这些事早一刻、迟一刻，原也不差什么。"
+      "reply": "那您坐近些。总不能我在这儿歇着，让您站着看。"
     },
     {
       "id": "care:gift:any:giftreceive",
@@ -823,7 +823,7 @@
       "topic": "gift",
       "role": "any",
       "semantic": "giftreceive",
-      "reply": "谢陛下赏。方才还只顾看东西，竟忘了先谢恩，失礼了。"
+      "reply": "给我的？我打开看看……您等一等，这结系得有些紧。"
     },
     {
       "id": "care:gift:any:giftkeep",
@@ -831,7 +831,7 @@
       "topic": "gift",
       "role": "any",
       "semantic": "giftkeep",
-      "reply": "这件东西，{self}会好好收着。陛下日后若问起，定不会教人找不着。"
+      "reply": "您挑的？倒比我自己挑得好看。"
     },
     {
       "id": "care:gift:any:giftuse",
@@ -839,7 +839,7 @@
       "topic": "gift",
       "role": "any",
       "semantic": "giftuse",
-      "reply": "多谢陛下。不敢只供着舍不得用，倒辜负了这番赏赐。"
+      "reply": "谢陛下。放这儿不稳，我先收到匣子里。"
     },
     {
       "id": "care:gift:any:giftunexpected",
@@ -847,7 +847,7 @@
       "topic": "gift",
       "role": "any",
       "semantic": "giftunexpected",
-      "reply": "未想到陛下还特意留了一份。容{self}收好，莫叫旁人搬弄时磕碰了。"
+      "reply": "还真有我的一份。方才瞧见您拿着，都没敢问。"
     },
     {
       "id": "care:bag:any:travelgift",
@@ -855,7 +855,7 @@
       "topic": "bag",
       "role": "any",
       "semantic": "travelgift",
-      "reply": "陛下出行，还留了东西给{self}。谢陛下记挂，容{self}亲自收着。"
+      "reply": "路上还记着给我带东西？先让我看看，您藏的什么。"
     },
     {
       "id": "care:bag:any:traveltale",
@@ -863,7 +863,7 @@
       "topic": "bag",
       "role": "any",
       "semantic": "traveltale",
-      "reply": "谢陛下。比起这件东西，{self}倒还想听听，陛下是在哪处见着它的。"
+      "reply": "在哪儿买的？这纹样有趣，我从前没见过。"
     },
     {
       "id": "care:promise:any:dateaccept",
@@ -871,7 +871,7 @@
       "topic": "promise",
       "role": "any",
       "semantic": "dateaccept",
-      "reply": "{self}记下了。到了下月，再遣人请问陛下哪日得闲。"
+      "reply": "好啊。您到时可别又忙忘了，我会惦记的。"
     },
     {
       "id": "care:promise:any:datewaiting",
@@ -879,7 +879,7 @@
       "topic": "promise",
       "role": "any",
       "semantic": "datewaiting",
-      "reply": "好。{self}先将日子记着，临近时再请示，不敢叫陛下为难。"
+      "reply": "那便下月见。哪日得空，记得先叫人递句话来。"
     },
     {
       "id": "probe:opinion:any:opinionobserve",
@@ -887,7 +887,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "opinionobserve",
-      "reply": "{self}在御前的时日尚短，不敢凭几回召见便论陛下。只是陛下肯问，也愿听人把话说完。"
+      "reply": "您笑起来，比板着脸的时候好亲近。初见那回，我都没敢抬头。"
     },
     {
       "id": "probe:opinion:any:opiniontruth",
@@ -895,7 +895,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "opiniontruth",
-      "reply": "陛下处事自有决断。{self}若有不同的想法，盼仍能得一句准说，而非只准称好。"
+      "reply": "有时太急。人家一句话还没讲完，您已经替人想到后头去了。"
     },
     {
       "id": "probe:opinion:any:opinionconduct",
@@ -903,7 +903,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "opinionconduct",
-      "reply": "看人，总要看他如何待不顺意的事。陛下既问，{self}往后便据所见直言。"
+      "reply": "明明累着，还要说不累。您劝人歇息时，怎么不想想自己？"
     },
     {
       "id": "probe:opinion:any:opinionrespect",
@@ -911,7 +911,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "opinionrespect",
-      "reply": "{self}敬的是陛下肯担事，不只是这身御服。只望有朝一日说了不中听的话，也能听完。"
+      "reply": "敢听难听的话，这一点我佩服。至于别的……您可别拿眼睛瞪我。"
     },
     {
       "id": "probe:worry:any:worryreserve",
@@ -919,7 +919,7 @@
       "topic": "worry",
       "role": "any",
       "semantic": "worryreserve",
-      "reply": "是有些牵挂，尚未想妥如何处置。容{self}再理一理，不敢拿半截话扰陛下。"
+      "reply": "这些日子睡得浅，一有声响便醒。您瞧，我连眼下都快遮不住了。"
     },
     {
       "id": "probe:worry:any:worryask",
@@ -927,7 +927,7 @@
       "topic": "worry",
       "role": "any",
       "semantic": "worryask",
-      "reply": "陛下是看见什么了，还是听人提过？{self}想先问明，免得答岔了。"
+      "reply": "怎么忽然这样问？我方才看着，脸色很差么？"
     },
     {
       "id": "probe:worry:any:worryplain",
@@ -935,7 +935,7 @@
       "topic": "worry",
       "role": "any",
       "semantic": "worryplain",
-      "reply": "眼下最放不下的，仍是手头未完的事。倒没有旁人说的那许多曲折。"
+      "reply": "也没有旁的，就是总静不下心。一桩事做一半，又惦记下一桩。"
     },
     {
       "id": "probe:worry:any:worryconfide",
@@ -943,7 +943,7 @@
       "topic": "worry",
       "role": "any",
       "semantic": "worryconfide",
-      "reply": "有。先前怕说来像在求陛下开恩，便一直没提。陛下既问，{self}愿如实说。"
+      "reply": "有点想家。真叫我回去，又舍不得这边，总是两头惦记。"
     },
     {
       "id": "scold:remind:any:ruleask",
@@ -999,7 +999,7 @@
       "topic": "compliment",
       "role": "any",
       "semantic": "praiseblush",
-      "reply": "陛下这样看着，{self}反倒不知该将手放在哪里了。",
+      "reply": "您看便看，怎么还非得说出来。",
       "minAff": 35,
       "positive": true
     },
@@ -1009,7 +1009,7 @@
       "topic": "compliment",
       "role": "any",
       "semantic": "praisereceive",
-      "reply": "这句夸奖，{self}收下了。只是陛下再说，怕便要得意忘形。",
+      "reply": "那您多看一会儿。我今日还特意换了这身衣裳。",
       "minAff": 35,
       "positive": true
     },
@@ -1019,7 +1019,7 @@
       "topic": "compliment",
       "role": "any",
       "semantic": "praiseprivate",
-      "reply": "此处还有人，陛下……待他们退下，再说可好？",
+      "reply": "小声些。门外还有人，叫他们听见，又要偷偷笑。",
       "minAff": 35,
       "positive": true
     },
@@ -1029,7 +1029,7 @@
       "topic": "compliment",
       "role": "any",
       "semantic": "praisehappy",
-      "reply": "方才还不知陛下因何而笑。原来竟是为{self}。",
+      "reply": "怪不得方才一直看我。我还当脸上沾了什么。",
       "minAff": 35,
       "positive": true
     },
@@ -1039,7 +1039,7 @@
       "topic": "miss",
       "role": "any",
       "semantic": "missadmit",
-      "reply": "想过。听见外头传话，总要先问一句，可是陛下遣人来了。",
+      "reply": "想。听见外头有人来，先问是不是您。",
       "minAff": 35,
       "positive": true
     },
@@ -1049,7 +1049,7 @@
       "topic": "miss",
       "role": "any",
       "semantic": "misshesitate",
-      "reply": "原不想说的。陛下一问，{self}再否认，便成欺君了。",
+      "reply": "本来不想认的。您这样问，我还能怎么答。",
       "minAff": 35,
       "positive": true
     },
@@ -1059,7 +1059,7 @@
       "topic": "miss",
       "role": "any",
       "semantic": "misslamp",
-      "reply": "有时灯下坐久了，会想陛下此刻可也未歇。想归想，又怕贸然递话扰了清静。",
+      "reply": "夜里想得多些。想着您是不是也没睡，想来，又怕您嫌我闹。",
       "minAff": 35,
       "positive": true
     },
@@ -1069,7 +1069,7 @@
       "topic": "miss",
       "role": "any",
       "semantic": "missdoor",
-      "reply": "听见脚步便看一眼门口，这样算不算？陛下莫再笑了。",
+      "reply": "脚步声近了，就抬头看。看错几回还不长记性，您说呢？",
       "minAff": 35,
       "positive": true
     },
@@ -1079,7 +1079,7 @@
       "topic": "confess",
       "role": "any",
       "semantic": "confessaccept",
-      "reply": "{self}愿意。只是这一声答应，往后便不能再当作寻常召见了。",
+      "reply": "知晓了。您别躲，看着我再说一遍。",
       "minAff": 35,
       "positive": true
     },
@@ -1089,7 +1089,7 @@
       "topic": "confess",
       "role": "any",
       "semantic": "confesswait",
-      "reply": "原以为还要等很久，才听得到这句话。陛下既说了，{self}便当真记着。",
+      "reply": "等了好久，总算听见您亲口说。",
       "minAff": 35,
       "positive": true
     },
@@ -1099,7 +1099,7 @@
       "topic": "confess",
       "role": "any",
       "semantic": "confesshand",
-      "reply": "陛下若不嫌，容{self}近前些。有些话隔着这一段路，说着总不真切。",
+      "reply": "那您把手给我。还站得那么远做什么。",
       "minAff": 35,
       "positive": true
     },
@@ -1109,7 +1109,7 @@
       "topic": "confess",
       "role": "any",
       "semantic": "confessonly",
-      "reply": "这一回，{self}不想再拿谢恩的话遮过去。陛下的心意，{self}也是一样。",
+      "reply": "我也是。这回，倒不知还能说什么了。",
       "minAff": 35,
       "positive": true
     },
@@ -1245,7 +1245,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "陛下，家书虽是问安，字里仍有几分催促。{self}不愿让家中忧心，也不想仓促应下。",
+      "reply": "家里又问我冷不冷。我回了穿得暖，他们下封信，想必还是要问。",
       "personality": "温柔体贴",
       "requiresFamilyLetter": true
     },
@@ -1255,7 +1255,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "家中所盼，{self}明白。只是此事须自己想定，回信晚些，总好过轻许。",
+      "reply": "回信催得紧。我写了三行，搁着半日，也没想好第四行写什么。",
       "personality": "清冷克制",
       "requiresFamilyLetter": true
     },
@@ -1265,7 +1265,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "家里又催了。{self}不愿装作没看见，可也不能为回一封信，便把往后的日子都应出去。",
+      "reply": "家里又催了！我说自己过得好，他们偏要问，究竟怎么个好法。",
       "personality": "明朗直率",
       "requiresFamilyLetter": true
     },
@@ -1275,7 +1275,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "他们以为{self}不提，便是不争。陛下，{self}只是不愿拿家书到御前讨一个名分。",
+      "reply": "信里没催，倒句句都像在催。看完真想再压两日才回。",
       "personality": "骄矜自尊",
       "requiresFamilyLetter": true
     },
@@ -1285,7 +1285,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "这封信看了几遍，总怕回得重了伤他们，回得轻了，又让他们生出旁的指望。",
+      "reply": "我想写想家，又怕他们担心。不写，自己心里又总惦记。",
       "personality": "敏感多思",
       "requiresFamilyLetter": true
     },
@@ -1295,7 +1295,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "好听的回话，{self}写得出。只是这回若仍含糊过去，下封信怕要催得更紧。",
+      "reply": "问我好不好，还问能不能替这个捎话、替那个带信。您说，我先回哪一件？",
       "personality": "圆融世故",
       "requiresFamilyLetter": true
     },
@@ -1305,7 +1305,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "家中有家中的盼头，宫中也有宫中的章程。{self}会据实回信，不敢借圣意宽慰私家。",
+      "reply": "信里所求，我已回绝了。家里难免不高兴，可不合规矩的事，总不能应。",
       "personality": "严正守礼",
       "requiresFamilyLetter": true
     },
@@ -1315,7 +1315,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "他们盼{self}得陛下青眼。{self}也想，只是不愿靠这一封家书求来。",
+      "reply": "他们说，得了召见便该知足。可我还想做点什么，不只让人记住姓氏。",
       "personality": "野心进取",
       "requiresFamilyLetter": true
     },
@@ -1325,7 +1325,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "陛下，家中问得细，{self}倒想得少。只盼回信时，能有一句是自己真愿意的。",
+      "reply": "家里问何时回去。我正想念门前那棵树，回信便写了满满两页。",
       "personality": "疏朗洒脱",
       "requiresFamilyLetter": true
     },
@@ -1335,7 +1335,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "家中问得最实在，往后如何安身、用度可有着落。{self}不敢不问明，便给他们许准话。",
+      "reply": "家里又问用度够不够。我寄了些银子回去，他们反倒问得更勤了。",
       "personality": "务实重利",
       "requiresFamilyLetter": true
     },
@@ -1345,7 +1345,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "家里催了。{self}尚未应。没想定的事，不能先许。",
+      "reply": "家里催了。我还没应，想好再回。",
       "personality": "寡言重诺",
       "requiresFamilyLetter": true
     },
@@ -1355,7 +1355,7 @@
       "topic": "family",
       "role": "any",
       "semantic": "familypressure",
-      "reply": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "reply": "家里想叫我替人捎句话。我没应，怕一开这个口，往后就没完了。",
       "personality": "戒备善谋",
       "requiresFamilyLetter": true
     },
@@ -1365,7 +1365,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-温柔体贴",
-      "reply": "刚收好案头。陛下若要坐，容{self}把这边的东西挪一挪，别碰着衣袖。",
+      "reply": "刚收完桌子。您坐这儿吧，这一块晒得暖和。",
       "personality": "温柔体贴"
     },
     {
@@ -1374,7 +1374,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-温柔体贴",
-      "reply": "原想自己理顺再说，免得陛下也跟着挂心。只是越放着，倒越不知从何讲起。",
+      "reply": "方才还想着给家里写信，提笔才发现，自己也有许多话没人说。您肯坐一会儿么？",
       "personality": "温柔体贴"
     },
     {
@@ -1383,7 +1383,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-温柔体贴",
-      "reply": "陛下肯听人把难处说完，{self}便愿多说几句。只是心软处，也怕被旁人借去了。",
+      "reply": "您心软。嘴上说不管，过后还是要遣人去问。",
       "personality": "温柔体贴"
     },
     {
@@ -1413,7 +1413,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-清冷克制",
-      "reply": "看书。案上那几页翻了两回，仍有一处不通，打算另查旧注。",
+      "reply": "看书。有一处没看懂，已经翻了两回。您来得巧，帮我瞧瞧？",
       "personality": "清冷克制"
     },
     {
@@ -1422,7 +1422,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-清冷克制",
-      "reply": "陛下既问，{self}便不说无事。但此刻只能陈明经过，尚不能给一个妥当的结果。",
+      "reply": "昨夜没睡好。躺下还想着事，真起来看书，又一个字也看不进去。",
       "personality": "清冷克制"
     },
     {
@@ -1431,7 +1431,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-清冷克制",
-      "reply": "陛下有决断，{self}敬服。只是决断快时，未必人人来得及将话说尽。",
+      "reply": "做决定快，有时走路也快。人还没应声，您已经出门了。",
       "personality": "清冷克制"
     },
     {
@@ -1461,7 +1461,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-明朗直率",
-      "reply": "在练字。先前总嫌这事磨人，今日真坐下来，倒比想的难，手都僵了。",
+      "reply": "练字！您先别看，今日写得不成样子，我自己都认不全。",
       "personality": "明朗直率"
     },
     {
@@ -1470,7 +1470,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-明朗直率",
-      "reply": "有话想说，只是不知道陛下听了会不会生气。若准{self}直说，便不绕弯了。",
+      "reply": "说出来您别笑。我忙起来什么都不怕，一闲下来，反倒心里空落落的。",
       "personality": "明朗直率"
     },
     {
@@ -1479,7 +1479,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-明朗直率",
-      "reply": "陛下肯担事，{self}愿跟着做。只是有时太能忍，旁人倒以为您不在意。",
+      "reply": "总爱忍着！不高兴就说，我又不是一点难听话也听不得。",
       "personality": "明朗直率"
     },
     {
@@ -1509,7 +1509,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-骄矜自尊",
-      "reply": "改一份旧稿。不算什么得意之作，倒是当初夸得最响的几句，如今看着最不顺眼。",
+      "reply": "在改旧稿。从前觉得写得最好那几句，如今看着最不顺眼。",
       "personality": "骄矜自尊"
     },
     {
@@ -1518,7 +1518,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-骄矜自尊",
-      "reply": "陛下肯问，{self}领情。只是这件事，还不愿借您的手替自己争个输赢。",
+      "reply": "新作改了好几回，自己看着都烦。旁人还只会夸，听得更烦。",
       "personality": "骄矜自尊"
     },
     {
@@ -1527,7 +1527,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-骄矜自尊",
-      "reply": "陛下若只想听好话，{self}便不答了。若肯听实话，倒有一件想请您改。",
+      "reply": "想听真的？您夸人时太敷衍，光一个好字，谁知道好在哪里。",
       "personality": "骄矜自尊"
     },
     {
@@ -1557,7 +1557,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-敏感多思",
-      "reply": "回一封信。写到末了又觉得前头不妥，改了几回，竟比重写还费工夫。",
+      "reply": "写信呢。写了又改，整张纸都快涂黑了。",
       "personality": "敏感多思"
     },
     {
@@ -1566,7 +1566,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-敏感多思",
-      "reply": "是有一件。先前总怕自己多想，越不肯问，便越在意，竟拖到了今日。",
+      "reply": "我常怕自己说错话。人家都忘了，我还翻来覆去地想，怎么那时不换个说法。",
       "personality": "敏感多思"
     },
     {
@@ -1575,7 +1575,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-敏感多思",
-      "reply": "陛下待人宽厚，{self}知道。只是有时一句随口的话，旁人会当真等很久。",
+      "reply": "您说过的话，有时自己不记得，我倒记得很清楚。",
       "personality": "敏感多思"
     },
     {
@@ -1605,7 +1605,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-圆融世故",
-      "reply": "在理几封往来信。寻常问候里夹着几句托付，若只当问候回了，又怕人家会错意。",
+      "reply": "回信。最难回的是那种，写了满纸，偏不说想求什么的。",
       "personality": "圆融世故"
     },
     {
@@ -1614,7 +1614,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-圆融世故",
-      "reply": "惯常劝旁人时，话倒说得周全。轮到自己，才知道并非一句想开些便能过去。",
+      "reply": "替别人解闷倒容易。轮到自己心烦，竟连个能随口说话的人都寻不着。",
       "personality": "圆融世故"
     },
     {
@@ -1623,7 +1623,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-圆融世故",
-      "reply": "陛下不难亲近，却也因此，总有人想借这份亲近走捷径。{self}不敢说自己从无此心。",
+      "reply": "好亲近。所以我有时都忘了，见您之前还得好好行礼。",
       "personality": "圆融世故"
     },
     {
@@ -1653,7 +1653,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-严正守礼",
-      "reply": "校一份旧册。前后两处记法不同，尚须查原本，不敢只凭习惯改定。",
+      "reply": "翻一份旧册。有几处笔迹太潦草，连自己从前写的都认不出了。",
       "personality": "严正守礼"
     },
     {
@@ -1662,7 +1662,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-严正守礼",
-      "reply": "有一桩尚未处置妥当。若涉及旁人，{self}只能陈已知之事，未查明的不敢妄言。",
+      "reply": "一忙起来便睡不沉。醒来怕天亮，又怕一躺下，今日要做的事全忘了。",
       "personality": "严正守礼"
     },
     {
@@ -1671,7 +1671,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-严正守礼",
-      "reply": "陛下肯纳言，是好事。只望言之不合时，也能先问所据，不因逆耳而弃之。",
+      "reply": "比幼时稳重了些。只是肯不肯按时用膳这一处，还得再看。",
       "personality": "严正守礼"
     },
     {
@@ -1701,7 +1701,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-野心进取",
-      "reply": "在重列手头的事。件件都想争先，反倒容易顾此失彼，今日先把最难的一桩理出来。",
+      "reply": "先前有几处没做好的，想再试一回。您若不急，坐一会儿？",
       "personality": "野心进取"
     },
     {
@@ -1710,7 +1710,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-野心进取",
-      "reply": "最难受的倒不是忙，是费了许多工夫，却还看不出一分长进。陛下可也有过这样的时候？",
+      "reply": "练了这么久，还是老样子。您看别人进步那样快，我怎能不急。",
       "personality": "野心进取"
     },
     {
@@ -1719,7 +1719,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-野心进取",
-      "reply": "陛下肯给人机会，{self}想争。若有一日争得急了，也盼您指出实错，不只劝一句安分。",
+      "reply": "肯给人机会。只是我若做得好，您也得夸一句才行。",
       "personality": "野心进取"
     },
     {
@@ -1749,7 +1749,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-疏朗洒脱",
-      "reply": "在翻一本游记。写的人将路途说得太轻巧，单看那几处地名，便知未必走得那样容易。",
+      "reply": "看游记呢。越看越想出去，偏偏看一眼窗外，又懒得动了。",
       "personality": "疏朗洒脱"
     },
     {
@@ -1758,7 +1758,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-疏朗洒脱",
-      "reply": "本想出去走走，散了便算。陛下既问，倒不如说出来，也省得一人绕圈。",
+      "reply": "这些日子总想出门，真出去了，走几步又觉得没意思。还不如回来找人说话。",
       "personality": "疏朗洒脱"
     },
     {
@@ -1767,7 +1767,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-疏朗洒脱",
-      "reply": "陛下肯笑，也肯听闲话，这是{self}喜欢的。只是到了外头，您总要比旁人多留一分心。",
+      "reply": "难得做了皇帝，还肯陪人说闲话。这一点，挺好。",
       "personality": "疏朗洒脱"
     },
     {
@@ -1797,7 +1797,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-务实重利",
-      "reply": "算些零碎用度。单笔看着不多，合在一处才知，比原先预想的多了不少。",
+      "reply": "对账。都是零零碎碎的支出，合起来倒吓我一跳。",
       "personality": "务实重利"
     },
     {
@@ -1806,7 +1806,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-务实重利",
-      "reply": "是有难处。能自己补的，{self}会补；补不了的，也不敢只为体面便瞒着。",
+      "reply": "也不知怎么了，吃饭时算钱，睡下了还在算。眼看没少花一文，倒把觉赔进去了。",
       "personality": "务实重利"
     },
     {
@@ -1815,7 +1815,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-务实重利",
-      "reply": "陛下有心做事。只是用钱用人，都不能只看眼前够不够，还须留出下一步的余地。",
+      "reply": "有时太肯花钱。您若什么都不问价，底下的人哪敢说贵。",
       "personality": "务实重利"
     },
     {
@@ -1845,7 +1845,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-寡言重诺",
-      "reply": "收尾。答应了今日做完，还差一点，不能留到明日。",
+      "reply": "还差一点。您先坐，我很快。",
       "personality": "寡言重诺"
     },
     {
@@ -1854,7 +1854,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-寡言重诺",
-      "reply": "有。尚未想妥。陛下若肯等，{self}会说。",
+      "reply": "没什么大事。只是想找个人，坐一会儿。",
       "personality": "寡言重诺"
     },
     {
@@ -1863,7 +1863,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-寡言重诺",
-      "reply": "陛下说过的事，{self}记得。做到了，便信；未做到，也会记着。",
+      "reply": "答应过的事，我都记着。好的，坏的，都有。",
       "personality": "寡言重诺"
     },
     {
@@ -1893,7 +1893,7 @@
       "topic": "recent",
       "role": "any",
       "semantic": "voice-戒备善谋",
-      "reply": "在核几封来信的日期。话对得上，时日却接不上，暂且不急着回。",
+      "reply": "收旧信。日期都排好了，偏偏有两封没落款，还得猜是谁写的。",
       "personality": "戒备善谋"
     },
     {
@@ -1902,7 +1902,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "voice-戒备善谋",
-      "reply": "此事牵着旁人，{self}得先问明白：陛下是要听经过，还是已经有人先说了什么？",
+      "reply": "有时只是想歇一会儿。听见门外有人，又忍不住想，是不是还有什么事。",
       "personality": "戒备善谋"
     },
     {
@@ -1911,7 +1911,7 @@
       "topic": "opinion",
       "role": "any",
       "semantic": "voice-戒备善谋",
-      "reply": "陛下肯亲自问，是信人，也可能是在验人。{self}不敢只拣好听的话答。",
+      "reply": "您亲自问一句，倒比叫旁人猜半日有用。可惜您常常懒得问。",
       "personality": "戒备善谋"
     },
     {
@@ -1941,7 +1941,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "mood-恼怒",
-      "reply": "方才的事，{self}尚未想通。陛下若肯听，便容把原委说完，今日不愿只答一声无事。",
+      "reply": "我还没想通。您方才那样说，是当真觉得我错了，还是只在气头上？",
       "moods": [
         "恼怒"
       ],
@@ -1953,7 +1953,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "mood-疏离",
-      "reply": "劳陛下垂问。该办的差事，{self}会照办；私下的事，今日便先不提了。",
+      "reply": "今日不想说。陛下若没有别的事，就先请回吧。",
       "moods": [
         "疏离"
       ],
@@ -1965,7 +1965,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "mood-失望",
-      "reply": "倒没有新添的难处。只是先前盼着的事，迟迟没有回音，{self}也不知还该不该问。",
+      "reply": "等了这些日子，才发现也许只有我一直记着。您如今问，我反倒不知怎么答。",
       "moods": [
         "失望"
       ],
@@ -1977,7 +1977,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "mood-委屈",
-      "reply": "原不愿再提，怕显得{self}斤斤计较。可若一直不说，这件事便像只有{self}还记得。",
+      "reply": "您那句话，我回去想了好几遍。我到底哪里叫您不高兴，您直说，好不好？",
       "moods": [
         "委屈"
       ],
@@ -1989,7 +1989,7 @@
       "topic": "listen",
       "role": "any",
       "semantic": "mood-戒备",
-      "reply": "陛下容禀。所知的，{self}自当据实说；牵着旁人的隐情，却不敢凭一面之词开口。",
+      "reply": "您怎么忽然问这个？……有些话，我还不大敢说。",
       "moods": [
         "戒备"
       ],

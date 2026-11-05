@@ -1,0 +1,31 @@
+{
+  "version": 13,
+  "date": "2026-11-05",
+  "base": "用户提供的V12整合包",
+  "sourceCommit": "36caaae2e1cd329f7b18313f4388cb5c75a47fed",
+  "existingRegressionChecksPassed": 20,
+  "newLogicChecksPassed": 17,
+  "realBrowserChecksPassed": 6,
+  "browserPageErrors": [],
+  "npcCount": 100,
+  "newCompleteAuthoredReplies": 327,
+  "originalWorkbookDialogueRows": 11520,
+  "workbookOriginalNonEmptyCellsPreserved": 223482,
+  "workbookOriginalFormulasPreserved": 6,
+  "newWorkbookRules": 18,
+  "originalPackageFiles": 36,
+  "unchangedOriginalFiles": 29,
+  "updatedOriginalFiles": 7,
+  "offlineEntry": "试玩_v13.html",
+  "mobileViewportTested": "390×844",
+  "defaultOpeningUnchanged": true,
+  "browserFixtureNote": "争宠场景使用隔离合成存档，不混入正常开局；分点心场景使用默认新档。",
+  "reports": [
+    "验证报告_v13_原功能回归.json",
+    "验证报告_v13_逻辑.json",
+    "验证报告_v13_浏览器.json",
+    "验证报告_v13_配表.json",
+    "验证报告_v13_保留审计.json"
+  ],
+  "checksAre": "自动化行为检查与实际浏览器验收，不代表已穷举所有长期随机剧情。"
+}

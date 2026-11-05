@@ -1,0 +1,106 @@
+{
+  "version": "13.5.2",
+  "date": "2026-11-05",
+  "base": "用户提供的V12整合包，沿用V13.5.1大殿布局，修复宫门奏折与入朝衔接",
+  "checksPassed": {
+    "原功能回归": 20,
+    "逻辑": 23,
+    "人设与选秀": 14,
+    "亲疏日常": 24,
+    "身世与消息": 22,
+    "浏览器": 17,
+    "身世浏览器": 12,
+    "前朝逻辑": 35,
+    "前朝浏览器": 19,
+    "批阅恢复": 14,
+    "批阅浏览器": 11
+  },
+  "totalChecksPassed": 211,
+  "approvalFix": [
+    "宫门待办不因浏览消失",
+    "同折入朝复阅",
+    "退朝后翌日入朝",
+    "不足行动正常月结确认",
+    "巡游回京入口",
+    "资源不足具体原因"
+  ],
+  "layout": "恢复原大殿、右侧八项事务与底部九枚衙门牌；新增玩法经殿内入口及通政簿册进入",
+  "departments": 6,
+  "managementTasks": 12,
+  "regions": 8,
+  "majorAffairs": 8,
+  "decreeChoices": 24,
+  "courtArguments": 88,
+  "bespokePeople": 4,
+  "loop": [
+    "局势与呈报",
+    "廷议与御批",
+    "六部领办",
+    "延迟验收与一次补办",
+    "不同臣子忠诚好感反应",
+    "地方反馈与税粮月结"
+  ],
+  "budget": [
+    "国库与内库分账",
+    "实收与待清解分列",
+    "清解按实数转入现银",
+    "补欠扣实银",
+    "裁支只减未来常费",
+    "旧欠结转"
+  ],
+  "ordinaryAdministration": "地方按额救急，不将街巷积水等逐事御批；重大调拨、蠲免、跨镇援饷与大案才呈报",
+  "saveMigration": "新增frontCourt状态，不覆盖原人物、亲疏、后宫与已有子女记录；换文件路径不保证浏览器自动共享本地存档",
+  "defaultEntry": "试玩_v13_5_2.html",
+  "mobileViewport": "390×844",
+  "desktopViewport": "1280×900",
+  "pageErrors": [],
+  "workbookSheets": 33,
+  "originalWorkbookCellsPreserved": 223482,
+  "originalWorkbookFormulasPreserved": 6,
+  "prior27WorkbookSheetsComparedAndPreserved": true,
+  "originalPackageInputSHA256": "9f404a32fee6e95788df72e21d2e69e4695ccfbbb93765a2832d593381d33df8",
+  "reports": [
+    "验证报告_v13_5_2_原功能回归.json",
+    "验证报告_v13_5_2_逻辑.json",
+    "验证报告_v13_5_2_人设与选秀.json",
+    "验证报告_v13_5_2_亲疏日常.json",
+    "验证报告_v13_5_2_身世与消息.json",
+    "验证报告_v13_5_2_浏览器.json",
+    "验证报告_v13_5_2_身世浏览器.json",
+    "验证报告_v13_5_2_前朝逻辑.json",
+    "验证报告_v13_5_2_前朝浏览器.json",
+    "验证报告_v13_5_2_批阅恢复.json",
+    "验证报告_v13_5_2_批阅浏览器.json",
+    "验证报告_v13_5_2_配表.json",
+    "验证报告_v13_5_2_保留审计.json"
+  ],
+  "visualInspection": "已实际查看390px奏折恢复入口与批阅结果截图；真实点击验证11项恢复流程，并回归手机与桌面大殿布局。",
+  "sources": [
+    {
+      "id": "game",
+      "title": "《皇帝成长计划2》开发者App Store介绍",
+      "url": "https://apps.apple.com/cn/app/id1440553367",
+      "used": "名臣任用、策略治理、发展国家的经营方向。六部数值与本版流程为原创实现，不声称复刻原作规则。"
+    },
+    {
+      "id": "ming72",
+      "title": "《明史》卷七十二·职官一",
+      "url": "https://zh.wikisource.org/wiki/明史/卷72",
+      "used": "六部分职、官员选授考课、国用赋役、军政、刑名与营造分工。"
+    },
+    {
+      "id": "ming78",
+      "title": "《明史》卷七十八·食货二",
+      "url": "https://zh.wikisource.org/wiki/明史/卷78",
+      "used": "灾蠲、仓粮赈贷、先赈后闻，以及加派与地方负担的矛盾。"
+    }
+  ],
+  "sourceScope": "以开发者原始介绍及《明史》原文为参考；数值、情节与流程为原创架空设计。",
+  "limitations": [
+    "战争为边患与军需决策，未新增战场推演",
+    "未新增完整官阶品秩或传位流程",
+    "离线规则与原创配表，未接入在线大模型自由聊天",
+    "原Excel公式保留，未在Excel计算引擎重算"
+  ],
+  "historicalReports": "非v13_5_2的试玩、说明与报告作为历史对照保留。"
+}

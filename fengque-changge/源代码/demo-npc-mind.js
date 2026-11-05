@@ -77,12 +77,13 @@ const cancelBeforeMind=actions.intimacyCancel;actions.intimacyCancel=()=>{const 
 
 function mindLocation(day,id){return day.entries[id]?.[3]?.location||PEOPLE.find(p=>p.id===id)?.location||'quarters';}
 function addMindMessage(p,kind='invite'){
+ if(kind==='invite'&&!storyInvitationRoll(p))return false;
  const e=state.ecology,m=state.relations[p.id].mind;if(e.inbox.filter(x=>!x.done).length>=12||e.inbox.some(x=>x.npc===p.id&&!x.done)||mindTick()-(m.lastMessage??-99)<4)return false;
  let data=null;if(kind==='event'){
   const pi=MIND_VOICE[p.type]??0,st=currentMind(p),r=state.relations[p.id];let es=FICTION_DATA.events.filter(x=>x.personality===pi&&x.trigger===st&&(!x.requiresRank||r.rank)&&(!x.requiresRank||p.romance)&&(x.domain!=='前朝'||(p.official&&r.officer))&&(x.domain!=='宫外'||wloc(p.location).zone==='outside')&&(x.domain!=='人际'||socialEdgesOf(p.id).length));
-  es=es.filter(x=>mindTick()-(m.cooldowns[x.motif]??-99)>=x.cooldown);if(!es.length)return false;data=es[mindHash(`${p.id}-${todayKey()}`)%es.length];m.cooldowns[data.motif]=mindTick();
+  es=es.filter(x=>mindTick()-(m.cooldowns[x.motif]??-99)>=x.cooldown);if(!es.length)return false;data=es[mindHash(`${p.id}-${todayKey()}`)%es.length];if(data.domain!=='前朝'&&!storyInvitationEligible(p))return false;m.cooldowns[data.motif]=mindTick();
  }
- const msg={id:`letter-${++e.serial}`,npc:p.id,kind,tick:mindTick(),expires:mindTick()+3,done:false,opened:false,event:data?clone(data):null};e.inbox.push(msg);m.lastMessage=mindTick();rememberMind(p.id,kind==='event'?`有一件“${data.title}”的事，想当面说。`:'想请女帝得空时来坐坐，已经托人递话。','递话');return true;
+ const msg={id:`letter-${++e.serial}`,npc:p.id,kind,tick:mindTick(),expires:mindTick()+3,done:false,opened:false,event:data?clone(data):null};e.inbox.push(msg);m.lastMessage=mindTick();if(kind==='invite')storyInvitationSent(p);rememberMind(p.id,kind==='event'?`有一件“${data.title}”的事，想当面说。`:'想请女帝得空时来坐坐，已经托人递话。','递话');return true;
 }
 function mindPlan(p,r,m,tick,h){
  const old=m.plan;if(old&&tick<=old.until)return old;
@@ -99,8 +100,11 @@ function mindPlan(p,r,m,tick,h){
  const span=2+(h%3);m.plan={kind,target,title,reason,started:tick,until:tick+span-1,progress:0};rememberMind(p.id,`定下了${title}的打算：${reason}。`,'自主计划',true);return m.plan;
 }
 function mindPlanText(p,plan,day){
+ if(plan.kind==='seekcare'&&!storyInvitationEligible(p))return '把想说的话先记下，仍照自己的安排做事，没有贸然递入御前。';
  const target=plan.target&&PEOPLE.find(q=>q.id===plan.target);
- const map={retreat:'把该办的事办完，余下时辰闭门静一静，暂不应旁人的邀约。',prepare:'把要说的话在心里过了一遍，也把可能听见的难处想好。',seekcare:'托人递了话，想问女帝何时得空；若等不到，便先把自己的事做完。',visit:target?`去${target.name}处坐了片刻，先问近况，再把未说完的半句话接上。`:'寻了相熟的人说几句近况。',work:'把手头一件差事往前推了一步，留下可核对的文书与结果。',walk:'沿着宫墙走了一圈，买了点小吃，回来时心绪松了些。',learn:'把专长练了半日，记下一个仍不稳的地方，明日还要再试。'};return map[plan.kind]||'照自己的安排过了一日。';
+ const skill=typeof castProfile==='function'?castProfile(p.id)?.specialty:p.specialty;
+ const practice={理政:'重读手边的条目，将先后顺序重新理过。',商账:'重核一页小账，将容易漏下的零项另记。',书法:'习了一页字，挑出收笔最急的一处留待明日再练。',琴艺:'慢练一段指法，将衔接不稳的地方记在琴谱边。',骑射:'练过弓后检看护腕，将尚不稳的站势记下。',棋弈:'复看一处棋形，试过两种落子次序，暂不急着定论。',舞艺:'按拍练过转步，记下衔接稍迟的地方。',绘事:'重看几笔浓淡，将未干的画纸平放晾好。',医理:'核过药材记注，将还须查明的条目留签。',香事:'收过香灰，检看香篆断处，留待下回再试。'}[skill]||'温习'+(skill||'所学')+'，留下一处待改的记注。';
+ const map={retreat:'把该办的事办完，余下时辰闭门静一静，暂不应旁人的邀约。',prepare:'把要说的话在心里过了一遍，也把可能听见的难处想好。',seekcare:'托人递了话，想问女帝何时得空；若等不到，便先把自己的事做完。',visit:target?`去${target.name}处坐了片刻，先问近况，再把未说完的半句话接上。`:'寻了相熟的人说几句近况。',work:'把手头一件差事往前推了一步，留下可核对的文书与结果。',walk:'沿着宫墙走了一圈，买了点小吃，回来时心绪松了些。',learn:practice};return map[plan.kind]||'照自己的安排过了一日。';
 }
 function processMindDay(key,makeMessages=true){
  ensureMinds();const e=state.ecology,day=state.dailyHistory[key];if(e.days[key]||!day)return;e.days[key]=true;const tick=mindTick(),busy=new Set();let messages=0;

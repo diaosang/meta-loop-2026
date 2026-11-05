@@ -1,0 +1,20 @@
+{
+  "version": "13.5",
+  "checks": [
+    "first flirt blushes, preserves court etiquette and displays only NPC words",
+    "successful responses pass through two reserved answers and one familiar remonstrance",
+    "high stats and repeated renders cannot bypass distinct-day pacing",
+    "only established contact across three days unlocks several sincere Xu answers",
+    "a fresh high-affinity save still begins with an actual first response",
+    "reload preserves phase, feelings and the record of successful contact days",
+    "all twelve personalities have restrained first responses and later disclosures",
+    "the normal selection pool has eight adults with a concrete exceptional qualification",
+    "a later-generation newly generated candidate ages from birth correctly",
+    "even a favoured candidate is nervous in the first audience, with no player transcript",
+    "three answers retain respectful consent and repeated questions do not repeat effects",
+    "unwilling candidates ask withdrawal respectfully and still cannot be selected",
+    "successful interaction builds trust once per game day instead of requiring an unreachable fixed value",
+    "cached old selection answers are restyled without spending or repeating an interview"
+  ],
+  "passed": 14
+}

@@ -1,0 +1,39 @@
+{
+  "version": "13.2",
+  "date": "2026-11-05",
+  "base": "用户提供的V12整合包，沿用V13.1继续修改",
+  "originalRegressionPassed": 20,
+  "previousDialogueAndMechanicsPassed": 23,
+  "courtshipAndSelectionPassed": 14,
+  "actualBrowserPassed": 10,
+  "pageErrors": [],
+  "totalChecksPassed": 67,
+  "courtshipResponses": 243,
+  "xuOpenResponses": 15,
+  "eliteTemplates": 8,
+  "auditionPersonalityResponses": 36,
+  "defaultEntry": "试玩_v13_2.html",
+  "mobileViewport": "390×844",
+  "playerTranscriptVisible": false,
+  "originalWorkbookNonemptyCellsPreserved": 223482,
+  "originalWorkbookFormulasPreserved": 6,
+  "samples": {
+    "listen": "“昨夜没睡好。躺下还想着事，真起来看书，又一个字也看不进去。”",
+    "listenFollowup": "“那便不看。您也别偷偷拿折子出来，我看得见。”",
+    "firstFlirt": "许知衡执笔的手一顿。耳根渐渐红了，他却将衣袖拢得更齐，垂眸候在案前。\n\n“陛下谬赞。臣……不敢当。”",
+    "snack": "他替你剥好一颗，又去剥第二颗。“……不是一人一半么？怎么都到您手里去了。”",
+    "firstAudience": "他在候场时仍有世家公子的矜贵，进了殿，却只敛目伏首，不敢擅自平视。\n\n“草民叩见陛下。”",
+    "establishedFlirt": "他望着你，终于没有再躲开目光。\n\n“臣今日更衣时，确曾想过，陛下会不会多看一眼。”",
+    "together": "“那便添个座。陛下，别叫我往旁边让，我先坐的。”\n陆景明\n\n“给我腾点地方！我坐这边，胳膊长，够得着茶壶。”"
+  },
+  "reports": [
+    "验证报告_v13_2_原功能回归.json",
+    "验证报告_v13_2_逻辑.json",
+    "验证报告_v13_2_人设与选秀.json",
+    "验证报告_v13_2_浏览器.json",
+    "验证报告_v13_2_配表.json",
+    "验证报告_v13_2_保留审计.json"
+  ],
+  "referenceReading": "晋江官方《与凤吟》《总有刁民想害朕》公开第一章及文案。新写台词以用户本轮人设要求为准。",
+  "historicalReports": "本包文件名不含v13_2的旧试玩、旧说明及旧报告为历史对照。"
+}

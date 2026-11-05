@@ -1,0 +1,814 @@
+{
+  "revision": "13.1",
+  "changedOrdinaryResponses": 101,
+  "rows": [
+    {
+      "id": "care:listen:any:listenopen",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "陛下既肯听，容{self}从头说。只是眼下还没有想妥，未必句句都说得明白。",
+      "after": "昨夜总是醒。明明困得很，一闭眼，又什么都想起来了。"
+    },
+    {
+      "id": "care:listen:any:listensmall",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "是有一件，只怕说来琐碎。陛下若不嫌，{self}便不藏着了。",
+      "after": "方才收着一封旧信，才发现有些字已经认不清了。想再看看，又怕一碰便碎。"
+    },
+    {
+      "id": "care:listen:any:listenpause",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "方才还想着如何开口，陛下一问，倒不必再寻由头。容{self}想想，先从哪处说。",
+      "after": "也没有什么大事。就是一个人坐久了，连句话都没人接。您来了便好。"
+    },
+    {
+      "id": "care:listen:any:listenreserved",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "有些话，{self}还未拿定主意。今日先说已经想明白的，可好？",
+      "after": "这些日子有些心烦。书翻了好几页，一句也没记住。越是这样，越坐不住。"
+    },
+    {
+      "id": "care:comfort:any:restaccept",
+      "category": "care",
+      "topic": "comfort",
+      "personality": "通用",
+      "before": "是有些乏了。原想做完这一点便歇，添着添着，又搁不下。既蒙陛下吩咐，便先收笔。",
+      "after": "被您瞧出来了。手都酸了，还以为再写两行也不碍事。"
+    },
+    {
+      "id": "care:comfort:any:resttea",
+      "category": "care",
+      "topic": "comfort",
+      "personality": "通用",
+      "before": "多谢陛下。茶尚温着，容{self}用完这一盏，再将余下的事留到明日。",
+      "after": "好。您也把手里的东西搁下吧，别只劝我。"
+    },
+    {
+      "id": "care:comfort:any:restshort",
+      "category": "care",
+      "topic": "comfort",
+      "personality": "通用",
+      "before": "不敢说不累，只是怕耽搁。陛下既准缓一缓，{self}也能安心歇了。",
+      "after": "是得歇一歇了。您再晚点来，我怕要把墨当茶喝。"
+    },
+    {
+      "id": "care:comfort:any:restcompany",
+      "category": "care",
+      "topic": "comfort",
+      "personality": "通用",
+      "before": "陛下若肯稍坐，{self}便不忙了。这些事早一刻、迟一刻，原也不差什么。",
+      "after": "那您坐近些。总不能我在这儿歇着，让您站着看。"
+    },
+    {
+      "id": "care:gift:any:giftreceive",
+      "category": "care",
+      "topic": "gift",
+      "personality": "通用",
+      "before": "谢陛下赏。方才还只顾看东西，竟忘了先谢恩，失礼了。",
+      "after": "给我的？我打开看看……您等一等，这结系得有些紧。"
+    },
+    {
+      "id": "care:gift:any:giftkeep",
+      "category": "care",
+      "topic": "gift",
+      "personality": "通用",
+      "before": "这件东西，{self}会好好收着。陛下日后若问起，定不会教人找不着。",
+      "after": "您挑的？倒比我自己挑得好看。"
+    },
+    {
+      "id": "care:gift:any:giftuse",
+      "category": "care",
+      "topic": "gift",
+      "personality": "通用",
+      "before": "多谢陛下。不敢只供着舍不得用，倒辜负了这番赏赐。",
+      "after": "谢陛下。放这儿不稳，我先收到匣子里。"
+    },
+    {
+      "id": "care:gift:any:giftunexpected",
+      "category": "care",
+      "topic": "gift",
+      "personality": "通用",
+      "before": "未想到陛下还特意留了一份。容{self}收好，莫叫旁人搬弄时磕碰了。",
+      "after": "还真有我的一份。方才瞧见您拿着，都没敢问。"
+    },
+    {
+      "id": "care:bag:any:travelgift",
+      "category": "care",
+      "topic": "bag",
+      "personality": "通用",
+      "before": "陛下出行，还留了东西给{self}。谢陛下记挂，容{self}亲自收着。",
+      "after": "路上还记着给我带东西？先让我看看，您藏的什么。"
+    },
+    {
+      "id": "care:bag:any:traveltale",
+      "category": "care",
+      "topic": "bag",
+      "personality": "通用",
+      "before": "谢陛下。比起这件东西，{self}倒还想听听，陛下是在哪处见着它的。",
+      "after": "在哪儿买的？这纹样有趣，我从前没见过。"
+    },
+    {
+      "id": "care:promise:any:dateaccept",
+      "category": "care",
+      "topic": "promise",
+      "personality": "通用",
+      "before": "{self}记下了。到了下月，再遣人请问陛下哪日得闲。",
+      "after": "好啊。您到时可别又忙忘了，我会惦记的。"
+    },
+    {
+      "id": "care:promise:any:datewaiting",
+      "category": "care",
+      "topic": "promise",
+      "personality": "通用",
+      "before": "好。{self}先将日子记着，临近时再请示，不敢叫陛下为难。",
+      "after": "那便下月见。哪日得空，记得先叫人递句话来。"
+    },
+    {
+      "id": "probe:worry:any:worryreserve",
+      "category": "probe",
+      "topic": "worry",
+      "personality": "通用",
+      "before": "是有些牵挂，尚未想妥如何处置。容{self}再理一理，不敢拿半截话扰陛下。",
+      "after": "这些日子睡得浅，一有声响便醒。您瞧，我连眼下都快遮不住了。"
+    },
+    {
+      "id": "probe:worry:any:worryask",
+      "category": "probe",
+      "topic": "worry",
+      "personality": "通用",
+      "before": "陛下是看见什么了，还是听人提过？{self}想先问明，免得答岔了。",
+      "after": "怎么忽然这样问？我方才看着，脸色很差么？"
+    },
+    {
+      "id": "probe:worry:any:worryplain",
+      "category": "probe",
+      "topic": "worry",
+      "personality": "通用",
+      "before": "眼下最放不下的，仍是手头未完的事。倒没有旁人说的那许多曲折。",
+      "after": "也没有旁的，就是总静不下心。一桩事做一半，又惦记下一桩。"
+    },
+    {
+      "id": "probe:worry:any:worryconfide",
+      "category": "probe",
+      "topic": "worry",
+      "personality": "通用",
+      "before": "有。先前怕说来像在求陛下开恩，便一直没提。陛下既问，{self}愿如实说。",
+      "after": "有点想家。真叫我回去，又舍不得这边，总是两头惦记。"
+    },
+    {
+      "id": "chat:home:any:familyletter",
+      "category": "chat",
+      "topic": "home",
+      "personality": "通用",
+      "before": "家中的近况，{self}还未问全，不敢只说一声都好。待回信到了，再禀陛下。",
+      "after": "我还等着家里的信呢。隔得远，送来总要慢上几日。"
+    },
+    {
+      "id": "chat:home:any:familyseparation",
+      "category": "chat",
+      "topic": "home",
+      "personality": "通用",
+      "before": "离家以后，才知许多从前不留意的小事也会记着。陛下是想听家中近况，还是故乡风物？",
+      "after": "想听哪一处？我家门前那条巷子，讲起来也够讲半日。"
+    },
+    {
+      "id": "chat:home:any:familywish",
+      "category": "chat",
+      "topic": "home",
+      "personality": "通用",
+      "before": "家中盼的，总比{self}眼下能做的多些。来信倒不催，只问几时得闲。",
+      "after": "家里倒不催别的，只问我吃得好不好。信来一封，就要问一回。"
+    },
+    {
+      "id": "chat:home:any:familyreply",
+      "category": "chat",
+      "topic": "home",
+      "personality": "通用",
+      "before": "有些话写在家书里，怕他们挂心，不免少写两句。到了陛下面前，也不好拿这一套搪塞。",
+      "after": "在外头什么都能凑合，唯独那口家里的汤，怎么也找不着一样的。"
+    },
+    {
+      "id": "chat:home:any:familyprivacy",
+      "category": "chat",
+      "topic": "home",
+      "personality": "通用",
+      "before": "家事零碎，容{self}择一件说。若一气从头讲起，倒怕占了陛下半日。",
+      "after": "从前嫌家里吵。出来久了，倒总想起隔壁院子的鸡叫。"
+    },
+    {
+      "id": "chat:home:any:familyroots",
+      "category": "chat",
+      "topic": "home",
+      "personality": "通用",
+      "before": "说起家里，总绕不开旧日的人。只讲宅院山水，反倒像在说旁人的地方。",
+      "after": "家里人嫌我回信短。可真要写，吃了什么、见了谁，又怕他们嫌琐碎。"
+    },
+    {
+      "id": "chat:interest:any:skillpractice",
+      "category": "chat",
+      "topic": "interest",
+      "personality": "通用",
+      "before": "闲时最常练{specialty}。不必赶着交差，才敢在不熟的地方多停一会儿。",
+      "after": "常练{specialty}。有时练入了神，饭端来都没看见。"
+    },
+    {
+      "id": "chat:interest:any:skilldifficulty",
+      "category": "chat",
+      "topic": "interest",
+      "personality": "通用",
+      "before": "{specialty}最磨性子。旁人看着不过片刻，练的时候，一处错了便得重来。",
+      "after": "{specialty}吧。偏有一处练不好，越不好，越想试。"
+    },
+    {
+      "id": "chat:interest:any:skillshow",
+      "category": "chat",
+      "topic": "interest",
+      "personality": "通用",
+      "before": "若陛下想看{specialty}，容{self}备好再呈。现下说得再好，也不如当面试一回。",
+      "after": "您要看我练{specialty}？那得先说好，出错了不许笑。"
+    },
+    {
+      "id": "chat:interest:any:skillorigin",
+      "category": "chat",
+      "topic": "interest",
+      "personality": "通用",
+      "before": "起初学{specialty}，只想着学会便好。真会了一点，才知道后头还有许多工夫。",
+      "after": "起初学{specialty}只是觉得有趣。如今倒好，一日不碰，心里便惦记。"
+    },
+    {
+      "id": "chat:interest:any:skillquiet",
+      "category": "chat",
+      "topic": "interest",
+      "personality": "通用",
+      "before": "练{specialty}时不喜人多。有人在旁边等着，反倒总想快些做完，容易失了准头。",
+      "after": "喜欢一个人练{specialty}。有人在边上看着，手都不知怎么放了。"
+    },
+    {
+      "id": "chat:interest:any:skilltaste",
+      "category": "chat",
+      "topic": "interest",
+      "personality": "通用",
+      "before": "比起样样都沾，{self}宁肯把{specialty}学深些。总该有一件事，自己做来心里有底。",
+      "after": "{specialty}。旁的也试过，还是这个做着顺手。"
+    },
+    {
+      "id": "probe:opinion:any:opinionobserve",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "通用",
+      "before": "{self}在御前的时日尚短，不敢凭几回召见便论陛下。只是陛下肯问，也愿听人把话说完。",
+      "after": "您笑起来，比板着脸的时候好亲近。初见那回，我都没敢抬头。"
+    },
+    {
+      "id": "probe:opinion:any:opiniontruth",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "通用",
+      "before": "陛下处事自有决断。{self}若有不同的想法，盼仍能得一句准说，而非只准称好。",
+      "after": "有时太急。人家一句话还没讲完，您已经替人想到后头去了。"
+    },
+    {
+      "id": "probe:opinion:any:opinionconduct",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "通用",
+      "before": "看人，总要看他如何待不顺意的事。陛下既问，{self}往后便据所见直言。",
+      "after": "明明累着，还要说不累。您劝人歇息时，怎么不想想自己？"
+    },
+    {
+      "id": "probe:opinion:any:opinionrespect",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "通用",
+      "before": "{self}敬的是陛下肯担事，不只是这身御服。只望有朝一日说了不中听的话，也能听完。",
+      "after": "敢听难听的话，这一点我佩服。至于别的……您可别拿眼睛瞪我。"
+    },
+    {
+      "id": "flirt:compliment:any:praiseblush",
+      "category": "flirt",
+      "topic": "compliment",
+      "personality": "通用",
+      "before": "陛下这样看着，{self}反倒不知该将手放在哪里了。",
+      "after": "您看便看，怎么还非得说出来。"
+    },
+    {
+      "id": "flirt:compliment:any:praisereceive",
+      "category": "flirt",
+      "topic": "compliment",
+      "personality": "通用",
+      "before": "这句夸奖，{self}收下了。只是陛下再说，怕便要得意忘形。",
+      "after": "那您多看一会儿。我今日还特意换了这身衣裳。"
+    },
+    {
+      "id": "flirt:compliment:any:praiseprivate",
+      "category": "flirt",
+      "topic": "compliment",
+      "personality": "通用",
+      "before": "此处还有人，陛下……待他们退下，再说可好？",
+      "after": "小声些。门外还有人，叫他们听见，又要偷偷笑。"
+    },
+    {
+      "id": "flirt:compliment:any:praisehappy",
+      "category": "flirt",
+      "topic": "compliment",
+      "personality": "通用",
+      "before": "方才还不知陛下因何而笑。原来竟是为{self}。",
+      "after": "怪不得方才一直看我。我还当脸上沾了什么。"
+    },
+    {
+      "id": "flirt:miss:any:missadmit",
+      "category": "flirt",
+      "topic": "miss",
+      "personality": "通用",
+      "before": "想过。听见外头传话，总要先问一句，可是陛下遣人来了。",
+      "after": "想。听见外头有人来，先问是不是您。"
+    },
+    {
+      "id": "flirt:miss:any:misshesitate",
+      "category": "flirt",
+      "topic": "miss",
+      "personality": "通用",
+      "before": "原不想说的。陛下一问，{self}再否认，便成欺君了。",
+      "after": "本来不想认的。您这样问，我还能怎么答。"
+    },
+    {
+      "id": "flirt:miss:any:misslamp",
+      "category": "flirt",
+      "topic": "miss",
+      "personality": "通用",
+      "before": "有时灯下坐久了，会想陛下此刻可也未歇。想归想，又怕贸然递话扰了清静。",
+      "after": "夜里想得多些。想着您是不是也没睡，想来，又怕您嫌我闹。"
+    },
+    {
+      "id": "flirt:miss:any:missdoor",
+      "category": "flirt",
+      "topic": "miss",
+      "personality": "通用",
+      "before": "听见脚步便看一眼门口，这样算不算？陛下莫再笑了。",
+      "after": "脚步声近了，就抬头看。看错几回还不长记性，您说呢？"
+    },
+    {
+      "id": "flirt:confess:any:confessaccept",
+      "category": "flirt",
+      "topic": "confess",
+      "personality": "通用",
+      "before": "{self}愿意。只是这一声答应，往后便不能再当作寻常召见了。",
+      "after": "知晓了。您别躲，看着我再说一遍。"
+    },
+    {
+      "id": "flirt:confess:any:confesswait",
+      "category": "flirt",
+      "topic": "confess",
+      "personality": "通用",
+      "before": "原以为还要等很久，才听得到这句话。陛下既说了，{self}便当真记着。",
+      "after": "等了好久，总算听见您亲口说。"
+    },
+    {
+      "id": "flirt:confess:any:confesshand",
+      "category": "flirt",
+      "topic": "confess",
+      "personality": "通用",
+      "before": "陛下若不嫌，容{self}近前些。有些话隔着这一段路，说着总不真切。",
+      "after": "那您把手给我。还站得那么远做什么。"
+    },
+    {
+      "id": "flirt:confess:any:confessonly",
+      "category": "flirt",
+      "topic": "confess",
+      "personality": "通用",
+      "before": "这一回，{self}不想再拿谢恩的话遮过去。陛下的心意，{self}也是一样。",
+      "after": "我也是。这回，倒不知还能说什么了。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "温柔体贴",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "家里又问我冷不冷。我回了穿得暖，他们下封信，想必还是要问。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "清冷克制",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "回信催得紧。我写了三行，搁着半日，也没想好第四行写什么。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "明朗直率",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "家里又催了！我说自己过得好，他们偏要问，究竟怎么个好法。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "骄矜自尊",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "信里没催，倒句句都像在催。看完真想再压两日才回。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "敏感多思",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "我想写想家，又怕他们担心。不写，自己心里又总惦记。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "圆融世故",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "问我好不好，还问能不能替这个捎话、替那个带信。您说，我先回哪一件？"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "严正守礼",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "信里所求，我已回绝了。家里难免不高兴，可不合规矩的事，总不能应。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "野心进取",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "他们说，得了召见便该知足。可我还想做点什么，不只让人记住姓氏。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "疏朗洒脱",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "家里问何时回去。我正想念门前那棵树，回信便写了满满两页。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "务实重利",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "家里又问用度够不够。我寄了些银子回去，他们反倒问得更勤了。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "寡言重诺",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "家里催了。我还没应，想好再回。"
+    },
+    {
+      "id": "probe:family:any:familypressure",
+      "category": "probe",
+      "topic": "family",
+      "personality": "戒备善谋",
+      "before": "家中盼{self}借御前的情分行事。陛下，此事{self}未应，也不愿瞒您。",
+      "after": "家里想叫我替人捎句话。我没应，怕一开这个口，往后就没完了。"
+    },
+    {
+      "id": "chat:recent:any:voice-温柔体贴",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "温柔体贴",
+      "before": "刚收好案头。陛下若要坐，容{self}把这边的东西挪一挪，别碰着衣袖。",
+      "after": "刚收完桌子。您坐这儿吧，这一块晒得暖和。"
+    },
+    {
+      "id": "care:listen:any:voice-温柔体贴",
+      "category": "care",
+      "topic": "listen",
+      "personality": "温柔体贴",
+      "before": "原想自己理顺再说，免得陛下也跟着挂心。只是越放着，倒越不知从何讲起。",
+      "after": "方才还想着给家里写信，提笔才发现，自己也有许多话没人说。您肯坐一会儿么？"
+    },
+    {
+      "id": "probe:opinion:any:voice-温柔体贴",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "温柔体贴",
+      "before": "陛下肯听人把难处说完，{self}便愿多说几句。只是心软处，也怕被旁人借去了。",
+      "after": "您心软。嘴上说不管，过后还是要遣人去问。"
+    },
+    {
+      "id": "chat:recent:any:voice-清冷克制",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "清冷克制",
+      "before": "看书。案上那几页翻了两回，仍有一处不通，打算另查旧注。",
+      "after": "看书。有一处没看懂，已经翻了两回。您来得巧，帮我瞧瞧？"
+    },
+    {
+      "id": "care:listen:any:voice-清冷克制",
+      "category": "care",
+      "topic": "listen",
+      "personality": "清冷克制",
+      "before": "陛下既问，{self}便不说无事。但此刻只能陈明经过，尚不能给一个妥当的结果。",
+      "after": "昨夜没睡好。躺下还想着事，真起来看书，又一个字也看不进去。"
+    },
+    {
+      "id": "probe:opinion:any:voice-清冷克制",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "清冷克制",
+      "before": "陛下有决断，{self}敬服。只是决断快时，未必人人来得及将话说尽。",
+      "after": "做决定快，有时走路也快。人还没应声，您已经出门了。"
+    },
+    {
+      "id": "chat:recent:any:voice-明朗直率",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "明朗直率",
+      "before": "在练字。先前总嫌这事磨人，今日真坐下来，倒比想的难，手都僵了。",
+      "after": "练字！您先别看，今日写得不成样子，我自己都认不全。"
+    },
+    {
+      "id": "care:listen:any:voice-明朗直率",
+      "category": "care",
+      "topic": "listen",
+      "personality": "明朗直率",
+      "before": "有话想说，只是不知道陛下听了会不会生气。若准{self}直说，便不绕弯了。",
+      "after": "说出来您别笑。我忙起来什么都不怕，一闲下来，反倒心里空落落的。"
+    },
+    {
+      "id": "probe:opinion:any:voice-明朗直率",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "明朗直率",
+      "before": "陛下肯担事，{self}愿跟着做。只是有时太能忍，旁人倒以为您不在意。",
+      "after": "总爱忍着！不高兴就说，我又不是一点难听话也听不得。"
+    },
+    {
+      "id": "chat:recent:any:voice-骄矜自尊",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "骄矜自尊",
+      "before": "改一份旧稿。不算什么得意之作，倒是当初夸得最响的几句，如今看着最不顺眼。",
+      "after": "在改旧稿。从前觉得写得最好那几句，如今看着最不顺眼。"
+    },
+    {
+      "id": "care:listen:any:voice-骄矜自尊",
+      "category": "care",
+      "topic": "listen",
+      "personality": "骄矜自尊",
+      "before": "陛下肯问，{self}领情。只是这件事，还不愿借您的手替自己争个输赢。",
+      "after": "新作改了好几回，自己看着都烦。旁人还只会夸，听得更烦。"
+    },
+    {
+      "id": "probe:opinion:any:voice-骄矜自尊",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "骄矜自尊",
+      "before": "陛下若只想听好话，{self}便不答了。若肯听实话，倒有一件想请您改。",
+      "after": "想听真的？您夸人时太敷衍，光一个好字，谁知道好在哪里。"
+    },
+    {
+      "id": "chat:recent:any:voice-敏感多思",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "敏感多思",
+      "before": "回一封信。写到末了又觉得前头不妥，改了几回，竟比重写还费工夫。",
+      "after": "写信呢。写了又改，整张纸都快涂黑了。"
+    },
+    {
+      "id": "care:listen:any:voice-敏感多思",
+      "category": "care",
+      "topic": "listen",
+      "personality": "敏感多思",
+      "before": "是有一件。先前总怕自己多想，越不肯问，便越在意，竟拖到了今日。",
+      "after": "我常怕自己说错话。人家都忘了，我还翻来覆去地想，怎么那时不换个说法。"
+    },
+    {
+      "id": "probe:opinion:any:voice-敏感多思",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "敏感多思",
+      "before": "陛下待人宽厚，{self}知道。只是有时一句随口的话，旁人会当真等很久。",
+      "after": "您说过的话，有时自己不记得，我倒记得很清楚。"
+    },
+    {
+      "id": "chat:recent:any:voice-圆融世故",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "圆融世故",
+      "before": "在理几封往来信。寻常问候里夹着几句托付，若只当问候回了，又怕人家会错意。",
+      "after": "回信。最难回的是那种，写了满纸，偏不说想求什么的。"
+    },
+    {
+      "id": "care:listen:any:voice-圆融世故",
+      "category": "care",
+      "topic": "listen",
+      "personality": "圆融世故",
+      "before": "惯常劝旁人时，话倒说得周全。轮到自己，才知道并非一句想开些便能过去。",
+      "after": "替别人解闷倒容易。轮到自己心烦，竟连个能随口说话的人都寻不着。"
+    },
+    {
+      "id": "probe:opinion:any:voice-圆融世故",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "圆融世故",
+      "before": "陛下不难亲近，却也因此，总有人想借这份亲近走捷径。{self}不敢说自己从无此心。",
+      "after": "好亲近。所以我有时都忘了，见您之前还得好好行礼。"
+    },
+    {
+      "id": "chat:recent:any:voice-严正守礼",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "严正守礼",
+      "before": "校一份旧册。前后两处记法不同，尚须查原本，不敢只凭习惯改定。",
+      "after": "翻一份旧册。有几处笔迹太潦草，连自己从前写的都认不出了。"
+    },
+    {
+      "id": "care:listen:any:voice-严正守礼",
+      "category": "care",
+      "topic": "listen",
+      "personality": "严正守礼",
+      "before": "有一桩尚未处置妥当。若涉及旁人，{self}只能陈已知之事，未查明的不敢妄言。",
+      "after": "一忙起来便睡不沉。醒来怕天亮，又怕一躺下，今日要做的事全忘了。"
+    },
+    {
+      "id": "probe:opinion:any:voice-严正守礼",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "严正守礼",
+      "before": "陛下肯纳言，是好事。只望言之不合时，也能先问所据，不因逆耳而弃之。",
+      "after": "比幼时稳重了些。只是肯不肯按时用膳这一处，还得再看。"
+    },
+    {
+      "id": "chat:recent:any:voice-野心进取",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "野心进取",
+      "before": "在重列手头的事。件件都想争先，反倒容易顾此失彼，今日先把最难的一桩理出来。",
+      "after": "先前有几处没做好的，想再试一回。您若不急，坐一会儿？"
+    },
+    {
+      "id": "care:listen:any:voice-野心进取",
+      "category": "care",
+      "topic": "listen",
+      "personality": "野心进取",
+      "before": "最难受的倒不是忙，是费了许多工夫，却还看不出一分长进。陛下可也有过这样的时候？",
+      "after": "练了这么久，还是老样子。您看别人进步那样快，我怎能不急。"
+    },
+    {
+      "id": "probe:opinion:any:voice-野心进取",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "野心进取",
+      "before": "陛下肯给人机会，{self}想争。若有一日争得急了，也盼您指出实错，不只劝一句安分。",
+      "after": "肯给人机会。只是我若做得好，您也得夸一句才行。"
+    },
+    {
+      "id": "chat:recent:any:voice-疏朗洒脱",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "疏朗洒脱",
+      "before": "在翻一本游记。写的人将路途说得太轻巧，单看那几处地名，便知未必走得那样容易。",
+      "after": "看游记呢。越看越想出去，偏偏看一眼窗外，又懒得动了。"
+    },
+    {
+      "id": "care:listen:any:voice-疏朗洒脱",
+      "category": "care",
+      "topic": "listen",
+      "personality": "疏朗洒脱",
+      "before": "本想出去走走，散了便算。陛下既问，倒不如说出来，也省得一人绕圈。",
+      "after": "这些日子总想出门，真出去了，走几步又觉得没意思。还不如回来找人说话。"
+    },
+    {
+      "id": "probe:opinion:any:voice-疏朗洒脱",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "疏朗洒脱",
+      "before": "陛下肯笑，也肯听闲话，这是{self}喜欢的。只是到了外头，您总要比旁人多留一分心。",
+      "after": "难得做了皇帝，还肯陪人说闲话。这一点，挺好。"
+    },
+    {
+      "id": "chat:recent:any:voice-务实重利",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "务实重利",
+      "before": "算些零碎用度。单笔看着不多，合在一处才知，比原先预想的多了不少。",
+      "after": "对账。都是零零碎碎的支出，合起来倒吓我一跳。"
+    },
+    {
+      "id": "care:listen:any:voice-务实重利",
+      "category": "care",
+      "topic": "listen",
+      "personality": "务实重利",
+      "before": "是有难处。能自己补的，{self}会补；补不了的，也不敢只为体面便瞒着。",
+      "after": "也不知怎么了，吃饭时算钱，睡下了还在算。眼看没少花一文，倒把觉赔进去了。"
+    },
+    {
+      "id": "probe:opinion:any:voice-务实重利",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "务实重利",
+      "before": "陛下有心做事。只是用钱用人，都不能只看眼前够不够，还须留出下一步的余地。",
+      "after": "有时太肯花钱。您若什么都不问价，底下的人哪敢说贵。"
+    },
+    {
+      "id": "chat:recent:any:voice-寡言重诺",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "寡言重诺",
+      "before": "收尾。答应了今日做完，还差一点，不能留到明日。",
+      "after": "还差一点。您先坐，我很快。"
+    },
+    {
+      "id": "care:listen:any:voice-寡言重诺",
+      "category": "care",
+      "topic": "listen",
+      "personality": "寡言重诺",
+      "before": "有。尚未想妥。陛下若肯等，{self}会说。",
+      "after": "没什么大事。只是想找个人，坐一会儿。"
+    },
+    {
+      "id": "probe:opinion:any:voice-寡言重诺",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "寡言重诺",
+      "before": "陛下说过的事，{self}记得。做到了，便信；未做到，也会记着。",
+      "after": "答应过的事，我都记着。好的，坏的，都有。"
+    },
+    {
+      "id": "chat:recent:any:voice-戒备善谋",
+      "category": "chat",
+      "topic": "recent",
+      "personality": "戒备善谋",
+      "before": "在核几封来信的日期。话对得上，时日却接不上，暂且不急着回。",
+      "after": "收旧信。日期都排好了，偏偏有两封没落款，还得猜是谁写的。"
+    },
+    {
+      "id": "care:listen:any:voice-戒备善谋",
+      "category": "care",
+      "topic": "listen",
+      "personality": "戒备善谋",
+      "before": "此事牵着旁人，{self}得先问明白：陛下是要听经过，还是已经有人先说了什么？",
+      "after": "有时只是想歇一会儿。听见门外有人，又忍不住想，是不是还有什么事。"
+    },
+    {
+      "id": "probe:opinion:any:voice-戒备善谋",
+      "category": "probe",
+      "topic": "opinion",
+      "personality": "戒备善谋",
+      "before": "陛下肯亲自问，是信人，也可能是在验人。{self}不敢只拣好听的话答。",
+      "after": "您亲自问一句，倒比叫旁人猜半日有用。可惜您常常懒得问。"
+    },
+    {
+      "id": "care:listen:any:mood-恼怒",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "方才的事，{self}尚未想通。陛下若肯听，便容把原委说完，今日不愿只答一声无事。",
+      "after": "我还没想通。您方才那样说，是当真觉得我错了，还是只在气头上？"
+    },
+    {
+      "id": "care:listen:any:mood-疏离",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "劳陛下垂问。该办的差事，{self}会照办；私下的事，今日便先不提了。",
+      "after": "今日不想说。陛下若没有别的事，就先请回吧。"
+    },
+    {
+      "id": "care:listen:any:mood-失望",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "倒没有新添的难处。只是先前盼着的事，迟迟没有回音，{self}也不知还该不该问。",
+      "after": "等了这些日子，才发现也许只有我一直记着。您如今问，我反倒不知怎么答。"
+    },
+    {
+      "id": "care:listen:any:mood-委屈",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "原不愿再提，怕显得{self}斤斤计较。可若一直不说，这件事便像只有{self}还记得。",
+      "after": "您那句话，我回去想了好几遍。我到底哪里叫您不高兴，您直说，好不好？"
+    },
+    {
+      "id": "care:listen:any:mood-戒备",
+      "category": "care",
+      "topic": "listen",
+      "personality": "通用",
+      "before": "陛下容禀。所知的，{self}自当据实说；牵着旁人的隐情，却不敢凭一面之词开口。",
+      "after": "您怎么忽然问这个？……有些话，我还不大敢说。"
+    }
+  ]
+}

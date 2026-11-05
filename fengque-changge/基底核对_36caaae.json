@@ -1,0 +1,87 @@
+{
+  "commit": "36caaae2e1cd329f7b18313f4388cb5c75a47fed",
+  "package_sha256": "9f404a32fee6e95788df72e21d2e69e4695ccfbbb93765a2832d593381d33df8",
+  "changed_files": [
+    {
+      "file": "index.html",
+      "commit_blob": "d2ed7be",
+      "package_blob": "dee4428e5f5341a0fe4e0e12bfc8e06ca3e1f9c8",
+      "match": false,
+      "lf_normalized_blob": "d2ed7be427ad59c2bc593e10dca06a8c369e9385",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "活人感与NPC自主意识升级_v12.md",
+      "commit_blob": "e6202b2",
+      "package_blob": "e6202b207bf8f638322294be146daf3993c01b0f",
+      "match": true,
+      "lf_normalized_blob": "e6202b207bf8f638322294be146daf3993c01b0f",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "源代码/demo-cast-life.js",
+      "commit_blob": "52c78ca",
+      "package_blob": "52c78ca1606b3fffff955377f21a9dbf1d37e728",
+      "match": true,
+      "lf_normalized_blob": "52c78ca1606b3fffff955377f21a9dbf1d37e728",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "源代码/demo-game.js",
+      "commit_blob": "0aa9835",
+      "package_blob": "a072590a3e003b60763885f26fec9c0271d7c5f3",
+      "match": false,
+      "lf_normalized_blob": "0aa98356e95761000d5cccbbf67941d992887109",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "源代码/demo-interactions.js",
+      "commit_blob": "a41f008",
+      "package_blob": "fc989c0a46575671449afaf3f7223ffa556baa57",
+      "match": false,
+      "lf_normalized_blob": "a41f00804ee345f0c9ab4fcca51f0e78db5d8972",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "源代码/demo-npc-mind.js",
+      "commit_blob": "fbf341f",
+      "package_blob": "fbf341fc31cd012605e5b158eba1ffa73bcc8426",
+      "match": true,
+      "lf_normalized_blob": "fbf341fc31cd012605e5b158eba1ffa73bcc8426",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "源代码/test_court_voice.cjs",
+      "commit_blob": "ee530e5",
+      "package_blob": "ee530e5b21b3e87cd9d0c2ddeab5e5bd0365fa97",
+      "match": true,
+      "lf_normalized_blob": "ee530e5b21b3e87cd9d0c2ddeab5e5bd0365fa97",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "网页Demo/index.html",
+      "commit_blob": "d2ed7be",
+      "package_blob": "dee4428e5f5341a0fe4e0e12bfc8e06ca3e1f9c8",
+      "match": false,
+      "lf_normalized_blob": "d2ed7be427ad59c2bc593e10dca06a8c369e9385",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "试玩_v12.html",
+      "commit_blob": "d2ed7be",
+      "package_blob": "dee4428e5f5341a0fe4e0e12bfc8e06ca3e1f9c8",
+      "match": false,
+      "lf_normalized_blob": "d2ed7be427ad59c2bc593e10dca06a8c369e9385",
+      "lf_normalized_match": true
+    },
+    {
+      "file": "验证报告_v12.json",
+      "commit_blob": "21de42c",
+      "package_blob": "21de42cb8fbe17d25eee1e6bc3cc2636b83ca04d",
+      "match": true,
+      "lf_normalized_blob": "21de42cb8fbe17d25eee1e6bc3cc2636b83ca04d",
+      "lf_normalized_match": true
+    }
+  ],
+  "base_rule": "实际修改以用户附件 ZIP 为底；仅将提交用于核对。换行差异单列，不从其他 Demo 覆盖。"
+}

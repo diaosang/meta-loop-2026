@@ -1,0 +1,22 @@
+{
+  "version": "13.5",
+  "priorSheetsComparedAndPreserved": 27,
+  "newSheets": [
+    "V13.5六部职掌",
+    "V13.5施政差事",
+    "V13.5重大奏案",
+    "V13.5御批方案",
+    "V13.5廷议对白",
+    "V13.5前朝规则"
+  ],
+  "totalSheets": 33,
+  "tasks": 12,
+  "majorAffairs": 8,
+  "decisions": 24,
+  "courtArguments": 88,
+  "rules": 32,
+  "reopenedAndCompared": true,
+  "original12NonemptyCells": 223482,
+  "original12Formulas": 6,
+  "formulaCalculation": "原公式保留，未在Excel计算引擎中重算。"
+}

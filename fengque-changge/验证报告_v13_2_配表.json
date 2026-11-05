@@ -1,0 +1,98 @@
+{
+  "version": "13.2",
+  "originalSheets": [
+    {
+      "name": "内容总览",
+      "rows": 18,
+      "columns": 3,
+      "state": "visible"
+    },
+    {
+      "name": "通用对话",
+      "rows": 11524,
+      "columns": 16,
+      "state": "visible"
+    },
+    {
+      "name": "人物专属",
+      "rows": 76,
+      "columns": 8,
+      "state": "visible"
+    },
+    {
+      "name": "事件库",
+      "rows": 724,
+      "columns": 13,
+      "state": "visible"
+    },
+    {
+      "name": "事件分支",
+      "rows": 2164,
+      "columns": 12,
+      "state": "visible"
+    },
+    {
+      "name": "NPC性格目标",
+      "rows": 104,
+      "columns": 9,
+      "state": "visible"
+    },
+    {
+      "name": "性格口吻",
+      "rows": 16,
+      "columns": 12,
+      "state": "visible"
+    },
+    {
+      "name": "心态规则",
+      "rows": 14,
+      "columns": 7,
+      "state": "visible"
+    },
+    {
+      "name": "自主行为",
+      "rows": 28,
+      "columns": 10,
+      "state": "visible"
+    },
+    {
+      "name": "情境目录",
+      "rows": 100,
+      "columns": 9,
+      "state": "visible"
+    },
+    {
+      "name": "事件母题",
+      "rows": 64,
+      "columns": 7,
+      "state": "visible"
+    },
+    {
+      "name": "核心专属索引",
+      "rows": 76,
+      "columns": 7,
+      "state": "visible"
+    }
+  ],
+  "preservedOriginalCells": 223482,
+  "preservedOriginalFormulas": 6,
+  "newSheets": [
+    "V13宫墙对白",
+    "V13互动规则",
+    "V13.1日常修订",
+    "V13.1倾诉接话",
+    "V13.2情意递进",
+    "V13.2选秀底稿",
+    "V13.2面圣对白",
+    "V13.2规则"
+  ],
+  "newCompleteReplies": 339,
+  "revisedOrdinaryReplies": 101,
+  "listenContinuations": 42,
+  "newRules": 18,
+  "courtshipResponses": 243,
+  "eliteCandidateTemplates": 8,
+  "auditionAnswers": 36,
+  "reopenedAndCompared": true,
+  "formulaCalculation": "保留原6个公式，未在Excel计算引擎中重算。"
+}
