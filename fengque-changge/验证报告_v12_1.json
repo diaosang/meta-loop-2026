@@ -3,13 +3,19 @@
   "type": "static-and-simulated-logic-check",
   "checks": {
     "patchSyntax": true,
+    "wrapperSyntax": true,
+    "firstMeetingOnlyOnce": true,
     "xuFirstMeetingBlushAndFormalReply": true,
+    "otherNpcFirstMeetingRemainsRespectful": true,
     "scoldingProducesSingleNpcReply": true,
     "xuDisclosureLockedUntilIntimate": true,
     "xuDisclosureProgressesAcrossTurns": true,
-    "playerUtteranceHidden": true,
-    "generatedApplicantMeritRaised": true,
-    "applicantRepliesShowReverence": true
+    "playerUtteranceHiddenInDialogueAndModal": true,
+    "generatedApplicantsReceiveEliteMeritProfile": true,
+    "applicantFamilyBeautyTalentPresented": true,
+    "applicantAnswersRemainRespectfulAcrossThreeQuestions": true,
+    "candidateRefusalPreserved": true,
+    "originalAffinityLoveAndLoyaltyUnchanged": true
   },
   "preserved": [
     "行动消耗与互动次数",
