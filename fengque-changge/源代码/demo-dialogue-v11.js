@@ -1,144 +1,164 @@
-/* 凤阙长歌 V11 · 女帝威仪、初见敬畏与选秀世家感
- * 不改行动、好感、忠诚、暧昧、年龄门槛、留牌数量或选秀周期。
- * 只调整初见表现、人物回答、对话展示和选秀人物的资质呈现。
+/* 凤阙长歌 V12.1 · 女帝威仪、初见敬畏与世家殿选
+ * 装载位置：demo-court-voice.js 之后。
+ * 不修改关系数值、行动消耗、选秀年龄/周期/名额、本人拒绝机制及 NPC 自主行动。
  */
 (function () {
   'use strict';
-  if (window.__FENGQUE_V11_PATCHED__) return;
+  if (window.__FENGQUE_IMPERIAL_TONE_V121__) return;
 
   var oldVisit = window.visit;
   var oldRenderSession = window.renderSession;
-  var oldInteractionTopic = window.interactionTopic;
-  var oldAuditionPanel = window.auditionPanel;
-  var oldAuditionInterview = window.auditionInterview;
-  var oldAuditionLine = window.expansionAuditionLine;
-  var oldCandidatePool = window.castCandidatePool;
-  var oldMakeCandidate = window.makeCastCandidate;
+  var oldApplyInteraction = window.applyInteraction;
   var oldOpenModal = window.openModal;
+  var oldAuditionInterview = window.auditionInterview;
+  var oldAuditionPanel = window.auditionPanel;
+  var oldMakeCandidate = window.makeCastCandidate;
+  var oldCandidatePool = window.castCandidatePool;
 
   if (typeof oldVisit !== 'function' || typeof oldRenderSession !== 'function') {
-    throw new Error('V11 未找到人物会面入口，已停止加载。');
+    throw new Error('V12.1 未找到 V12 会面入口，停止接入。');
   }
 
-  var activeTopic = null;
-  var lastFirstMeeting = null;
-  var lastApplicant = null;
-  var audit = { firstMeetings: 0, scoldReplies: 0, disclosures: 0, applicantCards: 0, applicants: 0 };
+  var audit = {
+    firstMeetings: 0,
+    scoldReplies: 0,
+    disclosures: 0,
+    applicants: 0,
+    meritCards: 0,
+    hiddenPlayerLines: 0
+  };
 
-  function text(value) { return String(value == null ? '' : value).trim(); }
+  function str(value) { return String(value == null ? '' : value).trim(); }
   function hash(value) {
     var n = 2166136261, s = String(value);
-    for (var i = 0; i < s.length; i++) { n ^= s.charCodeAt(i); n = Math.imul(n, 16777619); }
+    for (var i = 0; i < s.length; i++) {
+      n ^= s.charCodeAt(i);
+      n = Math.imul(n, 16777619);
+    }
     return n >>> 0;
   }
   function personOf(id) {
-    return (typeof PEOPLE !== 'undefined' && PEOPLE || []).find(function (p) { return p.id === id; }) || null;
+    return (typeof PEOPLE !== 'undefined' ? PEOPLE : []).find(function (p) { return p.id === id; }) || null;
   }
   function profileOf(person) {
+    if (!person) return null;
+    var generated = state.cast && state.cast.generatedProfiles && state.cast.generatedProfiles[person.id];
+    if (generated) return generated;
     try {
-      var generated = state.cast && state.cast.generatedProfiles && state.cast.generatedProfiles[person.id];
-      if (generated) return generated;
-      return (CAST_DATA && CAST_DATA.profiles || []).find(function (p) { return p.id === person.id; }) || null;
+      return (CAST_DATA.profiles || []).find(function (p) { return p.id === person.id; }) || null;
     } catch (_) { return null; }
   }
   function relationOf(person) { return state.relations[person.id] || {}; }
-  function mindOf(person) { var r = relationOf(person); return r.mind || (r.mind = { memories: [], used: [], dialogueCursor: {} }); }
-  function currentMood(person) {
+  function moodOf(person) {
     try { return typeof currentMind === 'function' ? currentMind(person) : '平静'; }
     catch (_) { return '平静'; }
   }
   function relationBand(person) {
-    var r = relationOf(person), mood = currentMood(person);
+    var r = relationOf(person), mood = moodOf(person);
     if (['恼怒', '失望', '委屈', '疏离'].indexOf(mood) >= 0) return 'strained';
     if (Number(r.aff || 0) >= 72 && Number(r.love || 0) >= 35) return 'intimate';
     if (Number(r.aff || 0) >= 55 && Number(r.loyalty || 0) >= 55) return 'close';
     if (Number(r.aff || 0) >= 30) return 'familiar';
     return 'formal';
   }
-  function isFirstMeeting(id) {
-    return !(state.visited || []).includes(id);
+  function selfTitle(person) {
+    var r = relationOf(person);
+    if (person.id === 'xie') return '奴才';
+    if (person.official || r.recruited || person.id === 'xu' || person.id === 'jiang' || r.rank) return '臣';
+    if (/女官|宫人|宫女/.test(person.role || '')) return '奴婢';
+    return '草民';
+  }
+  function familyName(person) {
+    var profile = profileOf(person);
+    return str(profile && profile.clan || person.clan || person.faction || '世家');
+  }
+  function specialtyName(person) {
+    var profile = profileOf(person);
+    return str(profile && profile.specialty || person.specialty || '家学');
+  }
+  function specialtyLevel(person) {
+    var profile = profileOf(person);
+    return Number(profile && profile.specialtyLevel || person.specialtyLevel || 4);
+  }
+  function safeHtml(value) {
+    return str(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function stripPlayerSpeech(value) {
+    var text = String(value == null ? '' : value);
+    var before = text;
+    // 只移除主控的显式发言，不碰 NPC 的引语与场景动作。
+    text = text.replace(/(?:<br\s*\/?>|\r?\n|\s)*(?:你说|你问|你向他|你请他|女帝问|陛下问|主控说|主控问)[：:]\s*[“「"][^”」"]*[”」"]/g, '');
+    text = text.replace(/(?:<br\s*\/?>|\r?\n|\s)*(?:你说|你问|你向他|你请他|女帝问|陛下问|主控说|主控问)[：:]\s*[^<\r\n。！？]*[。！？]?/g, '');
+    text = text.replace(/(?:<br\s*\/?>\s*){3,}/g, '<br><br>');
+    if (text !== before) audit.hiddenPlayerLines++;
+    return text;
   }
 
   var FIRST_ACTION = {
-    '温柔体贴': '先行礼，将手边的东西放好，答话放得很轻。',
-    '清冷克制': '将手中书卷合起，依礼行礼，才抬头回话。',
+    '温柔体贴': '先向礼官确认了礼数，才走到御前行礼。',
+    '清冷克制': '将手里的文书合起，依礼行礼，站定后才答话。',
     '明朗直率': '原想上前一步，见礼官示意，立刻收住脚步行礼。',
-    '骄矜自尊': '将衣襟理正，俯身行礼，答话仍不失分寸。',
-    '敏感多思': '指尖扣住袖口，行礼后才开口。',
+    '骄矜自尊': '理正衣襟，俯身行礼，答话时仍维持礼数。',
+    '敏感多思': '把袖口收好，行礼后停了片刻才开口。',
     '圆融世故': '先向礼官确认礼数，随后上前行礼。',
     '严正守礼': '依礼行礼，站定后才回答，不敢抢先开口。',
-    '野心进取': '双手奉上荐书，行礼后将准备好的话压成简短两句。',
-    '疏朗洒脱': '听见宣召便收了闲谈，整理衣冠后快步上前行礼。',
-    '务实重利': '把荐书与名帖一并捧好，行礼后等候垂询。',
+    '野心进取': '双手奉上荐书，行礼后才抬头回话。',
+    '疏朗洒脱': '收住方才的话头，整理衣冠后快步上前行礼。',
+    '务实重利': '将名帖与荐书一并捧好，行礼后等候垂询。',
     '寡言重诺': '上前行礼，停了片刻，才低声回话。',
     '戒备善谋': '先看过殿中侍卫的位置，再依礼上前行礼。'
   };
 
-  function firstMeetingDialogue(person) {
-    var p = profileOf(person), family = text(p && p.clan || person.clan || person.faction);
-    var role = text(person.role || p && p.background || '本职差事');
-    var specialty = text(p && p.specialty || person.specialty || '所习之业');
+  function firstMeeting(person) {
+    var title = selfTitle(person);
+    var family = familyName(person);
+    var skill = specialtyName(person);
     if (person.id === 'xu') {
       return {
-        stage: '许知衡将案上的奏折合起，行礼时耳根微微泛红，很快便站直了。',
-        reply: '臣方才在核对北营粮册。三处数目已有眉目，只差最后一份签押。'
+        stage: '许知衡将案上的奏折合起，向御前行礼时耳根微微泛红，很快便站直了。',
+        reply: '臣正在核对北营粮册。三处数目已有眉目，只差最后一份签押。'
       };
     }
     var action = FIRST_ACTION[person.type] || FIRST_ACTION['清冷克制'];
     var stage = person.name + action;
     var reply;
-    if (person.official) {
-      reply = '臣现任' + role + '，今日奉召入殿。陛下若有垂询，臣必据实回禀。';
+    if (person.official || person.id === 'jiang') {
+      reply = title + '现任' + str(person.role || '本职') + '，今日奉召入殿。陛下若有垂询，臣必据实回禀。';
+    } else if (person.id === 'xie') {
+      reply = '奴才奉召当值，手边的消息已按先后次序整理妥当。陛下若要查问，奴才不敢隐瞒。';
     } else {
-      reply = '臣出身' + (family || '世家') + '，平日所习是' + specialty + '。今日奉召前来，不敢在御前妄言。';
+      reply = title + '出身' + family + '，平日所习是' + skill + '。今日奉召前来，不敢在御前妄言。';
     }
     return { stage: stage, reply: reply };
   }
 
-  function sanitizeControllerLines(value) {
-    var input = String(value == null ? '' : value);
-    var parts = input.split(/(<br\s*\/?>|\r?\n)/i);
-    var output = [];
-    for (var i = 0; i < parts.length; i++) {
-      var part = parts[i];
-      if (/^<br\s*\/?>$/i.test(part) || /^\r?\n$/.test(part)) {
-        output.push(part);
-        continue;
-      }
-      var plain = part.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
-      if (/^(?:你问|你向他|你请他|你把|你向|女帝问|陛下问|主控说|主控问)/.test(plain)) continue;
-      output.push(part);
-    }
-    return output.join('').replace(/(?:<br\s*\/?>|\s)*$/i, '');
-  }
-
-  // 主控的台词不进入对话框；只展示 NPC 的动作与回应。
+  // V12 的引擎把 prompt 存在 row.player；此处只改变展示，不修改事实、记忆或选项。
   window.renderSession = function () {
     if (typeof session === 'undefined' || !session) return oldRenderSession.apply(this, arguments);
-    var oldMessage = session.message, oldResponse = session.response;
-    session.message = sanitizeControllerLines(oldMessage);
-    session.response = sanitizeControllerLines(oldResponse);
+    var message = session.message, response = session.response;
+    session.message = stripPlayerSpeech(message);
+    session.response = stripPlayerSpeech(response);
     try { return oldRenderSession.apply(this, arguments); }
-    finally { session.message = oldMessage; session.response = oldResponse; }
+    finally { session.message = message; session.response = response; }
   };
 
-  // 初见先建立身份距离。只对首次会面生效，不会覆盖后续关系发展。
-  if (typeof oldVisit === 'function') {
-    window.visit = function (id) {
-      var first = isFirstMeeting(id), person = personOf(id);
-      var result = oldVisit.apply(this, arguments);
-      if (first && person && typeof session !== 'undefined' && session && session.id === id) {
-        var opening = firstMeetingDialogue(person);
-        session.message = opening.stage + '\n\n“' + opening.reply + '”';
-        session.response = '';
-        lastFirstMeeting = { id: id, name: person.name, stage: opening.stage, reply: opening.reply };
-        audit.firstMeetings++;
-        if (typeof renderSession === 'function') renderSession();
-        if (typeof save === 'function') save();
-      }
-      return result;
-    };
-  }
+  // 首次会面：保留 V12 原来的行动消耗与 markContact，只替换初见呈现。
+  window.visit = function (id) {
+    var wasVisited = (state.visited || []).indexOf(id) >= 0;
+    var person = personOf(id);
+    var result = oldVisit.apply(this, arguments);
+    if (!wasVisited && person && typeof session !== 'undefined' && session && session.id === id) {
+      var opening = firstMeeting(person);
+      session.message = opening.stage + '\n\n“' + opening.reply + '”';
+      session.response = '';
+      audit.firstMeetings++;
+      if (typeof window.renderSession === 'function') window.renderSession();
+      if (typeof save === 'function') save();
+    }
+    return result;
+  };
+  try { actions.visit = window.visit; } catch (_) {}
 
   var XU_SCOLD = {
     remind: '臣记下了。只是这份章程牵涉旧例，臣不敢为求快些便草率更改。',
@@ -228,193 +248,203 @@
     }
   };
 
-  function customReply(person, category, topic) {
+  function specialReply(person, category, topic) {
     if (!person) return null;
-    var key = category + '|' + topic;
     if (category === 'scold') {
-      if (person.id === 'xu' && XU_SCOLD[topic]) return { reply: XU_SCOLD[topic], kind: 'scold' };
+      if (person.id === 'xu' && XU_SCOLD[topic]) return { text: XU_SCOLD[topic], kind: 'scold' };
       if (['remind', 'stern', 'public'].indexOf(topic) >= 0) {
-        return { reply: SCOLD_BY_TYPE[person.type] || SCOLD_BY_TYPE['清冷克制'], kind: 'scold' };
+        return { text: SCOLD_BY_TYPE[person.type] || SCOLD_BY_TYPE['清冷克制'], kind: 'scold' };
       }
     }
-    if (['恼怒', '失望', '委屈', '疏离'].indexOf(currentMood(person)) >= 0) return null;
+    // 许知衡的私心只在真正亲密时出现；其他核心人物也须先熟识。
     var band = relationBand(person);
-    if (band !== 'close' && band !== 'intimate') return null;
-    var pool = LATE_DISCLOSURES[person.id] && LATE_DISCLOSURES[person.id][key];
+    if (person.id === 'xu' && band !== 'intimate') return null;
+    if (person.id !== 'xu' && band !== 'close' && band !== 'intimate') return null;
+    if (['恼怒', '失望', '委屈', '疏离', '戒备'].indexOf(moodOf(person)) >= 0) return null;
+    var pool = LATE_DISCLOSURES[person.id] && LATE_DISCLOSURES[person.id][category + '|' + topic];
     if (!pool || !pool.length) return null;
-    if (band === 'intimate' && person.id === 'xu' && (category === 'care' || category === 'flirt')) {
-      // 许知衡到了真正亲近的阶段，才会把同窗旧事和个人心意说出来。
-    }
-    var mind = mindOf(person);
+    var mind = relationOf(person).mind || (relationOf(person).mind = {});
     mind.dialogueCursor = mind.dialogueCursor || {};
-    var cursorKey = 'v11-disclosure:' + key;
+    var cursorKey = 'v121:' + category + ':' + topic;
     var cursor = Number(mind.dialogueCursor[cursorKey] || 0);
     mind.dialogueCursor[cursorKey] = cursor + 1;
     audit.disclosures++;
-    return { reply: pool[cursor % pool.length], kind: 'disclosure' };
+    return { text: pool[cursor % pool.length], kind: 'disclosure' };
   }
 
-  // 被数落时只给一段简短、明确的答复；关系足够亲近后才开放私密话题。
-  if (typeof oldInteractionTopic === 'function') {
-    window.interactionTopic = function (topic) {
-      activeTopic = text(topic || 'recent').replace(/^relation:/, 'opinion').replace(/^exclusive:/, 'recent');
-      var person = typeof session !== 'undefined' && session ? personOf(session.id) : null;
-      var category = typeof session !== 'undefined' && session ? session.section : null;
-      var before = typeof session !== 'undefined' && session && session.history ? session.history.length : 0;
-      var result = oldInteractionTopic.apply(this, arguments);
-      if (person && session && session.id === person.id && session.history && session.history.length > before) {
-        var special = customReply(person, category, activeTopic);
-        if (special) {
-          session.response = '“' + special.reply + '”';
-          if (state.logs && state.logs.length) {
-            var logRow = state.logs[state.logs.length - 1];
-            if (logRow && typeof logRow.text === 'string' && logRow.text.indexOf(person.name) >= 0) {
-              logRow.text = person.name + '：' + special.reply;
-            }
-          }
-          if (special.kind === 'scold') audit.scoldReplies++;
-          if (typeof renderSession === 'function') renderSession();
-          if (typeof save === 'function') save();
+  // applyInteraction 是 V12 的统一结算入口；先让原逻辑结算一次，再替换同一轮显示文本。
+  if (typeof oldApplyInteraction === 'function') {
+    window.applyInteraction = function (person, category, topic, line, effects, options) {
+      var beforeLeft = typeof session !== 'undefined' && session ? session.left : null;
+      var result = oldApplyInteraction.apply(this, arguments);
+      if (!person || !session || session.id !== person.id || beforeLeft === null || session.left >= beforeLeft) return result;
+      var special = specialReply(person, category, topic);
+      if (!special) return result;
+      session.response = '“' + special.text + '”';
+      var mind = relationOf(person).mind;
+      if (mind && mind.lastTurn) mind.lastTurn.reply = special.text;
+      if (mind && Array.isArray(mind.turns) && mind.turns.length) mind.turns[mind.turns.length - 1].reply = special.text;
+      if (state.logs && state.logs.length) {
+        var logRow = state.logs[state.logs.length - 1];
+        if (logRow && typeof logRow.text === 'string' && logRow.text.indexOf(person.name) >= 0) {
+          logRow.text = person.name + '：' + special.text;
         }
       }
-      activeTopic = null;
+      if (special.kind === 'scold') audit.scoldReplies++;
+      if (typeof window.renderSession === 'function') window.renderSession();
+      if (typeof save === 'function') save();
       return result;
     };
-    try { actions.interactionTopic = window.interactionTopic; } catch (_) {}
   }
 
-  function applicantFamily(person) {
-    var p = profileOf(person), clan = text(p && p.clan || person.faction || person.clan || '世家');
-    var background = text(p && (p.background || p.bio) || person.background || '');
+  function candidateMerit(person) {
+    var p = profileOf(person), skills = person.skills || {};
+    var charm = Number(skills.charm || 0);
+    var best = Math.max(Number(skills.admin || 0), Number(skills.literature || 0), Number(skills.military || 0));
+    var level = Number(p && p.specialtyLevel || person.specialtyLevel || 4);
+    return charm * 0.34 + best * 0.34 + level * 5 + (p && p.clan || person.faction ? 12 : 0);
+  }
+  function candidateFamily(person) {
+    var p = profileOf(person), clan = str(p && p.clan || person.faction || '世家');
+    var background = str(p && (p.background || p.bio) || person.background || '');
     var branch = /嫡支/.test(background) ? '嫡支' : /旁支/.test(background) ? '旁支' : '名门子弟';
     return clan + branch;
   }
-  function applicantAppearance(person) {
+  function candidateLooks(person) {
     var charm = Number(person.skills && person.skills.charm || 0);
     if (charm >= 82) return '姿容拔萃，风仪清贵';
     if (charm >= 70) return '清俊出众，仪态端方';
     if (charm >= 55) return '容貌端雅，气度不凡';
     return '眉目清秀，仪容整肃';
   }
-  function applicantTalent(person) {
-    var p = profileOf(person), specialty = text(p && p.specialty || person.specialty || '家学');
-    var level = Number(p && p.specialtyLevel || person.specialtyLevel || 4);
-    var rank = (typeof CAST_DATA !== 'undefined' && CAST_DATA.skillRanks && CAST_DATA.skillRanks[level - 1]) || person.specialtyRank || '已有专长';
-    var description = level >= 8 ? '一技名家' : level >= 6 ? '造诣颇深' : level >= 4 ? '专长已成' : '家学有长';
-    return specialty + ' · ' + (rank || description) + ' · ' + description;
+  function candidateTalent(person) {
+    var level = specialtyLevel(person);
+    var rank = CAST_DATA.skillRanks && CAST_DATA.skillRanks[level - 1] || person.specialtyRank || '已有专长';
+    var note = level >= 8 ? '一技名家' : level >= 6 ? '造诣颇深' : level >= 4 ? '专长已成' : '家学有长';
+    return specialtyName(person) + ' · ' + rank + ' · ' + note;
   }
-  function meritScore(person) {
-    var skills = person.skills || {};
-    var best = Math.max(Number(skills.admin || 0), Number(skills.literature || 0), Number(skills.military || 0));
-    var charm = Number(skills.charm || 0);
-    var p = profileOf(person), level = Number(p && p.specialtyLevel || person.specialtyLevel || 4);
-    var clan = text(p && p.clan || person.faction || '');
-    var familyScore = clan ? 12 : 0;
-    return charm * 0.34 + best * 0.34 + level * 5 + familyScore;
-  }
-  function applicantCredentialHtml(person) {
-    var family = applicantFamily(person);
-    var looks = applicantAppearance(person);
-    var talent = applicantTalent(person);
-    return '<div class="v11-merit"><span>家世 · ' + escapeText(family) + '</span><span>风仪 · ' + escapeText(looks) + '</span><span>才艺 · ' + escapeText(talent) + '</span></div>';
-  }
-  function escapeText(value) {
-    return text(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  function meritMarkup(person) {
+    return '<div class="v121-merit"><span>家世 · ' + safeHtml(candidateFamily(person)) +
+      '</span><span>风仪 · ' + safeHtml(candidateLooks(person)) +
+      '</span><span>才艺 · ' + safeHtml(candidateTalent(person)) + '</span></div>';
   }
 
-  // 新生成的应选者来自世家荐选，风仪和专长需配得上入殿候选的身份。
+  // 生成候选者本来就是世家补录；让风仪、才学达到“可被荐入御前”的门槛。
   if (typeof oldMakeCandidate === 'function') {
-    window.makeCastCandidate = function (slot) {
+    window.makeCastCandidate = function () {
       var person = oldMakeCandidate.apply(this, arguments);
-      if (person && String(person.id).indexOf('aud-') === 0) {
-        person.skills = person.skills || {};
-        var meritSeed = hash(person.id + ':v11');
-        person.skills.charm = Math.max(Number(person.skills.charm || 0), 70 + (meritSeed % 16));
-        person.specialtyLevel = Math.max(Number(person.specialtyLevel || 0), 6 + (meritSeed % 3));
-        person.specialtyRank = CAST_DATA.skillRanks[person.specialtyLevel - 1] || '名家';
-        var relation = state.relations[person.id];
-        if (relation) {
-          relation.skills = relation.skills || {};
-          relation.skills.charm = person.skills.charm;
-        }
-        var profile = state.cast && state.cast.generatedProfiles && state.cast.generatedProfiles[person.id];
-        if (profile) {
-          profile.specialtyLevel = person.specialtyLevel;
-          profile.background = person.faction + '世家旁支，凭家学与专长入选，随荐书入宫候试。';
-          profile.bio = person.faction + '世家旁支，家学有传，风仪与专长皆经礼部核验。';
-        }
+      if (!person || String(person.id).indexOf('aud-') !== 0) return person;
+      var seed = hash(person.id + ':imperial-merit-v121');
+      person.skills = person.skills || {};
+      person.skills.charm = Math.max(Number(person.skills.charm || 0), 72 + seed % 16);
+      var keys = ['admin', 'literature', 'military'];
+      var selected = keys[seed % keys.length];
+      person.skills[selected] = Math.max(Number(person.skills[selected] || 0), 72 + (seed >>> 4) % 17);
+      person.specialtyLevel = Math.max(Number(person.specialtyLevel || 0), 6 + (seed >>> 8) % 3);
+      person.specialtyRank = CAST_DATA.skillRanks[person.specialtyLevel - 1] || '名家';
+      var relation = state.relations[person.id];
+      if (relation) {
+        relation.skills = relation.skills || {};
+        relation.skills.charm = person.skills.charm;
+        relation.skills[selected] = person.skills[selected];
+        relation.politics = relation.politics || person.skills.admin;
+        relation.force = relation.force || person.skills.military;
+      }
+      var profile = state.cast && state.cast.generatedProfiles && state.cast.generatedProfiles[person.id];
+      if (profile) {
+        profile.specialtyLevel = person.specialtyLevel;
+        profile.background = person.faction + '世家旁支，家中有荐书，凭风仪与一技之长入宫候选。';
+        profile.bio = person.faction + '世家旁支，家学有传，风仪与专长经礼部核验。';
       }
       return person;
     };
   }
-
-  // 选秀名单按家世、风仪、专长综合排序；保留原有候选资格与人数。
   if (typeof oldCandidatePool === 'function') {
     window.castCandidatePool = function () {
-      var paired = new Set((CAST_DATA.marriages || []).filter(function (x) { return x.status === 'married'; })
-        .reduce(function (all, x) { return all.concat([x.a, x.b]); }, []));
-      var pool = (PEOPLE || []).filter(function (p) {
-        var age = typeof castAge === 'function' ? castAge(p) : Number(p.age || 0);
-        return !p.official && p.id !== 'xie' && age >= 16 && age <= 25 &&
-          p.romance && p.gender !== '宦官' && !paired.has(p.id) &&
-          !(state.relations[p.id] && state.relations[p.id].rank);
+      var ids = oldCandidatePool.apply(this, arguments) || [];
+      return ids.slice().sort(function (a, b) {
+        return candidateMerit(personOf(b)) - candidateMerit(personOf(a));
       });
-      pool.sort(function (a, b) {
-        var diff = meritScore(b) - meritScore(a);
-        return diff || hash(state.elapsed + ':' + a.id) - hash(state.elapsed + ':' + b.id);
-      });
-      pool = pool.slice(0, 8);
-      for (var i = 0; pool.length < 8 && i < 12; i++) {
-        var candidate = window.makeCastCandidate ? window.makeCastCandidate(i) : null;
-        if (candidate && !paired.has(candidate.id) &&
-            !(state.relations[candidate.id] && state.relations[candidate.id].rank) &&
-            !pool.some(function (x) { return x.id === candidate.id; })) pool.push(candidate);
+    };
+  }
+
+  function applicantStage(person, index) {
+    var type = person.type || '清冷克制';
+    if (index === 0) return person.name + '将荐书双手奉上，叩礼后才开口。';
+    if (index === 1) return person.name + '把袖口收好，答话时仍垂首候命。';
+    return person.name + '依礼再拜，停了片刻才回答留牌之事。';
+  }
+  function applicantAnswer(person, index, consent) {
+    var family = candidateFamily(person), skill = specialtyName(person), self = '草民';
+    var type = person.type || '清冷克制';
+    if (index === 0) {
+      if (['戒备善谋', '务实重利'].indexOf(type) >= 0) {
+        return self + '出身' + family + '，家中荐书与谱牒皆已呈礼部。若陛下要核验，随时可查。草民不敢拿门第作凭，只求据实应答。';
       }
-      pool.sort(function (a, b) { return meritScore(b) - meritScore(a); });
-      if (typeof ensureMinds === 'function') ensureMinds();
-      if (typeof ensureInteractionStats === 'function') ensureInteractionStats();
-      return pool.slice(0, 8).map(function (p) { return p.id; });
+      if (['野心进取', '骄矜自尊'].indexOf(type) >= 0) {
+        return self + '出身' + family + '，奉家中荐书入殿。家中盼草民得选，草民也想凭自己的本事求一个机会。';
+      }
+      return self + '出身' + family + '，今日奉荐书来应选。临行前家中长辈再三叮嘱，御前不得失仪，草民不敢有半句虚言。';
+    }
+    if (index === 1) {
+      if (['野心进取', '明朗直率'].indexOf(type) >= 0) {
+        return self + '所习是' + skill + '。口说未必可信，若陛下允准，草民愿当殿试艺。';
+      }
+      if (['敏感多思', '戒备善谋'].indexOf(type) >= 0) {
+        return self + '所习是' + skill + '，师承与家学皆有凭据。今日御前回话，倒比平日练习更难，若有失误，恳请准草民重试。';
+      }
+      return self + '所习以' + skill + '稍长。若陛下要看，草民愿当殿试艺，不敢只凭口舌自陈。';
+    }
+    if (!consent) {
+      return '请陛下恕罪。草民今日尚不能应下终身去处，愿自请撤牌，不敢虚占名额。';
+    }
+    if (type === '野心进取') {
+      return '草民愿留牌。只求入宫以后，仍许草民研习' + skill + '，不致将从前所学都搁下。';
+    }
+    if (type === '骄矜自尊') {
+      return '草民愿留。若蒙陛下留牌，自当珍重，不敢只凭门第自矜。';
+    }
+    if (type === '寡言重诺') {
+      return '草民愿留。今日所答，往后亦不会改。';
+    }
+    if (type === '明朗直率') {
+      return '草民愿意留下。宫中规矩，草民会认真学，不敢因一时得见天颜便忘了本分。';
+    }
+    return '草民愿留牌。宫中礼法森严，草民已听礼官讲过；未尽之处，入宫后自当细学。';
+  }
+  function writeApplicantAnswer(id, index, row, accepted) {
+    var person = personOf(id);
+    if (!person || !row) return;
+    row.stage = applicantStage(person, index);
+    row.reply = applicantAnswer(person, index, accepted);
+    row.player = '';
+    row.topic = String(index);
+    row.semantic = 'audition-v121:' + id + ':' + index;
+    var mind = relationOf(person).mind;
+    if (mind) {
+      if (mind.lastTurn) mind.lastTurn.reply = row.reply;
+      if (Array.isArray(mind.turns) && mind.turns.length) {
+        mind.turns[mind.turns.length - 1].reply = row.reply;
+        mind.turns[mind.turns.length - 1].semantic = row.semantic;
+      }
+    }
+    lastApplicant = { id: id, name: person.name, index: index, accepted: accepted, reply: row.reply };
+    audit.applicants++;
+  }
+
+  // 宫门问话只显示 NPC 的答复，不显示玩家选择背后的原句。
+  if (typeof oldOpenModal === 'function') {
+    window.openModal = function (title, subtitle, body, eyebrow) {
+      return oldOpenModal.call(this, title, subtitle, stripPlayerSpeech(body), eyebrow);
     };
   }
 
   function applicantIntro(person) {
-    var type = person.type || '清冷克制';
-    var action = FIRST_ACTION[type] || FIRST_ACTION['清冷克制'];
-    var family = applicantFamily(person);
-    var specialty = applicantTalent(person);
-    var reply = '臣出身' + family + '，家中荐臣前来应选。臣所习为' + specialty.split(' · ')[0] + '，不敢在陛下面前自夸。';
-    return person.name + action + '\n\n“' + reply + '”';
+    var profile = profileOf(person), clan = candidateFamily(person), skill = specialtyName(person);
+    return '<span class="mind-stage">' + safeHtml(person.name) + '听见宣召，先俯身行礼。答话时声音略紧，仍努力把每个字说清。</span><br><br>“草民出身' +
+      safeHtml(clan) + '，平日所习是' + safeHtml(skill) + '。今日得见陛下，不敢失礼。”';
   }
-  function applicantAnswer(person, index) {
-    var family = applicantFamily(person);
-    var specialty = applicantTalent(person);
-    var skill = specialty.split(' · ')[0];
-    if (index === 0) {
-      return '臣出身' + family + '，奉家中荐书入殿。今日得见陛下，臣不敢有半句虚言；若有失礼之处，还请陛下指正。';
-    }
-    if (index === 1) {
-      return '臣所长是' + skill + '，师承与家学皆有凭据。若陛下允准，臣愿当殿试艺，不敢只凭口舌自陈。';
-    }
-    return '臣知道宫中规矩森严，也知道御前不可失仪。若蒙陛下留牌，臣必谨守本分；若不合圣意，臣领旨退下。';
-  }
-
-  // 替换扩展选秀对白：三轮问话皆谨慎、简短，先显门第与本事，再谈留宫。
-  window.expansionAuditionLine = function (person, index) {
-    return {
-      id: 'V11-AUD-' + person.id + '-' + index,
-      stage: applicantIntro(person),
-      reply: applicantAnswer(person, index),
-      player: '',
-      location: person.location || '候选殿外',
-      scene: { player: '', location: person.location || '候选殿外' }
-    };
-  };
-  window.expansionAuditionBase = function (person, index) {
-    return applicantAnswer(person, index);
-  };
-
   function decorateApplicantCards() {
-    if (typeof state === 'undefined' || !state.audition || state.audition.status !== 'offered') return;
     var body = typeof $ === 'function' ? $('modalBody') : document.getElementById('modalBody');
     if (!body) return;
     var cards = body.querySelectorAll('.audition-grid .candidate');
@@ -422,80 +452,87 @@
       var button = card.querySelector('[data-action="auditionInterview"]');
       if (!button) return;
       var person = personOf(button.dataset.id);
-      if (!person || card.querySelector('.v11-merit')) return;
-      var host = card.querySelector('.candidate-info') || card.children[1] || card;
+      if (!person || card.querySelector('.v121-merit')) return;
+      var host = card.children[1] || card;
       var anchor = host.querySelector('p');
-      if (anchor) anchor.insertAdjacentHTML('afterend', applicantCredentialHtml(person));
-      else host.insertAdjacentHTML('beforeend', applicantCredentialHtml(person));
-      audit.applicantCards++;
+      if (anchor) anchor.insertAdjacentHTML('afterend', meritMarkup(person));
+      else host.insertAdjacentHTML('beforeend', meritMarkup(person));
+      audit.meritCards++;
     });
   }
 
   if (typeof oldAuditionPanel === 'function') {
     window.auditionPanel = function () {
+      if (state.audition && Array.isArray(state.audition.pool)) {
+        state.audition.pool.sort(function (a, b) {
+          return candidateMerit(personOf(b)) - candidateMerit(personOf(a));
+        });
+      }
       var result = oldAuditionPanel.apply(this, arguments);
       decorateApplicantCards();
       return result;
     };
   }
 
-  function refreshAuditionQuestionLabels() {
-    var body = typeof $ === 'function' ? $('modalBody') : document.getElementById('modalBody');
-    if (!body) return;
-    var labels = ['了解应选缘由', '询问家世与所长', '确认留宫意愿'];
-    body.querySelectorAll('[data-action="auditionAsk"]').forEach(function (button) {
-      var raw = text(button.dataset.id), index = Number(raw.split('|')[1]);
-      var label = labels[index];
-      var title = button.querySelector('b');
-      if (label && title) title.textContent = label;
-    });
-  }
-
   if (typeof oldAuditionInterview === 'function') {
-    window.auditionInterview = function (id, answer) {
+    window.auditionInterview = function (id) {
       var result = oldAuditionInterview.apply(this, arguments);
       var body = typeof $ === 'function' ? $('modalBody') : document.getElementById('modalBody');
-      if (body) {
-        if (!answer) {
-          var scene = body.querySelector('.scene-text');
-          var person = personOf(id);
-          if (scene && person) scene.textContent = applicantIntro(person);
+      var person = personOf(id);
+      if (body && person) {
+        var scene = body.querySelector('.scene-text');
+        var answer = state.audition && state.audition.answers && state.audition.answers[id];
+        if (scene && !answer) scene.innerHTML = applicantIntro(person);
+        var host = body.querySelector('.scene-text');
+        if (host && !body.querySelector('.v121-merit')) {
+          host.insertAdjacentHTML('afterend', meritMarkup(person));
+          audit.meritCards++;
         }
-        refreshAuditionQuestionLabels();
       }
-      lastApplicant = { id: id, name: personOf(id) && personOf(id).name, answer: text(answer || '') };
+      lastApplicant = { id: id, name: person && person.name, opened: true };
       return result;
     };
   }
 
-  // 选秀开场强调御前威仪，谢无咎也按内廷礼数回禀。
-  if (typeof oldOpenModal === 'function') {
-    window.openModal = function (title, subtitle, body, eyebrow) {
-      if (String(eyebrow || '').indexOf('自愿遴选') >= 0 || String(eyebrow || '').indexOf('选秀') >= 0) {
-        subtitle = '谢无咎垂首回禀：“各家荐书已呈，应选者皆在殿外候命，请陛下阅看。”';
-      }
-      return oldOpenModal.call(this, title, subtitle, body, eyebrow);
+  // 由 V12 原选项处理资格、拒绝、记忆与轮次；本层只重写候选人的答复。
+  if (typeof actions !== 'undefined' && typeof actions.auditionAsk === 'function') {
+    var oldAuditionAsk = actions.auditionAsk;
+    actions.auditionAsk = function (raw) {
+      var parts = String(raw).split('|');
+      var id = parts[0], index = Number(parts[1]);
+      var au = state.audition, person = personOf(id);
+      if (!person || !au || au.status !== 'offered' || !au.pool.includes(id) ||
+          [0, 1, 2].indexOf(index) < 0) return;
+      var alreadyAsked = (au.interviews[id] || []).includes(index);
+      var result = oldAuditionAsk.apply(this, arguments);
+      if (alreadyAsked) return result;
+      var row = au.answers && au.answers[id];
+      var consent = index === 2 ? au.consent[id] === true : true;
+      writeApplicantAnswer(id, index, row, consent);
+      if (typeof window.auditionInterview === 'function') window.auditionInterview(id);
+      if (typeof save === 'function') save();
+      return result;
     };
   }
 
   var style = document.createElement('style');
-  style.textContent = '.v11-merit{display:flex;flex-direction:column;gap:3px;margin:7px 0 8px;padding:8px 9px;border-left:2px solid #b78c70;background:#faf2eb;color:#80616a;font-size:11px;line-height:1.6}.v11-merit span{display:block}.audition-grid .candidate{align-items:stretch}.audition-grid .candidate>div:last-child{min-width:0}.audition-grid .candidate .v11-merit{max-width:100%}';
+  style.textContent = '.v121-merit{display:flex;flex-direction:column;gap:3px;margin:8px 0;padding:8px 10px;border-left:2px solid #b78c70;background:#faf2eb;color:#80616a;font-size:11px;line-height:1.6}.v121-merit span{display:block}.audition-grid .candidate .v121-merit{max-width:100%}';
   document.head.appendChild(style);
 
-  window.__FENGQUE_V11_PATCHED__ = true;
-  window.__fengqueV11Audit = function () {
+  window.__FENGQUE_IMPERIAL_TONE_V121__ = true;
+  window.__fengqueImperialToneAudit = function () {
     return {
-      version: 'V11',
-      patched: !!window.__FENGQUE_V11_PATCHED__,
+      version: 'V12.1',
+      patched: !!window.__FENGQUE_IMPERIAL_TONE_V121__,
       rules: [
-        '初见先守礼、谨慎作答；许知衡初见有轻微脸红并严肃回应',
-        '受数落时只给一段简短答复；亲近后才逐步开放私人心意',
-        '对话框隐藏主控说的话，只展示 NPC 动作与回应',
-        '选秀者展示家世、风仪、专长；御前问话保持敬畏与礼数',
-        '保留原有选秀资格、留牌人数、年龄门槛、资源与关系数值'
+        '初见先守礼；许知衡初见耳根泛红，回答朝务一至两句',
+        '数落只显示 NPC 的一段回应；许知衡保留责任与证据立场',
+        '许知衡只在真正亲密时逐步敞开心意',
+        'NPC 对话框与选秀问话不显示主控原句',
+        '候选人展示家世、风仪、专长；御前回答谨慎敬畏',
+        '原选秀资格、年龄范围、留牌人数、资源、拒绝机制与关系数值保留'
       ],
       counts: Object.assign({}, audit),
-      lastFirstMeeting: lastFirstMeeting,
       lastApplicant: lastApplicant
     };
   };
