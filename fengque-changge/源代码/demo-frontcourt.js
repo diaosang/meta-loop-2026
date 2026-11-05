@@ -253,7 +253,7 @@ function frontEffects(e,scale=1){return Object.entries(e).map(([k,v])=>frontLabe
 function frontName(id){return PEOPLE.find(p=>p.id===id)?.name||'待授官员';}
 function frontCost(x){return '行动'+(x.ap??1)+' · 国库银'+x.money+' · 仓粮'+x.grain+' · '+x.days+'日后回奏';}
 function frontCanOrder(){return !isAway()&&courtStatus()==='open';}
-function frontOpen(title,intro,body){openModal(title,intro,body,'前朝 · 晟朝政务');}
+function frontOpen(title,intro,body){openModal(title,intro,body,'前朝 · 大梁政务');}
 function frontTaskRow(o){const t=FRONT.tasks.find(t=>t.id===o.task);return '<div class="record"><span class="tag">'+frontStatus[o.status]+'</span> <b>'+frontEsc(t.name)+'</b><p>'+frontEsc(regionOf(o.region).name)+' · '+frontEsc(frontName(o.actor))+(o.status==='pending'?' · 尚需'+Math.max(0,o.due-mindTick())+'日':'')+'</p><button class="btn ghost" data-action="frontOrder" data-id="'+o.uid+'">看拨款与回奏</button></div>';}
 function frontAffairRow(a){const t=FRONT.events.find(t=>t.id===a.type);return '<div class="record"><span class="tag">'+frontStatus[a.status]+'</span><h4>'+frontEsc(t.title)+'</h4><p>'+frontEsc(regionOf(a.region).name)+' · '+frontEsc(t.reason)+'</p><button class="btn '+(['presented','overdue'].includes(a.status)?'primary':'ghost')+'" data-action="frontAffair" data-id="'+a.uid+'">'+(['presented','overdue'].includes(a.status)?'听议并御批':'看办理与回奏')+'</button></div>';}
 function frontAffairsBody(){
@@ -324,7 +324,7 @@ function frontPanelBody(id){
  return body;
 }
 
-function frontSources(){frontOpen('前朝参考与规则','参考《皇帝成长计划2》的国家经营方向，采用晟朝原创流程与数值。','<p>一月仍用原有十五行动。每日可入朝，入朝耗1行动；同日退朝后不重开。六部差事、御批和任官另计行动。国家钱粮跨月保留，内库沿用宫廷账目。</p>'+FRONT.sources.map(s=>'<div class="record"><b>'+frontEsc(s.title)+'</b><p>'+frontEsc(s.used)+'</p><p class="mini">'+frontEsc(s.url)+'</p></div>').join('')+'<p>'+frontEsc(FRONT.note)+'</p>');}
+function frontSources(){frontOpen('前朝参考与规则','参考《皇帝成长计划2》的国家经营方向，采用大梁原创流程与数值。','<p>一月仍用原有十五行动。每日可入朝，入朝耗1行动；同日退朝后不重开。六部差事、御批和任官另计行动。国家钱粮跨月保留，内库沿用宫廷账目。</p>'+FRONT.sources.map(s=>'<div class="record"><b>'+frontEsc(s.title)+'</b><p>'+frontEsc(s.used)+'</p><p class="mini">'+frontEsc(s.url)+'</p></div>').join('')+'<p>'+frontEsc(FRONT.note)+'</p>');}
 
 // The scene layout module below binds the hall renderer.
 const frontBeforeBuild=buildDay;buildDay=function(){const key=frontBeforeBuild();frontEnsure();frontDay(key);return key;};

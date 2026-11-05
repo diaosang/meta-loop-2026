@@ -1,0 +1,25 @@
+{
+  "version": "14.0",
+  "date": "2026-11-05",
+  "baseCommit": "ce93504d29a566bbfabba386dfa587af72b658f6",
+  "checksPassed": 128,
+  "canonLogic": 36,
+  "browser": 16,
+  "compatibility": 76,
+  "newCoreEverydayReplies": 105,
+  "newCoreFlirtReplies": 27,
+  "newWorkbookSheets": 6,
+  "historicalWorkbookSheetsPreserved": 36,
+  "historicalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "priorPlayablesAndReportsUnchanged": true,
+  "unrelatedRepositoryFilesUnchanged": true,
+  "threeCurrentEntriesIdentical": true,
+  "pageErrors": [],
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "savePolicy": "旧档保留资源、亲疏、子嗣与已发生册封；完整新登基关系由用户导出后确认重开。",
+  "scope": "大梁登基、三位核心人设与边界、许案多源查核、姜叶实际任官、情报核验；不声称新增完整战争或传位。"
+}

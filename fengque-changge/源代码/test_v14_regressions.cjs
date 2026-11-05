@@ -1,0 +1,5 @@
+const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process');
+const root=path.resolve(__dirname,'..'),suites=[['test_frontcourt.cjs','前朝逻辑'],['test_approval_flow.cjs','批阅恢复'],['test_everyday_talk.cjs','近况去重']];
+const old=new Map(fs.readdirSync(root).filter(n=>/^验证报告_v13.*\.json$/.test(n)).map(n=>[n,fs.readFileSync(path.join(root,n))]));let failed=false;const runs=[];
+try{for(const [script,name] of suites){const r=spawnSync(process.execPath,[path.join(__dirname,script)],{cwd:root,encoding:'utf8'});process.stdout.write(r.stdout||'');process.stderr.write(r.stderr||'');const match=(r.stdout||'').match(/ALL (\d+) .*CHECKS PASSED/);runs.push({script,name,status:r.status,passed:match?Number(match[1]):0});if(r.status!==0){failed=true;break;}}}finally{for(const [n,v]of old)fs.writeFileSync(path.join(root,n),v);}
+fs.writeFileSync(path.join(root,'验证报告_v14_兼容回归.json'),JSON.stringify({version:'14.0',runs,failed,passed:runs.reduce((n,r)=>n+r.passed,0),historicalReportsPreserved:true},null,2));if(failed)process.exit(1);

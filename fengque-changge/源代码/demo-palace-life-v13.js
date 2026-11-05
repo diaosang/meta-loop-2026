@@ -19,6 +19,7 @@
  function whom(p){return __courtVoiceAudit.context(p).self;}
  function fill(text,p,ep){return String(text).replaceAll('{self}',whom(p)).replaceAll('{rival}',get(ep?.rival)?.name||'那位熟人');}
  function content(p,key,index,ep){
+  if(typeof DALIANG_DATA!=='undefined'&&p.id==='xu'&&key==='jealous')return {text:['陛下今日另有召见，臣知道。阁务都记在这里，先放下了。','无妨。陛下既有闲，臣也不必总站着回话。','臣没有将公事搁下。至于方才的话……陛下不必在人前再问。','那臣先告退。余下阁务会照常办妥，不误陛下用人。'][index]||'臣先将这页收好。',narrative:false};
   const special=DATA.bespoke[p.id];
   if(key==='snack'&&special){const k=['snack','share','tease','space'][index];if(special[k])return {text:special[k],narrative:true};}
   if(key==='jealous'&&index===0&&special?.jealous)return {text:fill(special.jealous,p,ep),narrative:true};

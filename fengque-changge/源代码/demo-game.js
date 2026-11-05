@@ -2,10 +2,10 @@
 const $=id=>document.getElementById(id);
 const KEY='fengque-demo-v4';
 const PEOPLE=[
- {id:'xu',name:'许知衡',age:19,role:'内阁首辅 · 发小',type:'清冷克制',tone:'竹青',color:'#758d81',initial:42,trust:64,romance:true,desc:'公事说得滴水不漏，私下却记得你小时候不爱喝苦茶。',open:'他将折子放下，没有立刻起身。\n“今日是来见首辅，还是来见我？”'},
- {id:'jiang',name:'姜太傅',age:45,role:'太傅 · 世家权臣',type:'严正守礼',tone:'墨蓝',color:'#6d7e95',initial:22,trust:48,romance:false,desc:'教了你许多年，仍不习惯你可以不听他的话。',open:'“这道折子，陛下可看过了？”\n他指着你案上的朱批，像从前检查课业。'},
+ {id:"xu",name:"许知衡",age:24,role:"内阁首辅 · 帝师遗孤",type:"清冷克制",tone:'宫廷',color:"#758d81",initial:42,trust:64,romance:true,desc:"许阁老遗孙，旧案失势后重返朝堂。与你曾有婚约，忠于君上，却不肯以首辅印换后宫名位。",open:'“陛下。”'},
+ {id:"jiang",name:"姜禹瀛",age:32,role:"世家太傅 · 姜氏执棋者",type:"戒备善谋",tone:'宫廷',color:"#6d7e95",initial:22,trust:48,romance:true,desc:"拥立你的姜氏嫡系。解围时温雅周全，谈到荐举、签押与兵权，却从不轻易退让。",open:'“陛下。”'},
  {id:'ye',name:'叶承钧',age:33,role:'阁臣 · 叶氏家主',type:'务实重利',tone:'檀金',color:'#b28a5d',initial:24,trust:36,romance:false,desc:'生意谈得坦白，真心却从不明码标价。',open:'叶承钧瞥了眼茶盏，笑着坐下。\n“陛下今日的茶，想必不便宜。”'},
- {id:'xie',name:'谢无咎',age:25,role:'东厂厂督 · 宦官',type:'戒备善谋',tone:'青灰',color:'#7d9090',initial:28,trust:58,romance:false,desc:'说忠心时不看你，说谎时却会替你把茶添满。',open:'他先看了一眼门口，才将袖里的纸取出来。\n“陛下想听好消息，还是实话？”'},
+ {id:"xie",name:"谢无咎",age:25,role:"内廷掌事 · 御前旧人",type:"圆融世故",tone:'宫廷',color:"#8b7686",initial:48,trust:68,romance:true,desc:"公主时便伴你左右的掌事。宫中耳目、京城暗线与商贾人脉，都可到他手里；他递来的话，仍须分清亲见、转述和未核。",open:'“陛下。”'},
  {id:'song',name:'宋玉衡',age:21,role:'京城琴师 · 尚未入宫',type:'骄矜自尊',tone:'藕粉',color:'#b8808f',initial:28,trust:40,romance:true,desc:'不怕曲子无人听，怕的是你听完只说一句“赏”。',open:'最后一声琴音散了，他才抬头。\n“方才那段，陛下是真的听了，还是只等着它结束？”'},
  {id:'lu',name:'陆景明',age:23,role:'年轻校尉 · 尚未入宫',type:'明朗直率',tone:'赤陶',color:'#ba7966',initial:26,trust:44,romance:true,desc:'有话就说，吃醋也藏不住。真碰上大事，却比谁都靠得住。',open:'他远远看见你，先露了笑，又想起要行礼。\n“陛下今日得空？我正想带你看个地方。”'}
 ];
@@ -36,7 +36,7 @@ const EVENTS={
  ['先吃饭，晚些再解释','你没有当众接话。散席时，他走得很快，没有像往常一样回头。','你避开了一场争执；若总不解释，心结仍会留下。',{allPalace:-1}]]}
 };
 const clone=x=>JSON.parse(JSON.stringify(x));
-const initial=()=>({version:3,openingScenario:'ruined-realm',elapsed:2,ap:15,apMax:15,money:120,army:62,authority:51,people:58,tab:'court',chapter:'early',relations:Object.fromEntries(PEOPLE.map(p=>[p.id,{aff:p.initial,trust:p.trust,love:0,rank:null,officer:true,notes:[],counts:{},gain:0}])),case:{evidence:[],heardXu:false,heardYe:false,secret:false,judgment:null,late:false},event:null,eventDone:[],promises:[],logs:[{month:2,type:'朝会',text:'景和元年三月，北营报缺粮三百石。你命人留下奏报，准备亲自过问。'}],worldEdges:[],visited:[],introSeen:false});
+const initial=()=>({version:3,openingScenario:'ruined-realm',canonScenario:'daliang-nine',elapsed:2,ap:15,apMax:15,money:120,army:62,authority:51,people:58,tab:'court',chapter:'early',relations:Object.fromEntries(PEOPLE.map(p=>[p.id,{aff:p.initial,trust:p.trust,love:0,rank:null,officer:true,notes:[],counts:{},gain:0}])),case:{evidence:[],heardXu:false,heardYe:false,secret:false,judgment:null,late:false},event:null,eventDone:[],promises:[],logs:[{month:2,type:'朝会',text:'景和元年三月，北营报缺粮三百石。你命人留下奏报，准备亲自过问。'}],worldEdges:[],visited:[],introSeen:false});
 let state=initial(),session=null,modalAfter=null,toastTimer;
 try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved?.version===3&&saved.relations&&saved.case&&Array.isArray(saved.logs))state=saved;}catch{}
 function clamp(n){return Math.max(0,Math.min(100,n));}

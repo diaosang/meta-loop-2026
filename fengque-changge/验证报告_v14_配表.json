@@ -1,0 +1,163 @@
+{
+  "version": "14.0",
+  "newWorkbook": "凤阙长歌_大梁设定与玩法_v14.xlsx",
+  "newSheets": [
+    "大梁与登基",
+    "核心人物与边界",
+    "许案调查链",
+    "姜叶荐举",
+    "新正文与亲疏",
+    "迁移与校验"
+  ],
+  "dialogueRows": 132,
+  "historicalWorkbookSheets": [
+    {
+      "name": "内容总览",
+      "state": "visible"
+    },
+    {
+      "name": "通用对话",
+      "state": "visible"
+    },
+    {
+      "name": "人物专属",
+      "state": "visible"
+    },
+    {
+      "name": "事件库",
+      "state": "visible"
+    },
+    {
+      "name": "事件分支",
+      "state": "visible"
+    },
+    {
+      "name": "NPC性格目标",
+      "state": "visible"
+    },
+    {
+      "name": "性格口吻",
+      "state": "visible"
+    },
+    {
+      "name": "心态规则",
+      "state": "visible"
+    },
+    {
+      "name": "自主行为",
+      "state": "visible"
+    },
+    {
+      "name": "情境目录",
+      "state": "visible"
+    },
+    {
+      "name": "事件母题",
+      "state": "visible"
+    },
+    {
+      "name": "核心专属索引",
+      "state": "visible"
+    },
+    {
+      "name": "V13宫墙对白",
+      "state": "visible"
+    },
+    {
+      "name": "V13互动规则",
+      "state": "visible"
+    },
+    {
+      "name": "V13.1日常修订",
+      "state": "visible"
+    },
+    {
+      "name": "V13.1倾诉接话",
+      "state": "visible"
+    },
+    {
+      "name": "V13.2情意递进",
+      "state": "visible"
+    },
+    {
+      "name": "V13.2选秀底稿",
+      "state": "visible"
+    },
+    {
+      "name": "V13.2面圣对白",
+      "state": "visible"
+    },
+    {
+      "name": "V13.2规则",
+      "state": "visible"
+    },
+    {
+      "name": "V13.3日常亲疏",
+      "state": "visible"
+    },
+    {
+      "name": "V13.3日常接话",
+      "state": "visible"
+    },
+    {
+      "name": "V13.3规则",
+      "state": "visible"
+    },
+    {
+      "name": "V13.4家世来源",
+      "state": "visible"
+    },
+    {
+      "name": "V13.4身世主线",
+      "state": "visible"
+    },
+    {
+      "name": "V13.4身世接话选择",
+      "state": "visible"
+    },
+    {
+      "name": "V13.4消息规则",
+      "state": "visible"
+    },
+    {
+      "name": "V13.5六部职掌",
+      "state": "visible"
+    },
+    {
+      "name": "V13.5施政差事",
+      "state": "visible"
+    },
+    {
+      "name": "V13.5重大奏案",
+      "state": "visible"
+    },
+    {
+      "name": "V13.5御批方案",
+      "state": "visible"
+    },
+    {
+      "name": "V13.5廷议对白",
+      "state": "visible"
+    },
+    {
+      "name": "V13.5前朝规则",
+      "state": "visible"
+    },
+    {
+      "name": "V13.6登基危局",
+      "state": "visible"
+    },
+    {
+      "name": "V13.6破局筹措",
+      "state": "visible"
+    },
+    {
+      "name": "V13.6权臣交涉",
+      "state": "visible"
+    }
+  ],
+  "historicalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "historicalWorkbookUnchanged": true,
+  "reopenedAndValidated": true,
+  "formulas": "新增设定表无公式；历史底表未重算。"
+}

@@ -1,0 +1,26 @@
+{
+  "version": "14.0",
+  "runs": [
+    {
+      "script": "test_frontcourt.cjs",
+      "name": "前朝逻辑",
+      "status": 0,
+      "passed": 35
+    },
+    {
+      "script": "test_approval_flow.cjs",
+      "name": "批阅恢复",
+      "status": 0,
+      "passed": 14
+    },
+    {
+      "script": "test_everyday_talk.cjs",
+      "name": "近况去重",
+      "status": 0,
+      "passed": 27
+    }
+  ],
+  "failed": false,
+  "passed": 76,
+  "historicalReportsPreserved": true
+}
