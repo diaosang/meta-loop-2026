@@ -1,0 +1,3200 @@
+{
+  "version": "13.7",
+  "rows": [
+    {
+      "id": "everyday:npc:xu:listen:0",
+      "semantic": "everyday:npc:xu:listen:0",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "臣近来尚好。案上的事虽多，按轻重一件件理着，尚应付得来。"
+    },
+    {
+      "id": "everyday:npc:xu:listen:1",
+      "semantic": "everyday:npc:xu:listen:1",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来没有大碍，只是久坐，肩背有些僵。起来走几步便好了，谢陛下垂问。"
+    },
+    {
+      "id": "everyday:npc:xu:listen:2",
+      "semantic": "everyday:npc:xu:listen:2",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "还算顺遂。臣原有遇事便记下来的习惯，事情多些，也不至于乱了头绪。"
+    },
+    {
+      "id": "everyday:npc:xu:listen:3",
+      "semantic": "everyday:npc:xu:listen:3",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日倒没什么为难的。只是总坐得久，起身时才觉出腰酸，正想改一改。"
+    },
+    {
+      "id": "everyday:npc:xu:listen:4",
+      "semantic": "everyday:npc:xu:listen:4",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "说忙，也还是那些事。有时收拾妥了，反倒不知该做什么，便又去翻书。"
+    },
+    {
+      "id": "everyday:npc:xu:listen:5",
+      "semantic": "everyday:npc:xu:listen:5",
+      "npc": "xu",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "都好。原还想把没做完的事数给您听，想想，您问的是我，便不拿折子来搪塞了。"
+    },
+    {
+      "id": "everyday:npc:xu:listen:6",
+      "semantic": "everyday:npc:xu:listen:6",
+      "npc": "xu",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "有些累，倒也没到撑不住的地步。今日既见着您，这一会儿便不想旁的了。"
+    },
+    {
+      "id": "everyday:npc:xu:comfort:0",
+      "semantic": "everyday:npc:xu:comfort:0",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饮食如常，夜里也能安睡。偶有坐久的时候，臣会留意。"
+    },
+    {
+      "id": "everyday:npc:xu:comfort:1",
+      "semantic": "everyday:npc:xu:comfort:1",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "臣起居尚可。看书时忘了时辰是有的，不过并非夜夜如此。"
+    },
+    {
+      "id": "everyday:npc:xu:comfort:2",
+      "semantic": "everyday:npc:xu:comfort:2",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "不曾受寒。只是天色一暗，便不宜再辨那些细字，臣心中有数。"
+    },
+    {
+      "id": "everyday:npc:xu:comfort:3",
+      "semantic": "everyday:npc:xu:comfort:3",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭倒没落下。您若问我有没有一边吃一边看书，这个……是有过。"
+    },
+    {
+      "id": "everyday:npc:xu:comfort:4",
+      "semantic": "everyday:npc:xu:comfort:4",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡得还算安稳，醒来便容易惦记事情。看来得先把书放远些。"
+    },
+    {
+      "id": "everyday:npc:xu:comfort:5",
+      "semantic": "everyday:npc:xu:comfort:5",
+      "npc": "xu",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "看书时把茶搁在手边，一低头便容易忘了喝。近来想记着趁热，免得回回都将就。"
+    },
+    {
+      "id": "everyday:npc:xu:recent:0",
+      "semantic": "everyday:npc:xu:recent:0",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在把手边的书分一分。常看的留在案上，余下收回去，免得临用时找不着。"
+    },
+    {
+      "id": "everyday:npc:xu:recent:1",
+      "semantic": "everyday:npc:xu:recent:1",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才翻到一处旧批注，字写得太挤，连自己也须辨认片刻。"
+    },
+    {
+      "id": "everyday:npc:xu:recent:2",
+      "semantic": "everyday:npc:xu:recent:2",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "正将几张散页夹好。臣看书有时贪快，收拾起来倒比读时费工夫。"
+    },
+    {
+      "id": "everyday:npc:xu:recent:3",
+      "semantic": "everyday:npc:xu:recent:3",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "想把案头腾空些，结果挪开这一摞，才发现后面还藏着一摞。"
+    },
+    {
+      "id": "everyday:npc:xu:recent:4",
+      "semantic": "everyday:npc:xu:recent:4",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在重看从前圈过的几处。彼时觉得十分有理，如今再看，也有想商榷的地方。"
+    },
+    {
+      "id": "everyday:npc:xu:recent:5",
+      "semantic": "everyday:npc:xu:recent:5",
+      "npc": "xu",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "原想把案上理得齐整些再请您坐。后来觉得，等全理好，只怕天都黑了。"
+    },
+    {
+      "id": "everyday:npc:xu:home:0",
+      "semantic": "everyday:npc:xu:home:0",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "许家旧日最重读书。书页不许折角，要另夹纸签，臣至今也照着做。"
+    },
+    {
+      "id": "everyday:npc:xu:home:1",
+      "semantic": "everyday:npc:xu:home:1",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家中收书总按次序放，取过须归原处。小时候只觉麻烦，如今倒省去不少寻书的工夫。"
+    },
+    {
+      "id": "everyday:npc:xu:home:2",
+      "semantic": "everyday:npc:xu:home:2",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前最怕的倒不是功课难，是读完之后，还要当着长辈的面说自己究竟懂了什么。"
+    },
+    {
+      "id": "everyday:npc:xu:home:3",
+      "semantic": "everyday:npc:xu:home:3",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家中人总说我性子稳。其实小时候也有坐不住的时候，只是不肯叫人看见。"
+    },
+    {
+      "id": "everyday:npc:xu:home:4",
+      "semantic": "everyday:npc:xu:home:4",
+      "npc": "xu",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前家中问我如何，答的总是功课、差事。您今日问起来，我倒想先说些旁的。"
+    },
+    {
+      "id": "everyday:npc:xu:interest:0",
+      "semantic": "everyday:npc:xu:interest:0",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时仍爱读书，不过不独看经史。杂记里的一点见闻，也很有意思。"
+    },
+    {
+      "id": "everyday:npc:xu:interest:1",
+      "semantic": "everyday:npc:xu:interest:1",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢习字。不是为了呈给谁看，写得不满意，便留着自己再练。"
+    },
+    {
+      "id": "everyday:npc:xu:interest:2",
+      "semantic": "everyday:npc:xu:interest:2",
+      "npc": "xu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "偶尔也看棋谱。只在纸上推演，和真与人对坐，又是两回事。"
+    },
+    {
+      "id": "everyday:npc:xu:interest:3",
+      "semantic": "everyday:npc:xu:interest:3",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "有些杂书不大好意思摆在案头，怕旁人见了，又来问臣究竟在考据哪一段。"
+    },
+    {
+      "id": "everyday:npc:xu:interest:4",
+      "semantic": "everyday:npc:xu:interest:4",
+      "npc": "xu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢看旁人在书边作的批注。有时只两三字，比正文还叫人想知道缘由。"
+    },
+    {
+      "id": "everyday:npc:xu:interest:5",
+      "semantic": "everyday:npc:xu:interest:5",
+      "npc": "xu",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "您在旁边时，看书会慢一些。倒不是扰着，只是读到有趣处，便想说给您听。"
+    },
+    {
+      "id": "everyday:npc:jiang:listen:0",
+      "semantic": "everyday:npc:jiang:listen:0",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "老臣近来尚好，精神也还足。若说不便，不过是坐久了起身慢些。"
+    },
+    {
+      "id": "everyday:npc:jiang:listen:1",
+      "semantic": "everyday:npc:jiang:listen:1",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "一切如常。案头的事不急着一口气做完，慢慢来，也不误什么。"
+    },
+    {
+      "id": "everyday:npc:jiang:listen:2",
+      "semantic": "everyday:npc:jiang:listen:2",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日没有不适。老臣如今懂得量力，乏了便歇，不会拿身子逞强。"
+    },
+    {
+      "id": "everyday:npc:jiang:listen:3",
+      "semantic": "everyday:npc:jiang:listen:3",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来过得还算清闲。得空重翻旧书，才知道当年有几处，讲得也太笃定了。"
+    },
+    {
+      "id": "everyday:npc:jiang:listen:4",
+      "semantic": "everyday:npc:jiang:listen:4",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "精神不错，就是眼睛不似从前，细字要拿远些才看得清。"
+    },
+    {
+      "id": "everyday:npc:jiang:listen:5",
+      "semantic": "everyday:npc:jiang:listen:5",
+      "npc": "jiang",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "都好。您肯抽空来问这一句，老臣心里就很受用了，倒不必次次带着难题。"
+    },
+    {
+      "id": "everyday:npc:jiang:comfort:0",
+      "semantic": "everyday:npc:jiang:comfort:0",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃得下，也睡得着。老臣这把年纪，先将饭用好，旁的才有精神做。"
+    },
+    {
+      "id": "everyday:npc:jiang:comfort:1",
+      "semantic": "everyday:npc:jiang:comfort:1",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "起居有定时，夜里不再硬读书。看不清还勉强，反要多费一日。"
+    },
+    {
+      "id": "everyday:npc:jiang:comfort:2",
+      "semantic": "everyday:npc:jiang:comfort:2",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "并未受寒。早晚添减衣裳的事，老臣还记得住。"
+    },
+    {
+      "id": "everyday:npc:jiang:comfort:3",
+      "semantic": "everyday:npc:jiang:comfort:3",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡得早了，醒得也早。偶尔想赖一会儿，心里倒先算起今日还能读几页。"
+    },
+    {
+      "id": "everyday:npc:jiang:comfort:4",
+      "semantic": "everyday:npc:jiang:comfort:4",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "口味比从前淡些。吃惯了，反觉清淡也有清淡的好处。"
+    },
+    {
+      "id": "everyday:npc:jiang:comfort:5",
+      "semantic": "everyday:npc:jiang:comfort:5",
+      "npc": "jiang",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "我这边有分寸。倒是看您来时的精神，今日可不能又将歇息的时辰全匀给旁人。"
+    },
+    {
+      "id": "everyday:npc:jiang:recent:0",
+      "semantic": "everyday:npc:jiang:recent:0",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在翻从前讲学时的笔记。有几处旁边写着“待考”，如今还得接着考。"
+    },
+    {
+      "id": "everyday:npc:jiang:recent:1",
+      "semantic": "everyday:npc:jiang:recent:1",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚将书签分好。年岁一长，若不记下读到哪里，下一回便又从头翻。"
+    },
+    {
+      "id": "everyday:npc:jiang:recent:2",
+      "semantic": "everyday:npc:jiang:recent:2",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在辨一处注解。两家各有道理，不宜只因先读了哪家，便认定哪家是。"
+    },
+    {
+      "id": "everyday:npc:jiang:recent:3",
+      "semantic": "everyday:npc:jiang:recent:3",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "找出一本旧书，书还好，批注倒有几处要改。总不能因是自己写的，便舍不得。"
+    },
+    {
+      "id": "everyday:npc:jiang:recent:4",
+      "semantic": "everyday:npc:jiang:recent:4",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日读得慢，倒看出从前匆匆略过的一点意思。"
+    },
+    {
+      "id": "everyday:npc:jiang:recent:5",
+      "semantic": "everyday:npc:jiang:recent:5",
+      "npc": "jiang",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "原想好了见您要说什么，真坐下来，又觉得今日不讲道理也好。"
+    },
+    {
+      "id": "everyday:npc:jiang:home:0",
+      "semantic": "everyday:npc:jiang:home:0",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "老臣家中旧书多，收书时比待客还郑重，唯恐一点潮气伤了纸。"
+    },
+    {
+      "id": "everyday:npc:jiang:home:1",
+      "semantic": "everyday:npc:jiang:home:1",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家里最常叮嘱的，是不会的事便说不会，不能靠声气大来遮。"
+    },
+    {
+      "id": "everyday:npc:jiang:home:2",
+      "semantic": "everyday:npc:jiang:home:2",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前教学生，怕他们学得不够快。如今想来，肯慢慢问的那些，倒记得更牢。"
+    },
+    {
+      "id": "everyday:npc:jiang:home:3",
+      "semantic": "everyday:npc:jiang:home:3",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家中书案用了许多年。别的换过，案子却总舍不得动。"
+    },
+    {
+      "id": "everyday:npc:jiang:home:4",
+      "semantic": "everyday:npc:jiang:home:4",
+      "npc": "jiang",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "home",
+      "reply": "有时也念旧，并非从前事事都好，只是有些人、有些话，如今再问不着了。"
+    },
+    {
+      "id": "everyday:npc:jiang:interest:0",
+      "semantic": "everyday:npc:jiang:interest:0",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "仍是读书，闲时也理旧注。若有新疑，便记下来。"
+    },
+    {
+      "id": "everyday:npc:jiang:interest:1",
+      "semantic": "everyday:npc:jiang:interest:1",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢听人将一件事从头讲清。话不必漂亮，先后要分明。"
+    },
+    {
+      "id": "everyday:npc:jiang:interest:2",
+      "semantic": "everyday:npc:jiang:interest:2",
+      "npc": "jiang",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "偶尔观棋。旁观时最容易自以为高明，自己执子，才知每步都有为难。"
+    },
+    {
+      "id": "everyday:npc:jiang:interest:3",
+      "semantic": "everyday:npc:jiang:interest:3",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "如今倒喜欢看年轻人争辩。只要不是急着争赢，便总有可听的。"
+    },
+    {
+      "id": "everyday:npc:jiang:interest:4",
+      "semantic": "everyday:npc:jiang:interest:4",
+      "npc": "jiang",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时把一本书读薄些，一页只想一件事，倒比贪多有趣。"
+    },
+    {
+      "id": "everyday:npc:jiang:interest:5",
+      "semantic": "everyday:npc:jiang:interest:5",
+      "npc": "jiang",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "您若有闲话也说给我听。太傅又不是时时都要留功课。"
+    },
+    {
+      "id": "everyday:npc:ye:listen:0",
+      "semantic": "everyday:npc:ye:listen:0",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "臣近来无恙。事情虽琐碎，尚分得清先后，未到顾此失彼的时候。"
+    },
+    {
+      "id": "everyday:npc:ye:listen:1",
+      "semantic": "everyday:npc:ye:listen:1",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "还好。手上有要核的账，臣便一页页看，不敢只图快。"
+    },
+    {
+      "id": "everyday:npc:ye:listen:2",
+      "semantic": "everyday:npc:ye:listen:2",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来忙些，饮食倒没耽搁。臣若先把自己熬坏，手边的事更没人收了。"
+    },
+    {
+      "id": "everyday:npc:ye:listen:3",
+      "semantic": "everyday:npc:ye:listen:3",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "人还好，就是一坐下便忍不住算还有几件没做，闲也闲得不大踏实。"
+    },
+    {
+      "id": "everyday:npc:ye:listen:4",
+      "semantic": "everyday:npc:ye:listen:4",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日没什么大事。难得空一刻，又先想着要不要找点什么做。"
+    },
+    {
+      "id": "everyday:npc:ye:listen:5",
+      "semantic": "everyday:npc:ye:listen:5",
+      "npc": "ye",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "累倒是真的。平时逢人便说好，到了您这里，倒不想再添一句“轻松得很”了。"
+    },
+    {
+      "id": "everyday:npc:ye:comfort:0",
+      "semantic": "everyday:npc:ye:comfort:0",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭照常用，夜里也歇着。臣这身子还算争气，陛下不必忧心。"
+    },
+    {
+      "id": "everyday:npc:ye:comfort:1",
+      "semantic": "everyday:npc:ye:comfort:1",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "茶喝得多些，饭倒不曾省。空着肚子看账，算得未必准。"
+    },
+    {
+      "id": "everyday:npc:ye:comfort:2",
+      "semantic": "everyday:npc:ye:comfort:2",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有病痛。坐久了颈肩发紧，出去走两步便松快。"
+    },
+    {
+      "id": "everyday:npc:ye:comfort:3",
+      "semantic": "everyday:npc:ye:comfort:3",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "近来想把晚间的茶减一盏。嘴上说不妨事，真到了睡时，又嫌自己清醒。"
+    },
+    {
+      "id": "everyday:npc:ye:comfort:4",
+      "semantic": "everyday:npc:ye:comfort:4",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "今日倒记得趁热用饭。若一会儿再想起别的，您就当没听见。"
+    },
+    {
+      "id": "everyday:npc:ye:comfort:5",
+      "semantic": "everyday:npc:ye:comfort:5",
+      "npc": "ye",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "您既问了，便说实话：偶有夜里醒来算账的时候。账不在手边，也照样算。"
+    },
+    {
+      "id": "everyday:npc:ye:recent:0",
+      "semantic": "everyday:npc:ye:recent:0",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在核几笔零项。数目不大，混在一起看，却最容易漏。"
+    },
+    {
+      "id": "everyday:npc:ye:recent:1",
+      "semantic": "everyday:npc:ye:recent:1",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才重拨了一回算盘。有一处心算得太快，还得落到珠子上才放心。"
+    },
+    {
+      "id": "everyday:npc:ye:recent:2",
+      "semantic": "everyday:npc:ye:recent:2",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在把账旁的注记抄清。只有自己看得懂，下回换个人便麻烦了。"
+    },
+    {
+      "id": "everyday:npc:ye:recent:3",
+      "semantic": "everyday:npc:ye:recent:3",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "总想将算盘声放轻些，拨着拨着，又忘了。您方才在外头可听见了？"
+    },
+    {
+      "id": "everyday:npc:ye:recent:4",
+      "semantic": "everyday:npc:ye:recent:4",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日不另开新页，先把这一页收尾。否则案上越摊越多，看着都累。"
+    },
+    {
+      "id": "everyday:npc:ye:recent:5",
+      "semantic": "everyday:npc:ye:recent:5",
+      "npc": "ye",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "把账合上了。您若只是来坐坐，我今日便不先问有什么吩咐。"
+    },
+    {
+      "id": "everyday:npc:ye:home:0",
+      "semantic": "everyday:npc:ye:home:0",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "叶家人说话，习惯先将所涉利害摆清。臣从小听着，难免也带些这习气。"
+    },
+    {
+      "id": "everyday:npc:ye:home:1",
+      "semantic": "everyday:npc:ye:home:1",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家中教算账，先教一项项写明白。光会心里算，旁人是核不清的。"
+    },
+    {
+      "id": "everyday:npc:ye:home:2",
+      "semantic": "everyday:npc:ye:home:2",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "小时候拨算盘，只顾拨得响，算出来全不对。如今想起，还好没叫外人听见。"
+    },
+    {
+      "id": "everyday:npc:ye:home:3",
+      "semantic": "everyday:npc:ye:home:3",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家里人总劝我别将话说得太满。真轮到自己，才知道一句痛快话有时比办事容易。"
+    },
+    {
+      "id": "everyday:npc:ye:home:4",
+      "semantic": "everyday:npc:ye:home:4",
+      "npc": "ye",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "home",
+      "reply": "有时也怕旁人提起叶家，便替我将心思都猜完。您肯先听我说，我会少绕几句。"
+    },
+    {
+      "id": "everyday:npc:ye:interest:0",
+      "semantic": "everyday:npc:ye:interest:0",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时也看些物价与行旅杂记。世间东西怎样来、怎样去，很值得琢磨。"
+    },
+    {
+      "id": "everyday:npc:ye:interest:1",
+      "semantic": "everyday:npc:ye:interest:1",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢喝茶，不过也并非每一盏都辨得出高下。说得太满，怕要露怯。"
+    },
+    {
+      "id": "everyday:npc:ye:interest:2",
+      "semantic": "everyday:npc:ye:interest:2",
+      "npc": "ye",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "偶尔对弈。账算得清，可不等于棋也下得好。"
+    },
+    {
+      "id": "everyday:npc:ye:interest:3",
+      "semantic": "everyday:npc:ye:interest:3",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢看人做买卖。越是只卖一样东西的铺子，越想知道凭什么能长久开下去。"
+    },
+    {
+      "id": "everyday:npc:ye:interest:4",
+      "semantic": "everyday:npc:ye:interest:4",
+      "npc": "ye",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "有时只想坐着喝茶，偏偏旁人见了，总当我还要顺便谈一桩事。"
+    },
+    {
+      "id": "everyday:npc:ye:interest:5",
+      "semantic": "everyday:npc:ye:interest:5",
+      "npc": "ye",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "若您肯陪着，今日便不论茶值多少。好不好喝，两个人喝过再说。"
+    },
+    {
+      "id": "everyday:npc:xie:listen:0",
+      "semantic": "everyday:npc:xie:listen:0",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "奴才近来都好，当值之外也能歇着。陛下不必为奴才挂心。"
+    },
+    {
+      "id": "everyday:npc:xie:listen:1",
+      "semantic": "everyday:npc:xie:listen:1",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没有不适。今日来回走得多些，坐一坐也就缓过来了。"
+    },
+    {
+      "id": "everyday:npc:xie:listen:2",
+      "semantic": "everyday:npc:xie:listen:2",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "一切照常。零碎事情先记着，省得只靠脑子，转身便漏了。"
+    },
+    {
+      "id": "everyday:npc:xie:listen:3",
+      "semantic": "everyday:npc:xie:listen:3",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日还好。只是闲下来，耳朵也总留着门外的动静，一时改不过来。"
+    },
+    {
+      "id": "everyday:npc:xie:listen:4",
+      "semantic": "everyday:npc:xie:listen:4",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没什么难处，就是有时歇着也想先将东西摆齐，真闲住了，倒有些不惯。"
+    },
+    {
+      "id": "everyday:npc:xie:listen:5",
+      "semantic": "everyday:npc:xie:listen:5",
+      "npc": "xie",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "若说实话，是有一点乏。平日这句说惯了“都好”，今日差点又顺口回给您。"
+    },
+    {
+      "id": "everyday:npc:xie:comfort:0",
+      "semantic": "everyday:npc:xie:comfort:0",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "奴才按时用饭，夜里有空便歇，不曾怠慢身子。"
+    },
+    {
+      "id": "everyday:npc:xie:comfort:1",
+      "semantic": "everyday:npc:xie:comfort:1",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "嗓子没有不适。回话多时，奴才会先饮些水。"
+    },
+    {
+      "id": "everyday:npc:xie:comfort:2",
+      "semantic": "everyday:npc:xie:comfort:2",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "衣裳够暖，也不曾受凉。谢陛下垂念。"
+    },
+    {
+      "id": "everyday:npc:xie:comfort:3",
+      "semantic": "everyday:npc:xie:comfort:3",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭吃得快是旧习，近来想慢些。若没人催，倒也不必总急着放箸。"
+    },
+    {
+      "id": "everyday:npc:xie:comfort:4",
+      "semantic": "everyday:npc:xie:comfort:4",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "方才的水还是温的，这回没等到凉了才想起来。"
+    },
+    {
+      "id": "everyday:npc:xie:comfort:5",
+      "semantic": "everyday:npc:xie:comfort:5",
+      "npc": "xie",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡着倒不难，就是醒来头一件事，总要看看时辰。您若准我偷会儿闲，我便先不看了。"
+    },
+    {
+      "id": "everyday:npc:xie:recent:0",
+      "semantic": "everyday:npc:xie:recent:0",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在理平日随手记的小条。过了时的另放，免得混在一处。"
+    },
+    {
+      "id": "everyday:npc:xie:recent:1",
+      "semantic": "everyday:npc:xie:recent:1",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才将常用的东西归了原位，临用时便不必四处寻。"
+    },
+    {
+      "id": "everyday:npc:xie:recent:2",
+      "semantic": "everyday:npc:xie:recent:2",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "翻了几页闲书，还没看完，先夹了张纸记着。"
+    },
+    {
+      "id": "everyday:npc:xie:recent:3",
+      "semantic": "everyday:npc:xie:recent:3",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "看书看了一半，偏在最想往下翻的地方停住了，倒惦记到现在。"
+    },
+    {
+      "id": "everyday:npc:xie:recent:4",
+      "semantic": "everyday:npc:xie:recent:4",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "想改一改什么都往袖中塞的习惯。带得越齐全，找时反倒越慢。"
+    },
+    {
+      "id": "everyday:npc:xie:recent:5",
+      "semantic": "everyday:npc:xie:recent:5",
+      "npc": "xie",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日没有要紧事须报。您若得空，我倒想说说那本闲书。"
+    },
+    {
+      "id": "everyday:npc:xie:home:0",
+      "semantic": "everyday:npc:xie:home:0",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "奴才许多习惯是当值后才学的。东西放在固定处，心里便安定些。"
+    },
+    {
+      "id": "everyday:npc:xie:home:1",
+      "semantic": "everyday:npc:xie:home:1",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "旧物不多，一件件收着，反倒都记得来处。"
+    },
+    {
+      "id": "everyday:npc:xie:home:2",
+      "semantic": "everyday:npc:xie:home:2",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前总想将事情记得周全，后来才知道，不记下来，再好的记性也有漏的时候。"
+    },
+    {
+      "id": "everyday:npc:xie:home:3",
+      "semantic": "everyday:npc:xie:home:3",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "奴才不大擅长讲小时候的事。陛下若不嫌，容奴才想起一段说一段。"
+    },
+    {
+      "id": "everyday:npc:xie:home:4",
+      "semantic": "everyday:npc:xie:home:4",
+      "npc": "xie",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "home",
+      "reply": "有些旧事，从前总觉得说了也无用。您若愿意听，倒不必件件都为了有用。"
+    },
+    {
+      "id": "everyday:npc:xie:interest:0",
+      "semantic": "everyday:npc:xie:interest:0",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时看些话本。看得慢，一册能放在手边许久。"
+    },
+    {
+      "id": "everyday:npc:xie:interest:1",
+      "semantic": "everyday:npc:xie:interest:1",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢听故事，只是习惯追问来处，听到一半，总怕扫了人兴。"
+    },
+    {
+      "id": "everyday:npc:xie:interest:2",
+      "semantic": "everyday:npc:xie:interest:2",
+      "npc": "xie",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "爱逛书铺。未必次次都买，先翻一翻，也很有意思。"
+    },
+    {
+      "id": "everyday:npc:xie:interest:3",
+      "semantic": "everyday:npc:xie:interest:3",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "话本里有人一眼便识破旁人的心思，奴才每读到这里，都想再翻回去找找凭据。"
+    },
+    {
+      "id": "everyday:npc:xie:interest:4",
+      "semantic": "everyday:npc:xie:interest:4",
+      "npc": "xie",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "看闲书时倒不用记谁说了什么，若读得高兴，也能忘一回时辰。"
+    },
+    {
+      "id": "everyday:npc:xie:interest:5",
+      "semantic": "everyday:npc:xie:interest:5",
+      "npc": "xie",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "有趣的几页留着了。您若也看，咱们慢慢翻，不急着讲到结尾。"
+    },
+    {
+      "id": "everyday:npc:song:listen:0",
+      "semantic": "everyday:npc:song:listen:0",
+      "npc": "song",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "草民近来尚好，每日按部就班练琴，没什么为难的。"
+    },
+    {
+      "id": "everyday:npc:song:listen:1",
+      "semantic": "everyday:npc:song:listen:1",
+      "npc": "song",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "手指不曾伤着，只是练久了有些酸，歇过便好。劳陛下垂问。"
+    },
+    {
+      "id": "everyday:npc:song:listen:2",
+      "semantic": "everyday:npc:song:listen:2",
+      "npc": "song",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来还算顺遂。有几处总弹得太急，正放慢了重新练。"
+    },
+    {
+      "id": "everyday:npc:song:listen:3",
+      "semantic": "everyday:npc:song:listen:3",
+      "npc": "song",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "日子倒安稳，就是常在同一处较劲。明知急不来，停下又有些不甘心。"
+    },
+    {
+      "id": "everyday:npc:song:listen:4",
+      "semantic": "everyday:npc:song:listen:4",
+      "npc": "song",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没有不适。只是别人一句“不错”，我有时也要琢磨半日，倒是自己累着自己。"
+    },
+    {
+      "id": "everyday:npc:song:listen:5",
+      "semantic": "everyday:npc:song:listen:5",
+      "npc": "song",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "有时也想哪日不练，过后又怕自己懈怠。今日说给您听，才觉出是把自己催得太紧。"
+    },
+    {
+      "id": "everyday:npc:song:comfort:0",
+      "semantic": "everyday:npc:song:comfort:0",
+      "npc": "song",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饮食睡眠都还好。练琴时记着歇手，不会强撑。"
+    },
+    {
+      "id": "everyday:npc:song:comfort:1",
+      "semantic": "everyday:npc:song:comfort:1",
+      "npc": "song",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "近来没有熬得很晚，入夜便不再练那些费力的指法。"
+    },
+    {
+      "id": "everyday:npc:song:comfort:2",
+      "semantic": "everyday:npc:song:comfort:2",
+      "npc": "song",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "手上并无新伤，陛下放心。练完会将手放松，再收琴谱。"
+    },
+    {
+      "id": "everyday:npc:song:comfort:3",
+      "semantic": "everyday:npc:song:comfort:3",
+      "npc": "song",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭是吃了，不过若案上还摊着谱，吃着便忍不住去看，凉了也不觉。"
+    },
+    {
+      "id": "everyday:npc:song:comfort:4",
+      "semantic": "everyday:npc:song:comfort:4",
+      "npc": "song",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "这几日倒睡得好。有时醒来还记着曲子，先不碰琴，让自己缓一缓。"
+    },
+    {
+      "id": "everyday:npc:song:comfort:5",
+      "semantic": "everyday:npc:song:comfort:5",
+      "npc": "song",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "您若问我有没有好好歇，倒也不能全说有。总想着再试一遍，便把时辰试过去了。"
+    },
+    {
+      "id": "everyday:npc:song:recent:0",
+      "semantic": "everyday:npc:song:recent:0",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在慢练一小段。先将每一音听清，再连起来，不急着弹全曲。"
+    },
+    {
+      "id": "everyday:npc:song:recent:1",
+      "semantic": "everyday:npc:song:recent:1",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才理过琴弦。余音尚有些杂，想再听明白从何处来的。"
+    },
+    {
+      "id": "everyday:npc:song:recent:2",
+      "semantic": "everyday:npc:song:recent:2",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在将谱上的指法标清，免得下回练到这里，又犯同一个错。"
+    },
+    {
+      "id": "everyday:npc:song:recent:3",
+      "semantic": "everyday:npc:song:recent:3",
+      "npc": "song",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "改了一处，前后倒不如原先顺。先不改回去，留着再听一回。"
+    },
+    {
+      "id": "everyday:npc:song:recent:4",
+      "semantic": "everyday:npc:song:recent:4",
+      "npc": "song",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日不练快曲，越是简单的一句，越想弹得稳当。"
+    },
+    {
+      "id": "everyday:npc:song:recent:5",
+      "semantic": "everyday:npc:song:recent:5",
+      "npc": "song",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "琴先收了。您若不为听曲而来，我倒想试试，不借琴能说些什么。"
+    },
+    {
+      "id": "everyday:npc:song:home:0",
+      "semantic": "everyday:npc:song:home:0",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前学琴，一句要反复练。那时只盼着快些学完，如今倒知道慢也有慢的道理。"
+    },
+    {
+      "id": "everyday:npc:song:home:1",
+      "semantic": "everyday:npc:song:home:1",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "旧谱上几处磨损，是翻得太多。虽已记熟，仍舍不得换一本。"
+    },
+    {
+      "id": "everyday:npc:song:home:2",
+      "semantic": "everyday:npc:song:home:2",
+      "npc": "song",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "小时候怕人问练得如何，总想等最好的一遍弹出来再答。后来才知，哪有回回正好。"
+    },
+    {
+      "id": "everyday:npc:song:home:3",
+      "semantic": "everyday:npc:song:home:3",
+      "npc": "song",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "刚学琴时，最先记住的不是曲子，是坐得太久，腿也会麻。"
+    },
+    {
+      "id": "everyday:npc:song:home:4",
+      "semantic": "everyday:npc:song:home:4",
+      "npc": "song",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前只盼有人愿意听。真有人听了，又想分清他喜欢的究竟是什么，贪心倒会长。"
+    },
+    {
+      "id": "everyday:npc:song:interest:0",
+      "semantic": "everyday:npc:song:interest:0",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "还是琴。旁的知道得不多，听人讲起，也想慢慢学。"
+    },
+    {
+      "id": "everyday:npc:song:interest:1",
+      "semantic": "everyday:npc:song:interest:1",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢听同一支曲子由不同的人弹。有些地方，谱上写得一样，听来却全不同。"
+    },
+    {
+      "id": "everyday:npc:song:interest:2",
+      "semantic": "everyday:npc:song:interest:2",
+      "npc": "song",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时会看旧谱上的题记，想知道从前弹这曲子的人，为何留那一句。"
+    },
+    {
+      "id": "everyday:npc:song:interest:3",
+      "semantic": "everyday:npc:song:interest:3",
+      "npc": "song",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢等最后一音散尽。有时那点余音，比弹的时候还让人舍不得动。"
+    },
+    {
+      "id": "everyday:npc:song:interest:4",
+      "semantic": "everyday:npc:song:interest:4",
+      "npc": "song",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "也喜欢清静地坐着，并非每时每刻都想碰琴。陛下莫以为我一闲下来，便要奏一曲。"
+    },
+    {
+      "id": "everyday:npc:song:interest:5",
+      "semantic": "everyday:npc:song:interest:5",
+      "npc": "song",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "您肯听曲，我自然欢喜。可您肯听我说那些弹不出来的琐事，我还要更高兴些。"
+    },
+    {
+      "id": "everyday:npc:lu:listen:0",
+      "semantic": "everyday:npc:lu:listen:0",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "臣近来都好。练习照旧，没受伤，也没有误事。"
+    },
+    {
+      "id": "everyday:npc:lu:listen:1",
+      "semantic": "everyday:npc:lu:listen:1",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "身体无碍。今日练过弓，手臂稍有些酸，歇一歇便好了。"
+    },
+    {
+      "id": "everyday:npc:lu:listen:2",
+      "semantic": "everyday:npc:lu:listen:2",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来没什么难处。只是总想多练几回，收手时已比原定的晚了。"
+    },
+    {
+      "id": "everyday:npc:lu:listen:3",
+      "semantic": "everyday:npc:lu:listen:3",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "都挺好，就是一闲下来，又惦记着出去动动。坐得住，心却未必坐得住。"
+    },
+    {
+      "id": "everyday:npc:lu:listen:4",
+      "semantic": "everyday:npc:lu:listen:4",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "最近在学收着点力。练弓时有分寸，做别的小事，总容易下手重了。"
+    },
+    {
+      "id": "everyday:npc:lu:listen:5",
+      "semantic": "everyday:npc:lu:listen:5",
+      "npc": "lu",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "有点累，不过您既问起，我就不说什么“全不累”了，免得一会儿又被您看穿。"
+    },
+    {
+      "id": "everyday:npc:lu:comfort:0",
+      "semantic": "everyday:npc:lu:comfort:0",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃得下，夜里也睡得安稳。臣一向不大挑食。"
+    },
+    {
+      "id": "everyday:npc:lu:comfort:1",
+      "semantic": "everyday:npc:lu:comfort:1",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "护腕已松过，不曾勒伤。练过之后也会歇手，陛下放心。"
+    },
+    {
+      "id": "everyday:npc:lu:comfort:2",
+      "semantic": "everyday:npc:lu:comfort:2",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有受寒。练完不会立刻贪凉，这点分寸臣还是知道的。"
+    },
+    {
+      "id": "everyday:npc:lu:comfort:3",
+      "semantic": "everyday:npc:lu:comfort:3",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭自然吃了。您若还要问有没有吃得太快，那是……还没全改过来。"
+    },
+    {
+      "id": "everyday:npc:lu:comfort:4",
+      "semantic": "everyday:npc:lu:comfort:4",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "今日没加练，晚些也不会偷偷再去。臣自己说的，您记着便是。"
+    },
+    {
+      "id": "everyday:npc:lu:comfort:5",
+      "semantic": "everyday:npc:lu:comfort:5",
+      "npc": "lu",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡得倒实。只是偶尔梦里还在拉弓，醒了觉得自己这觉睡得亏，平白又练了一回。"
+    },
+    {
+      "id": "everyday:npc:lu:recent:0",
+      "semantic": "everyday:npc:lu:recent:0",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚将护腕收好。搭扣处多看一遍，下回用时才放心。"
+    },
+    {
+      "id": "everyday:npc:lu:recent:1",
+      "semantic": "everyday:npc:lu:recent:1",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才练了几回弓，今日到这里便收手，不再添次数了。"
+    },
+    {
+      "id": "everyday:npc:lu:recent:2",
+      "semantic": "everyday:npc:lu:recent:2",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在理用过的东西。平日放得齐整，用起来也不容易忙乱。"
+    },
+    {
+      "id": "everyday:npc:lu:recent:3",
+      "semantic": "everyday:npc:lu:recent:3",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "又想试做点心。先说好，只是在想，离端给您尝还远着呢。"
+    },
+    {
+      "id": "everyday:npc:lu:recent:4",
+      "semantic": "everyday:npc:lu:recent:4",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日先练准，不求快。一着急，前面练稳的地方又容易乱。"
+    },
+    {
+      "id": "everyday:npc:lu:recent:5",
+      "semantic": "everyday:npc:lu:recent:5",
+      "npc": "lu",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚还在想您今日来不来。别笑，我手上的东西可都收好了，没误事。"
+    },
+    {
+      "id": "everyday:npc:lu:home:0",
+      "semantic": "everyday:npc:lu:home:0",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "臣家中说话直，有事便明说，不大习惯绕着弯猜。"
+    },
+    {
+      "id": "everyday:npc:lu:home:1",
+      "semantic": "everyday:npc:lu:home:1",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前练骑射，家里先问人可伤着，再问练得如何。臣一直记着这先后。"
+    },
+    {
+      "id": "everyday:npc:lu:home:2",
+      "semantic": "everyday:npc:lu:home:2",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "小时候摔了还不肯说疼，站起来先掸衣裳。其实疼得很，纯是嘴硬。"
+    },
+    {
+      "id": "everyday:npc:lu:home:3",
+      "semantic": "everyday:npc:lu:home:3",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "home",
+      "reply": "家里教人，答应了便要记着。至于怎么记，臣觉得还是当面说清最好。"
+    },
+    {
+      "id": "everyday:npc:lu:home:4",
+      "semantic": "everyday:npc:lu:home:4",
+      "npc": "lu",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "home",
+      "reply": "从前总想叫家里人知道，自己什么都扛得住。如今倒觉得，有时能说一句累，也不算丢人。"
+    },
+    {
+      "id": "everyday:npc:lu:interest:0",
+      "semantic": "everyday:npc:lu:interest:0",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢骑射。别的也愿学，只是这两样做得久，手更熟些。"
+    },
+    {
+      "id": "everyday:npc:lu:interest:1",
+      "semantic": "everyday:npc:lu:interest:1",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时爱往外走走，一直待着，肩背都不自在。"
+    },
+    {
+      "id": "everyday:npc:lu:interest:2",
+      "semantic": "everyday:npc:lu:interest:2",
+      "npc": "lu",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢看人做些精细活。自己使力惯了，看他们用那么一点巧劲，觉得很新鲜。"
+    },
+    {
+      "id": "everyday:npc:lu:interest:3",
+      "semantic": "everyday:npc:lu:interest:3",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "还想把点心学好。拉弓能练稳，和面的力道总也该能练明白吧。"
+    },
+    {
+      "id": "everyday:npc:lu:interest:4",
+      "semantic": "everyday:npc:lu:interest:4",
+      "npc": "lu",
+      "minTier": 1,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "若能得闲，想不带什么要比试的念头，单骑马走一段。"
+    },
+    {
+      "id": "everyday:npc:lu:interest:5",
+      "semantic": "everyday:npc:lu:interest:5",
+      "npc": "lu",
+      "minTier": 2,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢的事没变。只是如今做成一件，还想添一个人知道——您可别听了又只夸我弓拉得好。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:listen:0",
+      "semantic": "everyday:personality:温柔体贴:listen:0",
+      "personality": "温柔体贴",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来还好，事情多时慢慢做，不至于顾不过来。劳陛下惦念。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:listen:1",
+      "semantic": "everyday:personality:温柔体贴:listen:1",
+      "personality": "温柔体贴",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没什么不顺心的。只是有时顾着旁人的事，自己的茶倒放凉了。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:listen:2",
+      "semantic": "everyday:personality:温柔体贴:listen:2",
+      "personality": "温柔体贴",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "这几日想先将自己的事做妥，再去帮旁人，免得两头都急。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:comfort:0",
+      "semantic": "everyday:personality:温柔体贴:comfort:0",
+      "personality": "温柔体贴",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃睡都好。偶尔忙忘了喝水，想起来便补一盏。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:comfort:1",
+      "semantic": "everyday:personality:温柔体贴:comfort:1",
+      "personality": "温柔体贴",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "近来没有不适，闲下来也肯歇着，不是时时都在忙。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:comfort:2",
+      "semantic": "everyday:personality:温柔体贴:comfort:2",
+      "personality": "温柔体贴",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭总要趁热用。自己忙的时候反而容易忘，倒得提醒自己。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:listen:0",
+      "semantic": "everyday:personality:清冷克制:listen:0",
+      "personality": "清冷克制",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来无恙。事情照常，并无特别为难之处。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:listen:1",
+      "semantic": "everyday:personality:清冷克制:listen:1",
+      "personality": "清冷克制",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "还好，独处时多些，也并不觉得烦闷。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:listen:2",
+      "semantic": "everyday:personality:清冷克制:listen:2",
+      "personality": "清冷克制",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日想将手边的东西理清。少些杂物，坐着也自在。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:comfort:0",
+      "semantic": "everyday:personality:清冷克制:comfort:0",
+      "personality": "清冷克制",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "起居如常。不曾生病，也没有勉强熬着。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:comfort:1",
+      "semantic": "everyday:personality:清冷克制:comfort:1",
+      "personality": "清冷克制",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "夜里能安睡，白日乏了便稍歇。陛下不必忧心。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:comfort:2",
+      "semantic": "everyday:personality:清冷克制:comfort:2",
+      "personality": "清冷克制",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有不适，只是坐久了些，方才已经起身走过。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:listen:0",
+      "semantic": "everyday:personality:明朗直率:listen:0",
+      "personality": "明朗直率",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "都好！……臣说得急了。近来确实没什么不顺，谢陛下挂心。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:listen:1",
+      "semantic": "everyday:personality:明朗直率:listen:1",
+      "personality": "明朗直率",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日精神很好，就是常将事情排得满，得留点空才是。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:listen:2",
+      "semantic": "everyday:personality:明朗直率:listen:2",
+      "personality": "明朗直率",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没遇着难处。只是有时一高兴，话就说得太快，自己回头都嫌急。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:comfort:0",
+      "semantic": "everyday:personality:明朗直率:comfort:0",
+      "personality": "明朗直率",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "能吃能睡，没什么不适。陛下若不信，看臣这精神便知道了。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:comfort:1",
+      "semantic": "everyday:personality:明朗直率:comfort:1",
+      "personality": "明朗直率",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饭没落下，觉也睡足了。倒是喝水，有时真会忘。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:comfort:2",
+      "semantic": "everyday:personality:明朗直率:comfort:2",
+      "personality": "明朗直率",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "今日没有逞强，觉着累便歇了，这回可答得理直气壮。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:listen:0",
+      "semantic": "everyday:personality:骄矜自尊:listen:0",
+      "personality": "骄矜自尊",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来尚好，手边的事自己能料理。谢陛下垂问。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:listen:1",
+      "semantic": "everyday:personality:骄矜自尊:listen:1",
+      "personality": "骄矜自尊",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没有大碍。偶有不顺，也想先自己试过，再劳烦旁人。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:listen:2",
+      "semantic": "everyday:personality:骄矜自尊:listen:2",
+      "personality": "骄矜自尊",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日想将一件没做好的小事重做。不为交给谁，只是不想草草算了。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:comfort:0",
+      "semantic": "everyday:personality:骄矜自尊:comfort:0",
+      "personality": "骄矜自尊",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饮食起居都妥当，并未拿身子赌气。陛下不必挂念。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:comfort:1",
+      "semantic": "everyday:personality:骄矜自尊:comfort:1",
+      "personality": "骄矜自尊",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "不曾生病。只偶有坐久的时候，起来便好了。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:comfort:2",
+      "semantic": "everyday:personality:骄矜自尊:comfort:2",
+      "personality": "骄矜自尊",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "夜里歇得还好。有事也留到白日做，硬熬未必做得好。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:listen:0",
+      "semantic": "everyday:personality:敏感多思:listen:0",
+      "personality": "敏感多思",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "还好，没有什么大事。只是有时想得多，回过神来，天色都变了。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:listen:1",
+      "semantic": "everyday:personality:敏感多思:listen:1",
+      "personality": "敏感多思",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来没有不适。手上的事已按先后记下，便不必一直惦着。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:listen:2",
+      "semantic": "everyday:personality:敏感多思:listen:2",
+      "personality": "敏感多思",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "事情倒不难，是我总怕漏了哪一处。分开看，心里就安稳些。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:comfort:0",
+      "semantic": "everyday:personality:敏感多思:comfort:0",
+      "personality": "敏感多思",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃睡还算安稳。偶尔睡前想事，会先记下，留到明日再理。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:comfort:1",
+      "semantic": "everyday:personality:敏感多思:comfort:1",
+      "personality": "敏感多思",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有病痛。只是读得久了眼睛酸，歇过便好。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:comfort:2",
+      "semantic": "everyday:personality:敏感多思:comfort:2",
+      "personality": "敏感多思",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "今日记得按时用饭了，没等到饭凉。劳陛下惦念。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:listen:0",
+      "semantic": "everyday:personality:圆融世故:listen:0",
+      "personality": "圆融世故",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "托陛下挂念，近来还好。零碎事情有些，一件件做便是。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:listen:1",
+      "semantic": "everyday:personality:圆融世故:listen:1",
+      "personality": "圆融世故",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "倒没什么难处。只是应酬话说多了，闲下来便想安静一刻。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:listen:2",
+      "semantic": "everyday:personality:圆融世故:listen:2",
+      "personality": "圆融世故",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想少答应几件办不到的小事。话说得周全，不如事情做得周全。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:comfort:0",
+      "semantic": "everyday:personality:圆融世故:comfort:0",
+      "personality": "圆融世故",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "起居尚好，不曾亏待自己。忙归忙，饭还是要用的。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:comfort:1",
+      "semantic": "everyday:personality:圆融世故:comfort:1",
+      "personality": "圆融世故",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "夜里歇得安稳。白日说话多，便多饮些水。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:comfort:2",
+      "semantic": "everyday:personality:圆融世故:comfort:2",
+      "personality": "圆融世故",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没什么不适。今日难得坐定，倒觉着这一盏热茶很受用。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:listen:0",
+      "semantic": "everyday:personality:严正守礼:listen:0",
+      "personality": "严正守礼",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来一切如常，臣自有分寸。多谢陛下垂问。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:listen:1",
+      "semantic": "everyday:personality:严正守礼:listen:1",
+      "personality": "严正守礼",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "手边的事按次序做着，没有难以应付之处。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:listen:2",
+      "semantic": "everyday:personality:严正守礼:listen:2",
+      "personality": "严正守礼",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日无事。只是想将惯常做法重新理一理，省得只凭习惯行事。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:comfort:0",
+      "semantic": "everyday:personality:严正守礼:comfort:0",
+      "personality": "严正守礼",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "饮食起居有定时，未曾耽搁，陛下放心。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:comfort:1",
+      "semantic": "everyday:personality:严正守礼:comfort:1",
+      "personality": "严正守礼",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有病痛，疲乏时也会稍歇，不会强撑。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:comfort:2",
+      "semantic": "everyday:personality:严正守礼:comfort:2",
+      "personality": "严正守礼",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "夜间不再续做费眼的事，留待白日，反而清楚些。"
+    },
+    {
+      "id": "everyday:personality:野心进取:listen:0",
+      "semantic": "everyday:personality:野心进取:listen:0",
+      "personality": "野心进取",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来还好，想做的事不少，正在分清先后，不敢样样都贪快。"
+    },
+    {
+      "id": "everyday:personality:野心进取:listen:1",
+      "semantic": "everyday:personality:野心进取:listen:1",
+      "personality": "野心进取",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "事情尚有进展。也有没做好的地方，正回头补上。"
+    },
+    {
+      "id": "everyday:personality:野心进取:listen:2",
+      "semantic": "everyday:personality:野心进取:listen:2",
+      "personality": "野心进取",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日试着少给自己排些事。急着多做，未必件件都能做好。"
+    },
+    {
+      "id": "everyday:personality:野心进取:comfort:0",
+      "semantic": "everyday:personality:野心进取:comfort:0",
+      "personality": "野心进取",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "能吃能睡，不曾耽误。真累倒了，反误了后面的事。"
+    },
+    {
+      "id": "everyday:personality:野心进取:comfort:1",
+      "semantic": "everyday:personality:野心进取:comfort:1",
+      "personality": "野心进取",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有不适。只是忙起来容易忘了起身，眼下已记着改。"
+    },
+    {
+      "id": "everyday:personality:野心进取:comfort:2",
+      "semantic": "everyday:personality:野心进取:comfort:2",
+      "personality": "野心进取",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "今日没有熬夜的打算。清醒些再做，比多撑一刻有用。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:listen:0",
+      "semantic": "everyday:personality:疏朗洒脱:listen:0",
+      "personality": "疏朗洒脱",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来挺好，忙完便歇，没什么放不下的事。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:listen:1",
+      "semantic": "everyday:personality:疏朗洒脱:listen:1",
+      "personality": "疏朗洒脱",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没遇着难处。偶尔想不通，先走几步回来，往往就明白了。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:listen:2",
+      "semantic": "everyday:personality:疏朗洒脱:listen:2",
+      "personality": "疏朗洒脱",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "日子照常。有时什么也不做，安静坐一刻，也不算白过。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:comfort:0",
+      "semantic": "everyday:personality:疏朗洒脱:comfort:0",
+      "personality": "疏朗洒脱",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃睡都安稳，不曾受凉。陛下不必担忧。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:comfort:1",
+      "semantic": "everyday:personality:疏朗洒脱:comfort:1",
+      "personality": "疏朗洒脱",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "今日身上松快，没什么不适，也没拿疲乏硬撑。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:comfort:2",
+      "semantic": "everyday:personality:疏朗洒脱:comfort:2",
+      "personality": "疏朗洒脱",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡得好。临睡前不再琢磨白日的事，省得梦里还忙。"
+    },
+    {
+      "id": "everyday:personality:务实重利:listen:0",
+      "semantic": "everyday:personality:务实重利:listen:0",
+      "personality": "务实重利",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来尚好。先做眼前能做的，余下慢慢来，不至于两头着急。"
+    },
+    {
+      "id": "everyday:personality:务实重利:listen:1",
+      "semantic": "everyday:personality:务实重利:listen:1",
+      "personality": "务实重利",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没什么大难处。倒是零碎事情积着，正想抽空一件件理掉。"
+    },
+    {
+      "id": "everyday:personality:务实重利:listen:2",
+      "semantic": "everyday:personality:务实重利:listen:2",
+      "personality": "务实重利",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日想将时辰留得松些。事情挤在一处，未必省得下多少工夫。"
+    },
+    {
+      "id": "everyday:personality:务实重利:comfort:0",
+      "semantic": "everyday:personality:务实重利:comfort:0",
+      "personality": "务实重利",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃饭睡觉都没省，身子好，后头才有精神。"
+    },
+    {
+      "id": "everyday:personality:务实重利:comfort:1",
+      "semantic": "everyday:personality:务实重利:comfort:1",
+      "personality": "务实重利",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有不适。坐久了便起来走走，这点工夫不能省。"
+    },
+    {
+      "id": "everyday:personality:务实重利:comfort:2",
+      "semantic": "everyday:personality:务实重利:comfort:2",
+      "personality": "务实重利",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "觉睡得够。若为了多做一件，搭上明日一整天，反倒不值。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:listen:0",
+      "semantic": "everyday:personality:寡言重诺:listen:0",
+      "personality": "寡言重诺",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "都好。手边的事记着，正一件件做。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:listen:1",
+      "semantic": "everyday:personality:寡言重诺:listen:1",
+      "personality": "寡言重诺",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没有难处。只是做得慢些，想先做稳。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:listen:2",
+      "semantic": "everyday:personality:寡言重诺:listen:2",
+      "personality": "寡言重诺",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来如常。忙完了便歇，不曾强撑。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:comfort:0",
+      "semantic": "everyday:personality:寡言重诺:comfort:0",
+      "personality": "寡言重诺",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "吃过了，也睡得好。陛下放心。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:comfort:1",
+      "semantic": "everyday:personality:寡言重诺:comfort:1",
+      "personality": "寡言重诺",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没受伤。今日有些乏，歇过便好。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:comfort:2",
+      "semantic": "everyday:personality:寡言重诺:comfort:2",
+      "personality": "寡言重诺",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "不曾熬夜。做不完的，留到明日。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:listen:0",
+      "semantic": "everyday:personality:戒备善谋:listen:0",
+      "personality": "戒备善谋",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来尚好。手边的事有数，还不至于应付不来。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:listen:1",
+      "semantic": "everyday:personality:戒备善谋:listen:1",
+      "personality": "戒备善谋",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "没有什么特别的。只是行事前多想一步，是一向的习惯。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:listen:2",
+      "semantic": "everyday:personality:戒备善谋:listen:2",
+      "personality": "戒备善谋",
+      "minTier": 0,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日想将琐事理清。记在纸上，总比一遍遍在心里过稳妥。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:comfort:0",
+      "semantic": "everyday:personality:戒备善谋:comfort:0",
+      "personality": "戒备善谋",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "起居如常，也没有病痛。谢陛下挂念。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:comfort:1",
+      "semantic": "everyday:personality:戒备善谋:comfort:1",
+      "personality": "戒备善谋",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "夜里能安睡。若有未尽的事，先记下，不带到睡前想。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:comfort:2",
+      "semantic": "everyday:personality:戒备善谋:comfort:2",
+      "personality": "戒备善谋",
+      "minTier": 0,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "没有勉强自己。知道何时该停，才不至于误事。"
+    },
+    {
+      "id": "everyday:specialty:理政:recent:0",
+      "semantic": "everyday:specialty:理政:recent:0",
+      "specialty": "理政",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在将手边的条目重新排序，先分清轻重，免得一忙便看漏。"
+    },
+    {
+      "id": "everyday:specialty:理政:recent:1",
+      "semantic": "everyday:specialty:理政:recent:1",
+      "specialty": "理政",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "翻到两处看似一样的条目，正想弄清分别在哪里。"
+    },
+    {
+      "id": "everyday:specialty:理政:recent:2",
+      "semantic": "everyday:specialty:理政:recent:2",
+      "specialty": "理政",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日只理手边这一页，不再另摊新的。"
+    },
+    {
+      "id": "everyday:specialty:理政:interest:0",
+      "semantic": "everyday:specialty:理政:interest:0",
+      "specialty": "理政",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢将一件杂乱的事理出头绪。分清之后，看着便舒心。"
+    },
+    {
+      "id": "everyday:specialty:理政:interest:1",
+      "semantic": "everyday:specialty:理政:interest:1",
+      "specialty": "理政",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时也看些旧例，不过不是照抄，想知道当时为何那样定。"
+    },
+    {
+      "id": "everyday:specialty:理政:interest:2",
+      "semantic": "everyday:specialty:理政:interest:2",
+      "specialty": "理政",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "遇到不明白的地方，会先留个签。弄懂一处，比囫囵翻过许多页有趣。"
+    },
+    {
+      "id": "everyday:specialty:商账:recent:0",
+      "semantic": "everyday:specialty:商账:recent:0",
+      "specialty": "商账",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "正核几笔零项。数目越小，越不能只靠记性。"
+    },
+    {
+      "id": "everyday:specialty:商账:recent:1",
+      "semantic": "everyday:specialty:商账:recent:1",
+      "specialty": "商账",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在把账旁的记注抄清。回头自己再看，也省些辨认的工夫。"
+    },
+    {
+      "id": "everyday:specialty:商账:recent:2",
+      "semantic": "everyday:specialty:商账:recent:2",
+      "specialty": "商账",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才重拨了一回算盘，今日先不贪快。"
+    },
+    {
+      "id": "everyday:specialty:商账:interest:0",
+      "semantic": "everyday:specialty:商账:interest:0",
+      "specialty": "商账",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢琢磨一笔账究竟怎样算清。只有总数对上，还不算完。"
+    },
+    {
+      "id": "everyday:specialty:商账:interest:1",
+      "semantic": "everyday:specialty:商账:interest:1",
+      "specialty": "商账",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "也爱看行旅杂记。货物到了不同地方，竟能换许多叫法。"
+    },
+    {
+      "id": "everyday:specialty:商账:interest:2",
+      "semantic": "everyday:specialty:商账:interest:2",
+      "specialty": "商账",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时会看人怎样摆货，东西相同，摆法不同，生意也不一样。"
+    },
+    {
+      "id": "everyday:specialty:书法:recent:0",
+      "semantic": "everyday:specialty:书法:recent:0",
+      "specialty": "书法",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在临几个字。落笔急了，收笔便不稳，还得慢些。"
+    },
+    {
+      "id": "everyday:specialty:书法:recent:1",
+      "semantic": "everyday:specialty:书法:recent:1",
+      "specialty": "书法",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚把笔洗好，未干的纸先晾着，不急着收。"
+    },
+    {
+      "id": "everyday:specialty:书法:recent:2",
+      "semantic": "everyday:specialty:书法:recent:2",
+      "specialty": "书法",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "翻到自己从前写的一页字，有几笔倒比如今放得开。"
+    },
+    {
+      "id": "everyday:specialty:书法:interest:0",
+      "semantic": "everyday:specialty:书法:interest:0",
+      "specialty": "书法",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢看字里用力与留白的地方。一个字写几遍，也各不相同。"
+    },
+    {
+      "id": "everyday:specialty:书法:interest:1",
+      "semantic": "everyday:specialty:书法:interest:1",
+      "specialty": "书法",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时看碑帖，常会盯着同一笔看很久。"
+    },
+    {
+      "id": "everyday:specialty:书法:interest:2",
+      "semantic": "everyday:specialty:书法:interest:2",
+      "specialty": "书法",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "也喜欢理旧纸。写坏的先不丢，过些时再看，反倒看得出问题。"
+    },
+    {
+      "id": "everyday:specialty:琴艺:recent:0",
+      "semantic": "everyday:specialty:琴艺:recent:0",
+      "specialty": "琴艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在听一小段的余音，不急着接后面，先将这一处听稳。"
+    },
+    {
+      "id": "everyday:specialty:琴艺:recent:1",
+      "semantic": "everyday:specialty:琴艺:recent:1",
+      "specialty": "琴艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚收好琴谱。有一处仍拿不准，留着明日再试。"
+    },
+    {
+      "id": "everyday:specialty:琴艺:recent:2",
+      "semantic": "everyday:specialty:琴艺:recent:2",
+      "specialty": "琴艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日练得慢些，宁肯少弹一段，也不想混过去。"
+    },
+    {
+      "id": "everyday:specialty:琴艺:interest:0",
+      "semantic": "everyday:specialty:琴艺:interest:0",
+      "specialty": "琴艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢听同一首曲子不同的弹法。有些分寸，谱上写不全。"
+    },
+    {
+      "id": "everyday:specialty:琴艺:interest:1",
+      "semantic": "everyday:specialty:琴艺:interest:1",
+      "specialty": "琴艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时看旧谱上的题记，字不多，也能琢磨许久。"
+    },
+    {
+      "id": "everyday:specialty:琴艺:interest:2",
+      "semantic": "everyday:specialty:琴艺:interest:2",
+      "specialty": "琴艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "琴并非时时都要弹。听最后一点声音散尽，也很有意思。"
+    },
+    {
+      "id": "everyday:specialty:骑射:recent:0",
+      "semantic": "everyday:specialty:骑射:recent:0",
+      "specialty": "骑射",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "方才收了弓，正看护腕的扣子，省得下回临用时松脱。"
+    },
+    {
+      "id": "everyday:specialty:骑射:recent:1",
+      "semantic": "everyday:specialty:骑射:recent:1",
+      "specialty": "骑射",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日先练稳，不再添次数。练急了，反容易乱。"
+    },
+    {
+      "id": "everyday:specialty:骑射:recent:2",
+      "semantic": "everyday:specialty:骑射:recent:2",
+      "specialty": "骑射",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在将用过的东西理好。平日摆得顺手，用时才不会忙乱。"
+    },
+    {
+      "id": "everyday:specialty:骑射:interest:0",
+      "semantic": "everyday:specialty:骑射:interest:0",
+      "specialty": "骑射",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢骑射，越做得久，越觉着还有细处要学。"
+    },
+    {
+      "id": "everyday:specialty:骑射:interest:1",
+      "semantic": "everyday:specialty:骑射:interest:1",
+      "specialty": "骑射",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时喜欢出去走走，坐得太久，身上反不自在。"
+    },
+    {
+      "id": "everyday:specialty:骑射:interest:2",
+      "semantic": "everyday:specialty:骑射:interest:2",
+      "specialty": "骑射",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "也爱看人做精细活。平日用力惯了，倒想学学那点巧劲。"
+    },
+    {
+      "id": "everyday:specialty:棋弈:recent:0",
+      "semantic": "everyday:specialty:棋弈:recent:0",
+      "specialty": "棋弈",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在复看一处棋形。方才只顾一边，另一边倒留了空。"
+    },
+    {
+      "id": "everyday:specialty:棋弈:recent:1",
+      "semantic": "everyday:specialty:棋弈:recent:1",
+      "specialty": "棋弈",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚收好棋子，想将没看明白的那几步记下来。"
+    },
+    {
+      "id": "everyday:specialty:棋弈:recent:2",
+      "semantic": "everyday:specialty:棋弈:recent:2",
+      "specialty": "棋弈",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日不急着下完，先想清这一手为什么要落。"
+    },
+    {
+      "id": "everyday:specialty:棋弈:interest:0",
+      "semantic": "everyday:specialty:棋弈:interest:0",
+      "specialty": "棋弈",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢棋局里的取舍。想处处都占，往往最难下。"
+    },
+    {
+      "id": "everyday:specialty:棋弈:interest:1",
+      "semantic": "everyday:specialty:棋弈:interest:1",
+      "specialty": "棋弈",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时看棋谱，常将自己想的下一手遮住，再看原来怎样下。"
+    },
+    {
+      "id": "everyday:specialty:棋弈:interest:2",
+      "semantic": "everyday:specialty:棋弈:interest:2",
+      "specialty": "棋弈",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "有时摆一小处变化，比从头下一整盘还费心思。"
+    },
+    {
+      "id": "everyday:specialty:舞艺:recent:0",
+      "semantic": "everyday:specialty:舞艺:recent:0",
+      "specialty": "舞艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在顺一处转步。单做并不难，接到前后便容易急。"
+    },
+    {
+      "id": "everyday:specialty:舞艺:recent:1",
+      "semantic": "everyday:specialty:舞艺:recent:1",
+      "specialty": "舞艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚把练习的衣带叠好，今日先记住节拍，不再多练。"
+    },
+    {
+      "id": "everyday:specialty:舞艺:recent:2",
+      "semantic": "everyday:specialty:舞艺:recent:2",
+      "specialty": "舞艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在试同一处动作放慢后怎样收住，免得只顾起势。"
+    },
+    {
+      "id": "everyday:specialty:舞艺:interest:0",
+      "semantic": "everyday:specialty:舞艺:interest:0",
+      "specialty": "舞艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢琢磨动作怎样接起来。每处都对，合在一起却未必顺。"
+    },
+    {
+      "id": "everyday:specialty:舞艺:interest:1",
+      "semantic": "everyday:specialty:舞艺:interest:1",
+      "specialty": "舞艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时听节拍，有时不动，只在心里走一遍。"
+    },
+    {
+      "id": "everyday:specialty:舞艺:interest:2",
+      "semantic": "everyday:specialty:舞艺:interest:2",
+      "specialty": "舞艺",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "也喜欢看衣带落下的样子，同一个动作，轻重不同便不一样。"
+    },
+    {
+      "id": "everyday:specialty:绘事:recent:0",
+      "semantic": "everyday:specialty:绘事:recent:0",
+      "specialty": "绘事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在等纸干。颜色未定时急着补，常要越补越重。"
+    },
+    {
+      "id": "everyday:specialty:绘事:recent:1",
+      "semantic": "everyday:specialty:绘事:recent:1",
+      "specialty": "绘事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚将笔洗过。留了几笔不满意的，想隔一会儿再看。"
+    },
+    {
+      "id": "everyday:specialty:绘事:recent:2",
+      "semantic": "everyday:specialty:绘事:recent:2",
+      "specialty": "绘事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日先不题款，画上还有一处想留白。"
+    },
+    {
+      "id": "everyday:specialty:绘事:interest:0",
+      "semantic": "everyday:specialty:绘事:interest:0",
+      "specialty": "绘事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢看同一种颜色叠上去会怎样变。只差一点水，便不同。"
+    },
+    {
+      "id": "everyday:specialty:绘事:interest:1",
+      "semantic": "everyday:specialty:绘事:interest:1",
+      "specialty": "绘事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时爱看窗外的光，落在不同东西上，颜色也不一样。"
+    },
+    {
+      "id": "everyday:specialty:绘事:interest:2",
+      "semantic": "everyday:specialty:绘事:interest:2",
+      "specialty": "绘事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "旧画不急着丢，隔些时日再看，常能明白当初哪里没想好。"
+    },
+    {
+      "id": "everyday:specialty:医理:recent:0",
+      "semantic": "everyday:specialty:医理:recent:0",
+      "specialty": "医理",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在对药材的记注。名字相近的另写一旁，免得看混。"
+    },
+    {
+      "id": "everyday:specialty:医理:recent:1",
+      "semantic": "everyday:specialty:医理:recent:1",
+      "specialty": "医理",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "有一处注解没看明白，先留了签，待查清再补。"
+    },
+    {
+      "id": "everyday:specialty:医理:recent:2",
+      "semantic": "everyday:specialty:医理:recent:2",
+      "specialty": "医理",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日只读手边这一段。拿不准便记下，不急着下定论。"
+    },
+    {
+      "id": "everyday:specialty:医理:interest:0",
+      "semantic": "everyday:specialty:医理:interest:0",
+      "specialty": "医理",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢将书中相近的说法放在一起看，分清究竟差在哪里。"
+    },
+    {
+      "id": "everyday:specialty:医理:interest:1",
+      "semantic": "everyday:specialty:医理:interest:1",
+      "specialty": "医理",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时理旧记注。懂得多一点，再看从前的疑处，也会有新意思。"
+    },
+    {
+      "id": "everyday:specialty:医理:interest:2",
+      "semantic": "everyday:specialty:医理:interest:2",
+      "specialty": "医理",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "所学还有不明白的，便想一点点补上。只背下来，总觉得不够。"
+    },
+    {
+      "id": "everyday:specialty:香事:recent:0",
+      "semantic": "everyday:specialty:香事:recent:0",
+      "specialty": "香事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "刚将香具理好。余灰先清干净，免得混了下一回。"
+    },
+    {
+      "id": "everyday:specialty:香事:recent:1",
+      "semantic": "everyday:specialty:香事:recent:1",
+      "specialty": "香事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "在看香篆的一处断痕，想先试清是哪里没填匀。"
+    },
+    {
+      "id": "everyday:specialty:香事:recent:2",
+      "semantic": "everyday:specialty:香事:recent:2",
+      "specialty": "香事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "recent",
+      "reply": "今日先不开新的，留着这点余香，再慢慢辨。"
+    },
+    {
+      "id": "everyday:specialty:香事:interest:0",
+      "semantic": "everyday:specialty:香事:interest:0",
+      "specialty": "香事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "喜欢辨香气前后的变化，初燃与将尽，往往不一样。"
+    },
+    {
+      "id": "everyday:specialty:香事:interest:1",
+      "semantic": "everyday:specialty:香事:interest:1",
+      "specialty": "香事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "闲时也看香具。用得顺手的，未必是样子最繁复的。"
+    },
+    {
+      "id": "everyday:specialty:香事:interest:2",
+      "semantic": "everyday:specialty:香事:interest:2",
+      "specialty": "香事",
+      "minTier": 0,
+      "category": "chat",
+      "topic": "interest",
+      "reply": "同一种香换个时辰闻，也会有不同的感觉，这点很有意思。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:listen:late1",
+      "semantic": "everyday:personality:温柔体贴:listen:late1",
+      "personality": "温柔体贴",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想先给自己留一刻闲。总惦记着旁人，自己的事情反倒搁在最后。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:listen:late2",
+      "semantic": "everyday:personality:温柔体贴:listen:late2",
+      "personality": "温柔体贴",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "我也有顾不过来的时候。如今肯说出来，倒比一味答“都好”轻松些。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:comfort:late1",
+      "semantic": "everyday:personality:温柔体贴:comfort:late1",
+      "personality": "温柔体贴",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "这几日想将饭吃慢一点，不用一放下箸，便又起身。"
+    },
+    {
+      "id": "everyday:personality:温柔体贴:comfort:late2",
+      "semantic": "everyday:personality:温柔体贴:comfort:late2",
+      "personality": "温柔体贴",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "偶尔也想睡醒了再慢慢坐一会儿，不立刻数今日有几件事。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:listen:late1",
+      "semantic": "everyday:personality:清冷克制:listen:late1",
+      "personality": "清冷克制",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来清闲些，倒有点不惯。原来习惯的事一停下来，也得慢慢适应。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:listen:late2",
+      "semantic": "everyday:personality:清冷克制:listen:late2",
+      "personality": "清冷克制",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "说不上哪里不好，只是有时想找个人说两句，真开口又不知从哪里说起。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:comfort:late1",
+      "semantic": "everyday:personality:清冷克制:comfort:late1",
+      "personality": "清冷克制",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡得还好，偶尔醒得早，便先坐着，不急着翻书。"
+    },
+    {
+      "id": "everyday:personality:清冷克制:comfort:late2",
+      "semantic": "everyday:personality:清冷克制:comfort:late2",
+      "personality": "清冷克制",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "一个人时总觉得饭菜如何都成。您问起来，才想起确实常吃得草率。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:listen:late1",
+      "semantic": "everyday:personality:明朗直率:listen:late1",
+      "personality": "明朗直率",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "最近想把话说慢些。自己着急还不要紧，别叫旁人也跟着急。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:listen:late2",
+      "semantic": "everyday:personality:明朗直率:listen:late2",
+      "personality": "明朗直率",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "也有不顺的时候，平日一笑便过去了。可您认真问，我倒不想只回一句没事。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:comfort:late1",
+      "semantic": "everyday:personality:明朗直率:comfort:late1",
+      "personality": "明朗直率",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "这几日尽量睡足再起。醒着时精神好，做事也不容易毛躁。"
+    },
+    {
+      "id": "everyday:personality:明朗直率:comfort:late2",
+      "semantic": "everyday:personality:明朗直率:comfort:late2",
+      "personality": "明朗直率",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "我是真不怕累，就是有时不知道已经累了。得有人问一句，才觉出该停了。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:listen:late1",
+      "semantic": "everyday:personality:骄矜自尊:listen:late1",
+      "personality": "骄矜自尊",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想少和自己较些劲。一件小事没做好，也不必整日都惦着。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:listen:late2",
+      "semantic": "everyday:personality:骄矜自尊:listen:late2",
+      "personality": "骄矜自尊",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "有不顺心的。只是从前不愿叫人知道，如今倒想试试，说出来也没那么难。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:comfort:late1",
+      "semantic": "everyday:personality:骄矜自尊:comfort:late1",
+      "personality": "骄矜自尊",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "睡得尚可。若心里仍在较劲，便先不碰手边的东西，省得越做越急。"
+    },
+    {
+      "id": "everyday:personality:骄矜自尊:comfort:late2",
+      "semantic": "everyday:personality:骄矜自尊:comfort:late2",
+      "personality": "骄矜自尊",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "有时确实会忘了饭点，并非不知轻重，只是太想先把那一点做好。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:listen:late1",
+      "semantic": "everyday:personality:敏感多思:listen:late1",
+      "personality": "敏感多思",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想将事情一件件分开，不要只因有一处没做好，便觉得整日都过得不好。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:listen:late2",
+      "semantic": "everyday:personality:敏感多思:listen:late2",
+      "personality": "敏感多思",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "偶尔会担心自己说得太多。您若真想听，我倒能慢慢分清，哪件值得担心。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:comfort:late1",
+      "semantic": "everyday:personality:敏感多思:comfort:late1",
+      "personality": "敏感多思",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "近日睡前少想些事，想不通的便先记着，等明日精神好些再看。"
+    },
+    {
+      "id": "everyday:personality:敏感多思:comfort:late2",
+      "semantic": "everyday:personality:敏感多思:comfort:late2",
+      "personality": "敏感多思",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "有时并非睡不着，是舍不得让今日的事情留到明日。说出来，倒也知道不必这样。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:listen:late1",
+      "semantic": "everyday:personality:圆融世故:listen:late1",
+      "personality": "圆融世故",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "最近想少说几句场面话。说惯了，连自己究竟如何都要想一想。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:listen:late2",
+      "semantic": "everyday:personality:圆融世故:listen:late2",
+      "personality": "圆融世故",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "若只答都好，倒辜负您认真问这一回了。是有些累，暂时不想再替谁圆场。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:comfort:late1",
+      "semantic": "everyday:personality:圆融世故:comfort:late1",
+      "personality": "圆融世故",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "这几日想将茶减些。白日喝着提神，到了夜里，又嫌自己睡得迟。"
+    },
+    {
+      "id": "everyday:personality:圆融世故:comfort:late2",
+      "semantic": "everyday:personality:圆融世故:comfort:late2",
+      "personality": "圆融世故",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "平时总劝旁人顾着身子，自己的饭倒吃得急。您若问，可不能再拿话糊弄过去。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:listen:late1",
+      "semantic": "everyday:personality:严正守礼:listen:late1",
+      "personality": "严正守礼",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想留些余地给自己。事事都要求周全，有时反而分不清轻重。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:listen:late2",
+      "semantic": "everyday:personality:严正守礼:listen:late2",
+      "personality": "严正守礼",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "有些疲乏，从前觉得说了也无益。您既只问近况，便不拿“无事”二字作答了。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:comfort:late1",
+      "semantic": "everyday:personality:严正守礼:comfort:late1",
+      "personality": "严正守礼",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "近日起居尚稳，手边的事若做不完，也肯留待明日，不再硬撑。"
+    },
+    {
+      "id": "everyday:personality:严正守礼:comfort:late2",
+      "semantic": "everyday:personality:严正守礼:comfort:late2",
+      "personality": "严正守礼",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "平日总怕歇着误事，如今倒知道，精神不好时做的，往往还得重来。"
+    },
+    {
+      "id": "everyday:personality:野心进取:listen:late1",
+      "semantic": "everyday:personality:野心进取:listen:late1",
+      "personality": "野心进取",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "最近想将手边这一件做好，再去想下一件。看着旁人快，也不必跟着急。"
+    },
+    {
+      "id": "everyday:personality:野心进取:listen:late2",
+      "semantic": "everyday:personality:野心进取:listen:late2",
+      "personality": "野心进取",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "有时也怕自己停下来，便落在后面。明知不该事事比较，心里却没那么容易放下。"
+    },
+    {
+      "id": "everyday:personality:野心进取:comfort:late1",
+      "semantic": "everyday:personality:野心进取:comfort:late1",
+      "personality": "野心进取",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "这几日试着先将觉睡足，不再拿多熬一刻当成勤奋。"
+    },
+    {
+      "id": "everyday:personality:野心进取:comfort:late2",
+      "semantic": "everyday:personality:野心进取:comfort:late2",
+      "personality": "野心进取",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "偶尔会醒着想明日的事，想着想着，反倒把眼前该歇的时辰占了。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:listen:late1",
+      "semantic": "everyday:personality:疏朗洒脱:listen:late1",
+      "personality": "疏朗洒脱",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来没什么大事。有两处想不通的，先放着，倒也不耽误过日子。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:listen:late2",
+      "semantic": "everyday:personality:疏朗洒脱:listen:late2",
+      "personality": "疏朗洒脱",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "也并非事事都放得下，只是不想回回一见您，便将烦心的全摆出来。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:comfort:late1",
+      "semantic": "everyday:personality:疏朗洒脱:comfort:late1",
+      "personality": "疏朗洒脱",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "最近睡得安稳，醒来不急着动身，先让自己坐定一刻。"
+    },
+    {
+      "id": "everyday:personality:疏朗洒脱:comfort:late2",
+      "semantic": "everyday:personality:疏朗洒脱:comfort:late2",
+      "personality": "疏朗洒脱",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "独处时有时会凑合一顿。有人问起来，才想起好好用饭也是正经事。"
+    },
+    {
+      "id": "everyday:personality:务实重利:listen:late1",
+      "semantic": "everyday:personality:务实重利:listen:late1",
+      "personality": "务实重利",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想将琐事分一分，不要为了省一时工夫，叫后面的事都挤在一处。"
+    },
+    {
+      "id": "everyday:personality:务实重利:listen:late2",
+      "semantic": "everyday:personality:务实重利:listen:late2",
+      "personality": "务实重利",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "说起来都是小事，堆在一起也真叫人累。您肯听，我便不只报个好听的数。"
+    },
+    {
+      "id": "everyday:personality:务实重利:comfort:late1",
+      "semantic": "everyday:personality:务实重利:comfort:late1",
+      "personality": "务实重利",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "这几日先把饭用好再做事，饿着时看什么都容易心急。"
+    },
+    {
+      "id": "everyday:personality:务实重利:comfort:late2",
+      "semantic": "everyday:personality:务实重利:comfort:late2",
+      "personality": "务实重利",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "偶尔也舍不得歇，总想多做一点才值。可真累坏了，又最是不值。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:listen:late1",
+      "semantic": "everyday:personality:寡言重诺:listen:late1",
+      "personality": "寡言重诺",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近日还好。没做完的事记着，不会忘。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:listen:late2",
+      "semantic": "everyday:personality:寡言重诺:listen:late2",
+      "personality": "寡言重诺",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "是有些累。不想瞒您，也不是想叫您担忧。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:comfort:late1",
+      "semantic": "everyday:personality:寡言重诺:comfort:late1",
+      "personality": "寡言重诺",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "最近睡得稳，醒来便有精神。"
+    },
+    {
+      "id": "everyday:personality:寡言重诺:comfort:late2",
+      "semantic": "everyday:personality:寡言重诺:comfort:late2",
+      "personality": "寡言重诺",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "偶尔忙忘了饭。如今想改，先按时吃。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:listen:late1",
+      "semantic": "everyday:personality:戒备善谋:listen:late1",
+      "personality": "戒备善谋",
+      "minTier": 1,
+      "category": "care",
+      "topic": "listen",
+      "reply": "近来想把能放下的事先放一放。想得太周全，也容易什么都搁在心里。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:listen:late2",
+      "semantic": "everyday:personality:戒备善谋:listen:late2",
+      "personality": "戒备善谋",
+      "minTier": 2,
+      "category": "care",
+      "topic": "listen",
+      "reply": "并非件件都顺心。从前不愿说，是怕多说多错。如今倒想先将事情讲清，不急着猜后果。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:comfort:late1",
+      "semantic": "everyday:personality:戒备善谋:comfort:late1",
+      "personality": "戒备善谋",
+      "minTier": 1,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "近日睡前不再翻那些记注，免得一看，又将事情全想起来。"
+    },
+    {
+      "id": "everyday:personality:戒备善谋:comfort:late2",
+      "semantic": "everyday:personality:戒备善谋:comfort:late2",
+      "personality": "戒备善谋",
+      "minTier": 2,
+      "category": "care",
+      "topic": "comfort",
+      "reply": "有时也想睡个不惦记时辰的觉。只是一向的习惯，还得慢慢改。"
+    }
+  ]
+}

@@ -173,7 +173,8 @@
  };
  actions.interactionTopic=interactionTopic;
  function decorateSession(){if(!session)return;const ep=episode(session.life13);if(!ep||ep.phase!=='awaiting')return;const p=get(ep.npc),b=$('modalBody');if(!b||b.querySelector('.v13-replies'))return;
-  const block='<section class="v13-replies"><div class="section-heading"><h3>你接道</h3><span class="mini">每次接话占1次互动</span></div>'+choices(ep).map(([key,label,hint])=>{const reason=errorFor(ep,key);return '<button class="opt" data-action="v13Reply" data-id="'+ep.id+'|'+key+'" '+(session.left<1||reason?'disabled':'')+'><b>'+esc(label)+'</b><small>'+esc(reason||hint)+'</small></button>';}).join('')+'</section>';
+  const labels={jealous:{share:'陪他坐一会儿',tease:'轻轻逗他一句',space:'先告辞',together:'请两人同席'},invite:{share:'现在赴约',tease:'改约明日',space:'婉拒邀约'},gift:{share:'一起尝尝',tease:'请他下回挑选',space:'送到后告辞'},snack:{share:'分着吃',tease:'逗他一下',space:'先告辞'}};
+  const block='<section class="v13-replies"><div class="section-heading"><h3>如何回应</h3><span class="mini">每次回应占1次互动</span></div>'+choices(ep).map(([key,label,hint])=>{const reason=errorFor(ep,key);return '<button class="opt" data-action="v13Reply" data-id="'+ep.id+'|'+key+'" '+(session.left<1||reason?'disabled':'')+'><b>'+esc(labels[ep.kind]?.[key]||hint)+'</b><small>'+esc(reason||hint)+'</small></button>';}).join('')+'</section>';
   const scene=b.querySelector('.scene-text');if(scene)scene.insertAdjacentHTML('afterend',block);else b.insertAdjacentHTML('afterbegin',block);
  }
  const priorSession=renderSession;renderSession=function(){priorSession();decorateSession();};actions.backSession=renderSession;actions.v13Reply=respond;

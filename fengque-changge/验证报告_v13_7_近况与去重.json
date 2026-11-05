@@ -1,0 +1,46 @@
+{
+  "version": "13.7",
+  "passed": 27,
+  "checks": [
+    "355 new complete answers have stable unique IDs and no empress speech",
+    "all 100 NPCs have both ordinary concern topics at first acquaintance",
+    "all 100 NPCs retain their actual specialty and family-story access",
+    "care menu asks near circumstances and living, with existing gift mechanics retained",
+    "ordinary care gives a direct recent update, not an invitation to vent or a fixed ink scene",
+    "asking living circumstances receives an answer rather than obeying an order to rest",
+    "repeated care first uses distinct answers with no stage or player text",
+    "no remaining turns can obtain another answer or reward",
+    "previewing and rerendering never add to committed repetition memory or familiarity",
+    "an uncommitted preview does not wrongly exhaust the real topic",
+    "high affection and a title alone cannot unlock intimate care",
+    "familiarity grows only through actual topics on distinct days with capped daily trust",
+    "earned familiar and trusted tiers expand answers without rewriting the first tier",
+    "the same tier expansion applies to generated NPCs and nonromantic elders",
+    "private care never silently reveals a family scar after the origin is learned",
+    "explicit old-story dialogue is still available and advances the real biography",
+    "ordinary chat is NPC speech only, grounded in the actual character",
+    "first meetings of the six distinct characters never borrow another core biography",
+    "six repeated recent-chat turns across days use six distinct real answers",
+    "concern and living topics avoid saying the same line during one day",
+    "exhausting a same-day pool does not fabricate facts, grant another reward or recycle speech",
+    "after a pool cycles, the least repeated least recently used answer wins",
+    "repetition memory survives reload and remains specific to its NPC",
+    "a legacy private thread neither hijacks ordinary concern nor offers stale player speech",
+    "serious anger retains its own grievance rather than forced daily pleasantries",
+    "NPC-only rendering also strips stage actions and extracts direct speech from older chat scenes",
+    "current game retains the ruined opening, original hall, saved heirs and treasury"
+  ],
+  "samples": {
+    "xuConcern": "臣近来尚好。案上的事虽多，按轻重一件件理着，尚应付得来。",
+    "xuLiving": "不曾受寒。只是天色一暗，便不宜再辨那些细字，臣心中有数。",
+    "songChat": "方才理过琴弦，正将谱子收好。",
+    "songSixDays": [
+      "方才理过琴弦，正将谱子收好。",
+      "在理琴谱。方才一处转音未顺，先记着，不急于强弹。",
+      "在将谱上的指法标清，免得下回练到这里，又犯同一个错。",
+      "方才理过琴弦。余音尚有些杂，想再听明白从何处来的。",
+      "还在试那一转。今日比昨日顺些，不过先不请陛下夸，等弹完再说。",
+      "改了一处，前后倒不如原先顺。先不改回去，留着再听一回。"
+    ]
+  }
+}

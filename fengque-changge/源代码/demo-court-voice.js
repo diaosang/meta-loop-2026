@@ -5,7 +5,7 @@
  let active = null;
  const PROMPTS = {
   chat:{recent:'近来在忙些什么？',home:'说说家里的旧事，可好？',interest:'闲时最爱做什么？'},
-  care:{listen:'有话便慢慢说，朕听着。',comfort:'先歇一歇，余下的事不急在这一刻。',gift:'这件东西赏你，看看可合心意。',bag:'出行时留的，给你。',promise:'下月得闲，朕再来见你。'},
+  care:{listen:'近来过得如何？',comfort:'近日吃睡可好，身上可有不适？',gift:'这件东西赏你，看看可合心意。',bag:'出行时留的，给你。',promise:'下月得闲，朕再来见你。'},
   probe:{opinion:'在你看来，朕是怎样的人？',worry:'近来可有什么难处？',family:'家中来信，可有为难你的事？'},
   scold:{remind:'言行须留分寸。你可明白？',stern:'将此事的经过据实说来，不许隐瞒。',public:'此事当众问你，须有个明白交代。'},
   flirt:{compliment:'方才看你，倒让朕移不开眼了。',miss:'朕不召你时，你可曾想过来见朕？',confess:'朕待你的心意，你当真不知么？'},
@@ -149,8 +149,8 @@
   const last=m.turns;
   // The same ongoing topic may be revisited on another day; prefer an unheard variant.
   if(everyday)pool=pool.map(x=>({...x,score:(x.score||0)-(last.some(y=>y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78)?65:0)}));
-  const fresh=pool.filter(x=>!last.some(y=>(!everyday||y.tick===mindTick())&&(y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78)));
-  fresh.sort((a,b)=>(b.score||0)-(a.score||0)||hash(p.id+':'+m.turnSeq+':'+a.id)-hash(p.id+':'+m.turnSeq+':'+b.id));
+  const fresh=everyday&&typeof everydayCandidates==='function'?everydayCandidates(p,pool,similarity):pool.filter(x=>!last.some(y=>(!everyday||y.tick===mindTick())&&(y.semantic===x.semantic||similarity(y.reply,x.reply)>=.78)));
+  fresh.sort((a,b)=>(a.everydayUses||0)-(b.everydayUses||0)||(a.everydayUses?a.everydayLast-b.everydayLast:0)||(b.score||0)-(a.score||0)||hash(p.id+':'+m.turnSeq+':'+a.id)-hash(p.id+':'+m.turnSeq+':'+b.id));
   let row=fresh[0];
   if(!row){
    // An exhausted topic does not fabricate a new fact or recycle a previous answer.
@@ -162,7 +162,11 @@
    stage:row.stage||(category==='scold'?'你止住旁人的话，等他回应。':'')};
   return record(p,row,c);
  }
- function html(row){const stage=row.stage?'<span class="mind-stage">'+esc(row.stage)+'</span>':'';
+ function html(row){const stage=row.stage&&(!['chat','care'].includes(row.category)||row.exhausted)?'<span class="mind-stage">'+esc(row.stage)+'</span>':'';
+  if(['chat','care'].includes(row.category)&&!row.exhausted&&row.narrative){
+   const speech=[...String(row.reply).matchAll(/“([^”]+)”/g)].map(m=>m[1]);
+   if(speech.length)return speech.map(s=>'“'+esc(s)+'”').join('<br>');
+  }
   if(row.narrative)return stage+(stage?'<br><br>':'')+esc(row.reply);
   if(row.exhausted)return stage;
   return stage+(stage?'<br><br>':'')+'“'+esc(row.reply)+'”';}

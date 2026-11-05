@@ -23,6 +23,7 @@ function socialTier(p){
 }
 function socialLabel(p){return {stranger:['xu','jiang','ye','xie'].includes(p.id)?'旧识 · 私下尚拘谨':'初识 · 尚守礼',familiar:'渐熟 · 愿说琐事',trusted:'相知 · 愿谈心事'}[socialTier(p)];}
 function commitSocial(p,row){
+ if(typeof commitEverydayReply==='function')commitEverydayReply(p,row);
  if(!row.socialTier)return;
  const s=socialState(p),day=String(mindTick()),key=row.id+':'+day;
  if(s.applied.includes(key))return;

@@ -1,0 +1,27 @@
+const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{pathToFileURL}=require('node:url'),os=require('node:os');
+const root=path.resolve(__dirname,'..'),entry=pathToFileURL(path.join(root,'试玩_v13_7.html')).href,captures=process.env.FENGQUE_TEST_OUTPUT||path.join(os.tmpdir(),'fengque-everyday');
+fs.mkdirSync(captures,{recursive:true});
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.FENGQUE_BROWSER||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'}),checks=[],errors=[],samples={};
+try{
+ async function fresh(width=390){const c=await browser.newContext({viewport:{width,height:900}}),p=await c.newPage();p.on('pageerror',e=>errors.push(String(e)));await p.goto(entry);await p.locator('[data-action="introDone"]').click();return p;}
+ async function meet(p,id,category){await p.locator('.nav [data-id="people"]').click();await p.locator('[data-action="visit"][data-id="'+id+'"]').first().click();await p.locator('[data-action="interactionCategory"][data-id="'+category+'"]').click();}
+ async function say(p,topic){await p.locator('[data-action="interactionTopic"][data-id="'+topic+'"]').click();return p.locator('.scene-text').innerText();}
+ const p=await fresh();assert((await p.title()).includes('V13.7'));checks.push('最新独立入口真实启动V13.7，仍为风雨登基空库开局');
+ await meet(p,'xu','care');assert.equal(await p.locator('[data-action="interactionTopic"][data-id="listen"] b').innerText(),'问问近况');assert.equal(await p.locator('[data-action="interactionTopic"][data-id="comfort"] b').innerText(),'问问起居');checks.push('手机关心菜单明确问近况与问起居');
+ const first=await say(p,'listen');samples.xuCare=first;assert(first.startsWith('“')&&first.endsWith('”'));assert(!/你说|你接道|朕|兑水|族中来问/.test(first));assert.equal(await p.locator('.scene-text .mind-stage').count(),0);assert.equal(await p.locator('.private-replies').count(),0);checks.push('关心正文只有NPC直接回答，不出现女帝原话、动作旁白或固定心事分支');
+ const s=await p.evaluate(()=>JSON.parse(localStorage.getItem('fengque-demo-v4')));assert.equal(s.relations.xu.mind.everydayReplies.length,1);assert(!s.relations.xu.mind.privateTalk);checks.push('一次实际关心记录一次真实回答，不自动创建倾诉线程');
+ const living=await say(p,'comfort');samples.xuLiving=living;assert(/饮食|安睡|起居|夜|受寒|看书|不适/.test(living));assert(!/好，听|这便|依言/.test(living));checks.push('问起居答吃睡与身体，不被替换成奉命休息');
+ const again=await say(p,'listen');assert.notEqual(again,first);assert.equal(await p.locator('[data-action="interactionTopic"][data-id="listen"]:disabled').count(),1);checks.push('同次会面重复关心先用不同答复，三次互动后正常禁用');
+ await p.locator('.sheet').screenshot({path:path.join(captures,'everyday-care-mobile.png')});assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);checks.push('390px关心界面无横向溢出');
+ const q=await fresh();await meet(q,'song','chat');const chat1=await say(q,'recent');samples.songChat=chat1;assert(/琴|谱|弦|曲|指法|慢练/.test(chat1));assert(!/朕|你说|他将|他垂/.test(chat1));checks.push('闲谈只见NPC回答，宋玉衡的近日小事对应琴艺设定');
+ await say(q,'interest');const chat2=await say(q,'recent');assert.notEqual(chat1,chat2);checks.push('同次闲谈重问近期小事，优先使用未说过的回答');
+ await q.reload();await meet(q,'song','chat');const chat3=await say(q,'recent');assert.notEqual(chat3,chat1);assert.notEqual(chat3,chat2);checks.push('刷新后去重记录保留，不从第一条重新循环');
+ await q.locator('[data-action="interactionTopic"][data-id="v13:snack"]').click();const labels=await q.locator('[data-action="v13Reply"] b').allInnerTexts();assert(labels.length>0);assert(labels.every(t=>!/朕|你|您/.test(t)));assert.equal(await q.locator('.v13-replies h3').innerText(),'如何回应');assert(!/你接道/.test(await q.locator('#modalBody').innerText()));checks.push('旧有小事接话改成行为选项，不把女帝台词摆在正文或按钮上');
+ await q.locator('.sheet').screenshot({path:path.join(captures,'everyday-chat-mobile.png')});
+ const legacy=await q.evaluate(()=>JSON.parse(localStorage.getItem('fengque-demo-v4')));legacy.frontCourt.treasury=77;legacy.relations.xu.mind.privateTalk={id:'legacy-care',tick:legacy.elapsed*30+(legacy.day||1),phase:'awaiting',opening:{reply:'旧档固定砚池话题',category:'care'},branches:[{say:'朕来替你换',reply:'旧档分支'}]};
+ const oldContext=await browser.newContext({viewport:{width:390,height:844}});await oldContext.addInitScript(save=>localStorage.setItem('fengque-demo-v4',JSON.stringify(save)),legacy);const old=await oldContext.newPage();old.on('pageerror',e=>errors.push(String(e)));await old.goto(entry);await meet(old,'xu','care');const migrated=await say(old,'listen');assert(!/旧档|砚池/.test(migrated));assert.equal(await old.locator('.private-replies').count(),0);assert.equal(await old.evaluate(()=>JSON.parse(localStorage.getItem('fengque-demo-v4')).frontCourt.treasury),77);checks.push('旧存档的固定心事不再抢占新关心，同时保留原国库进度');
+ const wide=await fresh(1280);await meet(wide,'lu','care');const lu=await say(wide,'listen');samples.luCare=lu;assert(/练|无碍|累|手臂|伤/.test(lu));assert.equal(await wide.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await wide.locator('.sheet').screenshot({path:path.join(captures,'everyday-care-desktop.png')});checks.push('1280px陆景明关心回应对应骑射人设，桌面无横向溢出');
+ assert.deepEqual(errors,[]);checks.push('手机、桌面、刷新及旧档均无页面脚本异常');
+ const report={version:'13.7',passed:checks.length,checks,pageErrors:errors,samples,mode:'Microsoft Edge / Playwright; actual visible clicks, fresh and isolated legacy contexts'};
+ fs.writeFileSync(path.join(root,'验证报告_v13_7_近况浏览器.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});

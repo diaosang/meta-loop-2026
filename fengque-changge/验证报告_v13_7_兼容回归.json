@@ -1,0 +1,32 @@
+{
+  "version": "13.7",
+  "runs": [
+    {
+      "name": "前朝逻辑",
+      "script": "test_frontcourt.cjs",
+      "status": 0,
+      "passed": 35
+    },
+    {
+      "name": "批阅恢复",
+      "script": "test_approval_flow.cjs",
+      "status": 0,
+      "passed": 14
+    },
+    {
+      "name": "破局逻辑",
+      "script": "test_ruined_realm.cjs",
+      "status": 0,
+      "passed": 30
+    },
+    {
+      "name": "人设与选秀",
+      "script": "test_courtship_and_selection.cjs",
+      "status": 0,
+      "passed": 14
+    }
+  ],
+  "passed": 93,
+  "failed": false,
+  "historicalReportsPreserved": true
+}

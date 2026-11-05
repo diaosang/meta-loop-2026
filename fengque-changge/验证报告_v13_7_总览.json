@@ -1,0 +1,16 @@
+{
+  "version": "13.7",
+  "baseCommit": "0dbd293bb821b82527261602abb05afb027a1567",
+  "totalChecksPassed": 134,
+  "newDialogueLogic": 27,
+  "newBrowserChecks": 14,
+  "compatibilityChecks": 93,
+  "workbookByteIdentical": true,
+  "workbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "historicalPlayablesAndReportsUnchanged": true,
+  "unrelatedRepositoryFilesUnchanged": true,
+  "threeCurrentEntriesByteIdentical": true,
+  "newCompleteReplies": 355,
+  "pageErrors": [],
+  "note": "旧心事的自动续谈规则按本次要求改变；以前验证固定砚池及玩家接话分支的断言作为历史规格，不声称本次运行通过。"
+}
