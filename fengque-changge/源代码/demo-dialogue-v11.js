@@ -27,6 +27,7 @@
     meritCards: 0,
     hiddenPlayerLines: 0
   };
+  var lastApplicant = null;
 
   function str(value) { return String(value == null ? '' : value).trim(); }
   function hash(value) {
