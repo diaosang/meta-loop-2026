@@ -1,0 +1,24 @@
+{
+  "version": "12.1",
+  "type": "static-and-simulated-logic-check",
+  "checks": {
+    "patchSyntax": true,
+    "xuFirstMeetingBlushAndFormalReply": true,
+    "scoldingProducesSingleNpcReply": true,
+    "xuDisclosureLockedUntilIntimate": true,
+    "xuDisclosureProgressesAcrossTurns": true,
+    "playerUtteranceHidden": true,
+    "generatedApplicantMeritRaised": true,
+    "applicantRepliesShowReverence": true
+  },
+  "preserved": [
+    "行动消耗与互动次数",
+    "好感、忠诚、心意和相关门槛",
+    "NPC自主行动与关系记忆",
+    "选秀年龄范围、原有候选资格、名额与费用",
+    "本人拒绝留牌机制",
+    "朝堂、奏报、事件流程和存档结构"
+  ],
+  "browserVisualVerification": false,
+  "note": "逻辑测试使用模拟 DOM；尚未完成真实浏览器视觉点击与 GitHub Pages 实机验收。"
+}
