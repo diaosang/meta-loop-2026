@@ -1,0 +1,39 @@
+{
+  "version": "16.1",
+  "date": "2026-11-06",
+  "baseCommit": "bdaa7539041b22197cb6aaa510d419be9ec03280",
+  "checksPassed": 205,
+  "browser": 19,
+  "ruleRegressions": 186,
+  "primaryCourtSideButtons": 5,
+  "bottomDepartmentButtons": 6,
+  "singleNextStepHint": true,
+  "oldCourtHallArtworkRetained": true,
+  "preciseEffectsAndAdviceFolded": true,
+  "copyStyle": "操作直接明白；臣子用简短易懂的古代君臣口吻禀报，保留时代语气。",
+  "newUIBrowsersOffline": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "realBrowserPlayedDays": 3,
+  "zeroAPAndMonthEndResumeFixturesVerified": true,
+  "dayResumePolicy": "需明确确认，只推进一日，正常入朝后回到同一奏事；月末只到次月初一。",
+  "saveFormatUnchanged": true,
+  "saveSchemaVersion": 16,
+  "legacyStateVersion": 3,
+  "existingWorldAndPalaceRulesRetained": true,
+  "newGodotWork": false,
+  "historicalEntriesAndReportsPreserved": 139,
+  "historicalWorkbookSheetsPreserved": 36,
+  "historicalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "threeCurrentEntriesIdentical": true,
+  "currentPlayableSHA256": "88778b397aecadc87700c9bad64e0f3ec5c2dd94f25ed734e125faa5ed05e848",
+  "unrelatedRepositoryFilesUnchanged": true,
+  "pageErrors": [],
+  "limits": [
+    "本轮是上朝交互与文案优化，旧案等详细界面仍可从更多打开。",
+    "本轮未重新运行完整十代或原生导出；没有扩展V16所注明的基础传承范围。"
+  ]
+}
