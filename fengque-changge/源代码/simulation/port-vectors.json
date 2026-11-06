@@ -1,0 +1,2603 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "15.0",
+  "cases": [
+    {
+      "name": "不干预，连续30日",
+      "commands": [],
+      "input": {
+        "tick": 60,
+        "seed": 20261106,
+        "economy": {
+          "treasury": 50,
+          "grain": 50,
+          "arrears": 40,
+          "tax": "normal"
+        },
+        "regions": {
+          "capital": {
+            "id": "capital",
+            "name": "京畿",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          },
+          "jiangnan": {
+            "id": "jiangnan",
+            "name": "江南",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 70,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          },
+          "north": {
+            "id": "north",
+            "name": "北境",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          }
+        },
+        "actors": [
+          {
+            "id": "xu",
+            "name": "许知衡",
+            "official": true,
+            "skills": {
+              "admin": 80,
+              "military": 40
+            }
+          },
+          {
+            "id": "jiang",
+            "name": "姜禹瀛",
+            "official": true,
+            "skills": {
+              "admin": 75,
+              "military": 35
+            }
+          },
+          {
+            "id": "ye",
+            "name": "叶承钧",
+            "official": true,
+            "skills": {
+              "admin": 65,
+              "military": 30
+            }
+          }
+        ]
+      },
+      "targetTick": 90,
+      "expected": {
+        "schemaVersion": 1,
+        "active": true,
+        "tick": 90,
+        "started": 60,
+        "seed": 20261106,
+        "serial": 8,
+        "economy": {
+          "treasury": 0,
+          "grain": 36,
+          "arrears": 44,
+          "tax": "normal"
+        },
+        "regions": {
+          "capital": {
+            "id": "capital",
+            "name": "京畿",
+            "focus": true,
+            "food": 53,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.59
+          },
+          "jiangnan": {
+            "id": "jiangnan",
+            "name": "江南",
+            "focus": true,
+            "food": 28,
+            "health": 60,
+            "waterRisk": 70,
+            "corruption": 45,
+            "infrastructure": 21,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.9
+          },
+          "north": {
+            "id": "north",
+            "name": "北境",
+            "focus": true,
+            "food": 53,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.59
+          }
+        },
+        "actors": [
+          {
+            "id": "xu",
+            "name": "许知衡",
+            "official": true,
+            "skills": {
+              "admin": 80,
+              "military": 40
+            },
+            "stress": 0,
+            "health": 91,
+            "busyUntil": 84,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "核对俸饷与调粮副册。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "核对俸饷与调粮副册。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "整理今日用过的物件。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          },
+          {
+            "id": "jiang",
+            "name": "姜禹瀛",
+            "official": true,
+            "skills": {
+              "admin": 75,
+              "military": 35
+            },
+            "stress": 0,
+            "health": 91,
+            "busyUntil": 0,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "与族中荐举者核对履历。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "与族中荐举者核对履历。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "整理今日用过的物件。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          },
+          {
+            "id": "ye",
+            "name": "叶承钧",
+            "official": true,
+            "skills": {
+              "admin": 65,
+              "military": 30
+            },
+            "stress": 0,
+            "health": 91,
+            "busyUntil": 0,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "当值，处理本衙门差事。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "当值，处理本衙门差事。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "留一盏灯，读半卷闲书。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          }
+        ],
+        "jobs": [],
+        "events": [
+          {
+            "id": "realm-1",
+            "tick": 60,
+            "kind": "登基",
+            "text": "接手大梁日常经营；国库、粮仓与旧欠沿用现存账册。"
+          },
+          {
+            "id": "realm-2",
+            "tick": 62,
+            "kind": "节令",
+            "text": "上巳春宴：曲水边添了几张小案，风把新柳吹进杯中。",
+            "festival": "上巳春宴"
+          },
+          {
+            "id": "realm-3",
+            "tick": 70,
+            "kind": "人物往来",
+            "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 1
+          },
+          {
+            "id": "realm-4",
+            "tick": 72,
+            "kind": "人物往来",
+            "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 1
+          },
+          {
+            "id": "realm-5",
+            "tick": 74,
+            "kind": "人物往来",
+            "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 2
+          },
+          {
+            "id": "realm-6",
+            "tick": 76,
+            "kind": "人物往来",
+            "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 2
+          },
+          {
+            "id": "realm-7",
+            "tick": 78,
+            "kind": "人物往来",
+            "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 3
+          },
+          {
+            "id": "realm-8",
+            "tick": 90,
+            "kind": "人物往来",
+            "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 3
+          }
+        ],
+        "days": [
+          {
+            "tick": 61,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 49,
+            "weather": "风起"
+          },
+          {
+            "tick": 62,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 48,
+            "weather": "雨"
+          },
+          {
+            "tick": 63,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 51,
+            "weather": "晴"
+          },
+          {
+            "tick": 64,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 50,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 65,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 41,
+            "grain": 49,
+            "weather": "晴"
+          },
+          {
+            "tick": 66,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 41,
+            "grain": 48,
+            "weather": "风起"
+          },
+          {
+            "tick": 67,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 41,
+            "grain": 47,
+            "weather": "晴"
+          },
+          {
+            "tick": 68,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 41,
+            "grain": 46,
+            "weather": "晴"
+          },
+          {
+            "tick": 69,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 41,
+            "grain": 45,
+            "weather": "微雨"
+          },
+          {
+            "tick": 70,
+            "income": 3,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 48,
+            "weather": "晴"
+          },
+          {
+            "tick": 71,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 47,
+            "weather": "风起"
+          },
+          {
+            "tick": 72,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 46,
+            "weather": "晴"
+          },
+          {
+            "tick": 73,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 45,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 74,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 44,
+            "weather": "晴"
+          },
+          {
+            "tick": 75,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 23,
+            "grain": 43,
+            "weather": "雨"
+          },
+          {
+            "tick": 76,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 23,
+            "grain": 42,
+            "weather": "风起"
+          },
+          {
+            "tick": 77,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 23,
+            "grain": 45,
+            "weather": "微雨"
+          },
+          {
+            "tick": 78,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 23,
+            "grain": 44,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 79,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 23,
+            "grain": 43,
+            "weather": "晴"
+          },
+          {
+            "tick": 80,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 14,
+            "grain": 42,
+            "weather": "晴"
+          },
+          {
+            "tick": 81,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 14,
+            "grain": 41,
+            "weather": "微雨"
+          },
+          {
+            "tick": 82,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 14,
+            "grain": 40,
+            "weather": "风起"
+          },
+          {
+            "tick": 83,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 14,
+            "grain": 39,
+            "weather": "晴"
+          },
+          {
+            "tick": 84,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 14,
+            "grain": 42,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 85,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 5,
+            "grain": 41,
+            "weather": "晴"
+          },
+          {
+            "tick": 86,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 5,
+            "grain": 40,
+            "weather": "微雨"
+          },
+          {
+            "tick": 87,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 5,
+            "grain": 39,
+            "weather": "风起"
+          },
+          {
+            "tick": 88,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 5,
+            "grain": 38,
+            "weather": "晴"
+          },
+          {
+            "tick": 89,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 5,
+            "grain": 37,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 90,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 8,
+            "arrears": 44,
+            "treasury": 0,
+            "grain": 36,
+            "weather": "微雨"
+          }
+        ],
+        "bonds": {
+          "jiang|xu": {
+            "a": "xu",
+            "b": "jiang",
+            "stance": 3,
+            "meetings": 3
+          },
+          "jiang|ye": {
+            "a": "jiang",
+            "b": "ye",
+            "stance": 3,
+            "meetings": 3
+          }
+        },
+        "memories": {
+          "xu": [
+            {
+              "event": "realm-3",
+              "tick": 70,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-5",
+              "tick": 74,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-7",
+              "tick": 78,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            }
+          ],
+          "jiang": [
+            {
+              "event": "realm-3",
+              "tick": 70,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-4",
+              "tick": 72,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-5",
+              "tick": 74,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-6",
+              "tick": 76,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-7",
+              "tick": 78,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-8",
+              "tick": 90,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            }
+          ],
+          "ye": [
+            {
+              "event": "realm-4",
+              "tick": 72,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-6",
+              "tick": 76,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-8",
+              "tick": 90,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            }
+          ]
+        },
+        "stamps": {},
+        "goals": [],
+        "festivalDays": [],
+        "leisureDays": [],
+        "paidArrears": 0,
+        "replies": {}
+      }
+    },
+    {
+      "name": "少收税、修渠、补欠薪后连续30日",
+      "commands": [
+        {
+          "id": "tax",
+          "tick": 60,
+          "type": "tax",
+          "policy": "light"
+        },
+        {
+          "id": "canal",
+          "tick": 60,
+          "type": "project",
+          "region": "jiangnan",
+          "project": "canal",
+          "actor": "jiang"
+        },
+        {
+          "id": "pay",
+          "tick": 60,
+          "type": "payArrears"
+        }
+      ],
+      "input": {
+        "tick": 60,
+        "seed": 20261106,
+        "economy": {
+          "treasury": 50,
+          "grain": 50,
+          "arrears": 40,
+          "tax": "normal"
+        },
+        "regions": {
+          "capital": {
+            "id": "capital",
+            "name": "京畿",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          },
+          "jiangnan": {
+            "id": "jiangnan",
+            "name": "江南",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 70,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          },
+          "north": {
+            "id": "north",
+            "name": "北境",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          }
+        },
+        "actors": [
+          {
+            "id": "xu",
+            "name": "许知衡",
+            "official": true,
+            "skills": {
+              "admin": 80,
+              "military": 40
+            }
+          },
+          {
+            "id": "jiang",
+            "name": "姜禹瀛",
+            "official": true,
+            "skills": {
+              "admin": 75,
+              "military": 35
+            }
+          },
+          {
+            "id": "ye",
+            "name": "叶承钧",
+            "official": true,
+            "skills": {
+              "admin": 65,
+              "military": 30
+            }
+          }
+        ]
+      },
+      "targetTick": 90,
+      "expected": {
+        "schemaVersion": 1,
+        "active": true,
+        "tick": 90,
+        "started": 60,
+        "seed": 20261106,
+        "serial": 13,
+        "economy": {
+          "treasury": 0,
+          "grain": 40,
+          "arrears": 54,
+          "tax": "light"
+        },
+        "regions": {
+          "capital": {
+            "id": "capital",
+            "name": "京畿",
+            "focus": true,
+            "food": 53,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 56,
+            "public": 46,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.59
+          },
+          "jiangnan": {
+            "id": "jiangnan",
+            "name": "江南",
+            "focus": true,
+            "food": 47,
+            "health": 60,
+            "waterRisk": 56,
+            "corruption": 45,
+            "infrastructure": 39,
+            "business": 56,
+            "public": 46,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.66
+          },
+          "north": {
+            "id": "north",
+            "name": "北境",
+            "focus": true,
+            "food": 53,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 56,
+            "public": 46,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.59
+          }
+        },
+        "actors": [
+          {
+            "id": "xu",
+            "name": "许知衡",
+            "official": true,
+            "skills": {
+              "admin": 80,
+              "military": 40
+            },
+            "stress": 0,
+            "health": 92,
+            "busyUntil": 84,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "核对俸饷与调粮副册。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "核对俸饷与调粮副册。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "整理今日用过的物件。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          },
+          {
+            "id": "jiang",
+            "name": "姜禹瀛",
+            "official": true,
+            "skills": {
+              "admin": 75,
+              "military": 35
+            },
+            "stress": 0,
+            "health": 92,
+            "busyUntil": 64,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "与族中荐举者核对履历。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "与族中荐举者核对履历。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "整理今日用过的物件。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          },
+          {
+            "id": "ye",
+            "name": "叶承钧",
+            "official": true,
+            "skills": {
+              "admin": 65,
+              "military": 30
+            },
+            "stress": 0,
+            "health": 92,
+            "busyUntil": 0,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "当值，处理本衙门差事。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "当值，处理本衙门差事。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "留一盏灯，读半卷闲书。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          }
+        ],
+        "jobs": [
+          {
+            "id": "canal",
+            "type": "canal",
+            "name": "修水渠",
+            "region": "jiangnan",
+            "actor": "jiang",
+            "quality": 75,
+            "started": 60,
+            "due": 64,
+            "status": "done",
+            "money": 10,
+            "grain": 2,
+            "finished": 64
+          }
+        ],
+        "events": [
+          {
+            "id": "realm-1",
+            "tick": 60,
+            "kind": "登基",
+            "text": "接手大梁日常经营；国库、粮仓与旧欠沿用现存账册。"
+          },
+          {
+            "id": "realm-2",
+            "tick": 60,
+            "kind": "税令",
+            "text": "改行少收一点税；每五日实收，商情与民心也随之变化。"
+          },
+          {
+            "id": "realm-3",
+            "tick": 60,
+            "kind": "地方施政",
+            "text": "姜禹瀛负责江南「修水渠」，花朝廷的钱10、存粮2；4天后看结果。",
+            "job": "canal",
+            "actor": "jiang",
+            "region": "jiangnan"
+          },
+          {
+            "id": "realm-4",
+            "tick": 60,
+            "kind": "补支俸饷",
+            "text": "实际发了12钱，还欠28。",
+            "amount": 12
+          },
+          {
+            "id": "realm-5",
+            "tick": 60,
+            "kind": "国势阶段",
+            "text": "达成「先稳住眼前」；后续仍可反复，天下不会因此停转。"
+          },
+          {
+            "id": "realm-6",
+            "tick": 62,
+            "kind": "节令",
+            "text": "上巳春宴：曲水边添了几张小案，风把新柳吹进杯中。",
+            "festival": "上巳春宴"
+          },
+          {
+            "id": "realm-7",
+            "tick": 64,
+            "kind": "地方回奏",
+            "text": "江南 · 修水渠：支渠疏通，堤口完成补筑；要等雨季与收成，才见长远成效。",
+            "job": "canal",
+            "actor": "jiang",
+            "region": "jiangnan"
+          },
+          {
+            "id": "realm-8",
+            "tick": 70,
+            "kind": "人物往来",
+            "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 1
+          },
+          {
+            "id": "realm-9",
+            "tick": 72,
+            "kind": "人物往来",
+            "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 1
+          },
+          {
+            "id": "realm-10",
+            "tick": 74,
+            "kind": "人物往来",
+            "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 2
+          },
+          {
+            "id": "realm-11",
+            "tick": 76,
+            "kind": "人物往来",
+            "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 2
+          },
+          {
+            "id": "realm-12",
+            "tick": 78,
+            "kind": "人物往来",
+            "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 3
+          },
+          {
+            "id": "realm-13",
+            "tick": 90,
+            "kind": "人物往来",
+            "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": 3
+          }
+        ],
+        "days": [
+          {
+            "tick": 61,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 28,
+            "grain": 47,
+            "weather": "风起"
+          },
+          {
+            "tick": 62,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 28,
+            "grain": 46,
+            "weather": "雨"
+          },
+          {
+            "tick": 63,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 28,
+            "grain": 49,
+            "weather": "晴"
+          },
+          {
+            "tick": 64,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 28,
+            "grain": 48,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 65,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 28,
+            "treasury": 19,
+            "grain": 47,
+            "weather": "晴"
+          },
+          {
+            "tick": 66,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 19,
+            "grain": 46,
+            "weather": "风起"
+          },
+          {
+            "tick": 67,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 19,
+            "grain": 45,
+            "weather": "晴"
+          },
+          {
+            "tick": 68,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 19,
+            "grain": 44,
+            "weather": "晴"
+          },
+          {
+            "tick": 69,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 19,
+            "grain": 43,
+            "weather": "微雨"
+          },
+          {
+            "tick": 70,
+            "income": 3,
+            "harvest": 6,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 28,
+            "treasury": 10,
+            "grain": 48,
+            "weather": "晴"
+          },
+          {
+            "tick": 71,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 10,
+            "grain": 47,
+            "weather": "风起"
+          },
+          {
+            "tick": 72,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 10,
+            "grain": 46,
+            "weather": "晴"
+          },
+          {
+            "tick": 73,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 10,
+            "grain": 45,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 74,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 10,
+            "grain": 44,
+            "weather": "晴"
+          },
+          {
+            "tick": 75,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 28,
+            "treasury": 1,
+            "grain": 43,
+            "weather": "雨"
+          },
+          {
+            "tick": 76,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 1,
+            "grain": 42,
+            "weather": "风起"
+          },
+          {
+            "tick": 77,
+            "income": 0,
+            "harvest": 6,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 1,
+            "grain": 47,
+            "weather": "微雨"
+          },
+          {
+            "tick": 78,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 1,
+            "grain": 46,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 79,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 28,
+            "treasury": 1,
+            "grain": 45,
+            "weather": "晴"
+          },
+          {
+            "tick": 80,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 4,
+            "arrears": 36,
+            "treasury": 0,
+            "grain": 44,
+            "weather": "晴"
+          },
+          {
+            "tick": 81,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 36,
+            "treasury": 0,
+            "grain": 43,
+            "weather": "微雨"
+          },
+          {
+            "tick": 82,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 36,
+            "treasury": 0,
+            "grain": 42,
+            "weather": "风起"
+          },
+          {
+            "tick": 83,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 36,
+            "treasury": 0,
+            "grain": 41,
+            "weather": "晴"
+          },
+          {
+            "tick": 84,
+            "income": 0,
+            "harvest": 6,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 36,
+            "treasury": 0,
+            "grain": 46,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 85,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 3,
+            "arrears": 45,
+            "treasury": 0,
+            "grain": 45,
+            "weather": "晴"
+          },
+          {
+            "tick": 86,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 45,
+            "treasury": 0,
+            "grain": 44,
+            "weather": "微雨"
+          },
+          {
+            "tick": 87,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 45,
+            "treasury": 0,
+            "grain": 43,
+            "weather": "风起"
+          },
+          {
+            "tick": 88,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 45,
+            "treasury": 0,
+            "grain": 42,
+            "weather": "晴"
+          },
+          {
+            "tick": 89,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 45,
+            "treasury": 0,
+            "grain": 41,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 90,
+            "income": 3,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 3,
+            "arrears": 54,
+            "treasury": 0,
+            "grain": 40,
+            "weather": "微雨"
+          }
+        ],
+        "bonds": {
+          "jiang|xu": {
+            "a": "xu",
+            "b": "jiang",
+            "stance": 3,
+            "meetings": 3
+          },
+          "jiang|ye": {
+            "a": "jiang",
+            "b": "ye",
+            "stance": 3,
+            "meetings": 3
+          }
+        },
+        "memories": {
+          "jiang": [
+            {
+              "event": "realm-3",
+              "tick": 60,
+              "kind": "地方施政",
+              "text": "姜禹瀛负责江南「修水渠」，花朝廷的钱10、存粮2；4天后看结果。"
+            },
+            {
+              "event": "realm-7",
+              "tick": 64,
+              "kind": "地方回奏",
+              "text": "江南 · 修水渠：支渠疏通，堤口完成补筑；要等雨季与收成，才见长远成效。"
+            },
+            {
+              "event": "realm-8",
+              "tick": 70,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-9",
+              "tick": 72,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-10",
+              "tick": 74,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-11",
+              "tick": 76,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-12",
+              "tick": 78,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-13",
+              "tick": 90,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            }
+          ],
+          "xu": [
+            {
+              "event": "realm-8",
+              "tick": 70,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-10",
+              "tick": 74,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            },
+            {
+              "event": "realm-12",
+              "tick": 78,
+              "kind": "人物往来",
+              "text": "许知衡与姜禹瀛对上了地方副册，对调粮先后暂得一致。"
+            }
+          ],
+          "ye": [
+            {
+              "event": "realm-9",
+              "tick": 72,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-11",
+              "tick": 76,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            },
+            {
+              "event": "realm-13",
+              "tick": 90,
+              "kind": "人物往来",
+              "text": "姜禹瀛与叶承钧核过一段运粮路程，约定各留副册，互不独揽签押。"
+            }
+          ]
+        },
+        "stamps": {
+          "tax:2": 61,
+          "tax": 61,
+          "canal": 61,
+          "pay": 61
+        },
+        "goals": [
+          "survive"
+        ],
+        "festivalDays": [],
+        "leisureDays": [],
+        "paidArrears": 12,
+        "replies": {}
+      }
+    },
+    {
+      "name": "多收税后连续30日",
+      "commands": [
+        {
+          "id": "tax",
+          "tick": 60,
+          "type": "tax",
+          "policy": "heavy"
+        }
+      ],
+      "input": {
+        "tick": 60,
+        "seed": 20261106,
+        "economy": {
+          "treasury": 50,
+          "grain": 50,
+          "arrears": 40,
+          "tax": "normal"
+        },
+        "regions": {
+          "capital": {
+            "id": "capital",
+            "name": "京畿",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          },
+          "jiangnan": {
+            "id": "jiangnan",
+            "name": "江南",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 70,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          },
+          "north": {
+            "id": "north",
+            "name": "北境",
+            "focus": true,
+            "food": 45,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 50,
+            "public": 40,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1
+          }
+        },
+        "actors": [
+          {
+            "id": "xu",
+            "name": "许知衡",
+            "official": true,
+            "skills": {
+              "admin": 80,
+              "military": 40
+            }
+          },
+          {
+            "id": "jiang",
+            "name": "姜禹瀛",
+            "official": true,
+            "skills": {
+              "admin": 75,
+              "military": 35
+            }
+          },
+          {
+            "id": "ye",
+            "name": "叶承钧",
+            "official": true,
+            "skills": {
+              "admin": 65,
+              "military": 30
+            }
+          }
+        ]
+      },
+      "targetTick": 90,
+      "expected": {
+        "schemaVersion": 1,
+        "active": true,
+        "tick": 90,
+        "started": 60,
+        "seed": 20261106,
+        "serial": 9,
+        "economy": {
+          "treasury": 14,
+          "grain": 36,
+          "arrears": 40,
+          "tax": "heavy"
+        },
+        "regions": {
+          "capital": {
+            "id": "capital",
+            "name": "京畿",
+            "focus": true,
+            "food": 53,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 44,
+            "public": 28,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.59
+          },
+          "jiangnan": {
+            "id": "jiangnan",
+            "name": "江南",
+            "focus": true,
+            "food": 28,
+            "health": 60,
+            "waterRisk": 70,
+            "corruption": 45,
+            "infrastructure": 21,
+            "business": 44,
+            "public": 28,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.9
+          },
+          "north": {
+            "id": "north",
+            "name": "北境",
+            "focus": true,
+            "food": 53,
+            "health": 60,
+            "waterRisk": 30,
+            "corruption": 45,
+            "infrastructure": 28,
+            "business": 44,
+            "public": 28,
+            "security": 40,
+            "refugees": 0,
+            "grainPrice": 1.59
+          }
+        },
+        "actors": [
+          {
+            "id": "xu",
+            "name": "许知衡",
+            "official": true,
+            "skills": {
+              "admin": 80,
+              "military": 40
+            },
+            "stress": 0,
+            "health": 91,
+            "busyUntil": 84,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "核对俸饷与调粮副册。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "核对俸饷与调粮副册。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "整理今日用过的物件。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          },
+          {
+            "id": "jiang",
+            "name": "姜禹瀛",
+            "official": true,
+            "skills": {
+              "admin": 75,
+              "military": 35
+            },
+            "stress": 0,
+            "health": 91,
+            "busyUntil": 0,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "与族中荐举者核对履历。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "与族中荐举者核对履历。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "整理今日用过的物件。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          },
+          {
+            "id": "ye",
+            "name": "叶承钧",
+            "official": true,
+            "skills": {
+              "admin": 65,
+              "military": 30
+            },
+            "stress": 0,
+            "health": 91,
+            "busyUntil": 0,
+            "met": 0,
+            "contactDays": [],
+            "mood": "平常",
+            "routine": [
+              {
+                "slot": "清晨",
+                "place": "住处",
+                "text": "洗漱，更衣。"
+              },
+              {
+                "slot": "上午",
+                "place": "衙门",
+                "text": "当值，处理本衙门差事。"
+              },
+              {
+                "slot": "中午",
+                "place": "膳房",
+                "text": "用膳歇息。"
+              },
+              {
+                "slot": "下午",
+                "place": "衙门",
+                "text": "当值，处理本衙门差事。"
+              },
+              {
+                "slot": "傍晚",
+                "place": "廊下",
+                "text": "避雨，等雨势稍缓再走。"
+              },
+              {
+                "slot": "入夜",
+                "place": "住处",
+                "text": "留一盏灯，读半卷闲书。"
+              },
+              {
+                "slot": "睡前",
+                "place": "住处",
+                "text": "熄灯歇下。"
+              }
+            ]
+          }
+        ],
+        "jobs": [],
+        "events": [
+          {
+            "id": "realm-1",
+            "tick": 60,
+            "kind": "登基",
+            "text": "接手大梁日常经营；国库、粮仓与旧欠沿用现存账册。"
+          },
+          {
+            "id": "realm-2",
+            "tick": 60,
+            "kind": "税令",
+            "text": "改行多收一点税；每五日实收，商情与民心也随之变化。"
+          },
+          {
+            "id": "realm-3",
+            "tick": 62,
+            "kind": "节令",
+            "text": "上巳春宴：曲水边添了几张小案，风把新柳吹进杯中。",
+            "festival": "上巳春宴"
+          },
+          {
+            "id": "realm-4",
+            "tick": 70,
+            "kind": "人物往来",
+            "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": -2
+          },
+          {
+            "id": "realm-5",
+            "tick": 72,
+            "kind": "人物往来",
+            "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": -2
+          },
+          {
+            "id": "realm-6",
+            "tick": 74,
+            "kind": "人物往来",
+            "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": -4
+          },
+          {
+            "id": "realm-7",
+            "tick": 76,
+            "kind": "人物往来",
+            "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": -4
+          },
+          {
+            "id": "realm-8",
+            "tick": 78,
+            "kind": "人物往来",
+            "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。",
+            "actors": [
+              "xu",
+              "jiang"
+            ],
+            "channel": "衙门值房登记",
+            "stance": -6
+          },
+          {
+            "id": "realm-9",
+            "tick": 90,
+            "kind": "人物往来",
+            "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。",
+            "actors": [
+              "jiang",
+              "ye"
+            ],
+            "channel": "衙门值房登记",
+            "stance": -6
+          }
+        ],
+        "days": [
+          {
+            "tick": 61,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 49,
+            "weather": "风起"
+          },
+          {
+            "tick": 62,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 48,
+            "weather": "雨"
+          },
+          {
+            "tick": 63,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 51,
+            "weather": "晴"
+          },
+          {
+            "tick": 64,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 50,
+            "grain": 50,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 65,
+            "income": 6,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 44,
+            "grain": 49,
+            "weather": "晴"
+          },
+          {
+            "tick": 66,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 44,
+            "grain": 48,
+            "weather": "风起"
+          },
+          {
+            "tick": 67,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 44,
+            "grain": 47,
+            "weather": "晴"
+          },
+          {
+            "tick": 68,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 44,
+            "grain": 46,
+            "weather": "晴"
+          },
+          {
+            "tick": 69,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 44,
+            "grain": 45,
+            "weather": "微雨"
+          },
+          {
+            "tick": 70,
+            "income": 6,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 38,
+            "grain": 48,
+            "weather": "晴"
+          },
+          {
+            "tick": 71,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 38,
+            "grain": 47,
+            "weather": "风起"
+          },
+          {
+            "tick": 72,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 38,
+            "grain": 46,
+            "weather": "晴"
+          },
+          {
+            "tick": 73,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 38,
+            "grain": 45,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 74,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 38,
+            "grain": 44,
+            "weather": "晴"
+          },
+          {
+            "tick": 75,
+            "income": 6,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 43,
+            "weather": "雨"
+          },
+          {
+            "tick": 76,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 42,
+            "weather": "风起"
+          },
+          {
+            "tick": 77,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 45,
+            "weather": "微雨"
+          },
+          {
+            "tick": 78,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 44,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 79,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 32,
+            "grain": 43,
+            "weather": "晴"
+          },
+          {
+            "tick": 80,
+            "income": 6,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 26,
+            "grain": 42,
+            "weather": "晴"
+          },
+          {
+            "tick": 81,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 26,
+            "grain": 41,
+            "weather": "微雨"
+          },
+          {
+            "tick": 82,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 26,
+            "grain": 40,
+            "weather": "风起"
+          },
+          {
+            "tick": 83,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 26,
+            "grain": 39,
+            "weather": "晴"
+          },
+          {
+            "tick": 84,
+            "income": 0,
+            "harvest": 4,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 26,
+            "grain": 42,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 85,
+            "income": 6,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 20,
+            "grain": 41,
+            "weather": "晴"
+          },
+          {
+            "tick": 86,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 20,
+            "grain": 40,
+            "weather": "微雨"
+          },
+          {
+            "tick": 87,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 20,
+            "grain": 39,
+            "weather": "风起"
+          },
+          {
+            "tick": 88,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 20,
+            "grain": 38,
+            "weather": "晴"
+          },
+          {
+            "tick": 89,
+            "income": 0,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 0,
+            "arrears": 40,
+            "treasury": 20,
+            "grain": 37,
+            "weather": "薄阴"
+          },
+          {
+            "tick": 90,
+            "income": 6,
+            "harvest": 0,
+            "grainUsed": 1,
+            "payrollPaid": 12,
+            "arrears": 40,
+            "treasury": 14,
+            "grain": 36,
+            "weather": "微雨"
+          }
+        ],
+        "bonds": {
+          "jiang|xu": {
+            "a": "xu",
+            "b": "jiang",
+            "stance": -6,
+            "meetings": 3
+          },
+          "jiang|ye": {
+            "a": "jiang",
+            "b": "ye",
+            "stance": -6,
+            "meetings": 3
+          }
+        },
+        "memories": {
+          "xu": [
+            {
+              "event": "realm-4",
+              "tick": 70,
+              "kind": "人物往来",
+              "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。"
+            },
+            {
+              "event": "realm-6",
+              "tick": 74,
+              "kind": "人物往来",
+              "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。"
+            },
+            {
+              "event": "realm-8",
+              "tick": 78,
+              "kind": "人物往来",
+              "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。"
+            }
+          ],
+          "jiang": [
+            {
+              "event": "realm-4",
+              "tick": 70,
+              "kind": "人物往来",
+              "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。"
+            },
+            {
+              "event": "realm-5",
+              "tick": 72,
+              "kind": "人物往来",
+              "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。"
+            },
+            {
+              "event": "realm-6",
+              "tick": 74,
+              "kind": "人物往来",
+              "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。"
+            },
+            {
+              "event": "realm-7",
+              "tick": 76,
+              "kind": "人物往来",
+              "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。"
+            },
+            {
+              "event": "realm-8",
+              "tick": 78,
+              "kind": "人物往来",
+              "text": "许知衡要求先按欠额补饷，姜禹瀛坚持先核地方实收。两人未能当日议定，暂各备副册。"
+            },
+            {
+              "event": "realm-9",
+              "tick": 90,
+              "kind": "人物往来",
+              "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。"
+            }
+          ],
+          "ye": [
+            {
+              "event": "realm-5",
+              "tick": 72,
+              "kind": "人物往来",
+              "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。"
+            },
+            {
+              "event": "realm-7",
+              "tick": 76,
+              "kind": "人物往来",
+              "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。"
+            },
+            {
+              "event": "realm-9",
+              "tick": 90,
+              "kind": "人物往来",
+              "text": "姜禹瀛请叶承钧先通商路，叶承钧要求户部明列还期。两家的来往仍在，这笔事尚未谈拢。"
+            }
+          ]
+        },
+        "stamps": {
+          "tax:2": 61,
+          "tax": 61
+        },
+        "goals": [],
+        "festivalDays": [],
+        "leisureDays": [],
+        "paidArrears": 0,
+        "replies": {}
+      }
+    }
+  ]
+}

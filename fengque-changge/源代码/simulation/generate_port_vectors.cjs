@@ -1,0 +1,7 @@
+// Run only when intentionally updating the documented rules baseline.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),Core=require('./realm-core.js'),data=require('./realm-data.json');
+const input={tick:60,seed:20261106,economy:{treasury:50,grain:50,arrears:40,tax:'normal'},regions:{},actors:[{id:'xu',name:'许知衡',official:true,skills:{admin:80,military:40}},{id:'jiang',name:'姜禹瀛',official:true,skills:{admin:75,military:35}},{id:'ye',name:'叶承钧',official:true,skills:{admin:65,military:30}}]};
+for(const [id,name]of [['capital','京畿'],['jiangnan','江南'],['north','北境']])input.regions[id]={id,name,focus:true,food:45,health:60,waterRisk:id==='jiangnan'?70:30,corruption:45,infrastructure:28,business:50,public:40,security:40,refugees:0,grainPrice:1};
+const cases=[{name:'不干预，连续30日',commands:[]},{name:'少收税、修渠、补欠薪后连续30日',commands:[{id:'tax',tick:60,type:'tax',policy:'light'},{id:'canal',tick:60,type:'project',region:'jiangnan',project:'canal',actor:'jiang'},{id:'pay',tick:60,type:'payArrears'}]},{name:'多收税后连续30日',commands:[{id:'tax',tick:60,type:'tax',policy:'heavy'}]}];
+for(const c of cases){const s=Core.create(input,data);for(const command of c.commands){const r=Core.command(s,command,data);assert(r.ok,r.reason);}Core.advance(s,90,data);c.input=Core.copy(input);c.targetTick=90;c.expected=s;}
+fs.writeFileSync(path.join(__dirname,'port-vectors.json'),JSON.stringify({schemaVersion:1,rulesVersion:Core.version,cases},null,2));console.log('Wrote '+cases.length+' deterministic 30-day port vectors');

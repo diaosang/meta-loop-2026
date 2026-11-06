@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "dailyAP": 6,
+  "slots": [
+    "清晨",
+    "上午",
+    "中午",
+    "下午",
+    "傍晚",
+    "入夜",
+    "睡前"
+  ],
+  "weather": [
+    "晴",
+    "薄阴",
+    "微雨",
+    "晴",
+    "风起",
+    "雨",
+    "晴"
+  ],
+  "projects": [
+    {
+      "id": "relief",
+      "name": "给百姓送粮",
+      "days": 2,
+      "money": 0,
+      "grain": 6,
+      "skill": "admin",
+      "dept": "revenue",
+      "effect": {
+        "food": 14,
+        "public": 5
+      },
+      "text": "官仓六份粮已送抵，里正按户签领，先解眼前之饥。"
+    },
+    {
+      "id": "canal",
+      "name": "修水渠",
+      "days": 4,
+      "money": 10,
+      "grain": 2,
+      "skill": "admin",
+      "dept": "works",
+      "effect": {
+        "waterRisk": -14,
+        "infrastructure": 12
+      },
+      "text": "支渠疏通，堤口完成补筑；要等雨季与收成，才见长远成效。"
+    },
+    {
+      "id": "patrol",
+      "name": "修路和巡逻",
+      "days": 3,
+      "money": 6,
+      "grain": 2,
+      "skill": "military",
+      "dept": "war",
+      "effect": {
+        "security": 10,
+        "infrastructure": 4
+      },
+      "text": "驿路添设巡哨，夜间行路渐安；欠饷未补时仍可能反复。"
+    },
+    {
+      "id": "audit",
+      "name": "查清地方收支",
+      "days": 3,
+      "money": 3,
+      "grain": 0,
+      "skill": "admin",
+      "dept": "justice",
+      "effect": {
+        "corruption": -10
+      },
+      "text": "对照实收与副册，撤去两道重复催征，账面浮报有所收敛；未凭此判人罪名。"
+    },
+    {
+      "id": "seed",
+      "name": "给农户种子",
+      "days": 5,
+      "money": 4,
+      "grain": 4,
+      "skill": "admin",
+      "dept": "revenue",
+      "effect": {
+        "infrastructure": 8,
+        "food": 5
+      },
+      "text": "种粮与农具分批交到农户，荒田开始复耕；持续产出仍取决于水利和治安。"
+    }
+  ],
+  "policies": {
+    "light": {
+      "name": "少收一点税",
+      "income": 0.65,
+      "public": 1,
+      "business": 1
+    },
+    "normal": {
+      "name": "照常收税",
+      "income": 1,
+      "public": 0,
+      "business": 0
+    },
+    "heavy": {
+      "name": "多收一点税",
+      "income": 1.35,
+      "public": -2,
+      "business": -1
+    }
+  },
+  "festivals": [
+    {
+      "month": 2,
+      "day": 3,
+      "name": "上巳春宴",
+      "text": "曲水边添了几张小案，风把新柳吹进杯中。"
+    },
+    {
+      "month": 4,
+      "day": 5,
+      "name": "端午",
+      "text": "尚食局包了粽子，廊下悬起艾草。"
+    },
+    {
+      "month": 7,
+      "day": 15,
+      "name": "中秋",
+      "text": "月饼还温着，宫人把赏月的矮凳搬到廊前。"
+    },
+    {
+      "month": 10,
+      "day": 15,
+      "name": "冬至",
+      "text": "热汤煮开了，窗纸蒙上一层薄薄的水汽。"
+    },
+    {
+      "month": 11,
+      "day": 30,
+      "name": "除夕",
+      "text": "宫门换上新符，远处传来零落的爆竹声。"
+    }
+  ],
+  "leisure": [
+    {
+      "id": "garden",
+      "name": "御园看花",
+      "text": "绕过小径，忽然看见一枝刚开的花。你在石阶上坐了片刻，没有叫人剪下。"
+    },
+    {
+      "id": "fish",
+      "name": "临水垂钓",
+      "text": "浮子动了两下，提竿却只有一片水草。送茶的宫人忍着笑，把茶放得很轻。"
+    },
+    {
+      "id": "book",
+      "name": "翻几页闲书",
+      "text": "书里的人走到渡口，船还没来。你把书签夹在这里，留着明日接着看。"
+    },
+    {
+      "id": "market",
+      "name": "便服逛市",
+      "text": "饼摊旁有人争最后一块酥饼，最后掰成两半，各自走了。你站着看了一会儿。"
+    }
+  ],
+  "goals": [
+    {
+      "id": "survive",
+      "name": "先稳住眼前",
+      "text": "仓里有粮，实际补发过一次薪水。"
+    },
+    {
+      "id": "livelihood",
+      "name": "让百姓过好些",
+      "text": "京畿、江南、北境的吃饭与安全都到40，并办成两件地方事情。"
+    },
+    {
+      "id": "service",
+      "name": "把糊涂账理清",
+      "text": "查过一次地方收支，三个重点地方平均贪腐低于45。"
+    },
+    {
+      "id": "border",
+      "name": "让边关安心",
+      "text": "欠薪不超过30、北境安全55，并补发过薪水。"
+    },
+    {
+      "id": "flourish",
+      "name": "慢慢过上好日子",
+      "text": "三个重点地方都能正常开市，过过两次节，钱粮都有余。"
+    }
+  ]
+}

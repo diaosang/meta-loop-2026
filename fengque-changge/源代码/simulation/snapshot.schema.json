@@ -1,0 +1,16 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"Fengque portable realm snapshot v1",
+ "type":"object",
+ "required":["schemaVersion","active","tick","started","seed","serial","economy","regions","actors","jobs","events","days","bonds","memories","stamps"],
+ "properties":{
+   "schemaVersion":{"const":1},"active":{"type":"boolean"},
+   "tick":{"type":"integer","minimum":0},"started":{"type":"integer","minimum":0},
+   "seed":{"type":"integer"},"serial":{"type":"integer","minimum":0},
+   "economy":{"type":"object","required":["treasury","grain","arrears","tax"],"properties":{"treasury":{"type":"number","minimum":0},"grain":{"type":"number","minimum":0},"arrears":{"type":"number","minimum":0},"tax":{"enum":["light","normal","heavy"]}}},
+   "regions":{"type":"object","additionalProperties":{"type":"object","required":["id","food","security","infrastructure","business","corruption","waterRisk"]}},
+   "actors":{"type":"array","items":{"type":"object","required":["id","name","official","skills","stress","health","busyUntil"]}},
+   "jobs":{"type":"array"},"events":{"type":"array"},"days":{"type":"array"},
+   "bonds":{"type":"object"},"memories":{"type":"object"},"stamps":{"type":"object"}
+ }
+}

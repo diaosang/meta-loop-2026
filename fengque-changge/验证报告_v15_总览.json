@@ -1,0 +1,36 @@
+{
+  "version": "15.0",
+  "date": "2026-11-06",
+  "baseCommit": "a0b5d08c110bc549af86cc1f01ad4d8a4cd3877e",
+  "checksPassed": 172,
+  "simulationAndSelection": 39,
+  "browser": 18,
+  "compatibility": 112,
+  "portVectors": 3,
+  "realBrowserPlayedDays": 32,
+  "browserSaveBytes": 2243337,
+  "dataTableProjects": 5,
+  "regions": 8,
+  "focusRegions": [
+    "京畿",
+    "江南",
+    "北境"
+  ],
+  "historicalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "historicalWorkbookSheetsPreserved": 36,
+  "priorPlayablesAndReportsUnchanged": true,
+  "unrelatedRepositoryFilesUnchanged": true,
+  "threeCurrentEntriesIdentical": true,
+  "currentPlayableSHA256": "28491b156aa0659176ff48d4fb8f1e226b4110d8c45edc904707b87470dadf52",
+  "pageErrors": [],
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "godotEngineExecuted": false,
+  "godotScope": "独立纯规则、JSON表与schema、3组30日完整对照快照、Godot 4读取保存/命令信号骨架；尚未完成全游戏Godot移植。",
+  "savePolicy": "沿用原人物、资源、子嗣与旧案；激活后每日6次安排。日常行程近7日，重要记忆另存，旧记事归入年度记录。",
+  "copyStyle": "操作白话、首页给下一步、复杂规则按需展开；对白仍依古代身份。",
+  "scope": "可连续30日并继续跨月的日常经营：实际税粮、工程、NPC忙闲和往来、节令、实录，以及首届免钱/试艺廷议/谢无咎核查。未实现数万独立人口代理或完整Godot成品。"
+}

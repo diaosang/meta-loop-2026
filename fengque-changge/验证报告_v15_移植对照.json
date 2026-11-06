@@ -1,0 +1,11 @@
+{
+  "version": "15.0",
+  "passed": 3,
+  "checks": [
+    "不干预，连续30日：30日完整快照逐字段一致",
+    "少收税、修渠、补欠薪后连续30日：30日完整快照逐字段一致",
+    "多收税后连续30日：30日完整快照逐字段一致"
+  ],
+  "godotEngineExecuted": false,
+  "scope": "JavaScript重放并核对JSON完整快照；GDScript接口骨架未作引擎验证"
+}

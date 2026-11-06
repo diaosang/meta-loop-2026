@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Fengque realm command v1",
+  "type":"object",
+  "required":["id","tick","type"],
+  "properties":{
+    "id":{"type":"string","minLength":1},
+    "tick":{"type":"integer","minimum":0},
+    "type":{"enum":["project","payArrears","tax","contact","leisure","festival"]},
+    "project":{"enum":["relief","canal","patrol","audit","seed"]},
+    "region":{"type":"string"},
+    "actor":{"type":"string"},
+    "policy":{"enum":["light","normal","heavy"]},
+    "activity":{"enum":["garden","fish","book","market"]}
+  },
+  "allOf":[
+    {"if":{"properties":{"type":{"const":"project"}}},"then":{"required":["project","region","actor"]}},
+    {"if":{"properties":{"type":{"const":"tax"}}},"then":{"required":["policy"]}},
+    {"if":{"properties":{"type":{"const":"contact"}}},"then":{"required":["actor"]}},
+    {"if":{"properties":{"type":{"const":"leisure"}}},"then":{"required":["activity"]}}
+  ],
+  "additionalProperties":false
+}
