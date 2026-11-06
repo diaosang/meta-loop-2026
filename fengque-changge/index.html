@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>凤阙长歌 · V17 与卿相识</title>
+<title>凤阙长歌 · V18 心意与相伴</title>
 <style>
 :root{--ink:#2c2430;--muted:#817582;--paper:#fffaf5;--rose:#a94e68;--rose2:#d98b98;--gold:#c99452;--line:#eadbd4;--green:#688b78;--shadow:0 14px 38px #56253718}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#f2e7e5,#f7efe8 48%,#e7edf0);font-family:"Noto Serif SC","Songti SC",serif;color:var(--ink)}button{font:inherit;cursor:pointer;border:0}.app{width:min(100%,1120px);margin:auto;min-height:100vh;background:var(--paper);box-shadow:var(--shadow)}
@@ -25,7 +25,7 @@ body{padding-bottom:0}.app{padding-bottom:90px}.page{display:block;padding-top:2
 @media(max-width:720px){.hero{min-height:221px}.hero-copy{width:100%;padding:22px 20px}.hero-copy h2{font-size:23px;max-width:235px;line-height:1.5}.hero svg{width:75%;right:-35px;opacity:.32}.hero p{position:relative;z-index:1}.stats{grid-template-columns:repeat(4,1fr)}.stat{padding:11px 4px}.stat b{font-size:19px}.status{font-size:11px}.top{gap:9px}.brand h1{font-size:23px;letter-spacing:3px}.brand small{font-size:10px;letter-spacing:2px}.top .status{max-width:150px;gap:5px}.pill{font-size:10px;padding:6px 8px}.page h2{line-height:1.5;font-size:22px}.person-body{padding:13px}.characters{gap:12px}.bottom-bar{padding-left:16px;padding-right:16px}.bottom-bar p{font-size:10px}.portrait{width:83px;min-width:83px}.person-card{min-height:207px}.card{border-radius:15px}.section-heading{align-items:flex-start}.section-heading .mini{font-size:10px}.sheet{padding:20px 16px 25px}.scene-text{font-size:14px}.hero .eyebrow{font-size:10px}.nav{padding:8px 10px}}
 </style></head>
 <body><main class="app">
-<header class="top"><div class="brand"><small>大梁 · 与卿相识 · V17</small><h1>凤阙长歌</h1><p>宫墙内外，皆有故事。</p></div><div class="status"><span class="pill" id="date"></span><span class="pill">行动 <b id="ap">15</b>/15</span><span class="pill">内库 <b id="money">120</b></span><span class="pill">女帝 <b id="rulerAge">19</b>岁</span></div></header>
+<header class="top"><div class="brand"><small>大梁 · 心意与相伴 · V18</small><h1>凤阙长歌</h1><p>宫墙内外，皆有故事。</p></div><div class="status"><span class="pill" id="date"></span><span class="pill">行动 <b id="ap">15</b>/15</span><span class="pill">内库 <b id="money">120</b></span><span class="pill">女帝 <b id="rulerAge">19</b>岁</span></div></header>
 <nav class="nav" aria-label="游戏页面"><button data-action="tab" data-id="home" data-page="home">宫门</button><button data-action="tab" data-id="people" data-page="people">人物</button><button data-action="tab" data-id="palace" data-page="palace">内廷</button><button data-action="tab" data-id="court" data-page="court">朝堂</button><button data-action="simHome" data-id="realm" data-page="realm">经营</button><button data-action="tab" data-id="notes" data-page="notes">家史</button></nav>
 <section id="screen" class="page" aria-label="游戏内容"></section>
 </main><footer class="bottom-bar"><p><strong>一月十五点，各有取舍</strong><br><span id="saveStatus" role="status">本地自动存档</span></p><button id="monthButton" class="btn primary" data-action="month">结束本月</button></footer>
@@ -56,8 +56,10 @@ try{FQ_BOOT.raw=localStorage.getItem('fengque-demo-v4');FQ_BOOT.meta=JSON.parse(
      if(!known(id)||!Array.isArray(p.memories)||!p.stamps||!Number.isFinite(p.respect)||!Number.isFinite(p.guard))throw Error('人物相处记录缺页。');
      const ids=new Set();for(const m of p.memories){if(!m.id||ids.has(m.id)||m.owner!==owner||!Array.isArray(m.actors)||!m.actors.includes(id)||!Number.isFinite(m.tick)||typeof m.reply!=='string')throw Error('人物相处记忆的编号或归属不对。');ids.add(m.id);}
      if(p.invitation&&(!p.invitation.id||!Number.isFinite(p.invitation.requested)))throw Error('邀约记录不完整。');
+     if(p.emotion){const e=p.emotion;if(e.version!==1||!Array.isArray(e.days)||!e.days.every(Number.isFinite)||new Set(e.days).size!==e.days.length||!Number.isInteger(e.signals)||e.signals<0||typeof e.mutual!=='boolean'||e.lastApproach!==null&&!Number.isFinite(e.lastApproach))throw Error('情意的相处记录不完整。');}
     }
     for(const q of reign.requests)if(q.owner!==owner||!known(q.npc)||!q.id||!Number.isFinite(q.expires))throw Error('请见小笺的归属不对。');
+    if(reign.nights!==undefined){if(!Array.isArray(reign.nights))throw Error('内廷安排缺页。');const ids=new Set(),dates=new Set();for(const n of reign.nights){if(!n.id||ids.has(n.id)||n.owner!==owner||!known(n.npc)||!Number.isInteger(n.due)||n.due<0||!Number.isInteger(n.requested)||n.requested<0||n.due<n.requested||n.due>n.requested+1||!['亥初','子初'].includes(n.time)||!['planned','cancelled','unable','completed','archived'].includes(n.status)||typeof n.consent!=='string')throw Error('内廷安排的日期或归属不对。');ids.add(n.id);if(['planned','completed'].includes(n.status)){if(dates.has(n.due))throw Error('同一夜不能有两份相陪安排。');dates.add(n.due);}if(n.status==='completed'&&(typeof n.scene!=='string'||typeof n.morning!=='string'||!Number.isFinite(n.completed)))throw Error('次晨相处记录不完整。');}}
    }
   }
   return payload;
@@ -3918,7 +3920,12 @@ const WORLD16_DATA={"schemaVersion":1,"familyTypes":[{"id":"common","name":"寒�
   const preg=w.dynasty.pregnancy;
   if(preg&&m>=preg.due){const c=child(w,data,preg.mother,preg.father,true);w.dynasty.pregnancy=null;w.dynasty.familyPlan=null;if(c)w.dynasty.lastBirth=c.id;else event(w,'皇室记事','原定的家事未能继续，未凭空添写皇嗣。',[preg.mother,preg.father]);}
   const plan=w.dynasty.familyPlan;
-  if(plan&&!w.dynasty.pregnancy&&m>plan.started&&w.people[plan.father]?.alive&&w.people[plan.mother]?.alive&&(hash(w.seed+':plan:'+m)%100<60||m-plan.started>=3)){
+  const mother=plan&&w.people[plan.mother],father=plan&&w.people[plan.father];
+  const fertile=plan&&mother?.alive&&father?.alive&&age(w,mother)>=18&&age(w,mother)<=45&&age(w,father)>=18&&age(w,father)<=55;
+  const healthFactor=plan?Math.min(mother?.health??80,father?.health??80)/100:0;
+  const fertilityFactor=plan?Math.min(mother?.fertility??100,father?.fertility??100)/100:0;
+  const chance=plan?Math.min(60,Math.max(0,60*healthFactor*fertilityFactor*(age(w,mother)>35?.6:1))):0;
+  if(plan&&!w.dynasty.pregnancy&&m>plan.started&&fertile&&healthFactor>=.45&&hash(w.seed+':plan:'+m)%100<chance){
    w.dynasty.pregnancy={mother:plan.mother,father:plan.father,started:m,due:m+9};event(w,'皇室记事','太医复核后，记下有孕之喜，日后按月照看。',[plan.mother,plan.father]);
   }
   const year=Math.floor(m/12);if(!w.years[year]){w.years[year]=true;yearly(w,data,year);}
@@ -4783,6 +4790,276 @@ const npc17Style=document.createElement('style');npc17Style.textContent=`
 @media(max-width:440px){.npc17-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.npc17-profile{gap:12px}.npc17-profile h3{font-size:21px}.npc17-options .opt{padding:12px 11px}.npc17-options .opt small{font-size:11px}.npc17-profile .portrait{max-width:74px}.npc17-free .btn{white-space:normal}}
 `;document.head.appendChild(npc17Style);
 window.__npc17Audit={version:17,root:npc17Root,own:npc17Own,day:npc17Day,commit:npc17Commit,remember:npc17Remember,requests:npc17Requests,causes:npc17ThanksCauses};
+
+/* Original period dialogue. A reply is selected by identity, action and actual history. */
+const NPC18={
+ stages:['礼数周全','熟悉','亲近','暧昧','心意相通'],
+ actions:[['praise','认真夸他一句','不必急着讨一句喜欢'],['tease','含笑逗他一句','看他愿不愿接这份玩笑'],['miss','说起分别后的挂念','先有过彼此回应的心意'],['hand','试着牵一牵他的手','他愿意才靠近'],['confess','认真说清心意','须有数日的相处与回应'],['token','赠一件相约的信物','心意相通后，宫里用钱3']],
+ xu:{
+  first:['……臣听见了。陛下若无旁的事，容臣先将这一页看完。','陛下谬赞。臣只是……今日这支笔不大好用，字写得慢了。'],
+  praise:['陛下这样望着，臣倒不知该先说哪一句了。容臣缓一缓。','臣以为，陛下今日只来问那篇文章。原来……也不是。'],
+  tease:['陛下。这样的玩笑，臣会当真。往后若只是逗趣，便不要说了。','臣并非听不懂。正因为听懂了，才不知该如何应您。'],
+  miss:['臣也记着。上回您读到一半的那页，书签还夹在原处。','昨日落雨，臣忽然想，陛下回去时可曾带伞。后来又觉得，这话该当面问。'],
+  hand:['……别站在风口。手这样凉，先在这里坐一会儿。','陛下若只是想握一会儿，臣便不抽开了。只是……容臣先把笔搁下。'],
+  confess:['臣心悦您。此话并非今日才想说。可臣不愿入后宫，也不会交出朝中的职分。陛下若仍愿意，往后私下相见，臣便不再躲了。'],
+  refuse:['陛下，今日容臣先静一静。该办的公事不会耽误，旁的话，改日再说。','臣尚未想清楚，不能因陛下问了，便草率应下。'],
+  approach:['案上的批注臣已写好。若陛下还不困，臣想亲自送来，再陪您看一小段。'],
+  jealous:['听闻陛下昨夜另有相陪的人。臣不问是谁。只是先前说好一同看的书，陛下还记着么？'],
+  gift:['上回那篇文章，臣另抄了一份，留了些空白给您批注。纸墨寻常，陛下莫嫌。'],
+  reconcile:['前回那句话，是臣说得太硬。臣的主张没有变，只是不该拿冷言冷语让陛下猜。'],
+  token:['臣收着。不是受赏，是记着今日这番话。'],
+  giftGiven:['陛下愿意看，臣下回便将余下几页也带来。字写得细，夜里读时将灯挪近些。'],
+ },
+ jiang:{
+  first:['陛下忽然这样夸，臣可不敢顺势讨赏。今日的功课，仍要看完。','臣谢陛下。这话是在夸人，还是想少抄两行？'],
+  praise:['臣今日特地换了这枚玉扣。原以为陛下不会留意，看来倒没白费心。','陛下再这样看，臣方才备好的话便都用不上了。'],
+  tease:['陛下既先逗了臣，待臣回一句，可不许又说太傅不守礼。','臣若应得太认真，陛下还敢接着往下说么？'],
+  miss:['臣也想见您。不过家中那份荐书，仍请陛下细看。私下的话，不替公事作答。','昨日空出半个时辰，竟不知该做什么。后来才想起，往常是陪陛下下棋的。'],
+  hand:['这回是陛下先伸的手。臣握住了，可就不能当作无事发生。','手给臣吧。只此一刻，先不说朝中的事。'],
+  confess:['臣心悦陛下，这一句没有替姜氏筹算。可明日上朝，臣仍会替族中争该争的东西。陛下若愿意，便连这个不够讨喜的臣，也一并认下。'],
+  refuse:['臣今日心中有事，怕话说得不妥。容臣缓一缓，再来见陛下。','这一步，臣眼下还不想应。若只因君命便点头，反倒薄待陛下。'],
+  approach:['今日没有功课，也不带荐书。臣想问，陛下可愿空半盏茶的工夫，单见臣一人？'],
+  jealous:['宫中昨夜颇热闹。臣倒想知道，陛下今日来，是记着那局未完的棋，还是顺道看看臣？'],
+  gift:['那盘棋臣摆出了另一解，抄成一页带来了。陛下不妨先看，臣下回可要考的。'],
+  reconcile:['前回是臣步步紧逼了。想多见陛下一刻，不该总说得像在问功课。'],
+  token:['那臣便不说谢赏了。这样的东西，臣只当是陛下私下给的。'],
+  giftGiven:['陛下既收了，下回臣可真要来问那步棋。若解不出，便留臣多坐一刻。'],
+ },
+ xie:{
+  first:['奴才听见了。茶还热着，您先喝一口，莫只顾拿奴才取笑。','陛下今日心情倒好。奴才不大会接这话，给您添茶吧。'],
+  praise:['您再夸，奴才就不舍得告退了。今日这盏茶，索性慢些喝。','旁人夸过没有，奴才记不住。您方才那一句，倒听得很清楚。'],
+  tease:['您说完便想走？奴才还没回话呢。……罢了，再陪您坐一会儿。','陛下知道奴才舍不得恼您，才总这样逗。'],
+  miss:['奴才也想。昨夜从您窗前走过，灯已熄了，便没再叫门。','您常坐的那张椅子，奴才昨日拂过两遍。其实也没落灰。'],
+  hand:['奴才的手有些凉。您若不嫌，就让奴才再握一会儿。','……您先别松手。只这一会儿，奴才不想再说旁的。'],
+  confess:['奴才想留在您身边，这话从前说过。可今日这句，是私心。您肯应，往后奴才便不再拿服侍二字遮掩。'],
+  refuse:['奴才今日有些乱，不敢拿没想明白的话哄您。容奴才先退下吧。','陛下，这一回先别问。奴才答应了的事会办，旁的，等奴才想清楚。'],
+  approach:['奴才没带消息来。只是见您窗里还亮着，想问一声，今夜要不要有人陪着？'],
+  jealous:['昨夜奴才没去扰您。今日这盏茶，还想亲手递一回。您若不忙，先别叫旁人进来，好么？'],
+  gift:['您的旧书签起了毛边，奴才裁了一枚新的。仍照原先的长短，夹书不会露出来。'],
+  reconcile:['前回奴才话说重了。不是您的错，也不该让您来猜。今日肯见奴才，便容奴才当面赔一句不是。'],
+  token:['奴才收好了。今后值夜，也带在身上。'],
+  giftGiven:['您肯用便好。旧的也先别丢，奴才替您收起来。'],
+  nightAsk:['今夜奴才不当值。您若愿意，奴才想留下陪您；若忙，便改日，奴才等得。'],
+  nightYes:['奴才愿意。今夜那一更，便留给您。到了时候，奴才会来。'],
+  nightFirst:['窗外值夜的脚步渐远，他将门轻轻合上，仍在灯下等你点头。烛芯低了些，这一夜的话便只留在帘内。'],
+  nightAgain:['他放下灯，先看了看你案上的茶。没有催，也没有问，直到你伸手，他才在身侧坐下。夜色渐深，余下的声息都轻了。'],
+  morning:['奴才醒得早，没叫人进来。茶温在外头，您若还困，就再睡一会儿。'],
+ },
+ quiet:{
+  first:['承陛下抬爱，臣……还不大习惯听这样的话。','陛下过誉了。臣先将手边东西收好，免得失礼。'],
+  praise:['这身衣裳臣穿了许久，还是头一回听陛下说喜欢。','臣原想装作没听懂，可耳根大约已经露了馅。'],
+  tease:['您这样逗，臣便不知该看哪里了。','陛下容臣想一想，别催。臣不是不愿回话。'],
+  miss:['臣也有些想念。上回没说完的话，一直想等您来。','昨日看见您喜欢的点心，臣便想，若您在这里就好了。'],
+  hand:['臣愿意。只是掌心有些热，陛下莫笑。','陛下既牵住了，便……再坐一小会儿吧。'],
+  confess:['臣也心悦陛下。不是因为这道旨意，也不是为家里求什么。只想往后有闲时，还能这样见您。'],
+  refuse:['臣今日心里有些乱，还不能应下。不是要陛下难堪，容臣慢些，好么？','这一步臣还没有想好。陛下若愿意，先如往常坐坐便好。'],
+  approach:['臣今日有一刻闲暇，想来陪陛下坐坐。若不方便，改日也好。'],
+  jealous:['昨夜的名册臣听人提过。原不该多问，只是今日想单独见您一会儿，可好？'],
+  gift:['臣做了一枚小书签，手艺粗些，若陛下用得上便好。'],
+  reconcile:['前回是臣多想了，有话又没说清。今日来，是想亲口赔个不是。'],
+  token:['臣会收好的。这一回，便不说那些谢赏的场面话了。'],
+  giftGiven:['陛下收下便好。臣做的时候，还怕您用不惯。'],
+  nightAsk:['今夜臣没有旁的安排。若陛下愿意，臣想留一更相陪。'],
+  nightYes:['臣愿意。到了约定的时辰，臣再来，陛下也不必赶着放下手里的事。'],
+  nightFirst:['他在灯下停了片刻，等你伸手才走近。帘子轻垂，未说完的话被夜色慢慢收起。'],
+  nightAgain:['他记得你惯坐的位置，将软枕挪近了些。说过几句家常，灯火渐暗，帘外的风也静下来。'],
+  morning:['臣怕吵醒陛下，方才连茶盏也没敢碰。您醒了，正好一同用些早膳。'],
+ },
+ bright:{
+  first:['陛下突然这样夸，臣险些连谢恩也忘了。','当真？……臣失仪了。多谢陛下。'],
+  praise:['那臣可记住了。下回见您，还这样穿。','臣今日原本就盼您来，倒叫陛下先说出来了。'],
+  tease:['陛下又逗臣。等臣想出一句好听的，可不许先走。','臣当真听了，您可不能笑完便不认。'],
+  miss:['臣也想您！昨日有一肚子话，今日见了，反倒不知先说哪句。','当然想。连下棋赢了半子，也想立刻说给您听。'],
+  hand:['臣愿意。……这样握着，陛下还走得开么？','那臣就牵着了。您若要松，先告诉臣一声。'],
+  confess:['臣喜欢陛下。不是随口说，也不想再藏着。往后得了好东西、遇了高兴事，都想第一个来告诉您。'],
+  refuse:['今日臣实在打不起精神，怕扫您的兴。缓一缓，臣想明白了再来。','这一步有些快，臣还没准备好。您给臣些工夫，好么？'],
+  approach:['臣今日一早就想来，忍到这会儿才递话。陛下可愿腾一会儿工夫？'],
+  jealous:['昨夜您见了旁人，今日能不能也分臣一会儿？臣没有要争，只是……确实有些想您。'],
+  gift:['臣亲手打了个小结，拆了三回才齐整。颜色是照陛下常穿的衣裳挑的。'],
+  reconcile:['前回是臣嘴快，心里急了，说话便不好听。陛下肯来，臣先认个错。'],
+  token:['臣喜欢！……会好好收着的，下回见您便带来。'],
+  giftGiven:['您收下了！那臣下回再试个新花样，做好了先给您看。'],
+  nightAsk:['今夜臣想陪着陛下。特地来问您一声，不敢自己就把时辰占了。'],
+  nightYes:['臣愿意。约的时辰记住了，臣会准时来。'],
+  nightFirst:['他将帘钩放下，回过头时比方才安静许多。灯火摇了摇，窗外更声远去，余下的一夜留给彼此。'],
+  nightAgain:['他来时还带着笑，低声说起白日的一件小事。你听到一半，窗外已敲过更鼓，灯也慢慢暗了。'],
+  morning:['臣醒了好一会儿，想说话，又怕扰您。现在可算能问了，陛下昨夜歇得好么？'],
+ },
+ nightIll:['臣今夜身上不适，怕勉强撑着，反让陛下担心。容臣养好些，再来相陪。'],
+ nightTired:['臣今日实在倦了，想先好好歇一夜。今夜的约，容臣改日再应。'],
+ nightHurt:['前回那件事，臣还没有放下。今夜先不去了，等能好好说话时再见陛下。'],
+};
+NPC18.profiles={
+ '温柔体贴':{praise:['陛下喜欢，臣便放心了。原还怕今日这身颜色太素。'],tease:['臣嘴笨，接不上您的话。您肯笑，臣便也跟着高兴。'],miss:['臣也是。前日那碟点心还留着方子，等您来，再做一回。'],hand:['手给臣吧。这样坐着，倒比方才暖和些。'],confess:['臣心悦陛下。往后高兴也好，委屈也好，您若肯来，臣都愿意听。'],approach:['臣备了两盏茶，想请陛下来坐一会儿。若忙，便先温着，您不必赶。']},
+ '清冷克制':{praise:['臣听清了。只是一时不知该怎样回，陛下别再盯着看了。'],tease:['这话，陛下只说一回便好。再说，臣便没法当作玩笑了。'],miss:['臣也想过。只是提笔写了几字，又觉得还是当面说好。'],hand:['……臣没有要躲。方才只是怕碰翻这盏茶。'],confess:['臣心悦陛下。藏了许久，今日既说出来，便不想再改口。'],approach:['臣今日无事。想问陛下，可还记着上回没说完的话？']},
+ '明朗直率':{praise:['臣听得很高兴。您若肯再夸一句，臣今日做什么都更有精神。'],tease:['陛下又逗臣。臣要是当真了，您可得认。'],miss:['想了！昨日有件趣事，忍着没说，专等陛下来。'],hand:['那臣就牵住了。您要走，先叫臣一声，别忽然松手。'],confess:['臣喜欢陛下，早想亲口说了。您若也喜欢，点点头便好。'],approach:['臣今日实在想见您，便来问一声。能不能留一刻给臣？']},
+ '骄矜自尊':{praise:['陛下这回倒看得仔细。臣还以为，今日换的这枚佩饰没人留意。'],tease:['您先逗的臣，倒不许臣回嘴了？那可不成。'],miss:['是有些想。臣已先承认了，陛下呢？'],hand:['臣没有不愿意。只是您牵了，便别一面握着，一面又去看旁人。'],confess:['臣心悦您。这句话，只想私下说给您听，不拿去换恩赏，也不愿拿来与人争。'],approach:['臣原不打算先递话的。可再等下去，今日怕是又见不着陛下了。']},
+ '敏感多思':{praise:['陛下说真的么？……臣是高兴，只是想听清些，不是疑您。'],tease:['您一笑，臣便分不清哪句是真的了。别只逗臣，好么？'],miss:['臣也想。怕话说多了惹您烦，后来便只写在纸上，没有送来。'],hand:['臣想这样握着。若您不急着走，能不能再多一会儿？'],confess:['臣心悦陛下。想过许多遍，还是怕说得不好。可今日不说，往后大约还要后悔。'],approach:['臣想来见您，又怕您忙。若今日不便，回一句话，臣便不一直等着。']},
+ '圆融世故':{praise:['旁人的好话臣接得快，陛下这句，倒让臣想了半晌。'],tease:['臣平日自诩会说话，到了陛下面前，竟也有接不上的时候。'],miss:['是想您了。这回没有另备什么由头，陛下可还愿意见？'],hand:['臣这回可不推辞了。方才想说的那些客套话，也都省下。'],confess:['臣说过许多好听的话。这一句，偏想说得笨些：臣心悦您。没有旁的意思。'],approach:['臣今日来，不替谁带话，也不求什么。只想问，能不能单独见陛下一面？']},
+ '严正守礼':{praise:['臣谢陛下。只是这样的话，容臣私下再回，莫叫旁人听了取笑。'],tease:['陛下，这话逾矩了。……臣不是要您收回，只是还没想好怎样应。'],miss:['臣亦挂念。既今日得见，便想多问一句，陛下近来可安好？'],hand:['臣愿意。只是到了人前，仍请容臣守着该有的礼数。'],confess:['臣心悦陛下。思虑再三才敢开口，往后也会认真待这份心意。'],approach:['臣有几句话，想私下说与陛下听。无关朝事，也不急，等您得闲便好。']},
+ '野心进取':{praise:['臣很高兴。想让陛下看见的那些努力，总算没有白费。'],tease:['陛下只管逗。臣既想争您一句喜欢，也不怕先红一回脸。'],miss:['臣也想您。不过答应的事还在做，下回来见您，想连好消息一并带来。'],hand:['臣愿意。只是不能总由陛下先伸手，下回，也让臣主动一回。'],confess:['臣想出人头地，也想与陛下相知。前一件会凭本事争，后一件，只能等您愿意。'],approach:['臣今日不是来求差事的。若陛下有闲，想以私人的心意见您一面。']},
+ '疏朗洒脱':{praise:['好听，臣收下了。可惜没带酒，否则这句值得同饮一杯。'],tease:['陛下当真要逗臣？臣可不会只低着头听。'],miss:['想了便来见，原想得很容易。到了宫门前，才记起还得等人传话。'],hand:['牵着吧。今日的风好，若您也不急，便慢慢走。'],confess:['臣心悦您。绕着弯说了许多回，不如今日直说。往后，也想常常见您。'],approach:['今日天色正好，臣想来问一句，陛下可愿暂放手边的事，出来走走？']},
+ '务实重利':{praise:['陛下这话，臣听着比受赏还高兴。今日倒真有些出息了。'],tease:['陛下又哄臣。可臣竟也高兴，明知该问个明白，还是先笑了。'],miss:['臣昨日算着日子，才发觉离上回见您，竟已这么久。'],hand:['臣愿意。只是手上还沾着些墨，先擦干净，别蹭到您的袖子。'],confess:['臣心悦陛下。往日总怕自己图的东西太多，连这句话也叫您疑心。可今日这句，只是想同您好好过日子。'],approach:['臣忙完了手边的事，想来见您一会儿。不求赏，也不谈账，只说些家常。']},
+ '寡言重诺':{praise:['听见了。臣很高兴，只是不大会说。'],tease:['臣会当真。陛下想清楚再说。'],miss:['想您了。昨日也想。'],hand:['好。臣握着，您要松手便说。'],confess:['臣心悦您。既说了，便不会拿这句话当儿戏。'],approach:['臣想见您。今日若得闲，遣人叫臣一声。']},
+ '戒备善谋':{praise:['臣原想回句妥帖的话，可这会儿，竟不太想拿客套话应您。'],tease:['陛下是想看臣失措？那您大约得逞了。'],miss:['臣想过来，又怕来的不是时候。如今您也问起，倒是臣多虑了。'],hand:['您肯伸手，臣也愿意。今夜这一步，便不再反复揣测了。'],confess:['臣总怕交出心意，便再无退路。可还是想告诉您，臣心悦您。往后若有疑处，会亲口来问。'],approach:['臣有一刻想见您，没有另寻借口。陛下可愿见这样直白一回的臣？']},
+};
+const NPC18_MORNINGS={
+ '温柔体贴':'臣已吩咐将粥温着。您若还困，就再歇一会儿，臣在这儿陪着。',
+ '清冷克制':'醒了？……臣没有一直看着您。只是方才窗上落了一只雀，正要叫您。',
+ '明朗直率':'陛下可算醒了。臣憋着一句早安，等了好一会儿。',
+ '骄矜自尊':'陛下昨夜说的那句话，臣还记着。今日醒了，可不许佯作忘了。',
+ '敏感多思':'臣怕陛下醒来便忙着走，方才醒了也没敢动。若还来得及，能一起用些早膳么？',
+ '圆融世故':'原想备一句好听的早安，可陛下一醒，臣便又想不起来了。先喝口温水吧。',
+ '严正守礼':'臣已醒了。方才怕惊动陛下，未曾唤人。若要起身，臣再传早膳。',
+ '野心进取':'臣今日倒醒得比往常还早。答应的差事不会误，只是还想陪陛下吃完这顿早膳。',
+ '疏朗洒脱':'外头天色很好。可臣今日竟不急着出门，还想同陛下赖这一小会儿。',
+ '务实重利':'早膳还热着，臣让人少备了些，免得用不完。陛下若饿，先一同吃吧。',
+ '寡言重诺':'醒了便好。臣在，没走。',
+ '戒备善谋':'臣今晨醒来，竟没有先去想门外是谁。陛下若不忙，便再陪臣坐一会儿吧。',
+};
+for(const [type,line]of Object.entries(NPC18_MORNINGS))NPC18.profiles[type].morning=[line];
+
+/* V18 adds independent romance and nights, while reusing real meetings, dynasty IDs and save history. */
+NPC17_COPY.sections.splice(4,0,['romance','暧昧','试着靠近，听他如何回应'],['night','侍寝','正式后宫 · 先问本人意愿']);
+const npc18Before={open:npc17Open,start:npc17StartSection,options:npc17Options,exclusive:npc17Exclusive,relation:npc17Relation,action:npc17Action,day:buildDay,request:npc17Request,reply:npc17RequestReply,token:npc17Token,remember:npc17Remember};
+const npc18PriorPlaceGate=npc17RelationGate,npc18PriorMeet=npc17Meet;
+npc17RelationGate=function(p){const q=state.world16?.people[p?.id];if(q?.source!=='generated')return npc18PriorPlaceGate(p);if(!npc17Living(p))return '此人已离世或未成年，不能安排这类会面。';const place=state.relations[p.id]?.rank?'capital':q.location||'capital',here=isAway()?state.tour.region:'capital';if(place!==here)return '他眼下在'+regionOf(place).name+'，到当地后再见。眼下仍可查看经历与家谱。';return '';};
+npc17Meet=function(id){const p=npc17Person(id),q=state.world16?.people[id];if(p&&q?.source==='generated'&&isAway()&&!npc17RelationGate(p)){const people=regionOf(state.tour.region).people;if(!people.includes(id))people.push(id);}return npc18PriorMeet(id);};
+const npc18PriorHeader=npc17Header;npc17Header=function(p){const q=state.world16?.people[p.id];return npc18PriorHeader(p)+(q?.source==='generated'?'<p class="mini">眼下在'+npc17Esc(regionOf(state.relations[p.id]?.rank?'capital':q.location||'capital').name)+'。</p>':'');};
+function npc18Emotion(p,create=false){const own=npc17Own(p,create);if(create&&!own.emotion)own.emotion={version:1,days:[],signals:0,mutual:false,lastApproach:null};return own.emotion||{version:1,days:[],signals:0,mutual:false,lastApproach:null};}
+function npc18Voice(p){return NPC18[p.id]||{...NPC18[/明朗|疏朗|野心/.test(p.type)?'bright':'quiet'],...NPC18.profiles[p.type]};}
+function npc18Line(p,key,source=''){const pool=(npc18Voice(p)[key]||NPC18.quiet[key]||NPC18[key]||[]).map(s=>s.replaceAll('臣',npc17Self(p))),mem=npc17Own(p).memories;return pool.slice().sort((a,b)=>mem.filter(m=>m.reply===a).length-mem.filter(m=>m.reply===b).length||mindHash(p.id+source+a)-mindHash(p.id+source+b))[0]||'';}
+function npc18Stage(p){const r=state.relations[p.id],e=npc18Emotion(p),own=npc17Own(p),tier=socialTier(p);if(e.mutual&&r.aff>=60&&r.trust>=55&&own.guard<65)return 4;if(e.signals>=2&&e.days.length>=2&&r.aff>=55&&r.trust>=50&&own.guard<65)return 3;if(tier==='trusted')return 2;if(tier==='familiar')return 1;return 0;}
+function npc18RomanceGate(p){if(!p)return '此人不在此处。';return npc17RelationGate(p)||romanticReason(p,state.relations[p.id]);}
+function npc18NightIdentity(p){
+ if(!p)return '此人不在此处。';const r=state.relations[p.id],w=state.world16,q=w?.people[p.id],ruler=w?.people[npc17Owner()];
+ if(!npc17Living(p)||!ruler?.alive||world16Age(ruler)<18)return '双方须已成年且在世。';
+ if((q?.gender||p.gender)!=='男')return '此处是成年男妃的内廷安排。';
+ if(p.id==='xu')return '许知衡不愿入后宫。心意如何，不改变他的首辅身份与志向。';
+ if(p.id==='jiang')return '姜禹瀛仍为太傅，未曾应允入后宫；姜氏与朝职之事尚未说定。';
+ if(p.id==='xie'&&!state.daliang?.privateKnown)return '谢无咎尚未亲口说明隐秘身份，不能越过这段旧事。';
+ if(npc18RomanceGate(p))return npc18RomanceGate(p);
+ if(!r.rank||['候选','待选'].includes(r.rank)||r.officer)return '尚未正式入后宫。先由本人同意，再完成内廷安置。';
+ if(q?.royalSpouseOf&&q.royalSpouseOf!==npc17Owner())return '前代私情留在旧朝，不能沿用。';
+ return '';
+}
+function npc18HealthReason(p){const a=state.simulation?.actors.find(a=>a.id===p.id),q=state.world16?.people[p.id];if(Math.min(a?.health??80,q?.health??80)<45)return 'ill';if(Math.max(a?.stress??20,q?.stress??20)>=65)return 'tired';return '';}
+function npc18NightWilling(p,{arrival=false}={}){
+ const gate=npc18NightIdentity(p)||npc17RelationGate(p);if(gate)return {reason:gate,kind:'identity'};
+ const r=state.relations[p.id],own=npc17Own(p),e=npc18Emotion(p),m=r.mind;
+ if((state.playerStats?.health??state.world16?.people[npc17Owner()]?.health??80)<45)return {reason:'陛下今日身子不适，今夜先安歇。'+npc17Self(p)+'改日再来相陪。',kind:'ruler-ill'};
+ const health=npc18HealthReason(p);if(health)return {reason:npc18Line(p,health==='ill'?'nightIll':'nightTired'),kind:health};
+ if(r.upsetDay===todayKey()||Math.max(m.anger||0,m.hurt||0,m.disappointment||0)>=45)return {reason:npc18Line(p,'nightHurt'),kind:'hurt'};
+ if(!e.mutual||npc18Stage(p)!==4||r.love<6||own.guard>=55)return {reason:'尚未互通心意。高好感、封位或忠诚，都不能替本人应下这件事。',kind:'relationship'};
+ if(npc17Busy(p))return {reason:'手中的差事尚未交清，今夜不能相陪。',kind:'busy'};
+ if(isAway())return {reason:'出巡期间先依随行住处休息，回宫后再定内廷时辰。',kind:'location'};
+ if(!arrival&&courtStatus()==='open')return {reason:'百官尚在殿中，退朝后再作内廷安排。',kind:'court'};
+ return {reason:'',kind:'willing'};
+}
+npc17Relation=function(p){const r=state.relations[p.id],own=npc17Own(p),s=socialState(p);return '<p class="npc18-stage">'+NPC18.stages[npc18Stage(p)]+'<small>亲疏随实际相处而变</small></p><details class="npc17-details"><summary>彼此的关系</summary><p>熟悉：交谈'+s.count+'回，分'+s.days.length+'日相处。信任'+r.trust+'，亲近'+r.aff+'，情意'+r.love+'，敬重'+own.respect+'，忠诚'+r.loyalty+'，戒备'+own.guard+'。</p><p class="mini">情意记私人回应，忠诚记朝中立场。互通心意要有真实回应，数值与封位不能替代。</p></details>';};
+npc17Open=function(id){npc18Before.open(id);const el=$('modalEyebrow');if(el&&el.textContent==='人物 · 八类互动')el.textContent='人物 · 十类互动';};
+npc17Exclusive=function(p){return npc18Before.exclusive(p).replace(/<button[^>]*data-action="npc17Action"[^>]*data-id="(?:flirt|stay)"[\s\S]*?<\/button>/g,'');};
+function npc18RomanceOptions(p){const r=state.relations[p.id],gate=npc18RomanceGate(p)||npc17PrivateGate(p);return '<p class="mini">先听本人回应。寻常一句玩笑也可能碰壁，不因示好就必定动心。</p>'+NPC18.actions.map(([key,label,desc])=>npc17Button('npc18Flirt',key,label,desc,gate||(!npc17HasTurn(p)?'本次已谈完，留到下回。':'')||(key==='token'&&!npc18Emotion(p).mutual?'先让彼此说清心意。':''))).join('');}
+npc17Options=function(p,key){if(key==='romance')return npc18RomanceOptions(p);if(key==='night')return npc17Button('npc18Night',p.id,'查看内廷安排','先看条件、听他是否愿意；翻看不花安排。');return npc18Before.options(p,key).replace(/<button[^>]*data-action="npc17Action"[^>]*data-id="token"[\s\S]*?<\/button>/g,'');};
+npc17StartSection=function(raw){const [id,key]=raw.split('|'),p=npc17Person(id);if(!p)return;if(key==='night')return npc18Night(id);if(key==='romance'){const gate=npc18RomanceGate(p)||npc17PrivateGate(p);if(gate){openModal(p.name+' · 暧昧','','<p>'+npc17Esc(gate)+'</p>'+npc17Relation(p)+simpleCourtButton('visit',id,'回看人物'),'各有分寸');return;}}return npc18Before.start(raw);};
+function npc18Flirt(key){
+ const p=session?.npc17&&npc17Person(session.id);if(!p||!NPC18.actions.some(a=>a[0]===key)||!npc17HasTurn(p)||!['romance','reward'].includes(session.npc17Section))return false;
+ const gate=npc18RomanceGate(p)||npc17PrivateGate(p);if(gate){toast(gate);return false;}if(key==='token')return npc17Token(p);
+ const r=state.relations[p.id],own=npc17Own(p),e=npc18Emotion(p),stage=npc18Stage(p),m=r.mind,day=simTick();
+ if(own.stamps['romance:'+todayKey()]){toast('今日的话已认真说过，留些时日相处，别急着再问。');return false;}
+ let accepted=true,outcome='回应',reply='',reason='依性情、心绪与共同经历回应';
+ if(own.guard>=65||Math.max(m.anger||0,m.hurt||0,m.disappointment||0)>=45){accepted=false;reply=npc18Line(p,'refuse');outcome='婉拒';reason='此刻心有隔阂或仍存戒备';}
+ else if(stage===0){accepted=false;reply=npc18Line(p,'first');outcome='尚守礼';reason='私下交往尚少';}
+ else if(['hand','confess','miss'].includes(key)&&stage<3){accepted=false;reply=npc18Line(p,'refuse');outcome='缓一缓';reason='还未有数日相互示好的经历';}
+ else if(key==='confess'&&(e.days.length<(p.id==='xu'?4:3)||r.aff<65||r.trust<60||r.love<6)){accepted=false;reply=npc18Line(p,'refuse');outcome='未应心意';reason='相处与情意仍需时间';}
+ else if(p.id==='xie'&&['hand','confess'].includes(key)&&!state.daliang?.privateKnown){accepted=false;reply='奴才还有一件旧事没有亲口告诉您。这一步，容奴才先缓一缓。';outcome='有所保留';reason='隐秘身份尚未亲口说明';}
+ else {reply=npc18Line(p,key);outcome=key==='confess'?'互通心意':'接住心意';}
+ // The legacy flirt category forces +6 even on refusal. Use the neutral mechanics path;
+ // the real action, attitude and love changes live in structured memories and the new stage.
+ return npc17Commit(p,'暧昧·'+NPC18.actions.find(a=>a[0]===key)[1],reply,{category:'chat',topic:'npc18:'+key,stamp:'romance:'+todayKey(),progress:false,effects:accepted?{aff:1,love:2}:{},outcome,reason,source:own.memories.at(-1)?.id||null,tags:['暧昧',key,accepted?'回应':'保留'],after:()=>{if(accepted){const live=npc18Emotion(p,true);live.signals++;if(!live.days.includes(day))live.days.push(day);if(key==='confess')live.mutual=true;own.guard=clamp(own.guard-2);}else npc18Emotion(p,true).lastRefusal=day;},feedback:accepted?'他如何回应，已记在本代的相处里。':'他这回没有应下，留些工夫给彼此。'});
+}
+npc17Token=function(p){if(!npc17HasTurn(p)||!npc18Emotion(p).mutual||npc18Stage(p)!==4||npc18RomanceGate(p)||npc17PrivateGate(p)||npc17Own(p).guard>=55||npc17Stamp(p,'token'))return false;return npc17Commit(p,'互赠信物',npc18Line(p,'token'),{category:'chat',topic:'npc18:token',money:3,stamp:'token',progress:false,effects:{love:1},tags:['信物','本代心意'],after:()=>{npc17Own(p,true).keepsake={name:'约定的佩结',owner:npc17Owner(),tick:simTick()};}});};
+npc17Action=function(key){const p=session?.npc17&&npc17Person(session.id);if(key==='flirt')return npc18Flirt('praise');if(key==='stay')return p&&npc18Night(p.id);return npc18Before.action(key);};
+function npc18Nights(create=false){const root=npc17Root(create);if(create&&!root.nights)root.nights=[];return root?.nights||[];}
+function npc18Night(id){
+ const p=npc17Person(id);if(!p)return;const condition=npc18NightWilling(p),plan=npc18Nights().find(n=>n.npc===id&&n.status==='planned');
+ const labels={ill:'近日抱恙',tired:'今日疲倦',hurt:'心有隔阂'};
+ const explanation=condition.reason?'<div class="npc17-current">'+npc17Esc(labels[condition.kind]||'尚不便安排')+'：'+npc17Esc(condition.reason)+'</div>':'<p>彼此心意已明，仍先听他今日是否愿意。</p>';
+ const buttons=!condition.reason&&!plan?[0,1].map(d=>['亥初','子初'].map(time=>npc17Button('npc18NightAsk',id+'|'+d+'|'+time,(d?'明夜':'今夜')+' · '+time,'先问本人，答应后再确认；定约用1次安排。',state.ap<1?'今日余力不足。':'')).join('')).join(''):'';
+ openModal(p.name+' · 侍寝','',npc17Header(p)+explanation+(plan?'<p>已约'+npc17Esc(simDate(plan.due))+' · '+plan.time+'。结束约定那一天后，次晨留下相处记事。</p>'+npc17Button('npc18NightCancel',plan.id,'撤下这次安排','已用来传召与安排的余力不返还。'):'')+'<div class="opts npc17-options">'+buttons+'</div><p class="mini">一夜只定一人。定约用1次安排，不占会面交谈；赴约不再扣费。临时生病、疲倦或有隔阂，会再来回话。子嗣另在家人和传承中商量。</p>'+npc17Relation(p)+simpleCourtButton('visit',id,'回看人物'),'内廷 · 以本人意愿为先');
+}
+let npc18Pending=null;
+function npc18NightAsk(raw){
+ const [id,deltaText,time]=raw.split('|'),delta=Number(deltaText),p=npc17Person(id);if(!p||!['0','1'].includes(deltaText)||!['亥初','子初'].includes(time))return false;
+ const gate=npc18NightWilling(p),due=simTick()+delta;if(gate.reason){npc18Pending=null;return npc18Night(id);}
+ if(npc18Nights().some(n=>n.status==='planned'&&(n.due===due||n.npc===id))||delta===0&&state.bedchamber?.day===todayKey()){toast('已有未赴的安排。请先撤下原来的约，不能重叠传召。');return false;}
+ if(state.ap<1){toast('今日余力不足。');return false;}
+ npc18Pending={npc:id,owner:npc17Owner(),asked:simTick(),due,time,nonce:'night-consent-'+npc17Owner()+'-'+id+'-'+simTick()+'-'+due+'-'+time};
+ openModal(p.name+' · 回话','','<div class="scene-text">“'+npc17Esc(npc18Line(p,'nightYes'))+'”</div><p>'+npc17Esc(simDate(due))+' · '+time+'。定约另用1次安排；若临时不适，仍可改日。</p><div class="opts">'+npc17Button('npc18NightConfirm',npc18Pending.nonce,'照此定下','用1次安排，只在本代有效。')+npc17Button('npc18NightBack',id,'先不定下','不扣安排，也不记作失约。')+'</div>','本人已应允');return true;
+}
+function npc18NightConfirm(nonce){
+ const pending=npc18Pending,p=pending&&npc17Person(pending.npc);if(!p||nonce!==pending.nonce||pending.owner!==npc17Owner()||pending.asked!==simTick())return false;
+ const gate=npc18NightWilling(p);if(gate.reason){npc18Pending=null;npc18Night(p.id);return false;}
+ if(state.ap<1||npc18Nights().some(n=>n.status==='planned'&&(n.due===pending.due||n.npc===p.id))||pending.due===simTick()&&state.bedchamber?.day===todayKey())return false;
+ const before=npc17CostState(p),root=npc17Root(true);state.ap--;
+ const plan={id:'npc18-night-'+(++state.npc17.serial),owner:npc17Owner(),npc:p.id,requested:simTick(),due:pending.due,time:pending.time,status:'planned',consent:nonce};npc18Nights(true).push(plan);npc18Pending=null;
+ npc17Remember(p,'定下侍寝时辰','应允','双方约定'+simDate(plan.due)+' · '+plan.time,npc18Line(p,'nightYes'),before,{source:plan.id,tags:['侍寝','本人同意','定约']});
+ const req=root.requests.find(r=>r.kind==='night'&&r.npc===p.id&&r.status==='open');if(req){req.status='accepted';req.plan=plan.id;}
+ render();npc18Night(p.id);save();return true;
+}
+function npc18NightCancel(id){const n=npc18Nights().find(n=>n.id===id&&n.status==='planned');if(!n||n.due<simTick())return false;n.status='cancelled';const p=npc17Person(n.npc);if(p)npc17Remember(p,'撤下内廷安排','改日','当日已使人说明，不记作失约',npc17Self(p)+'知道了。那便先各自歇下，改日再见。',npc17CostState(p),{source:n.id,tags:['侍寝','提前说明']});save();if(p)npc18Night(p.id);return true;}
+function npc18ResolveNights(){
+ if(!state.npc17)return;
+ for(const [owner,root]of Object.entries(state.npc17.reigns))for(const n of root.nights||[]){
+  if(n.status!=='planned')continue;
+  if(owner!==npc17Owner()){n.status='archived';continue;}if(simTick()<=n.due)continue;
+  const p=npc17Person(n.npc),late=simTick()>n.due+1;
+  if(!p){n.status='unable';n.reason='此人已不在当朝名册，未续写相会。';continue;}
+  const before=npc17CostState(p),check=npc18NightWilling(p,{arrival:true});
+  if(late||check.reason){n.status='unable';n.reason=late?'时日已过，不倒填未曾发生的相会。':check.reason;npc17Remember(p,'内廷约未成','改日',n.reason,late?npc17Self(p)+'先前那一夜未能相见，往后若得空，再另定时辰。':check.reason,before,{source:n.id,tags:['侍寝','未赴约']});continue;}
+  const prior=root.nights.filter(q=>q.id!==n.id&&q.npc===p.id&&q.status==='completed').at(-1),kind=!prior?'初次相陪':n.due-prior.due>=7&&(state.relations[p.id].mind.lastContact??0)<=prior.completed?'久别重逢':'再度相陪';
+  n.status='completed';n.completed=simTick();n.scene=npc18Line(p,prior?'nightAgain':'nightFirst');n.morning=npc18Line(p,'morning');n.kind=kind;
+  state.bedchamber={day:Math.floor(n.due/30)+'-'+(n.due%30+1),id:p.id,owner,source:n.id};
+  npc17Remember(p,'侍寝·'+kind,'相陪',simDate(n.due)+' · '+n.time,n.morning,before,{tick:n.due,day:simDate(n.due),source:n.id,scene:n.scene,tags:['侍寝',kind,'次晨']});
+  log(p.name+'：'+n.morning,'内廷相处',p.id);
+ }
+}
+function npc18Autonomy(){
+ const root=npc17Root();if(!root||root.romanceDay===simTick()||world16DeceasedRuler())return;root.romanceDay=simTick();
+ for(const [id,own]of Object.entries(root.people)){
+  const p=npc17Person(id);if(!p||npc18RomanceGate(p)||npc17PrivateGate(p)||npc18Stage(p)<2||own.guard>=65)continue;
+  const e=npc18Emotion(p),r=state.relations[id];if(!e.signals||e.lastApproach!==null&&simTick()-e.lastApproach<7||root.requests.some(q=>q.npc===id&&['flirt','private-gift','jealous','reconcile','night'].includes(q.kind)&&q.status==='open'))continue;
+  const ignored=root.requests.filter(q=>q.npc===id&&['declined','expired'].includes(q.status)).slice(-4).length,chance=Math.max(2,({xu:12,jiang:26,xie:19}[id]||28)-ignored*5);
+  if(mindHash(npc17Owner()+':'+id+':approach:'+simTick())%100>=chance)continue;
+  const last=own.memories.at(-1);if(!last)continue;let kind='flirt',key='approach',source=last.id,title='想单独见陛下一会儿';
+  const other=npc18Nights().filter(n=>n.npc!==id&&n.status==='completed'&&simTick()-n.completed<=3&&state.relations[n.npc]?.rank).at(-1);
+  const unresolved=own.memories.find(m=>(m.emotionalChanges?.anger>0||m.emotionalChanges?.hurt>0)&&!own.memories.some(later=>later.tick>m.tick&&later.tags?.includes('和解')));
+  if(unresolved&&npc18Stage(p)>=3){kind='reconcile';key='reconcile';source=unresolved.id;title='有句话想重新说清';}
+  else if(other&&npc18Stage(p)>=3){kind='jealous';key='jealous';source=other.id;title='想问一问近来的事';}
+  else if(!npc18NightWilling(p).reason&&mindHash(id+':night:'+simTick())%3===0){kind='night';key='nightAsk';title='今夜可愿相陪';}
+  else if(mindHash(id+':gift:'+simTick())%4===0){kind='private-gift';key='gift';title='带来一件亲手做的小物';}
+  npc17RequestAdd(p,kind,source,npc18Line(p,key),title);npc18Emotion(p,true).lastApproach=simTick();
+ }
+}
+function npc18RomanticRequest(req){return req&&['flirt','private-gift','jealous','reconcile','night'].includes(req.kind);}
+npc17Request=function(id){const req=npc17Root()?.requests.find(q=>q.id===id),p=req&&npc17Person(req.npc);if(!npc18RomanticRequest(req))return npc18Before.request(id);if(!p||req.status!=='open'||req.expires<simTick()||npc18RomanceGate(p))return;
+ openModal(p.name+' · '+req.title,'','<div class="scene-text">“'+npc17Esc(req.text)+'”</div><p class="mini">'+npc17Esc(simDate(req.created))+'递来 · '+npc17Esc(simDate(req.expires))+'前回话。翻看免费，婉拒不扣好感。</p><div class="opts">'+npc17Button('npc17RequestReply',id+'|accept',req.kind==='night'?'听他今夜的意思':req.kind==='private-gift'?'见面收下心意':'单独见面回应','会面按原规则用1次安排；今夜的约需另外听过并确认。')+npc17Button('npc17RequestReply',id+'|later','明日再回话','只延一天，不算应约。')+npc17Button('npc17RequestReply',id+'|decline','这回先婉拒','记住回话，往后不频频催问。')+'</div>','他主动递来的话');};
+npc17RequestReply=function(raw){const [id,choice]=raw.split('|'),req=npc17Root()?.requests.find(q=>q.id===id);if(!npc18RomanticRequest(req)||choice!=='accept')return npc18Before.reply(raw);const p=npc17Person(req.npc);if(!p||req.status!=='open'||req.expires<simTick()||npc18RomanceGate(p))return false;
+ if(req.kind==='night')return npc18Night(p.id);
+ if(npc17PrivateGate(p)){toast(npc17PrivateGate(p));return false;}
+ if(!npc17HasTurn(p)){const beforeAP=state.ap;npc17Meet(p.id);if(!npc17HasTurn(p)||state.ap===beforeAP&&session?.id!==p.id)return false;}
+ const kind=req.kind,reply=npc18Line(p,kind==='reconcile'?'reconcile':kind==='private-gift'?'giftGiven':npc18Stage(p)>=3?'miss':'praise');
+ return npc17Commit(p,'回应本人·'+req.title,reply,{category:'chat',stamp:'request:'+req.id,progress:false,source:req.source,tags:['本人主动',kind,kind==='reconcile'?'和解':'相见'],effects:{},after:()=>{req.status='accepted';if(kind==='private-gift')npc17Own(p,true).receivedGift={name:p.id==='jiang'?'棋解手稿':p.id==='xie'?'新裁书签':p.id==='xu'?'手抄批注':'亲手做的小物',owner:npc17Owner(),tick:simTick(),source:req.id};if(kind==='reconcile'){const m=state.relations[p.id].mind;m.hurt=Math.max(0,(m.hurt||0)-5);m.anger=Math.max(0,(m.anger||0)-5);}}});
+};
+const npc18MemoryBefore=npc17Memories;npc17Memories=function(id){npc18MemoryBefore(id);const current=npc17Root(),past=Object.entries(state.npc17?.reigns||{}).filter(([owner])=>owner!==npc17Owner());const nightRows=(root)=>root?.nights?.filter(n=>n.npc===id&&n.status==='completed').map(n=>'<article class="npc17-memory"><span class="tag">'+npc17Esc(simDate(n.due))+' · '+npc17Esc(n.kind)+'</span><p>'+npc17Esc(n.scene)+'</p><p>“'+npc17Esc(n.morning)+'”</p></article>').join('')||'';const body=nightRows(current)+past.map(([owner,r])=>nightRows(r)?'<details class="npc17-details"><summary>前代的内廷旧事</summary>'+nightRows(r)+'</details>':'').join('');if(body)$('modalBody').insertAdjacentHTML('beforeend',body);};
+buildDay=function(){const w=state.world16,ruler=w?.people[npc17Owner()];if(ruler&&w.tick<simTick()&&Number.isFinite(state.playerStats?.health))ruler.health=state.playerStats.health;const key=npc18Before.day();npc18ResolveNights();npc18Autonomy();return key;};
+Object.assign(actions,{visit:npc17Open,storyMeet:npc17Meet,npc17Open,npc17Meet,npc17StartSection,npc17Request,npc17RequestReply,npc17Memories,npc17Action,npc18Flirt,npc18Night,npc18NightAsk,npc18NightConfirm,npc18NightCancel,npc18NightBack:id=>{npc18Pending=null;npc18Night(id);}});
+// Older buttons may still exist in saved legacy scenes. They must use the same consent rules.
+intimacyQuestion=function(){if(session)npc18Night(session.id);};
+intimacyConfirm=function(){return false;};actions.intimacyConfirm=intimacyConfirm;
+revisionWelcome=function(id){const r=state.relations[id];if(r){r.notes=r.notes||[];r.notes.push({month:state.elapsed,text:'正式入内廷；封位不代替私人心意，仍须慢慢相处。'});}};
+const npc18Style=document.createElement('style');npc18Style.textContent='.npc18-stage{color:#9b4e64;font-size:14px;margin:18px 0 6px}.npc18-stage small{display:block;color:#9c8587;font-size:11px;margin-top:5px}.npc17-options .opt:disabled{opacity:.65}.npc17-options b{letter-spacing:.06em}';document.head.appendChild(npc18Style);
+window.__npc18Audit={version:18,stage:npc18Stage,emotion:npc18Emotion,night:npc18NightWilling,resolve:npc18ResolveNights,autonomy:npc18Autonomy};
 
 render();if(!state.introSeen)intro();
 

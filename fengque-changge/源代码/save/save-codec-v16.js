@@ -19,8 +19,10 @@
      if(!known(id)||!Array.isArray(p.memories)||!p.stamps||!Number.isFinite(p.respect)||!Number.isFinite(p.guard))throw Error('人物相处记录缺页。');
      const ids=new Set();for(const m of p.memories){if(!m.id||ids.has(m.id)||m.owner!==owner||!Array.isArray(m.actors)||!m.actors.includes(id)||!Number.isFinite(m.tick)||typeof m.reply!=='string')throw Error('人物相处记忆的编号或归属不对。');ids.add(m.id);}
      if(p.invitation&&(!p.invitation.id||!Number.isFinite(p.invitation.requested)))throw Error('邀约记录不完整。');
+     if(p.emotion){const e=p.emotion;if(e.version!==1||!Array.isArray(e.days)||!e.days.every(Number.isFinite)||new Set(e.days).size!==e.days.length||!Number.isInteger(e.signals)||e.signals<0||typeof e.mutual!=='boolean'||e.lastApproach!==null&&!Number.isFinite(e.lastApproach))throw Error('情意的相处记录不完整。');}
     }
     for(const q of reign.requests)if(q.owner!==owner||!known(q.npc)||!q.id||!Number.isFinite(q.expires))throw Error('请见小笺的归属不对。');
+    if(reign.nights!==undefined){if(!Array.isArray(reign.nights))throw Error('内廷安排缺页。');const ids=new Set(),dates=new Set();for(const n of reign.nights){if(!n.id||ids.has(n.id)||n.owner!==owner||!known(n.npc)||!Number.isInteger(n.due)||n.due<0||!Number.isInteger(n.requested)||n.requested<0||n.due<n.requested||n.due>n.requested+1||!['亥初','子初'].includes(n.time)||!['planned','cancelled','unable','completed','archived'].includes(n.status)||typeof n.consent!=='string')throw Error('内廷安排的日期或归属不对。');ids.add(n.id);if(['planned','completed'].includes(n.status)){if(dates.has(n.due))throw Error('同一夜不能有两份相陪安排。');dates.add(n.due);}if(n.status==='completed'&&(typeof n.scene!=='string'||typeof n.morning!=='string'||!Number.isFinite(n.completed)))throw Error('次晨相处记录不完整。');}}
    }
   }
   return payload;

@@ -63,7 +63,12 @@
   const preg=w.dynasty.pregnancy;
   if(preg&&m>=preg.due){const c=child(w,data,preg.mother,preg.father,true);w.dynasty.pregnancy=null;w.dynasty.familyPlan=null;if(c)w.dynasty.lastBirth=c.id;else event(w,'皇室记事','原定的家事未能继续，未凭空添写皇嗣。',[preg.mother,preg.father]);}
   const plan=w.dynasty.familyPlan;
-  if(plan&&!w.dynasty.pregnancy&&m>plan.started&&w.people[plan.father]?.alive&&w.people[plan.mother]?.alive&&(hash(w.seed+':plan:'+m)%100<60||m-plan.started>=3)){
+  const mother=plan&&w.people[plan.mother],father=plan&&w.people[plan.father];
+  const fertile=plan&&mother?.alive&&father?.alive&&age(w,mother)>=18&&age(w,mother)<=45&&age(w,father)>=18&&age(w,father)<=55;
+  const healthFactor=plan?Math.min(mother?.health??80,father?.health??80)/100:0;
+  const fertilityFactor=plan?Math.min(mother?.fertility??100,father?.fertility??100)/100:0;
+  const chance=plan?Math.min(60,Math.max(0,60*healthFactor*fertilityFactor*(age(w,mother)>35?.6:1))):0;
+  if(plan&&!w.dynasty.pregnancy&&m>plan.started&&fertile&&healthFactor>=.45&&hash(w.seed+':plan:'+m)%100<chance){
    w.dynasty.pregnancy={mother:plan.mother,father:plan.father,started:m,due:m+9};event(w,'皇室记事','太医复核后，记下有孕之喜，日后按月照看。',[plan.mother,plan.father]);
   }
   const year=Math.floor(m/12);if(!w.years[year]){w.years[year]=true;yearly(w,data,year);}

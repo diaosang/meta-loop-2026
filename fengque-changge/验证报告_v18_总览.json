@@ -1,0 +1,99 @@
+{
+  "version": 18,
+  "date": "2026-11-06",
+  "baseCommit": "1c4bc3db80c03aef30280f7e97af31fa507d2fdd",
+  "checksPassed": 287,
+  "suites": {
+    "人物互动逻辑": 30,
+    "心意与侍寝逻辑": 42,
+    "人物浏览器": 15,
+    "心意与侍寝浏览器": 14,
+    "兼容回归": 186
+  },
+  "primaryInteractionMenu": [
+    "闲谈",
+    "关心",
+    "赏赐",
+    "邀约",
+    "暧昧",
+    "侍寝",
+    "试探",
+    "议事",
+    "委派",
+    "人物经历"
+  ],
+  "relationshipDimensions": [
+    "熟悉",
+    "信任",
+    "亲近",
+    "情意",
+    "敬重",
+    "忠诚",
+    "戒备"
+  ],
+  "stages": [
+    "礼数周全",
+    "熟悉",
+    "亲近",
+    "暧昧",
+    "心意相通"
+  ],
+  "namedVoices": [
+    "许知衡",
+    "姜禹瀛",
+    "谢无咎"
+  ],
+  "personalityVoices": 12,
+  "freePersonPreview": true,
+  "meetingCostAP": 1,
+  "meetingTurns": 3,
+  "nightReservationCostAP": 1,
+  "nightCostDoesNotConsumeConversationTurn": true,
+  "nightTimes": [
+    "亥初",
+    "子初"
+  ],
+  "nightDates": [
+    "今夜",
+    "明夜"
+  ],
+  "rechecksConsentAndState": true,
+  "refusalDoesNotAwardLove": true,
+  "rankDoesNotAutomaticallyGrantLove": true,
+  "nightDoesNotAutomaticallyConceive": true,
+  "pregnancy": "另行商量后按月按年龄、健康、生育状态与独立概率核实，去掉3个月保底。",
+  "autonomy": [
+    "主动示好",
+    "亲手赠物",
+    "实际相陪引发醋意",
+    "争执后求和",
+    "正式后宫请侍",
+    "忙后补约",
+    "家事求助",
+    "政见请陈"
+  ],
+  "privateHistorySeparatedByRuler": true,
+  "oldFullSaveSupported": true,
+  "deceasedHistoryPreserved": true,
+  "saveFormatVersion": 16,
+  "offlineBrowser": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "pageErrors": [],
+  "currentPlayableSHA256": "1984aad95628240c190b6a8320ee696ddc607783bfb85fd711a2159337bad08b",
+  "threeCurrentEntriesIdentical": true,
+  "historicalFilesPreserved": 148,
+  "historicalWorkbookSheetsPreserved": 36,
+  "historicalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "unrelatedRepositoryFilesUnchanged": true,
+  "newGodotWork": false,
+  "scopeNotes": [
+    "心意、角色与后宫界面分支使用明确规则夹具，多日推进和实际过夜另走真实游戏命令；不声称已经自然攻略所有角色。",
+    "V18世界规则回归保留31条既有断言，并将旧有孕保底用例改为新概率规则下的24个月观察，历史测试源文件不改。",
+    "许知衡与姜禹瀛没有新增改变身份边界的完整剧情，因此侍寝仍关闭；谢无咎依原身份揭晓剧情判断。",
+    "未新增完整厂卫、皇家惩戒、联姻或原生导出；没有本轮十代整局验证。"
+  ]
+}
