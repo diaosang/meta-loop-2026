@@ -10,6 +10,19 @@
   if(Object.keys(payload.relations).length<6||Object.keys(payload.relations).length>5000||!['xu','jiang','xie','ye'].every(id=>payload.relations[id]))throw Error('人物记录不完整。');
   if(payload.frontCourt)for(const k of ['treasury','grain','arrears'])if(!Number.isFinite(payload.frontCourt[k])||payload.frontCourt[k]<0)throw Error('钱粮账读不对。');
   if(payload.world16){const w=payload.world16;if(w.schemaVersion!==1||!w.people||!w.families||!w.history||!w.dynasty||!w.people[w.dynasty.rulerId])throw Error('家族或传承记录不完整。');const ids=new Set();for(const e of w.history){if(!e.id||ids.has(e.id))throw Error('历史编号重复或缺失。');ids.add(e.id);}for(const [id,p]of Object.entries(w.people)){if(p.id!==id||!Array.isArray(p.parents)||!Array.isArray(p.children)||!p.parents.every(key=>w.people[key]))throw Error('人物亲属记录有缺页。');}if(payload.simulation&&w.tick!==payload.simulation.tick)throw Error('人物与经营日期对不上，先换一个完整备份。');}
+  if(payload.npc17){
+   const r=payload.npc17;if(r.version!==1||!Number.isInteger(r.serial)||r.serial<0||!r.reigns||typeof r.reigns!=='object')throw Error('人物互动记事不完整。');
+   const known=id=>!!payload.relations[id]||!!payload.world16?.people[id];
+   for(const [owner,reign]of Object.entries(r.reigns)){
+    if(reign.owner!==owner||!reign.people||!reign.stamps||!Array.isArray(reign.requests))throw Error('人物相处的世代记录对不上。');
+    for(const [id,p]of Object.entries(reign.people)){
+     if(!known(id)||!Array.isArray(p.memories)||!p.stamps||!Number.isFinite(p.respect)||!Number.isFinite(p.guard))throw Error('人物相处记录缺页。');
+     const ids=new Set();for(const m of p.memories){if(!m.id||ids.has(m.id)||m.owner!==owner||!Array.isArray(m.actors)||!m.actors.includes(id)||!Number.isFinite(m.tick)||typeof m.reply!=='string')throw Error('人物相处记忆的编号或归属不对。');ids.add(m.id);}
+     if(p.invitation&&(!p.invitation.id||!Number.isFinite(p.invitation.requested)))throw Error('邀约记录不完整。');
+    }
+    for(const q of reign.requests)if(q.owner!==owner||!known(q.npc)||!q.id||!Number.isFinite(q.expires))throw Error('请见小笺的归属不对。');
+   }
+  }
   return payload;
  }
  function pack(payload,now=Date.now()){const data=JSON.stringify(payload);check(payload);return {format:'fengque-save',schemaVersion:16,savedAt:now,worldSeed:payload.world16?.seed??payload.stories?.seed??null,tick:payload.elapsed*30+(payload.day||1)-1,checksum:hash(data),data};}

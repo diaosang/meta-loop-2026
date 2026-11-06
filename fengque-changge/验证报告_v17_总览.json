@@ -1,0 +1,73 @@
+{
+  "version": 17,
+  "date": "2026-11-06",
+  "baseCommit": "5be6f08c594fb4b414f861bbf31b159ee9ab0f80",
+  "checksPassed": 231,
+  "newInteractionLogic": 30,
+  "newBrowserOperations": 15,
+  "existingRulesRegressions": 186,
+  "primaryInteractionMenu": [
+    "闲谈",
+    "关心",
+    "赏赐",
+    "邀约",
+    "试探",
+    "议事",
+    "委派",
+    "人物经历"
+  ],
+  "personPreviewFree": true,
+  "meetingCostAP": 1,
+  "conversationTurnsPerMeeting": 3,
+  "rewardEntryUnified": true,
+  "privatePalaceAndPublicTreasuryAccountsRemainDistinct": true,
+  "sameConversationDoesNotChargeAPPerOrdinaryTopic": true,
+  "familiarityRequiredForAutonomousPrivateInvitation": true,
+  "autonomousReturnInvitationNaturalBrowserDays": 15,
+  "familyAidAndPoliticalObjections": "按实际死亡／婚育与家产、实际决定及臣子反应触发；规则夹具验证因果，不声称整局必在固定天数发生。",
+  "structuredMemoryFields": [
+    "time",
+    "ownerRuler",
+    "actors",
+    "action",
+    "attitude",
+    "reason",
+    "reply",
+    "actualChanges",
+    "emotionalChanges",
+    "tags",
+    "source"
+  ],
+  "relationshipDimensions": [
+    "familiarity",
+    "trust",
+    "closeness",
+    "respect",
+    "loyalty",
+    "guard"
+  ],
+  "oldRulerPrivateMemoryArchived": true,
+  "deceasedArchiveReadable": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "offlineBrowser": true,
+  "pageErrors": [],
+  "saveFormatVersion": 16,
+  "legacyStateVersion": 3,
+  "oldFullSavesSupported": true,
+  "currentPlayableSHA256": "9bce5f576c06bf9f2080db083039cd9c5a9c5d824baa62166032cdb32be6ab92",
+  "threeCurrentEntriesIdentical": true,
+  "historicalFilesPreserved": 143,
+  "historicalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "historicalWorkbookSheetsPreserved": 36,
+  "unrelatedRepositoryFilesUnchanged": true,
+  "newGodotWork": false,
+  "limits": [
+    "邀约已接饮茶、游园、下棋与明日之约；听曲、宴饮、赏月和共同巡游未逐一重做独立场景。",
+    "保留已有任用、考核与许案查证；广泛联姻、家族爵位、完整惩戒罢免和抄家赐死未在本轮新增。",
+    "沿用已有跨代家族与基础传承；没有本轮完整十代或原生导出验证。"
+  ]
+}

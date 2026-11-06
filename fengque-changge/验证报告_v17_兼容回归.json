@@ -1,0 +1,50 @@
+{
+  "version": 17,
+  "runs": [
+    {
+      "script": "test_simulation_v15.cjs",
+      "name": "每日经营与选秀",
+      "status": 0,
+      "passed": 39
+    },
+    {
+      "script": "test_daliang_canon.cjs",
+      "name": "大梁人设与旧案",
+      "status": 0,
+      "passed": 36
+    },
+    {
+      "script": "test_frontcourt.cjs",
+      "name": "原前朝规则",
+      "status": 0,
+      "passed": 35
+    },
+    {
+      "script": "test_approval_flow.cjs",
+      "name": "奏事恢复与旧批阅规则",
+      "status": 0,
+      "passed": 14
+    },
+    {
+      "script": "test_everyday_talk.cjs",
+      "name": "近况与闲谈",
+      "status": 0,
+      "passed": 27
+    },
+    {
+      "script": "test_port_vectors_v15.cjs",
+      "name": "经营规则对照",
+      "status": 0,
+      "passed": 3
+    },
+    {
+      "script": "test_world_v16.cjs",
+      "name": "家族宫室传位与存档",
+      "status": 0,
+      "passed": 32
+    }
+  ],
+  "failed": false,
+  "passed": 186,
+  "historicalReportsPreserved": true
+}
