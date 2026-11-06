@@ -1,0 +1,22 @@
+/* Integrity and structural validation are independent from browser storage. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.FengqueSave=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16).padStart(8,'0');}
+ function safe(value,depth=0){if(depth>70)throw Error('这份进度的层级不正常。');if(typeof value==='string'&&(/<\s*(script|iframe|img|svg|object|embed|link|meta|form|input|video|audio|source)\b|\bon[a-z]+\s*=|javascript\s*:/i.test(value)))throw Error('这份进度夹有可执行网页内容，不能直接读取。');if(!value||typeof value!=='object')return;for(const k of Object.keys(value)){if(['__proto__','prototype','constructor'].includes(k))throw Error('这份进度含有不能读取的字段。');safe(value[k],depth+1);}}
+ function check(payload){
+  safe(payload);if(payload?.version!==3||!payload.relations||!payload.case||!Array.isArray(payload.logs))throw Error('这不是完整游戏进度；经营记录不能当作完整存档读取。');
+  for(const k of ['elapsed','ap','money'])if(!Number.isFinite(payload[k])||payload[k]<0)throw Error('日期、安排次数或钱数读不对。');if(!Number.isInteger(payload.elapsed)||!Number.isInteger(payload.ap)||payload.ap>100)throw Error('月份或安排次数读不对。');
+  if(payload.day!==undefined&&(!Number.isInteger(payload.day)||payload.day<1||payload.day>30))throw Error('日期不在一至三十日之间。');
+  if(Object.keys(payload.relations).length<6||Object.keys(payload.relations).length>5000||!['xu','jiang','xie','ye'].every(id=>payload.relations[id]))throw Error('人物记录不完整。');
+  if(payload.frontCourt)for(const k of ['treasury','grain','arrears'])if(!Number.isFinite(payload.frontCourt[k])||payload.frontCourt[k]<0)throw Error('钱粮账读不对。');
+  if(payload.world16){const w=payload.world16;if(w.schemaVersion!==1||!w.people||!w.families||!w.history||!w.dynasty||!w.people[w.dynasty.rulerId])throw Error('家族或传承记录不完整。');const ids=new Set();for(const e of w.history){if(!e.id||ids.has(e.id))throw Error('历史编号重复或缺失。');ids.add(e.id);}for(const [id,p]of Object.entries(w.people)){if(p.id!==id||!Array.isArray(p.parents)||!Array.isArray(p.children)||!p.parents.every(key=>w.people[key]))throw Error('人物亲属记录有缺页。');}if(payload.simulation&&w.tick!==payload.simulation.tick)throw Error('人物与经营日期对不上，先换一个完整备份。');}
+  return payload;
+ }
+ function pack(payload,now=Date.now()){const data=JSON.stringify(payload);check(payload);return {format:'fengque-save',schemaVersion:16,savedAt:now,worldSeed:payload.world16?.seed??payload.stories?.seed??null,tick:payload.elapsed*30+(payload.day||1)-1,checksum:hash(data),data};}
+ function unpack(input){
+  const value=typeof input==='string'?JSON.parse(input):input;if(value?.schemaVersion>16)throw Error('这是更新版本的进度，请先用对应的新版本打开。');
+  if(value?.format==='fengque-save'){if(value.schemaVersion!==16||typeof value.data!=='string'||hash(value.data)!==value.checksum)throw Error('这份进度校验没通过，可能缺了一段；原文件不会被覆盖。');return {payload:check(JSON.parse(value.data)),meta:{savedAt:value.savedAt,tick:value.tick,worldSeed:value.worldSeed},legacy:false};}
+  const legacy=value?.state||value;return {payload:check(legacy),meta:{savedAt:0,tick:legacy.elapsed*30+(legacy.day||1)-1,worldSeed:legacy.stories?.seed??null},legacy:true};
+ }
+ return {version:16,hash,check,pack,unpack};
+});

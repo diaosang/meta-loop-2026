@@ -1,0 +1,28 @@
+{
+ "schemaVersion":1,
+ "familyTypes":[
+  {"id":"common","name":"寒门","wealth":12,"prestige":14,"skill":"literature","goal":"凭本事立足","origin":"家中靠耕作和零工度日，读书的纸张总要省着用。"},
+  {"id":"scholar","name":"书香门第","wealth":24,"prestige":38,"skill":"literature","goal":"让家学传下去","origin":"家中有几架旧书，祖辈授徒，晚辈自幼识字。"},
+  {"id":"official","name":"文官世家","wealth":52,"prestige":58,"skill":"admin","goal":"守住家族声望","origin":"祖辈出仕，留有往来副册；名望是一份便利，也是一份约束。"},
+  {"id":"military","name":"武勋人家","wealth":36,"prestige":46,"skill":"military","goal":"以实绩换认可","origin":"家人曾在边地当差，旧甲与家书一道收着。"},
+  {"id":"merchant","name":"商贾人家","wealth":65,"prestige":24,"skill":"admin","goal":"把生意做安稳","origin":"家中经营行商，账簿记着几代人的路途与赊欠。"},
+  {"id":"fallen","name":"没落旧族","wealth":15,"prestige":32,"skill":"literature","goal":"重新被人认真看待","origin":"昔日门庭已旧，祖辈的名声尚在，眼前的生计却并不宽裕。"}
+ ],
+ "surnames":["沈","顾","陶","孟","周","贺","程","方","杜","林","苏","裴"],
+ "maleNames":["清和","行舟","望舒","承安","怀瑾","砚青","知远","闻笙","景初","修竹","明川","长宁"],
+ "femaleNames":["昭仪","令月","明嘉","清宁","照棠","元徽","知微","书音","怀素","映雪","嘉禾","静姝"],
+ "traits":["谨慎","温和","好胜","守诺","圆滑","倔强","勤勉","敏感","疏朗","务实"],
+ "personality":["清冷克制","温柔体贴","骄矜自尊","寡言重诺","圆融世故","明朗直率","野心进取","敏感多思","疏朗洒脱","务实重利"],
+ "buildings":[
+  {"id":"hall","name":"旧议事殿","width":3,"height":2,"money":0,"days":0,"maxLevel":1,"protected":true,"feature":"court","description":"还能遮风避雨的议事处。原大殿照常使用。"},
+  {"id":"bedroom","name":"寝殿","width":2,"height":2,"money":0,"days":0,"maxLevel":2,"protected":true,"feature":"rest","description":"先把能住的一角拾掇出来，忙累了可以小睡一会儿。"},
+  {"id":"garden","name":"小花园","width":2,"height":2,"money":4,"days":2,"maxLevel":3,"feature":"walk","description":"清开荒草、补好石径。修好后可以邀人散步，人物也会自己来走走。"},
+  {"id":"library","name":"小书阁","width":2,"height":1,"money":5,"days":3,"maxLevel":3,"feature":"read","description":"补屋顶、理旧书。修好后可以读书，也给爱读书的人添一个去处。"},
+  {"id":"kitchen","name":"膳房","width":2,"height":1,"money":4,"days":2,"maxLevel":2,"feature":"meal","description":"修灶整桌，能请一个熟人坐下吃顿热饭。"},
+  {"id":"guesthouse","name":"偏殿","width":2,"height":2,"money":6,"days":3,"maxLevel":3,"feature":"house","description":"收拾出能住人的院落，可以给新认识的人安排住处。"},
+  {"id":"training","name":"演武场","width":2,"height":2,"money":5,"days":3,"maxLevel":2,"feature":"train","description":"整平地面、立好靶架，可以练箭，也会有习武的人来。"},
+  {"id":"academy","name":"小学堂","width":2,"height":2,"money":6,"days":4,"maxLevel":3,"requires":"library","feature":"teach","description":"书阁修好后，可再办一处学堂，让孩子们有老师和课业。"},
+  {"id":"shrine","name":"家庙","width":2,"height":1,"money":5,"days":3,"maxLevel":2,"feature":"history","description":"清理旧碑、安放谱册，能把亲人和前代的故事好好留住。"},
+  {"id":"storehouse","name":"小库房","width":2,"height":1,"money":4,"days":2,"maxLevel":2,"feature":"transfer","description":"分清宫里与朝廷的账，也可自愿拿一点私钱帮朝廷周转。"}
+ ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": "16.0",
+  "runs": [
+    {
+      "script": "test_simulation_v15.cjs",
+      "name": "经营选秀",
+      "status": 0,
+      "passed": 39
+    },
+    {
+      "script": "test_daliang_canon.cjs",
+      "name": "大梁人物与许案",
+      "status": 0,
+      "passed": 36
+    },
+    {
+      "script": "test_frontcourt.cjs",
+      "name": "前朝逻辑",
+      "status": 0,
+      "passed": 35
+    },
+    {
+      "script": "test_approval_flow.cjs",
+      "name": "批阅恢复",
+      "status": 0,
+      "passed": 14
+    },
+    {
+      "script": "test_everyday_talk.cjs",
+      "name": "近况去重",
+      "status": 0,
+      "passed": 27
+    },
+    {
+      "script": "test_port_vectors_v15.cjs",
+      "name": "原经营规则对照",
+      "status": 0,
+      "passed": 3
+    }
+  ],
+  "failed": false,
+  "passed": 154,
+  "historicalReportsPreserved": true
+}

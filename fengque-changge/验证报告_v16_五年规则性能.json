@@ -1,0 +1,13 @@
+{
+  "version": "16.0",
+  "seed": 20261106,
+  "days": 1800,
+  "scope": "只计人物家族规则内核，不含旧经营、界面、浏览器存档和原生导出",
+  "elapsedMs": 345.26,
+  "entities": 480,
+  "activeGenerated": 42,
+  "historyEvents": 2503,
+  "worldJSONBytes": 966608,
+  "node": "v20.17.0",
+  "validationErrors": []
+}

@@ -1,4 +1,5 @@
 /* First cohort is free; saved performances and sourced warnings never reroll on inspection. */
+function selectionReporterName(){return state.world16?.people.xie?.alive===false?'内廷值事':'谢无咎';}
 function selectionReview(){
  const a=state.audition;if(!a||a.status!=='offered'||!a.pool?.length)return null;
  if(!a.review){const c=state.cast||{};a.review={feeWaived:!c.initialSelectionConsumed&&c.lastSelection==null&&(c.nextSelection??2)<=2,performances:{},opened:todayKey()};}
@@ -33,7 +34,7 @@ function selectionCheck(id){
  const au=state.audition,p=PEOPLE.find(p=>p.id===id);if(au?.status!=='offered'||!au.pool.includes(id)||!p)return;
  const w=selectionWarning(p);if(!w.canCheck||!pay(1))return;const st=storyOf(p),patron=PEOPLE.find(p=>p.id===st.patron);
  state.selectionChecks=state.selectionChecks||[];state.selectionChecks.push({key:au.month+':'+id,candidate:id,name:p.name,started:mindTick(),due:mindTick()+2,status:'pending',source:{arc:st.arc,patron:patron?.name||'原荐举人'},result:null});
- log('交谢无咎核对'+p.name+'荐书流转，候两日回册；未凭传闻定罪。','选秀核查',id);auditionInterview(id);save();
+ log('交'+selectionReporterName()+'核对'+p.name+'荐书流转，候两日回册；未凭传闻定罪。','选秀核查',id);auditionInterview(id);save();
 }
 function selectionChecksDay(){
  for(const c of state.selectionChecks||[])if(c.status==='pending'&&mindTick()>=c.due){c.status='done';c.result='原荐书的转递人与'+c.source.patron+'一线有实际往来，已对上旧封与交收日。只能证实这层荐举关系，尚不能证明受命入宫或怀有恶意。';log(c.name+'荐书核查回册：'+c.result,'选秀核查');}
@@ -43,7 +44,7 @@ const selectionOldPerform=actions.auditionPerform;actions.auditionPerform=id=>{s
 const selectionOldInterview=auditionInterview;auditionInterview=function(id,answer=''){
  selectionOldInterview(id,answer);const a=state.audition,p=PEOPLE.find(p=>p.id===id);if(a?.status!=='offered'||!p||!a.pool.includes(id))return;
  const perf=selectionPerformance(id,selectionIsPerforming===id),w=selectionWarning(p);
- let html='<section class="card section-space"><h3>谢无咎 · 候选簿提醒</h3>'+w.facts.map(x=>'<p>“'+mindEscape(x)+'”</p>').join('')+w.clues.map(x=>'<p>“'+mindEscape(x)+'”</p>').join('')+(w.check?.status==='pending'?'<p class="mini">已交核荐书，尚需'+Math.max(0,w.check.due-mindTick())+'日；离开选秀也会继续核查。</p>':'')+(w.canCheck?'<button class="btn ghost" data-action="selectionCheck" data-id="'+id+'">交核荐书 · 1行动 / 2日</button>':'')+'</section>';
+ let html='<section class="card section-space"><h3>'+selectionReporterName()+' · 候选簿提醒</h3>'+w.facts.map(x=>'<p>“'+mindEscape(x)+'”</p>').join('')+w.clues.map(x=>'<p>“'+mindEscape(x)+'”</p>').join('')+(w.check?.status==='pending'?'<p class="mini">已交核荐书，尚需'+Math.max(0,w.check.due-mindTick())+'日；离开选秀也会继续核查。</p>':'')+(w.canCheck?'<button class="btn ghost" data-action="selectionCheck" data-id="'+id+'">交核荐书 · 1行动 / 2日</button>':'')+'</section>';
  if(perf)html+='<section class="card section-space"><h3>'+(perf.live?'试艺后的官员反应':'据旧试簿覆议')+'</h3><p class="mini">'+mindEscape(perf.source)+' · '+mindEscape(perf.skill)+' · 所学'+perf.level+'级'+(perf.falter?' · 当场有失手':' · 当场完成')+'</p>'+perf.comments.map(c=>'<p><b>'+mindEscape(c.name)+'</b> '+mindEscape(c.text)+'</p>').join('')+'<button class="btn ghost" data-action="selectionCompare">比较已试才艺</button></section>';
  $('modalBody').insertAdjacentHTML('beforeend',html);save();
 };actions.auditionInterview=id=>auditionInterview(id);

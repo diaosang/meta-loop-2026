@@ -42,7 +42,7 @@ try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved?.version===3&&sav
 function clamp(n){return Math.max(0,Math.min(100,n));}
 function date(elapsed=state.elapsed){return `景和${['元','二','三','四','五','六','七','八','九','十'][Math.floor(elapsed/12)]||Math.floor(elapsed/12)+1}年 · ${['正','二','三','四','五','六','七','八','九','十','十一','腊'][elapsed%12]}月`;}
 function toast(t){$('toast').textContent=t;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2600);}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('saveStatus').textContent='已自动存档';}catch{$('saveStatus').textContent='本次仅保存在内存';}}
+function save(){if(typeof FQ_BOOT!=='undefined'&&FQ_BOOT.block)return;try{localStorage.setItem(KEY,JSON.stringify(state));$('saveStatus').textContent='已自动存档';}catch{$('saveStatus').textContent='本次仅保存在内存';}}
 function log(text,type='记事',who){state.logs.push({month:state.elapsed,text,type});if(who)state.relations[who].notes.push({month:state.elapsed,text});}
 function pay(ap,money=0){if(state.ap<ap){toast('本月行动力不足，可先结束月份。');return false;}if(state.money<money){toast('内库不够，先换一种做法吧。');return false;}state.ap-=ap;state.money-=money;return true;}
 function change(id,a=0,t=0,love=0){const r=state.relations[id];r.aff=Math.max(1,clamp(r.aff+a));r.trust=clamp(r.trust+t);r.love=clamp(r.love+love);}
