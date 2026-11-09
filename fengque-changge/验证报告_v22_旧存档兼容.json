@@ -1,0 +1,62 @@
+{
+  "version": 22,
+  "runs": [
+    {
+      "script": "test_npc_interaction_compat_v19.cjs",
+      "name": "人物互动",
+      "status": 0,
+      "passed": 30
+    },
+    {
+      "script": "test_romance_v18.cjs",
+      "name": "情意与侍寝",
+      "status": 0,
+      "passed": 42
+    },
+    {
+      "script": "test_simulation_v15.cjs",
+      "name": "旧经营与选秀",
+      "status": 0,
+      "passed": 39
+    },
+    {
+      "script": "test_daliang_canon.cjs",
+      "name": "旧设定与旧案",
+      "status": 0,
+      "passed": 36
+    },
+    {
+      "script": "test_frontcourt.cjs",
+      "name": "旧前朝",
+      "status": 0,
+      "passed": 35
+    },
+    {
+      "script": "test_approval_flow.cjs",
+      "name": "批阅兼容",
+      "status": 0,
+      "passed": 14
+    },
+    {
+      "script": "test_everyday_talk.cjs",
+      "name": "近况闲谈",
+      "status": 0,
+      "passed": 27
+    },
+    {
+      "script": "test_port_vectors_v15.cjs",
+      "name": "经营对照",
+      "status": 0,
+      "passed": 3
+    },
+    {
+      "script": "test_world_v18.cjs",
+      "name": "家族传承与存档",
+      "status": 0,
+      "passed": 32
+    }
+  ],
+  "failed": false,
+  "passed": 258,
+  "historicalReportsPreserved": true
+}

@@ -1,0 +1,219 @@
+{
+  "passed": 3,
+  "checks": [
+    "正常开局钱粮与两件国事限制下，可收回全部三处失地并各任知府",
+    "全部失地可收复，继续开田与集市后钱粮能转正，而非只靠借钱和重复缴获",
+    "敌据点被逐一拔除后不再凭空刷新敌军，三地各只发一次首收缴获"
+  ],
+  "turns": [
+    {
+      "turn": 2,
+      "silver": 231,
+      "grain": 165,
+      "debt": 3000,
+      "land": 2,
+      "net": -29,
+      "grainNet": -35
+    },
+    {
+      "turn": 3,
+      "silver": 346,
+      "grain": 232,
+      "debt": 3000,
+      "land": 3,
+      "net": -35,
+      "grainNet": -43
+    },
+    {
+      "turn": 4,
+      "silver": 24,
+      "grain": 220,
+      "debt": 2700,
+      "land": 3,
+      "net": 0,
+      "grainNet": -9
+    },
+    {
+      "turn": 5,
+      "silver": 164,
+      "grain": 326,
+      "debt": 2700,
+      "land": 3,
+      "net": 1,
+      "grainNet": -7
+    },
+    {
+      "turn": 6,
+      "silver": 309,
+      "grain": 421,
+      "debt": 2700,
+      "land": 4,
+      "net": -35,
+      "grainNet": -30
+    },
+    {
+      "turn": 7,
+      "silver": 0,
+      "grain": 398,
+      "debt": 2418,
+      "land": 4,
+      "net": 2,
+      "grainNet": -21
+    },
+    {
+      "turn": 8,
+      "silver": 388,
+      "grain": 523,
+      "debt": 2618,
+      "land": 5,
+      "net": 15,
+      "grainNet": -4
+    },
+    {
+      "turn": 9,
+      "silver": 352,
+      "grain": 519,
+      "debt": 2618,
+      "land": 5,
+      "net": 15,
+      "grainNet": -4
+    },
+    {
+      "turn": 10,
+      "silver": 134,
+      "grain": 553,
+      "debt": 2318,
+      "land": 5,
+      "net": 91,
+      "grainNet": 37
+    },
+    {
+      "turn": 11,
+      "silver": 119,
+      "grain": 590,
+      "debt": 2318,
+      "land": 5,
+      "net": 93,
+      "grainNet": 38
+    },
+    {
+      "turn": 12,
+      "silver": 106,
+      "grain": 628,
+      "debt": 2318,
+      "land": 5,
+      "net": 110,
+      "grainNet": 23
+    },
+    {
+      "turn": 13,
+      "silver": 0,
+      "grain": 651,
+      "debt": 2208,
+      "land": 5,
+      "net": 148,
+      "grainNet": 23
+    },
+    {
+      "turn": 14,
+      "silver": 142,
+      "grain": 674,
+      "debt": 2208,
+      "land": 5,
+      "net": 181,
+      "grainNet": 23
+    },
+    {
+      "turn": 15,
+      "silver": 217,
+      "grain": 697,
+      "debt": 2208,
+      "land": 5,
+      "net": 181,
+      "grainNet": 23
+    },
+    {
+      "turn": 16,
+      "silver": 0,
+      "grain": 725,
+      "debt": 1921,
+      "land": 5,
+      "net": 231,
+      "grainNet": 38
+    },
+    {
+      "turn": 17,
+      "silver": 225,
+      "grain": 763,
+      "debt": 1921,
+      "land": 5,
+      "net": 250,
+      "grainNet": 38
+    },
+    {
+      "turn": 18,
+      "silver": 349,
+      "grain": 791,
+      "debt": 1921,
+      "land": 5,
+      "net": 235,
+      "grainNet": 23
+    },
+    {
+      "turn": 19,
+      "silver": 138,
+      "grain": 794,
+      "debt": 1621,
+      "land": 5,
+      "net": 267,
+      "grainNet": 38
+    },
+    {
+      "turn": 20,
+      "silver": 309,
+      "grain": 822,
+      "debt": 1621,
+      "land": 5,
+      "net": 267,
+      "grainNet": 68
+    },
+    {
+      "turn": 21,
+      "silver": 550,
+      "grain": 890,
+      "debt": 1621,
+      "land": 5,
+      "net": 267,
+      "grainNet": 83
+    },
+    {
+      "turn": 22,
+      "silver": 686,
+      "grain": 973,
+      "debt": 1321,
+      "land": 5,
+      "net": 267,
+      "grainNet": 83
+    },
+    {
+      "turn": 23,
+      "silver": 1017,
+      "grain": 1056,
+      "debt": 1321,
+      "land": 5,
+      "net": 267,
+      "grainNet": 83
+    },
+    {
+      "turn": 24,
+      "silver": 1294,
+      "grain": 1139,
+      "debt": 1321,
+      "land": 5,
+      "net": 267,
+      "grainNet": 83
+    }
+  ],
+  "naturalResources": true,
+  "note": "纯规则路线使用原始300银/200粮，每旬两事，不改钱粮或战力；路线用于验证可行性，不代表所有玩法都能无代价取胜。"
+}
