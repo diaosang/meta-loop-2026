@@ -1,0 +1,44 @@
+{
+  "version": 21,
+  "date": "2026-11-09",
+  "baseCommit": "a998e5ba334ede6a2278cfa618652b347a7f3285",
+  "checksPassed": 339,
+  "suites": {
+    "教程逻辑": 16,
+    "教程浏览器": 14,
+    "人物生活逻辑": 23,
+    "山河兼容": 28,
+    "旧存档兼容": 258
+  },
+  "offline": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "tutorial": [
+    "入门六步",
+    "用兵与地方四步",
+    "静态真实目标高亮",
+    "当前状态提示",
+    "收起与继续",
+    "单步或整段跳过",
+    "随时操作小册",
+    "完整存档保存进度",
+    "不自动替玩家行动"
+  ],
+  "newGameOffer": "开篇或荐选名册收起后首次回宫门时询问，关闭欢迎页暂缓，结束后不重弹。",
+  "oldSave": "V19/V20可手动开始，不改变钱粮、家谱、土地与关系；更早进度保留其原规则。",
+  "historyPreserved": 169,
+  "originalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "threeCurrentEntriesIdentical": true,
+  "unrelatedRootIndexUnchanged": true,
+  "currentPlayableSHA256": "9c7587dabf725ab05527a5fe2b3afc68c442673e69d53cf1fb8b3121fb790567",
+  "limits": [
+    "本地作者内容与状态规则，不是自由聊天在线AI。",
+    "教程实际操作仍会花原有钱粮与安排，不提供练习分身或免费战斗。",
+    "教程逻辑与关系传承边界采用明确夹具；浏览器自然操作验证教学流程。",
+    "旧人物兼容测试仅在指定赴约断言前清除随机差事，历史V18测试仍封存不改。",
+    "未改变五地轻量经营的规模，未进行Godot移植。"
+  ]
+}
