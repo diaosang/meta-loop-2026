@@ -1,0 +1,72 @@
+{
+  "version": 23,
+  "date": "2026-11-09",
+  "baseCommit": "2e1acfdcc3f43ef3107e0b1d77ad2812c1a00258",
+  "checksPassed": 419,
+  "suites": {
+    "经营规则": 35,
+    "经营接续": 12,
+    "危局正常资源平衡": 3,
+    "危局与结局": 15,
+    "对白与活人感": 22,
+    "对白与危局浏览器": 9,
+    "经营浏览器": 12,
+    "教程逻辑": 16,
+    "教程浏览器": 14,
+    "人物生活逻辑": 23,
+    "旧存档兼容": 258
+  },
+  "offline": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "implemented": [
+    "三类关心分开答",
+    "八位主要人物十四组双分支闲话",
+    "五种所业补充对白",
+    "未完话题存档与三日续谈",
+    "选择记忆与部分后续提起",
+    "按已说记录去重",
+    "多日实际亲疏与守礼脸红",
+    "公共见证醋意",
+    "最新回答与旧话折叠",
+    "新人才首次生活记录修复",
+    "可选困难与明确接入",
+    "额外实付军需",
+    "四种可预警可挽救失败",
+    "结局冻结与导出读回",
+    "稳定治世留名后继续传承"
+  ],
+  "difficultyRoute": {
+    "turn": 24,
+    "silver": 436,
+    "grain": 829,
+    "debt": 1493,
+    "land": 5,
+    "net": 264,
+    "grainNet": 83
+  },
+  "naturalFailure": {
+    "turn": 7,
+    "silver": 0,
+    "grain": 0,
+    "food": 3,
+    "wages": 0,
+    "ending": "famine"
+  },
+  "historyPreserved": 186,
+  "originalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "originalWorkbookSheets": 36,
+  "threeCurrentEntriesIdentical": true,
+  "unrelatedRootIndexUnchanged": true,
+  "currentPlayableSHA256": "6b77894802ff80a7c3443b7d81b06674bb80bba1ccd12de3107386beb6e0c17b",
+  "limits": [
+    "仍是五地轻量经营。",
+    "有限作者对白与本地状态规则，非自由聊天AI，不承诺无限不重复。",
+    "困难原始资源路线验证可行性，非所有路线必胜；京畿与架空等边界另用隔离夹具。",
+    "旧档保持标准，主动接入危局才增加成本与失败。",
+    "未进行Godot移植。"
+  ]
+}
