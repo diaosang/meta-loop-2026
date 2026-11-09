@@ -1,0 +1,60 @@
+{
+  "version": 19,
+  "date": "2026-11-09",
+  "baseCommit": "9bd29a54af370790bd269f27e4483dfe1519a9c1",
+  "checksPassed": 300,
+  "suites": {
+    "剧情与山河逻辑": 28,
+    "浏览器流程": 14,
+    "旧存档兼容": 258
+  },
+  "offline": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "newScenario": "昭宁元年春、先帝崩殂第七日，九公主十九岁",
+  "canonAges": {
+    "许知衡": 21,
+    "姜禹瀛": 37,
+    "谢无咎": 26,
+    "叶承筠": 35,
+    "叶锦": 18,
+    "叶桢": 18
+  },
+  "twins": "同父同母、双生嫡子，叶锦继家业，叶桢荐入宫；用户确认。",
+  "firstSelection": "免费初荐、四步问话、试艺廷议、候诏、另候日期再问意愿，不自动授位或爱情。",
+  "campaign": [
+    "五地归属",
+    "人才实试与后续自荐",
+    "三兵种配兵",
+    "探路",
+    "最多五令策略战",
+    "收复任官",
+    "自动旬结",
+    "田地恢复",
+    "两旬查账",
+    "按实据追款",
+    "姜氏税吏争权",
+    "叶氏实债及逾期停运"
+  ],
+  "onePublicEconomy": true,
+  "dailyLivesRetained": true,
+  "oldSavesUnforced": true,
+  "successionPublicStateRetained": true,
+  "dialogue": "本地作者内容与状态规则，非实时联网生成；有限池避重。",
+  "historyPreserved": 156,
+  "originalWorkbookSheets": 36,
+  "originalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "currentPlayableSHA256": "a5de8c60e1006265234d0ff7cefc7f4188619bb9b4166aff6a7b13a529b22404",
+  "threeCurrentEntriesIdentical": true,
+  "unrelatedRootIndexUnchanged": true,
+  "limits": [
+    "五地与小型回合战，不是完整大战略经济。",
+    "七皇子下落未明保留悬念；未新增完成的寻人长线或完整厂卫经营。",
+    "出生传承用明确成年皇嗣夹具验证衔接，不声称自然游玩十八年。",
+    "旧人物互动兼容测试仅在指定赴约断言前清除随机临时差事，确保测试的是免费预览不履约；V18原测试封存不改。",
+    "未进行Godot移植。"
+  ]
+}

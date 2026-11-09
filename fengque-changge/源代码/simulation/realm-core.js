@@ -96,5 +96,11 @@
   return fail('未知指令。');
  }
  function annals(s,year){const rows=s.events.filter(e=>Math.floor(e.tick/360)===year);return {schemaVersion:1,year:year+1,title:'大梁实录 · 景和'+(year+1)+'年',entries:copy(rows),summary:{projects:rows.filter(e=>e.kind==='地方回奏').length,meetings:rows.filter(e=>e.kind==='私下相处').length,events:rows.length}};}
- return {version:'15.0',create,advance,command,visual,weather,annals,copy,hash,note:record};
+ /* Campaign mode owns public finances; retain only daily lives and calendar here. */
+ function advanceLife(s,target,data){
+  if(!Number.isInteger(target)||target<s.tick||target-s.tick>3660)return {ok:false,reason:'无效日期'};
+  while(s.tick<target){s.tick++;if(s.tick%2===0)social(s);const festival=data.festivals.find(f=>f.month===Math.floor(s.tick/30)%12&&f.day===s.tick%30+1);if(festival)record(s,'节令',festival.name+'：'+festival.text,{festival:festival.name});plan(s,data);s.days.push({tick:s.tick,income:0,harvest:0,grainUsed:0,payrollPaid:0,arrears:s.economy.arrears,treasury:s.economy.treasury,grain:s.economy.grain,weather:weather(s,data),campaign:true});}
+  return {ok:true};
+ }
+ return {version:'15.0',create,advance,advanceLife,command,visual,weather,annals,copy,hash,note:record};
 });
