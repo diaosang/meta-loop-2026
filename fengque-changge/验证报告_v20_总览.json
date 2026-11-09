@@ -1,0 +1,45 @@
+{
+  "version": 20,
+  "date": "2026-11-09",
+  "baseCommit": "9da425b7736e2605c7f108b3118b9261eb6f54b2",
+  "checksPassed": 335,
+  "suites": {
+    "人物生活逻辑": 23,
+    "人物与排版浏览器": 12,
+    "山河兼容": 28,
+    "山河浏览器": 14,
+    "旧存档兼容": 258
+  },
+  "offline": true,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "implemented": [
+    "按实际日期推进私事",
+    "身体与差事暂停",
+    "续谈与等待记录",
+    "实际完成后的来笺与小物",
+    "同场见证的醋意",
+    "真实公事引用",
+    "人物筛选搜索",
+    "四主项与更多",
+    "一天与一旬分开",
+    "原大殿保留"
+  ],
+  "saveCompatibility": "V19追加生活记录，既有钱粮、家谱、关系与疆域不重置；前代生活归前代。",
+  "historyPreserved": 162,
+  "originalWorkbookSheets": 36,
+  "originalWorkbookSHA256": "a9b51a112f030d0f6051e9dc6dcdc74c072a387b43e241595ebce6d0c56742a5",
+  "currentPlayableSHA256": "90da4b1ae3e441fbf10911bf982f80413321fc5f89c23f90150757166c5e8a39",
+  "threeCurrentEntriesIdentical": true,
+  "unrelatedRootIndexUnchanged": true,
+  "limits": [
+    "作者内容与本地状态规则，不是在线自由聊天AI；有限内容不保证无限避重。",
+    "模拟经营仍为五地、三兵种、小型策略战；本轮没有新增完整庄园经济、敌国AI或完整厂卫经营。",
+    "浏览器自然操作验证多日互动；见证醋意、疾病及传承边界使用明确逻辑夹具。",
+    "旧人物互动兼容测试仅在指定赴约断言前清除随机临时差事，确保测试的是免费预览不履约；V18原测试封存不改。",
+    "未进行Godot移植。"
+  ]
+}

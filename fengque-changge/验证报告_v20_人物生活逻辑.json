@@ -1,0 +1,28 @@
+{
+  "passed": 23,
+  "checks": [
+    "new scenario creates life records with the same actual ruler and date",
+    "profile and repeated render do not advance private projects, feelings or time",
+    "ordinary chat is about the saved project and offers a concrete continuation",
+    "waiting choice records a promise of a later result without immediate completion",
+    "care answers recent wellbeing and does not generate a forced heart-to-heart",
+    "reopening on the same day cannot farm familiarity from the same question",
+    "NPC continues a real project while the player is elsewhere",
+    "a first conversation after an unseen project advances never invents a prior shared conversation",
+    "illness is based on actual health and pauses personal progress",
+    "a genuinely ill NPC refuses a walk with the actual reason and no affection penalty",
+    "a pending topic survives a complete save and resumes without replay reward",
+    "a ready item comes from a completed activity and cannot be given twice",
+    "strangers receive no completion letters even at artificially high affinity",
+    "life letters have real completion sources and respect a three-letter global cap",
+    "no omniscient jealousy is produced by a private night without a witness",
+    "jealousy names a real companion only when the NPC actually witnessed the public visit",
+    "public advice refers to actual outstanding debt and preserves private affection",
+    "long idle time starts a new personal activity without waiting forever for the player",
+    "watching an unfinished activity encourages the next work session once, not instant completion",
+    "completion evidence is retained even after many later conversations",
+    "tampered life states are rejected by the full save validator",
+    "an existing V19 save adopts the new UI without resetting treasury, family or feelings",
+    "succession starts a distinct personal life record while preserving old souvenirs and public land"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "passed": 28,
+  "checks": [
+    "fresh opening uses one clock and one purse, no inherited treasury windfall",
+    "document canon and exact parents survive runtime profiles",
+    "opening selection is not replaced by random paid candidates",
+    "questioning shows answers only and deferred personal consent",
+    "free waiting selection never silently grants harem, love or fees",
+    "optional early story is gated, single delivery and reloadable",
+    "hire and train actual troops with finite resources and only two affairs",
+    "ten days advance daily NPC/world clocks, only one campaign ledger",
+    "scout and formation require real commander and leave garrison",
+    "mid-battle export reload conserves armies, enemy and reward",
+    "scouted flank and counterattack win land, only once",
+    "land produces nothing without governor, capital does not gain enemy taxes",
+    "appointing actual talent generates political request and observable missing silver",
+    "debt partial repayment offsets next due, not charged a second time",
+    "family tax clerk seats alter actual income and loyalty separately",
+    "denying clan request keeps money but angers only involved official",
+    "audit takes two turns and evidence targets actual culprit, recovery once",
+    "deferred second consent gives rank without automatic affection",
+    "stage-based speech varies, no PC speech or needless royal-task placeholder",
+    "old V18 and earlier full saves remain outside campaign until new game",
+    "core rejects corrupted values and does not mutate failed commands",
+    "retreat keeps surviving troops and never grants loot or land",
+    "new game after a long save uses canonical current ages",
+    "world family validator and manual hydration accept exact new canon",
+    "longer-term farms increase actual income only after work completion",
+    "overdue debt withholds actual southern transport until overdue is paid",
+    "arrears can be paid only with real treasury and cannot be paid twice",
+    "birth and succession fixture carries public campaign but archives private selection"
+  ]
+}
