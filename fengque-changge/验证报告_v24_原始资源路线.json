@@ -1,0 +1,1401 @@
+{
+  "passed": 4,
+  "checks": [
+    "原始300银200粮，困难成本与每旬两事下，先收人才与失地并安排独立知府",
+    "自然钱粮下可办成五地方向、三职并培养将领，未修改资金、军功或行动上限",
+    "中期钱粮能转正并达富国目标，留名后继续经营，困难不必靠重复缴获续命",
+    "路线实际经历粮价反制，再以人才和地方经营形成应对"
+  ],
+  "turns": [
+    {
+      "turn": 2,
+      "silver": 211,
+      "grain": 145,
+      "debt": 3000,
+      "land": 2,
+      "net": -49,
+      "grainNet": -55,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 3,
+      "silver": 306,
+      "grain": 192,
+      "debt": 3000,
+      "land": 3,
+      "net": -55,
+      "grainNet": -63,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 4,
+      "silver": 0,
+      "grain": 160,
+      "debt": 2716,
+      "land": 3,
+      "net": -20,
+      "grainNet": -29,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 5,
+      "silver": 120,
+      "grain": 246,
+      "debt": 2716,
+      "land": 3,
+      "net": -19,
+      "grainNet": -27,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 6,
+      "silver": 245,
+      "grain": 321,
+      "debt": 2716,
+      "land": 4,
+      "net": -55,
+      "grainNet": -50,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 7,
+      "silver": 0,
+      "grain": 278,
+      "debt": 2498,
+      "land": 4,
+      "net": -18,
+      "grainNet": -41,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 8,
+      "silver": 368,
+      "grain": 383,
+      "debt": 2698,
+      "land": 5,
+      "net": -5,
+      "grainNet": -24,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 9,
+      "silver": 312,
+      "grain": 359,
+      "debt": 2698,
+      "land": 5,
+      "net": -43,
+      "grainNet": -34,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 10,
+      "silver": 222,
+      "grain": 350,
+      "debt": 2598,
+      "land": 5,
+      "net": 10,
+      "grainNet": -9,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 11,
+      "silver": 187,
+      "grain": 341,
+      "debt": 2598,
+      "land": 5,
+      "net": 10,
+      "grainNet": -9,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 12,
+      "silver": 205,
+      "grain": 358,
+      "debt": 2598,
+      "land": 5,
+      "net": 56,
+      "grainNet": 15,
+      "offices": {
+        "marshal": null,
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 13,
+      "silver": 0,
+      "grain": 373,
+      "debt": 2377,
+      "land": 5,
+      "net": 58,
+      "grainNet": 52,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 14,
+      "silver": 208,
+      "grain": 415,
+      "debt": 2577,
+      "land": 5,
+      "net": 58,
+      "grainNet": 52,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 15,
+      "silver": 201,
+      "grain": 467,
+      "debt": 2577,
+      "land": 5,
+      "net": 79,
+      "grainNet": 52,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": null,
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 16,
+      "silver": 0,
+      "grain": 534,
+      "debt": 2277,
+      "land": 5,
+      "net": 86,
+      "grainNet": 67,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 17,
+      "silver": 261,
+      "grain": 601,
+      "debt": 2477,
+      "land": 5,
+      "net": 86,
+      "grainNet": 67,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": null
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 18,
+      "silver": 314,
+      "grain": 668,
+      "debt": 2477,
+      "land": 5,
+      "net": 71,
+      "grainNet": 52,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 19,
+      "silver": 0,
+      "grain": 700,
+      "debt": 2177,
+      "land": 5,
+      "net": 71,
+      "grainNet": 52,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 20,
+      "silver": 221,
+      "grain": 742,
+      "debt": 2377,
+      "land": 5,
+      "net": 71,
+      "grainNet": 77,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [],
+      "ending": null
+    },
+    {
+      "turn": 21,
+      "silver": 187,
+      "grain": 819,
+      "debt": 2377,
+      "land": 5,
+      "net": 123,
+      "grainNet": 79,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 22,
+      "silver": 0,
+      "grain": 903,
+      "debt": 2122,
+      "land": 5,
+      "net": 154,
+      "grainNet": 94,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 23,
+      "silver": 529,
+      "grain": 997,
+      "debt": 2322,
+      "land": 5,
+      "net": 154,
+      "grainNet": 94,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 24,
+      "silver": 593,
+      "grain": 1091,
+      "debt": 2322,
+      "land": 5,
+      "net": 156,
+      "grainNet": 79,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 25,
+      "silver": 419,
+      "grain": 1170,
+      "debt": 2022,
+      "land": 5,
+      "net": 172,
+      "grainNet": 79,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 26,
+      "silver": 536,
+      "grain": 1249,
+      "debt": 2022,
+      "land": 5,
+      "net": 172,
+      "grainNet": 79,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 27,
+      "silver": 633,
+      "grain": 1318,
+      "debt": 2022,
+      "land": 5,
+      "net": 188,
+      "grainNet": 79,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 28,
+      "silver": 481,
+      "grain": 1412,
+      "debt": 1722,
+      "land": 5,
+      "net": 203,
+      "grainNet": 94,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 29,
+      "silver": 609,
+      "grain": 1496,
+      "debt": 1722,
+      "land": 5,
+      "net": 221,
+      "grainNet": 94,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 30,
+      "silver": 775,
+      "grain": 1590,
+      "debt": 1722,
+      "land": 5,
+      "net": 221,
+      "grainNet": 109,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 31,
+      "silver": 641,
+      "grain": 1699,
+      "debt": 1422,
+      "land": 5,
+      "net": 238,
+      "grainNet": 109,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 32,
+      "silver": 804,
+      "grain": 1798,
+      "debt": 1422,
+      "land": 5,
+      "net": 258,
+      "grainNet": 109,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 33,
+      "silver": 1007,
+      "grain": 1907,
+      "debt": 1422,
+      "land": 5,
+      "net": 258,
+      "grainNet": 124,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 34,
+      "silver": 940,
+      "grain": 2031,
+      "debt": 1122,
+      "land": 5,
+      "net": 276,
+      "grainNet": 124,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 35,
+      "silver": 1179,
+      "grain": 2155,
+      "debt": 1122,
+      "land": 5,
+      "net": 276,
+      "grainNet": 124,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 36,
+      "silver": 1380,
+      "grain": 2269,
+      "debt": 1122,
+      "land": 5,
+      "net": 295,
+      "grainNet": 124,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 37,
+      "silver": 1320,
+      "grain": 2393,
+      "debt": 822,
+      "land": 5,
+      "net": 295,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 38,
+      "silver": 1610,
+      "grain": 2532,
+      "debt": 822,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 39,
+      "silver": 1917,
+      "grain": 2671,
+      "debt": 822,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 40,
+      "silver": 1924,
+      "grain": 2810,
+      "debt": 522,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 41,
+      "silver": 2231,
+      "grain": 2949,
+      "debt": 522,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 42,
+      "silver": 2538,
+      "grain": 3088,
+      "debt": 522,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 43,
+      "silver": 2545,
+      "grain": 3227,
+      "debt": 222,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    },
+    {
+      "turn": 44,
+      "silver": 2852,
+      "grain": 3366,
+      "debt": 222,
+      "land": 5,
+      "net": 312,
+      "grainNet": 139,
+      "offices": {
+        "marshal": "qin22",
+        "treasurer": "gu22",
+        "inspector": "lin22"
+      },
+      "goals": [
+        "prosper"
+      ],
+      "ending": null
+    }
+  ],
+  "actions": [
+    {
+      "turn": 1,
+      "type": "recruit",
+      "id": "zhou19"
+    },
+    {
+      "turn": 1,
+      "type": "scout",
+      "region": "ji"
+    },
+    {
+      "turn": 2,
+      "type": "train"
+    },
+    {
+      "turn": 2,
+      "type": "attack",
+      "region": "ji",
+      "commander": "zhou19",
+      "army": {
+        "shield": 240,
+        "bow": 100,
+        "cavalry": 60
+      }
+    },
+    {
+      "turn": 2,
+      "type": "order",
+      "order": "hold"
+    },
+    {
+      "turn": 2,
+      "type": "order",
+      "order": "flank"
+    },
+    {
+      "turn": 2,
+      "type": "order",
+      "order": "charge"
+    },
+    {
+      "turn": 3,
+      "type": "recruit",
+      "id": "shen19"
+    },
+    {
+      "turn": 3,
+      "type": "appoint",
+      "region": "ji",
+      "id": "shen19"
+    },
+    {
+      "turn": 4,
+      "type": "supplies"
+    },
+    {
+      "turn": 4,
+      "type": "scout",
+      "region": "pass"
+    },
+    {
+      "turn": 4,
+      "type": "station22",
+      "region": "south",
+      "amount": 200
+    },
+    {
+      "turn": 5,
+      "type": "station22",
+      "region": "south",
+      "amount": 0
+    },
+    {
+      "turn": 5,
+      "type": "train"
+    },
+    {
+      "turn": 5,
+      "type": "attack",
+      "region": "pass",
+      "commander": "zhou19",
+      "army": {
+        "shield": 240,
+        "bow": 100,
+        "cavalry": 60
+      }
+    },
+    {
+      "turn": 5,
+      "type": "order",
+      "order": "volley"
+    },
+    {
+      "turn": 5,
+      "type": "order",
+      "order": "hold"
+    },
+    {
+      "turn": 5,
+      "type": "order",
+      "order": "volley"
+    },
+    {
+      "turn": 6,
+      "type": "recruit",
+      "id": "liu19"
+    },
+    {
+      "turn": 6,
+      "type": "appoint",
+      "region": "pass",
+      "id": "liu19"
+    },
+    {
+      "turn": 7,
+      "type": "borrow"
+    },
+    {
+      "turn": 7,
+      "type": "attack",
+      "region": "north",
+      "commander": "zhou19",
+      "army": {
+        "shield": 240,
+        "bow": 100,
+        "cavalry": 60
+      }
+    },
+    {
+      "turn": 7,
+      "type": "order",
+      "order": "hold"
+    },
+    {
+      "turn": 7,
+      "type": "order",
+      "order": "volley"
+    },
+    {
+      "turn": 7,
+      "type": "order",
+      "order": "hold"
+    },
+    {
+      "turn": 7,
+      "type": "order",
+      "order": "flank"
+    },
+    {
+      "turn": 8,
+      "type": "seek22"
+    },
+    {
+      "turn": 8,
+      "type": "recruit",
+      "id": "gu22"
+    },
+    {
+      "turn": 9,
+      "type": "appoint",
+      "region": "pass",
+      "id": "gu22"
+    },
+    {
+      "turn": 9,
+      "type": "borrow"
+    },
+    {
+      "turn": 10,
+      "type": "seek22"
+    },
+    {
+      "turn": 10,
+      "type": "recruit",
+      "id": "ruan22"
+    },
+    {
+      "turn": 11,
+      "type": "appoint",
+      "region": "north",
+      "id": "ruan22"
+    },
+    {
+      "turn": 11,
+      "type": "policy24",
+      "region": "south",
+      "policy": "south-grain"
+    },
+    {
+      "turn": 12,
+      "type": "wages",
+      "amount": 40
+    },
+    {
+      "turn": 12,
+      "type": "recruit",
+      "id": "qin22"
+    },
+    {
+      "turn": 12,
+      "type": "post24",
+      "post": "marshal",
+      "id": "qin22"
+    },
+    {
+      "turn": 13,
+      "type": "borrow"
+    },
+    {
+      "turn": 13,
+      "type": "policy24",
+      "region": "capital",
+      "policy": "capital-workshop"
+    },
+    {
+      "turn": 14,
+      "type": "wages",
+      "amount": 20
+    },
+    {
+      "turn": 14,
+      "type": "seek22"
+    },
+    {
+      "turn": 14,
+      "type": "recruit",
+      "id": "wen22"
+    },
+    {
+      "turn": 15,
+      "type": "appoint",
+      "region": "pass",
+      "id": "wen22"
+    },
+    {
+      "turn": 15,
+      "type": "post24",
+      "post": "treasurer",
+      "id": "gu22"
+    },
+    {
+      "turn": 16,
+      "type": "borrow"
+    },
+    {
+      "turn": 16,
+      "type": "seek22"
+    },
+    {
+      "turn": 17,
+      "type": "wages",
+      "amount": 13
+    },
+    {
+      "turn": 17,
+      "type": "recruit",
+      "id": "lin22"
+    },
+    {
+      "turn": 17,
+      "type": "post24",
+      "post": "inspector",
+      "id": "lin22"
+    },
+    {
+      "turn": 18,
+      "type": "policy24",
+      "region": "ji",
+      "policy": "ji-garrison"
+    },
+    {
+      "turn": 18,
+      "type": "policy24",
+      "region": "pass",
+      "policy": "pass-horses"
+    },
+    {
+      "turn": 19,
+      "type": "borrow"
+    },
+    {
+      "turn": 19,
+      "type": "policy24",
+      "region": "north",
+      "policy": "north-trade"
+    },
+    {
+      "turn": 20,
+      "type": "wages",
+      "amount": 15
+    },
+    {
+      "turn": 20,
+      "type": "develop24",
+      "id": "qin22",
+      "path": "military"
+    },
+    {
+      "turn": 20,
+      "type": "build22",
+      "region": "capital",
+      "project": "market"
+    },
+    {
+      "turn": 21,
+      "type": "build22",
+      "region": "capital",
+      "project": "route"
+    },
+    {
+      "turn": 21,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 22,
+      "type": "borrow"
+    },
+    {
+      "turn": 22,
+      "type": "build22",
+      "region": "capital",
+      "project": "market"
+    },
+    {
+      "turn": 22,
+      "type": "disposition",
+      "id": "audit19-146",
+      "choice": "recover"
+    },
+    {
+      "turn": 23,
+      "type": "wages",
+      "amount": 20
+    },
+    {
+      "turn": 23,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 23,
+      "type": "build22",
+      "region": "south",
+      "project": "market"
+    },
+    {
+      "turn": 24,
+      "type": "develop24",
+      "id": "qin22",
+      "path": "military"
+    },
+    {
+      "turn": 24,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 24,
+      "type": "disposition",
+      "id": "audit19-165",
+      "choice": "recover"
+    },
+    {
+      "turn": 25,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 25,
+      "type": "build22",
+      "region": "south",
+      "project": "market"
+    },
+    {
+      "turn": 25,
+      "type": "disposition",
+      "id": "audit19-178",
+      "choice": "recover"
+    },
+    {
+      "turn": 26,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 26,
+      "type": "build22",
+      "region": "south",
+      "project": "route"
+    },
+    {
+      "turn": 26,
+      "type": "disposition",
+      "id": "audit19-188",
+      "choice": "recover"
+    },
+    {
+      "turn": 27,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 27,
+      "type": "build22",
+      "region": "ji",
+      "project": "market"
+    },
+    {
+      "turn": 27,
+      "type": "disposition",
+      "id": "audit19-198",
+      "choice": "recover"
+    },
+    {
+      "turn": 28,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 28,
+      "type": "build22",
+      "region": "ji",
+      "project": "route"
+    },
+    {
+      "turn": 28,
+      "type": "disposition",
+      "id": "audit19-210",
+      "choice": "recover"
+    },
+    {
+      "turn": 29,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 29,
+      "type": "build22",
+      "region": "ji",
+      "project": "market"
+    },
+    {
+      "turn": 29,
+      "type": "disposition",
+      "id": "audit19-221",
+      "choice": "recover"
+    },
+    {
+      "turn": 30,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 30,
+      "type": "build22",
+      "region": "pass",
+      "project": "market"
+    },
+    {
+      "turn": 30,
+      "type": "disposition",
+      "id": "audit19-232",
+      "choice": "recover"
+    },
+    {
+      "turn": 31,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 31,
+      "type": "build22",
+      "region": "pass",
+      "project": "route"
+    },
+    {
+      "turn": 31,
+      "type": "disposition",
+      "id": "audit19-244",
+      "choice": "recover"
+    },
+    {
+      "turn": 32,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 32,
+      "type": "build22",
+      "region": "pass",
+      "project": "market"
+    },
+    {
+      "turn": 32,
+      "type": "disposition",
+      "id": "audit19-255",
+      "choice": "recover"
+    },
+    {
+      "turn": 33,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 33,
+      "type": "audit",
+      "region": "pass"
+    },
+    {
+      "turn": 33,
+      "type": "disposition",
+      "id": "audit19-266",
+      "choice": "recover"
+    },
+    {
+      "turn": 34,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 34,
+      "type": "build22",
+      "region": "north",
+      "project": "market"
+    },
+    {
+      "turn": 34,
+      "type": "disposition",
+      "id": "audit19-278",
+      "choice": "recover"
+    },
+    {
+      "turn": 34,
+      "type": "disposition",
+      "id": "audit19-281",
+      "choice": "recover"
+    },
+    {
+      "turn": 35,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 35,
+      "type": "build22",
+      "region": "north",
+      "project": "route"
+    },
+    {
+      "turn": 35,
+      "type": "disposition",
+      "id": "audit19-292",
+      "choice": "recover"
+    },
+    {
+      "turn": 36,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 36,
+      "type": "build22",
+      "region": "north",
+      "project": "market"
+    },
+    {
+      "turn": 36,
+      "type": "disposition",
+      "id": "audit19-303",
+      "choice": "recover"
+    },
+    {
+      "turn": 37,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 37,
+      "type": "disposition",
+      "id": "audit19-315",
+      "choice": "recover"
+    },
+    {
+      "turn": 38,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 38,
+      "type": "disposition",
+      "id": "audit19-326",
+      "choice": "recover"
+    },
+    {
+      "turn": 39,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 39,
+      "type": "disposition",
+      "id": "audit19-336",
+      "choice": "recover"
+    },
+    {
+      "turn": 40,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 40,
+      "type": "disposition",
+      "id": "audit19-346",
+      "choice": "recover"
+    },
+    {
+      "turn": 41,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 41,
+      "type": "disposition",
+      "id": "audit19-355",
+      "choice": "recover"
+    },
+    {
+      "turn": 42,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 42,
+      "type": "disposition",
+      "id": "audit19-364",
+      "choice": "recover"
+    },
+    {
+      "turn": 43,
+      "type": "audit",
+      "region": "capital"
+    },
+    {
+      "turn": 43,
+      "type": "disposition",
+      "id": "audit19-374",
+      "choice": "recover"
+    }
+  ],
+  "naturalResources": true,
+  "hard": true,
+  "note": "原始300银/200粮，每旬两件国事，无修改资源、军功、清慎、忠诚、敌军或工期；路线为可行性例证，不代表所有选择都会获胜。"
+}
