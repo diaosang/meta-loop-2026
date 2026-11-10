@@ -1,0 +1,20 @@
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.FengqueTown34=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ function ensure(w,data,world,wd){if(w.town34)return w.town34;const t=w.town34={version:1,lastMonth:Math.floor(w.tick/30),shops:{},inventory:{},used:{},bonds:{},pregnancies:[],news:[],income:0};
+  for(const [i,d]of data.people.entries()){const fid='family-'+d.id,f=w.families[fid]={id:fid,surname:d.name[0],name:d.name[0]+'氏 · '+d.role,type:i%2?'scholar':'merchant',location:'capital',members:[],branches:[],events:[],wealth:20,prestige:20,heir:null,origin:d.bio};const p=world.newPerson(w,wd,f,{birthMonth:Math.floor(w.tick/30)-d.age*12,gender:d.gender,active:true,location:'capital',key:d.id,role:d.role});p.name=d.name;p.town34=d.id;p.personality=i%2?'寡言重诺':'明朗直率';p.skills[d.skill]=68+i%12;f.heir=p.id;d.runtimeId=p.id;t.shops[d.shop]??={owner:null,share:false,level:1,earnings:0};if(d.id===data.shops.find(s=>s.id===d.shop)?.owner)t.shops[d.shop].owner=p.id;}
+  return t;
+ }
+ function eligible(w,p,world){return p?.alive&&world.age(w,p)>=18&&world.age(w,p)<=60&&!p.spouse&&!p.inPalace&&!p.royalSpouseOf&&p.id!==w.dynasty.rulerId&&!p.fixed;}
+ function compatible(w,a,b,world){return eligible(w,a,world)&&eligible(w,b,world)&&!world.related(w,a.id,b.id)&&Math.abs(world.age(w,a)-world.age(w,b))<=18;}
+ function bond(w,a,b,world){const k=[a,b].sort().join('|');return w.town34.bonds[k]??={a,b,warmth:20+world.hash(k)%31,stage:'相识',refused:false};}
+ function propose(w,a,b,world){const p=w.people[a],q=w.people[b];if(!compatible(w,p,q,world))return {ok:false,reason:'须是成年、未婚、无近亲关系，且未在内廷的人。'};const r=bond(w,a,b,world);if(r.refused)return {ok:false,reason:'他们已婉拒这桩婚事，请尊重本人的意思。'};const fit=world.hash([a,b].sort().join('|'))%100;if(fit<20){r.refused=true;world.event(w,'姻缘',p.name+'与'+q.name+'婉拒赐婚，愿各寻自己的缘分。',[a,b]);return {ok:true,text:'二人谢恩后，仍请陛下收回这道赐婚。',married:false};}if(!world.marry(w,a,b))return {ok:false,reason:'这桩婚事眼下不能成。'};r.stage='成婚';r.warmth=80;return {ok:true,text:p.name+'与'+q.name+'领旨成婚，家谱已续记。',married:true};}
+ function advance(w,data,world,wd){const t=w.town34;if(!t)return;const target=Math.floor(w.tick/30);let income=0;for(let m=t.lastMonth+1;m<=target;m++){
+   for(const s of data.shops){const shop=t.shops[s.id],owner=w.people[shop.owner];if(!owner?.alive){const next=owner?.children.map(id=>w.people[id]).find(p=>p?.alive&&world.age(w,p)>=18);if(next){shop.owner=next.id;world.event(w,'店面传承',next.name+'接下'+s.name+'，店面与入股份额照旧。',[owner.id,next.id]);}continue;}if(shop.share){const n=s.baseIncome+shop.level-1;shop.earnings+=n;income+=n;}}
+   const free=Object.values(w.people).filter(p=>eligible(w,p,world)&&p.source==='generated');const paired=new Set();for(const p of free){if(paired.has(p.id))continue;const q=free.find(q=>!paired.has(q.id)&&compatible(w,p,q,world)&&q.location===p.location);if(!q)continue;paired.add(p.id);paired.add(q.id);const r=bond(w,p.id,q.id,world);if(r.refused)continue;r.warmth+=5+world.hash(p.id+q.id+m)%7;if(r.warmth>=75){if(world.marry(w,p.id,q.id)){r.stage='成婚';world.event(w,'姻缘',p.name+'与'+q.name+'往来日久，自己商定了婚事。',[p.id,q.id]);}}else if(r.warmth>=50&&r.stage==='相识'){r.stage='有意';world.event(w,'姻缘',p.name+'与'+q.name+'渐生情意，尚未定亲。',[p.id,q.id]);}}
+   for(const p of Object.values(w.people)){if(!p.alive||!p.spouse||p.id>p.spouse||p.fixed||p.inPalace||p.royalSpouseOf||p.children.length>=3)continue;const q=w.people[p.spouse];if(!q?.alive||q.inPalace||q.royalSpouseOf||world.age(w,p)<18||world.age(w,q)<18||Math.min(world.age(w,p),world.age(w,q))>45||Math.max(world.age(w,p),world.age(w,q))>55||t.pregnancies.some(v=>[v.a,v.b].includes(p.id)))continue;if(world.hash(p.id+q.id+':family:'+m)%100<10){t.pregnancies.push({a:p.id,b:q.id,due:m+9});world.event(w,'家中有喜',p.name+'与'+q.name+'家中有喜，约九个月后添丁。',[p.id,q.id]);}}
+   for(const preg of [...t.pregnancies])if(preg.due<=m){world.child(w,wd,preg.a,preg.b);t.pregnancies.splice(t.pregnancies.indexOf(preg),1);}
+   t.lastMonth=m;
+  }t.income+=income;return income;
+ }
+ return {ensure,eligible,compatible,bond,propose,advance};
+});

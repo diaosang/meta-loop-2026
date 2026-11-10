@@ -1,0 +1,303 @@
+{
+  "version": 34,
+  "people": [
+    {
+      "id": "town34-tea",
+      "name": "柳见春",
+      "gender": "女",
+      "age": 22,
+      "bio": "嘴快心热，记客人的口味，比记账还准。",
+      "role": "云来茶肆掌柜",
+      "skill": "literature",
+      "shop": "tea"
+    },
+    {
+      "id": "town34-books",
+      "name": "闻砚秋",
+      "gender": "男",
+      "age": 23,
+      "bio": "落第后开书铺，不肯卖自己没读过的书。",
+      "role": "听雨书铺掌柜",
+      "skill": "literature",
+      "shop": "books"
+    },
+    {
+      "id": "town34-silk",
+      "name": "秦织月",
+      "gender": "女",
+      "age": 24,
+      "bio": "守着母亲留下的衣坊，最擅长替客人挑合适的颜色。",
+      "role": "绮罗衣坊掌柜",
+      "skill": "charm",
+      "shop": "silk"
+    },
+    {
+      "id": "town34-clinic",
+      "name": "顾青蘅",
+      "gender": "男",
+      "age": 25,
+      "bio": "游学归来的医者，嘴上淡，药钱却常记在自己账下。",
+      "role": "回春医馆掌柜",
+      "skill": "admin",
+      "shop": "clinic"
+    },
+    {
+      "id": "town34-forge",
+      "name": "霍照野",
+      "gender": "女",
+      "age": 26,
+      "bio": "边军旧人的后辈，想用好铁打出护人的兵器。",
+      "role": "百炼铁铺掌柜",
+      "skill": "military",
+      "shop": "forge"
+    },
+    {
+      "id": "town34-inn",
+      "name": "裴听澜",
+      "gender": "男",
+      "age": 27,
+      "bio": "走南闯北，笑着听各地来客说真话与假话。",
+      "role": "归云客栈掌柜",
+      "skill": "admin",
+      "shop": "inn"
+    },
+    {
+      "id": "town34-friend0",
+      "name": "沈照棠",
+      "gender": "女",
+      "age": 20,
+      "bio": "手巧，想攒下第一笔自己的工钱。",
+      "role": "绣坊学徒",
+      "skill": "literature",
+      "shop": "tea"
+    },
+    {
+      "id": "town34-friend1",
+      "name": "陆闻舟",
+      "gender": "男",
+      "age": 21,
+      "bio": "爱听故事，也盼有一天去看看故事里的远方。",
+      "role": "送货伙计",
+      "skill": "admin",
+      "shop": "books"
+    },
+    {
+      "id": "town34-friend2",
+      "name": "温知夏",
+      "gender": "女",
+      "age": 22,
+      "bio": "背药名很快，遇到夸奖却总不好意思。",
+      "role": "药馆学徒",
+      "skill": "charm",
+      "shop": "silk"
+    },
+    {
+      "id": "town34-friend3",
+      "name": "江怀序",
+      "gender": "男",
+      "age": 23,
+      "bio": "年轻的先生，教孩子耐心，谈自己却笨拙。",
+      "role": "书院先生",
+      "skill": "literature",
+      "shop": "clinic"
+    },
+    {
+      "id": "town34-friend4",
+      "name": "阮清辞",
+      "gender": "男",
+      "age": 24,
+      "bio": "很会说别人的姻缘，对自己的事总慢半拍。",
+      "role": "说书人",
+      "skill": "admin",
+      "shop": "forge"
+    },
+    {
+      "id": "town34-friend5",
+      "name": "钟望舒",
+      "gender": "女",
+      "age": 25,
+      "bio": "带来异地的小物，也带来愿意认真结交的心意。",
+      "role": "行商",
+      "skill": "charm",
+      "shop": "inn"
+    }
+  ],
+  "shops": [
+    {
+      "id": "tea",
+      "name": "云来茶肆",
+      "icon": "茗",
+      "owner": "town34-tea",
+      "item": "茶包",
+      "skill": "literature",
+      "price": 2,
+      "shareCost": 8,
+      "upgradeCost": 8,
+      "baseIncome": 2,
+      "requestItem": "books",
+      "requestReward": 4,
+      "lines": [
+        "我给您留了靠窗的位置。先喝口热的，别急着说事。",
+        "今日客人不多，正好陪您说会儿话。",
+        "前几日您来过之后，我又添置了些东西。您看看，可还喜欢？"
+      ]
+    },
+    {
+      "id": "books",
+      "name": "听雨书铺",
+      "icon": "书",
+      "owner": "town34-books",
+      "item": "书卷",
+      "skill": "literature",
+      "price": 2,
+      "shareCost": 8,
+      "upgradeCost": 8,
+      "baseIncome": 2,
+      "requestItem": "silk",
+      "requestReward": 4,
+      "lines": [
+        "这册是新收的，页边有人批过字。您若不嫌，倒比新书有趣。",
+        "今日客人不多，正好陪您说会儿话。",
+        "前几日您来过之后，我又添置了些东西。您看看，可还喜欢？"
+      ]
+    },
+    {
+      "id": "silk",
+      "name": "绮罗衣坊",
+      "icon": "衣",
+      "owner": "town34-silk",
+      "item": "香囊",
+      "skill": "charm",
+      "price": 2,
+      "shareCost": 8,
+      "upgradeCost": 8,
+      "baseIncome": 2,
+      "requestItem": "clinic",
+      "requestReward": 4,
+      "lines": [
+        "先别挑最贵的。您试试这块，衬得气色好。",
+        "今日客人不多，正好陪您说会儿话。",
+        "前几日您来过之后，我又添置了些东西。您看看，可还喜欢？"
+      ]
+    },
+    {
+      "id": "clinic",
+      "name": "回春医馆",
+      "icon": "药",
+      "owner": "town34-clinic",
+      "item": "药材",
+      "skill": "admin",
+      "price": 2,
+      "shareCost": 8,
+      "upgradeCost": 8,
+      "baseIncome": 2,
+      "requestItem": "forge",
+      "requestReward": 4,
+      "lines": [
+        "手伸来。既然进了医馆，便先把自己的身子放在心上。",
+        "今日客人不多，正好陪您说会儿话。",
+        "前几日您来过之后，我又添置了些东西。您看看，可还喜欢？"
+      ]
+    },
+    {
+      "id": "forge",
+      "name": "百炼铁铺",
+      "icon": "锤",
+      "owner": "town34-forge",
+      "item": "铁件",
+      "skill": "military",
+      "price": 2,
+      "shareCost": 8,
+      "upgradeCost": 8,
+      "baseIncome": 2,
+      "requestItem": "inn",
+      "requestReward": 4,
+      "lines": [
+        "这把还没磨好，先别碰刃。我替您试过，再交到手里。",
+        "今日客人不多，正好陪您说会儿话。",
+        "前几日您来过之后，我又添置了些东西。您看看，可还喜欢？"
+      ]
+    },
+    {
+      "id": "inn",
+      "name": "归云客栈",
+      "icon": "宿",
+      "owner": "town34-inn",
+      "item": "点心",
+      "skill": "admin",
+      "price": 2,
+      "shareCost": 8,
+      "upgradeCost": 8,
+      "baseIncome": 2,
+      "requestItem": "tea",
+      "requestReward": 4,
+      "lines": [
+        "楼上还空着。您若只想坐一会儿，我让厨房添碗热汤。",
+        "今日客人不多，正好陪您说会儿话。",
+        "前几日您来过之后，我又添置了些东西。您看看，可还喜欢？"
+      ]
+    }
+  ],
+  "reactions": [
+    {
+      "id": "visit",
+      "label": "坐坐闲谈",
+      "ap": 1,
+      "money": 0,
+      "aff": 2,
+      "trust": 1,
+      "skill": 1,
+      "reply": "visit"
+    },
+    {
+      "id": "buy",
+      "label": "买一份",
+      "ap": 0,
+      "money": -2,
+      "aff": 0,
+      "trust": 0,
+      "skill": 0,
+      "reply": "东西替您包好了。路上慢些，别压着。"
+    },
+    {
+      "id": "request",
+      "label": "帮掌柜备货",
+      "ap": 1,
+      "money": 4,
+      "aff": 3,
+      "trust": 2,
+      "skill": 0,
+      "reply": "来得正好，店里就缺这个。这份谢礼请您收下。"
+    },
+    {
+      "id": "invest",
+      "label": "入股分红",
+      "ap": 1,
+      "money": -8,
+      "aff": 0,
+      "trust": 2,
+      "skill": 0,
+      "reply": "既承了这份信任，我会把每一笔进出记清楚。"
+    },
+    {
+      "id": "upgrade",
+      "label": "添置店面",
+      "ap": 1,
+      "money": -8,
+      "aff": 0,
+      "trust": 1,
+      "skill": 0,
+      "reply": "新东西安置好了。往后生意做起来，也有您一份。"
+    },
+    {
+      "id": "gift",
+      "label": "送一份心意",
+      "ap": 1,
+      "money": 0,
+      "aff": 3,
+      "trust": 1,
+      "skill": 0,
+      "reply": "给我的？……那我可要好好收着。"
+    }
+  ]
+}
