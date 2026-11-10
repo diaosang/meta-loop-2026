@@ -152,6 +152,7 @@ ext += '\n' + (SOURCE/'demo-govern-v26.js').read_text(encoding='utf-8')
 ext += '\n' + (SOURCE/'demo-ux-v29.js').read_text(encoding='utf-8')
 ext += '\n' + (SOURCE/'demo-agency-v30.js').read_text(encoding='utf-8')
 ext += '\n' + (SOURCE/'demo-ui-v31.js').read_text(encoding='utf-8')
+ext += '\n' + (SOURCE/'demo-scene-v32.js').read_text(encoding='utf-8')
 
 boot=js.replace("render();if(!state.introSeen)intro();", ext+'\nrender();if(!state.introSeen)intro();')
 world_payload=json.dumps(world,ensure_ascii=False,separators=(',',':'))
