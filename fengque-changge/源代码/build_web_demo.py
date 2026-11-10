@@ -148,6 +148,7 @@ ext += '\nconst GOVERN24_STYLE='+json.dumps((SOURCE/'govern-v24.css').read_text(
 ext += '\n' + (SOURCE/'demo-govern-v24.js').read_text(encoding='utf-8')
 ext += '\n' + (SOURCE/'simulation/campaign-core-v25.js').read_text(encoding='utf-8')
 ext += '\n' + (SOURCE/'demo-govern-v25.js').read_text(encoding='utf-8')
+ext += '\n' + (SOURCE/'demo-govern-v26.js').read_text(encoding='utf-8')
 
 boot=js.replace("render();if(!state.introSeen)intro();", ext+'\nrender();if(!state.introSeen)intro();')
 world_payload=json.dumps(world,ensure_ascii=False,separators=(',',':'))
