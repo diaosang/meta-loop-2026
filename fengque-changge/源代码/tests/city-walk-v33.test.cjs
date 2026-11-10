@@ -1,0 +1,9 @@
+const assert=require('node:assert/strict');
+const W=require('../simulation/city-walk-v33.js');
+const test=(name,fn)=>{fn();console.log('PASS '+name);};
+test('all public entrances are on reachable ground',()=>{for(const a of Object.values(W.stops))for(const b of Object.values(W.stops)){const route=W.plan(a,b);assert(route.length);assert(route.every(p=>W.walkable(p.x,p.z)));}});
+test('pond blocks the direct route and the walk goes around',()=>{assert(!W.walkable(11,0));const path=W.plan({x:6,z:0},{x:16,z:0});assert(path.some(p=>Math.abs(p.z)>=3));assert(path.length>11);let a={x:6,z:0,path:[...path],heading:0};for(let i=0;i<3000&&a.path.length;i++){W.step(a,1/60,4);assert(W.walkable(a.x,a.z));}assert(!a.path.length);assert(Math.hypot(a.x-16,a.z)<.001);});
+test('solid buildings cannot be crossed',()=>{for(const b of W.buildings){assert(!W.walkable(b.x,b.z));const to=W.nearest(b.x,b.z);assert(W.walkable(to.x,to.z));const a={x:0,z:8,path:W.plan({x:0,z:8},to),heading:0};for(let i=0;i<5000&&a.path.length;i++){W.step(a,1/60,4);assert(W.walkable(a.x,a.z));}assert(!a.path.length);}});
+test('different frame intervals give the same travelled distance',()=>{let a={x:0,z:8,path:W.plan({x:0,z:8},{x:0,z:0}),heading:0},b=JSON.parse(JSON.stringify(a));for(let i=0;i<60;i++)W.step(a,1/60,3);for(let i=0;i<30;i++)W.step(b,1/30,3);assert(Math.abs(a.z-b.z)<1e-8);assert(Math.abs(a.z-5)<1e-8);});
+test('invalid saved coordinates are made walkable without touching game stats',()=>{for(const raw of [null,{}, {x:NaN,z:Infinity},{x:999999,z:-999},{x:0,z:-10}]){const p=W.sanitize(raw);assert(W.walkable(p.x,p.z));}assert.deepEqual(W.sanitize({x:1.23,z:4.56}),{x:1.23,z:4.56});});
+test('route replanning from a moving character remains inside the map',()=>{const a={x:-20,z:4,path:[],heading:0};for(const stop of Object.values(W.stops)){a.path=W.plan(a,stop);for(let i=0;i<120;i++){W.step(a,1/60,3);assert(W.walkable(a.x,a.z));}}});
