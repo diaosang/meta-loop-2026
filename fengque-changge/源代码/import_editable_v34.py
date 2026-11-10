@@ -23,7 +23,8 @@ def sheets(path):
       col=col*26+ord(ch)-64
      value=c.find('m:v',ns);value=value.text if value is not None else ''
      if c.attrib.get('t')=='s':value=shared[int(value)]
-     elif c.attrib.get('t')=='inlineStr':value=''.join(c.find('m:is',ns).itertext())
+     elif c.attrib.get('t')=='inlineStr':
+      inline=c.find('m:is',ns);value=''.join(inline.itertext()) if inline is not None else ''
      vals[col-1]=value
     rows.append([vals.get(i,'') for i in range(max(vals,default=-1)+1)])
    yield sh.attrib['name'],rows
