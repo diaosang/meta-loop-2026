@@ -179,14 +179,15 @@ function npc35Stage(p){
  const tier=socialTier(p),guard=Number(own.guard??100-(m.security??50));
  const emotion=typeof npc18Emotion==='function'?npc18Emotion(p):{mutual:false,signals:0,days:[]};
  const romance=typeof npc18Stage==='function'?npc18Stage(p):-1;
+ const romanceOpen=typeof romanticReason==='function'?!romanticReason(p,r):p.romance!==false;
  if(r.aff<=8&&r.trust<=12&&m.security<=18&&m.distance>=65&&(m.broken>=2||m.anger>=70||m.hurt>=70))return {key:'broken',label:'恩断义绝',negative:true};
  if(recentHurt&&tick-(recentHurt.tick||0)<=3&&!resolved&&Math.max(m.hurt||0,m.anger||0)>=8)return {key:'scold',label:'被训斥',negative:true};
  if(m.disappointment>=38||currentMind(p)==='失望')return {key:'disappointed',label:'失望',negative:true};
  if(r.aff<=12&&r.trust<=15&&m.security<=25)return {key:'worst',label:'关系极差',negative:true};
  if(r.aff<=22&&r.trust<=28)return {key:'veryPoor',label:'关系特别差',negative:true};
  if(r.aff<=35&&r.trust<=40||['恼怒','委屈','疏离','戒备'].includes(currentMind(p)))return {key:'poor',label:'关系较差',negative:true};
- if(romance===4&&emotion.mutual&&r.love>=18&&r.aff>=70&&r.trust>=65&&guard<35&&days>=4)return {key:'beloved',label:'最爱',negative:false};
- if(romance>=3)return {key:'flirt',label:'暧昧',negative:false};
+ if(romanceOpen&&romance===4&&emotion.mutual&&r.love>=18&&r.aff>=70&&r.trust>=65&&guard<35&&days>=4)return {key:'beloved',label:'最爱',negative:false};
+ if(romanceOpen&&romance>=3)return {key:'flirt',label:'暧昧',negative:false};
  if(tier==='trusted'&&count>=24&&days>=10&&r.trust>=65&&r.aff>=65&&guard<40)return {key:'forever',label:'永远的朋友',negative:false};
  if(tier==='trusted'&&count>=8&&days>=4&&r.trust>=45&&r.aff>=45)return {key:'friend',label:'朋友',negative:false};
  if(tier!=='stranger'&&count>=4&&days>=2)return {key:'rising',label:'关系上升',negative:false};
