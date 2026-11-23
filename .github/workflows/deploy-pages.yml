@@ -33,7 +33,7 @@ jobs:
       - name: Upload game files
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "./fengque-changge"
+          path: "."
 
       - name: Deploy
         id: deployment
