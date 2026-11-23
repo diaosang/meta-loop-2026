@@ -105,6 +105,14 @@ const areas=[
 {id:'frontier',name:'朔门关',kind:'边镇',x:0,y:0,pop:42000,guard:3700,loyalty:32,prosper:29,agri:35,trade:20,mine:0,food:90,resources:'关隘、马道',buildings:{farm:0,market:0,mine:0,ranch:1,residence:0,harem:0}},
 {id:'island',name:'东屿',kind:'未开发',x:5,y:4,pop:1200,guard:0,loyalty:0,prosper:0,agri:0,trade:0,mine:0,food:0,resources:'港湾、渔场',buildings:{farm:0,market:0,mine:0,ranch:0,residence:0,harem:0}}
 ];
+// 世界地图上的外国疆域位置。坐标对应 12×9 地图网格，避开大梁州府。
+const worldNations=[
+ {id:'north',name:'北朔',x:1,y:0,mark:'⚑'},
+ {id:'east',name:'东海诸国',x:10,y:1,mark:'⚓'},
+ {id:'west',name:'西陲诸部',x:0,y:6,mark:'⚑'},
+ {id:'south',name:'南诏',x:9,y:8,mark:'◆'},
+ {id:'remnant',name:'沧溟旧部',x:10,y:7,mark:'◇'}
+];
 const buildingNames={farm:'农田',market:'商区',mine:'矿地',ranch:'牧场',residence:'居民地',harem:'后宫'};
 const offices=[
 {name:'内阁首辅',person:'许知衡',id:'xu',duty:'票拟诏旨、协调六部、拟定朝议要案'},
@@ -210,7 +218,41 @@ function renderRegion(){
 }
 function selectCountry(id){S.selectedCountry=id;S.selectedArea=null;renderMap();let n=nation(id);document.getElementById('courtHint').textContent=`已选中${n.name}。当前关系${n.relation}/100；若继续加税、封锁商路或越境用兵，对方会在之后的回合重新评估与大梁的关系。`;}
 function inspectWorldTile(x,y){const key=`${x}-${y}`;if(!S.discoveredTiles)S.discoveredTiles=[];if(!S.discoveredTiles.includes(key))S.discoveredTiles.push(key);const details=rand(['山道旁有一片适合开垦的缓坡，若修路，附近州府的商队能少走两日。','勘察队发现零散矿脉，尚不足以立刻开矿，但值得记入工部舆图。','这片林地有木材与药材，附近百姓愿意迁来，只是要先修出一条能走车的路。','旧驿道还在，只是路碑被推倒了。若重修，往来军报会快一些。']);noteFeedback('勘察疆域',[details,'此处尚未归入州府，后续需投入银两和木料开拓。']);rec(details,'疆域勘察','工部勘舆队');renderMap();}
-function initMapDrag(){const view=document.getElementById('mapViewport');if(!view||view.dataset.dragReady)return;view.dataset.dragReady='1';let down=false,moved=false,sx=0,sy=0,ox=0,oy=0;view.addEventListener('pointerdown',e=>{if(e.button!==0)return;down=true;moved=false;sx=e.clientX;sy=e.clientY;ox=S.mapX??-265;oy=S.mapY??-120;view.setPointerCapture(e.pointerId);});view.addEventListener('pointermove',e=>{if(!down)return;let dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)+Math.abs(dy)>5)moved=true;if(moved){view.classList.add('dragging');const grid=document.getElementById('mapGrid');S.mapX=Math.min(0,Math.max(view.clientWidth-grid.scrollWidth,ox+dx));S.mapY=Math.min(0,Math.max(view.clientHeight-grid.scrollHeight,oy+dy));grid.style.left=S.mapX+'px';grid.style.top=S.mapY+'px';}});const stop=e=>{if(!down)return;down=false;view.classList.remove('dragging');if(moved){view.dataset.dragged='1';setTimeout(()=>view.dataset.dragged='0',80);}};view.addEventListener('pointerup',stop);view.addEventListener('pointercancel',stop);view.addEventListener('click',e=>{if(view.dataset.dragged==='1'){e.preventDefault();e.stopPropagation();}},true);}
+function initMapDrag(){
+ const view=document.getElementById('mapViewport');
+ if(!view||view.dataset.dragReady)return;
+ view.dataset.dragReady='1';
+ let down=false,moved=false,pointerId=null,sx=0,sy=0,ox=0,oy=0;
+ view.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  down=true;moved=false;pointerId=e.pointerId;sx=e.clientX;sy=e.clientY;
+  ox=S.mapX??-265;oy=S.mapY??-120;
+ });
+ window.addEventListener('pointermove',e=>{
+  if(!down||e.pointerId!==pointerId)return;
+  const dx=e.clientX-sx,dy=e.clientY-sy;
+  if(Math.abs(dx)+Math.abs(dy)>5)moved=true;
+  if(moved){
+   view.classList.add('dragging');
+   const grid=document.getElementById('mapGrid');
+   const minX=Math.min(0,view.clientWidth-grid.offsetWidth);
+   const minY=Math.min(0,view.clientHeight-grid.offsetHeight);
+   S.mapX=Math.max(minX,Math.min(0,ox+dx));
+   S.mapY=Math.max(minY,Math.min(0,oy+dy));
+   grid.style.left=S.mapX+'px';grid.style.top=S.mapY+'px';
+  }
+ });
+ const stop=e=>{
+  if(!down||e.pointerId!==pointerId)return;
+  down=false;pointerId=null;view.classList.remove('dragging');
+  if(moved){view.dataset.dragged='1';setTimeout(()=>{view.dataset.dragged='0';},120);}
+ };
+ window.addEventListener('pointerup',stop);
+ window.addEventListener('pointercancel',stop);
+ view.addEventListener('click',e=>{
+  if(view.dataset.dragged==='1'){e.preventDefault();e.stopPropagation();}
+ },true);
+}
 function selectArea(id){S.selectedArea=id;S.selectedCountry=null;renderMap();if(id==='capital'||id==='north'||id==='south'||id==='east'||id==='west')document.getElementById('courtHint').textContent=`${area(id).name}的地方册已展开。州府的数字每月结算一次，若账面漂亮而民心低落，往往说明有人只报了好消息。`;}
 function renderCountries(){document.getElementById('countries').innerHTML=S.nations.map(n=>`<div class="country"><h4>${n.name} <span class="pill">${n.relation>=65?'友好':n.relation<=35?'紧张':'普通'}</span></h4><div class="line"><span>关系度</span><b>${n.relation}/100</b></div><div class="bar"><i style="width:${n.relation}%"></i></div><div class="line"><span>繁荣度</span><b>${n.prosper}/100</b></div><div class="line"><span>战斗力</span><b>${n.military}/100</b></div><button class="btn small" onclick="selectCountry('${n.id}')">在地图查看</button> <button class="btn small" onclick="showCountry('${n.id}')">邦交决策</button></div>`).join('');}
 function renderNpcWorldNews(){let people=S.npc.slice().sort((a,b)=>(b.activityWeight||0)-(a.activityWeight||0)).slice(0,4);let phtml=people.map(p=>`<div class=\"notice\"><div class=\"who\">${p.name} · ${p.mood||'平常'}</div><p>${p.recent||p.agenda||'今日照常处理自己的事。'}</p></div>`).join('');let events=S.news.slice(0,5).map(x=>`<div class=\"right-note\"><b>${x.kind} · ${x.who||'宫中'}</b><p>${x.text}</p></div>`).join('');let el=document.getElementById('npcWorldNews');if(el)el.innerHTML=phtml+`<div class=\"small-text\">最近发生</div>${events||'<div class=\"empty-note\">暂时没有新消息。</div>'}`;}
