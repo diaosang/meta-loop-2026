@@ -162,6 +162,7 @@ const NPC35_COPY={
 };
 
 function npc35Type(p){
+ if(p?.id==='yejin19')return 'gentle';
  const t=String(p?.type||'');
  if(/温柔|体贴|敏感/.test(t))return 'gentle';
  if(/明朗|直率|疏朗|洒脱/.test(t))return 'bright';
@@ -170,7 +171,9 @@ function npc35Type(p){
 }
 function npc35Self(p){return npc17Self(p)||'臣';}
 function npc35Fill(line,p){
- return String(line||'').replaceAll('{self}',npc35Self(p)).replaceAll('{name}',p?.name||'');
+ let text=String(line||'').replaceAll('{self}',npc35Self(p)).replaceAll('{name}',p?.name||'');
+ if(p?.id!=='yejin19')text=text.replaceAll('臣',npc35Self(p));
+ return text;
 }
 function npc35Stage(p){
  const r=state.relations[p.id],m=r?.mind||{},own=npc17Own(p),social=socialState(p)||{},count=Number(social.count||0),days=(social.days||[]).length;
