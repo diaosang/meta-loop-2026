@@ -9,20 +9,20 @@ const FOREIGN_REALMS={
 };
 
 const BUILDINGS={
- farm:{name:'农田',icon:'禾',desc:'每级增加粮食产出；人口不足时产量下降。',money:260,wood:35,iron:0},
- market:{name:'商区',icon:'市',desc:'每级增加税基；通商与地方忠诚影响收入。',money:380,wood:45,iron:5},
- mine:{name:'矿地',icon:'矿',desc:'每级增加铁矿、木材，供建设与锻造使用。',money:320,wood:30,iron:8},
- pasture:{name:'牧场',icon:'牧',desc:'每级增加战马；与北境贸易可以互补。',money:300,wood:30,iron:0},
- homes:{name:'居民地',icon:'舍',desc:'提高人口承载量，吸引流民，也增加口粮支出。',money:240,wood:40,iron:0},
- palace:{name:'后宫',icon:'宫',desc:'每级扩充一座双人宫殿；皇后宫殿单住。',money:600,wood:80,iron:15}
+ farm:{name:'农田',icon:'禾',desc:'产粮。人口不足会减产。',money:260,wood:35,iron:0},
+ market:{name:'商区',icon:'市',desc:'收税。贸易、民心影响收入。',money:380,wood:45,iron:5},
+ mine:{name:'矿地',icon:'矿',desc:'产木材与铁矿。',money:320,wood:30,iron:8},
+ pasture:{name:'牧场',icon:'牧',desc:'产战马。',money:300,wood:30,iron:0},
+ homes:{name:'居民地',icon:'舍',desc:'增加人口上限，也多耗粮。',money:240,wood:40,iron:0},
+ palace:{name:'后宫',icon:'宫',desc:'每级多住2人，皇后独住。',money:600,wood:80,iron:15}
 };
 const OFFICE_DEFS=[
- ['首辅','内阁 · 主持票拟，提升国政执行','admin'],['太傅','经筵 · 辅政与世家协调','literature'],
- ['吏部尚书','吏部 · 铨选、考课、任免','admin'],['户部尚书','户部 · 赋税、户籍、仓储','admin'],
- ['礼部尚书','礼部 · 科举、礼仪与邦交','literature'],['兵部尚书','兵部 · 兵籍、军饷与训练','military'],
- ['刑部尚书','刑部 · 刑名、复核与审判','admin'],['工部尚书','工部 · 水利、营造与工役','admin'],
- ['左都御史','都察院 · 纠察百官','admin'],['东厂提督','东厂 · 侦缉、情报与人才寻访','military'],
- ['西厂掌印','西厂 · 疑案、外地暗访','military'],['锦衣卫指挥使','锦衣卫 · 宿卫与缉捕','military']
+ ['首辅','主持朝政','admin'],['太傅','辅佐皇帝，协调世家','literature'],
+ ['吏部尚书','选官、考核、任免','admin'],['户部尚书','税收、人口、粮仓','admin'],
+ ['礼部尚书','科举、礼仪、外交','literature'],['兵部尚书','军队、军饷、练兵','military'],
+ ['刑部尚书','查案、审案','admin'],['工部尚书','水利、建设','admin'],
+ ['左都御史','监察官员','admin'],['东厂提督','查人、情报、寻人','military'],
+ ['西厂掌印','疑案、暗访','military'],['锦衣卫指挥使','护卫、抓捕','military']
 ];
 const CLAN_SEEDS=[
  {id:'姜',name:'兰陵姜氏',color:'#52685d',history:['开国时以文书军需起家，第三代主持修订户籍。','先帝朝，姜氏门生进入吏、户两部，姻亲遍布京畿。','姜、叶联手拥立九公主，如今为铨选与税权屡生嫌隙。'],interest:'人事与田赋',ties:'与叶氏两代联姻；与许氏政见不合；与沈氏共营漕仓。'},
@@ -140,31 +140,31 @@ STORY_DEFS.push(
  ['两人把假信钉在铺子门后，谁再想生气，就先去看一眼。{A}说：“下回真要绝交，我亲自来。”','提醒以后先当面问清','赏一桌酒，让他们和好',{bond:10},{money:-60,bond:14}]]}
 );
 const COURT_INCIDENT_DEFS=[
- {id:'canalburst',category:'灾情',title:'漕河水位暴涨，粮船卡在半路',text:'{R}的漕口连下三日暴雨，粮船堵在堤外。地方官说再等两天就能过，漕运总管却递来急报：京仓只够撑一个月。',choices:[
-  {label:'开仓赈粮，先救沿岸百姓',desc:'银 -80、粮 -260；地方忠诚 +6、稳定 +2。',effects:{money:-80,grain:-260,loyalty:6,stability:2}},
-  {label:'征民抢修堤岸，保住主粮道',desc:'人口 -1200、忠诚 -8；繁荣 +2、稳定 -2。',effects:{population:-1200,loyalty:-8,prosperity:2,stability:-2}}
+ {id:'canalburst',category:'水灾',title:'漕河涨水，粮船受阻',text:'连日暴雨堵住{R}漕口，粮船无法通行。先拨粮救灾，还是征人修堤？',choices:[
+  {label:'拨粮救灾',effects:{money:-80,grain:-260,loyalty:6,stability:2}},
+  {label:'征人修堤',effects:{population:-1200,loyalty:-8,prosperity:2,stability:-2}}
  ]},
- {id:'locust',category:'急报',title:'蝗灾顺着风线压进州府',text:'{R}的田里先是落了一层黑点，第二天已经看不见地皮。知府请拨银买药，户部却说今年的粮账本来就紧。',choices:[
-  {label:'拨银买药，组织百姓灭蝗',desc:'银 -120、木 -20；粮 -120、稳定 +3。',effects:{money:-120,wood:-20,grain:-120,stability:3,loyalty:3}},
-  {label:'让地方自行想办法',desc:'不花钱，但粮 -380、人口 -2%、忠诚 -7。',effects:{grain:-380,populationRate:-2,loyalty:-7,stability:-4}}
+ {id:'locust',category:'蝗灾',title:'蝗虫毁田，州府求援',text:'{R}遭了蝗灾，知府请朝廷拨款灭蝗。户部提醒：今年的钱粮本就不多。',choices:[
+  {label:'拨款灭蝗',effects:{money:-120,wood:-20,grain:-120,stability:3,loyalty:3}},
+  {label:'让地方自救',effects:{grain:-380,populationRate:-2,loyalty:-7,stability:-4}}
  ]},
- {id:'borderenvoy',category:'边情',title:'边关哨骑抓到一名越境使者',text:'{C}的使者被边军扣在关城，说是来送一封“私信”。边将要求就地审问，鸿胪寺担心这是有人故意递来的火种。',choices:[
-  {label:'礼送出境，换一季边市安稳',desc:'银 -120；对方关系 +10、边军士气 +2。',effects:{money:-120,relation:10,morale:2}},
-  {label:'扣下使者，增兵关城',desc:'铁 -20、马 -6；关系 -12、稳定 +2。',effects:{iron:-20,horses:-6,relation:-12,stability:2}}
+ {id:'borderenvoy',category:'边关',title:'边军扣住外国使者',text:'{C}使者越境被扣，说是来送私信。边将要审问，朝臣担心伤了两国关系。',choices:[
+  {label:'送使者回国',effects:{money:-120,relation:10,morale:2}},
+  {label:'扣人，增兵',effects:{iron:-20,horses:-6,relation:-12,stability:2}}
  ]},
- {id:'warehousefire',category:'京仓',title:'夜半失火，烧的是粮还是账',text:'京仓丑时起火，值夜吏员只救出半车粮。都察院说火势蹊跷，户部却催着先决定要不要开旁仓补缺。',choices:[
-  {label:'先开旁仓补粮，再彻查失火',desc:'粮 -220、银 -60；稳定 +4、情报 +2。',effects:{grain:-220,money:-60,stability:4,intel:2}},
-  {label:'封仓保账，等刑部查完再动',desc:'暂不花钱，但粮 -80、稳定 -5；案件证据 +1。',effects:{grain:-80,stability:-5,evidence:1}}
+ {id:'warehousefire',category:'粮仓',title:'京仓失火，粮账有疑',text:'京仓夜里起火，救出的粮食不多。御史怀疑有人纵火，户部催着先补缺粮。',choices:[
+  {label:'补粮并查火因',effects:{grain:-220,money:-60,stability:4,intel:2}},
+  {label:'封仓保住账本',effects:{grain:-80,stability:-5,evidence:1}}
  ]},
- {id:'officefeud',category:'朝局',title:'两位主官把一件小事办成了大仗',text:'{A}与同僚为一纸调令争了三天，下面的属官已经分成两队。事情本身不大，再拖下去却会让整个衙门停摆。',choices:[
-  {label:'当朝问责，按实绩重新分工',desc:'银 -40；稳定 +3，但当事人友好 -8。',effects:{money:-40,stability:3,friend:-8,loyalty:-4}},
-  {label:'各打五十大板，先让他们继续办事',desc:'稳定 -3；两边暂时留面子，忠诚 +2。',effects:{stability:-3,loyalty:2,friend:2}}
+ {id:'officefeud',category:'官员',title:'主官争执，衙门停工',text:'{A}与同僚为调职争了三天，属下跟着站队，正事没人办。',choices:[
+  {label:'问责，重新分工',effects:{money:-40,stability:3,friend:-8,loyalty:-4}},
+  {label:'劝和，继续办事',effects:{stability:-3,loyalty:2,friend:2}}
  ]},
- {id:'plaguebell',category:'民情',title:'城门外有人敲响了求医鼓',text:'{R}城外出现高热病人，百姓开始往城里挤，城门吏不敢放人。太医说得先隔离，地方官却怕封城后商路断掉。',choices:[
-  {label:'封城七日，发药安置病户',desc:'银 -150、粮 -180；稳定 +5、繁荣 -3。',effects:{money:-150,grain:-180,stability:5,prosperity:-3,intel:2}},
-  {label:'照常开市，派人逐户巡查',desc:'银 -40；繁荣 +2，但人口 -1%、忠诚 -6。',effects:{money:-40,prosperity:2,populationRate:-1,loyalty:-6,stability:-5}}
+ {id:'plaguebell',category:'疫病',title:'城外起疫，百姓求医',text:'{R}城外多人高热，百姓挤到城门求医。封城能防病，却会耽误生意。',choices:[
+  {label:'封城发药',effects:{money:-150,grain:-180,stability:5,prosperity:-3,intel:2}},
+  {label:'开市，逐户查病',effects:{money:-40,prosperity:2,populationRate:-1,loyalty:-6,stability:-5}}
  ]}
 ];
-const PRIVATE_NAV=[['内','修习身心'],['宝','内府藏珍'],['东厂','耳目暗线'],['后宫','宫中相见'],['重华','儿女绕膝'],['出宫','人间烟火']];
-const COURT_NAV=[['策','定国之策'],['奏','人情奏疏'],['吏','百官名录'],['户','钱粮收支'],['兵','军政边防'],['刑','三司案牍'],['工','营造百业']];
+const PRIVATE_NAV=[['内','文武艺'],['宝','赠礼'],['东厂','查人寻宝'],['后宫','召见侍寝'],['重华','照顾培养'],['出宫','逛街偶遇']];
+const COURT_NAV=[['策','国家大事'],['奏','大臣家事'],['吏','任免调职'],['户','税收开支'],['兵','征兵训练'],['刑','调查问罪'],['工','修建升级']];
 if(typeof module!=='undefined')module.exports={BUILDINGS,OFFICE_DEFS,CLAN_SEEDS,CORE_PEOPLE,STORY_DEFS,COURT_INCIDENT_DEFS};

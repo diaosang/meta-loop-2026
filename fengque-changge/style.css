@@ -7,6 +7,8 @@
 @media(max-width:1050px){body{overflow:auto}#app{min-width:820px;height:100dvh;min-height:740px}.layout{grid-template-columns:170px minmax(480px,1fr)}.rightbar{position:fixed;right:0;top:91px;bottom:33px;width:270px;z-index:10;box-shadow:-15px 0 40px #253b3533;display:none}.rightbar.mobile-open{display:flex}.resources{gap:9px}.resource b{font-size:18px}.top-actions{gap:4px}.brand{min-width:170px}.date-block{min-width:132px}.topbar{gap:12px;padding:0 14px}.resource:nth-child(4){display:none}.resource{min-width:40px}.resource em{display:none}.top-actions .icon-btn{font-size:10px}.main{grid-template-rows:minmax(280px,1fr) 280px 82px}.brand small{font-size:8px}.main-event p{font-size:11px}.panel-grid{grid-template-columns:repeat(2,1fr)}.small-events{display:none}.event-grid{grid-template-columns:1fr}.modal{max-height:92vh}.statusbar{padding:0 15px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
+
+
 .feed-item p{color:#687563}.feed-item .note-name{color:#926c32;font-weight:600}
 
 .country-jumps{position:absolute;left:26px;top:94px;display:flex;gap:7px;flex-wrap:wrap;max-width:80%;pointer-events:auto}.country-jumps button{font-size:11px;padding:6px 10px;background:#f8f5e8ed;border-color:#aab69a;color:#536b55}.country-marker text{pointer-events:none}.country-marker .national-banner:hover rect{filter:brightness(1.14)}.is-overview .place-tag,.is-overview .place-name,.is-overview .map-building{display:none}.is-overview .inhabited .tile{stroke-width:5px;fill-opacity:.95!important}.is-overview .wilderness .tile{stroke:none;fill-opacity:.08!important}.is-overview .country-marker text{display:block}.is-overview .map-river{opacity:.6}.diplomacy-label{font-size:12px;color:#5b6e59}.diplomacy-costs{margin-top:10px;font-size:10px}.modal-head h2{font-size:21px;letter-spacing:1px;line-height:1.7}.main-event h3{line-height:1.7}.country-jumps+ .map-key{max-width:50%}
@@ -16,3 +18,16 @@
 .selection-card{min-height:250px}.selection-card>p{line-height:1.85}.selection-controls{justify-content:flex-end;margin:4px 0 12px}.selection-controls .tag{align-self:center}
 
 .incident-card{border:1px solid #c99f76;background:#f8ecdc;padding:16px 18px;margin:0 0 18px;box-shadow:inset 3px 0 #a45f4c}.incident-card h3{font-size:19px;font-weight:500;margin:8px 0}.incident-card>p{font-size:12px;line-height:2;color:#6f6758}.incident-choices{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:13px}.incident-choice{border:1px solid #d8c4a9;background:#fff8ec;padding:10px}.incident-choice b{display:block;font-size:12px;font-weight:500}.incident-choice small{display:block;min-height:32px;font-size:10px;line-height:1.7;color:#7d7568;margin:6px 0}.tutorial-mini{border:1px solid #c9c7a4;background:#f2eedb;padding:11px 12px;margin:16px 0;color:#65765f}.tutorial-mini b{font-size:12px}.tutorial-mini p{font-size:10px;line-height:1.7;margin:4px 0}.tutorial-callout{border-left:3px solid var(--gold);background:#f2eedb;padding:14px 16px;margin-bottom:16px}.tutorial-callout b{font-size:15px}.tutorial-callout p{font-size:12px;line-height:1.8;margin-top:7px;color:var(--muted)}.tutorial-step{display:flex;gap:12px;padding:11px 7px;border-bottom:1px dashed var(--line)}.tutorial-step>span{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#dfe5d2;color:#63765d;font-size:11px;flex-shrink:0}.tutorial-step.current{background:#f7f0df}.tutorial-step.current>span{background:var(--gold);color:#fff}.tutorial-step.done{opacity:.65}.tutorial-step b{font-size:13px}.tutorial-step p{font-size:11px;line-height:1.7;color:var(--muted);margin-top:3px}
+
+/* Short labels leave room for readable hints and costs. */
+.nav-item b{font-size:22px;letter-spacing:1px}.nav-item small{font-size:10px;letter-spacing:0}
+.desk-title p,.side-note,.muted-note,.panel-card p,.tutorial-mini p{font-size:12px;letter-spacing:0;line-height:1.8}
+.inline-actions button,.choices button,.list-table button,.link-btn{font-size:12px}
+.tutorial-step p,.tutorial-callout p,.notice,.modal-foot{font-size:12px;line-height:1.8}
+.incident-card .incident-choice{text-align:left;color:var(--ink);margin:0;width:100%;cursor:pointer}
+.incident-card .incident-choice:hover{border-color:var(--gold);background:#fffdf5}
+.incident-card .incident-choice b{font-size:14px}.incident-card .incident-choice small{font-size:12px;min-height:0;line-height:1.85}
+.help-list{font-size:13px;line-height:1.8}.help-list p{margin:14px 0}.help-list b{color:var(--jade)}
+.exam-card{min-height:0}.selection-card{min-height:0}
+.incident-card{padding:12px 14px}.incident-card h3{margin:4px 0}.incident-choices{margin-top:8px}.incident-card .incident-choice{padding:8px 10px}
+@media(min-width:1700px){.nav-item b{font-size:24px}.desk{padding:20px 34px}}
