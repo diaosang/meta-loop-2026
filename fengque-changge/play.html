@@ -94,45 +94,45 @@ const CORE_PEOPLE=[
 ];
 const STORY_DEFS=[
  {id:'grain',title:'北境粮食少了四百石',subtitle:'许知衡丞相举报叶桢',type:'国政',actors:['ye-zhen','shen','xu'],stages:[
- ['许知衡举报叶桢经手的北境粮运少了四百石，签收单却写着“足额”。沈听澜带来了两本账，叶桢说还得查过仓库才能下结论。','派人开仓核账','先让叶家补上', {money:-100,stability:3,evidence:1},{grain:220,clan:'叶',clanDelta:5}],
- ['账房说签字是被人逼的，叶桢却说这人上月刚还清赌债。裴照微要求查钱庄流水。','顺着银钱查下去','留下口供，暂不扩大',{money:-160,evidence:1,loyalty:2},{stability:1,clan:'沈',clanDelta:5}],
- ['银票的印记牵出了旧日军饷案。许知衡看了许久：“这枚章，我祖父的卷宗里也有。”','交三法司会审','只追缴粮银',{money:520,stability:6,clan:'叶',clanDelta:-9},{money:700,stability:-2,clan:'叶',clanDelta:4}],
- ['失粮案结了，北境收到补粮。可一份旧账副本已流入许家：这件事远没到能忘掉的时候。','公开判牍，补偿受害人','封存副本，留作后查',{money:-120,stability:6,loyalty:4},{stability:2,evidence:1}]]},
+ ['许知衡把缺粮的折子压在最上头。叶桢的签收单写得很漂亮，偏偏北境仓里少了四百石。沈听澜把两本账放到一旁：“先别急着定罪，仓门上的封泥还在。”','先开仓，一笔一笔对','让叶家先补上缺口', {money:-100,stability:3,evidence:1},{grain:220,clan:'叶',clanDelta:5}],
+ ['守仓的老吏跪在门边，说签字那晚有人拿他儿子的前程相逼。叶桢盯着他袖口的泥：“你若只替人背话，真正拿钱的人会笑到最后。”','顺着银钱查下去','先收口供，暂不惊动钱庄',{money:-160,evidence:1,loyalty:2},{stability:1,clan:'沈',clanDelta:5}],
+ ['查到一张旧银票时，许知衡忽然不说话了。票角的印记，和他祖父当年查军饷时见过的一模一样。案子已经不只是叶家的四百石粮。','交三法司会审','只把粮银追回来',{money:520,stability:6,clan:'叶',clanDelta:-9},{money:700,stability:-2,clan:'叶',clanDelta:4}],
+ ['补粮船终于抵达北境，守军把空仓重新封好。可许家已经抄走那本旧账，叶桢也明白，这件事不会随着粮袋落地就算完。','公开判牍，给受损州府补偿','先封存旧账，留待日后再查',{money:-120,stability:6,loyalty:4},{stability:2,evidence:1}]]},
  {id:'twins',title:'叶锦给您写信：“家里对我一直控制着，又让我办事了”',type:'家族',actors:['ye-jin','ye-zhen','ye'],stages:[
  ['叶锦的信只有两行：“母亲又让我去见一位客人，还把该说的话都写好了。我知道她是为家里打算，可我不想每次都照着家里的意思走。陛下，您说我该怎么回？”','让叶锦按自己的意思回信','劝他先别和家里顶撞',{friend:8,actor:0,clan:'叶',clanDelta:-3},{friend:-4,actor:0,clan:'叶',clanDelta:5}],
- ['叶桢来送账，见弟弟便停下。叶锦把信压在桌下：“哥，你能不能别替我答应所有事？”叶桢沉默了一会儿：“我只是怕你在宫里吃亏。”','让兄弟把话说开','请叶承筠出面管束',{friend:5,actor:0,bond:8},{friend:-6,actor:0,clan:'叶',clanDelta:4}],
- ['叶夫人派人来，说宫里用不着叶锦名下的铺子，想先替他收回。叶锦看着那张契纸：“他们连问都没问我。”','把契纸退回，保住他的私产','用宫中份例替他补上',{money:-160,friend:10,actor:0,bond:12},{money:-300,friend:3,actor:0}],
- ['叶锦办琴会，叶桢坐在最后。散场后叶桢只说：“你弹得比小时候好。”叶锦看了他一眼：“你这次总算没替我安排。”','赴琴会，听他弹完','送一张贺笺',{friend:8,actor:0,art:2},{friend:3,actor:0}]]},
+ ['叶桢来送账，站在门口半天没进来。叶锦把信压在桌下：“哥，你能不能别替我答应所有事？”叶桢揉了揉眉心：“我只是怕你在宫里吃亏。”','让兄弟把话说开','请叶承筠出面管束',{friend:5,actor:0,bond:8},{friend:-6,actor:0,clan:'叶',clanDelta:4}],
+ ['叶夫人派人送来契纸，说宫里用不着叶锦名下的铺子，先交回家里打理。叶锦把落款看了两遍：“他们连问都没问我。”','把契纸退回，保住他的私产','用宫中份例替他补上',{money:-160,friend:10,actor:0,bond:12},{money:-300,friend:3,actor:0}],
+ ['叶锦办了一场小琴会，叶桢坐在最后一席。散场时，叶桢只说：“你弹得比小时候好。”叶锦看了他一眼：“你这次总算没替我安排。”兄弟俩一起走到宫门，谁也没再提旧账。','赴琴会，听他弹完','送一张贺笺',{friend:8,actor:0,art:2},{friend:3,actor:0}]]},
  {id:'marriage',title:'婚书上的第三个人',type:'人情',stages:[
- ['两家议亲，聘礼已到门口，当事人却说自己早与旁人约好了。媒人急得拍腿：“我只会说亲，可不会分身！”','暂停议亲，询问本人','依旧履行家族婚约',{stability:-1,bond:10},{clanDelta:4,bond:-12}],
- ['旧人送来一枚退回的玉佩，家中长辈又催着定吉日。这回连隔壁卖喜饼的都知道出了事。','请双方当面说清楚','令家长各退一步',{money:-60,bond:8},{stability:2,bond:-3}],
- ['议亲的风声牵动两家商约，一批本该送往州府的木料卡在了码头。私事终于闹到了公账上。','分清公私，照约交货','朝廷买下这批木料',{stability:4,wood:30},{money:-180,wood:60}],
- ['婚书终于重写。有人说这段姻缘太折腾，当事人只答：“可这回，总算问过我了。”','准其自主缔结','赐银另立门户',{bond:15,stability:2},{money:-200,bond:20}]]},
+ ['两家议亲，聘礼已经抬到门口，当事人却说自己早与旁人约好了。媒人急得直拍腿：“我只负责说亲，不能把三个人缝在一张婚书上。”','暂停议亲，先问当事人','照旧履行家族婚约',{stability:-1,bond:10},{clanDelta:4,bond:-12}],
+ ['旧人送来一枚退回的玉佩，家中长辈又催着定吉日。卖喜饼的都听说了，偏偏两家还在装作无事。','请双方当面说清楚','令家长各退一步',{money:-60,bond:8},{stability:2,bond:-3}],
+ ['争执牵动两家商约，一批本该送往州府的木料卡在码头。原本是两个人的婚事，已经让一州的工期等着看脸色。','分清公私，照约交货','朝廷买下这批木料',{stability:4,wood:30},{money:-180,wood:60}],
+ ['婚书终于重写，当事人自己按下了手印。有人嫌这段姻缘折腾太久，当事人只说：“这回，总算有人问过我。”','准其自主缔结','赐银另立门户',{bond:15,stability:2},{money:-200,bond:20}]]},
  {id:'inheritance',title:'祖宅还没卖，兄弟先散了',type:'家族',stages:[
- ['家中兄弟为祖宅翻脸，一个要卖房偿债，一个说祖宗牌位不能住客栈。族长劝了一夜，嗓子先哑了。','查清债务再分产','按旧族规处置',{money:-40,bond:5},{clanDelta:4,bond:-9}],
- ['借据里多出一笔来历不明的债，有人把它说成“替家里打点官路”。户部的人听说后，突然都忙起来了。','查这笔打点银','先平家争，另案登记',{evidence:1,stability:2},{bond:4,clanDelta:3}],
- ['祖宅一半抵押给了姻亲，对方却开口要一个州府官缺。原来这场分家，早有人在旁边等着捡漏。','拒绝拿官职换地契','由国库赎回祖宅',{stability:5,clanDelta:-5},{money:-480,bond:12}],
- ['祖宅留住了，兄弟各拿一份账。分家那日没有酒席，门口却多种了两棵树。','请族老作证，按约执行','资助其中一支另谋生计',{bond:12,stability:3},{money:-150,bond:16}]]},
+ ['祖宅还没卖，兄弟俩先在祠堂吵了起来。一个要卖房还债，一个抱着祖宗牌位不肯搬。族长劝到天亮，先哑的是自己的嗓子。','查清债务再分产','按旧族规处置',{money:-40,bond:5},{clanDelta:4,bond:-9}],
+ ['借据里多出一笔来历不明的银子，写的是“替家里打点官路”。一听要查，几个亲戚忽然都说要出门养病。','查这笔打点银','先平家争，另案登记',{evidence:1,stability:2},{bond:4,clanDelta:3}],
+ ['祖宅一半抵押给了姻亲，对方开口要的不是银子，而是一个州府官缺。原来分家吵得最凶时，旁边早有人等着捡漏。','拒绝拿官职换地契','由国库赎回祖宅',{stability:5,clanDelta:-5},{money:-480,bond:12}],
+ ['分家那日没有酒席，兄弟各拿到一份盖过章的账。门口新种的两棵树还很细，族长说，至少以后吵架有个地方坐。','请族老作证，按约执行','资助其中一支另谋生计',{bond:12,stability:3},{money:-150,bond:16}]]},
  {id:'alliance',title:'不请自来的小酒局',type:'朝局',stages:[
- ['几个平日互不搭理的人忽然一起喝了酒。席上没谈国事，次日却递来了三份措辞一模一样的折子。','听听他们联合的诉求','敲打领头之人',{loyalty:3,stability:1},{friend:-5,actor:0,stability:3}],
- ['酒局变成了固定的诗会，某位落选的官员也开始出入。谢无咎笑道：“诗没做几首，名单倒改了三回。”','公开铨选标准','让厂卫继续跟进',{stability:4},{money:-100,evidence:1}],
- ['诗会的人推出一名“众望所归”的州府人选，偏偏与另一桩贪腐案撞了名字。','核清履历再议','暂缓任命，保留体面',{stability:4,evidence:1},{clanDelta:5,stability:-1}],
- ['小酒局散了。有人真的留下来读书，有人另找门路。朝臣们终于明白，凑齐一桌并不等于凑齐一朝。','按才用人','清查利益往来',{loyalty:4,stability:4},{money:200,stability:3,clanDelta:-4}]]},
+ ['几个平日见面只点头的人，忽然在城南酒楼坐了一桌。席上没谈国事，第二天却送来三份一字不差的折子，连错字都一样。','把他们的共同诉求摊开问','先敲打领头的人',{loyalty:3,stability:1},{friend:-5,actor:0,stability:3}],
+ ['酒局变成固定诗会，落选的官员也开始进出。谢无咎翻着名单：“诗没做几首，座次倒换了三回。”','公开铨选标准','让厂卫继续看着',{stability:4},{money:-100,evidence:1}],
+ ['诗会推来一个“众望所归”的州府人选，偏偏此人的名字又出现在贪腐案卷里。众人都说是巧合，巧得未免太齐。','核清履历再议','暂缓任命，留一分体面',{stability:4,evidence:1},{clanDelta:5,stability:-1}],
+ ['酒局散了，有人回去读书，有人另找门路。朝臣们终于明白，凑齐一桌不等于凑齐一朝。','按才用人','清查利益往来',{loyalty:4,stability:4},{money:200,stability:3,clanDelta:-4}]]},
  {id:'oldlove',title:'一封迟了五年的信',type:'人情',stages:[
- ['某位朝臣收到一封旧信，落款是多年不见的故人。信只有一句：“你当年说的话，还作数吗？”','给他们一次当面说话的机会','提醒先交代家中情况',{bond:8},{stability:1,bond:2}],
- ['故人进京，不料两家的旧怨也一起翻出来了。有人说是叙旧，有人说是来讨债。','听两家核对当年之事','先劝双方别闹到朝上',{money:-60,bond:5},{stability:2,bond:-2}],
- ['当年的误会牵出一份被扣下的荐书。毁掉这封信的人，如今正在朝中评议别人的前程。','把荐书的事查清','补一个公平重试的机会',{stability:4,evidence:1},{money:-120,bond:8}],
- ['迟来的信终于有了回音。两人没急着许下什么，只约好下月再见。','准其休沐赴约','赐一份薄礼祝好',{bond:14},{money:-80,bond:18}]]},
+ ['一位朝臣收到一封迟了五年的信，只有一句：“你当年说的话，还作数吗？”他把信折好又展开，直到茶凉了也没回一句。','给他们一次当面说话的机会','先让他交代家中情况',{bond:8},{stability:1,bond:2}],
+ ['故人进京，两家的旧怨也跟着进了城。有人说是叙旧，有人说是来讨债，连门房都不敢替他们传第二遍话。','听两家核对当年之事','先劝双方别闹到朝上',{money:-60,bond:5},{stability:2,bond:-2}],
+ ['当年的误会牵出一封被扣下的荐书。毁掉它的人，如今正在朝中评议别人的前程。','把荐书的事查清','补一个公平重试的机会',{stability:4,evidence:1},{money:-120,bond:8}],
+ ['迟来的信终于有了回音。两人没有急着许诺什么，只约好下月再见。临走时，那人把旧信收回袖中，说：“这回别再弄丢了。”','准其休沐赴约','赐一份薄礼祝好',{bond:14},{money:-80,bond:18}]]},
  {id:'cat',title:'厂督的野猫',type:'日常',actors:['xie','pei','ye-jin'],stages:[
- ['裴照微参东厂“私养猛兽”。谢无咎提着一只胖白猫进殿：“猛是猛了些，一顿吃三碗。”','让裴御史亲眼看看','按规矩挪到值房外',{friend:6,actor:0,stability:1},{friend:-2,actor:0,stability:2}],
- ['白猫叼回一小块封蜡，叶锦认出是宫中库房的。谢无咎说它只会偷鱼，转身却叫人封了后门。','查封蜡来自哪只箱子','先清点库房',{money:-50,evidence:1},{money:-30,stability:2}],
- ['库房少了一匣首饰，值夜宫人却指认错了人。那只“猛兽”倒是日日蹲在真正在逃的耗子洞前。','核对出入记录','宽限一月，允许自首',{money:120,stability:3,evidence:1},{stability:2,loyalty:2}],
- ['案子结了，白猫得了一条新鱼。谢无咎把你赏的猫窝藏到桌下：“陛下误会了，这真是野猫。”','认领这只野猫的口粮','笑他一句就走',{money:-40,friend:8,actor:0},{friend:5,actor:0}]]},
+ ['裴照微的折子写得很直：“东厂值房私养猛兽，请查。”谢无咎抱着一只胖白猫进来：“它只吃鱼，不吃人。若真要论罪，先问问是谁把鱼喂没了。”','让裴御史亲眼看看','按规矩把猫挪出值房',{friend:6,actor:0,stability:1},{friend:-2,actor:0,stability:2}],
+ ['白猫叼回一小截封蜡，叶锦认出那是宫中库房的纹样。谢无咎仍在逗猫，手指却轻轻敲了三下桌面，门外的人立刻把后门看住。','查封蜡来自哪只箱子','先清点库房，不打草惊蛇',{money:-50,evidence:1},{money:-30,stability:2}],
+ ['库房少了一匣首饰，值夜宫人哭着说自己看错了人。白猫却日日蹲在一处空墙边，谢无咎命人拆开砖，里面果然藏着出宫的脚印。','核对出入记录，按线追查','宽限一月，给人自首的机会',{money:120,stability:3,evidence:1},{stability:2,loyalty:2}],
+ ['案子结了，白猫得了一条新鱼。谢无咎把你赏的猫窝藏到桌下：“陛下误会了，这真是野猫。”裴照微经过门口，冷冷补了一句：“野猫会认封蜡？”','认领这只野猫的口粮','笑他一句就走',{money:-40,friend:8,actor:0},{friend:5,actor:0}]]},
  {id:'examleak',title:'考场外的“神题”',type:'朝局',stages:[
- ['书摊上出现一册“必中策题”，连卖糖人的都背得出第一句。礼部坚称没泄题，书商坚称祖上传的。','更换试题并查来源','先查阅所谓神题',{money:-120,stability:3,evidence:1},{money:-40,evidence:1}],
- ['神题不过是十年前的旧题，可有人借它收了包中的银子。姜、裴两家的门生都卷了进来。','不分门第，一并核查','让两家自查交卷',{stability:5,clanDelta:-3},{clanDelta:5,stability:-2}],
- ['一个寒门考生拒绝退银，说自己要的不是钱，是一次堂堂正正的考试。','补开复试','退银并给赴试盘缠',{money:-240,stability:6},{money:-120,stability:3}],
- ['复试放榜，先前最爱吹嘘神题的人没考上。街边书商连夜把招牌改成了“诚信卖纸”。','公布全部成绩','表彰拒买题卷的考生',{stability:5,loyalty:2},{money:-100,stability:5}]]}
+ ['书摊上出现一本“必中策题”，连卖糖人的都能背出第一句。礼部说没泄题，书商说是祖上传下来的旧纸，谁也不肯先翻开自己的账。','更换试题并查来源','先买下神题，看看卖的是什么',{money:-120,stability:3,evidence:1},{money:-40,evidence:1}],
+ ['所谓神题其实是十年前的旧题，可有人借它收了包中的银子。姜、裴两家的门生都被牵进来，考生们在贡院外等一个说法。','不分门第，一并核查','让两家先自查门生',{stability:5,clanDelta:-3},{clanDelta:5,stability:-2}],
+ ['一个寒门考生拒绝退银：“我不要赔钱，我只要一次堂堂正正的考试。”他说完把银子放回书商手里，转身站到了雨里。','补开复试','退银并给赴试盘缠',{money:-240,stability:6},{money:-120,stability:3}],
+ ['复试放榜，最爱吹嘘神题的人没有考上。街边书商连夜改招牌，写成“诚信卖纸”，第二天却还是有人来问有没有必中题。','公布全部成绩','表彰拒买题卷的考生',{stability:5,loyalty:2},{money:-100,stability:5}]]}
 ];
 STORY_DEFS.push(
  {id:'diplomatic',title:'使臣带来一桩麻烦',type:'国政',stages:[
@@ -257,6 +257,10 @@ class LiangGame {
    const anchor=this.s.people.find(p=>p.clan===c.id&&p.id!=='ye-wife');
    if(anchor){anchor.parents=c.id==='姜'?[gp.id,gm.id]:[father.id,mother.id];if(c.id==='叶')anchor.parents=[gp.id,gm.id];}
    for(let i=0;i<2;i++){let p=this.generateNPC(c.id);p.age=Math.min(p.age,mother.age-18);p.parents=[father.id,mother.id];p.office=i?'地方士人':'候补官员';this.s.people.push(p);}
+  }
+  // 每朝至少有一百名可见、可交往的活人；他们各自有住处、家族和近况。
+  while(this.s.people.filter(p=>!p.dead&&p.id!=='empress').length<100){
+   const clan=this.pick(this.s.clans).id,p=this.generateNPC(clan);p.office=this.pick(['候补官员','地方士人','商户','军中候补','族学先生','闲居']);p.location=this.pick(['京城','江陵','河中','青州','南陵']);p.recent=[{turn:0,text:this.pick(['替家里跑了一趟账','在驿站等一封迟到的信','把旧衣送去补缀','和同窗约好下月再见'])}];this.s.people.push(p);
   }
   // Keep the imperial tutor widowed without inventing an additional living spouse.
   const jiang=this.npc('jiang');jiang.spouse='jiang-spouse';
@@ -529,14 +533,22 @@ class LiangGame {
   if(kind==='chat'){
    const tier=this.dialogueTier(p);text=this.npcDialogue(p,tier);p.chatCount=(p.chatCount||0)+1;
    effects.push(this.changeNPC(p,'friend',5));
-    }else if(kind==='care'){text=p.id==='xie'?'他本要说“不妨事”，见你没有收回药盒，才低低道：“谢陛下。”':p.id==='jiang'?'“不必……”他话到一半，看了眼你叫人添的软垫，终于没再说下去。':'他原本说自己没事，听你再问了一句，才把攥了半天的心事慢慢说出来。';effects.push(this.changeNPC(p,'friend',7));p.health=this.clamp((p.health||90)+4);}
-  else if(kind==='activity'){const stat=['骑射'].includes(p.hobby)?'military':['琴艺','花草'].includes(p.hobby)?'art':'literature';let resonance=this.s.player[stat]>=40?4:0;text=`你们一道${p.hobby==='骑射'?'去校场试了新弓':p.hobby==='琴艺'?'合了一段旧曲':p.hobby==='商道'?'逛了几家小铺':p.hobby==='小动物'?'给廊下的猫梳了毛':'在窗下坐到茶凉'}。他谈到喜欢的事，话比平日多了许多。`;effects.push(this.changeNPC(p,'friend',7+resonance));this.s.player[stat]+=2;effects.push(`${{military:'武',art:'艺',literature:'文'}[stat]} +2${resonance?'，共同爱好额外好感 +4':''}`);}
-  else if(kind==='flirt'){text=p.id==='jiang'?'他手中的书页停了很久。“陛下……”这一声比平日低，后半句却没接上。':p.id==='xu'?'他搁下笔，隔了好一会儿才道：“这话，陛下若只是逗臣，现在收回还来得及。”':p.id==='xie'?'他照旧笑着，手里的茶却忘了添。“陛下，奴才会当真的。”':'他明明已经移开目光，耳根却先红了：“这句话，您也同旁人说过吗？”';effects.push(this.changeNPC(p,'love',8),this.changeNPC(p,'friend',3));
-   for(const q of this.adults().filter(q=>q.id!==p.id&&q.love>=25&&this.rand()<.5)){this.changeNPC(q,'friend',-2);this.record(q,`听说女帝与${p.name}在一处说了许久的话。`);this.log(`${q.name}原本备了茶，听见消息，又叫人撤了。好感 -2。`,'world',q.id);}
-  }else if(kind==='probe'){
-   text=this.s.flags['probe-'+id]?'他没有再绕开话题，把知道的部分慢慢说了。':'他笑了笑，先问你从哪里听来的消息。说到关键处，忽然端起了茶。';
-   this.s.flags['probe-'+id]=true;this.s.intel=this.clamp(this.s.intel+3);effects.push('情报能力 +3',this.changeNPC(p,'friend',p.friend>35?2:-2));
-   if(id==='xie'&&this.s.flags.xieInvestigated){text='旧宫籍中没有谢无咎的入宫记录，他却准确说出了你幼时遇险那晚的细节。“那日救您的，确实是奴才。其余的……您还想听吗？”';this.s.flags.xieRevealed=true;}
+    }else if(kind==='care'){const careLines={
+   'xie':'谢无咎先说没事，见你把药盒推回他手边，才收了笑：“那就留着。今晚我不逞强。”',
+   'jiang':'姜禹瀛把添好的软垫往旁边推了推，过了一会儿还是坐下：“臣只是腰酸，不值得惊动陛下。”',
+   'ye-jin':'叶锦说自己没事，手却一直捏着袖口。你没有追问，他反倒先开口：“家里又来信了，我还没想好怎么回。”',
+   'lu':'陆景明把缠伤的手藏到身后：“小伤。”你叫太医来，他只好叹气：“好吧，别让他们把我绑成粽子。”',
+   'pei':'裴照微本想说不必，看到你把案上的折子收走，才低声道：“臣只是昨夜没睡好，明日还给您一个清醒的答复。”'
+  };text=careLines[p.id]||`${p.name}原本说自己无妨，见你没有立刻走开，才把今日卡在心里的那件小事说了出来。`;effects.push(this.changeNPC(p,'friend',7));p.health=this.clamp((p.health||90)+4);
+  }
+  else if(kind==='activity'){const stat=['骑射'].includes(p.hobby)?'military':['琴艺','花草'].includes(p.hobby)?'art':'literature';let resonance=this.s.player[stat]>=40?4:0;const scene=p.hobby==='骑射'?`${p.name}在校场先替你把弓弦调松：“别急着拉满，手腕会吃不住。”`:p.hobby==='琴艺'?`${p.name}弹错一音，自己先笑了：“这一段总在这里走神。”`:p.hobby==='商道'?`${p.name}带你绕去两家小铺，指着门楣说：“看见没有？同样的货，他们的账法不一样。”`:p.hobby==='小动物'?`${p.name}蹲在廊下给猫梳毛，猫不领情，挠了他一下，他还护着猫说是自己手笨。`:`${p.name}把书页翻到做过记号的地方，讲起那一段时，连茶凉了都没察觉。`;text=scene;effects.push(this.changeNPC(p,'friend',7+resonance));this.s.player[stat]+=2;effects.push(`${{military:'武',art:'艺',literature:'文'}[stat]} +2${resonance?'，共同爱好额外好感 +4':''}`);
+  }
+  else if(kind==='flirt'){const flirtLines={
+   'jiang':'姜禹瀛手里的书页停了很久：“陛下若只是逗臣，最好现在收回。臣年纪大了，禁不起这样的玩笑。”',
+   'xu':'许知衡搁下笔，静了片刻：“这句话若是认真的，臣会记住；若不是，请陛下别让臣猜。”',
+   'xie':'谢无咎仍在笑，手里的茶却忘了添：“陛下，奴才会当真的。到时候可别说是奴才自作多情。”',
+   'ye-jin':'叶锦耳尖红了，仍努力看着你：“臣本来准备了一肚子话，您这样一说，倒一句也想不起来了。”'
+  };text=flirtLines[p.id]||`${p.name}先移开目光，过了半晌才说：“这话若只对臣说，臣便当真了。”`;effects.push(this.changeNPC(p,'love',8),this.changeNPC(p,'friend',3));
   }else if(kind==='scold'){
    const tier=this.dialogueTier({...p,friend:p.friend-10});const scold={
     '恩断义绝':'臣听见了。从今往后，臣只做分内的事。',
@@ -552,9 +564,9 @@ class LiangGame {
     '最爱':'臣愿意听您训，只求您训完还肯留我。'
    };text=scold[tier]||'臣明白了，之后会谨慎些。';effects.push(this.changeNPC(p,'friend',-10),this.changeNPC(p,'loyalty',-4));
   }
-  else if(kind==='sleep'){text='银烛低垂，疏影入帘。今宵不问宫墙外，且把相思付月明。天亮时，那盏茶终于有人替你留温。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={partner:id,father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
+  else if(kind==='sleep'){const sleepLines={'ye-jin':'夜深后，叶锦把最后一盏灯拨暗，轻声说：“明早若有人催，您替臣说一句，今日暂不见客。”','xie':'谢无咎难得没有说笑。更声过了一遍，他才道：“今夜的事，奴才不拿去和任何人换好处。”','lu':'陆景明把佩刀放到门边：“明日还要练兵，今夜便不说军务了。陛下若想听闲话，臣能讲到天亮。”'};text=sleepLines[p.id]||'灯影渐低，两人把白日里的话慢慢说完。临别时，他替你留了盏温茶，才退到帘外。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={partner:id,father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
   else {this.s.privateAP++;delete this.s.acted[k];return {ok:false,message:'无效互动。'};}
-  this.record(p,`与女帝${{chat:'闲谈',care:'说起近况',activity:'共度闲暇',flirt:'说了心意',probe:'谈及旧事',scold:'因事受训',sleep:'共度良宵'}[kind]}。`);
+  this.record(p,`与女帝${{chat:'闲谈',care:'说起近况',activity:'共度闲暇',flirt:'说了心意',scold:'因事受训',sleep:'共度良宵'}[kind]}。`);
   return this.finish(`${p.name}：${text} ${effects.join('；')}。`,'action',id);
  }
  gift(id,treasureId){const p=this.npc(id),i=this.s.treasures.findIndex(t=>t.id===treasureId);if(!p||p.dead||i<0)return {ok:false,message:'宝物或收礼人已不在。'};const c=this.spend({},'private');if(!c.ok)return c;const t=this.s.treasures.splice(i,1)[0],d=t.hobby===p.hobby?14:7;this.changeNPC(p,'friend',d);this.record(p,`收到女帝赏赐的${t.name}。`);p.wealth=(p.wealth||0)+t.value;return this.finish(`将${t.name}赏给${p.name}，好感 +${d}${d===14?'（投其所好）':''}。他打开盒子看了两遍，才想起来谢恩。`,'action',id);}
@@ -568,7 +580,7 @@ class LiangGame {
   if(kind==='talent'||kind==='consort'){let p=this.generateNPC();this.s.people.push(p);p.office=kind==='talent'?'寻访人才':'掖庭候选';p.location=kind==='talent'?'京城':'掖庭';if(kind==='consort'){const waiting=this.s.people.filter(q=>q.location==='掖庭'&&!q.consort).length;if(waiting>15){this.s.people.pop();this.s.money+=cost;this.s.privateAP++;return {ok:false,message:'掖庭候选已满十五人，先安置现有人选。'};}if(!this.s.selection)this.s.selection={year:1,ids:[],chosen:[],closed:false};this.s.selection.closed=false;this.s.selection.ids.push(p.id);}
    return this.finish(`厂卫寻得${p.name}，银 -${cost}。${kind==='talent'?'已入人才名录，可在吏部任用。':'已入掖庭名册，可查看后决定是否册封。'}`,'action',p.id);}
   if(kind==='treasure'){const t={id:++this.s.uid,name:this.pick(['雨过天青盏','古谱残卷','雕花小弓','百年松烟墨','错金棋子','香木琴']),hobby:this.pick(['笔墨','琴艺','骑射','弈棋','花草']),value:this.int(60,160)};this.s.treasures.push(t);return this.finish(`厂卫从旧市寻回${t.name}，银 -${cost}。已收入内府，可赏赐他人。`);}
-  this.s.flags['investigated-'+target]=true;if(target==='xie')this.s.flags.xieInvestigated=true;p.secrets=p.secrets||[];let secret=`查得${p.name}与${this.pick(this.adults().filter(q=>q.id!==target)).name}最近有银钱往来，仍需核实缘由。`;p.secrets.push(secret);this.s.intel=this.clamp(this.s.intel+2);let ca=this.s.cases.find(q=>!q.closed&&q.suspect===target);if(ca)ca.evidence=this.clamp(ca.evidence+1,0,3);return this.finish(`调查${p.name}，银 -${cost}、情报 +2。${target==='xie'?'宫籍里找不到他当年入宫的记录，可以再当面试探。':secret}${ca?'相关案件证据 +1。':''}`);
+  this.s.flags['investigated-'+target]=true;if(target==='xie')this.s.flags.xieInvestigated=true;p.secrets=p.secrets||[];let secret=`查得${p.name}与${this.pick(this.adults().filter(q=>q.id!==target)).name}最近有银钱往来，仍需核实缘由。`;p.secrets.push(secret);this.s.intel=this.clamp(this.s.intel+2);let ca=this.s.cases.find(q=>!q.closed&&q.suspect===target);if(ca)ca.evidence=this.clamp(ca.evidence+1,0,3);return this.finish(`调查${p.name}，银 -${cost}、情报 +2。${target==='xie'?'宫籍里找不到他当年入宫的记录，看来还得找个合适的时候问清。':secret}${ca?'相关案件证据 +1。':''}`);
  }
  outing(place){const defs={teahouse:{cost:40,name:'听雨茶楼'},market:{cost:120,name:'东市宝铺'},theatre:{cost:60,name:'春和戏楼'},temple:{cost:70,name:'城隍庙'},dock:{cost:50,name:'渡口'},clinic:{cost:90,name:'仁心医馆'}};const d=defs[place];if(!d)return {ok:false,message:'此地尚不能探索。'};const c=this.spend({money:d.cost},'private');if(!c.ok)return c;
   let result='';if(place==='market'){const t={id:++this.s.uid,name:this.pick(['碧玉香囊','新刻话本','细骨折扇','青瓷茶盏']),hobby:this.pick(['花草','笔墨','琴艺']),value:100};this.s.treasures.push(t);result=`买下${t.name}，已入宝物库。`;}
@@ -581,15 +593,33 @@ class LiangGame {
  succession(id){const p=this.npc(id);if(!p||!this.s.children.includes(id)||p.age<18||p.dead)return {ok:false,message:'须选择年满十八岁、在世的皇嗣。'};if(this.s.player.age<55&&!this.s.lost)return {ok:false,message:'女帝年满五十五岁后可禅位，当前尚早。'};
   const old=this.s.player;this.s.history.unshift({turn:this.s.turn,title:'禅位',text:`${old.name}禅位于${p.name}，国家、世家和案件继续延续。`});this.npc(old.id).office='太上皇';p.office='女帝';this.s.player={id:p.id,name:p.name,age:p.age,literature:p.literature,military:p.military,art:p.art};for(const q of this.alive()){q.friend=this.bond(q.id,p.id).friend;q.love=this.bond(q.id,p.id).love;}this.s.children=this.s.people.filter(q=>q.parents?.includes(p.id)).map(q=>q.id);this.s.lost=false;this.s.phase='court';this.s.courtAP=5;this.s.privateAP=6;return this.finish(`新帝${p.name}即位。国库、疆域、家史、亲属网络与未结故事全部保留。`,'system');}
  endCourt(){if(this.s.phase!=='court')return {ok:false,message:'已经下朝。'};this.s.phase='private';return this.finish(`散朝。上朝余下 ${this.s.courtAP}次留在朝堂，下朝活动独立可用 ${this.s.privateAP}/6次。`,'system');}
+ simulatePeople(){
+  const living=this.s.people.filter(p=>!p.dead&&p.id!==this.s.player.id),adults=living.filter(p=>p.age>=18),notes=[];
+  for(const p of living){
+   let line;const spouse=p.spouse&&this.npc(p.spouse)&&!this.npc(p.spouse).dead?this.npc(p.spouse):null;
+   if(p.age<12)line=this.pick(['在族学背完一段课文，午后又偷偷跑去看鸽子','把长辈的印章藏进书箱，直到晚饭前才想起来','和同龄孩子为一只纸鸢吵了两句，转眼又一起放飞']);
+   else if(p.age<18)line=this.pick(['在族学替同窗抄完一页功课，自己那页只剩最后一行','听说城南有新戏，整日想着散学后怎么溜出去','把第一次写好的家书揉成一团，重新写到夜里']);
+   else if(spouse&&this.rand()<.35)line=this.pick([`与${spouse.name}为家中账目算到灯芯烧短，最后各退了一步`,`替${spouse.name}留了半碗热汤，自己出门前才想起没吃饭`,`陪${spouse.name}去见一位长辈，回程时顺手买了两包蜜饯`]);
+   else if(p.consort)line=this.pick(['在宫里学着认新茶，记住了哪一盏是女帝常喝的','把家书读了两遍，回信写到一半又停下','在偏殿练字，听见外头脚步声便抬头看了一眼']);
+   else if(p.office&&p.office!=='待选人才')line=this.pick([`在${p.office}的案头压住三份急件，先替最远的州府回了信`,`下值后绕去市集买了些东西，回府才发现袖口还沾着墨`,`被同僚拉住商量一桩差事，原说一刻钟，抬头已过了晚饭时辰`]);
+   else line=this.pick(['在书铺和掌柜争一本旧书的价钱，走时还是多付了两文','替家里跑了一趟差事，回来时顺手给自己买了碗热汤','收到一封旧友的信，回信写了许久仍没提起最想说的那件事']);
+   this.record(p,line);if(this.rand()<.08)notes.push([p,line]);
+  }
+  const single=adults.filter(p=>!p.spouse&&!p.consort&&p.id!=='empress');
+  if(single.length>1&&this.rand()<.55){const a=this.pick(single),cs=single.filter(p=>p.id!==a.id&&!this.related(a.id,p.id));if(cs.length){const b=this.pick(cs);this.changeBond(a.id,b.id,4,2,'新识');a.spouse=b.id;b.spouse=a.id;const line=`${a.name}在${this.pick(['书铺门口','族中寿宴','渡口候船处','校场边'])}认识了${b.name}。两人起初只谈各自的差事，分别时却都回头看了一眼。`;this.record(a,line);this.record(b,line);notes.push([a,line]);}}
+  const couples=adults.filter(p=>p.spouse&&this.npc(p.spouse)&&p.id<this.npc(p.spouse).id&&!this.related(p.id,this.npc(p.spouse).id));
+  if(couples.length&&this.s.people.length<180&&this.rand()<.18){const a=this.pick(couples),b=this.npc(a.spouse),child=this.generateNPC(a.clan);child.id='n'+(++this.s.uid);child.name=this.pick(['安','宁','清','承','昭'])+this.pick(['禾','宁','晏','月','珩','嘉']);child.age=0;child.parents=[a.id,b.id];child.spouse=null;child.office='家中幼儿';child.location=a.location||'家中';child.friend=0;child.love=0;child.loyalty=50;child.recent=[{turn:this.s.turn,text:`出生于${this.date()}，家中为他（她）添了一盏长明灯。`}];this.s.people.push(child);this.changeBond(child.id,a.id,20);this.changeBond(child.id,b.id,20);const line=`${a.name}与${b.name}家中添了孩子。报喜的人赶到时，${b.name}还在问：“名字取好了吗？”`;this.record(a,line);this.record(b,line);this.log(line,'world',a.id);}
+  for(const [p,line]of notes)this.log(`${p.name}${this.pick(['今日','这一月','下值后'])}${line}`,'world',p.id);
+ }
  randomLifeEvent(){
   const pool=this.adults().filter(p=>p.id!==this.s.player.id&&!p.dead);if(pool.length<2)return;
   const a=this.pick(pool),others=pool.filter(p=>p.id!==a.id),b=this.pick(others),kind=this.int(0,5);let text='';
-  if(kind===0){this.changeBond(a.id,b.id,6);this.changeNPC(a,'friend',2);this.changeNPC(b,'friend',2);text=`${a.name}替${b.name}解了围，旁人这才知道两人早有交情。${a.name}、${b.name}好感 +2。`;}
-  if(kind===1){this.changeBond(a.id,b.id,-7);this.changeNPC(a,'friend',-2);this.changeNPC(b,'friend',-2);text=`${a.name}与${b.name}因${this.pick(['一笔旧账','一场失约','家中分产','朝中任免'])}争执，话说重了。两人好感 -2。`;}
-  if(kind===2){this.changeNPC(a,'loyalty',-3);this.changeNPC(b,'friend',-3);this.record(b,`听见${a.name}在外头议论自己，心里很不是滋味。`);text=`${a.name}在席间说了句不该说的话，传到${b.name}耳中。${b.name}好感 -3，${a.name}忠诚 -3。`;}
-  if(kind===3){this.changeNPC(a,'loyalty',2);this.changeNPC(b,'friend',4);this.record(a,`替${b.name}挡下了一桩家中麻烦。`);text=`${a.name}替${b.name}担下一桩家中麻烦，没把功劳拿到人前。${a.name}忠诚 +2，${b.name}好感 +4。`;}
-  if(kind===4){this.changeNPC(a,'loyalty',-4);this.changeNPC(a,'friend',-2);this.record(a,`办差出了纰漏，${b.name}替其补上缺口。`);text=`${a.name}办差出了纰漏，${b.name}连夜替他补上缺口。${a.name}忠诚 -4、好感 -2。`;}
-  if(kind===5){this.changeBond(a.id,b.id,5,0,'旧识');this.changeNPC(a,'friend',3);this.changeNPC(b,'friend',3);text=`${a.name}在旧书铺遇见${b.name}，两人说起年少时的事，竟一起笑了起来。双方好感 +3。`;}
+  if(kind===0){this.changeBond(a.id,b.id,6);this.changeNPC(a,'friend',2);this.changeNPC(b,'friend',2);text=`${a.name}在朝会上替${b.name}接了一句被问住的话。散朝后${b.name}追到廊下道谢，${a.name}只说：“下回把账带齐，别让我再替你挡。”两人交情 +6。`;}
+  if(kind===1){this.changeBond(a.id,b.id,-7);this.changeNPC(a,'friend',-2);this.changeNPC(b,'friend',-2);text=`${a.name}与${b.name}因${this.pick(['族中铺子该由谁管、账目又该怎么算','一场临时改期却没人通知的会面','替长辈垫钱后谁来还这笔账','一份被擅自改过的荐书'])}起了争执。${a.name}以为${b.name}故意瞒着自己，${b.name}却说那只是怕把事情闹大；两人见面时都先看向别处。交情 -7。`;}
+  if(kind===2){this.changeNPC(a,'loyalty',-3);this.changeNPC(b,'friend',-3);this.record(b,`听见${a.name}在席间议论自己，回去后把那封准备好的回信烧了。`);text=`席间有人提起${b.name}的旧事，${a.name}顺口接了一句，原以为只是玩笑，没想到隔着两张桌子也传到了${b.name}耳中。${b.name}好感 -3，${a.name}忠诚 -3。`;}
+  if(kind===3){this.changeNPC(a,'loyalty',2);this.changeNPC(b,'friend',4);this.record(a,`替${b.name}挡下了一桩家中麻烦，回府后才发现自己的差事也没做完。`);text=`${b.name}家里突然来人，要他回去处理一桩难堪的家事。${a.name}替他把差事接过来，没在众人面前提这份帮忙。${a.name}忠诚 +2，${b.name}好感 +4。`;}
+  if(kind===4){this.changeNPC(a,'loyalty',-4);this.changeNPC(a,'friend',-2);this.record(a,`办差时漏看一页批注，${b.name}替他连夜补齐了缺口。`);text=`${a.name}办差时漏看一页批注，直到下值才发现数字对不上。${b.name}陪他在灯下重算，第二天还是把错误记在了${a.name}名下。${a.name}忠诚 -4、好感 -2。`;}
+  if(kind===5){this.changeBond(a.id,b.id,5,0,'旧识');this.changeNPC(a,'friend',3);this.changeNPC(b,'friend',3);text=`${a.name}在旧书铺认出${b.name}，两人说起少年时一起挨罚的那回。掌柜催了两次关门，他们还站在檐下笑。双方好感 +3。`;}
   this.record(a,text);this.record(b,text);this.log(`本月人物动态：${text}`,'world',a.id);
  }
  autonomous(){
@@ -598,10 +628,10 @@ class LiangGame {
    const a=this.pick(pool);if(!a)continue;const familiar=pool.filter(p=>p.id!==a.id&&(this.bond(a.id,p.id).friend!==0||p.clan===a.clan)),others=pool.filter(p=>p.id!==a.id),b=this.pick(familiar.length&&this.rand()<.65?familiar:others);if(!b)continue;
    const bond=this.bond(a.id,b.id),kind=this.int(0,5);let text='';
    if(kind===0){this.changeBond(a.id,b.id,6);text=`${a.name}到${b.name}家吃饭，顺手带走一包点心。${b.name}追到门口：“盒子记得还！”两人交情 +6。`;}
-   if(kind===1){this.changeBond(a.id,b.id,-7);text=`${a.name}与${b.name}为${this.pick(['一笔旧账','谁该去赈灾','族中铺子的份额','一场没赴的约'])}闹了别扭，见面都假装先看见别的人。交情 -7。`;}
+   if(kind===1){this.changeBond(a.id,b.id,-7);text=`${a.name}与${b.name}因${this.pick(['族中铺子该由谁管、账目又该怎么算','一场临时改期却没人通知的会面','替长辈垫钱后谁来还这笔账','一份被擅自改过的荐书'])}起了争执。${a.name}以为${b.name}故意瞒着自己，${b.name}却说那只是怕把事情闹大；两人见面时都先看向别处。交情 -7。`;}
    if(kind===2){const amount=Math.min(40,a.wealth||0);a.wealth=(a.wealth||0)-amount;b.wealth=(b.wealth||0)+amount;this.changeBond(a.id,b.id,amount?4:2);text=amount?`${a.name}替${b.name}垫了 ${amount}两银子，说是借，连张借据也没要。交情 +4。`:`${a.name}自己手头也紧，便替${b.name}找熟人宽了几日账期。交情 +2。`;}
    if(kind===3){a.art=this.clamp((a.art||40)+1);text=`${a.name}${this.pick(['请了半日假去探望长辈，回来时拎着一篮家里塞的菜','在书铺遇见旧日同窗，站在门口聊到打烊','学做一道新点心，最后只肯给家里人尝','为家中小辈挑先生，比自己当年赴考还紧张','听说族中有人病了，连夜送去一车药'])}。艺 +1。`;}
-   if(kind===4){if(a.clan!==b.clan&&bond.friend>15){this.changeBond(a.id,b.id,5,0,'盟友');text=`${a.name}与${b.name}私下约好：下一次${this.pick(['工部建设','州府任命','商税议案'])}，彼此帮着说句话。盟友交情 +5。`;}else {this.changeBond(a.id,b.id,3);text=`${a.name}给${b.name}递了一封荐书：“人合不合用，你自己看，别只看我的面子。”交情 +3。`;}}
+   if(kind===4){if(a.clan!==b.clan&&bond.friend>15){this.changeBond(a.id,b.id,5,0,'盟友');text=`${a.name}与${b.name}私下约好：下一次${this.pick(['工部建设','州府任命','商税议案'])}，彼此帮着说句话。盟友交情 +5。`;}else {this.changeBond(a.id,b.id,3);text=`${a.name}在吏部廊下把荐书递给${b.name}：“先看人，别急着看我的名字。若不合用，退回来就是。”${b.name}把信收进袖中，没当场答应。交情 +3。`;}}
    if(kind===5){const single=!a.spouse&&!b.spouse&&!a.consort&&!b.consort&&a.clan!==b.clan&&!this.related(a.id,b.id);if(single&&bond.friend>12){this.changeBond(a.id,b.id,3,5,'旧识渐近');text=`${a.name}与${b.name}一道赏灯，散场后又绕远路走了一圈。两人交情 +3、爱情 +5。`;if(this.bond(a.id,b.id).love>=25){a.spouse=b.id;b.spouse=a.id;this.changeBond(a.id,b.id,8,0,'夫妻');text+=` 两家同意议婚，婚讯已写入族谱。`;}}else {this.changeBond(a.id,b.id,2);text=`${a.name}替${b.name}保留了一张戏票，自己却先忙得忘了时辰。交情 +2。`;}}
    this.record(a,text);this.record(b,text);this.log(text,'world',a.id);
   }
@@ -642,6 +672,7 @@ class LiangGame {
   if(before.grain+b.grainNet<0){this.s.stability=this.clamp(this.s.stability-9);this.s.morale=this.clamp(this.s.morale-5);for(const r of this.s.regions){if(r.owner==='liang'){r.population=Math.floor(r.population*.98);r.loyalty=this.clamp(r.loyalty-4);}}this.log('缺粮。地方人口流失 2%、民心 -4，稳定 -9、士气 -5。修农田、减兵或进口粮食才能缓解。','warning');}
   this.autonomous();
   this.s.turn++;
+  this.simulatePeople();
   this.randomLifeEvent();
   this.log(`本月结算：收入 ${b.income}，支出 ${b.upkeep}，银 ${b.net>=0?'+':''}${b.net}；粮产 ${b.grain}、耗粮 ${b.food}，结余 ${b.grainNet>=0?'+':''}${b.grainNet}。`,'economy');
   for(const r of this.s.regions){if(r.owner!=='liang')continue;const pop=this.s.grain>0&&r.loyalty>35?Math.ceil(r.population*.004*Math.max(.1,1-this.s.tax/25)):-Math.floor(r.population*.004);const cap=22000+r.buildings.homes*25000;r.population=Math.max(2000,Math.min(cap,r.population+pop));r.loyalty=this.clamp(r.loyalty+(this.s.tax===8?1:this.s.tax===18?-2:0));r.prosperity=this.clamp(r.prosperity+(this.s.tax===18?-1:r.buildings.market>0?1:0));
@@ -733,7 +764,7 @@ const Art={
  }
  function open(type,id=null,extra={}){if(ui.modal)modalTrail.push({...ui.modal});ui.lastFeedback='';ui.modal={type,id,...extra};renderModal();}
  function close(){modalTrail=[];ui.modal=null;$('modal-root').innerHTML='';}
- function header(){const b=game.budget();return `<header class="topbar"><div class="brand"><div class="seal">梁</div><div><h1>凤阙长歌</h1><small>上朝治国 · 下朝见人</small></div></div><div class="date-block"><b>${game.date()}</b><small>${['孟春 · 万物待苏','仲春 · 柳色初新','季春 · 草木渐盛','孟夏 · 风暖昼长','仲夏 · 梅雨将至','季夏 · 蝉鸣入殿','孟秋 · 新凉初起','仲秋 · 月上宫墙','季秋 · 雁过北关','孟冬 · 寒意渐深','仲冬 · 檐雪未消','季冬 · 岁末将近'][s.turn%12]}</small></div><div class="resources"><div class="resource"><small>◇ 国库</small><b>${num(s.money)}</b><em>两</em>${s.flags.arrears?`<small class="treasury-alert">欠饷 ${num(s.flags.arrears)}两 · 可能兵变</small>`:''}</div><div class="resource"><small>穗 存粮</small><b>${num(s.grain)}</b><em>石</em></div><div class="resource"><small>▱ 木 / 铁 / 马</small><b style="font-size:18px">${num(s.wood)} · ${num(s.iron)} · ${num(s.horses)}</b></div><div class="resource"><small>◈ 稳定</small><b>${s.stability}</b><em>/ 100</em></div></div><div class="top-actions">${btn('玩法','modal',['help'], 'icon-btn')}${btn('记事','toggleFeed',[], 'icon-btn')}${btn('存档','modal',['settings'], 'icon-btn')}</div></header>`;}
+ function header(){const b=game.budget();return `<header class="topbar"><div class="brand"><div class="seal">梁</div><div><h1>凤阙长歌</h1><small>上朝治国 · 下朝见人</small></div></div><div class="date-block"><b>${game.date()}</b><small>${['孟春 · 万物待苏','仲春 · 柳色初新','季春 · 草木渐盛','孟夏 · 风暖昼长','仲夏 · 梅雨将至','季夏 · 蝉鸣入殿','孟秋 · 新凉初起','仲秋 · 月上宫墙','季秋 · 雁过北关','孟冬 · 寒意渐深','仲冬 · 檐雪未消','季冬 · 岁末将近'][s.turn%12]}</small></div><div class="resources"><div class="resource"><small>◇ 国库</small><b>${num(s.money)}</b><em>两</em>${s.flags.arrears?`<small class="treasury-alert">欠饷 ${num(s.flags.arrears)}两 · 可能兵变</small>`:''}</div><div class="resource"><small>穗 存粮</small><b>${num(s.grain)}</b><em>石</em></div><div class="resource"><small>木材　铁矿　战马</small><b style="font-size:18px">${num(s.wood)} · ${num(s.iron)} · ${num(s.horses)}</b></div><div class="resource"><small>◈ 稳定</small><b>${s.stability}</b><em>/ 100</em></div></div><div class="top-actions">${btn('玩法','modal',['help'], 'icon-btn')}${btn('记事','toggleFeed',[], 'icon-btn')}${btn('存档','modal',['settings'], 'icon-btn')}</div></header>`;}
  function minister(id){const p=game.npc(id);if(!p)return '';const quotes={
    xu:['陛下，臣有事请奏。河工账册已重新核过，请您定夺。','陛下，臣有事请奏。北境粮道不能再拖，请拨银修堤。'],
    jiang:['陛下，臣有事请奏。经筵章程已拟好，请您过目。','陛下，臣有事请奏。朝中近来议论不少，请您示下。'],
@@ -772,7 +803,7 @@ const Art={
  function desk(){if(s.lost)return `<section class="desk">${deskTitle('朝局失控','本局已结束，故事和家史已保留。')}<div class="end-splash">${btn('存档与重新开始','modal',['settings'],'primary btn')}${s.children.some(id=>game.npc(id)?.age>=18)?btn('选择成年皇嗣','modal',['children'],'btn'):''}</div></section>`;
   return `<section class="desk">${s.phase==='court'?courtDesk():privateDesk()}</section>`;}
  function courtDesk(){
-  if(ui.selected){const q=ui.selected;if(q.kind==='region'){const r=game.region(q.id),o=game.output(r),gov=game.npc(r.governor);return deskTitle(esc(r.name)+'府',`${r.tag} · ${r.owner==='rebel'?'叛乱中 · 无税粮收入':'本国城池'}`,btn('返回政务','clearSelection',[],'link-btn'))+`<div class="stats-row">${stat('人口',r.population,'人')}${stat('守军',r.garrison,'人')}${stat('民心',r.loyalty,'/100')}${stat('月产粮',o.grain,'石')}${stat('月税收',o.money,'两')}${stat('木 / 铁 / 马',o.wood,' / '+o.iron+' / '+o.horses)}</div><p class="muted-note">知府：${gov?btn(esc(gov.name),'profile',[gov.id],'link-btn'):'空缺'}　·　繁荣 ${r.prosperity}　·　农业 ${r.buildings.farm}级 / 商业 ${r.buildings.market}级 / 工矿 ${r.buildings.mine}级</p><div class="inline-actions">${r.owner==='rebel'?btn('派兵平叛 · 银240 粮350','run',['suppress',[r.id]],'primary'):btn('赈济 · 银180 粮220','run',['aid',[r.id]],'primary')}${btn('建设','modal',['construction',r.id])}${btn('调任知府','picker',['governor',r.id])}</div>`;}
+  if(ui.selected){const q=ui.selected;if(q.kind==='region'){const r=game.region(q.id),o=game.output(r),gov=game.npc(r.governor);return deskTitle(esc(r.name)+'府',`${r.tag} · ${r.owner==='rebel'?'叛乱中 · 无税粮收入':'本国城池'}`,btn('返回政务','clearSelection',[],'link-btn'))+`<div class="stats-row">${stat('人口',r.population,'人')}${stat('守军',r.garrison,'人')}${stat('民心',r.loyalty,'/100')}${stat('月产粮',o.grain,'石')}${stat('月税收',o.money,'两')}${stat('木材',o.wood)+stat('铁矿',o.iron)+stat('战马',o.horses)}</div><p class="muted-note">知府：${gov?btn(esc(gov.name),'profile',[gov.id],'link-btn'):'空缺'}　·　繁荣 ${r.prosperity}　·　农业 ${r.buildings.farm}级 / 商业 ${r.buildings.market}级 / 工矿 ${r.buildings.mine}级</p><div class="inline-actions">${r.owner==='rebel'?btn('派兵平叛 · 银240 粮350','run',['suppress',[r.id]],'primary'):btn('赈济 · 银180 粮220','run',['aid',[r.id]],'primary')}${btn('建设','modal',['construction',r.id])}${btn('调任知府','picker',['governor',r.id])}</div>`;}
    if(q.kind==='country'){const c=s.countries.find(c=>c.id===q.id),city=game.region(q.city),count=s.regions.filter(r=>r.owner===c.id).length;return deskTitle(esc(c.name)+(city?' · '+esc(city.name):''),city?`归属${esc(c.name)} · ${city.royal?'王都':esc(city.tag)} · ${esc(c.desc)}`:esc(c.desc),btn('返回政务','clearSelection',[],'link-btn'))+`<div class="stats-row">${stat('关系',c.relation,'/100')}${stat('繁荣',c.prosperity,'/100')}${stat('军力',c.power,'/100')}${stat('城池',count,'座')}${city?stat('本城人口',city.population,'人')+stat('本城守军',city.garrison,'人'):''}</div><p class="muted-note">${c.war?'两国正在交战':c.alliance?'双方已经结盟':c.trade?'双方正在贸易':c.relation>=15?'两国关系好感':c.relation<0?'两国关系紧张':'两国关系普通'}。${c.trade?'每月获得税银和资源。':'关系达15可贸易。'}</p><div class="inline-actions"><span class="diplomacy-label">派使者：</span>${btn('交好','run',['diplomacy',[c.id,'gift']],'primary')}${btn('贸易','run',['diplomacy',[c.id,'trade']])}${btn('结盟','run',['diplomacy',[c.id,'alliance']])}${btn(c.war?'议和':'宣战','countryWar',[c.id],'danger')}</div><p class="muted-note diplomacy-costs">交好：银180 · 贸易：银260、关系≥15 · 结盟：银400、关系≥50 · ${c.war?'议和银500':'宣战前可查看军情'}</p>`;}
    return deskTitle('荒地','与本国城池相邻才能开拓。',btn('返回政务','clearSelection',[],'link-btn'))+`<p class="muted-note">开拓后增加8000人口；建好农田、商区等建筑才有产出。</p><div class="stats-row">${stat('银两',500,'两')}${stat('粮食',400,'石')}${stat('木材',80)}</div>${btn('开拓','run',['exploreTile',[q.x,q.y]],'primary btn')}`;
   }
@@ -797,7 +828,7 @@ const Art={
  function personRow(p){return `<div class="person-row"><div class="mini-portrait">${Art.portrait(p)}</div><div class="person-info"><h3>${esc(p.name)} <small style="font-size:10px">${p.age}岁${p.dead?' · 已故':''}</small></h3><p>${esc(p.office||'无官职')} · ${esc(p.clan)}氏<br>好感 ${p.friend||0}　爱情 ${p.love||0}${p.dead?'':'　'+game.relationGroup(p)}</p></div>${btn('档案 →','profile',[p.id])}</div>`;}
  function treasureList(limit=99){return `<div class="panel-grid">${s.treasures.slice(0,limit).map(t=>`<div class="panel-card"><h3>${esc(t.name)}</h3><p>适合：${esc(t.hobby)}爱好者<br>喜好相符：好感+14，否则+7</p><div class="inline-actions">${btn('选择赠送人','picker',['gift',t.id],'primary')}</div></div>`).join('')||empty('暂无宝物。可出宫买，或派东厂找。')}</div>`;}
  function navbar(){const nav=s.phase==='court'?COURT_NAV:PRIVATE_NAV,names={'策':'国事','奏':'家事','吏':'官员','户':'钱粮','兵':'军队','刑':'案件','工':'建设','内':'修习','宝':'宝物','重华':'子女'};return `<nav class="navbar">${nav.map(([k,v])=>btn(`<b>${names[k]||k}</b><small>${v}</small>`,'tab',[k],`nav-item ${ui.tab===k&&!ui.selected?'active':''}`)).join('')}${btn(`${s.phase==='court'?'下朝':'就寝'}<small>${s.phase==='court'?'宫中行动6次':'进入下月'}</small>`,'endPhase',[],'end-turn')}</nav>`;}
- function render(){const root=$('app');const scroll=$('app').querySelector('.feed')?.scrollTop||0;root.innerHTML=header()+`<div class="layout">${left()}<main class="main">${s.phase==='court'?mapMarkup():privateScene()}${desk()}${navbar()}</main>${feed()}</div><footer class="statusbar"><span>梁宫 · 凤阙长歌 <b>可玩原型 0.2.8</b>　｜　每回合1个月</span><span id="save-status">已自动存档</span><span>适配 1920 × 1080　${btn('使用说明','modal',['help'],'link-btn')}</span></footer>`;if(s.phase==='court'){setupMap();if(!ui.mapReady){recenter();ui.mapReady=true;}else transformMap();}const f=root.querySelector('.feed');if(f)f.scrollTop=scroll;}
+ function render(){const root=$('app');const scroll=$('app').querySelector('.feed')?.scrollTop||0;root.innerHTML=header()+`<div class="layout">${left()}<main class="main">${s.phase==='court'?mapMarkup():privateScene()}${desk()}${navbar()}</main>${feed()}</div><footer class="statusbar"><span>梁宫 · 凤阙长歌 <b>可玩原型 0.2.9</b>　｜　每回合1个月</span><span id="save-status">已自动存档</span><span>适配 1920 × 1080　${btn('使用说明','modal',['help'],'link-btn')}</span></footer>`;if(s.phase==='court'){setupMap();if(!ui.mapReady){recenter();ui.mapReady=true;}else transformMap();}const f=root.querySelector('.feed');if(f)f.scrollTop=scroll;}
  function recenter(){const v=$('map-viewport');if(!v)return;const capital=s.regions.find(r=>r.capital)||{x:20,y:15};ui.pan.z=.83;ui.pan.x=v.clientWidth/2-cx(capital.x)*ui.pan.z;ui.pan.y=v.clientHeight/2-cy(capital.y)*ui.pan.z;transformMap();}
  function overview(){const v=$('map-viewport');if(!v)return;ui.pan.z=Math.min(v.clientWidth/WORLD_MAP.width,v.clientHeight/WORLD_MAP.height)*.94;ui.pan.x=(v.clientWidth-WORLD_MAP.width*ui.pan.z)/2;ui.pan.y=(v.clientHeight-WORLD_MAP.height*ui.pan.z)/2;transformMap();}
  function focusCountry(id){const co=s.countries.find(c=>c.id===id),d=FOREIGN_REALMS[id],v=$('map-viewport');if(!co||!d||!v)return;const rows=Math.ceil(d.count/d.cols);ui.pan.z=Math.min(.75,v.clientWidth/((d.cols+2)*215),v.clientHeight/((rows+3)*170));ui.pan.x=v.clientWidth/2-cx(d.x+(d.cols-1)/2)*ui.pan.z;ui.pan.y=v.clientHeight/2-cy(d.y+(rows-1)/2)*ui.pan.z;ui.selected={kind:'country',id};render();}
@@ -807,7 +838,7 @@ const Art={
 
  function modalShell(title,sub,body,foot='查看不消耗行动力。上朝、下朝行动分开计算。',cls=''){return `<div class="overlay"><section class="modal ${cls}" role="dialog" aria-modal="true" aria-label="${esc(title)}"><header class="modal-head"><div>${sub&&!/^[A-Z ]+$/.test(sub)?`<p class="eyebrow">${sub}</p>`:''}<h2>${title}</h2></div><div style="display:flex;gap:18px;align-items:center">${modalTrail.length?btn('‹ 返回','back',[],'link-btn'):''}${btn('×','close',[],'close')}</div></header><div class="modal-body">${ui.lastFeedback?`<div class="modal-action-feedback">${esc(ui.lastFeedback)}</div>`:''}${body}</div><footer class="modal-foot">${foot}</footer></section></div>`;}
  function profileBody(id){const p=game.npc(id);if(!p)return empty('没有找到此人。');const tabs=['介绍','家族树','亲友关系','近期做了什么'];let content='';const active=ui.modal.tab||'介绍';
-  if(active==='介绍'){content=`<p class="intro-copy" style="font-size:13px">${esc(p.bio||`${p.clan}氏族人，${p.office||'暂居故里'}。`)}</p><div class="stats-row">${stat('政务',p.admin||0)}${stat('文学',p.literature||0)}${stat('武艺',p.military||0)}${stat('才艺',p.art||0)}</div><p class="muted-note">家世：${esc(s.clans.find(c=>c.id===p.clan)?.name||'未知')}　·　喜好：${esc(p.hobby||'未知')}<br>婚姻：${p.spouse?esc(game.npc(p.spouse)?.name||'不详')+(game.npc(p.spouse)?.dead?'（已故）':''):p.consort?'宫中伴侣':'未婚'}　·　性格：${esc(p.personality||'未知')}</p>${s.phase==='private'&&!p.dead&&id!==s.player.id?`<div class="inline-actions">${[['chat','闲谈'],['care','关心'],['activity','同游'],['probe','试探'],['flirt','暧昧'],['scold','责备'],['sleep','侍寝']].filter(([k])=>p.age>=18||['chat','care','activity'].includes(k)).map(([k,t])=>btn(t,'run',['interact',[id,k]],k==='chat'?'primary':'')).join('')}${btn('赏赐','picker',['gift-person',id])}</div>`:''}`;}
+  if(active==='介绍'){content=`<p class="intro-copy" style="font-size:13px">${esc(p.bio||`${p.clan}氏族人，${p.office||'暂居故里'}。`)}</p><div class="stats-row">${stat('政务',p.admin||0)}${stat('文学',p.literature||0)}${stat('武艺',p.military||0)}${stat('才艺',p.art||0)}</div><p class="muted-note">家世：${esc(s.clans.find(c=>c.id===p.clan)?.name||'未知')}　·　喜好：${esc(p.hobby||'未知')}<br>婚姻：${p.spouse?esc(game.npc(p.spouse)?.name||'不详')+(game.npc(p.spouse)?.dead?'（已故）':''):p.consort?'宫中伴侣':'未婚'}　·　性格：${esc(p.personality||'未知')}</p>${s.phase==='private'&&!p.dead&&id!==s.player.id?`<div class="inline-actions">${[['chat','闲谈'],['care','关心'],['activity','同游'],['flirt','暧昧'],['scold','责备'],['sleep','侍寝']].filter(([k])=>p.age>=18||['chat','care','activity'].includes(k)).map(([k,t])=>btn(t,'run',['interact',[id,k]],k==='chat'?'primary':'')).join('')}${btn('赏赐','picker',['gift-person',id])}</div>`:''}`;}
   else if(active==='家族树')content=familyBody(p);
   else if(active==='亲友关系'){const connections=game.alive().filter(q=>q.id!==p.id).map(q=>({q,b:game.bond(p.id,q.id)})).filter(({q,b})=>b.friend!==0||b.love!==0||q.clan===p.clan||q.spouse===p.id);content=connections.sort((a,b)=>Math.abs(b.b.friend)-Math.abs(a.b.friend)).map(({q,b})=>`<div class="relation-line">${btn(esc(q.name),'profile',[q.id],'link-btn')}<span>${q.spouse===p.id?'夫妻':q.parents?.some(x=>p.parents?.includes(x))&&q.clan===p.clan?'兄弟姐妹':b.label!=='相识'?esc(b.label):q.clan===p.clan?'同族':b.friend<-10?'不睦':b.friend>15?'亲友':'相识'}</span><small>交情 ${b.friend} · 爱情 ${b.love}</small></div>`).join('')||empty('暂无往来记录。');}
   else content=`<ul class="recent-list">${(p.recent||[]).map(r=>`<li><small>昭宁${Math.floor(r.turn/12)+1}年${r.turn%12+1}月</small>${esc(r.text)}</li>`).join('')||'<li>暂无近况。</li>'}</ul>`;
@@ -822,7 +853,7 @@ const Art={
  function storyHistoryBody(st){return `<div class="profile-section"><h3>${esc(st.title)} · 前情</h3>${st.history.map((h,i)=>`<div class="story-record"><h3>第${i+1}章 · ${esc(h.choice)}</h3><p>昭宁${Math.floor(h.turn/12)+1}年${h.turn%12+1}月 · ${esc(h.result)}</p></div>`).join('')||empty('尚未处理。')}</div>`;}
  function constructionBody(){let r=game.region(ui.modal.id||'r0');if(!r||r.owner!=='liang')r=s.regions.find(r=>r.owner==='liang');if(!r)return empty('暂无可建设的州府。');return `<div class="page-tabs">${s.regions.filter(r=>r.owner==='liang').map(q=>btn(q.name,'constructionRegion',[q.id],q.id===r.id?'active':'')).join('')}</div><p class="muted-note">${r.name} · 本月${s.built?'已开工':'可开工'}。几级就建几个月，最高5级。</p><div class="panel-grid" style="margin-top:16px">${Object.entries(BUILDINGS).filter(([k])=>k!=='palace'||r.capital).map(([k,d])=>{const level=r.buildings[k],b=s.builds.find(b=>b.region===r.id&&b.key===k),factor=1+level*.7;return `<div class="panel-card build-card"><h3>${d.icon} ${d.name}</h3><div class="level">${'◆'.repeat(level)}${'◇'.repeat(5-level)} ${level}/5级</div><p>${d.desc}</p>${b?`<div class="progress"><i style="width:${(1-b.remaining/b.total)*100}%"></i></div><p>在建 ${b.level}级 · 余 ${b.remaining}个月</p>`:level>=5?'<p>已满级</p>':`<p>银 ${Math.ceil(d.money*factor)} · 木 ${Math.ceil(d.wood*factor)} · 铁 ${Math.ceil(d.iron*factor)}<br>工期 ${level+1}个月</p>`}<div class="inline-actions">${btn(b?'在建':level>=5?'已满级':'升级','run',['build',[r.id,k]],'primary',!!b||level>=5||s.built)}</div></div>`;}).join('')}</div>${s.builds.length?`<div class="profile-section"><h3>在建工程</h3>${s.builds.map(b=>`<p class="muted-note" style="margin-top:10px">${game.region(b.region).name} · ${BUILDINGS[b.key].name} ${b.level}级 · 剩余 ${b.remaining}/${b.total}个月</p>`).join('')}</div>`:''}`;}
  function arrearsPanel(){return s.flags.arrears?`<div class="notice treasury-alert"><b>军饷还欠 ${num(s.flags.arrears)}两</b><p>欠饷${s.flags.deficitMonths||1}个月，兵变风险约 ${Math.round(game.mutinyRisk())}%。余银会自动补饷，也可手动补发。</p>${btn('补发欠饷 · 银'+num(Math.min(s.money,s.flags.arrears)),'run',['repayArrears',[]],'primary',s.money<=0||s.phase!=='court')}</div>`:'';}
- function financeBody(){const b=game.budget();return arrearsPanel()+`<div class="stats-row">${stat('月收入',b.income,'两')}${stat('月支出',b.upkeep,'两')}${stat('月结余',b.net,'两')}${stat('总人口',b.population)}</div><p class="muted-note">军饷 ${b.army} · 官俸 ${b.civil} · 宫廷 ${b.palace} · 工程维护 ${b.projects}<br>产粮 ${b.grain} · 耗粮 ${b.food} · 月余粮 ${fmt(b.grainNet)}<br>月产木 ${b.wood} · 铁 ${b.iron} · 马 ${b.horses} · 贸易收入 ${b.trade}</p><div class="inline-actions">${[8,12,18].map(rate=>btn((rate===8?'低税':rate===12?'常税':'高税')+' '+rate+'%','run',['tax',[rate]],s.tax===rate?'primary':'')).join('')}</div><table class="list-table" style="margin-top:20px"><thead><tr><th>州府</th><th>人口</th><th>民心</th><th>粮产</th><th>税银</th><th>木 / 铁 / 马</th></tr></thead><tbody>${s.regions.filter(r=>r.owner==='liang').map(r=>{const o=game.output(r);return `<tr><td>${esc(r.name)}</td><td>${num(r.population)}</td><td>${r.loyalty}</td><td>${o.grain}</td><td>${o.money}</td><td>${o.wood} / ${o.iron} / ${o.horses}</td></tr>`;}).join('')}</tbody></table><div class="notice">现有资源：银 ${num(s.money)} / 粮 ${num(s.grain)} / 木 ${s.wood} / 铁 ${s.iron} / 马 ${s.horses}。缺粮减人口，欠饷减士气；民心低于18可能叛乱。</div>`;}
+ function financeBody(){const b=game.budget();return arrearsPanel()+`<div class="stats-row">${stat('月收入',b.income,'两')}${stat('月支出',b.upkeep,'两')}${stat('月结余',b.net,'两')}${stat('总人口',b.population)}</div><p class="muted-note">军饷 ${b.army} · 官俸 ${b.civil} · 宫廷 ${b.palace} · 工程维护 ${b.projects}<br>产粮 ${b.grain} · 耗粮 ${b.food} · 月余粮 ${fmt(b.grainNet)}<br>月产木材 ${b.wood} · 铁矿 ${b.iron} · 战马 ${b.horses} · 贸易收入 ${b.trade}</p><div class="inline-actions">${[8,12,18].map(rate=>btn((rate===8?'低税':rate===12?'常税':'高税')+' '+rate+'%','run',['tax',[rate]],s.tax===rate?'primary':'')).join('')}</div><table class="list-table" style="margin-top:20px"><thead><tr><th>州府</th><th>人口</th><th>民心</th><th>粮产</th><th>税银</th><th>木材 · 铁矿 · 战马</th></tr></thead><tbody>${s.regions.filter(r=>r.owner==='liang').map(r=>{const o=game.output(r);return `<tr><td>${esc(r.name)}</td><td>${num(r.population)}</td><td>${r.loyalty}</td><td>${o.grain}</td><td>${o.money}</td><td>木材 ${o.wood} · 铁矿 ${o.iron} · 战马 ${o.horses}</td></tr>`;}).join('')}</tbody></table><div class="notice">现有资源：银 ${num(s.money)} / 粮 ${num(s.grain)} / 木材 ${s.wood} / 铁矿 ${s.iron} / 战马 ${s.horses}。缺粮减人口，欠饷减士气；民心低于18可能叛乱。</div>`;}
  function candidatesBody(type){const isExam=type==='exam',offer=isExam?s.exam:s.selection;if(!offer)return empty(isExam?'暂无考生。':'暂无人选，可派东厂寻人。');const waiting=s.people.filter(p=>p.location==='掖庭'&&!p.consort&&!p.dead).length,occupied=s.people.filter(p=>p.consort&&!p.dead).length,ids=offer.ids.filter(id=>!offer.chosen.includes(id)&&(!isExam?game.npc(id)?.location==='掖庭':true));const max=Number.isInteger(offer.maxChoices)?offer.maxChoices:Math.max(0,game.capacity()-occupied);const selectionNotice=`4年选秀一次。本届可选 ${max} 人，已选 ${offer.chosen.length} 人；后宫 ${occupied}/${game.capacity()}，掖庭候选 ${waiting}/15。每人银100、上朝行动1次。${offer.closed?'本届已结束。未选者留掖庭，可送回家。':'可选人入宫、送回家，或结束选秀。'}`;return `<div class="notice">${isExam?`每年科举一次，最多选3人。已选 ${offer.chosen.length}/3 人。<br>${game.examCost()===0?'首次录取免银两，之后每人60两。':'每人需60两。'}每次上朝行动-1。`:selectionNotice}</div>${!isExam?`<div class="inline-actions selection-controls">${btn('结束选秀（免费）','run',['selectionClose',[]],'primary',offer.closed||s.phase!=='court')}${offer.closed?tag('已结束 · 候选留掖庭'):''}</div>`:''}<div class="people-grid">${ids.map(id=>{const p=game.npc(id),n=p.selectionNote||{};return `<div class="panel-card ${isExam?'exam-card':'selection-card'}"><div style="display:flex;gap:12px;align-items:center"><div class="mini-portrait">${Art.portrait(p)}</div><div><h3>${esc(p.name)} · ${p.age}岁</h3><p>${esc(p.clan)}氏 · ${esc(p.personality)}<br>政 ${p.admin} / 文 ${p.literature} / 武 ${p.military} / 艺 ${p.art}</p></div></div>${!isExam?`<p>家世：${esc(n.rank||p.clan+'氏族人')}<br>外貌：${esc(n.appearance||'容貌清秀，举止端正')}<br>才艺：${esc(n.talent||p.hobby||'尚待了解')}<br>性情：${esc(n.virtue||p.personality||'尚待了解')}</p>`:''}<p>爱好 ${esc(p.hobby)} · 爱情 ${p.love}</p><div class="inline-actions">${btn('档案','profile',[id])}${btn(isExam?(game.examCost()===0?'录取 · 首次免费':'录取 · 银60'):'选入宫 · 银100','run',[isExam?'examChoose':'selectionChoose',[id]],'primary',offer.closed||s.phase!=='court')}${!isExam?btn('送回家 · 1行动','run',['selectionDismiss',[id]],'',s.phase!=='court'):''}</div></div>`;}).join('')||empty(isExam?'本届已选完。':waiting?'本届已选完，其他候选仍在掖庭。':'本届已选完。')}</div>`;}
  function pickerBody(){const mode=ui.modal.mode,target=ui.modal.target;if(mode==='gift-person')return `<p class="muted-note">将宝物赏给${esc(game.npc(target)?.name)}，每次下朝行动-1。</p><div class="panel-grid" style="margin-top:15px">${s.treasures.map(t=>`<div class="panel-card"><h3>${esc(t.name)}</h3><p>喜好：${esc(t.hobby)}</p><div class="inline-actions">${btn('赏赐','run',['gift',[target,t.id]],'primary')}</div></div>`).join('')||empty('宝库为空。')}</div>`;
   let pool=game.alive().filter(p=>p.age>=18&&p.id!==s.player.id);if(['office','governor','agency-appoint'].includes(mode))pool=pool.filter(p=>!p.consort);if(mode==='gift')pool=game.alive();const group=ui.modal.group||'全部';if(group!=='全部')pool=pool.filter(p=>game.relationGroup(p)===group);

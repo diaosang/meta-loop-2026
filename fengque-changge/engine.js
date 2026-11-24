@@ -32,6 +32,10 @@ class LiangGame {
    if(anchor){anchor.parents=c.id==='姜'?[gp.id,gm.id]:[father.id,mother.id];if(c.id==='叶')anchor.parents=[gp.id,gm.id];}
    for(let i=0;i<2;i++){let p=this.generateNPC(c.id);p.age=Math.min(p.age,mother.age-18);p.parents=[father.id,mother.id];p.office=i?'地方士人':'候补官员';this.s.people.push(p);}
   }
+  // 每朝至少有一百名可见、可交往的活人；他们各自有住处、家族和近况。
+  while(this.s.people.filter(p=>!p.dead&&p.id!=='empress').length<100){
+   const clan=this.pick(this.s.clans).id,p=this.generateNPC(clan);p.office=this.pick(['候补官员','地方士人','商户','军中候补','族学先生','闲居']);p.location=this.pick(['京城','江陵','河中','青州','南陵']);p.recent=[{turn:0,text:this.pick(['替家里跑了一趟账','在驿站等一封迟到的信','把旧衣送去补缀','和同窗约好下月再见'])}];this.s.people.push(p);
+  }
   // Keep the imperial tutor widowed without inventing an additional living spouse.
   const jiang=this.npc('jiang');jiang.spouse='jiang-spouse';
   this.s.people.push({id:'jiang-spouse',name:'沈氏',age:29,clan:'沈',office:'太傅亡妻',dead:true,parents:['沈-grand','沈-grandmother'],spouse:'jiang',recent:[]});
@@ -303,14 +307,22 @@ class LiangGame {
   if(kind==='chat'){
    const tier=this.dialogueTier(p);text=this.npcDialogue(p,tier);p.chatCount=(p.chatCount||0)+1;
    effects.push(this.changeNPC(p,'friend',5));
-    }else if(kind==='care'){text=p.id==='xie'?'他本要说“不妨事”，见你没有收回药盒，才低低道：“谢陛下。”':p.id==='jiang'?'“不必……”他话到一半，看了眼你叫人添的软垫，终于没再说下去。':'他原本说自己没事，听你再问了一句，才把攥了半天的心事慢慢说出来。';effects.push(this.changeNPC(p,'friend',7));p.health=this.clamp((p.health||90)+4);}
-  else if(kind==='activity'){const stat=['骑射'].includes(p.hobby)?'military':['琴艺','花草'].includes(p.hobby)?'art':'literature';let resonance=this.s.player[stat]>=40?4:0;text=`你们一道${p.hobby==='骑射'?'去校场试了新弓':p.hobby==='琴艺'?'合了一段旧曲':p.hobby==='商道'?'逛了几家小铺':p.hobby==='小动物'?'给廊下的猫梳了毛':'在窗下坐到茶凉'}。他谈到喜欢的事，话比平日多了许多。`;effects.push(this.changeNPC(p,'friend',7+resonance));this.s.player[stat]+=2;effects.push(`${{military:'武',art:'艺',literature:'文'}[stat]} +2${resonance?'，共同爱好额外好感 +4':''}`);}
-  else if(kind==='flirt'){text=p.id==='jiang'?'他手中的书页停了很久。“陛下……”这一声比平日低，后半句却没接上。':p.id==='xu'?'他搁下笔，隔了好一会儿才道：“这话，陛下若只是逗臣，现在收回还来得及。”':p.id==='xie'?'他照旧笑着，手里的茶却忘了添。“陛下，奴才会当真的。”':'他明明已经移开目光，耳根却先红了：“这句话，您也同旁人说过吗？”';effects.push(this.changeNPC(p,'love',8),this.changeNPC(p,'friend',3));
-   for(const q of this.adults().filter(q=>q.id!==p.id&&q.love>=25&&this.rand()<.5)){this.changeNPC(q,'friend',-2);this.record(q,`听说女帝与${p.name}在一处说了许久的话。`);this.log(`${q.name}原本备了茶，听见消息，又叫人撤了。好感 -2。`,'world',q.id);}
-  }else if(kind==='probe'){
-   text=this.s.flags['probe-'+id]?'他没有再绕开话题，把知道的部分慢慢说了。':'他笑了笑，先问你从哪里听来的消息。说到关键处，忽然端起了茶。';
-   this.s.flags['probe-'+id]=true;this.s.intel=this.clamp(this.s.intel+3);effects.push('情报能力 +3',this.changeNPC(p,'friend',p.friend>35?2:-2));
-   if(id==='xie'&&this.s.flags.xieInvestigated){text='旧宫籍中没有谢无咎的入宫记录，他却准确说出了你幼时遇险那晚的细节。“那日救您的，确实是奴才。其余的……您还想听吗？”';this.s.flags.xieRevealed=true;}
+    }else if(kind==='care'){const careLines={
+   'xie':'谢无咎先说没事，见你把药盒推回他手边，才收了笑：“那就留着。今晚我不逞强。”',
+   'jiang':'姜禹瀛把添好的软垫往旁边推了推，过了一会儿还是坐下：“臣只是腰酸，不值得惊动陛下。”',
+   'ye-jin':'叶锦说自己没事，手却一直捏着袖口。你没有追问，他反倒先开口：“家里又来信了，我还没想好怎么回。”',
+   'lu':'陆景明把缠伤的手藏到身后：“小伤。”你叫太医来，他只好叹气：“好吧，别让他们把我绑成粽子。”',
+   'pei':'裴照微本想说不必，看到你把案上的折子收走，才低声道：“臣只是昨夜没睡好，明日还给您一个清醒的答复。”'
+  };text=careLines[p.id]||`${p.name}原本说自己无妨，见你没有立刻走开，才把今日卡在心里的那件小事说了出来。`;effects.push(this.changeNPC(p,'friend',7));p.health=this.clamp((p.health||90)+4);
+  }
+  else if(kind==='activity'){const stat=['骑射'].includes(p.hobby)?'military':['琴艺','花草'].includes(p.hobby)?'art':'literature';let resonance=this.s.player[stat]>=40?4:0;const scene=p.hobby==='骑射'?`${p.name}在校场先替你把弓弦调松：“别急着拉满，手腕会吃不住。”`:p.hobby==='琴艺'?`${p.name}弹错一音，自己先笑了：“这一段总在这里走神。”`:p.hobby==='商道'?`${p.name}带你绕去两家小铺，指着门楣说：“看见没有？同样的货，他们的账法不一样。”`:p.hobby==='小动物'?`${p.name}蹲在廊下给猫梳毛，猫不领情，挠了他一下，他还护着猫说是自己手笨。`:`${p.name}把书页翻到做过记号的地方，讲起那一段时，连茶凉了都没察觉。`;text=scene;effects.push(this.changeNPC(p,'friend',7+resonance));this.s.player[stat]+=2;effects.push(`${{military:'武',art:'艺',literature:'文'}[stat]} +2${resonance?'，共同爱好额外好感 +4':''}`);
+  }
+  else if(kind==='flirt'){const flirtLines={
+   'jiang':'姜禹瀛手里的书页停了很久：“陛下若只是逗臣，最好现在收回。臣年纪大了，禁不起这样的玩笑。”',
+   'xu':'许知衡搁下笔，静了片刻：“这句话若是认真的，臣会记住；若不是，请陛下别让臣猜。”',
+   'xie':'谢无咎仍在笑，手里的茶却忘了添：“陛下，奴才会当真的。到时候可别说是奴才自作多情。”',
+   'ye-jin':'叶锦耳尖红了，仍努力看着你：“臣本来准备了一肚子话，您这样一说，倒一句也想不起来了。”'
+  };text=flirtLines[p.id]||`${p.name}先移开目光，过了半晌才说：“这话若只对臣说，臣便当真了。”`;effects.push(this.changeNPC(p,'love',8),this.changeNPC(p,'friend',3));
   }else if(kind==='scold'){
    const tier=this.dialogueTier({...p,friend:p.friend-10});const scold={
     '恩断义绝':'臣听见了。从今往后，臣只做分内的事。',
@@ -326,9 +338,9 @@ class LiangGame {
     '最爱':'臣愿意听您训，只求您训完还肯留我。'
    };text=scold[tier]||'臣明白了，之后会谨慎些。';effects.push(this.changeNPC(p,'friend',-10),this.changeNPC(p,'loyalty',-4));
   }
-  else if(kind==='sleep'){text='银烛低垂，疏影入帘。今宵不问宫墙外，且把相思付月明。天亮时，那盏茶终于有人替你留温。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={partner:id,father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
+  else if(kind==='sleep'){const sleepLines={'ye-jin':'夜深后，叶锦把最后一盏灯拨暗，轻声说：“明早若有人催，您替臣说一句，今日暂不见客。”','xie':'谢无咎难得没有说笑。更声过了一遍，他才道：“今夜的事，奴才不拿去和任何人换好处。”','lu':'陆景明把佩刀放到门边：“明日还要练兵，今夜便不说军务了。陛下若想听闲话，臣能讲到天亮。”'};text=sleepLines[p.id]||'灯影渐低，两人把白日里的话慢慢说完。临别时，他替你留了盏温茶，才退到帘外。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={partner:id,father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
   else {this.s.privateAP++;delete this.s.acted[k];return {ok:false,message:'无效互动。'};}
-  this.record(p,`与女帝${{chat:'闲谈',care:'说起近况',activity:'共度闲暇',flirt:'说了心意',probe:'谈及旧事',scold:'因事受训',sleep:'共度良宵'}[kind]}。`);
+  this.record(p,`与女帝${{chat:'闲谈',care:'说起近况',activity:'共度闲暇',flirt:'说了心意',scold:'因事受训',sleep:'共度良宵'}[kind]}。`);
   return this.finish(`${p.name}：${text} ${effects.join('；')}。`,'action',id);
  }
  gift(id,treasureId){const p=this.npc(id),i=this.s.treasures.findIndex(t=>t.id===treasureId);if(!p||p.dead||i<0)return {ok:false,message:'宝物或收礼人已不在。'};const c=this.spend({},'private');if(!c.ok)return c;const t=this.s.treasures.splice(i,1)[0],d=t.hobby===p.hobby?14:7;this.changeNPC(p,'friend',d);this.record(p,`收到女帝赏赐的${t.name}。`);p.wealth=(p.wealth||0)+t.value;return this.finish(`将${t.name}赏给${p.name}，好感 +${d}${d===14?'（投其所好）':''}。他打开盒子看了两遍，才想起来谢恩。`,'action',id);}
@@ -342,7 +354,7 @@ class LiangGame {
   if(kind==='talent'||kind==='consort'){let p=this.generateNPC();this.s.people.push(p);p.office=kind==='talent'?'寻访人才':'掖庭候选';p.location=kind==='talent'?'京城':'掖庭';if(kind==='consort'){const waiting=this.s.people.filter(q=>q.location==='掖庭'&&!q.consort).length;if(waiting>15){this.s.people.pop();this.s.money+=cost;this.s.privateAP++;return {ok:false,message:'掖庭候选已满十五人，先安置现有人选。'};}if(!this.s.selection)this.s.selection={year:1,ids:[],chosen:[],closed:false};this.s.selection.closed=false;this.s.selection.ids.push(p.id);}
    return this.finish(`厂卫寻得${p.name}，银 -${cost}。${kind==='talent'?'已入人才名录，可在吏部任用。':'已入掖庭名册，可查看后决定是否册封。'}`,'action',p.id);}
   if(kind==='treasure'){const t={id:++this.s.uid,name:this.pick(['雨过天青盏','古谱残卷','雕花小弓','百年松烟墨','错金棋子','香木琴']),hobby:this.pick(['笔墨','琴艺','骑射','弈棋','花草']),value:this.int(60,160)};this.s.treasures.push(t);return this.finish(`厂卫从旧市寻回${t.name}，银 -${cost}。已收入内府，可赏赐他人。`);}
-  this.s.flags['investigated-'+target]=true;if(target==='xie')this.s.flags.xieInvestigated=true;p.secrets=p.secrets||[];let secret=`查得${p.name}与${this.pick(this.adults().filter(q=>q.id!==target)).name}最近有银钱往来，仍需核实缘由。`;p.secrets.push(secret);this.s.intel=this.clamp(this.s.intel+2);let ca=this.s.cases.find(q=>!q.closed&&q.suspect===target);if(ca)ca.evidence=this.clamp(ca.evidence+1,0,3);return this.finish(`调查${p.name}，银 -${cost}、情报 +2。${target==='xie'?'宫籍里找不到他当年入宫的记录，可以再当面试探。':secret}${ca?'相关案件证据 +1。':''}`);
+  this.s.flags['investigated-'+target]=true;if(target==='xie')this.s.flags.xieInvestigated=true;p.secrets=p.secrets||[];let secret=`查得${p.name}与${this.pick(this.adults().filter(q=>q.id!==target)).name}最近有银钱往来，仍需核实缘由。`;p.secrets.push(secret);this.s.intel=this.clamp(this.s.intel+2);let ca=this.s.cases.find(q=>!q.closed&&q.suspect===target);if(ca)ca.evidence=this.clamp(ca.evidence+1,0,3);return this.finish(`调查${p.name}，银 -${cost}、情报 +2。${target==='xie'?'宫籍里找不到他当年入宫的记录，看来还得找个合适的时候问清。':secret}${ca?'相关案件证据 +1。':''}`);
  }
  outing(place){const defs={teahouse:{cost:40,name:'听雨茶楼'},market:{cost:120,name:'东市宝铺'},theatre:{cost:60,name:'春和戏楼'},temple:{cost:70,name:'城隍庙'},dock:{cost:50,name:'渡口'},clinic:{cost:90,name:'仁心医馆'}};const d=defs[place];if(!d)return {ok:false,message:'此地尚不能探索。'};const c=this.spend({money:d.cost},'private');if(!c.ok)return c;
   let result='';if(place==='market'){const t={id:++this.s.uid,name:this.pick(['碧玉香囊','新刻话本','细骨折扇','青瓷茶盏']),hobby:this.pick(['花草','笔墨','琴艺']),value:100};this.s.treasures.push(t);result=`买下${t.name}，已入宝物库。`;}
@@ -355,15 +367,33 @@ class LiangGame {
  succession(id){const p=this.npc(id);if(!p||!this.s.children.includes(id)||p.age<18||p.dead)return {ok:false,message:'须选择年满十八岁、在世的皇嗣。'};if(this.s.player.age<55&&!this.s.lost)return {ok:false,message:'女帝年满五十五岁后可禅位，当前尚早。'};
   const old=this.s.player;this.s.history.unshift({turn:this.s.turn,title:'禅位',text:`${old.name}禅位于${p.name}，国家、世家和案件继续延续。`});this.npc(old.id).office='太上皇';p.office='女帝';this.s.player={id:p.id,name:p.name,age:p.age,literature:p.literature,military:p.military,art:p.art};for(const q of this.alive()){q.friend=this.bond(q.id,p.id).friend;q.love=this.bond(q.id,p.id).love;}this.s.children=this.s.people.filter(q=>q.parents?.includes(p.id)).map(q=>q.id);this.s.lost=false;this.s.phase='court';this.s.courtAP=5;this.s.privateAP=6;return this.finish(`新帝${p.name}即位。国库、疆域、家史、亲属网络与未结故事全部保留。`,'system');}
  endCourt(){if(this.s.phase!=='court')return {ok:false,message:'已经下朝。'};this.s.phase='private';return this.finish(`散朝。上朝余下 ${this.s.courtAP}次留在朝堂，下朝活动独立可用 ${this.s.privateAP}/6次。`,'system');}
+ simulatePeople(){
+  const living=this.s.people.filter(p=>!p.dead&&p.id!==this.s.player.id),adults=living.filter(p=>p.age>=18),notes=[];
+  for(const p of living){
+   let line;const spouse=p.spouse&&this.npc(p.spouse)&&!this.npc(p.spouse).dead?this.npc(p.spouse):null;
+   if(p.age<12)line=this.pick(['在族学背完一段课文，午后又偷偷跑去看鸽子','把长辈的印章藏进书箱，直到晚饭前才想起来','和同龄孩子为一只纸鸢吵了两句，转眼又一起放飞']);
+   else if(p.age<18)line=this.pick(['在族学替同窗抄完一页功课，自己那页只剩最后一行','听说城南有新戏，整日想着散学后怎么溜出去','把第一次写好的家书揉成一团，重新写到夜里']);
+   else if(spouse&&this.rand()<.35)line=this.pick([`与${spouse.name}为家中账目算到灯芯烧短，最后各退了一步`,`替${spouse.name}留了半碗热汤，自己出门前才想起没吃饭`,`陪${spouse.name}去见一位长辈，回程时顺手买了两包蜜饯`]);
+   else if(p.consort)line=this.pick(['在宫里学着认新茶，记住了哪一盏是女帝常喝的','把家书读了两遍，回信写到一半又停下','在偏殿练字，听见外头脚步声便抬头看了一眼']);
+   else if(p.office&&p.office!=='待选人才')line=this.pick([`在${p.office}的案头压住三份急件，先替最远的州府回了信`,`下值后绕去市集买了些东西，回府才发现袖口还沾着墨`,`被同僚拉住商量一桩差事，原说一刻钟，抬头已过了晚饭时辰`]);
+   else line=this.pick(['在书铺和掌柜争一本旧书的价钱，走时还是多付了两文','替家里跑了一趟差事，回来时顺手给自己买了碗热汤','收到一封旧友的信，回信写了许久仍没提起最想说的那件事']);
+   this.record(p,line);if(this.rand()<.08)notes.push([p,line]);
+  }
+  const single=adults.filter(p=>!p.spouse&&!p.consort&&p.id!=='empress');
+  if(single.length>1&&this.rand()<.55){const a=this.pick(single),cs=single.filter(p=>p.id!==a.id&&!this.related(a.id,p.id));if(cs.length){const b=this.pick(cs);this.changeBond(a.id,b.id,4,2,'新识');a.spouse=b.id;b.spouse=a.id;const line=`${a.name}在${this.pick(['书铺门口','族中寿宴','渡口候船处','校场边'])}认识了${b.name}。两人起初只谈各自的差事，分别时却都回头看了一眼。`;this.record(a,line);this.record(b,line);notes.push([a,line]);}}
+  const couples=adults.filter(p=>p.spouse&&this.npc(p.spouse)&&p.id<this.npc(p.spouse).id&&!this.related(p.id,this.npc(p.spouse).id));
+  if(couples.length&&this.s.people.length<180&&this.rand()<.18){const a=this.pick(couples),b=this.npc(a.spouse),child=this.generateNPC(a.clan);child.id='n'+(++this.s.uid);child.name=this.pick(['安','宁','清','承','昭'])+this.pick(['禾','宁','晏','月','珩','嘉']);child.age=0;child.parents=[a.id,b.id];child.spouse=null;child.office='家中幼儿';child.location=a.location||'家中';child.friend=0;child.love=0;child.loyalty=50;child.recent=[{turn:this.s.turn,text:`出生于${this.date()}，家中为他（她）添了一盏长明灯。`}];this.s.people.push(child);this.changeBond(child.id,a.id,20);this.changeBond(child.id,b.id,20);const line=`${a.name}与${b.name}家中添了孩子。报喜的人赶到时，${b.name}还在问：“名字取好了吗？”`;this.record(a,line);this.record(b,line);this.log(line,'world',a.id);}
+  for(const [p,line]of notes)this.log(`${p.name}${this.pick(['今日','这一月','下值后'])}${line}`,'world',p.id);
+ }
  randomLifeEvent(){
   const pool=this.adults().filter(p=>p.id!==this.s.player.id&&!p.dead);if(pool.length<2)return;
   const a=this.pick(pool),others=pool.filter(p=>p.id!==a.id),b=this.pick(others),kind=this.int(0,5);let text='';
-  if(kind===0){this.changeBond(a.id,b.id,6);this.changeNPC(a,'friend',2);this.changeNPC(b,'friend',2);text=`${a.name}替${b.name}解了围，旁人这才知道两人早有交情。${a.name}、${b.name}好感 +2。`;}
-  if(kind===1){this.changeBond(a.id,b.id,-7);this.changeNPC(a,'friend',-2);this.changeNPC(b,'friend',-2);text=`${a.name}与${b.name}因${this.pick(['一笔旧账','一场失约','家中分产','朝中任免'])}争执，话说重了。两人好感 -2。`;}
-  if(kind===2){this.changeNPC(a,'loyalty',-3);this.changeNPC(b,'friend',-3);this.record(b,`听见${a.name}在外头议论自己，心里很不是滋味。`);text=`${a.name}在席间说了句不该说的话，传到${b.name}耳中。${b.name}好感 -3，${a.name}忠诚 -3。`;}
-  if(kind===3){this.changeNPC(a,'loyalty',2);this.changeNPC(b,'friend',4);this.record(a,`替${b.name}挡下了一桩家中麻烦。`);text=`${a.name}替${b.name}担下一桩家中麻烦，没把功劳拿到人前。${a.name}忠诚 +2，${b.name}好感 +4。`;}
-  if(kind===4){this.changeNPC(a,'loyalty',-4);this.changeNPC(a,'friend',-2);this.record(a,`办差出了纰漏，${b.name}替其补上缺口。`);text=`${a.name}办差出了纰漏，${b.name}连夜替他补上缺口。${a.name}忠诚 -4、好感 -2。`;}
-  if(kind===5){this.changeBond(a.id,b.id,5,0,'旧识');this.changeNPC(a,'friend',3);this.changeNPC(b,'friend',3);text=`${a.name}在旧书铺遇见${b.name}，两人说起年少时的事，竟一起笑了起来。双方好感 +3。`;}
+  if(kind===0){this.changeBond(a.id,b.id,6);this.changeNPC(a,'friend',2);this.changeNPC(b,'friend',2);text=`${a.name}在朝会上替${b.name}接了一句被问住的话。散朝后${b.name}追到廊下道谢，${a.name}只说：“下回把账带齐，别让我再替你挡。”两人交情 +6。`;}
+  if(kind===1){this.changeBond(a.id,b.id,-7);this.changeNPC(a,'friend',-2);this.changeNPC(b,'friend',-2);text=`${a.name}与${b.name}因${this.pick(['族中铺子该由谁管、账目又该怎么算','一场临时改期却没人通知的会面','替长辈垫钱后谁来还这笔账','一份被擅自改过的荐书'])}起了争执。${a.name}以为${b.name}故意瞒着自己，${b.name}却说那只是怕把事情闹大；两人见面时都先看向别处。交情 -7。`;}
+  if(kind===2){this.changeNPC(a,'loyalty',-3);this.changeNPC(b,'friend',-3);this.record(b,`听见${a.name}在席间议论自己，回去后把那封准备好的回信烧了。`);text=`席间有人提起${b.name}的旧事，${a.name}顺口接了一句，原以为只是玩笑，没想到隔着两张桌子也传到了${b.name}耳中。${b.name}好感 -3，${a.name}忠诚 -3。`;}
+  if(kind===3){this.changeNPC(a,'loyalty',2);this.changeNPC(b,'friend',4);this.record(a,`替${b.name}挡下了一桩家中麻烦，回府后才发现自己的差事也没做完。`);text=`${b.name}家里突然来人，要他回去处理一桩难堪的家事。${a.name}替他把差事接过来，没在众人面前提这份帮忙。${a.name}忠诚 +2，${b.name}好感 +4。`;}
+  if(kind===4){this.changeNPC(a,'loyalty',-4);this.changeNPC(a,'friend',-2);this.record(a,`办差时漏看一页批注，${b.name}替他连夜补齐了缺口。`);text=`${a.name}办差时漏看一页批注，直到下值才发现数字对不上。${b.name}陪他在灯下重算，第二天还是把错误记在了${a.name}名下。${a.name}忠诚 -4、好感 -2。`;}
+  if(kind===5){this.changeBond(a.id,b.id,5,0,'旧识');this.changeNPC(a,'friend',3);this.changeNPC(b,'friend',3);text=`${a.name}在旧书铺认出${b.name}，两人说起少年时一起挨罚的那回。掌柜催了两次关门，他们还站在檐下笑。双方好感 +3。`;}
   this.record(a,text);this.record(b,text);this.log(`本月人物动态：${text}`,'world',a.id);
  }
  autonomous(){
@@ -372,10 +402,10 @@ class LiangGame {
    const a=this.pick(pool);if(!a)continue;const familiar=pool.filter(p=>p.id!==a.id&&(this.bond(a.id,p.id).friend!==0||p.clan===a.clan)),others=pool.filter(p=>p.id!==a.id),b=this.pick(familiar.length&&this.rand()<.65?familiar:others);if(!b)continue;
    const bond=this.bond(a.id,b.id),kind=this.int(0,5);let text='';
    if(kind===0){this.changeBond(a.id,b.id,6);text=`${a.name}到${b.name}家吃饭，顺手带走一包点心。${b.name}追到门口：“盒子记得还！”两人交情 +6。`;}
-   if(kind===1){this.changeBond(a.id,b.id,-7);text=`${a.name}与${b.name}为${this.pick(['一笔旧账','谁该去赈灾','族中铺子的份额','一场没赴的约'])}闹了别扭，见面都假装先看见别的人。交情 -7。`;}
+   if(kind===1){this.changeBond(a.id,b.id,-7);text=`${a.name}与${b.name}因${this.pick(['族中铺子该由谁管、账目又该怎么算','一场临时改期却没人通知的会面','替长辈垫钱后谁来还这笔账','一份被擅自改过的荐书'])}起了争执。${a.name}以为${b.name}故意瞒着自己，${b.name}却说那只是怕把事情闹大；两人见面时都先看向别处。交情 -7。`;}
    if(kind===2){const amount=Math.min(40,a.wealth||0);a.wealth=(a.wealth||0)-amount;b.wealth=(b.wealth||0)+amount;this.changeBond(a.id,b.id,amount?4:2);text=amount?`${a.name}替${b.name}垫了 ${amount}两银子，说是借，连张借据也没要。交情 +4。`:`${a.name}自己手头也紧，便替${b.name}找熟人宽了几日账期。交情 +2。`;}
    if(kind===3){a.art=this.clamp((a.art||40)+1);text=`${a.name}${this.pick(['请了半日假去探望长辈，回来时拎着一篮家里塞的菜','在书铺遇见旧日同窗，站在门口聊到打烊','学做一道新点心，最后只肯给家里人尝','为家中小辈挑先生，比自己当年赴考还紧张','听说族中有人病了，连夜送去一车药'])}。艺 +1。`;}
-   if(kind===4){if(a.clan!==b.clan&&bond.friend>15){this.changeBond(a.id,b.id,5,0,'盟友');text=`${a.name}与${b.name}私下约好：下一次${this.pick(['工部建设','州府任命','商税议案'])}，彼此帮着说句话。盟友交情 +5。`;}else {this.changeBond(a.id,b.id,3);text=`${a.name}给${b.name}递了一封荐书：“人合不合用，你自己看，别只看我的面子。”交情 +3。`;}}
+   if(kind===4){if(a.clan!==b.clan&&bond.friend>15){this.changeBond(a.id,b.id,5,0,'盟友');text=`${a.name}与${b.name}私下约好：下一次${this.pick(['工部建设','州府任命','商税议案'])}，彼此帮着说句话。盟友交情 +5。`;}else {this.changeBond(a.id,b.id,3);text=`${a.name}在吏部廊下把荐书递给${b.name}：“先看人，别急着看我的名字。若不合用，退回来就是。”${b.name}把信收进袖中，没当场答应。交情 +3。`;}}
    if(kind===5){const single=!a.spouse&&!b.spouse&&!a.consort&&!b.consort&&a.clan!==b.clan&&!this.related(a.id,b.id);if(single&&bond.friend>12){this.changeBond(a.id,b.id,3,5,'旧识渐近');text=`${a.name}与${b.name}一道赏灯，散场后又绕远路走了一圈。两人交情 +3、爱情 +5。`;if(this.bond(a.id,b.id).love>=25){a.spouse=b.id;b.spouse=a.id;this.changeBond(a.id,b.id,8,0,'夫妻');text+=` 两家同意议婚，婚讯已写入族谱。`;}}else {this.changeBond(a.id,b.id,2);text=`${a.name}替${b.name}保留了一张戏票，自己却先忙得忘了时辰。交情 +2。`;}}
    this.record(a,text);this.record(b,text);this.log(text,'world',a.id);
   }
@@ -416,6 +446,7 @@ class LiangGame {
   if(before.grain+b.grainNet<0){this.s.stability=this.clamp(this.s.stability-9);this.s.morale=this.clamp(this.s.morale-5);for(const r of this.s.regions){if(r.owner==='liang'){r.population=Math.floor(r.population*.98);r.loyalty=this.clamp(r.loyalty-4);}}this.log('缺粮。地方人口流失 2%、民心 -4，稳定 -9、士气 -5。修农田、减兵或进口粮食才能缓解。','warning');}
   this.autonomous();
   this.s.turn++;
+  this.simulatePeople();
   this.randomLifeEvent();
   this.log(`本月结算：收入 ${b.income}，支出 ${b.upkeep}，银 ${b.net>=0?'+':''}${b.net}；粮产 ${b.grain}、耗粮 ${b.food}，结余 ${b.grainNet>=0?'+':''}${b.grainNet}。`,'economy');
   for(const r of this.s.regions){if(r.owner!=='liang')continue;const pop=this.s.grain>0&&r.loyalty>35?Math.ceil(r.population*.004*Math.max(.1,1-this.s.tax/25)):-Math.floor(r.population*.004);const cap=22000+r.buildings.homes*25000;r.population=Math.max(2000,Math.min(cap,r.population+pop));r.loyalty=this.clamp(r.loyalty+(this.s.tax===8?1:this.s.tax===18?-2:0));r.prosperity=this.clamp(r.prosperity+(this.s.tax===18?-1:r.buildings.market>0?1:0));

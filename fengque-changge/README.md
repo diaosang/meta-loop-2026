@@ -1,8 +1,8 @@
-# 梁宫 · 凤阙长歌 — 可玩原型 0.2.8
+# 梁宫 · 凤阙长歌 — 可玩原型 0.2.9
 
 ## 打开游戏
 
-在线试玩：https://diaosang.github.io/meta-loop-2026/fengque-changge/?v=0.2.8 。离线可下载 liang-palace-0.2.8.zip，用 Edge / Chrome 打开 play.html，或打开「梁宫-直接游玩.html」。
+在线试玩：https://diaosang.github.io/meta-loop-2026/fengque-changge/?v=0.2.9 。离线可下载 liang-palace-0.2.9.zip，用 Edge / Chrome 打开 play.html，或打开「梁宫-直接游玩.html」。
 也可以双击本目录 index.html。开发预览地址为 http://127.0.0.1:8877/ ，仅在本机预览服务运行期间有效。
 建议屏幕 1920×1080、浏览器缩放 100%，按 F11 可全屏。不同入口、浏览器的自动存档可能独立，可通过导出／导入转移。
 
@@ -98,7 +98,7 @@ index.html / style.css / data.js / dialogues.js / engine.js / art.js / app.js �
 - 成年、非近亲、未婚人物可直接侍寝，不要求先暧昧或入后宫；男女角色均可成为生育伴侣。
 
 
-## 0.2.8 更新
+## 0.2.9 更新
 
 - 重写叶锦家族连续事件的四段对白：从书信、兄弟谈话到私产和琴会，都改为具体场景和自然说话。
 - 两个选项改成更口语的处理方式，保留原有关系、家族与资源效果。
