@@ -32,8 +32,8 @@ jobs:
 
       - name: Build and verify the web game
         run: |
-          python3 fengque-changge/源代码/build_web_demo.py
-          node fengque-changge/源代码/test_relationship_dialogue_v35.cjs
+          test -s fengque-changge/index.html
+          node fengque-changge/tests/engine.cjs
 
       - name: Upload game files
         uses: actions/upload-pages-artifact@v4
