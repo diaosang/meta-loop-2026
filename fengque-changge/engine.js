@@ -243,6 +243,55 @@ class LiangGame {
  selectionClose(){const sel=this.s.selection;if(!sel||sel.closed)return {ok:false,message:'本届选秀已结束。'};sel.closed=true;const left=sel.ids.filter(id=>!sel.chosen.includes(id)&&!sel.rejected?.includes(id)).length;return this.finish(`本届选秀结束。${left?`余下${left}人暂留掖庭，最多容纳十五人；以后可在后宫继续查看。`:'候选人已全部安置。'}`,'action');}
  dismissConsort(id){const p=this.npc(id);if(!p||!p.consort||p.office==='皇后')return {ok:false,message:'皇后的安排须随叶氏主线处理。'};const c=this.spend({money:160});if(!c.ok)return c;p.consort=false;p.office='出宫归家';p.room=null;this.changeNPC(p,'friend',-12);return this.finish(`准${p.name}出宫，安置银 -160，好感 -12，空出一处居所。`);}
  relationGroup(p){return p.love>=20?'暧昧':p.friend>=35?'好友':p.friend<=-40?'厌恶':p.friend<0?'疏远':'普通';}
+ dialogueTier(p){
+  if((p.chatCount||0)===0&&p.friend>-20)return '初遇';
+  if(p.friend<=-80)return '恩断义绝';
+  if(p.friend<=-60)return '关系极差';
+  if(p.friend<=-40)return '关系特别差';
+  if(p.friend<=-20)return '关系较差';
+  if(p.friend<0)return '失望';
+  if(p.love>=85)return '最爱';
+  if(p.love>=55)return '暧昧';
+  if(p.friend>=80)return '永远的朋友';
+  if(p.friend>=55)return '朋友';
+  if(p.friend>=30)return '关系上升';
+  return '关系一般';
+ }
+ dialogueSubject(p){return {琴艺:'琴声和花','笔墨':'字和书','经史':'旧书和文章','骑射':'弓马和校场','商道':'铺子和账','弈棋':'棋局和输赢','花草':'花木和时节','小动物':'猫狗和小事'}[p.hobby]||'近日的琐事';}
+ npcDialogue(p,tier){
+  if(p.id==='ye-jin'){
+   const lines={
+    '初遇':['臣叫叶锦，家中排行……倒也没什么特别的。平日里喜欢看看书，偶尔练练字，日子过得还算清闲。','陛下今日这身衣裳真好看，颜色也衬人。臣方才便想说了，又怕显得太唐突。','臣在家时，母亲总嫌臣坐不住，明明书还没读完，便惦记着去院子里看花。如今想来，倒真有些孩子气了。','家中兄长性子比臣稳重得多，小时候总爱管着臣。如今倒好，臣进了宫，耳根子总算清静了些。','臣听说御花园的海棠开了，倒有些想去看看。家里也种了几株，每年春日开花时，母亲总要叫人仔细照料。','臣闲时喜欢临帖，不过字写得也算不上多好。兄长总说臣写字太秀气，少了些筋骨，臣倒觉得这样也挺好。','臣从前常听家里人说，京郊的桃花开得极好。可惜每年都赶不上花期，今年倒不知还有没有机会瞧见。','臣一时也不知该说些什么，陛下莫怪。臣平日里话倒不少，只是到了您面前，反倒有些不知所措了。','臣从前便听人说起过陛下，今日亲眼见了，倒觉得传言还是说得少了些。臣没有奉承的意思，是真心觉得陛下很好看。','臣有时也觉得自己性子太慢了些，旁人做一件事的工夫，臣还在想从哪里开始。母亲倒不着急，总说慢些也没什么不好。'],
+    '关系一般':['臣今日在院子里待了好一会儿，才发现有株花不知什么时候开了。明明日日都经过，竟没留意到。','臣最近在学画竹子，可总觉得画出来差了些意思。兴许还是练得不够，改日得再试试。','家里的小妹从前总爱跟着臣，臣走到哪里，她便跟到哪里。如今倒好，怕是早就把臣忘了。','臣发现宫里的四季好像比家里过得还快些，才觉得天气暖和，转眼又要入夏了。'],
+    '关系上升':['臣前些日子做了个梦，梦见自己还在家里，什么都不用操心。醒来才想起，已经进宫好些日子了。','臣倒觉得，陛下有时也挺有趣的。原先以为您总是那么严肃，熟悉之后才发现不是这样。','今日路过园子时，看见一只小鸟在树枝上跳来跳去，臣站着看了半天。旁人都说臣闲得很，臣倒觉得挺有意思。','臣如今倒是比刚进宫时自在多了，至少不会像最初那样，说句话都要在心里想上好几遍。'],
+    '朋友':['今日有件小事，臣第一个想到要告诉您。说来也没什么要紧，只是觉得您会想听。','臣把新曲弹熟了，先给您听。若弹错了，您可别笑臣；若好听，也请您说一声。','臣今日心情不错，想在园子里多走一圈。您若也得空，陪我走一小段便好。'],
+    '永远的朋友':['臣知道您有许多事要顾，可您若哪天只想安静坐着，也可以来找臣。臣不会追问。','臣把家里寄来的花种分了一半出来，给您留着。以后每年开花，便都算我们一起养的。','不论旁人怎么说，臣总愿意先听您把话讲完。我们认识这么久，这点信任总该有。'],
+    '暧昧':['臣今日换了件新衣，原本没想让谁看见……您若觉得好看，臣便算没有白挑。','您今日见了谁、说了什么，臣本不该多问。可您若一直不说，臣又会忍不住猜。','臣弹琴时总会分心，想着您是不是就在门外。这样下去，琴谱要被臣弹坏了。'],
+    '最爱':['臣不求您时时陪着我，只求您忙完以后，心里还记得有个人在等您回头。','您若要去很远的地方，提前告诉臣。臣会担心，但不会拦您；只求您平安回来。','臣这一生能遇见您，已经是最好的运气。旁的得失，忽然都没那么要紧了。'],
+    '失望':['臣没生您的气，只是有些话不敢再当真了。等臣想明白，再来同您说。'],
+    '关系较差':['臣知道自己不讨您喜欢，今日便不多留。该办的事，臣仍会办好。'],
+    '关系特别差':['您若只是想听顺耳话，臣今日恐怕帮不上忙。臣先告退。'],
+    '关系极差':['臣不想再解释。您既已认定如此，臣说什么都像是在求情。'],
+    '恩断义绝':['从今以后，臣只按规矩办事。旧日那些话，您不必再提，臣也不会再信。']
+   };return this.pick(lines[tier]||lines['关系一般']);
+  }
+  const style=p.personality||'';const subject=this.dialogueSubject(p),name=p.name;
+  const warm=style.includes('温')||style.includes('明朗')||style.includes('慷慨'),strict=style.includes('严肃')||style.includes('清正')||style.includes('克制'),witty=style.includes('圆滑')||style.includes('笑里');
+  const lines={
+   '初遇':warm?[`臣是${name}，初入宫中，若有失礼之处，还请陛下提醒。`,`臣平日爱${subject}，说起来有些琐碎，陛下若不嫌烦，臣可以讲两句。`]:strict?[`臣${name}，见过陛下。臣不善寒暄，但该说的话一定说清。`,`初次见面，臣先把本分做好，不敢让陛下费心。`]:[`臣${name}，见过陛下。臣一时有些紧张，若说得不妥，还请陛下见谅。`,`臣平日喜欢${subject}，除此之外，生活也没什么特别。`],
+   '关系一般':[`臣最近常想起${subject}，宫里和家中到底还是不一样。`,`今日有件小事，臣本想过后再说，想想也不是什么秘密，便告诉陛下了。`],
+   '关系上升':warm?[`臣近来见到${subject}，总想起要同陛下说一说。`,`臣如今在陛下面前放松多了，连些小心思也敢讲了。`]:strict?[`臣有件事想听陛下的看法，不是公事，只是想知道您会怎么想。`,`臣原先以为人与人相处只看规矩，后来发现信任也要慢慢攒。`]:[`臣今日来，不为公事。只是路过这里，忽然想同陛下坐一会儿。`,`臣发现自己越来越习惯把${subject}说给陛下听。`],
+   '朋友':[`臣有话直说，陛下别嫌臣烦。真正的朋友，偶尔说句不中听的，总比一直客气好。`,`若陛下今日不想谈朝事，我们便聊${subject}，总有一件能让人轻松些。`],
+   '永远的朋友':[`陛下若有难处，尽管叫臣。臣未必能替您解决，但一定不会先走。`,`这些年看过太多聚散，能把话放心交给一个人，已经很难得。臣愿意一直站在您这边。`],
+   '暧昧':witty?[`臣本来只是来送句话，见到陛下以后，倒把原先要说的忘了。`,`陛下若再这样看臣，臣可要误会了。`]:[`臣明知不该在意，却还是会留意陛下今日见了谁。`,`臣有时觉得，自己等的不是召见，只是想见陛下一面。`],
+   '最爱':[`臣不敢说能替陛下挡住所有风雨，但您回头时，臣一定还在。`,`臣最安心的时候，不是事情都办妥，而是知道陛下愿意把真话告诉臣。`],
+   '失望':[`臣原先以为，至少我们之间可以说真话。如今看来，是臣想多了。`,`臣会把该做的事做好。至于私下的话，往后少说便是。`],
+   '关系较差':strict?[`臣领命。若无别的事，臣先退下。`,`臣知道陛下对臣有疑虑，臣会用结果说话。`]:[`臣今日不想争辩。您若有吩咐，直说便是。`,`臣也有自尊，不能每次都装作没听见那些话。`],
+   '关系特别差':[`臣来这里只为办事，不为讨好。请陛下把吩咐说完。`,`您不信臣，臣明白。只是别把没有做过的事也算在臣头上。`],
+   '关系极差':[`臣不求您喜欢，只求您别再随意定我的罪。`,`既然彼此都不痛快，往后照章办事，少见为好。`],
+   '恩断义绝':[`从今以后，臣与陛下只有君臣公事。旧情旧话，一笔勾销。`,`臣不会再来求见，也不会再把真心交出去。陛下保重。`]
+  };return this.pick(lines[tier]||lines['关系一般']);
+ }
  interact(id,kind){const p=this.npc(id);if(!p||p.dead)return {ok:false,message:'此人无法召见。'};
   if(['flirt','sleep'].includes(kind)&&this.related(id,this.s.player.id))return {ok:false,message:'亲族之间只有日常关怀与教养互动。'};
   if(['flirt','sleep'].includes(kind)&&(p.age<18||this.s.player.age<18))return {ok:false,message:'未成年人只有关心、教育等日常互动。'};
@@ -253,15 +302,9 @@ class LiangGame {
   const c=this.spend({},'private');if(!c.ok)return c;this.s.acted[k]=true;
   let text='',effects=[];
   if(kind==='chat'){
-   const lines={xu:['“今日有什么安排？若是暂时没事，一起喝杯茶吧。”他往旁边挪了挪。','“我刚收了一幅画，陛下要不要看看？还放在书房里。”'],jiang:['“先坐吧，今日不讲课。”他把点心推过来，“午饭吃了吗？”','“昨日那篇文章我看过了，写得不错。有两处想和你聊聊，倒也不急。”'],xie:['“那只猫？野的。”他袖口全是白毛，神色却很镇定。','“裴大人方才又来找我，说了半个时辰。”他笑了笑，“陛下这边倒清静。”'],ye:['“今日想聊什么？公事就先放一放吧，我也歇会儿。”'], 'ye-jin':['“陛下吃过饭了吗？我让人留了点热汤，要不要一起用些？”','“我新练了一首曲子，还不太熟。陛下想听吗？弹错了可别笑我。”'],'ye-zhen':['“弟弟总说我爱管他。”他把棋子放下，“不管，又不放心。”'],lu:['“今日演武我赢了。”他忍了忍，没忍住笑，“就等您问呢。”']};
-   text=this.pick(lines[id]||['“陛下今日有什么安排？若是得空，一起坐会儿吧。”','“方才过来时看见花开了。等会儿要不要出去走走？”','“最近忙不忙？我倒有件小事，想听听你的主意。”']);
-   p.chatCount=(p.chatCount||0)+1;
-   if(typeof DIALOGUE_LIBRARY!=='undefined'&&(!lines[id]||p.chatCount%3===0)){
-    const scenes=DIALOGUE_LIBRARY.filter(d=>d.category===0&&!(p.seenScenes||[]).includes(d.id)),scene=this.pick(scenes.length?scenes:DIALOGUE_LIBRARY.filter(d=>d.category===0));
-    if(scene){p.seenScenes=[...(p.seenScenes||[]),scene.id].slice(-15);const tone=p.personality.includes('严肃')?'他将话说得很平，倒没有立刻回到规矩上。':p.personality.includes('明朗')?'他越说越有兴致，险些忘记了称臣。':p.personality.includes('骄矜')?'说完，他又补了一句，像是不愿让你听出自己在意。':'说到这里，他看了你一眼，等着你的回答。';text=`${scene.stage}你问：“${scene.player}”他答：“${scene.core}”${tone}`;}
-   }
+   const tier=this.dialogueTier(p);text=this.npcDialogue(p,tier);p.chatCount=(p.chatCount||0)+1;
    effects.push(this.changeNPC(p,'friend',5));
-  }else if(kind==='care'){text=p.id==='xie'?'他本要说“不妨事”，见你没有收回药盒，才低低道：“谢陛下。”':p.id==='jiang'?'“不必……”他话到一半，看了眼你叫人添的软垫，终于没再说下去。':'他原本说自己没事，听你再问了一句，才把攥了半天的心事慢慢说出来。';effects.push(this.changeNPC(p,'friend',7));p.health=this.clamp((p.health||90)+4);}
+    }else if(kind==='care'){text=p.id==='xie'?'他本要说“不妨事”，见你没有收回药盒，才低低道：“谢陛下。”':p.id==='jiang'?'“不必……”他话到一半，看了眼你叫人添的软垫，终于没再说下去。':'他原本说自己没事，听你再问了一句，才把攥了半天的心事慢慢说出来。';effects.push(this.changeNPC(p,'friend',7));p.health=this.clamp((p.health||90)+4);}
   else if(kind==='activity'){const stat=['骑射'].includes(p.hobby)?'military':['琴艺','花草'].includes(p.hobby)?'art':'literature';let resonance=this.s.player[stat]>=40?4:0;text=`你们一道${p.hobby==='骑射'?'去校场试了新弓':p.hobby==='琴艺'?'合了一段旧曲':p.hobby==='商道'?'逛了几家小铺':p.hobby==='小动物'?'给廊下的猫梳了毛':'在窗下坐到茶凉'}。他谈到喜欢的事，话比平日多了许多。`;effects.push(this.changeNPC(p,'friend',7+resonance));this.s.player[stat]+=2;effects.push(`${{military:'武',art:'艺',literature:'文'}[stat]} +2${resonance?'，共同爱好额外好感 +4':''}`);}
   else if(kind==='flirt'){text=p.id==='jiang'?'他手中的书页停了很久。“陛下……”这一声比平日低，后半句却没接上。':p.id==='xu'?'他搁下笔，隔了好一会儿才道：“这话，陛下若只是逗臣，现在收回还来得及。”':p.id==='xie'?'他照旧笑着，手里的茶却忘了添。“陛下，奴才会当真的。”':'他明明已经移开目光，耳根却先红了：“这句话，您也同旁人说过吗？”';effects.push(this.changeNPC(p,'love',8),this.changeNPC(p,'friend',3));
    for(const q of this.adults().filter(q=>q.id!==p.id&&q.love>=25&&this.rand()<.5)){this.changeNPC(q,'friend',-2);this.record(q,`听说女帝与${p.name}在一处说了许久的话。`);this.log(`${q.name}原本备了茶，听见消息，又叫人撤了。好感 -2。`,'world',q.id);}
@@ -269,7 +312,21 @@ class LiangGame {
    text=this.s.flags['probe-'+id]?'他没有再绕开话题，把知道的部分慢慢说了。':'他笑了笑，先问你从哪里听来的消息。说到关键处，忽然端起了茶。';
    this.s.flags['probe-'+id]=true;this.s.intel=this.clamp(this.s.intel+3);effects.push('情报能力 +3',this.changeNPC(p,'friend',p.friend>35?2:-2));
    if(id==='xie'&&this.s.flags.xieInvestigated){text='旧宫籍中没有谢无咎的入宫记录，他却准确说出了你幼时遇险那晚的细节。“那日救您的，确实是奴才。其余的……您还想听吗？”';this.s.flags.xieRevealed=true;}
-  }else if(kind==='scold'){text='话落下后，屋里静了片刻。他收起了原本要说的话，只答了一声“臣明白”。';effects.push(this.changeNPC(p,'friend',-10),this.changeNPC(p,'loyalty',-4));}
+  }else if(kind==='scold'){
+   const tier=this.dialogueTier({...p,friend:p.friend-10});const scold={
+    '恩断义绝':'臣听见了。从今往后，臣只做分内的事。',
+    '关系极差':'臣会记住这次训斥。只是请陛下也记住，臣不是没有尊严。',
+    '关系特别差':'臣领训。若要问罪，请把证据一并拿来。',
+    '关系较差':'臣知道陛下失望了，臣会把该补的补上。',
+    '失望':'臣不辩解。只是这句话，臣会记很久。',
+    '关系一般':'臣明白了。下回臣会先把话说清楚。',
+    '关系上升':'臣知道您是恼我，不是要把我赶走。臣会改。',
+    '朋友':'臣认错。您若愿意，再给臣一次说明的机会。',
+    '永远的朋友':'臣确实做错了，您骂得对。只是别因此不理臣。',
+    '暧昧':'臣知道您生气，可您这样看我，我反而更难受。',
+    '最爱':'臣愿意听您训，只求您训完还肯留我。'
+   };text=scold[tier]||'臣明白了，之后会谨慎些。';effects.push(this.changeNPC(p,'friend',-10),this.changeNPC(p,'loyalty',-4));
+  }
   else if(kind==='sleep'){text='银烛低垂，疏影入帘。今宵不问宫墙外，且把相思付月明。天亮时，那盏茶终于有人替你留温。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
   else {this.s.privateAP++;delete this.s.acted[k];return {ok:false,message:'无效互动。'};}
   this.record(p,`与女帝${{chat:'闲谈',care:'说起近况',activity:'共度闲暇',flirt:'说了心意',probe:'谈及旧事',scold:'因事受训',sleep:'共度良宵'}[kind]}。`);
