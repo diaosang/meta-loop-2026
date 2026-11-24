@@ -229,9 +229,9 @@ class LiangGame {
   const room=Math.max(0,this.capacity()-this.s.people.filter(p=>p.consort&&!p.dead).length);
   const count=Math.min(7,Math.max(0,15-waiting)),ids=[];
   const ranks=['清流世家嫡支','勋贵旁支','商籍新贵','边军人家','寒门秀户','地方官宦'];
-  const looks=['眉眼清秀，笑起来有一点拘谨','神情明快，站在人群里很容易认出来','眉峰利落，说话时总先看旁人的脸色','肤色偏深，常年骑马留下了风吹日晒的痕迹','举止安静，手指上有常年抄书留下的薄茧','衣着素净，但把每一处针脚都理得很平'];
+  const looks=['眉眼清秀，眼尾微微上挑','鼻梁挺直，轮廓利落','肤色白净，唇色很淡','肤色偏深，眉骨清晰','眼睛明亮，笑时露出一点虎牙','身形修长，站姿挺拔','眉目温和，脸颊有一颗小痣','发髻梳得整齐，鬓边留着碎发'];
   const talents=['善理家账，能看懂盐引与商契','熟悉琴棋书画，落笔很有自己的章法','懂骑射和马政，谈起边地时眼睛会亮','擅长照料花木，也记得住宫中人情','读过不少经史，答话稳妥，不爱抢风头','会做小食和香囊，手艺在族中很有名'];
-  for(let i=0;i<count;i++){let p=this.generateNPC();p.age=this.int(18,25);p.office='选秀候选';p.art=this.int(55,95);p.location='掖庭';p.selectionNote={rank:this.pick(ranks),appearance:this.pick(looks),talent:this.pick(talents),virtue:this.pick(['谨慎','直爽','温和','要强','寡言','爱操心']),familyAsk:this.pick(['家里只求平安，不求显贵','族中希望借此稳住一门亲事','父兄叮嘱进宫后少说家事','来之前已写好三封家信，怕忘了寄出'])};p.bio=`${p.bio||''} 此次入选${p.selectionNote.rank}候选，${p.selectionNote.appearance}。${p.selectionNote.talent}。${p.selectionNote.familyAsk}。`;this.s.people.push(p);ids.push(p.id);}
+  for(let i=0;i<count;i++){let p=this.generateNPC();p.age=this.int(18,25);p.office='选秀候选';p.art=this.int(55,95);p.location='掖庭';p.selectionNote={rank:this.pick(ranks),appearance:this.pick(looks),talent:this.pick(talents),virtue:this.pick(['谨慎','直爽','温和','要强','寡言','爱操心']),};p.bio=`${p.bio||''} 此次入选${p.selectionNote.rank}候选，${p.selectionNote.appearance}。${p.selectionNote.talent}。`;this.s.people.push(p);ids.push(p.id);}
   this.s.selection={year:Math.floor(this.s.turn/12)+1,ids,chosen:[],rejected:[],maxChoices:room,closed:room===0||count===0};
  }
  capacity(){return 5+this.s.regions.filter(r=>r.capital).reduce((a,r)=>a+r.buildings.palace*2,0);}
@@ -297,8 +297,7 @@ class LiangGame {
   if(['flirt','sleep'].includes(kind)&&(p.age<18||this.s.player.age<18))return {ok:false,message:'未成年人只有关心、教育等日常互动。'};
   if(['flirt','sleep'].includes(kind)&&p.spouse&&this.npc(p.spouse)&&!this.npc(p.spouse).dead)return {ok:false,message:'对方已婚，不接受邀约。'};
   if(kind==='flirt'&&p.friend<(p.romanceGate||25))return {ok:false,message:`${p.name}与您还不够亲近（好感需达到 ${p.romanceGate||25}）。`};
-  if(kind==='sleep'&&(!p.consort||p.friend<40||p.love<25))return {ok:false,message:'需要宫中名位、好感至少 40、爱情至少 25，双方才愿意共度良宵。'};
-  const k=id+':'+kind;if(this.s.acted[k])return {ok:false,message:'本月已做过，换个互动吧。'};
+  const k=id+':'+kind;
   const c=this.spend({},'private');if(!c.ok)return c;this.s.acted[k]=true;
   let text='',effects=[];
   if(kind==='chat'){
@@ -327,7 +326,7 @@ class LiangGame {
     '最爱':'臣愿意听您训，只求您训完还肯留我。'
    };text=scold[tier]||'臣明白了，之后会谨慎些。';effects.push(this.changeNPC(p,'friend',-10),this.changeNPC(p,'loyalty',-4));
   }
-  else if(kind==='sleep'){text='银烛低垂，疏影入帘。今宵不问宫墙外，且把相思付月明。天亮时，那盏茶终于有人替你留温。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
+  else if(kind==='sleep'){text='银烛低垂，疏影入帘。今宵不问宫墙外，且把相思付月明。天亮时，那盏茶终于有人替你留温。';effects.push(this.changeNPC(p,'love',10),this.changeNPC(p,'friend',5));if(!this.s.pregnancy&&this.rand()<.38&&this.s.player.age<=48){this.s.pregnancy={partner:id,father:id,due:this.s.turn+9};effects.push('太医将留意您的身体变化');}}
   else {this.s.privateAP++;delete this.s.acted[k];return {ok:false,message:'无效互动。'};}
   this.record(p,`与女帝${{chat:'闲谈',care:'说起近况',activity:'共度闲暇',flirt:'说了心意',probe:'谈及旧事',scold:'因事受训',sleep:'共度良宵'}[kind]}。`);
   return this.finish(`${p.name}：${text} ${effects.join('；')}。`,'action',id);
@@ -356,6 +355,17 @@ class LiangGame {
  succession(id){const p=this.npc(id);if(!p||!this.s.children.includes(id)||p.age<18||p.dead)return {ok:false,message:'须选择年满十八岁、在世的皇嗣。'};if(this.s.player.age<55&&!this.s.lost)return {ok:false,message:'女帝年满五十五岁后可禅位，当前尚早。'};
   const old=this.s.player;this.s.history.unshift({turn:this.s.turn,title:'禅位',text:`${old.name}禅位于${p.name}，国家、世家和案件继续延续。`});this.npc(old.id).office='太上皇';p.office='女帝';this.s.player={id:p.id,name:p.name,age:p.age,literature:p.literature,military:p.military,art:p.art};for(const q of this.alive()){q.friend=this.bond(q.id,p.id).friend;q.love=this.bond(q.id,p.id).love;}this.s.children=this.s.people.filter(q=>q.parents?.includes(p.id)).map(q=>q.id);this.s.lost=false;this.s.phase='court';this.s.courtAP=5;this.s.privateAP=6;return this.finish(`新帝${p.name}即位。国库、疆域、家史、亲属网络与未结故事全部保留。`,'system');}
  endCourt(){if(this.s.phase!=='court')return {ok:false,message:'已经下朝。'};this.s.phase='private';return this.finish(`散朝。上朝余下 ${this.s.courtAP}次留在朝堂，下朝活动独立可用 ${this.s.privateAP}/6次。`,'system');}
+ randomLifeEvent(){
+  const pool=this.adults().filter(p=>p.id!==this.s.player.id&&!p.dead);if(pool.length<2)return;
+  const a=this.pick(pool),others=pool.filter(p=>p.id!==a.id),b=this.pick(others),kind=this.int(0,5);let text='';
+  if(kind===0){this.changeBond(a.id,b.id,6);this.changeNPC(a,'friend',2);this.changeNPC(b,'friend',2);text=`${a.name}替${b.name}解了围，旁人这才知道两人早有交情。${a.name}、${b.name}好感 +2。`;}
+  if(kind===1){this.changeBond(a.id,b.id,-7);this.changeNPC(a,'friend',-2);this.changeNPC(b,'friend',-2);text=`${a.name}与${b.name}因${this.pick(['一笔旧账','一场失约','家中分产','朝中任免'])}争执，话说重了。两人好感 -2。`;}
+  if(kind===2){this.changeNPC(a,'loyalty',-3);this.changeNPC(b,'friend',-3);this.record(b,`听见${a.name}在外头议论自己，心里很不是滋味。`);text=`${a.name}在席间说了句不该说的话，传到${b.name}耳中。${b.name}好感 -3，${a.name}忠诚 -3。`;}
+  if(kind===3){this.changeNPC(a,'loyalty',2);this.changeNPC(b,'friend',4);this.record(a,`替${b.name}挡下了一桩家中麻烦。`);text=`${a.name}替${b.name}担下一桩家中麻烦，没把功劳拿到人前。${a.name}忠诚 +2，${b.name}好感 +4。`;}
+  if(kind===4){this.changeNPC(a,'loyalty',-4);this.changeNPC(a,'friend',-2);this.record(a,`办差出了纰漏，${b.name}替其补上缺口。`);text=`${a.name}办差出了纰漏，${b.name}连夜替他补上缺口。${a.name}忠诚 -4、好感 -2。`;}
+  if(kind===5){this.changeBond(a.id,b.id,5,0,'旧识');this.changeNPC(a,'friend',3);this.changeNPC(b,'friend',3);text=`${a.name}在旧书铺遇见${b.name}，两人说起年少时的事，竟一起笑了起来。双方好感 +3。`;}
+  this.record(a,text);this.record(b,text);this.log(`本月人物动态：${text}`,'world',a.id);
+ }
  autonomous(){
   const pool=this.adults();
   for(let i=0;i<8;i++){
@@ -406,6 +416,7 @@ class LiangGame {
   if(before.grain+b.grainNet<0){this.s.stability=this.clamp(this.s.stability-9);this.s.morale=this.clamp(this.s.morale-5);for(const r of this.s.regions){if(r.owner==='liang'){r.population=Math.floor(r.population*.98);r.loyalty=this.clamp(r.loyalty-4);}}this.log('缺粮。地方人口流失 2%、民心 -4，稳定 -9、士气 -5。修农田、减兵或进口粮食才能缓解。','warning');}
   this.autonomous();
   this.s.turn++;
+  this.randomLifeEvent();
   this.log(`本月结算：收入 ${b.income}，支出 ${b.upkeep}，银 ${b.net>=0?'+':''}${b.net}；粮产 ${b.grain}、耗粮 ${b.food}，结余 ${b.grainNet>=0?'+':''}${b.grainNet}。`,'economy');
   for(const r of this.s.regions){if(r.owner!=='liang')continue;const pop=this.s.grain>0&&r.loyalty>35?Math.ceil(r.population*.004*Math.max(.1,1-this.s.tax/25)):-Math.floor(r.population*.004);const cap=22000+r.buildings.homes*25000;r.population=Math.max(2000,Math.min(cap,r.population+pop));r.loyalty=this.clamp(r.loyalty+(this.s.tax===8?1:this.s.tax===18?-2:0));r.prosperity=this.clamp(r.prosperity+(this.s.tax===18?-1:r.buildings.market>0?1:0));
    if(r.loyalty<18&&this.rand()<.25){r.owner='rebel';this.s.stability=this.clamp(this.s.stability-6);this.log(`${r.name}因民心过低发生叛乱，税粮中断。可在地图派兵平叛。`,'warning');}}
@@ -415,7 +426,7 @@ class LiangGame {
    if(this.rand()<.13&&!co.war){const d=this.pick([-12,-6,6,10]);co.relation=this.clamp(co.relation+d,-100,100);this.log(`${co.name}${d>0?'派使者祝贺新朝，愿继续往来':'因边境商队纠纷发来照会'}。关系 ${d>0?'+':''}${d}。`,'diplomacy');if(co.trade&&co.relation<0){co.trade=false;this.log(`${co.name}暂停商约，贸易收入与进口同时中断。`,'warning');}}
   }
   if(this.s.war){const w=this.s.war,co=this.s.countries.find(c=>c.id===w.country);this.settleTreasury(-220);this.s.grain=Math.max(0,this.s.grain-350);const support=this.s.countries.filter(c=>c.alliance&&!c.war).length*160,ratio=(this.combat()+support)/(co.power*30),win=ratio*(.75+this.rand()*.5)>1;const casualties=Math.min(this.s.soldiers,this.int(win?60:180,win?180:360));this.s.soldiers-=casualties;this.s.weapons=Math.max(0,this.s.weapons-Math.floor(casualties*.7));w.our+=win?1:0;w.their+=win?0:1;w.remaining--;this.log(`对${co.name}战事：${win?'此役得胜':'此役失利'}，损兵 ${casualties}，军费银 -220、粮 -350。`,'warning');if(w.remaining===0){co.war=false;co.relation=-65;if(w.our>=2){co.power=Math.max(10,co.power-12);this.s.money+=800;this.s.stability=this.clamp(this.s.stability+6);const capital=this.s.regions.find(r=>r.capital),taken=this.s.regions.filter(r=>r.owner===co.id).sort((a,b)=>(Math.abs(a.x-capital.x)+Math.abs(a.y-capital.y))-(Math.abs(b.x-capital.x)+Math.abs(b.y-capital.y)))[0];if(taken){taken.owner='liang';taken.tag='新附';taken.loyalty=27;taken.garrison=180;taken.governor='lu';taken.royal=false;}this.log(`战胜${co.name}，获赔银 800、稳定 +6，${taken?taken.name+'归附': '对方已无可割让城池'}；新附民众忠诚较低。`,'system');}else{this.s.stability=this.clamp(this.s.stability-10);this.s.morale=this.clamp(this.s.morale-12);this.log(`对${co.name}战败，稳定 -10、士气 -12，朝臣要求重整军备。`,'warning');}this.s.war=null;}}
-  if(this.s.pregnancy&&this.s.pregnancy.due<=this.s.turn){let p=this.generateNPC('皇室');p.name=this.pick(['昭','承','明'])+this.pick(['宁','安','晏','和','珩']);p.age=0;p.parents=[this.s.player.id,this.s.pregnancy.father];p.office='皇嗣';p.friend=15;p.love=0;p.literature=5;p.military=3;p.art=5;p.location='重华宫';p.bio=`${this.s.player.name}与${this.npc(this.s.pregnancy.father).name}之子女，出生于${this.date()}。`;this.s.people.push(p);this.s.children.push(p.id);this.s.pregnancy=null;this.s.stability=this.clamp(this.s.stability+4);this.log(`皇嗣${p.name}降生，稳定 +4，已入重华宫与皇室族谱。`,'system');}
+  if(this.s.pregnancy&&this.s.pregnancy.due<=this.s.turn){let p=this.generateNPC('皇室');p.name=this.pick(['昭','承','明'])+this.pick(['宁','安','晏','和','珩']);p.age=0;const partnerId=this.s.pregnancy.partner||this.s.pregnancy.father;p.parents=[this.s.player.id,partnerId];p.office='皇嗣';p.friend=15;p.love=0;p.literature=5;p.military=3;p.art=5;p.location='重华宫';p.bio=`${this.s.player.name}与${this.npc(partnerId).name}之子女，出生于${this.date()}。`;this.s.people.push(p);this.s.children.push(p.id);this.s.pregnancy=null;this.s.stability=this.clamp(this.s.stability+4);this.log(`皇嗣${p.name}降生，稳定 +4，已入重华宫与皇室族谱。`,'system');}
   if(this.s.turn%12===0){this.s.player.age++;for(const p of this.s.people){if(p.dead)continue;p.age++;if(p.age>72&&this.rand()<.14){p.dead=true;if(p.id===this.s.player.id){this.s.lost=true;this.log('女帝驾崩。可在重华宫选择成年皇嗣承继，也可读档或另起一朝。','system');}p.consort=false;p.consort=false;for(const [o,id]of Object.entries(this.s.offices))if(id===p.id)delete this.s.offices[o];this.log(`${p.name}辞世，亲族与旧交前往吊唁，履历已留入家史。`,'world',p.id);this.s.history.unshift({turn:this.s.turn,title:p.name+'辞世',text:`${p.clan}氏，享年${p.age}。${p.bio||''}`});}}
    this.npc(this.s.player.id).age=this.s.player.age;this.examOffer();this.log('新年开科，本届六名应试人才已入礼部名册，最多选三名。','system');
    if(this.s.turn%48===0){this.selectionOffer();this.log('四年一届的选秀开始，新候选人已入掖庭；总待诏超过十五人会按年资遣还。','system');}
@@ -451,7 +462,7 @@ class LiangGame {
     if(c.reports!==undefined&&(!Array.isArray(c.reports)||!c.reports.every(r=>record(r)&&Number.isInteger(r.turn)&&finite(r.turn,0,s.turn)&&(r.reporter===null||ids.has(r.reporter))&&typeof r.speaker==='string'&&typeof r.text==='string'&&finite(r.evidence,0,3))))return false;}
    for(const offer of [s.exam,s.selection])if(offer&&(!Array.isArray(offer.ids)||!Array.isArray(offer.chosen)||!offer.ids.every(id=>ids.has(id))||!offer.chosen.every(id=>offer.ids.includes(id))))return false;
    if(s.selection){if(!Array.isArray(s.selection.rejected||[])||!(s.selection.rejected||[]).every(id=>s.selection.ids.includes(id))||!Number.isInteger(s.selection.maxChoices)||!finite(s.selection.maxChoices,0,20)||s.selection.chosen.some(id=>s.selection.rejected.includes(id)))return false;}
-   if(s.pregnancy&&(!ids.has(s.pregnancy.father)||!finite(s.pregnancy.due)))return false;
+   if(s.pregnancy&&(!ids.has(s.pregnancy.partner||s.pregnancy.father)||!finite(s.pregnancy.due)))return false;
    if(s.war&&(!s.countries.some(c=>c.id===s.war.country)||!finite(s.war.remaining,1,3)))return false;
    return true;
   }catch{return false;}
