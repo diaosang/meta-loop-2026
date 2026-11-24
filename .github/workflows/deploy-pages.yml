@@ -30,6 +30,11 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Build and verify the web game
+        run: |
+          python3 fengque-changge/源代码/build_web_demo.py
+          node fengque-changge/源代码/test_relationship_dialogue_v35.cjs
+
       - name: Upload game files
         uses: actions/upload-pages-artifact@v4
         with:
