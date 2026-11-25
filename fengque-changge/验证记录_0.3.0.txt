@@ -1,0 +1,8 @@
+梁宫·凤阙长歌 0.3.0 验证记录
+
+- node --check outputs/liang-palace/engine.js：通过
+- node --check outputs/liang-palace/app.js：通过
+- node outputs/liang-palace/tests/engine.cjs：48 项通过
+- 每月外交/十回合入侵/增援烟测：通过
+- 1920×1080 Playwright UI 烟测：通过
+- 离线 play.html 与本地 ZIP：已重新生成

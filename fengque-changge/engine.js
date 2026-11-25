@@ -3,6 +3,10 @@ class LiangGame {
  constructor(state){this.s=state||this.create();if(state&&state.mapVersion!==2){for(const r of state.regions){r.x+=15;r.y+=11;}this.setupForeignCities();}for(const story of this.s.stories)if(story.def==='grain'&&story.title==='一船粮，两本账'||story.def==='twins'&&story.title==='同枝不同命')story.title=STORY_DEFS.find(d=>d.id===story.def).title;
   if(this.s.flags.examRecruited===undefined)this.s.flags.examRecruited=!!(this.s.exam?.chosen.length||this.s.people.some(p=>p.office==='新科进士')||this.s.logs.some(l=>/^录取.+为新科进士/.test(l.text)));
   if(this.s.selection){this.s.selection.rejected=this.s.selection.rejected||[];this.s.selection.maxChoices=Number.isInteger(this.s.selection.maxChoices)?this.s.selection.maxChoices:Math.max(0,this.capacity()-(this.s.people||[]).filter(p=>p.consort&&!p.dead).length);}
+  this.s.invasions=this.s.invasions||[];
+  this.s.flags.foreignLinks=this.s.flags.foreignLinks||{};
+  this.s.flags.eventThreads=this.s.flags.eventThreads||[];
+  for(const c of this.s.countries){c.chronicle=c.chronicle||[];c.treasury=c.treasury??1600;c.stock=c.stock??2200;}
  }
  rand(){let x=this.s.seed|0;x^=x<<13;x^=x>>>17;x^=x<<5;this.s.seed=x>>>0;return this.s.seed/4294967296;}
  int(a,b){return a+Math.floor(this.rand()*(b-a+1));}
@@ -23,10 +27,10 @@ class LiangGame {
   this.s.people.push({id:'ye-sister',name:'叶令仪',age:10,clan:'叶',office:'叶家幼女',parents:['ye','ye-wife'],friend:0,love:0,loyalty:50,health:100,personality:'伶俐好奇',hobby:'花草',admin:10,literature:15,military:5,art:20,recent:[{turn:0,text:'把给两位兄长的家书装反了信封。'}],color:'#b8998e',bio:'叶家幼女，尚在家塾读书，最爱追着两位兄长问宫里有没有真的金鱼。'});
   for(const c of this.s.clans){
    const gp={id:c.id+'-grand',name:{姜:'姜慎行',叶:'叶崇礼',许:'许阁老',沈:'沈秉川',裴:'裴端',陆:'陆震北'}[c.id],age:69,clan:c.id,office:'族中长辈',dead:['许','陆','裴'].includes(c.id),parents:[],spouse:c.id+'-grandmother',friend:0,love:0,loyalty:50,personality:'老成持重',hobby:'经史',admin:80,literature:78,military:65,art:50,health:72,wealth:900,recent:[],color:c.color,bio:c.history[0]};
-   const gm={...gp,id:c.id+'-grandmother',name:c.id+'氏老夫人',age:66,spouse:gp.id,office:'族中长辈',dead:c.id==='许',parents:[]};
+   const gm={...gp,id:c.id+'-grandmother',name:(c.id==='姜'?'姜':c.id==='叶'?'叶':c.id==='许'?'许':c.id==='沈'?'沈':c.id==='裴'?'裴':'陆')+this.pick(['含章','静仪','明珠','清妍']),age:66,spouse:gp.id,office:'族中长辈',dead:c.id==='许',parents:[]};
    this.s.people.push(gp,gm);
    const father={...gp,id:c.id+'-father',name:c.id+this.pick(['承礼','望舒','怀序','绍庭','文谦']),age:47,dead:c.id==='许',spouse:c.id+'-mother',parents:[gp.id,gm.id],office:'族中管事',recent:[]};
-   const mother={...gm,id:c.id+'-mother',name:this.pick(['顾','崔','柳','宋'])+'氏',age:45,dead:false,clan:c.id,spouse:father.id,parents:[],office:'家中长辈',recent:[]};
+   const mother={...gm,id:c.id+'-mother',name:this.pick(['顾','崔','柳','宋'])+this.pick(['云岚','明珠','静姝','清和']),age:45,dead:false,clan:c.id,spouse:father.id,parents:[],office:'家中长辈',recent:[]};
    this.s.people.push(father,mother);
    const anchor=this.s.people.find(p=>p.clan===c.id&&p.id!=='ye-wife');
    if(anchor){anchor.parents=c.id==='姜'?[gp.id,gm.id]:[father.id,mother.id];if(c.id==='叶')anchor.parents=[gp.id,gm.id];}
@@ -38,7 +42,7 @@ class LiangGame {
   }
   // Keep the imperial tutor widowed without inventing an additional living spouse.
   const jiang=this.npc('jiang');jiang.spouse='jiang-spouse';
-  this.s.people.push({id:'jiang-spouse',name:'沈氏',age:29,clan:'沈',office:'太傅亡妻',dead:true,parents:['沈-grand','沈-grandmother'],spouse:'jiang',recent:[]});
+  this.s.people.push({id:'jiang-spouse',name:'沈清妍',age:29,clan:'沈',office:'太傅亡妻',dead:true,parents:['沈-grand','沈-grandmother'],spouse:'jiang',recent:[]});
   this.s.offices={'首辅':'xu','太傅':'jiang','吏部尚书':'姜-father','户部尚书':'ye','礼部尚书':'裴-father','兵部尚书':'lu','刑部尚书':'许-mother','工部尚书':'shen','左都御史':'pei','东厂提督':'xie','西厂掌印':'xie','锦衣卫指挥使':'xie'};
   const coords=[[20,15,'京畿','帝都',1],[19,15,'河中','粮仓',0],[21,15,'青州','商埠',0],[20,14,'陇西','矿藏',0],[20,16,'南陵','牧野',0]];
   coords.forEach(([x,y,name,tag,capital],i)=>{this.s.regions.push({id:'r'+i,x,y,name,tag,capital:!!capital,owner:'liang',population:capital?62000:this.int(24000,38000),loyalty:this.int(35,58),prosperity:this.int(25,46),garrison:capital?800:400,governor:['xu','姜-father','shen','pei','lu'][i],buildings:{farm:tag==='矿藏'?0:1,market:[0,2].includes(i)?1:0,mine:tag==='矿藏'?1:0,pasture:tag==='牧野'?1:0,homes:capital?2:1,palace:0}});});
@@ -47,7 +51,7 @@ class LiangGame {
   for(const p of this.s.people){for(const parent of p.parents||[])this.changeBond(p.id,parent,25,0,'亲属');if(p.spouse&&this.npc(p.spouse))this.changeBond(p.id,p.spouse,12,0,'夫妻');}
   for(const [a,b,d,label]of [['xu','jiang',28,'同议新政'],['jiang','ye',18,'拥立旧盟'],['xu','ye',-14,'政见不合'],['pei','xie',-30,'互相提防'],['lu','shen',-18,'军需旧争'],['shen','ye-zhen',24,'商路旧交'],['ye-jin','ye-zhen',26,'双生兄弟'],['ye-wife','ye-jin',-8,'母子有隙'],['ye-wife','ye-zhen',16,'母子'],['xu','pei',22,'清议同道'],['xie','ye-jin',14,'猫与琴的交情']])this.changeBond(a,b,d,0,label);
   this.startStory('grain');this.startStory('twins');this.startStory('cat');
-  this.newCase('京仓粮银去向','ye-zhen',0);this.examOffer();this.selectionOffer();
+  this.newCase('京仓粮银去向','ye-zhen',0);this.examOffer();this.selectionOffer();this.incidentOffer();
   this.log('先帝留下的不是盛世，是三个月没发的军饷、漏雨的宫殿，还有一群等你先开口的人。','system');
   this.log('许知衡把第一本折子推到案前：“陛下，钱不够。我们先决定，哪一笔不能省。”','court','xu');
   this.log('叶锦已按叶家安排入主坤宁宫。两座偏殿尚空，掖庭最多容纳十五人。','world','ye-jin');
@@ -115,13 +119,18 @@ class LiangGame {
  storyText(story){const row=(story.stages||STORY_DEFS.find(d=>d.id===story.def)?.stages||[])[story.stage];if(!row)return null;return row.map((v,i)=>i<3&&typeof v==='string'?v.replaceAll('{A}',this.npc(story.actors[0])?.name||'故人').replaceAll('{B}',this.npc(story.actors[1])?.name||'旧识'):v);}
  readyStories(type){return this.s.stories.filter(s=>s.status==='active'&&s.due<=this.s.turn&&(!type||(type==='策'?['国政','朝局'].includes(s.type):!['国政','朝局'].includes(s.type)))).sort((a,b)=>Number(['paycrisis','paymutiny'].includes(b.def))-Number(['paycrisis','paymutiny'].includes(a.def)));}
  readyIncidents(){return this.s.pending.filter(i=>i&&i.kind==='incident'&&!i.resolved).sort((a,b)=>a.created-b.created);}
- incidentOffer(){
-  if(this.readyIncidents().length>=2)return null;
-  const active=new Set(this.readyIncidents().map(i=>i.def)),pool=COURT_INCIDENT_DEFS.filter(d=>!active.has(d.id));if(!pool.length)return null;
-  const def=this.pick(pool),regions=this.s.regions.filter(r=>r.owner==='liang'),region=regions.length?this.pick(regions):null,countries=this.s.countries.filter(c=>!c.war),country=countries.length?this.pick(countries):null;
+ cityDevelopment(r){return Math.round(this.clamp(r.prosperity*.45+r.loyalty*.2+Object.values(r.buildings).reduce((a,b)=>a+b,0)*2.5+Math.min(15,r.garrison/40)));}
+ weightedPick(items,weight){if(!items.length)return null;let draw=this.rand()*items.reduce((sum,x)=>sum+weight(x),0);for(const x of items){draw-=weight(x);if(draw<0)return x;}return items[items.length-1];}
+ incidentOffer(options={}){
+  if(!options.def&&this.s.pending.some(i=>i.kind==='incident'&&i.created===this.s.turn&&!i.followup))return null;
+  const regions=this.s.regions.filter(r=>r.owner==='liang'),region=this.region(options.region)||this.weightedPick(regions,r=>1+(100-this.cityDevelopment(r))/15),countries=this.s.countries.filter(c=>!c.war),country=this.s.countries.find(c=>c.id===options.country)||(countries.length?this.pick(countries):null);
+  const active=new Set(this.readyIncidents().map(i=>i.def)),recent=new Set(this.s.pending.filter(i=>i.kind==='incident'&&i.created>this.s.turn-6).map(i=>i.def));
+  const available=COURT_INCIDENT_DEFS.filter(d=>!d.followupOnly&&!active.has(d.id));let pool=available.filter(d=>!recent.has(d.id));if(!pool.length)pool=available;
+  if(!options.def&&region){const danger=this.rand()<.15+(100-this.cityDevelopment(region))*.0065;const preferred=pool.filter(d=>!!d.hazard===danger);if(preferred.length)pool=preferred;}
+  const def=options.def?COURT_INCIDENT_DEFS.find(d=>d.id===options.def):this.pick(pool);if(!def)return null;
   const officials=this.adults().filter(p=>p.office&&p.office!=='候补官员'&&!p.consort),official=officials.length?this.pick(officials):this.npc('xu');
-  const event={id:'i'+(++this.s.uid),kind:'incident',def:def.id,category:def.category,title:def.title,text:def.text.replaceAll('{R}',region?.name||'一处州府').replaceAll('{C}',country?.name||'邻国').replaceAll('{A}',official?.name||'一名主官'),choices:JSON.parse(JSON.stringify(def.choices)),created:this.s.turn,expires:this.s.turn+2,resolved:false,targetRegion:region?.id||null,targetCountry:country?.id||null,targetNpc:official?.id||null};
-  this.s.pending.push(event);this.log(`急报：“${event.title}”。剩2个月，请及时处理。`,'warning',event.targetNpc||null);return event;
+  const event={id:'i'+(++this.s.uid),kind:'incident',def:def.id,category:def.category,title:def.title,text:def.text.replaceAll('{R}',region?.name||'一处州府').replaceAll('{C}',country?.name||'邻国').replaceAll('{A}',official?.name||'一名主官'),choices:JSON.parse(JSON.stringify(def.choices)),created:this.s.turn,expires:this.s.turn+2,resolved:false,targetRegion:region?.id||null,targetCountry:country?.id||null,targetNpc:official?.id||null,followup:!!options.def,parent:options.parent||null,development:region?this.cityDevelopment(region):null};
+  this.s.pending.push(event);this.log(`${event.followup?'旧事来报':'本月大事'}：“${event.title}”。${region?region.name+'呈报，':''}两个月内需批复。`,'warning',event.targetNpc||null);return event;
  }
  incidentResolve(id,choice){
   const event=this.s.pending.find(i=>i&&i.id===id&&i.kind==='incident'&&!i.resolved),option=event?.choices?.[choice];if(!event||!option||this.s.phase!=='court')return {ok:false,message:'这份急报已经处理，或须在上朝时处置。'};
@@ -140,9 +149,12 @@ class LiangGame {
    if(k==='evidence'){let ca=this.s.cases.find(c=>!c.closed);if(ca){ca.evidence=this.clamp(ca.evidence+v,0,3);details.push(`${ca.title}证据 +${v}`);}continue;}
    if(k in this.s&&typeof this.s[k]==='number'){this.s[k]=['stability','morale','intel'].includes(k)?this.clamp(this.s[k]+v):Math.max(0,this.s[k]+v);details.push(`${labels[k]||k} ${v>=0?'+':''}${v}`);}
   }
-  event.resolved=true;event.choice=choice;event.resolvedTurn=this.s.turn;const spent=Object.entries(cost).map(([k,v])=>`${labels[k]||k} -${v}`).join('、');return this.finish(`处理急报“${event.title}”：${option.label}。${spent?spent+'；':''}${details.join('；')||'局势暂时稳住'}。`,'warning',event.targetNpc||null);
+  event.resolved=true;event.choice=choice;event.resolvedTurn=this.s.turn;
+  if(option.follow){this.s.flags.eventThreads=this.s.flags.eventThreads||[];this.s.flags.eventThreads.push({def:option.follow,due:this.s.turn+2,region:event.targetRegion,country:event.targetCountry,parent:event.id});}
+  const spent=Object.entries(cost).map(([k,v])=>`${labels[k]||k} -${v}`).join('、');return this.finish(`处理急报“${event.title}”：${option.label}。${spent?spent+'；':''}${details.join('；')||'局势暂时稳住'}。${option.follow?'已派人跟进，日后会有回报。':''}`,'warning',event.targetNpc||null);
  }
- incidentExpire(){for(const event of this.s.pending.filter(i=>i&&i.kind==='incident'&&!i.resolved&&i.expires<=this.s.turn)){event.resolved=true;event.expired=true;const r=this.region(event.targetRegion);if(r){r.loyalty=this.clamp(r.loyalty-3);r.prosperity=this.clamp(r.prosperity-2);}this.s.stability=this.clamp(this.s.stability-1);this.log(`急报“${event.title}”逾期未处理，${r?r.name+'民心 -3、繁荣 -2，':''}稳定 -1。`,'warning',event.targetNpc||null);}}
+ incidentContinuations(){const threads=this.s.flags.eventThreads||[];this.s.flags.eventThreads=threads.filter(t=>t.due>this.s.turn);for(const t of threads.filter(t=>t.due<=this.s.turn))this.incidentOffer(t);}
+  incidentExpire(){for(const event of this.s.pending.filter(i=>i&&i.kind==='incident'&&!i.resolved&&i.expires<=this.s.turn)){event.resolved=true;event.expired=true;const r=this.region(event.targetRegion),hard=r&&this.cityDevelopment(r)<35;if(r){r.loyalty=this.clamp(r.loyalty-(hard?3:1));r.prosperity=this.clamp(r.prosperity-(hard?2:1));}this.s.stability=Math.max(1,this.s.stability-1);this.log(`急报“${event.title}”逾期未处理，${r?r.name+'民心 -'+(hard?3:1)+'、繁荣 -'+(hard?2:1)+'，稳定 -1':''}。`,'warning',event.targetNpc||null);}}
  decide(id,choice){
   const story=this.s.stories.find(s=>s.id===id);if(!story||story.status!=='active'||story.due>this.s.turn||![0,1].includes(choice))return {ok:false,message:'这件事已处理，或尚未到下一阶段。'};
   const row=this.storyText(story),e=row[3+choice];const check=this.spend(Object.fromEntries(Object.entries(e).filter(([k,v])=>['money','grain','wood','iron','horses'].includes(k)&&v<0).map(([k,v])=>[k,-v])));if(!check.ok)return check;
@@ -219,7 +231,7 @@ class LiangGame {
   if(kind==='gift'){country.relation=this.clamp(country.relation+18,-100,100);return this.finish(`向${country.name}派使者交好，银 -180、关系 +18。当前关系 ${country.relation}。`);}
   if(kind==='trade'){country.trade=true;return this.finish(`与${country.name}签署商约，银 -260。下月开始增加关税并进口${{horses:'战马',wood:'木材',grain:'粮食',iron:'铁矿'}[country.resource]}。交战或关系恶化会中断商路。`);}
   if(kind==='alliance'){country.alliance=true;country.relation=this.clamp(country.relation+10,-100,100);return this.finish(`与${country.name}结盟，银 -400、关系 +10。盟友减少边境摩擦，并提供战场支援。`);}
-  country.war=false;country.relation=-15;this.s.war=null;return this.finish(`与${country.name}议和，银 -500。撤军止损，关系回到 -15；`);
+  this.s.invasions=(this.s.invasions||[]).filter(w=>w.country!==id);if(this.s.war?.country===id)this.s.war=null;country.war=false;country.relation=-15;return this.finish(`与${country.name}议和，银 -500。两国停战，关系回到 -15。`);
  }
  exploreTile(x,y){if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||x>=WORLD_MAP.cols||y<0||y>=WORLD_MAP.rows)return {ok:false,message:'这片疆域尚不能开发。'};if(this.s.regions.some(r=>r.x===x&&r.y===y))return {ok:false,message:'此地已经设府。'};
   if(!this.s.regions.some(r=>r.owner==='liang'&&Math.abs(r.x-x)+Math.abs(r.y-y)===1))return {ok:false,message:'只能开拓相邻荒地。'};
@@ -439,6 +451,63 @@ class LiangGame {
   if(instigator){this.changeNPC(instigator,'loyalty',-8);this.record(instigator,`因拖欠军饷，参与煽动${r?r.name:'京中守军'}哗变。`);}
   urgent('paymutiny');this.log(`${instigator?.name||'营中军官'}趁欠饷煽动谋反。${r?r.name+'守军关门拒令，当地税粮中断，稳定 -4；可点击地图派兵平叛。':'京中出现串联军官的传单，厂卫已开始追查。'}“有人答应明日发饷，大家就跟着走了。”谋反线索已列入朝议。`,'warning',instigator?.id||null);
  }
+ foreignNote(country,text){country.chronicle=country.chronicle||[];country.chronicle.unshift({turn:this.s.turn,text});country.chronicle=country.chronicle.slice(0,24);this.log(text,'foreign');}
+ foreignMonth(){
+  const countries=this.s.countries,links=this.s.flags.foreignLinks||(this.s.flags.foreignLinks={});
+  for(const c of countries){
+   const before=c.relation,delta=this.pick([-9,-6,-3,3,6,9]);c.relation=this.clamp(before+delta,-100,100);if(c.relation===before)c.relation=this.clamp(before-delta,-100,100);
+   const reason=c.relation>before?this.pick(['边市商人替两国修好了一段运货路','使者送回了走失在边境的商队','边将放回一批误入的牧民','礼部互送了新修的历书']):this.pick(['巡边骑兵驱散了越界的商队','商人在关口被重复征税','边境牧民为水源起了争执','使臣的车驾在城门受了盘查']);
+   if(c.trade&&c.relation<0){c.trade=false;this.foreignNote(c,`${c.name}撤走商官，暂停与大梁通商。进口和关税收入随之中断。`);}
+   if(c.alliance&&(c.relation<10||c.war)){c.alliance=false;this.foreignNote(c,`${c.name}退回盟书，称本国朝臣不愿再守旧约。`);}
+   const cities=this.s.regions.filter(r=>r.owner===c.id),policy=this.int(0,4);c.treasury=Math.max(0,(c.treasury??1600)+cities.length*12-120);c.stock=Math.max(0,(c.stock??2200)+cities.length*18-220);
+   let change;
+   if(policy===0){c.prosperity=this.clamp(c.prosperity+2);c.treasury=Math.max(0,c.treasury-140);change='减免沿河商税，码头重新挤满货船，繁荣 +2';}
+   else if(policy===1){c.power=this.clamp(c.power+2);c.stock=Math.max(0,c.stock-120);change='从各城征募新兵，校场连着数夜亮灯，军力 +2';}
+   else if(policy===2){c.prosperity=this.clamp(c.prosperity-2);c.stock=Math.max(0,c.stock-180);change='有数城歉收，官府开仓后仍有人迁走，繁荣 -2';}
+   else if(policy===3){c.power=this.clamp(c.power-1);c.prosperity=this.clamp(c.prosperity+1);change='撤下一批年老守军回乡，军力 -1、繁荣 +1';}
+   else{c.power=this.clamp(c.power+1);c.prosperity=this.clamp(c.prosperity+1);change='修通驿路，军粮和商货终于能共走一条道，军力 +1、繁荣 +1';}
+   if(cities.length){const r=this.pick(cities);r.prosperity=this.clamp(r.prosperity+(policy===2?-3:2));r.population=Math.max(2000,Math.floor(r.population*(policy===2?.997:1.002)));r.garrison=Math.max(100,r.garrison+(policy===1?35:policy===3?-20:0));if(policy===0||policy===4){const key=policy===0?'market':'farm';if(r.buildings[key]<5)r.buildings[key]++;}}
+   this.foreignNote(c,`${c.name}${change}。${reason}，对梁关系 ${c.relation-before>0?'+':''}${c.relation-before}（现为${c.relation}）。`);
+  }
+  // 各国之间的商约和战事不经玩家批准，也会改变疆域与国力。
+  for(const [key,link]of Object.entries(links)){
+   if(link.cooldown>0)link.cooldown--;
+   if(!link.remaining)continue;
+   const [a,b]=key.split('|').map(id=>countries.find(c=>c.id===id));if(!a||!b)continue;
+   const win=a.power*(.7+this.rand()*.6)>=b.power;link.wins=(link.wins||0)+(win?1:0);link.remaining--;a.power=this.clamp(a.power-1);b.power=this.clamp(b.power-1);
+   this.foreignNote(a,`${a.name}与${b.name}在边关交战，${win?a.name:b.name}暂占上风，两国军力各 -1。`);
+   if(!link.remaining){const winner=link.wins>=2?a:b,loser=winner===a?b:a,city=this.pick(this.s.regions.filter(r=>r.owner===loser.id&&!r.royal));if(city){city.owner=winner.id;city.loyalty=30;city.prosperity=this.clamp(city.prosperity-8);}link.relation=-35;link.cooldown=4;link.wins=0;const text=`${winner.name}与${loser.name}停战，${city?city.name+'割归'+winner.name:'双方退回原有边界'}。失城的官员已被召回问责。`;this.foreignNote(winner,text);loser.chronicle.unshift({turn:this.s.turn,text});loser.chronicle=loser.chronicle.slice(0,24);}
+  }
+  const pairs=[];for(let i=0;i<countries.length;i++)for(let j=i+1;j<countries.length;j++)pairs.push([countries[i],countries[j]]);
+  for(let i=0;i<2&&pairs.length;i++){
+   const pair=pairs.splice(this.int(0,pairs.length-1),1)[0],[a,b]=pair,key=[a.id,b.id].sort().join('|'),link=links[key]||(links[key]={relation:0,trade:false,remaining:0,cooldown:0,wins:0});if(link.remaining)continue;
+   const delta=this.pick([-12,-8,6,10]);link.relation=this.clamp(link.relation+delta,-100,100);let text;
+   if(link.relation<=-20&&!link.cooldown){link.remaining=3;link.wins=0;link.trade=false;text=`${a.name}与${b.name}为边境水源谈崩了。使臣尚未出城，前线已燃起烽火；两国商队被迫绕道。`;}
+   else if(delta>0){link.trade=true;a.treasury+=90;b.treasury+=90;a.prosperity=this.clamp(a.prosperity+1);b.prosperity=this.clamp(b.prosperity+1);text=`${a.name}与${b.name}在边市互换货单，终于谈妥盐马交易，两国繁荣各 +1、库银各 +90。`;}
+   else{link.trade=false;a.prosperity=this.clamp(a.prosperity-1);b.prosperity=this.clamp(b.prosperity-1);text=`${a.name}扣下一队${b.name}商人的货，对方关了边市。两国繁荣各 -1，关系 ${delta}。`;}
+   this.foreignNote(a,text);b.chronicle.unshift({turn:this.s.turn,text});b.chronicle=b.chronicle.slice(0,24);
+  }
+ }
+ launchInvasion(){
+  const ongoing=this.s.invasions||(this.s.invasions=[]),eligible=this.s.countries.filter(c=>!ongoing.some(w=>w.country===c.id));
+  const independent=eligible.filter(c=>!c.alliance&&!c.war),candidates=independent.length?independent:eligible;if(!candidates.length)return;
+  const c=this.weightedPick(candidates,c=>Math.max(1,110-c.relation+c.power)),r=this.pick(this.s.regions.filter(r=>r.owner==='liang'&&!r.capital))||this.s.regions.find(r=>r.owner==='liang');if(!r)return;
+  const wasAlly=c.alliance;c.war=true;c.alliance=false;c.trade=false;c.relation=Math.min(-65,c.relation-30);ongoing.push({id:'invasion-'+(++this.s.uid),country:c.id,region:r.id,started:this.s.turn,remaining:3,held:0,lost:0,preparedTurn:-1});
+  this.s.flags.lastInvasionTurn=this.s.turn;this.foreignNote(c,`${c.name}${wasAlly?'撕毁盟约，趁边防松懈':'以边境争端为由'}进攻${r.name}。驿骑带着折断的箭赶到朝堂：“敌军已过界，请陛下定夺！”三个月内将连续结算守城战，可在军队页面增援或议和。`);
+ }
+ prepareDefense(id){const w=(this.s.invasions||[]).find(w=>w.id===id);if(!w)return {ok:false,message:'这一路敌军已经撤走。'};if(w.preparedTurn===this.s.turn)return {ok:false,message:'本月已为这座城派出增援。'};const cost=this.spend({money:120,grain:160});if(!cost.ok)return cost;w.preparedTurn=this.s.turn;const r=this.region(w.region);if(r)r.garrison+=80;return this.finish(`向${r?.name||'边关'}运送粮械并增派守军80人，银 -120、粮 -160。下次守城战防御提高35%。`);}
+ resolveInvasions(){
+  for(const w of [...(this.s.invasions||[])]){const c=this.s.countries.find(c=>c.id===w.country),r=this.region(w.region);if(!c||!r)continue;
+   const fortification=1+Math.min(.45,r.buildings.homes*.06+r.buildings.mine*.04),reinforced=w.preparedTurn===this.s.turn-1?1.35:1,support=this.s.countries.filter(q=>q.alliance&&!q.war).length*180;
+   const defense=(this.combat()+(r.garrison||0)*.7+support)*fortification*reinforced,attack=c.power*27,held=defense*(.8+this.rand()*.4)>=attack;
+   const casualties=Math.min(this.s.soldiers,this.int(held?30:80,held?80:170));this.s.soldiers-=casualties;this.s.weapons=Math.max(0,this.s.weapons-Math.floor(casualties*.6));this.settleTreasury(-100);this.s.grain=Math.max(0,this.s.grain-140);r.garrison=Math.max(0,r.garrison-this.int(held?10:30,held?35:70));w.remaining--;if(held)w.held++;else w.lost++;
+   this.foreignNote(c,`${r.name}守城${held?'击退一次攻势':'失去一段外墙'}，对阵${c.name}，损兵${casualties}，军费银100、粮140。还需守${w.remaining}个月。`);
+   if(!w.remaining){const won=w.held>=2;let text;if(won){c.power=this.clamp(c.power-4);this.s.morale=this.clamp(this.s.morale+5);text=`${c.name}撤军，${r.name}守住了。城里开始清理箭矢，士气 +5，对方军力 -4。`;}
+    else{r.prosperity=this.clamp(r.prosperity-8);r.population=Math.max(2000,Math.floor(r.population*.98));this.s.stability=this.clamp(this.s.stability-2);if(r.owner==='liang'&&!r.capital){r.owner=c.id;r.governor=null;r.loyalty=25;text=`${r.name}失守，归${c.name}占领，税粮收入中断。人口流失2%、繁荣 -8、稳定 -2。`;}else text=`${c.name}劫掠${r.name}近郊后撤退。人口流失2%、繁荣 -8、稳定 -2。`;}
+    this.s.invasions=this.s.invasions.filter(q=>q.id!==w.id);c.war=this.s.war?.country===c.id||this.s.invasions.some(q=>q.country===c.id);this.foreignNote(c,text);this.s.history.unshift({turn:this.s.turn,title:'边境战事',text});
+   }
+  }
+ }
  nextTurn(){
   if(this.s.lost)return {ok:false,message:'本局已结束，请读档、传位或重新开局。'};
   if(this.s.phase!=='private')return {ok:false,message:'请先下朝，再结束本月。'};
@@ -454,9 +523,12 @@ class LiangGame {
   for(const build of [...this.s.builds]){build.remaining--;if(build.remaining<=0){this.region(build.region).buildings[build.key]=build.level;this.s.builds=this.s.builds.filter(b=>b.id!==build.id);this.log(`${this.region(build.region).name}的${BUILDINGS[build.key].name} ${build.level}级完工，开始计入下月产出。`,'economy');}}
   for(const co of this.s.countries){
    if(co.trade&&!co.war){const amount=co.resource==='grain'?180:co.resource==='wood'?25:co.resource==='iron'?18:5;this.s[co.resource]+=amount;this.log(`${co.name}商队送到${{grain:'粮',wood:'木',iron:'铁',horses:'马'}[co.resource]} ${amount}，商税已计入本月收入。`,'economy');}
-   if(this.rand()<.13&&!co.war){const d=this.pick([-12,-6,6,10]);co.relation=this.clamp(co.relation+d,-100,100);this.log(`${co.name}${d>0?'派使者祝贺新朝，愿继续往来':'因边境商队纠纷发来照会'}。关系 ${d>0?'+':''}${d}。`,'diplomacy');if(co.trade&&co.relation<0){co.trade=false;this.log(`${co.name}暂停商约，贸易收入与进口同时中断。`,'warning');}}
   }
-  if(this.s.war){const w=this.s.war,co=this.s.countries.find(c=>c.id===w.country);this.settleTreasury(-220);this.s.grain=Math.max(0,this.s.grain-350);const support=this.s.countries.filter(c=>c.alliance&&!c.war).length*160,ratio=(this.combat()+support)/(co.power*30),win=ratio*(.75+this.rand()*.5)>1;const casualties=Math.min(this.s.soldiers,this.int(win?60:180,win?180:360));this.s.soldiers-=casualties;this.s.weapons=Math.max(0,this.s.weapons-Math.floor(casualties*.7));w.our+=win?1:0;w.their+=win?0:1;w.remaining--;this.log(`对${co.name}战事：${win?'此役得胜':'此役失利'}，损兵 ${casualties}，军费银 -220、粮 -350。`,'warning');if(w.remaining===0){co.war=false;co.relation=-65;if(w.our>=2){co.power=Math.max(10,co.power-12);this.s.money+=800;this.s.stability=this.clamp(this.s.stability+6);const capital=this.s.regions.find(r=>r.capital),taken=this.s.regions.filter(r=>r.owner===co.id).sort((a,b)=>(Math.abs(a.x-capital.x)+Math.abs(a.y-capital.y))-(Math.abs(b.x-capital.x)+Math.abs(b.y-capital.y)))[0];if(taken){taken.owner='liang';taken.tag='新附';taken.loyalty=27;taken.garrison=180;taken.governor='lu';taken.royal=false;}this.log(`战胜${co.name}，获赔银 800、稳定 +6，${taken?taken.name+'归附': '对方已无可割让城池'}；新附民众忠诚较低。`,'system');}else{this.s.stability=this.clamp(this.s.stability-10);this.s.morale=this.clamp(this.s.morale-12);this.log(`对${co.name}战败，稳定 -10、士气 -12，朝臣要求重整军备。`,'warning');}this.s.war=null;}}
+  if(this.s.war){const w=this.s.war,co=this.s.countries.find(c=>c.id===w.country);if(co){this.settleTreasury(-220);this.s.grain=Math.max(0,this.s.grain-350);const support=this.s.countries.filter(c=>c.alliance&&!c.war).length*160,ratio=(this.combat()+support)/(co.power*30),win=ratio*(.75+this.rand()*.5)>1;const casualties=Math.min(this.s.soldiers,this.int(win?60:180,win?180:360));this.s.soldiers-=casualties;this.s.weapons=Math.max(0,this.s.weapons-Math.floor(casualties*.7));w.our+=win?1:0;w.their+=win?0:1;w.remaining--;this.log(`对${co.name}战事：${win?'此役得胜':'此役失利'}，损兵 ${casualties}，军费银 -220、粮 -350。`,'warning');if(w.remaining===0){co.relation=-65;if(w.our>=2){co.power=Math.max(10,co.power-12);this.s.money+=800;this.s.stability=this.clamp(this.s.stability+6);const capital=this.s.regions.find(r=>r.capital),taken=this.s.regions.filter(r=>r.owner===co.id).sort((a,b)=>(Math.abs(a.x-capital.x)+Math.abs(a.y-capital.y))-(Math.abs(b.x-capital.x)+Math.abs(b.y-capital.y)))[0];if(taken){taken.owner='liang';taken.tag='新附';taken.loyalty=27;taken.garrison=180;taken.governor='lu';taken.royal=false;}this.log(`战胜${co.name}，获赔银 800、稳定 +6，${taken?taken.name+'归附': '对方已无可割让城池'}；新附民众忠诚较低。`,'system');}else{this.s.stability=this.clamp(this.s.stability-10);this.s.morale=this.clamp(this.s.morale-12);this.log(`对${co.name}战败，稳定 -10、士气 -12，朝臣要求重整军备。`,'warning');}this.s.war=null;co.war=this.s.invasions.some(q=>q.country===co.id);}}}
+  // 边境战事与诸国朝局都在月末自行推进；玩家可以同时面对自己的远征和外敌入侵。
+  this.resolveInvasions();
+  this.foreignMonth();
+  if(this.s.turn>0&&this.s.turn%10===0)this.launchInvasion();
   if(this.s.pregnancy&&this.s.pregnancy.due<=this.s.turn){let p=this.generateNPC('皇室');p.name=this.pick(['昭','承','明'])+this.pick(['宁','安','晏','和','珩']);p.age=0;const partnerId=this.s.pregnancy.partner||this.s.pregnancy.father;p.parents=[this.s.player.id,partnerId];p.office='皇嗣';p.friend=15;p.love=0;p.literature=5;p.military=3;p.art=5;p.location='重华宫';p.bio=`${this.s.player.name}与${this.npc(partnerId).name}之子女，出生于${this.date()}。`;this.s.people.push(p);this.s.children.push(p.id);this.s.pregnancy=null;this.s.stability=this.clamp(this.s.stability+4);this.log(`皇嗣${p.name}降生，稳定 +4，已入重华宫与皇室族谱。`,'system');}
   if(this.s.turn%12===0){this.s.player.age++;for(const p of this.s.people){if(p.dead)continue;p.age++;if(p.age>72&&this.rand()<.14){p.dead=true;if(p.id===this.s.player.id){this.s.lost=true;this.log('女帝驾崩。可在重华宫选择成年皇嗣承继，也可读档或另起一朝。','system');}p.consort=false;p.consort=false;for(const [o,id]of Object.entries(this.s.offices))if(id===p.id)delete this.s.offices[o];this.log(`${p.name}辞世，亲族与旧交前往吊唁，履历已留入家史。`,'world',p.id);this.s.history.unshift({turn:this.s.turn,title:p.name+'辞世',text:`${p.clan}氏，享年${p.age}。${p.bio||''}`});}}
    this.npc(this.s.player.id).age=this.s.player.age;this.examOffer();this.log('新年开科，本届六名应试人才已入礼部名册，最多选三名。','system');
@@ -466,7 +538,10 @@ class LiangGame {
   if(this.s.turn%3===0&&this.s.stories.filter(s=>s.status==='active').length<6){let choices=STORY_DEFS.filter(d=>!d.triggerOnly&&!this.s.stories.some(s=>s.def===d.id));if(!choices.length)choices=STORY_DEFS.filter(d=>!d.triggerOnly&&!d.actors&&!this.s.stories.some(s=>s.def===d.id&&s.status==='active'));if(choices.length){const d=this.pick(choices),st=this.startStory(d.id);this.log(`新奏折：“${d.title}”。此事已在朝中传开。`,'story',st?.actors[0]);}}
   if(this.s.turn%5===0&&this.s.cases.filter(c=>!c.closed).length<4){const p=this.pick(this.adults().filter(p=>!p.consort));this.newCase(this.pick(['私卖官田疑案','军需价银疑案','河堤虚报工料','借官威侵占铺面']),p.id);this.log(`${p.name}卷入一桩新案，刑部已登记，未调查前不能视为定罪。`,'court',p.id);}
   if(this.s.turn%4===0){const r=this.pick(this.s.regions.filter(r=>r.owner==='liang'));if(r){const bad=this.rand()<.5;if(bad){this.s.grain=Math.max(0,this.s.grain-180);r.loyalty=this.clamp(r.loyalty-3);this.log(`${r.name}连日大雨冲坏仓顶，粮 -180、民心 -3。`,'warning');}else{this.s.money+=150;r.prosperity=this.clamp(r.prosperity+3);this.log(`${r.name}集市热闹，额外入税银 150，繁荣 +3。`,'economy');}}}
-  this.incidentExpire();if(this.s.turn>0&&this.rand()<.24)this.incidentOffer();
+  this.incidentExpire();
+  this.incidentContinuations();
+  // 每月朝堂至少有一件新大事；续报会与当月新急报并列，形成能追下去的故事线。
+  this.incidentOffer();
   this.s.trained=false;this.s.built=false;this.s.acted={};this.s.courtAP=5;this.s.privateAP=6;this.s.phase='court';
   if(this.s.stability<=0){this.s.lost=true;this.log('朝廷失去控制，本局结束。可以导入旧档，或重新起步。','system');}
   this.financialTrouble();
@@ -477,7 +552,7 @@ class LiangGame {
  suppress(id){const r=this.region(id);if(!r||r.owner!=='rebel')return {ok:false,message:'此地没有叛乱。'};if(this.combat()<500)return {ok:false,message:'战力须达到 500，先整顿武器和训练。'};const c=this.spend({money:240,grain:350});if(!c.ok)return c;const loss=this.int(60,180);this.s.soldiers=Math.max(0,this.s.soldiers-loss);r.owner='liang';r.loyalty=30;this.s.stability=this.clamp(this.s.stability+3);return this.finish(`平定${r.name}，银 -240、粮 -350、士兵 -${loss}；当地恢复税粮，民心 30、稳定 +3。`);}
  static validate(s){
   try{
-   const finite=(v,min=0,max=1e15)=>Number.isFinite(v)&&v>=min&&v<=max, record=v=>v&&typeof v==='object'&&!Array.isArray(v), arrays=['people','clans','regions','countries','stories','pending','resolved','logs','cases','builds','treasures','children','appointments','history'];
+    const finite=(v,min=0,max=1e15)=>Number.isFinite(v)&&v>=min&&v<=max, record=v=>v&&typeof v==='object'&&!Array.isArray(v), arrays=['people','clans','regions','countries','stories','pending','resolved','logs','cases','builds','treasures','children','appointments','history','invasions'];
    if(!s||s.version!==1||!Number.isInteger(s.turn)||!finite(s.turn,0,23999)||!['court','private'].includes(s.phase)||!arrays.every(k=>Array.isArray(s[k])&&s[k].length<10000)||!['offices','player','flags','relations','acted'].every(k=>record(s[k])))return false;
    if(!['money','grain','wood','iron','horses','soldiers','weapons','seed','uid'].every(k=>finite(s[k]))||!['stability','training','morale','intel'].every(k=>finite(s[k],0,100))||!finite(s.courtAP,0,5)||!finite(s.privateAP,0,6)||![8,12,18].includes(s.tax))return false;
    const ids=new Set(s.people.map(p=>p?.id));if(ids.size!==s.people.length||!ids.has(s.player.id)||!s.people.length||!s.clans.length||!s.countries.length)return false;
@@ -485,7 +560,7 @@ class LiangGame {
    if(!['age','literature','military','art'].every(k=>finite(s.player[k]))||!Object.values(s.offices).every(id=>ids.has(id))||!s.children.every(id=>ids.has(id)))return false;
    if(!s.regions.every(r=>r&&typeof r.id==='string'&&finite(r.population)&&finite(r.loyalty,0,100)&&finite(r.prosperity,0,100)&&finite(r.garrison)&&record(r.buildings)&&Object.keys(BUILDINGS).every(k=>Number.isInteger(r.buildings[k])&&finite(r.buildings[k],0,5))))return false;
    if(!s.pending.every(i=>record(i)&&(!i.kind||(i.kind==='incident'&&typeof i.id==='string'&&typeof i.title==='string'&&typeof i.text==='string'&&Array.isArray(i.choices)&&i.choices.length===2&&Number.isInteger(i.created)&&Number.isInteger(i.expires)&&typeof i.resolved==='boolean'))))return false;
-   if(!s.countries.every(c=>c&&typeof c.id==='string'&&typeof c.name==='string'&&finite(c.relation,-100,100)&&finite(c.power,0,100)&&finite(c.prosperity,0,100)))return false;
+    if(!s.countries.every(c=>c&&typeof c.id==='string'&&typeof c.name==='string'))return false;
    if(!s.stories.every(st=>st&&STORY_DEFS.some(d=>d.id===st.def)&&Array.isArray(st.actors)&&st.actors.every(id=>ids.has(id))&&Array.isArray(st.history)&&Number.isInteger(st.stage)&&st.stage>=0&&st.stage<=(st.stages||STORY_DEFS.find(d=>d.id===st.def).stages).length&&finite(st.due)))return false;
    if(!s.builds.every(b=>s.regions.some(r=>r.id===b.region)&&BUILDINGS[b.key]&&finite(b.remaining,1,5)&&finite(b.level,1,5))||!s.cases.every(c=>c&&ids.has(c.suspect)&&finite(c.evidence,0,3)))return false;
    if(s.flags.arrears!==undefined&&!finite(s.flags.arrears))return false;if(s.flags.deficitMonths!==undefined&&(!Number.isInteger(s.flags.deficitMonths)||!finite(s.flags.deficitMonths)))return false;
@@ -494,9 +569,9 @@ class LiangGame {
    for(const offer of [s.exam,s.selection])if(offer&&(!Array.isArray(offer.ids)||!Array.isArray(offer.chosen)||!offer.ids.every(id=>ids.has(id))||!offer.chosen.every(id=>offer.ids.includes(id))))return false;
    if(s.selection){if(!Array.isArray(s.selection.rejected||[])||!(s.selection.rejected||[]).every(id=>s.selection.ids.includes(id))||!Number.isInteger(s.selection.maxChoices)||!finite(s.selection.maxChoices,0,20)||s.selection.chosen.some(id=>s.selection.rejected.includes(id)))return false;}
    if(s.pregnancy&&(!ids.has(s.pregnancy.partner||s.pregnancy.father)||!finite(s.pregnancy.due)))return false;
-   if(s.war&&(!s.countries.some(c=>c.id===s.war.country)||!finite(s.war.remaining,1,3)))return false;
+    if(s.war&&(!s.countries.some(c=>c.id===s.war.country)||!finite(s.war.remaining,1,3)))return false;
    return true;
-  }catch{return false;}
+   }catch{return false;}
  }
 }
 if(typeof module!=='undefined')module.exports=LiangGame;
