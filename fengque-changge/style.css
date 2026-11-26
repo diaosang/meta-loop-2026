@@ -31,3 +31,4 @@
 .exam-card{min-height:0}.selection-card{min-height:0}
 .incident-card{padding:12px 14px}.incident-card h3{margin:4px 0}.incident-choices{margin-top:8px}.incident-card .incident-choice{padding:8px 10px}
 @media(min-width:1700px){.nav-item b{font-size:24px}.desk{padding:20px 34px}}
+#toast .note-name,.modal-action-feedback .note-name{color:#f4d58a;font-weight:700}
