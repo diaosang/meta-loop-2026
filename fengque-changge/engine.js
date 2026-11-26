@@ -7,6 +7,9 @@ class LiangGame {
   this.s.flags.foreignLinks=this.s.flags.foreignLinks||{};
   this.s.flags.eventThreads=this.s.flags.eventThreads||[];
   for(const c of this.s.countries){c.chronicle=c.chronicle||[];c.treasury=c.treasury??1600;c.stock=c.stock??2200;}
+  // 旧存档里曾把家中长辈写成“柳氏”一类的称呼；迁移时补上名字，人物列表始终显示具体姓名。
+  const given={顾:'云岚',崔:'明珠',柳:'清和',宋:'静姝',沈:'清妍',姜:'含章',叶:'静仪',许:'明珠',裴:'清妍',陆:'明珠'};
+  for(const p of this.s.people){if(typeof p.name!=='string')continue;const m=p.name.match(/^([顾崔柳宋沈姜叶许裴陆])氏(?:老夫人)?$/);if(m)p.name=m[1]+(given[m[1]]||'清和');}
  }
  rand(){let x=this.s.seed|0;x^=x<<13;x^=x>>>17;x^=x<<5;this.s.seed=x>>>0;return this.s.seed/4294967296;}
  int(a,b){return a+Math.floor(this.rand()*(b-a+1));}
